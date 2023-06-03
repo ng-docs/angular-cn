@@ -345,8 +345,15 @@ function callHooks(
 /**
  * Executes a single lifecycle hook, making sure that:
  *
+ * 执行单个生命周期挂钩，确保：
+ *
  * - it is called in the non-reactive context;
+ *
+ *   它在非反应性上下文中被调用；
+ *
  * - profiling data are registered.
+ *
+ *   分析数据已注册。
  *
  */
 function callHookInternal(directive: any, hook: () => void) {

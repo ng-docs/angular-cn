@@ -17,11 +17,21 @@ const EMPTY_ARRAY: string[] = [];
  * Represents internal object used to track state of each CSS class. There are 3 different \(boolean\)
  * flags that, combined together, indicate state of a given CSS class:
  *
+ * 表示用于跟踪每个 CSS 类状态的内部对象。 有 3 个不同的（布尔值）标志，它们组合在一起，指示给定 CSS 类的状态：
+ *
  * - enabled: indicates if a class should be present in the DOM \(true\) or not \(false\);
+ *
+ *   enabled：指示类是否应存在于 DOM 中（真）或不存在（假）；
+ *
  * - changed: tracks if a class was toggled \(added or removed\) during the custom dirty-checking
  *   process; changed classes must be synchronized with the DOM;
+ *
+ *   更改：跟踪在自定义脏检查过程中是否切换（添加或删除）类； 更改的类必须与 DOM 同步；
+ *
  * - touched: tracks if a class is present in the current object bound to the class / ngClass input;
  *   classes that are not present any more can be removed from the internal data structures;
+ *
+ *   touched：跟踪绑定到类/ngClass 输入的当前对象中是否存在类； 不再存在的类可以从内部数据结构中删除；
  *
  */
 interface CssClassState {

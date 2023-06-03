@@ -45,6 +45,8 @@ export enum CompilationMode {
    * Generates code based on each individual source file without using its
    * dependencies \(suitable for local dev edit/refresh workflow\).
    *
+   * 基于每个单独的源文件生成代码，而不使用其依赖项（适用于本地开发编辑/刷新工作流程）。
+   *
    */
   LOCAL,
 }
@@ -127,6 +129,8 @@ export enum HandlerFlags {
  * The decorator compilers in @angular/compiler do not depend on Typescript. The handler is
  * responsible for extracting the information required to perform compilation from the decorators
  * and Typescript source, invoking the decorator compiler, and returning the result.
+ *
+ * @angular/compiler 中的装饰器编译器不依赖于 Typescript。 处理程序负责从装饰器和 Typescript 源中提取执行编译所需的信息，调用装饰器编译器，并返回结果。
  *
  * @param `D` The type of decorator metadata produced by `detect`.
  * @param `A` The type of analysis metadata produced by `analyze`.

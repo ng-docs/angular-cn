@@ -44,6 +44,8 @@ import {ProviderToken} from './provider_token';
  *
  * `Injector` returns itself when given `Injector` as a token:
  *
+ * 当给定 `Injector` 作为标记时， `Injector` 返回自身：
+ *
  * {@example core/di/ts/injector_spec.ts region='injectInjector'}
  *
  * @publicApi

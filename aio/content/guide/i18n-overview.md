@@ -2,7 +2,7 @@
 
 # Angular 国际化
 
-{@searchKeywords i18n}
+{&commat;searchKeywords i18n}
 
 *Internationalization*, sometimes referenced as i18n, is the process of designing and preparing your project for use in different locales around the world.
 *Localization* is the process of building versions of your project for different locales.

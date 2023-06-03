@@ -783,6 +783,8 @@ function owningModule(context: Context, override: OwningModule|null = null): Own
  * layer while we need to support TypeScript versions less than 5.1
  * TODO\(crisbeto\): remove this function once support for TS 4.9 is removed.
  *
+ * 获取标识符的原始关键字种类。 这是一个兼容层，我们需要支持低于 5.1 的 TypeScript 版本 TODO\(crisbeto\)：删除对 TS 4.9 的支持后删除此功能。
+ *
  */
 function getOriginalKeywordKind(identifier: ts.Identifier): ts.SyntaxKind|undefined {
   return typeof (ts as any).identifierToKeywordKind === 'function' ?

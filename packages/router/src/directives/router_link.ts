@@ -154,11 +154,11 @@ import {UrlTree} from '../url_tree';
  * </a>
  * ```
  *
- * Use {@link Router.getCurrentNavigation() Router#getCurrentNavigation} to retrieve a saved
+ * Use {@link Router.getCurrentNavigation\(\) Router#getCurrentNavigation} to retrieve a saved
  * navigation-state value. For example, to capture the `tracingId` during the `NavigationStart`
  * event:
  *
- * 使用 {@link Router.getCurrentNavigation() Router#getCurrentNavigation}
+ * 使用 {@link Router.getCurrentNavigation\(\) Router#getCurrentNavigation}
  * 来检索保存的导航状态值。比如，要在 `NavigationStart` 事件中捕获 `tracingId`
  *
  * ```
@@ -184,12 +184,18 @@ export class RouterLink implements OnChanges, OnDestroy {
   /**
    * Represents an `href` attribute value applied to a host element,
    * when a host element is `<a>`. For other tags, the value is `null`.
+   *
+   * 当宿主元素为 `<a>` 时，表示应用于宿主元素的 `href` 属性值。 对于其他标签，值为 `null` 。
+   *
    */
   href: string|null = null;
 
   /**
    * Represents the `target` attribute on a host element.
    * This is only used when the host element is an `<a>` tag.
+   *
+   * 表示宿主元素上的 `target` 属性。 这仅在宿主元素是 `<a>` 标记时使用。
+   *
    */
   @HostBinding('attr.target') @Input() target?: string;
 

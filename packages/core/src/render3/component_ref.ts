@@ -55,6 +55,9 @@ import {RootViewRef, ViewRef} from './view_ref';
 export class ComponentFactoryResolver extends AbstractComponentFactoryResolver {
   /**
    * @param ngModule The NgModuleRef to which all resolved factories are bound.
+   *
+   * 所有解析工厂绑定的 NgModuleRef。
+   *
    */
   constructor(private ngModule?: NgModuleRef<any>) {
     super();
@@ -86,6 +89,9 @@ function getNamespace(elementName: string): string|null {
 /**
  * Injector that looks up a value using a specific injector, before falling back to the module
  * injector. Used primarily when creating components or embedded views dynamically.
+ *
+ * 在回退到模块注入器之前，使用特定注入器查找值的注入器。 主要在动态创建组件或嵌入式视图时使用。
+ *
  */
 class ChainedInjector implements Injector {
   constructor(private injector: Injector, private parentInjector: Injector) {}
@@ -111,6 +117,9 @@ class ChainedInjector implements Injector {
 
 /**
  * ComponentFactory interface implementation.
+ *
+ * ComponentFactory 接口实现。
+ *
  */
 export class ComponentFactory<T> extends AbstractComponentFactory<T> {
   override selector: string;
@@ -128,7 +137,13 @@ export class ComponentFactory<T> extends AbstractComponentFactory<T> {
 
   /**
    * @param componentDef The component definition.
+   *
+   * 组件定义。
+   *
    * @param ngModule The NgModuleRef to which the factory is bound.
+   *
+   * 工厂绑定的 NgModuleRef。
+   *
    */
   constructor(private componentDef: ComponentDef<any>, private ngModule?: NgModuleRef<any>) {
     super();
@@ -261,9 +276,13 @@ export class ComponentFactory<T> extends AbstractComponentFactory<T> {
 /**
  * Represents an instance of a Component created via a {@link ComponentFactory}.
  *
+ * 表示通过 {@link ComponentFactory} 创建的 Component 实例。
+ *
  * `ComponentRef` provides access to the Component Instance as well other objects related to this
  * Component Instance and allows you to destroy the Component Instance via the {@link #destroy}
  * method.
+ *
+ * `ComponentRef` 提供对组件实例以及与此组件实例相关的其他对象的访问，并允许您通过 {@link #destroy} 方法销毁组件实例。
  *
  */
 export class ComponentRef<T> extends AbstractComponentRef<T> {
@@ -324,7 +343,12 @@ export class ComponentRef<T> extends AbstractComponentRef<T> {
   }
 }
 
-/** Represents a HostFeature function. */
+/**
+ * Represents a HostFeature function.
+ *
+ * 表示 HostFeature 函数。
+ *
+ */
 type HostFeature = (<T>(component: T, componentDef: ComponentDef<T>) => void);
 
 // TODO: A hack to not pull in the NullInjector from @angular/core.
@@ -334,7 +358,12 @@ export const NULL_INJECTOR: Injector = {
   }
 };
 
-/** Creates a TNode that can be used to instantiate a root component. */
+/**
+ * Creates a TNode that can be used to instantiate a root component.
+ *
+ * 创建一个可用于实例化根组件的 TNode。
+ *
+ */
 function createRootComponentTNode(lView: LView, rNode: RNode): TElementNode {
   const tView = lView[TVIEW];
   const index = HEADER_OFFSET;
@@ -350,14 +379,35 @@ function createRootComponentTNode(lView: LView, rNode: RNode): TElementNode {
 /**
  * Creates the root component view and the root component node.
  *
+ * 创建根组件视图和根组件节点。
+ *
  * @param hostRNode Render host element.
+ *
+ * 呈现宿主元素。
+ *
  * @param rootComponentDef ComponentDef
  * @param rootView The parent view where the host node is stored
+ *
+ * 存放宿主节点的父视图
+ *
  * @param rendererFactory Factory to be used for creating child renderers.
+ *
+ * 用于创建子渲染器的工厂。
+ *
  * @param hostRenderer The current renderer
+ *
+ * 当前渲染器
+ *
  * @param sanitizer The sanitizer, if provided
  *
- * @returns Component view created
+ * 消毒剂（如果提供）
+ *
+ * @returns
+ *
+ * Component view created
+ *
+ * 已创建组件视图
+ *
  */
 function createRootComponentView(
     tNode: TElementNode, hostRNode: RElement|null, rootComponentDef: ComponentDef<any>,
@@ -393,7 +443,12 @@ function createRootComponentView(
   return rootView[tNode.index] = componentView;
 }
 
-/** Sets up the styling information on a root component. */
+/**
+ * Sets up the styling information on a root component.
+ *
+ * 在根组件上设置样式信息。
+ *
+ */
 function applyRootComponentStyling(
     rootDirectives: DirectiveDef<any>[], tNode: TElementNode, rNode: RElement|null,
     hostRenderer: Renderer): void {
@@ -413,6 +468,8 @@ function applyRootComponentStyling(
 /**
  * Creates a root component and sets it up with features and host bindings.Shared by
  * renderComponent\(\) and ViewContainerRef.createComponent\(\).
+ *
+ * 创建一个根组件并为其设置功能和主机绑定。由 renderComponent\(\) 和 ViewContainerRef.createComponent\(\) 共享。
  *
  */
 function createRootComponent<T>(
@@ -459,7 +516,12 @@ function createRootComponent<T>(
   return component;
 }
 
-/** Sets the static attributes on a root component. */
+/**
+ * Sets the static attributes on a root component.
+ *
+ * 在根组件上设置静态属性。
+ *
+ */
 function setRootNodeAttributes(
     hostRenderer: Renderer2, componentDef: ComponentDef<unknown>, hostRNode: RElement,
     rootSelectorOrNode: any) {
@@ -479,7 +541,12 @@ function setRootNodeAttributes(
   }
 }
 
-/** Projects the `projectableNodes` that were specified when creating a root component. */
+/**
+ * Projects the `projectableNodes` that were specified when creating a root component.
+ *
+ * 投影创建根组件时指定的 `projectableNodes` 。
+ *
+ */
 function projectNodes(
     tNode: TElementNode, ngContentSelectors: string[], projectableNodes: any[][]) {
   const projection: (TNode|RNode[]|null)[] = tNode.projection = [];
@@ -497,9 +564,13 @@ function projectNodes(
 /**
  * Used to enable lifecycle hooks on the root component.
  *
+ * 用于在根组件上启用生命周期挂钩。
+ *
  * Include this feature when calling `renderComponent` if the root component
  * you are rendering has lifecycle hooks defined. Otherwise, the hooks won't
  * be called properly.
+ *
+ * 如果您正在渲染的根组件定义了生命周期挂钩，则在调用 `renderComponent` 时包括此功能。 否则，钩子将不会被正确调用。
  *
  * Example:
  *

@@ -148,6 +148,8 @@ Use the `ngOnInit()` method to perform the following initialization tasks.
 
 Angular provides several ways to clean up when an instance is destroyed.
 
+Angular 提供了几种方法来在实例被销毁时进行清理。
+
 ### `ngOnDestroy`
 
 You can put cleanup logic in `ngOnDestroy()`, the logic that must run before Angular destroys the directive.
@@ -179,7 +181,11 @@ The `ngOnDestroy()` method is also the time to notify another part of the applic
 
 In addition to to `ngOnDestroy()`, you can inject Angular's `DestroyRef` and register callback functions to be called when the enclosing context is destroyed. This can be useful for building reusable utilities that require cleanup.
 
+除了 `ngOnDestroy()` 之外，您还可以注入 Angular 的 `DestroyRef` 并注册要在封闭上下文被销毁时调用的回调函数。 这对于构建需要清理的可重用实用程序很有用。
+
 Register a callback with the `DestroyRef`:
+
+使用 `DestroyRef` 注册回调：
 
 ```ts
 @Component(...)
@@ -198,6 +204,8 @@ class Counter {
 
 Like `ngOnDestroy`, `DestroyRef` works in any Angular service, directive, component, or pipe.
 
+与 `ngOnDestroy` 一样， `DestroyRef` 可以在任何 Angular 服务、指令、组件或管道中使用。
+
 ### `takeUntilDestroyed`
 
 <div class="alert is-important">
@@ -208,11 +216,15 @@ Like `ngOnDestroy`, `DestroyRef` works in any Angular service, directive, compon
 
 When using RxJS Observables in components or directives, you may want to complete any observables when the component or directive is destroyed. Angular's `@angular/core/rxjs-interop` package provides an operator, `takeUntilDestroyed`, to simplify this common task:
 
+在组件或指令中使用 RxJS Observables 时，您可能希望在组件或指令被销毁时完成任何 observables。 Angular 的 `@angular/core/rxjs-interop` 包提供了一个运算符 `takeUntilDestroyed` 来简化这个常见任务：
+
 ```ts
 data$ = http.get('...').pipe(takeUntilDestroyed());
 ```
 
 By default, `takeUntilDestroyed` must be called in an injection context so that it can access `DestroyRef`. If an injection context isn't available, you can explicitly provide a `DestroyRef`.
+
+默认情况下，必须在注入上下文中调用 `takeUntilDestroyed` 以便它可以访问 `DestroyRef` 。 如果注入上下文不可用，您可以显式提供 `DestroyRef` 。
 
 ## General examples
 
@@ -254,13 +266,20 @@ The sequence of log messages follows the prescribed hook calling order:
 | :--------- | :-------------------- |
 | 钩子顺序   | 日志信息              |
 | 1          | `OnChanges`           |
+| 1 个        | `OnChanges`           |
 | 2          | `OnInit`              |
+| 2 个        | `OnInit`              |
 | 3          | `DoCheck`             |
+| 3 个        | `DoCheck`             |
 | 4          | `AfterContentInit`    |
+| 4 个        | `AfterContentInit`    |
 | 5          | `AfterContentChecked` |
+| 5 个        | `AfterContentChecked` |
 | 6          | `AfterViewInit`       |
+| 6 个        | `AfterViewInit`       |
 | 7          | `AfterViewChecked`    |
 | 8          | `DoCheck`             |
+| 8 个        | `DoCheck`             |
 | 9          | `AfterContentChecked` |
 | 10         | `AfterViewChecked`    |
 | 11         | `OnDestroy`           |

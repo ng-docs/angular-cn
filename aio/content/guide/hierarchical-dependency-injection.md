@@ -373,9 +373,9 @@ In this example, there is a parent provider and injecting the service will retur
 在这个例子中，有一个父提供者，注入服务将返回该值，但是，使用 `@Self()` 和 `@Optional()` 注入的服务将返回 `null` 因为 `@Self()` 告诉注入器在当前宿主元素上就要停止搜索。
 
 Another example shows the component class with a provider for `FlowerService`.
-In this case, the injector looks no further than the current `ElementInjector` because it finds the `FlowerService` and returns the tulip <code>&#x1F337;</code>.
+In this case, the injector looks no further than the current `ElementInjector` because it finds the `FlowerService` and returns the tulip <code>🌷</code>.
 
-另一个范例显示了具有 `FlowerService` 提供者的组件类。在这个例子中，注入器没有超出当前 `ElementInjector` 就停止了，因为它已经找到了 `FlowerService` 并返回了郁金香<code>&#x1F337;</code>。
+另一个范例显示了具有 `FlowerService` 提供者的组件类。在这个例子中，注入器没有超出当前 `ElementInjector` 就停止了，因为它已经找到了 `FlowerService` 并返回了郁金香<code>🌷</code>。
 
 <code-example header="src/app/self/self.component.ts" path="resolution-modifiers/src/app/self/self.component.ts" region="self-component"></code-example>
 
@@ -432,9 +432,9 @@ Use `@Host()` as follows:
 
 <code-example header="src/app/host/host.component.ts" path="resolution-modifiers/src/app/host/host.component.ts" region="host-component"></code-example>
 
-Since `HostComponent` has `@Host()` in its constructor, no matter what the parent of `HostComponent` might have as a `flower.emoji` value, the `HostComponent` will use tulip <code>&#x1F337;</code>.
+Since `HostComponent` has `@Host()` in its constructor, no matter what the parent of `HostComponent` might have as a `flower.emoji` value, the `HostComponent` will use tulip <code>🌷</code>.
 
-由于 `HostComponent` 在其构造函数中具有 `@Host()`，因此，无论 `HostComponent` 的父级是否可能有 `flower.emoji` 值，该 `HostComponent` 都将使用 <code>&#x1F337;</code>（郁金香）。
+由于 `HostComponent` 在其构造函数中具有 `@Host()`，因此，无论 `HostComponent` 的父级是否可能有 `flower.emoji` 值，该 `HostComponent` 都将使用 <code>🌷</code>（郁金香）。
 
 ## Logical structure of the template
 

@@ -80,6 +80,8 @@ export function createMeta() {
  * [HTML 元标记](https://developer.mozilla.org/docs/Web/HTML/Element/meta)
  * @see [Document.querySelector\(\)](https://developer.mozilla.org/docs/Web/API/Document/querySelector)
  *
+ * [文档.querySelector\(\)](https://developer.mozilla.org/docs/Web/API/Document/querySelector)
+ *
  * @publicApi
  */
 @Injectable({providedIn: 'root', useFactory: createMeta, deps: []})

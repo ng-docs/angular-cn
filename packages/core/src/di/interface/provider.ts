@@ -44,6 +44,8 @@ export interface ValueSansProvider {
  *
  * ### Multi-value example
  *
+ * ### 多值示例
+ *
  * {@example core/di/ts/provider_spec.ts region='MultiProviderAspect'}
  *
  * @publicApi
@@ -110,9 +112,13 @@ export interface StaticClassSansProvider {
  *
  * Note that following two providers are not equal:
  *
+ * 请注意，以下两个提供者并不相等：
+ *
  * {@example core/di/ts/provider_spec.ts region='StaticClassProviderDifference'}
  *
  * ### Multi-value example
+ *
+ * ### 多值示例
  *
  * {@example core/di/ts/provider_spec.ts region='MultiProviderAspect'}
  *
@@ -179,6 +185,8 @@ export interface ConstructorSansProvider {
  *
  * ### Multi-value example
  *
+ * ### 多值示例
+ *
  * {@example core/di/ts/provider_spec.ts region='MultiProviderAspect'}
  *
  * @publicApi
@@ -238,6 +246,8 @@ export interface ExistingSansProvider {
  * {@example core/di/ts/provider_spec.ts region='ExistingProvider'}
  *
  * ### Multi-value example
+ *
+ * ### 多值示例
  *
  * {@example core/di/ts/provider_spec.ts region='MultiProviderAspect'}
  *
@@ -310,9 +320,13 @@ export interface FactorySansProvider {
  *
  * Dependencies can also be marked as optional:
  *
+ * 依赖项也可以标记为可选：
+ *
  * {@example core/di/ts/provider_spec.ts region='FactoryProviderOptionalDeps'}
  *
  * ### Multi-value example
+ *
+ * ### 多值示例
  *
  * {@example core/di/ts/provider_spec.ts region='MultiProviderAspect'}
  *
@@ -415,9 +429,13 @@ export interface ClassSansProvider {
  *
  * Note that following two providers are not equal:
  *
+ * 请注意，以下两个提供者并不相等：
+ *
  * {@example core/di/ts/provider_spec.ts region='ClassProviderDifference'}
  *
  * ### Multi-value example
+ *
+ * ### 多值示例
  *
  * {@example core/di/ts/provider_spec.ts region='MultiProviderAspect'}
  *
@@ -463,11 +481,17 @@ export type Provider = TypeProvider|ValueProvider|ClassProvider|ConstructorProvi
  * Encapsulated `Provider`s that are only accepted during creation of an `EnvironmentInjector` \(e.g.
  * in an `NgModule`\).
  *
+ * 封装的 `Provider` 仅在创建 `EnvironmentInjector` 期间被接受（例如在 `NgModule` 中）。
+ *
  * Using this wrapper type prevents providers which are only designed to work in
  * application/environment injectors from being accidentally included in
  * `@Component.providers` and ending up in a component injector.
  *
+ * 使用此包装器类型可防止仅设计用于应用程序/环境注入器的提供程序被意外包含在 `@Component.providers` 中并最终出现在组件注入器中。
+ *
  * This wrapper type prevents access to the `Provider`s inside.
+ *
+ * 这种包装器类型阻止访问内部的 `Provider` 。
  *
  * @see `makeEnvironmentProviders`
  * @see `importProvidersFrom`
@@ -483,7 +507,12 @@ export interface InternalEnvironmentProviders extends EnvironmentProviders {
   /**
    * If present, indicates that the `EnvironmentProviders` were derived from NgModule providers.
    *
+   * 如果存在，则表示 `EnvironmentProviders` 派生自 NgModule 提供者。
+   *
    * This is used to produce clearer error messages.
+   *
+   * 这用于生成更清晰的错误消息。
+   *
    */
   ɵfromNgModule?: true;
 }
@@ -538,6 +567,11 @@ export interface ModuleWithProviders<T> {
  *
  * @see `importProvidersFrom`
  * @publicApi
- * @deprecated replaced by `EnvironmentProviders`
+ * @deprecated
+ *
+ * replaced by `EnvironmentProviders`
+ *
+ * 替换为 `EnvironmentProviders`
+ *
  */
 export type ImportedNgModuleProviders = EnvironmentProviders;

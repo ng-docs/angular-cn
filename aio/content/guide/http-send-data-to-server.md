@@ -1,4 +1,6 @@
-# HTTP: Send data to a server
+# HTTP&#x3A; Send data to a server
+
+# HTTP：向服务器发送数据
 
 In addition to fetching data from a server, `HttpClient` supports other HTTP methods such as PUT, POST, and DELETE, which you can use to modify the remote data.
 
@@ -10,6 +12,8 @@ The following sections show examples of the data-update methods from the sample'
 本指南中的这个范例应用包括一个简略版本的《英雄之旅》，它会获取英雄数据，并允许用户添加、删除和修改它们。下面几节在 `HeroesService` 范例中展示了数据更新方法的一些例子。
 
 ## Make a POST request
+
+## 发出 POST 请求
 
 Apps often send data to a server with a POST request when submitting a form.
 In the following example, the `HeroesService` makes an HTTP POST request when adding a hero to the database.
@@ -29,8 +33,11 @@ The method takes a resource URL and two additional parameters:
 | body             | The data to POST in the body of the request.                                       |
 | body             | 要在请求正文中 POST 的数据。                                                       |
 | options          | An object containing method options which, in this case, specify required headers. |
+| 选项【模糊翻译】 | 包含方法选项的对象，在这种情况下，指定所需的标头。                                 |
 
 The example catches errors as [described above](guide/http-handle-request-errors#error-details).
+
+该示例[如上所述](guide/http-handle-request-errors#error-details)捕获错误。
 
 The `HeroesComponent` initiates the actual POST operation by subscribing to the `Observable` returned by this service method.
 
@@ -43,6 +50,8 @@ When the server responds successfully with the newly added hero, the component a
 当服务器成功做出响应时，会带有这个新创建的英雄，然后该组件就会把这个英雄添加到正在显示的 `heroes` 列表中。
 
 ## Make a DELETE request
+
+## 发出删除请求
 
 This application deletes a hero with the `HttpClient.delete` method by passing the hero's ID in the request URL.
 
@@ -73,6 +82,8 @@ Just calling `HeroesService.deleteHero()` does not initiate the DELETE request.
 
 ## Make a PUT request
 
+## 发出 PUT 请求
+
 An app can send PUT requests using the HTTP client service.
 The following `HeroesService` example, like the POST example, replaces a resource with updated data.
 
@@ -82,7 +93,11 @@ The following `HeroesService` example, like the POST example, replaces a resourc
 
 As for any of the HTTP methods that return an observable, the caller, `HeroesComponent.update()` [must `subscribe()`](guide/http-request-data-from-server#always-subscribe "Why you must always subscribe.") to the observable returned from the `HttpClient.put()` in order to initiate the request.
 
+对于任何返回可观察对象的 HTTP 方法，调用者 `HeroesComponent.update()` [必须 `subscribe()`](guide/http-request-data-from-server#always-subscribe "为什么您必须始终订阅。")到从 `HttpClient.put()` 返回的可观察对象以发起请求。
+
 ## Add and updating headers
+
+## 添加和更新标题
 
 Many servers require extra headers for save operations.
 For example, a server might require an authorization token, or "Content-Type" header to explicitly declare the MIME type of the request body.
@@ -91,6 +106,8 @@ For example, a server might require an authorization token, or "Content-Type" he
 
 ### Add headers
 
+### 添加标题
+
 The `HeroesService` defines such headers in an `httpOptions` object that are passed to every `HttpClient` save method.
 
 `HeroesService` 在一个 `httpOptions` 对象中定义了这样的头，它们被传给每个 `HttpClient` 的保存型方法。
@@ -98,6 +115,8 @@ The `HeroesService` defines such headers in an `httpOptions` object that are pas
 <code-example header="app/heroes/heroes.service.ts (httpOptions)" path="http/src/app/heroes/heroes.service.ts" region="http-options"></code-example>
 
 ### Update headers
+
+### 更新标题
 
 You can't directly modify the existing headers within the previous options
 object because instances of the `HttpHeaders` class are immutable.

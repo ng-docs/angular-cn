@@ -244,11 +244,17 @@ export enum PerfPhase {
 
   /**
    * Time spent by the Angular Language Service calculating code fixes.
+   *
+   * Angular 语言服务计算代码修复所花费的时间。
+   *
    */
   LsCodeFixes,
 
   /**
    * Time spent by the Angular Language Service to fix all detected same type errors.
+   *
+   * Angular 语言服务修复所有检测到的相同类型错误所花费的时间。
+   *
    */
   LsCodeFixesAll,
 }

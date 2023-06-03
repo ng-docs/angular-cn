@@ -103,7 +103,7 @@ export abstract class AnimationFactory {
    * the [`AnimationBuilder.build()`](api/animations/AnimationBuilder#build)
    * method that created this factory and attaches the new player a DOM element.
    *
-   * `AnimationPlayer [`AnimationBuilder.build()`](api/animations/AnimationBuilder#build) 创建此工厂并为新播放器附加 DOM 元素的方法。
+   * `AnimationPlayer [`AnimationBuilder.build\(\)\`\]\(api/animations/AnimationBuilder#build\) 创建此工厂并为新播放器附加 DOM 元素的方法。
    *
    * @param element The DOM element to which to attach the player.
    *

@@ -1,6 +1,10 @@
 # HTTP&#x3A; Make a JSONP request
 
+# HTTP：发出 JSONP 请求
+
 “JSON with Padding” \(JSONP\) is a method to deceive a web browser into carrying out requests with a `<script>` tag that uses the SRC attribute to make a special API request.
+
+“带填充的 JSON”\(JSONP\) 是一种欺骗 Web 浏览器执行带有 `<script>` 标签的请求的方法，该标签使用 SRC 属性发出特殊的 API 请求。
 
 Apps can use the `HttpClient` to make [JSONP](https://en.wikipedia.org/wiki/JSONP) requests across domains when a server doesn't support [CORS protocol](https://developer.mozilla.org/docs/Web/HTTP/CORS).
 
@@ -36,6 +40,8 @@ The response is wrapped in the callback function, which takes the observables re
 该请求将 `heroesURL` 作为第一个参数，并将回调函数名称作为第二个参数。响应被包装在回调函数中，该函数接受 JSONP 方法返回的可观察对象，并将它们通过管道传给错误处理程序。
 
 ## Request non-JSON data
+
+## 请求非 JSON 数据
 
 Not all APIs return JSON data.
 In this next example, a `DownloaderService` method reads a text file from the server and logs the file contents, before returning those contents to the caller as an `Observable<string>`.

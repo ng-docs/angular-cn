@@ -854,6 +854,8 @@ export function styleKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: st
 /**
  * Class-binding-specific function for setting the `value` for a `key`.
  *
+ * 用于设置 `value` 的特定于 `key` 绑定的函数。
+ *
  * See: `keyValueArraySet` for details
  *
  * 有关详细信息，请参阅： `keyValueArraySet`
@@ -861,15 +863,12 @@ export function styleKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: st
  * @param keyValueArray KeyValueArray to add to.
  *
  * 要添加到的 KeyValueArray。
- *
  * @param key Style key to add.
  *
  * 要添加的样式键。
- *
  * @param value The value to set.
  *
  * 要设置的值。
- *
  */
 export function classKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: unknown, value: any) {
   // We use `classList.add` to eventually add the CSS classes to the DOM node. Any value passed into

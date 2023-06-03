@@ -13,6 +13,9 @@ const CONTAINER_TAG = 'ng-container';
 
 /**
  * Replace an `Element` or `ElementStart` whose tag is `ng-container` with a specific op.
+ *
+ * 将标记为 `ng-container` `Element` 或 `ElementStart` 替换为特定操作。
+ *
  */
 export function phaseNgContainer(cpl: ComponentCompilation): void {
   for (const [_, view] of cpl.views) {

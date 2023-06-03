@@ -119,8 +119,11 @@ This table describes the file layout under `node_modules/@angular/core` annotate
 | `index.d.ts`                                                                                                      | Bundled `.d.ts` for the primary entrypoint `@angular/core`.                                                                                                                                                    |
 | `index.d.ts`                                                                                                      | 主入口点 `@angular/core` 捆绑的 `.d.ts`。                                                                                                                                                                      |
 | `esm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs`                               | Tree of `@angular/core` sources in unflattened ES2022 format.                                                                                                                                                  |
+| `esm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs`                               | 未展平的 ES2022 格式的 `@angular/core` 源代码树。                                                                                                                                                                |
 | `esm2022/testing/`                                                                                                | Tree of the `@angular/core/testing` entrypoint in unflattened ES2022 format.                                                                                                                                   |
+| `esm2022/testing/`                                                                                                | 未展平 ES2022 格式的 `@angular/core/testing` 入口点树。                                                                                                                                                          |
 | `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened \(FESM\) ES2022 format, along with source maps.                                                                                                                          |
+| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | 扁平化 \(FESM\) ES2022 格式的所有入口点代码以及源映射。                                                                                                                                                        |
 | `testing/`                                                                                                        | Directory representing the "testing" entrypoint.                                                                                                                                                               |
 | `testing/`                                                                                                        | 代表 `testing` 入口点的目录。                                                                                                                                                                                  |
 | `testing/index.d.ts`                                                                                              | Bundled `.d.ts` for the `@angular/core/testing` entrypoint.                                                                                                                                                    |
@@ -211,10 +214,15 @@ For each entrypoint, the available formats are:
 | Typings \(`.d.ts` files\) | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                           |
 | 类型定义（`.d.ts` 文件）  | TypeScript 在依赖于给定包时使用 `.d.ts` 文件。                                                                                                                                    |
 | `es2022`                  | ES2022 code flattened into a single source file.                                                                                                                                  |
+| `es2022`                  | ES2022 代码扁平化为单个源文件。                                                                                                                                                   |
 | `esm2022`                 | ES2022 code in unflattened source files \(this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details\). |
+| `esm2022`                 | 未展平源文件中的 ES2022 代码（包含此格式用于实验 - 有关详细[信息，请参阅默认值讨论](#note-about-the-defaults-in-packagejson)）。                                                  |
 | `default`                 | ES2022 code flattened into a single source.                                                                                                                                       |
+| `default`                 | ES2022 代码扁平化为单一源代码。                                                                                                                                                   |
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
+
+知道这些密钥的工具可以优先从 `"exports"` 中选择所需的代码格式。
 
 Libraries may want to expose additional static files which are not captured by the exports of the JavaScript-based entry-points such as Sass mixins or pre-compiled CSS.
 
@@ -327,6 +335,8 @@ Markdown 格式的 README 文件，用于在 npm 和 GitHub 上显示包的描�
 
 Example README content of &commat;angular/core package:
 
+&commat;angular/core 包的 README 内容示例：
+
 <code-example language="html">
 
 Angular
@@ -397,6 +407,8 @@ The abbreviated name, FESM, pronounced *phe-som*, can be followed by a number su
 The number refers to the language level of the JavaScript inside the module.
 Accordingly a FESM2022 file would be ESM+ES2022 and include import/export statements and ES2022 source code.
 
+缩写名称 FESM，发音为*phe-som* ，后面可以跟一个数字，例如 FESM2020。 该数字是指模块内 JavaScript 的语言级别。 因此，FESM2022 文件将是 ESM+ES2022，并且包括导入/导出语句和 ES2022 源代码。
+
 To generate a flattened ES Module index file, use the following configuration options in your tsconfig.json file:
 
 要生成扁平化的 ES 模块索引文件，请在 tsconfig.json 文件中使用以下配置选项：
@@ -433,6 +445,8 @@ This is why `module` and `es2022` package.json entries still point to FESM files
 This issue is being investigated. It is expected to switch the `module` and `es2022` package.json entry points to unflattened files after the size regression issue is resolved.
 The APF currently includes unflattened ESM2022 code for the purpose of validating such a future change.
 
+从 webpack v4 开始，ES 模块优化的扁平化对于 webpack 用户来说应该不是必需的。 在不扁平化 webpack 中的模块的情况下，应该可以获得更好的代码拆分。 在实践中，当使用未展平的模块作为 webpack v4 的输入时，仍然可以看到尺寸回归。 这就是为什么 `module` 和 `es2022` package.json 条目仍然指向 FESM 文件的原因。 这个问题正在调查中。 预计在解决大小回归问题后，将 `module` 和 `es2022` package.json 入口点切换为未展平的文件。 APF 目前包含未扁平化的 ESM2022 代码，用于验证此类未来更改。
+
 ### "sideEffects" flag
 
 ### “副作用”标志
@@ -456,8 +470,12 @@ More info: [webpack docs on side effects](https://github.com/webpack/webpack/tre
 
 ### ES2022 language level
 
+### ES2022 语言等级
+
 ES2022 Language level is now the default language level that is consumed by Angular CLI and other tooling.
 The Angular CLI down-levels the bundle to a language level that is supported by all targeted browsers at application build time.
+
+ES2022 语言级别现在是 Angular CLI 和其他工具使用的默认语言级别。 Angular CLI 在应用程序构建时将捆绑包降低到所有目标浏览器都支持的语言级别。
 
 ### d.ts bundling / type definition flattening
 
@@ -577,6 +595,8 @@ Common module formats are CommonJS \(CJS, typically used for Node.js application
 The module format indicates only the packaging of the individual modules, but not the JavaScript language features used to make up the module content.
 Because of this, the Angular team often uses the language level specifier as a suffix to the module format, \(for example, ESM+ES2022 specifies that the module is in ESM format and contains ES2022 code\).
 
+模块语法规范，至少涵盖从文件导入和导出的语法。 常见的模块格式是 CommonJS（CJS，通常用于 Node.js 应用程序）或 ECMAScript 模块 \(ESM\)。 模块格式仅表示单个模块的封装，而不表示用于构成模块内容的 JavaScript 语言特性。 正因为如此，Angular 团队经常使用语言级别说明符作为模块格式的后缀，（例如 ESM+ES2022 指定模块为 ESM 格式并包含 ES2022 代码）。
+
 #### Bundle
 
 #### 捆绑包
@@ -594,6 +614,8 @@ Common bundle formats are UMD and System.register.
 
 The language of the code \(ES2022\).
 Independent of the module format.
+
+代码的语言 \(ES2022\)。 独立于模块格式。
 
 #### Entry point
 

@@ -392,13 +392,14 @@ export class HttpParams {
    * @param param The parameter name.
    *
    * 参数名称。
-   *
    * @param value The value to remove, if provided.
    *
    * 要删除的值（如果提供）。
-   *
    * @return A new body with the given value removed, or with all values
    * removed if no value is specified.
+   *
+   * 删除给定值的新主体，如果未指定值，则删除所有值。
+   *
    */
   delete(param: string, value?: string|number|boolean): HttpParams {
     return this.clone({param, value, op: 'd'});

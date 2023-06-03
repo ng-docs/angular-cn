@@ -34,6 +34,9 @@ export interface TestOnlyOptions {
 
   /**
    * Enable the Language Service APIs for template type-checking for tests.
+   *
+   * 为测试的模板类型检查启用语言服务 API。
+   *
    */
   _enableTemplateTypeChecker?: boolean;
 

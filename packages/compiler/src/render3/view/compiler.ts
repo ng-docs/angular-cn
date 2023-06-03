@@ -999,8 +999,13 @@ function createHostDirectivesFeatureArg(
  * `{inputOne: 'aliasOne', inputTwo: 'aliasTwo'}` will become
  * `['inputOne', 'aliasOne', 'inputTwo', 'aliasTwo']`.
  *
+ * 将输入/输出映射对象文字转换为数组，其中偶数键是绑定的公共名称，奇数键是它的别名。 例如 `{inputOne: 'aliasOne', inputTwo: 'aliasTwo'}` 将变为 `['inputOne', 'aliasOne', 'inputTwo', 'aliasTwo']` 。
+ *
  * This conversion is necessary, because hosts bind to the public name of the host directive and
  * keeping the mapping in an object literal will break for apps using property renaming.
+ *
+ * 这种转换是必要的，因为主机绑定到主机指令的公共名称，并且将映射保留在对象文字中会破坏使用属性重命名的应用程序。
+ *
  */
 export function createHostDirectivesMappingArray(mapping: Record<string, string>):
     o.LiteralArrayExpr|null {

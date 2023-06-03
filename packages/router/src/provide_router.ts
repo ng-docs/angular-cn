@@ -60,18 +60,20 @@ import {afterNextNavigation} from './utils/navigations';
  *   }
  * );
  * ```
- *
  * @see `RouterFeatures`
  * @publicApi
  * @param routes A set of `Route`s to use for the application routing table.
  *
  * 用于应用程序路由表的一组 `Route` 。
- *
  * @param features Optional features to configure additional router behaviors.
  *
  * 配置其他路由器行为的可选特性。
+ * @returns
  *
- * @returns A set of providers to setup a Router.
+ * A set of providers to setup a Router.
+ *
+ * 一组用于设置路由器的提供程序。
+ *
  */
 export function provideRouter(routes: Routes, ...features: RouterFeatures[]): EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -103,6 +105,9 @@ export interface RouterFeature<FeatureKind extends RouterFeatureKind> {
 
 /**
  * Helper function to create an object that represents a Router feature.
+ *
+ * 用于创建表示路由器功能的对象的辅助函数。
+ *
  */
 function routerFeature<FeatureKind extends RouterFeatureKind>(
     kind: FeatureKind, providers: Provider[]): RouterFeature<FeatureKind> {
@@ -113,6 +118,9 @@ function routerFeature<FeatureKind extends RouterFeatureKind>(
 /**
  * An Injection token used to indicate whether `provideRouter` or `RouterModule.forRoot` was ever
  * called.
+ *
+ * 用于指示是否调用过 `provideRouter` 或 `RouterModule.forRoot` 注入令牌。
+ *
  */
 export const ROUTER_IS_PROVIDED =
     new InjectionToken<boolean>('', {providedIn: 'root', factory: () => false});
@@ -139,7 +147,6 @@ const routerIsProvidedDevModeCheck = {
  * @param routes The route configuration to provide.
  *
  * 注册路由。
- *
  * @usageNotes
  *
  * ```
@@ -148,7 +155,12 @@ const routerIsProvidedDevModeCheck = {
  * })
  * class LazyLoadedChildModule {}
  * ```
- * @deprecated If necessary, provide routes using the `ROUTES` `InjectionToken`.
+ * @deprecated
+ *
+ * If necessary, provide routes using the `ROUTES` `InjectionToken`.
+ *
+ * 如有必要，使用 `ROUTES` `InjectionToken` 提供路由。
+ *
  * @see `ROUTES`
  * @publicApi
  */
@@ -191,7 +203,6 @@ export type InMemoryScrollingFeature = RouterFeature<RouterFeatureKind.InMemoryS
  *   }
  * );
  * ```
- *
  * @see `provideRouter`
  * @see `ViewportScroller`
  * @publicApi
@@ -199,8 +210,12 @@ export type InMemoryScrollingFeature = RouterFeature<RouterFeatureKind.InMemoryS
  *     `InMemoryScrollingOptions` for additional information.
  *
  * 可选值。默认值为 `{}`。
+ * @returns
  *
- * @returns A set of providers for use with `provideRouter`.
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  */
 export function withInMemoryScrolling(options: InMemoryScrollingOptions = {}):
     InMemoryScrollingFeature {
@@ -248,6 +263,9 @@ export function getBootstrapListener() {
  * A subject used to indicate that the bootstrapping phase is done. When initial navigation is
  * `enabledBlocking`, the first navigation waits until bootstrapping is finished before continuing
  * to the activation phase.
+ *
+ * 用于指示引导阶段已完成的主题。 当初始导航为 `enabledBlocking` 时，第一个导航会等待引导完成，然后再继续激活阶段。
+ *
  */
 const BOOTSTRAP_DONE = new InjectionToken<Subject<void>>(
     (typeof ngDevMode === 'undefined' || ngDevMode) ? 'bootstrap done indicator' : '', {
@@ -260,16 +278,24 @@ const BOOTSTRAP_DONE = new InjectionToken<Subject<void>>(
  * This and the INITIAL_NAVIGATION token are used internally only. The public API side of this is
  * configured through the `ExtraOptions`.
  *
+ * 这和 INITIAL_NAVIGATION 令牌仅在内部使用。 公共 API 端是通过 `ExtraOptions` 配置的。
+ *
  * When set to `EnabledBlocking`, the initial navigation starts before the root
  * component is created. The bootstrap is blocked until the initial navigation is complete. This
  * value is required for [server-side rendering](guide/universal) to work.
  *
+ * 当设置为 `EnabledBlocking` 时，初始导航在创建根组件之前开始。 引导程序被阻止，直到初始导航完成。 [服务器端渲染](guide/universal)需要此值才能工作。
+ *
  * When set to `EnabledNonBlocking`, the initial navigation starts after the root component has been
  * created. The bootstrap is not blocked on the completion of the initial navigation.
+ *
+ * 当设置为 `EnabledNonBlocking` 时，初始导航在根组件创建后开始。 初始导航完成后，引导程序不会被阻止。
  *
  * When set to `Disabled`, the initial navigation is not performed. The location listener is set up
  * before the root component gets created. Use if there is a reason to have more control over when
  * the router starts its initial navigation due to some complex initialization logic.
+ *
+ * 设置为 `Disabled` 时，不执行初始导航。 位置侦听器是在创建根组件之前设置的。 如果由于某些复杂的初始化逻辑而有理由对路由器何时开始其初始导航进行更多控制，请使用。
  *
  * @see `ExtraOptions`
  */
@@ -336,10 +362,14 @@ export type InitialNavigationFeature =
  *   }
  * );
  * ```
- *
  * @see `provideRouter`
  * @publicApi
- * @returns A set of providers for use with `provideRouter`.
+ * @returns
+ *
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  */
 export function withEnabledBlockingInitialNavigation(): EnabledBlockingInitialNavigationFeature {
   const providers = [
@@ -419,9 +449,13 @@ export type DisabledInitialNavigationFeature =
  *   }
  * );
  * ```
- *
  * @see `provideRouter`
- * @returns A set of providers for use with `provideRouter`.
+ * @returns
+ *
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  * @publicApi
  */
 export function withDisabledInitialNavigation(): DisabledInitialNavigationFeature {
@@ -474,9 +508,13 @@ export type DebugTracingFeature = RouterFeature<RouterFeatureKind.DebugTracingFe
  *   }
  * );
  * ```
- *
  * @see `provideRouter`
- * @returns A set of providers for use with `provideRouter`.
+ * @returns
+ *
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  * @publicApi
  */
 export function withDebugTracing(): DebugTracingFeature {
@@ -540,14 +578,17 @@ export type PreloadingFeature = RouterFeature<RouterFeatureKind.PreloadingFeatur
  *   }
  * );
  * ```
- *
  * @see `provideRouter`
  * @param preloadingStrategy A reference to a class that implements a `PreloadingStrategy` that
  *     should be used.
  *
  * 对实现应该使用的 `PreloadingStrategy` 的类的引用。
+ * @returns
  *
- * @returns A set of providers for use with `provideRouter`.
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  * @publicApi
  */
 export function withPreloading(preloadingStrategy: Type<PreloadingStrategy>): PreloadingFeature {
@@ -593,14 +634,17 @@ export type RouterConfigurationFeature =
  *   }
  * );
  * ```
- *
  * @see `provideRouter`
  * @param options A set of parameters to configure Router, see `RouterConfigOptions` for
  *     additional information.
  *
  * 用于配置路由器的一组参数，有关其他信息，请参阅 `RouterConfigOptions` 。
+ * @returns
  *
- * @returns A set of providers for use with `provideRouter`.
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  * @publicApi
  */
 export function withRouterConfig(options: RouterConfigOptions): RouterConfigurationFeature {
@@ -613,9 +657,10 @@ export function withRouterConfig(options: RouterConfigOptions): RouterConfigurat
 /**
  * A type alias for providers returned by `withHashLocation` for use with `provideRouter`.
  *
+ * `withHashLocation` 返回的提供者的类型别名，用于 `provideRouter` 。
+ *
  * @see `withHashLocation`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type RouterHashLocationFeature = RouterFeature<RouterFeatureKind.RouterHashLocationFeature>;
@@ -623,9 +668,13 @@ export type RouterHashLocationFeature = RouterFeature<RouterFeatureKind.RouterHa
 /**
  * Provides the location strategy that uses the URL fragment instead of the history API.
  *
+ * 提供使用 URL 片段而不是 history API 的定位策略。
+ *
  * @usageNotes
  *
  * Basic example of how you can use the hash location option:
+ *
+ * 如何使用散列位置选项的基本示例：
  *
  * ```
  * const appRoutes: Routes = [];
@@ -640,7 +689,12 @@ export type RouterHashLocationFeature = RouterFeature<RouterFeatureKind.RouterHa
  *
  * @see `provideRouter`
  * @see `HashLocationStrategy`
- * @returns A set of providers for use with `provideRouter`.
+ * @returns
+ *
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  * @publicApi
  */
 export function withHashLocation(): RouterConfigurationFeature {
@@ -653,9 +707,10 @@ export function withHashLocation(): RouterConfigurationFeature {
 /**
  * A type alias for providers returned by `withNavigationErrorHandler` for use with `provideRouter`.
  *
+ * `withNavigationErrorHandler` 返回的提供者的类型别名，用于 `provideRouter` 。
+ *
  * @see `withNavigationErrorHandler`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type NavigationErrorHandlerFeature =
@@ -665,11 +720,17 @@ export type NavigationErrorHandlerFeature =
  * Subscribes to the Router's navigation events and calls the given function when a
  * `NavigationError` happens.
  *
+ * 订阅路由器的导航事件并在发生 `NavigationError` 时调用给定的函数。
+ *
  * This function is run inside application's injection context so you can use the `inject` function.
+ *
+ * 此函数在应用程序的注入上下文中运行，因此您可以使用 `inject` 函数。
  *
  * @usageNotes
  *
  * Basic example of how you can use the error handler option:
+ *
+ * 如何使用错误处理程序选项的基本示例：
  *
  * ```
  * const appRoutes: Routes = [];
@@ -686,7 +747,12 @@ export type NavigationErrorHandlerFeature =
  * @see `NavigationError`
  * @see `inject`
  * @see `EnvironmentInjector#runInContext`
- * @returns A set of providers for use with `provideRouter`.
+ * @returns
+ *
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  * @publicApi
  */
 export function withNavigationErrorHandler(fn: (error: NavigationError) => void):
@@ -709,9 +775,10 @@ export function withNavigationErrorHandler(fn: (error: NavigationError) => void)
 /**
  * A type alias for providers returned by `withComponentInputBinding` for use with `provideRouter`.
  *
+ * `withComponentInputBinding` 返回的提供者的类型别名，用于 `provideRouter` 。
+ *
  * @see `withComponentInputBinding`
  * @see `provideRouter`
- *
  * @publicApi
  */
 export type ComponentInputBindingFeature =
@@ -721,9 +788,13 @@ export type ComponentInputBindingFeature =
  * Enables binding information from the `Router` state directly to the inputs of the component in
  * `Route` configurations.
  *
+ * 启用从 `Router` 状态直接绑定到 `Route` 配置中组件输入的信息。
+ *
  * @usageNotes
  *
  * Basic example of how you can enable the feature:
+ *
+ * 如何启用该功能的基本示例：
  *
  * ```
  * const appRoutes: Routes = [];
@@ -736,7 +807,12 @@ export type ComponentInputBindingFeature =
  * );
  * ```
  *
- * @returns A set of providers for use with `provideRouter`.
+ * @returns
+ *
+ * A set of providers for use with `provideRouter`.
+ *
+ * 一组与 `provideRouter` 一起使用的提供程序。
+ *
  */
 export function withComponentInputBinding(): ComponentInputBindingFeature {
   const providers = [
@@ -764,6 +840,9 @@ export type RouterFeatures =
 
 /**
  * The list of features as an enum to uniquely type each feature.
+ *
+ * 作为枚举的功能列表，用于唯一键入每个功能。
+ *
  */
 export const enum RouterFeatureKind {
   PreloadingFeature,

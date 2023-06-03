@@ -58,6 +58,8 @@ import {ɵɵdefineInjectable} from './interface/defs';
  *
  * The `providedIn: NgModule` and `providedIn: 'any'` options are deprecated.
  *
+ * `providedIn: NgModule` 和 `providedIn: 'any'` 选项已弃用。
+ *
  * @usageNotes
  *
  * ### Basic Examples

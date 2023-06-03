@@ -14,12 +14,20 @@ import {NgElementStrategy, NgElementStrategyEvent, NgElementStrategyFactory} fro
 import {extractProjectableNodes} from './extract-projectable-nodes';
 import {isFunction, scheduler, strictEquals} from './utils';
 
-/** Time in milliseconds to wait before destroying the component ref when disconnected. */
+/**
+ * Time in milliseconds to wait before destroying the component ref when disconnected.
+ *
+ * 断开连接时销毁组件 ref 之前等待的时间（以毫秒为单位）。
+ *
+ */
 const DESTROY_DELAY = 10;
 
 /**
  * Factory that creates new ComponentNgElementStrategy instance. Gets the component factory with the
  * constructor's injector's factory resolver and passes that factory to each strategy.
+ *
+ * 创建新的 ComponentNgElementStrategy 实例的工厂。 使用构造函数的注入器的工厂解析器获取组件工厂，并将该工厂传递给每个策略。
+ *
  */
 export class ComponentNgElementStrategyFactory implements NgElementStrategyFactory {
   componentFactory: ComponentFactory<any>;
@@ -37,12 +45,20 @@ export class ComponentNgElementStrategyFactory implements NgElementStrategyFacto
 /**
  * Creates and destroys a component ref using a component factory and handles change detection
  * in response to input changes.
+ *
+ * 使用组件工厂创建和销毁组件引用，并处理更改检测以响应输入更改。
+ *
  */
 export class ComponentNgElementStrategy implements NgElementStrategy {
   // Subject of `NgElementStrategyEvent` observables corresponding to the component's outputs.
   private eventEmitters = new ReplaySubject<Observable<NgElementStrategyEvent>[]>(1);
 
-  /** Merged stream of the component's output events. */
+  /**
+   * Merged stream of the component's output events.
+   *
+   * 组件输出事件的合并流。
+   *
+   */
   readonly events = this.eventEmitters.pipe(switchMap(emitters => merge(...emitters)));
 
   /** Reference to the component that was created on connect. */
@@ -96,6 +112,9 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
   /**
    * Initializes a new component if one has not yet been created and cancels any scheduled
    * destruction.
+   *
+   * 如果尚未创建一个新组件，则初始化一个新组件，并取消任何计划的销毁。
+   *
    */
   connect(element: HTMLElement) {
     this.runInZone(() => {
@@ -116,6 +135,9 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
   /**
    * Schedules the component to be destroyed after some small delay in case the element is just
    * being moved across the DOM.
+   *
+   * 安排组件在一些小的延迟后销毁，以防元素刚刚在 DOM 中移动。
+   *
    */
   disconnect() {
     this.runInZone(() => {
@@ -139,6 +161,9 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
   /**
    * Returns the component property value. If the component has not yet been created, the value is
    * retrieved from the cached initialization values.
+   *
+   * 返回组件属性值。 如果尚未创建组件，则从缓存的初始化值中检索该值。
+   *
    */
   getInputValue(property: string): any {
     return this.runInZone(() => {
@@ -153,6 +178,9 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
   /**
    * Sets the input value for the property. If the component has not yet been created, the value is
    * cached and set when the component is created.
+   *
+   * 设置属性的输入值。 如果尚未创建组件，则在创建组件时缓存并设置该值。
+   *
    */
   setInputValue(property: string, value: any): void {
     this.runInZone(() => {
@@ -184,6 +212,9 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
   /**
    * Creates a new component through the component factory with the provided element host and
    * sets up its initial inputs, listens for outputs changes, and runs an initial change detection.
+   *
+   * 使用提供的元素主机通过组件工厂创建一个新组件，并设置其初始输入，侦听输出更改，并运行初始更改检测。
+   *
    */
   protected initializeComponent(element: HTMLElement) {
     const childInjector = Injector.create({providers: [], parent: this.injector});
@@ -203,7 +234,12 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
     applicationRef.attachView(this.componentRef.hostView);
   }
 
-  /** Set any stored initial inputs on the component's properties. */
+  /**
+   * Set any stored initial inputs on the component's properties.
+   *
+   * 在组件的属性上设置任何存储的初始输入。
+   *
+   */
   protected initializeInputs(): void {
     this.componentFactory.inputs.forEach(({propName}) => {
       if (this.initialInputValues.has(propName)) {
@@ -216,7 +252,12 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
     this.initialInputValues.clear();
   }
 
-  /** Sets up listeners for the component's outputs so that the events stream emits the events. */
+  /**
+   * Sets up listeners for the component's outputs so that the events stream emits the events.
+   *
+   * 为组件的输出设置侦听器，以便事件流发出事件。
+   *
+   */
   protected initializeOutputs(componentRef: ComponentRef<any>): void {
     const eventEmitters: Observable<NgElementStrategyEvent>[] =
         this.componentFactory.outputs.map(({propName, templateName}) => {
@@ -227,7 +268,12 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
     this.eventEmitters.next(eventEmitters);
   }
 
-  /** Calls ngOnChanges with all the inputs that have changed since the last call. */
+  /**
+   * Calls ngOnChanges with all the inputs that have changed since the last call.
+   *
+   * 使用自上次调用以来已更改的所有输入调用 ngOnChanges。
+   *
+   */
   protected callNgOnChanges(componentRef: ComponentRef<any>): void {
     if (!this.implementsOnChanges || this.inputChanges === null) {
       return;
@@ -244,6 +290,8 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Marks the component view for check, if necessary.
    * \(NOTE: This is required when the `ChangeDetectionStrategy` is set to `OnPush`.\)
    *
+   * 如有必要，标记要检查的组件视图。 （注意：当 `ChangeDetectionStrategy` 设置为 `OnPush` 时，这是必需的。）
+   *
    */
   protected markViewForCheck(viewChangeDetectorRef: ChangeDetectorRef): void {
     if (this.hasInputChanges) {
@@ -255,6 +303,9 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
   /**
    * Schedules change detection to run on the component.
    * Ignores subsequent calls if already scheduled.
+   *
+   * 安排更改检测在组件上运行。 如果已经安排，则忽略后续呼叫。
+   *
    */
   protected scheduleDetectChanges(): void {
     if (this.scheduledChangeDetectionFn) {
@@ -269,6 +320,9 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
 
   /**
    * Records input changes so that the component receives SimpleChanges in its onChanges function.
+   *
+   * 记录输入更改，以便组件在其 onChanges 函数中接收 SimpleChanges。
+   *
    */
   protected recordInputChange(property: string, currentValue: any): void {
     // Do not record the change if the component does not implement `OnChanges`.
@@ -293,7 +347,12 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
     this.inputChanges[property] = new SimpleChange(previousValue, currentValue, isFirstChange);
   }
 
-  /** Runs change detection on the component. */
+  /**
+   * Runs change detection on the component.
+   *
+   * 在组件上运行更改检测。
+   *
+   */
   protected detectChanges(): void {
     if (this.componentRef === null) {
       return;

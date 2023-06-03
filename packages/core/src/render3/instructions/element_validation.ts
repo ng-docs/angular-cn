@@ -24,6 +24,8 @@ let shouldThrowErrorOnUnknownElement = false;
  * instead of just logging the error.
  * \(for AOT-compiled ones this check happens at build time\).
  *
+ * 为 JIT 编译的组件设置严格模式以在未知元素上抛出错误，而不仅仅是记录错误。 （对于 AOT 编译的，此检查发生在构建时）。
+ *
  */
 export function ɵsetUnknownElementStrictMode(shouldThrow: boolean) {
   shouldThrowErrorOnUnknownElement = shouldThrow;
@@ -31,6 +33,9 @@ export function ɵsetUnknownElementStrictMode(shouldThrow: boolean) {
 
 /**
  * Gets the current value of the strict mode.
+ *
+ * 获取严格模式的当前值。
+ *
  */
 export function ɵgetUnknownElementStrictMode() {
   return shouldThrowErrorOnUnknownElement;
@@ -43,6 +48,8 @@ let shouldThrowErrorOnUnknownProperty = false;
  * instead of just logging the error.
  * \(for AOT-compiled ones this check happens at build time\).
  *
+ * 为 JIT 编译的组件设置严格模式以在未知属性上抛出错误，而不仅仅是记录错误。 （对于 AOT 编译的，此检查发生在构建时）。
+ *
  */
 export function ɵsetUnknownPropertyStrictMode(shouldThrow: boolean) {
   shouldThrowErrorOnUnknownProperty = shouldThrow;
@@ -50,6 +57,9 @@ export function ɵsetUnknownPropertyStrictMode(shouldThrow: boolean) {
 
 /**
  * Gets the current value of the strict mode.
+ *
+ * 获取严格模式的当前值。
+ *
  */
 export function ɵgetUnknownPropertyStrictMode() {
   return shouldThrowErrorOnUnknownProperty;
@@ -61,21 +71,48 @@ export function ɵgetUnknownPropertyStrictMode() {
  * This check is relevant for JIT-compiled components \(for AOT-compiled
  * ones this check happens at build time\).
  *
+ * 验证该元素在运行时是否已知，如果不是，则产生错误。 此检查与 JIT 编译的组件相关（对于 AOT 编译的组件，此检查发生在构建时）。
+ *
  * The element is considered known if either:
+ *
+ * 如果满足以下任一条件，则该元素被认为是已知的：
  *
  * - it's a known HTML element
  *
+ *   这是一个已知的 HTML 元素
+ *
  * - it's a known custom element
+ *
+ *   这是一个已知的自定义元素
  *
  * - the element matches any directive
  *
+ *   该元素匹配任何指令
+ *
  * - the element is allowed by one of the schemas
  *
+ *   该元素被其中一个模式所允许
+ *
  * @param element Element to validate
+ *
+ * 要验证的元素
+ *
  * @param lView An `LView` that represents a current component that is being rendered
+ *
+ * 代表正在呈现的当前组件的 `LView`
+ *
  * @param tagName Name of the tag to check
+ *
+ * 要检查的标签名称
+ *
  * @param schemas Array of schemas
+ *
+ * 模式数组
+ *
  * @param hasDirectives Boolean indicating that the element matches any directive
+ *
+ * 指示该元素匹配任何指令的布尔值
+ *
  */
 export function validateElementIsKnown(
     element: RElement, lView: LView, tagName: string|null, schemas: SchemaMetadata[]|null,
@@ -131,18 +168,40 @@ export function validateElementIsKnown(
  * This check is relevant for JIT-compiled components \(for AOT-compiled
  * ones this check happens at build time\).
  *
+ * 验证元素的属性在运行时是否已知，如果不是，则返回 false。 此检查与 JIT 编译的组件相关（对于 AOT 编译的组件，此检查发生在构建时）。
+ *
  * The property is considered known if either:
+ *
+ * 如果满足以下任一条件，则该属性被视为已知：
  *
  * - it's a known property of the element
  *
+ *   它是元素的已知属性
+ *
  * - the element is allowed by one of the schemas
+ *
+ *   该元素被其中一个模式所允许
  *
  * - the property is used for animations
  *
+ *   该属性用于动画
+ *
  * @param element Element to validate
+ *
+ * 要验证的元素
+ *
  * @param propName Name of the property to check
+ *
+ * 要检查的属性的名称
+ *
  * @param tagName Name of the tag hosting the property
+ *
+ * 托管属性的标签的名称
+ *
  * @param schemas Array of schemas
+ *
+ * 模式数组
+ *
  */
 export function isPropertyValid(
     element: RElement|RComment, propName: string, tagName: string|null,
@@ -166,10 +225,24 @@ export function isPropertyValid(
 /**
  * Logs or throws an error that a property is not supported on an element.
  *
+ * 记录或抛出元素不支持属性的错误。
+ *
  * @param propName Name of the invalid property
+ *
+ * 无效属性的名称
+ *
  * @param tagName Name of the tag hosting the property
+ *
+ * 托管属性的标签的名称
+ *
  * @param nodeType Type of the node hosting the property
+ *
+ * 托管属性的节点类型
+ *
  * @param lView An `LView` that represents a current component
+ *
+ * 代表当前组件的 `LView`
+ *
  */
 export function handleUnknownPropertyError(
     propName: string, tagName: string|null, nodeType: TNodeType, lView: LView): void {
@@ -233,9 +306,16 @@ export function reportUnknownPropertyError(message: string) {
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode and also it relies on the constructor function being available.
  *
+ * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。 该函数进行超态读取，这对于生产模式来说可能太慢，而且它依赖于可用的构造函数。
+ *
  * Gets a reference to the host component def \(where a current component is declared\).
  *
+ * 获取对宿主组件 def（声明当前组件的位置）的引用。
+ *
  * @param lView An `LView` that represents a current component that is being rendered.
+ *
+ * 表示正在呈现的当前组件的 `LView` 。
+ *
  */
 export function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|null {
   !ngDevMode && throwError('Must never be called in production mode');
@@ -254,9 +334,16 @@ export function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode.
  *
+ * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。 该函数进行巨态读取，这对于生产模式来说可能太慢了。
+ *
  * Checks if the current component is declared inside of a standalone component template.
  *
+ * 检查当前组件是否在独立组件模板内声明。
+ *
  * @param lView An `LView` that represents a current component that is being rendered.
+ *
+ * 表示正在呈现的当前组件的 `LView` 。
+ *
  */
 export function isHostComponentStandalone(lView: LView): boolean {
   !ngDevMode && throwError('Must never be called in production mode');
@@ -271,10 +358,17 @@ export function isHostComponentStandalone(lView: LView): boolean {
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode.
  *
+ * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。 该函数进行巨态读取，这对于生产模式来说可能太慢了。
+ *
  * Constructs a string describing the location of the host component template. The function is used
  * in dev mode to produce error messages.
  *
+ * 构造一个描述宿主组件模板位置的字符串。 该函数在开发模式下用于生成错误消息。
+ *
  * @param lView An `LView` that represents a current component that is being rendered.
+ *
+ * 表示正在呈现的当前组件的 `LView` 。
+ *
  */
 export function getTemplateLocationDetails(lView: LView): string {
   !ngDevMode && throwError('Must never be called in production mode');
@@ -288,6 +382,9 @@ export function getTemplateLocationDetails(lView: LView): string {
  * The set of known control flow directives and their corresponding imports.
  * We use this set to produce a more precises error message with a note
  * that the `CommonModule` should also be included.
+ *
+ * 一组已知的控制流指令及其相应的导入。 我们使用此集合来生成更精确的错误消息，并附注还应包括 `CommonModule` 。
+ *
  */
 export const KNOWN_CONTROL_FLOW_DIRECTIVES = new Map([
   ['ngIf', 'NgIf'], ['ngFor', 'NgFor'], ['ngSwitchCase', 'NgSwitchCase'],
@@ -295,8 +392,17 @@ export const KNOWN_CONTROL_FLOW_DIRECTIVES = new Map([
 ]);
 /**
  * Returns true if the tag name is allowed by specified schemas.
+ *
+ * 如果指定模式允许标记名称，则返回 true。
+ *
  * @param schemas Array of schemas
+ *
+ * 模式数组
+ *
  * @param tagName Name of the tag
+ *
+ * 标签名称
+ *
  */
 export function matchingSchemas(schemas: SchemaMetadata[]|null, tagName: string|null): boolean {
   if (schemas !== null) {

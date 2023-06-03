@@ -47,6 +47,9 @@ export function createMigrationProgram(
 
 /**
  * Creates the options necessary to instantiate a TypeScript program.
+ *
+ * 创建实例化 TypeScript 程序所需的选项。
+ *
  * @param tree Virtual file system tree that contains the source files.
  *
  * 包含源文件的虚拟文件系统树。
@@ -60,11 +63,13 @@ export function createMigrationProgram(
  *   the TypeScript program, or to add in-memory files \(e.g. to add global types\).
  *
  * 可选的文件阅读器功能。可用于覆盖 TypeScript 程序中的文件，或添加内存文件（例如添加全局类型）。
- *
  * @param additionalFiles Additional file paths that should be added to the program.
  *
  * 应该添加到程序中的其他文件路径。
  * @param optionOverrides Overrides of the parsed compiler options.
+ *
+ * 覆盖已解析的编译器选项。
+ *
  */
 export function createProgramOptions(
     tree: Tree, tsconfigPath: string, basePath: string, fakeFileRead?: FakeReadFileFn,

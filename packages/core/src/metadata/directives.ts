@@ -20,6 +20,9 @@ import {ViewEncapsulation} from './view';
 
 /**
  * Type of the Directive decorator / constructor function.
+ *
+ * 指令装饰器/构造函数的类型。
+ *
  * @publicApi
  */
 export interface DirectiveDecorator {
@@ -144,12 +147,17 @@ export interface DirectiveDecorator {
 
   /**
    * See the `Directive` decorator.
+   *
+   * 请参阅 `Directive` 装饰器。
+   *
    */
   new(obj?: Directive): Directive;
 }
 
 /**
  * Directive decorator and metadata.
+ *
+ * 指令装饰器和元数据。
  *
  * @Annotation
  * @publicApi
@@ -218,16 +226,22 @@ export interface Directive {
    * The `inputs` property accepts either strings or object literals that configure the directive
    * properties that should be exposed as inputs.
    *
+   * Angular 在变更检测期间自动更新输入属性。 `inputs` 属性接受配置应作为输入公开的指令属性的字符串或对象文字。
+   *
    * When an object literal is passed in, the `name` property indicates which property on the
    * class the input should write to, while the `alias` determines the name under
    * which the input will be available in template bindings. The `required` property indicates that
    * the input is required which will trigger a compile-time error if it isn't passed in when the
    * directive is used.
    *
+   * 传入对象文字时， `name` 属性指示输入应写入类的哪个属性，而 `alias` 确定输入在模板绑定中可用的名称。 `required` 属性指示输入是必需的，如果在使用指令时未传入，将触发编译时错误。
+   *
    * When a string is passed into the `inputs` array, it can have a format of `'name'` or
    * `'name: alias'` where `name` is the property on the class that the directive should write
    * to, while the `alias` determines the name under which the input will be available in
    * template bindings. String-based input definitions are assumed to be optional.
+   *
+   * 当一个字符串被传递到 `inputs` 数组时，它的格式可以是 `'name'` 或 `'name: alias'` ，其中 `name` 是指令应该写入的类的属性，而 `alias` 确定输入的名称将在模板绑定中可用。 假定基于字符串的输入定义是可选的。
    *
    * @usageNotes
    *
@@ -249,7 +263,6 @@ export interface Directive {
    *   id: string;
    * }
    * ```
-   *
    */
   inputs?: ({
     name: string,
@@ -271,11 +284,15 @@ export interface Directive {
    * The `outputs` property defines a set of `directiveProperty` to `alias`
    * configuration:
    *
+   * `outputs` 属性定义了一组 `directiveProperty` 来 `alias` 配置：
+   *
    * - `directiveProperty` specifies the component property that emits events.
    *
    *   `directiveProperty` 用于指定要发出事件的指令属性。
    *
    * - `alias` specifies the DOM property the event handler is attached to.
+   *
+   *   `alias` 指定事件处理程序附加到的 DOM 属性。
    *
    * @usageNotes
    *
@@ -454,6 +471,8 @@ export interface Directive {
   /**
    * // TODO\(signals\): Remove internal and add public documentation
    *
+   * // TODO\(signals\): 删除内部文档并添加公共文档
+   *
    * @internal
    */
   signals?: boolean;
@@ -483,6 +502,8 @@ export interface Directive {
 /**
  * Type of the Directive metadata.
  *
+ * 指令元数据的类型。
+ *
  * @publicApi
  */
 export const Directive: DirectiveDecorator = makeDecorator(
@@ -491,6 +512,8 @@ export const Directive: DirectiveDecorator = makeDecorator(
 
 /**
  * Component decorator interface
+ *
+ * 组件装饰器接口
  *
  * @publicApi
  */
@@ -590,15 +613,26 @@ export interface ComponentDecorator {
    *
    * ### Preserving whitespace
    *
+   * ### 保留空格
+   *
    * Removing whitespace can greatly reduce AOT-generated code size and speed up view creation.
    * As of Angular 6, the default for `preserveWhitespaces` is false \(whitespace is removed\).
    * To change the default setting for all components in your application, set
    * the `preserveWhitespaces` option of the AOT compiler.
    *
+   * 删除空格可以大大减少 AOT 生成的代码大小并加快视图创建。 从 Angular 6 开始， `preserveWhitespaces` 的默认值为 false（删除空格）。 要更改应用程序中所有组件的默认设置，请设置 AOT 编译器的 `preserveWhitespaces` 选项。
+   *
    * By default, the AOT compiler removes whitespace characters as follows:
    *
+   * 默认情况下，AOT 编译器会删除空白字符，如下所示：
+   *
    * * Trims all whitespaces at the beginning and the end of a template.
+   *
+   *   修剪模板开头和结尾的所有空格。
+   *
    * * Removes whitespace-only text nodes. For example,
+   *
+   *   删除只有空白的文本节点。 例如，
    *
    * ```html
    * <button>Action 1</button>  <button>Action 2</button>
@@ -606,21 +640,32 @@ export interface ComponentDecorator {
    *
    * becomes:
    *
+   * 变成：
+   *
    * ```html
    * <button>Action 1</button><button>Action 2</button>
    * ```
    *
    * * Replaces a series of whitespace characters in text nodes with a single space.
    *   For example, `<span>\n some text\n</span>` becomes `<span> some text </span>`.
+   *
+   *   用单个空格替换文本节点中的一系列空白字符。 例如， `<span>\n some text\n</span>` 变成了 `<span> some text </span>` 。
+   *
    * * Does NOT alter text nodes inside HTML tags such as `<pre>` or `<textarea>`,
    *   where whitespace characters are significant.
+   *
+   *   不改变 HTML 标签内的文本节点，例如 `<pre>` 或 `<textarea>` ，其中空白字符很重要。
    *
    * Note that these transformations can influence DOM nodes layout, although impact
    * should be minimal.
    *
+   * 请注意，这些转换会影响 DOM 节点布局，尽管影响应该很小。
+   *
    * You can override the default behavior to preserve whitespace characters
    * in certain fragments of a template. For example, you can exclude an entire
    * DOM sub-tree by using the `ngPreserveWhitespaces` attribute:
+   *
+   * 您可以覆盖默认行为以在模板的某些片段中保留空白字符。 例如，您可以使用 `ngPreserveWhitespaces` 属性排除整个 DOM 子树：
    *
    * ```html
    * <div ngPreserveWhitespaces>
@@ -633,6 +678,8 @@ export interface ComponentDecorator {
    * which is replaced with a space character by Angular's template
    * compiler:
    *
+   * 您可以使用 `&ngsp;` ，它被 Angular 的模板编译器替换为空格字符：
+   *
    * ```html
    * <a>Spaces</a>&ngsp;<a>between</a>&ngsp;<a>links.</a>
    * <!-- compiled to be equivalent to:
@@ -641,6 +688,8 @@ export interface ComponentDecorator {
    *
    * Note that sequences of `&ngsp;` are still collapsed to just one space character when
    * the `preserveWhitespaces` option is set to `false`.
+   *
+   * 请注意 `&ngsp;` 的序列当 `preserveWhitespaces` 选项设置为 `false` 时，它​​们仍然折叠为只有一个空格字符。
    *
    * ```html
    * <a>before</a>&ngsp;&ngsp;&ngsp;<a>after</a>
@@ -651,17 +700,24 @@ export interface ComponentDecorator {
    * To preserve sequences of whitespace characters, use the
    * `ngPreserveWhitespaces` attribute.
    *
+   * 要保留空白字符序列，请使用 `ngPreserveWhitespaces` 属性。
+   *
    * @Annotation
    */
   (obj: Component): TypeDecorator;
   /**
    * See the `Component` decorator.
+   *
+   * 请参阅 `Component` 装饰器。
+   *
    */
   new(obj: Component): Component;
 }
 
 /**
  * Supplies configuration metadata for an Angular component.
+ *
+ * 为 Angular 组件提供配置元数据。
  *
  * @publicApi
  */
@@ -692,6 +748,8 @@ export interface Component extends Directive {
    * Defines the set of injectable objects that are visible to its view DOM children.
    * See [example](#injecting-a-class-with-a-view-provider).
    *
+   * 定义对其视图 DOM 子级可见的可注入对象集。 请参见[示例](#injecting-a-class-with-a-view-provider)。
+   *
    */
   viewProviders?: Provider[];
 
@@ -703,7 +761,12 @@ export interface Component extends Directive {
    *
    * 包含该组件的那个模块的 ID。该组件必须能解析模板和样式表中使用的相对 URL。 SystemJS 在每个模块中都导出了 `__moduleName` 变量。在 CommonJS 中，它可以设置为 `module.id`。
    *
-   * @deprecated This option does not have any effect. Will be removed in Angular v17.
+   * @deprecated
+   *
+   * This option does not have any effect. Will be removed in Angular v17.
+   *
+   * 该选项没有任何作用。 将在 Angular v17 中删除。
+   *
    */
   moduleId?: string;
 
@@ -781,6 +844,8 @@ export interface Component extends Directive {
    * {@link Component#styles styles} nor {@link Component#styleUrls styleUrls},
    * the policy is automatically switched to `ViewEncapsulation.None`.
    *
+   * 如果策略是 `ViewEncapsulation.Emulated` 并且组件没有 {@link Component#styles styles} 也没有 {@link Component#styleUrls styleUrls}，策略会自动切换到 `ViewEncapsulation.None` 。
+   *
    */
   encapsulation?: ViewEncapsulation;
 
@@ -821,6 +886,8 @@ export interface Component extends Directive {
   /**
    * // TODO\(signals\): Remove internal and add public documentation.
    *
+   * // TODO\(signals\): 删除内部文档并添加公共文档。
+   *
    * @internal
    */
   signals?: boolean;
@@ -829,6 +896,8 @@ export interface Component extends Directive {
    * The imports property specifies the standalone component's template dependencies — those
    * directives, components, and pipes that can be used within its template. Standalone components
    * can import other standalone components, directives, and pipes as well as existing NgModules.
+   *
+   * imports 属性指定独立组件的模板依赖项——那些可以在其模板中使用的指令、组件和管道。 独立组件可以导入其他独立组件、指令和管道以及现有的 NgModule。
    *
    * This property is only available for standalone components - specifying it for components
    * declared in an NgModule generates a compilation error.
@@ -866,6 +935,8 @@ export interface Component extends Directive {
 /**
  * Component decorator and metadata.
  *
+ * 组件装饰器和元数据。
+ *
  * @Annotation
  * @publicApi
  */
@@ -875,6 +946,8 @@ export const Component: ComponentDecorator = makeDecorator(
 
 /**
  * Type of the Pipe decorator / constructor function.
+ *
+ * 管道装饰器/构造函数的类型。
  *
  * @publicApi
  */
@@ -896,6 +969,8 @@ export interface PipeDecorator {
    *
    * The result of the expression is passed to the pipe's `transform()` method.
    *
+   * 表达式的结果被传递给管道的 `transform()` 方法。
+   *
    * A pipe must belong to an NgModule in order for it to be available
    * to a template. To make it a member of an NgModule,
    * list it in the `declarations` field of the `NgModule` metadata.
@@ -905,18 +980,22 @@ export interface PipeDecorator {
    * @see [Style Guide: Pipe Names](guide/styleguide#02-09)
    *
    * [样式指南：管道名称](guide/styleguide#02-09)
-   *
    */
   (obj: Pipe): TypeDecorator;
 
   /**
    * See the `Pipe` decorator.
+   *
+   * 请参阅 `Pipe` 装饰器。
+   *
    */
   new(obj: Pipe): Pipe;
 }
 
 /**
  * Type of the Pipe metadata.
+ *
+ * 管道元数据的类型。
  *
  * @publicApi
  */
@@ -1037,6 +1116,8 @@ export interface InputDecorator {
 /**
  * Type of metadata for an `Input` property.
  *
+ * `Input` 属性的元数据类型。
+ *
  * @publicApi
  */
 export interface Input {
@@ -1050,11 +1131,17 @@ export interface Input {
 
   /**
    * Whether the input is required for the directive to function.
+   *
+   * 输入是否是指令运行所必需的。
+   *
    */
   required?: boolean;
 
   /**
    * Function with which to transform the input value before assigning it to the directive instance.
+   *
+   * 在将输入值分配给指令实例之前转换输入值的函数。
+   *
    */
   transform?: (value: any) => any;
 }
@@ -1073,6 +1160,8 @@ export const Input: InputDecorator =
 
 /**
  * Type of the Output decorator / constructor function.
+ *
+ * 输出装饰器/构造函数的类型。
  *
  * @publicApi
  */
@@ -1108,6 +1197,8 @@ export interface OutputDecorator {
 /**
  * Type of the Output metadata.
  *
+ * 输出元数据的类型。
+ *
  * @publicApi
  */
 export interface Output {
@@ -1130,6 +1221,8 @@ export const Output: OutputDecorator = makePropDecorator('Output', (alias?: stri
 
 /**
  * Type of the HostBinding decorator / constructor function.
+ *
+ * HostBinding 装饰器/构造函数的类型。
  *
  * @publicApi
  */
@@ -1174,6 +1267,8 @@ export interface HostBindingDecorator {
 /**
  * Type of the HostBinding metadata.
  *
+ * HostBinding 元数据的类型。
+ *
  * @publicApi
  */
 export interface HostBinding {
@@ -1196,6 +1291,8 @@ export const HostBinding: HostBindingDecorator =
 
 /**
  * Type of the HostListener decorator / constructor function.
+ *
+ * HostListener 装饰器/构造函数的类型。
  *
  * @publicApi
  */
@@ -1223,6 +1320,8 @@ export interface HostListenerDecorator {
 /**
  * Type of the HostListener metadata.
  *
+ * HostListener 元数据的类型。
+ *
  * @publicApi
  */
 export interface HostListener {
@@ -1246,6 +1345,8 @@ export interface HostListener {
  * Decorator that binds a DOM event to a host listener and supplies configuration metadata.
  * Angular invokes the supplied handler method when the host element emits the specified event,
  * and updates the bound element with the result.
+ *
+ * 将 DOM 事件绑定到主机侦听器并提供配置元数据的装饰器。 当宿主元素发出指定事件时，Angular 调用提供的处理程序方法，并用结果更新绑定元素。
  *
  * If the handler method returns false, applies `preventDefault` on the bound element.
  *
@@ -1306,10 +1407,16 @@ export interface HostListener {
  * can be found here:
  * https://www.w3.org/TR/DOM-Level-3-Events-key/#named-key-attribute-values
  *
+ * 可以在此处找到 `keydown` 和 `keyup` 事件的有效键名列表：https&#x3A; [//www.w3.org/TR/DOM-Level-3-Events-key/#named-key-attribute-values](https://www.w3.org/TR/DOM-Level-3-Events-key/#named-key-attribute-values)
+ *
  * Note that keys can also be combined, e.g. `@HostListener('keydown.shift.a')`.
+ *
+ * 请注意，键也可以组合，例如 `@HostListener('keydown.shift.a')` 。
  *
  * The global target names that can be used to prefix an event name are
  * `document:`, `window:` and `body:`.
+ *
+ * 可用于事件名称前缀的全局目标名称是 `document:` 、 `window:` 和 `body:` 。
  *
  * @Annotation
  * @publicApi

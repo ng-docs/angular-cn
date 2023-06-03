@@ -46,16 +46,25 @@ After you select an issue to resolve:
 
 <a id="links-to-documentation-issues"/>
 
-| Links to documentation issues                                                                                                                                                                                     |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [All open documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22)                                                                                      |
-| [All open and unassigned documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+no%3Aassignee+-label%3A"state%3A+has+PR")                              |
-| [Unassigned good first documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3A%22good+first+issue%22+no%3Aassignee+-label%3A"state%3A+has+PR") |
-| [Unassigned priority 1 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap1+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
-| [Unassigned priority 2 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap2+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
-| [Unassigned priority 3 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap3+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
-| [Unassigned priority 4 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap4+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
-| [Unassigned priority 5 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap5+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
+| Links to documentation issues                                                                                                                                                                                              |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 文档问题的链接                                                                                                                                                                                                             |
+| \[All open documentation issues\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22\)                                                                                      |
+| \[所有打开的文档问题\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22\)                                                                                                 |
+| \[All open and unassigned documentation issues\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+no%3Aassignee+-label%3A"state%3A+has+PR"\)                              |
+| \[所有打开和未分配的文档问题\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+no%3Aassignee+-label %3A"状态%3A+有+PR"\)                                                 |
+| \[Unassigned good first documentation issues\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3A%22good+first+issue%22+no%3Aassignee+-label%3A"state%3A+has+PR"\) |
+| \[未分配好的第一个文档问题\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3A%22good+ first+issue%22+no%3Aassignee+-label%3A"state%3A+has+PR"\)                  |
+| \[Unassigned priority 1 documentation issues\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap1+no%3Aassignee+-label%3A"state%3A+has+PR"\)                     |
+| \[未分配的优先级 1 文档问题\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap1+no% 3Aassignee+-label%3A"state%3A+has+PR"\)                                     |
+| \[Unassigned priority 2 documentation issues\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap2+no%3Aassignee+-label%3A"state%3A+has+PR"\)                     |
+| \[未分配的优先级 2 文档问题\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap2+no% 3Aassignee+-label%3A"state%3A+has+PR"\)                                     |
+| \[Unassigned priority 3 documentation issues\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap3+no%3Aassignee+-label%3A"state%3A+has+PR"\)                     |
+| \[未分配的优先级 3 文档问题\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap3+no% 3Aassignee+-label%3A"state%3A+has+PR"\)                                     |
+| \[Unassigned priority 4 documentation issues\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap4+no%3Aassignee+-label%3A"state%3A+has+PR"\)                     |
+| \[未分配的优先级 4 文档问题\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap4+no% 3Aassignee+-label%3A"state%3A+has+PR"\)                                     |
+| \[Unassigned priority 5 documentation issues\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap5+no%3Aassignee+-label%3A"state%3A+has+PR"\)                     |
+| \[未分配的优先级 5 文档问题\]\(https&#x3A;//github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap5+no% 3Aassignee+-label%3A"state%3A+has+PR"\)                                     |
 
 <!-- links -->
 

@@ -444,7 +444,12 @@ export interface TemplateSymbol {
   templateNode: TmplAstTemplate;
 }
 
-/** Interface shared between host and non-host directives. */
+/**
+ * Interface shared between host and non-host directives.
+ *
+ * 主机和非主机指令之间共享的接口。
+ *
+ */
 interface DirectiveSymbolBase extends PotentialDirective {
   kind: SymbolKind.Directive;
 
@@ -468,6 +473,9 @@ interface DirectiveSymbolBase extends PotentialDirective {
 /**
  * A representation of a directive/component whose selector matches a node in a component
  * template.
+ *
+ * 指令/组件的表示，其选择器与组件模板中的节点匹配。
+ *
  */
 export type DirectiveSymbol = (DirectiveSymbolBase&{isHostDirective: false})|(DirectiveSymbolBase&{
   isHostDirective: true;

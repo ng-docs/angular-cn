@@ -1,5 +1,7 @@
 # HTTP - Intercept requests and responses
 
+# HTTP - 拦截请求和响应
+
 With interception, you declare *interceptors* that inspect and transform HTTP requests from your application to a server.
 The same interceptors can also inspect and transform a server's responses on their way back to the application.
 Multiple interceptors form a *forward-and-backward* chain of request/response handlers.
@@ -66,6 +68,8 @@ The final `next` in the chain is the `HttpClient` backend handler that sends the
 
 Most interceptors call `next.handle()` so that the request flows through to the next interceptor and, eventually, the backend handler.
 An interceptor *could* skip calling `next.handle()`, short-circuit the chain, and [return its own `Observable`](guide/http-interceptor-use-cases#caching) with an artificial server response.
+
+大多数拦截器调用 `next.handle()` 以便请求流经下一个拦截器，并最终流向后端处理程序。 拦截器*可以*跳过调用 `next.handle()` ，使链短路，并[返回带有人工服务器响应的自己的 `Observable`](guide/http-interceptor-use-cases#caching) 。
 
 This is a common middleware pattern found in frameworks such as Express.js.
 
@@ -164,6 +168,8 @@ If you need to enable and disable an interceptor dynamically, you'll have to bui
 
 ## Handle interceptor events
 
+## 处理拦截器事件
+
 Most `HttpClient` methods return observables of `HttpResponse<any>`.
 The `HttpResponse` class itself is actually an event, whose type is `HttpEventType.Response`.
 A single HTTP request can, however, generate multiple events of other types, including upload and download progress events.
@@ -217,6 +223,8 @@ The `clone()` method's hash argument lets you mutate specific properties of the 
 
 ### Modify a request body
 
+### 修改请求体
+
 The `readonly` assignment guard can't prevent deep updates and, in particular, it can't prevent you from modifying a property of a request body object.
 
 `readonly` 这种赋值保护，无法防范深修改（修改子对象的属性），也不能防范你修改请求体对象中的属性。
@@ -246,6 +254,8 @@ If you must modify the request body, follow these steps.
 <code-example header="app/http-interceptors/trim-name-interceptor.ts (excerpt)" path="http/src/app/http-interceptors/trim-name-interceptor.ts" region="excerpt"></code-example>
 
 ### Clear the request body in a clone
+
+### 清除克隆中的请求正文
 
 Sometimes you need to clear the request body rather than replace it.
 To do this, set the cloned request body to `null`.

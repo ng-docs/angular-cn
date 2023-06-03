@@ -264,7 +264,8 @@
                   "url": "guide/property-binding",
                   "title": "Property binding",
                   "tooltip": "Learn how to use property binding.",
-                  "titleCn": "属性绑定"
+                  "titleCn": "属性绑定",
+                  "tooltipCn": "了解如何使用属性绑定。"
                 },
                 {
                   "url": "guide/attribute-binding",
@@ -444,12 +445,16 @@
             {
               "url": "guide/standalone-components",
               "title": "Standalone components",
-              "tooltip": "Standalone components, directives, and pipes"
+              "tooltip": "Standalone components, directives, and pipes",
+              "titleCn": "独立组件",
+              "tooltipCn": "独立组件、指令和管道"
             },
             {
               "url": "guide/standalone-migration",
               "title": "Migrating to standalone",
-              "tooltip": "Migrate your application to Angular's standalone APIs"
+              "tooltip": "Migrate your application to Angular's standalone APIs",
+              "titleCn": "迁移到独立",
+              "tooltipCn": "将您的应用程序迁移到 Angular 的独立 API"
             }
           ]
         },
@@ -585,7 +590,9 @@
         {
           "url": "guide/esbuild",
           "title": "esbuild-based Builds",
-          "tooltip": "Getting started with the CLI's esbuild-based build system."
+          "tooltip": "Getting started with the CLI's esbuild-based build system.",
+          "titleCn": "基于 esbuild 的构建",
+          "tooltipCn": "开始使用 CLI 的基于 esbuild 的构建系统。"
         },
         {
           "url": "guide/http",
@@ -597,7 +604,9 @@
         {
           "url": "guide/hydration",
           "title": "Hydration",
-          "tooltip": "How to enable hydration on your server rendered applications."
+          "tooltip": "How to enable hydration on your server rendered applications.",
+          "titleCn": "补水",
+          "tooltipCn": "如何在服务器呈现的应用程序上启用水合作用。"
         },
         {
           "url": "guide/image-directive",
@@ -901,7 +910,7 @@
         },
         {
           "url": "guide/web-worker",
-          "titleCn": "Web Worker",
+          "titleCn": "网络工作者",
           "title": "Web Workers",
           "tooltipCn": "使用 Web Worker 进行后台处理。",
           "tooltip": "Using web workers for background processing."
@@ -927,27 +936,34 @@
             {
               "url": "guide/libraries",
               "title": "Libraries overview",
-              "tooltip": "Understand how and when to use or create libraries."
+              "tooltip": "Understand how and when to use or create libraries.",
+              "titleCn": "库概览",
+              "tooltipCn": "了解如何以及何时使用或创建库。"
             },
             {
               "url": "guide/using-libraries",
               "title": "Using published libraries",
-              "tooltip": "Integrate published libraries into an app."
+              "tooltip": "Integrate published libraries into an app.",
+              "titleCn": "使用已发布的库",
+              "tooltipCn": "将已发布的库集成到应用程序中。"
             },
             {
               "url": "guide/creating-libraries",
               "title": "Creating libraries",
               "tooltip": "Extend Angular by creating, publishing, and using your own libraries.",
-              "titleCn": "创建库"
+              "titleCn": "创建库",
+              "tooltipCn": "通过创建、发布和使用您自己的库来扩展 Angular。"
             },
             {
               "url": "guide/angular-package-format",
               "title": "Angular package format",
               "tooltip": "Information about the Angular Package Format.",
-              "titleCn": "Angular 包格式"
+              "titleCn": "Angular 包格式",
+              "tooltipCn": "有关 Angular 包格式的信息。"
             }
           ],
-          "titleCn": "Angular 库"
+          "titleCn": "Angular 库",
+          "tooltipCn": "使用共享库扩展 Angular。"
         },
         {
           "title": "Feature preview",
@@ -956,14 +972,20 @@
             {
               "url": "guide/signals",
               "title": "Signals",
-              "tooltip": "Angular signals for optimized change detection"
+              "tooltip": "Angular signals for optimized change detection",
+              "titleCn": "信号",
+              "tooltipCn": "用于优化变化检测的角度信号"
             },
             {
               "url": "guide/rxjs-interop",
               "title": "RxJS Interop for Signals",
-              "tooltip": "Angular signals and Observable interop"
+              "tooltip": "Angular signals and Observable interop",
+              "titleCn": "信号的 RxJS 互操作",
+              "tooltipCn": "角度信号和 Observable 互操作"
             }
-          ]
+          ],
+          "titleCn": "功能预览",
+          "tooltipCn": "Angular 预览功能和 API"
         }
       ]
     },
@@ -1147,79 +1169,110 @@
             {
               "url": "tutorial/first-app",
               "title": "Introduction",
-              "tooltip": "Introduction to the first Angular app and tutorial"
+              "tooltip": "Introduction to the first Angular app and tutorial",
+              "titleCn": "介绍",
+              "tooltipCn": "介绍第一个 Angular 应用程序和教程"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-01",
               "title": "Hello world",
-              "tooltip": "Start coding in Angular with Hello World"
+              "tooltip": "Start coding in Angular with Hello World",
+              "titleCn": "你好世界",
+              "tooltipCn": "使用 Hello World 开始在 Angular 中编码"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-02",
               "title": "Create home component",
-              "tooltip": "Create the app's HomeComponent"
+              "tooltip": "Create the app's HomeComponent",
+              "titleCn": "创建主页组件",
+              "tooltipCn": "创建应用程序的 HomeComponent"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-03",
               "title": "Create housing location component",
-              "tooltip": "Create the app's HousingLocation"
+              "tooltip": "Create the app's HousingLocation",
+              "titleCn": "创建住房位置组件",
+              "tooltipCn": "创建应用程序的 HousingLocation"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-04",
               "title": "Create an interface",
-              "tooltip": "Create an interface for your app"
+              "tooltip": "Create an interface for your app",
+              "titleCn": "创建接口",
+              "tooltipCn": "为您的应用创建界面"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-05",
               "title": "Add inputs to components",
-              "tooltip": "Add inputs to components in your app"
+              "tooltip": "Add inputs to components in your app",
+              "titleCn": "向组件添加输入",
+              "tooltipCn": "向应用中的组件添加输入"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-06",
               "title": "Add property binding to components",
-              "tooltip": "Add property binding to components in your app"
+              "tooltip": "Add property binding to components in your app",
+              "titleCn": "向组件添加属性绑定",
+              "tooltipCn": "将属性绑定添加到应用程序中的组件"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-07",
               "title": "Add dynamic values to templates",
-              "tooltip": "Add dynamic values to your templates in your app"
+              "tooltip": "Add dynamic values to your templates in your app",
+              "titleCn": "向模板添加动态值",
+              "tooltipCn": "将动态值添加到应用中的模板"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-08",
               "title": "Use *ngFor in templates",
-              "tooltip": "Use *ngFor in your templates in your app"
+              "tooltip": "Use *ngFor in your templates in your app",
+              "titleCn": "在模板中使用 \\*ngFor",
+              "tooltipCn": "在应用程序的模板中使用 \\*ngFor"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-09",
               "title": "Angular services",
-              "tooltip": "Add an Angular service to your app"
+              "tooltip": "Add an Angular service to your app",
+              "titleCn": "角度服务",
+              "tooltipCn": "将 Angular 服务添加到您的应用程序"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-10",
               "title": "Add routing",
-              "tooltip": "Add routing to your app"
+              "tooltip": "Add routing to your app",
+              "titleCn": "添加路由",
+              "tooltipCn": "将路由添加到您的应用程序"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-11",
               "title": "Customize the details page",
-              "tooltip": "Add styles, links and more to the details page"
+              "tooltip": "Add styles, links and more to the details page",
+              "titleCn": "自定义详情页",
+              "tooltipCn": "向详情页面添加样式、链接等"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-12",
               "title": "Integrate Angular forms",
-              "tooltip": "Add an Angular form to your app"
+              "tooltip": "Add an Angular form to your app",
+              "titleCn": "集成 Angular 表单",
+              "tooltipCn": "将 Angular 表单添加到您的应用程序"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-13",
               "title": "Add search functionality",
-              "tooltip": "Add search functionality to your app"
+              "tooltip": "Add search functionality to your app",
+              "titleCn": "添加搜索功能",
+              "tooltipCn": "将搜索功能添加到您的应用程序"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-14",
               "title": "Add HTTP communication",
-              "tooltip": "Add HTTP communication to your app"
+              "tooltip": "Add HTTP communication to your app",
+              "titleCn": "添加 HTTP 通信",
+              "tooltipCn": "将 HTTP 通信添加到您的应用程序"
             }
-          ]
+          ],
+          "tooltipCn": "通过构建 Angular 应用程序了解如何开始使用 Angular"
         },
         {
           "title": "Tutorial: Tour of Heroes",
@@ -1282,7 +1335,8 @@
               "tooltipCn": "第 6 部分：使用 HTTP 检索和保存英雄数据。",
               "tooltip": "Part 6: Use HTTP to retrieve and save hero data."
             }
-          ]
+          ],
+          "titleCn": "教程：英雄之旅"
         },
         {
           "url": "guide/forms",
@@ -1321,7 +1375,9 @@
         {
           "url": "guide/versions",
           "title": "Version compatibility",
-          "tooltip": "Angular, Node.js, TypeScript, and RxJS version compatibility."
+          "tooltip": "Angular, Node.js, TypeScript, and RxJS version compatibility.",
+          "titleCn": "版本兼容性",
+          "tooltipCn": "Angular、Node.js、TypeScript 和 RxJS 版本兼容性。"
         },
         {
           "url": "guide/browser-support",
@@ -1561,7 +1617,7 @@
                 },
                 {
                   "url": "guide/ngmodule-api",
-                  "titleCn": "NgModule API",
+                  "titleCn": "模块 API",
                   "title": "NgModule API",
                   "tooltipCn": "了解 NgModules 的细节。",
                   "tooltip": "Understand the details of NgModules."
@@ -1980,7 +2036,7 @@
       "children": [
         {
           "url": "https://stackoverflow.com/questions/tagged/angular",
-          "titleCn": "Stack Overflow",
+          "titleCn": "堆栈溢出",
           "title": "Stack Overflow",
           "tooltipCn": "Stack Overflow：这里社区会回答你的 Angular 技术问题。",
           "tooltip": "Stack Overflow: where the community answers your technical Angular questions."
@@ -1994,7 +2050,7 @@
         },
         {
           "url": "https://gitter.im/angular/angular",
-          "titleCn": "Gitter",
+          "titleCn": "网格",
           "title": "Gitter",
           "tooltipCn": "和老鸟聊聊 Angular。",
           "tooltip": "Chat about Angular with other birds of a feather."
@@ -2035,9 +2091,9 @@
         },
         {
           "url": "https://twitter.com/angular",
-          "titleCn": "Twitter",
+          "titleCn": "推特",
           "title": "Twitter",
-          "tooltipCn": "Twitter",
+          "tooltipCn": "推特",
           "tooltip": "Twitter"
         },
         {
@@ -2081,7 +2137,7 @@
           "url": "https://angular.jp/"
         },
         {
-          "titleCn": "한국어",
+          "titleCn": "韩国人",
           "title": "한국어",
           "url": "https://angular.kr/"
         },

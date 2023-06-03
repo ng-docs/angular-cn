@@ -356,6 +356,9 @@ export function nonCollidingImportName(
 
 /**
  * If the provided trait is standalone, just return it. Otherwise, returns the owning ngModule.
+ *
+ * 如果提供的特征是独立的，则返回它。 否则，返回拥有的 ngModule。
+ *
  */
 export function standaloneTraitOrNgModule(
     checker: TemplateTypeChecker, trait: ts.ClassDeclaration): ts.ClassDeclaration|null {
@@ -376,6 +379,9 @@ export function standaloneTraitOrNgModule(
 /**
  * Updates the imports on a TypeScript file, by ensuring the provided import is present.
  * Returns the text changes, as well as the name with which the imported symbol can be referred to.
+ *
+ * 通过确保提供的导入存在，更新 TypeScript 文件上的导入。 返回文本更改，以及可以引用导入符号的名称。
+ *
  */
 export function updateImportsForTypescriptFile(
     tsChecker: ts.TypeChecker, file: ts.SourceFile, symbolName: string, moduleSpecifier: string,
@@ -429,6 +435,9 @@ export function updateImportsForTypescriptFile(
 /**
  * Updates a given Angular trait, such as an NgModule or standalone Component, by adding
  * `importName` to the list of imports on the decorator arguments.
+ *
+ * 通过将 `importName` 添加到装饰器参数的导入列表中，更新给定的 Angular 特征，例如 NgModule 或独立组件。
+ *
  */
 export function updateImportsForAngularTrait(
     checker: TemplateTypeChecker, trait: ts.ClassDeclaration, importName: string,
@@ -476,6 +485,9 @@ export function updateImportsForAngularTrait(
 
 /**
  * Return whether a given Angular decorator specifies `standalone: true`.
+ *
+ * 返回给定的 Angular 装饰器是否指定 `standalone: true` 。
+ *
  */
 export function isStandaloneDecorator(decorator: ts.Decorator): boolean|null {
   const decoratorProps = findFirstMatchingNode(decorator, {filter: ts.isObjectLiteralExpression});

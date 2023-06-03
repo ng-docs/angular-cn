@@ -30,8 +30,14 @@ let upgradeCount: number = 0;
  *
  * 1. creation of Angular component from AngularJS component directive
  *    \(See [UpgradeAdapter#upgradeNg1Component()]\)
+ *
+ *    从 AngularJS 组件指令创建 Angular 组件（参见[UpgradeAdapter#upgradeNg1Component\(\)][UpgradeAdapter#upgradeNg1Component()] ）
+ *
  * 2. creation of AngularJS directive from Angular component.
  *    \(See [UpgradeAdapter#downgradeNg2Component()]\)
+ *
+ *    从 Angular 组件创建 AngularJS 指令。 （参见[UpgradeAdapter#downgradeNg2Component\(\)][UpgradeAdapter#downgradeNg2Component()] ）
+ *
  * 3. Bootstrapping of a hybrid Angular application which contains both of the frameworks
  *    coexisting in a single application.
  *
@@ -133,8 +139,13 @@ let upgradeCount: number = 0;
  *       "ng2[ng1[Hello World!](transclude)](project)");
  * });
  * ```
- * @deprecated Deprecated since v5. Use `upgrade/static` instead, which also supports
+ * @deprecated
+ *
+ * Deprecated since v5. Use `upgrade/static` instead, which also supports
  * [Ahead-of-Time compilation](guide/aot-compiler).
+ *
+ * 自 v5 后已弃用。 使用 `upgrade/static` 代替，它也支持[Ahead-of-Time compilation](guide/aot-compiler) 。
+ *
  * @publicApi
  */
 export class UpgradeAdapter {
@@ -189,7 +200,11 @@ export class UpgradeAdapter {
    *    即使组件是在 AngularJS 中实例化的，它也将使用 Angular 语法。必须这样做，因为我们必须遵循 Angular 组件，而不是声明应该如何解释属性。
    *
    * 3. `ng-model` is controlled by AngularJS and communicates with the downgraded Angular component
-   *    by way of the `ControlValueAccessor` interface from @angular/forms. Only components that
+   *    by way of the `ControlValueAccessor` interface from
+   *
+   *    `ng-model` 由 AngularJS 控制，并通过 `ControlValueAccessor` 接口与降级后的 Angular 组件通信
+   *
+   * @angular /forms. Only components that
    *    implement this interface are eligible.
    *
    * ### Supported Features
@@ -444,13 +459,16 @@ export class UpgradeAdapter {
    *   })
    * });
    * ```
-   *
    * @param modules any AngularJS modules that the upgrade module should depend upon
    *
    * 可选值。默认值为 `undefined`。
+   * @returns
    *
-   * @returns an `UpgradeAdapterRef`, which lets you register a `ready()` callback to
+   * an `UpgradeAdapterRef`, which lets you register a `ready()` callback to
    * run assertions once the Angular components are ready to test through AngularJS.
+   *
+   * 一个 `UpgradeAdapterRef` ，一旦 Angular 组件准备好通过 AngularJS 进行测试，它允许您注册一个 `ready()` 回调来运行断言。
+   *
    */
   registerForNg1Tests(modules?: string[]): UpgradeAdapterRef {
     const windowNgMock = (window as any)['angular'].mock;
@@ -782,8 +800,13 @@ export class UpgradeAdapter {
  *
  * 使用 `UpgradeAdapterRef` 来控制混合 AngularJS / Angular 应用程序。
  *
- * @deprecated Deprecated since v5. Use `upgrade/static` instead, which also supports
+ * @deprecated
+ *
+ * Deprecated since v5. Use `upgrade/static` instead, which also supports
  * [Ahead-of-Time compilation](guide/aot-compiler).
+ *
+ * 自 v5 后已弃用。 使用 `upgrade/static` 代替，它也支持[Ahead-of-Time compilation](guide/aot-compiler) 。
+ *
  * @publicApi
  */
 export class UpgradeAdapterRef {

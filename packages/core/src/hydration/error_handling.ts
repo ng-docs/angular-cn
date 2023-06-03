@@ -19,6 +19,8 @@ const AT_THIS_LOCATION = '<-- AT THIS LOCATION';
  * Retrieves a user friendly string for a given TNodeType for use in
  * friendly error messages
  *
+ * 检索给定 TNodeType 的用户友好字符串，用于友好的错误消息
+ *
  * @param tNodeType
  * @returns
  */
@@ -46,6 +48,9 @@ function getFriendlyStringFromTNodeType(tNodeType: TNodeType): string {
 
 /**
  * Validates that provided nodes match during the hydration process.
+ *
+ * 验证提供的节点在水化过程中是否匹配。
+ *
  */
 export function validateMatchingNode(
     node: RNode, nodeType: number, tagName: string|null, lView: LView, tNode: TNode,
@@ -85,6 +90,9 @@ export function validateMatchingNode(
 
 /**
  * Validates that a given node has sibling nodes
+ *
+ * 验证给定节点是否具有兄弟节点
+ *
  */
 export function validateSiblingNodeExists(node: RNode|null): void {
   validateNodeExists(node);
@@ -100,6 +108,9 @@ export function validateSiblingNodeExists(node: RNode|null): void {
 
 /**
  * Validates that a node exists or throws
+ *
+ * 验证节点是否存在或抛出
+ *
  */
 export function validateNodeExists(
     node: RNode|null, lView: LView|null = null, tNode: TNode|null = null): void {
@@ -119,8 +130,16 @@ export function validateNodeExists(
 /**
  * Builds the hydration error message when a node is not found
  *
+ * 找不到节点时构建水合作用错误消息
+ *
  * @param lView the LView where the node exists
+ *
+ * 节点所在的 LView
+ *
  * @param tNode the TNode
+ *
+ * 节点
+ *
  */
 export function nodeNotFoundError(lView: LView, tNode: TNode): Error {
   const header = 'During serialization, Angular was unable to find an element in the DOM:\n\n';
@@ -133,8 +152,16 @@ export function nodeNotFoundError(lView: LView, tNode: TNode): Error {
 /**
  * Builds a hydration error message when a node is not found at a path location
  *
+ * 当在路径位置找不到节点时构建水合作用错误消息
+ *
  * @param host the Host Node
+ *
+ * 主机节点
+ *
  * @param path the path to the node
+ *
+ * 节点的路径
+ *
  */
 export function nodeNotFoundAtPathError(host: Node, path: string): Error {
   const header = `During hydration Angular was unable to locate a node ` +
@@ -149,9 +176,22 @@ export function nodeNotFoundAtPathError(host: Node, path: string): Error {
  * Builds the hydration error message in the case that dom nodes are created outside of
  * the Angular context and are being used as projected nodes
  *
+ * 在 dom 节点是在 Angular 上下文之外创建并被用作投影节点的情况下构建水合作用错误消息
+ *
  * @param lView the LView
+ *
+ * 左视图
+ *
  * @param tNode the TNode
- * @returns an error
+ *
+ * 节点
+ *
+ * @returns
+ *
+ * an error
+ *
+ * 一个错误
+ *
  */
 export function unsupportedProjectionOfDomNodes(rNode: RNode): Error {
   const header = 'During serialization, Angular detected DOM nodes ' +
@@ -168,8 +208,18 @@ export function unsupportedProjectionOfDomNodes(rNode: RNode): Error {
  * Builds the hydration error message in the case that ngSkipHydration was used on a
  * node that is not a component host element or host binding
  *
+ * 在 ngSkipHydration 用于非组件宿主元素或宿主绑定的节点上时构建水合作用错误消息
+ *
  * @param rNode the HTML Element
- * @returns an error
+ *
+ * HTML 元素
+ *
+ * @returns
+ *
+ * an error
+ *
+ * 一个错误
+ *
  */
 export function invalidSkipHydrationHost(rNode: RNode): Error {
   const header = 'The `ngSkipHydration` flag is applied on a node ' +
@@ -186,7 +236,12 @@ export function invalidSkipHydrationHost(rNode: RNode): Error {
 /**
  * Stringifies a given TNode's attributes
  *
+ * 字符串化给定 TNode 的属性
+ *
  * @param tNode a provided TNode
+ *
+ * 提供的 TNode
+ *
  * @returns string
  */
 function stringifyTNodeAttrs(tNode: TNode): string {
@@ -209,13 +264,21 @@ function stringifyTNodeAttrs(tNode: TNode): string {
 /**
  * The list of internal attributes that should be filtered out while
  * producing an error message.
+ *
+ * 生成错误消息时应过滤掉的内部属性列表。
+ *
  */
 const internalAttrs = new Set(['ngh', 'ng-version', 'ng-server-context']);
 
 /**
  * Stringifies an HTML Element's attributes
  *
+ * 字符串化 HTML 元素的属性
+ *
  * @param rNode an HTML Element
+ *
+ * 一个 HTML 元素
+ *
  * @returns string
  */
 function stringifyRNodeAttrs(rNode: HTMLElement): string {
@@ -233,8 +296,16 @@ function stringifyRNodeAttrs(rNode: HTMLElement): string {
 /**
  * Converts a tNode to a helpful readable string value for use in error messages
  *
+ * 将 tNode 转换为有用的可读字符串值，以便在错误消息中使用
+ *
  * @param tNode a given TNode
+ *
+ * 给定的 TNode
+ *
  * @param innerContent the content of the node
+ *
+ * 节点的内容
+ *
  * @returns string
  */
 function describeTNode(tNode: TNode, innerContent: string = '…'): string {
@@ -259,8 +330,16 @@ function describeTNode(tNode: TNode, innerContent: string = '…'): string {
 /**
  * Converts an RNode to a helpful readable string value for use in error messages
  *
+ * 将 RNode 转换为有用的可读字符串值，以便在错误消息中使用
+ *
  * @param rNode a given RNode
+ *
+ * 给定的 RNode
+ *
  * @param innerContent the content of the node
+ *
+ * 节点的内容
+ *
  * @returns string
  */
 function describeRNode(rNode: RNode, innerContent: string = '…'): string {
@@ -284,9 +363,20 @@ function describeRNode(rNode: RNode, innerContent: string = '…'): string {
  * Builds the string containing the expected DOM present given the LView and TNode
  * values for a readable error message
  *
+ * 在给定可读错误消息的 LView 和 TNode 值的情况下，构建包含预期 DOM 的字符串
+ *
  * @param lView the lView containing the DOM
+ *
+ * 包含 DOM 的 lView
+ *
  * @param tNode the tNode
+ *
+ * t 节点
+ *
  * @param isViewContainerAnchor boolean
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  * @returns string
  */
 function describeExpectedDom(lView: LView, tNode: TNode, isViewContainerAnchor: boolean): string {
@@ -317,7 +407,12 @@ function describeExpectedDom(lView: LView, tNode: TNode, isViewContainerAnchor: 
  * Builds the string containing the DOM present around a given RNode for a
  * readable error message
  *
+ * 为可读的错误消息构建包含给定 RNode 周围存在的 DOM 的字符串
+ *
  * @param node the RNode
+ *
+ * 节点
+ *
  * @returns string
  */
 function describeDomFromNode(node: RNode): string {
@@ -341,9 +436,20 @@ function describeDomFromNode(node: RNode): string {
 /**
  * Shortens the description of a given RNode by its type for readability
  *
+ * 按类型缩短给定 RNode 的描述以提高可读性
+ *
  * @param nodeType the type of node
+ *
+ * 节点类型
+ *
  * @param tagName the node tag name
+ *
+ * 节点标签名称
+ *
  * @param textContent the text content in the node
+ *
+ * 节点中的文本内容
+ *
  * @returns string
  */
 function shortRNodeDescription(
@@ -365,7 +471,12 @@ function shortRNodeDescription(
 /**
  * Builds the footer hydration error message
  *
+ * 构建页脚水合作用错误消息
+ *
  * @param componentClassName the name of the component class
+ *
+ * 组件类的名称
+ *
  * @returns string
  */
 function getHydrationErrorFooter(componentClassName?: string): string {
@@ -379,6 +490,9 @@ function getHydrationErrorFooter(componentClassName?: string): string {
 
 /**
  * An attribute related note for hydration errors
+ *
+ * 水合作用错误的属性相关注释
+ *
  */
 function getHydrationAttributeNote(): string {
   return 'Note: attributes are only displayed to better represent the DOM' +
@@ -390,7 +504,12 @@ function getHydrationAttributeNote(): string {
 /**
  * Strips all newlines out of a given string
  *
+ * 从给定字符串中去除所有换行符
+ *
  * @param input a string to be cleared of new line characters
+ *
+ * 要清除换行符的字符串
+ *
  * @returns
  */
 function stripNewlines(input: string): string {
@@ -400,8 +519,16 @@ function stripNewlines(input: string): string {
 /**
  * Reduces a string down to a maximum length of characters with ellipsis for readability
  *
+ * 使用省略号将字符串减少到最大字符长度以提高可读性
+ *
  * @param input a string input
+ *
+ * 字符串输入
+ *
  * @param maxLength a maximum length in characters
+ *
+ * 字符的最大长度
+ *
  * @returns string
  */
 function shorten(input: string|null, maxLength = 50): string {

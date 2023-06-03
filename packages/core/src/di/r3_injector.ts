@@ -193,9 +193,18 @@ export abstract class EnvironmentInjector implements Injector {
    * @param fn the closure to be run in the context of this injector
    *
    * 要在此注入器的上下文中运行的闭包
+   * @returns
    *
-   * @returns the return value of the function, if any
-   * @deprecated use the standalone function `runInInjectionContext` instead
+   * the return value of the function, if any
+   *
+   * 函数的返回值，如果有的话
+   *
+   * @deprecated
+   *
+   * use the standalone function `runInInjectionContext` instead
+   *
+   * 改为使用独立函数 `runInInjectionContext`
+   *
    */
   abstract runInContext<ReturnT>(fn: () => ReturnT): ReturnT;
 

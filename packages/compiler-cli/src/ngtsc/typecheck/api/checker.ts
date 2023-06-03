@@ -234,6 +234,9 @@ export interface TemplateTypeChecker {
 
   /**
    * In the context of an Angular trait, generate potential imports for a directive.
+   *
+   * 在 Angular 特征的上下文中，为指令生成潜在的导入。
+   *
    */
   getPotentialImportsFor(
       toImport: Reference<ClassDeclaration>, inComponent: ts.ClassDeclaration,
@@ -243,12 +246,17 @@ export interface TemplateTypeChecker {
    * Get the primary decorator for an Angular class \(such as @Component\). This does not work for
    * `@Injectable`.
    *
+   * 获取 Angular 类的主要装饰器（例如 @Component）。 这不适用于 `@Injectable` 。
+   *
    */
   getPrimaryAngularDecorator(target: ts.ClassDeclaration): ts.Decorator|null;
 
   /**
    * Get the class of the NgModule that owns this Angular trait. If the result is `null`, that
    * probably means the provided component is standalone.
+   *
+   * 获取拥有此 Angular 特征的 NgModule 类。 如果结果为 `null` ，则可能意味着提供的组件是独立的。
+   *
    */
   getOwningNgModule(component: ts.ClassDeclaration): ts.ClassDeclaration|null;
 
@@ -285,21 +293,33 @@ export interface TemplateTypeChecker {
 
   /**
    * Retrieve the type checking engine's metadata for the given NgModule class, if available.
+   *
+   * 检索给定 NgModule 类的类型检查引擎的元数据（如果可用）。
+   *
    */
   getNgModuleMetadata(module: ts.ClassDeclaration): NgModuleMeta|null;
 
   /**
    * Retrieve the type checking engine's metadata for the given pipe class, if available.
+   *
+   * 检索给定管道类的类型检查引擎的元数据（如果可用）。
+   *
    */
   getPipeMetadata(pipe: ts.ClassDeclaration): PipeMeta|null;
 
   /**
    * Gets the directives that have been used in a component's template.
+   *
+   * 获取已在组件模板中使用的指令。
+   *
    */
   getUsedDirectives(component: ts.ClassDeclaration): TypeCheckableDirectiveMeta[]|null;
 
   /**
    * Gets the pipes that have been used in a component's template.
+   *
+   * 获取已在组件模板中使用的管道。
+   *
    */
   getUsedPipes(component: ts.ClassDeclaration): string[]|null;
 

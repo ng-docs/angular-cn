@@ -1,5 +1,7 @@
 # Hydration
 
+# 补水
+
 <div class="alert is-important">
 
 The hydration feature is available for [developer preview](/guide/releases#developer-preview). It's ready for you to try, but it might change before it is stable.
@@ -8,19 +10,33 @@ The hydration feature is available for [developer preview](/guide/releases#devel
 
 ## What is hydration
 
+## 什么是补水
+
 Hydration is the process that restores the server side rendered application on the client. This includes things like reusing the server rendered DOM structures, persisting the application state, transferring application data that was retrieved already by the server, and other processes.
+
+Hydration 是在客户端恢复服务器端呈现的应用程序的过程。 这包括重用服务器呈现的 DOM 结构、持久化应用程序状态、传输服务器已经检索到的应用程序数据以及其他进程。
 
 ## Why is hydration important?
 
+## 为什么补水很重要？
+
 Hydration improves application performance by avoiding extra work to re-create DOM nodes. Instead, Angular tries to match existing DOM elements to the applications structure at runtime and reuses DOM nodes when possible. This results in a performance improvement that can be measured using [Core Web Vitals \(CWV\)](https://web.dev/learn-core-web-vitals/) statistics, such as reducing the First Input Delay \([FID](https://web.dev/fid/)\) and Largest Contentful Paint \([LCP](https://web.dev/lcp/)\), as well as Cumulative Layout Shift \([CLS](https://web.dev/cls/)\). Improving these numbers also affects things like SEO performance.
 
+Hydration 通过避免重新创建 DOM 节点的额外工作来提高应用程序性能。 相反，Angular 尝试在运行时将现有的 DOM 元素与应用程序结构相匹配，并在可能的情况下重用 DOM 节点。 这导致性能改进，可以使用[核心网络生命 \(CWV\)](https://web.dev/learn-core-web-vitals/)统计数据来衡量，例如减少首次输入延迟 \( [FID](https://web.dev/fid/) \) 和最大内容绘制 \( [LCP](https://web.dev/lcp/) \)，以及累积布局偏移 \( [CLS](https://web.dev/cls/) \)。 改善这些数字也会影响诸如 SEO 性能之类的事情。
+
 Without hydration enabled, server side rendered Angular applications will destroy and re-render the application's DOM, which may result in a visible UI flicker. This re-rendering can negatively impact [Core Web Vitals](https://web.dev/learn-core-web-vitals/) like [LCP](https://web.dev/lcp/) and cause a layout shift. Enabling hydration allows the existing DOM to be re-used and prevents a flicker.
+
+如果不启用水合作用，服务器端呈现的 Angular 应用程序将破坏并重新呈现应用程序的 DOM，这可能会导致可见的 UI 闪烁。 这种重新呈现会对像[LCP](https://web.dev/lcp/)这样的[Core Web Vitals](https://web.dev/learn-core-web-vitals/)产生负面影响，并导致布局转变。 启用 hydration 允许重新使用现有的 DOM 并防止闪烁。
 
 <a id="how-to-enable"></a>
 
 ## How do you enable hydration in Angular
 
+## 如何在 Angular 中启用水合作用
+
 Before you can get started with hydration, you must have a server side rendered \(SSR\) application. Follow the [Angular Universal Guide](/guide/universal) to enable server side rendering first. Once you have SSR working with your application, you can enable hydration by visiting your main app component or module and importing `provideClientHydration` from `@angular/platform-browser`. You'll then add that provider to your app's bootstrapping providers list.
+
+在开始水合作用之前，您必须有一个服务器端渲染 \(SSR\) 应用程序。 按照[Angular 通用指南](/guide/universal)首先启用服务器端渲染。 一旦您的应用程序使用了 SSR，您就可以通过访问您的主要应用程序组件或模块并从 `@angular/platform-browser` 导入 `provideClientHydration` 来启用水合作用。 然后，您将该提供程序添加到应用程序的引导程序提供程序列表中。
 
 ```typescript
 import {
@@ -35,6 +51,8 @@ bootstrapApplication(RootCmp, {
 ```
 
 Alternatively if you are using NgModules, you would add `provideClientHydration` to your root app module's provider list.
+
+或者，如果您使用的是 NgModules，您可以将 `provideClientHydration` 添加到根应用程序模块的提供者列表中。
 
 ```typescript
 import {provideClientHydration} from '@angular/platform-browser';
@@ -59,6 +77,8 @@ the `ng new` command), adding a call to the root `AppModule` should be sufficien
 
 After you've followed these steps and have started up your server, load your application in the browser.
 
+完成这些步骤并启动服务器后，在浏览器中加载您的应用程序。
+
 <div class="alert is-helpful">
 
   You will likely need to fix instances of Direct DOM Manipulation before hydration will fully work either by switching to Angular constructs or by using `ngSkipHydration`. See [Constraints](#constraints), [Direct DOM Manipulation](#dom-manipulation), and [How to skip hydration for particular components](#ngskiphydration) for more details.
@@ -67,11 +87,17 @@ After you've followed these steps and have started up your server, load your app
 
 While running an application in dev mode, you can confirm hydration is enabled by opening the Developer Tools in your browser and viewing the console. You should see a message that includes hydration-related stats, such as the number of components and nodes hydrated. Note: Angular calculates the stats based on all components rendered on a page, including those that come from third-party libraries.
 
+在开发模式下运行应用程序时，您可以通过在浏览器中打开开发人员工具并查看控制台来确认水合作用已启用。 您应该会看到一条消息，其中包含与水合相关的统计信息，例如水合的组件和节点数。 注意：Angular 根据页面上呈现的所有组件计算统计信息，包括那些来自第三方库的组件。
+
 <a id="constraints"></a>
 
 ## Constraints
 
+## 约束条件
+
 Hydration imposes a few constraints on your application that are not present without hydration enabled. Your application must have the same generated DOM structure on both the server and the client. The process of hydration expects the DOM tree to have the same structure in both places. This also includes whitespaces and comment nodes that Angular produces during the rendering on the server. Those whitespaces and nodes must be present in the HTML generated by the server-side rendering process.
+
+水合作用对您的应用程序施加了一些限制，这些限制在没有启用水合作用的情况下不存在。 您的应用程序必须在服务器和客户端上具有相同的生成的 DOM 结构。 水合过程期望 DOM 树在两个地方具有相同的结构。 这还包括 Angular 在服务器上呈现期间生成的空格和注释节点。 这些空格和节点必须出现在服务器端呈现过程生成的 HTML 中。
 
 <div class="alert is-important">
 
@@ -81,34 +107,67 @@ The HTML produced by the server side rendering operation **must not** be altered
 
 If there is a mismatch between server and client DOM tree structures, the hydration process will encounter problems attempting to match up what was expected to what is actually present in the DOM. Components that do direct DOM manipulation using native DOM APIs are the most common culprit.
 
+如果服务器和客户端 DOM 树结构不匹配，水合过程将遇到问题，试图将预期的内容与 DOM 中实际存在的内容相匹配。 使用本机 DOM API 进行直接 DOM 操作的组件是最常见的罪魁祸首。
+
 <a id="dom-manipulation"></a>
 
 ### Direct DOM Manipulation
 
+### 直接 DOM 操作
+
 If you have components that manipulate the DOM using native DOM APIs, the hydration process will encounter errors. Specific cases where DOM manipulation is a problem are situations like accessing the `document`, querying for specific elements, and injecting additional nodes using `appendChild`. Detaching DOM nodes and moving them to other locations will also result in errors.
+
+如果您有使用本机 DOM API 操作 DOM 的组件，水合过程将遇到错误。 DOM 操作成为问题的特定情况是访问 `document` 、查询特定元素以及使用 `appendChild` 注入其他节点等情况。 分离 DOM 节点并将它们移动到其他位置也会导致错误。
 
 This is because Angular is unaware of these DOM changes and cannot resolve them during the hydration process. Angular will expect a certain structure, but it will encounter a different structure when attempting to hydrate. This mismatch will result in hydration failure and throw a DOM mismatch error \([see below](#errors)\).
 
+这是因为 Angular 不知道这些 DOM 变化，并且无法在水合过程中解决它们。 Angular 会期望某种结构，但在尝试水化时会遇到不同的结构。 这种不匹配将导致水合作用失败并引发 DOM 不匹配错误（[见下文](#errors)）。
+
 It is best to refactor your component to avoid this sort of DOM manipulation. Try to use Angular APIs to do this work, if you can. If you cannot refactor this behavior, use the `ngSkipHydration` attribute \([described below](#ngskiphydration)\) until you can refactor into a hydration friendly solution.
+
+最好重构您的组件以避免这种 DOM 操作。 如果可以，请尝试使用 Angular API 来完成这项工作。 如果您无法重构此行为，请使用 `ngSkipHydration` 属性（[如下所述](#ngskiphydration)），直到您可以重构为水化友好的解决方案。
 
 ### Valid HTML structure
 
+### 有效的 HTML 结构
+
 There are a few cases where if you have a component template that does not have valid HTML structure, this could result in a DOM mismatch error during hydration. 
+
+在某些情况下，如果您的组件模板没有有效的 HTML 结构，这可能会导致在水合作用期间出现 DOM 不匹配错误。
 
 As an example, here are some of the most common cases of this issue.
 
+例如，以下是此问题的一些最常见案例。
+
 * `<table>` without a `<tbody>`
+
+  `<table>` 没有 `<tbody>`
+
 * `<div>` inside a `<p>`
+
+  `<div>` 在 `<p>` 中
+
 * `<a>` inside an `<h1>`
+
+  `<a>` 在 `<h1>` 中
+
 * `<a>` inside another `<a>`
 
+  `<a>` 在另一个 `<a>` 里面
+
 If you are uncertain about whether your HTML is valid, you can use a [syntax validator](https://validator.w3.org/) to check it.
+
+如果您不确定您的 HTML 是否有效，您可以使用[语法验证器](https://validator.w3.org/)来检查它。
 
 <a id="preserve-whitespaces"></a>
 
 ### Preserve Whitespaces Configuration
 
+### 保留空格配置
+
 When using the hydration feature, we recommend using the default setting of `false` for `preserveWhitespaces`. If this setting is not in your tsconfig, the value will be `false` and no changes are required. If you choose to enable preserving whitespaces by adding `preserveWhitespaces: true` to your tsconfig, it is possible you may encounter issues with hydration. This is not yet a fully supported configuration.
+
+使用水合功能时，我们建议对 `preserveWhitespaces` 使用默认设置 `false` 。 如果此设置不在您的 tsconfig 中，则该值将为 `false` 且无需更改。 如果您选择通过将 `preserveWhitespaces: true` 添加到您的 tsconfig 来启用保留空格，您可能会遇到水合问题。 这还不是一个完全支持的配置。
 
 <div class="alert is-helpful">
 
@@ -120,29 +179,47 @@ If you choose to set this setting in your tsconfig, we recommend to set it only 
 
 ### Custom or Noop Zone.js are not yet supported
 
+### 尚不支持自定义或 Noop Zone.js
+
 Hydration relies on a signal from Zone.js when it becomes stable inside an application, so that Angular can start the serialization process on the server or post-hydration cleanup on the client to remove DOM nodes that remained unclaimed.
 
+当 Zone.js 在应用程序中变得稳定时，Hydration 依赖于来自 Zone.js 的信号，以便 Angular 可以在服务器上启动序列化过程或在客户端启动 hydration 后清理（以删除仍然无人认领的 DOM 节点）。
+
 Providing a custom or a "noop" Zone.js implementation may lead to a different timing of the "stable" event, thus triggering the serialization or the cleanup too early or too late. This is not yet a fully supported configuration and you may need to adjust the timing of the `onStable` event in the custom Zone.js implementation.
+
+提供自定义或“noop”Zone.js 实现可能会导致“稳定”事件的不同时间，从而过早或过晚触发序列化或清理。 这还不是完全支持的配置，您可能需要在自定义 Zone.js 实现中调整 `onStable` 事件的时间。
 
 <a id="errors"></a>
 
 ## Errors
 
+## 错误
+
 There are several hydration related errors you may encounter ranging from node mismatches to cases when the `ngSkipHydration` was used on an invalid host node. The most common error case that may occur is due to direct DOM manipulation using native APIs that results in hydration being unable to find or match the expected DOM tree structure on the client that was rendered by the server. The other case you may encounter this type of error was mentioned in the prior section on Valid HTML structures. So, make sure the HTML in your templates are using valid structure, and you'll avoid that error case.
 
+您可能会遇到多种与水合作用相关的错误，从节点不匹配到在无效主机节点上使用 `ngSkipHydration` 的情况。 可能发生的最常见错误情况是由于使用本机 API 的直接 DOM 操作导致 hydration 无法在客户端上找到或匹配服务器呈现的预期 DOM 树结构。 您可能会遇到此类错误的另一种情况已在前面有关有效 HTML 结构的部分中提到。 因此，请确保您模板中的 HTML 使用有效结构，这样您就可以避免这种错误情况。
+
 For a full reference on hydration related errors, visit the [Errors Reference Guide](/errors).
+
+有关水合作用相关错误的完整参考，请访问[错误参考指南](/errors)。
 
 <a id="ngskiphydration"></a>
 
 ## How to skip hydration for particular components
 
+## 如何跳过特定组件的水合作用
+
 Some components may not work properly with hydration enabled due to some of the aforementioned issues, like direct DOM manipulation. As a workaround, you can add the `ngSkipHydration` attribute to a component's tag in order to skip hydrating the entire component.
+
+由于上述某些问题，例如直接 DOM 操作，某些组件可能无法在启用水合作用的情况下正常工作。 作为一种变通方法，您可以将 `ngSkipHydration` 属性添加到组件的标记中，以跳过对整个组件进行水化处理。
 
 ```html
 <example-cmp ngSkipHydration />
 ```
 
 Alternatively you can set `ngSkipHydration` as a host binding.
+
+或者，您可以将 `ngSkipHydration` 设置为主机绑定。
 
 ```typescript
 @Component({
@@ -154,6 +231,8 @@ class ExampleCmp {}
 
 The `ngSkipHydration` attribute will force Angular to skip hydrating the entire component and its children. Using this attribute means that the component will behave as if hydration is not enabled, meaning it will destroy and re-render itself.
 
+`ngSkipHydration` 属性将强制 Angular 跳过对整个组件及其子组件的水合。 使用此属性意味着该组件的行为就像未启用水合作用一样，这意味着它将自行销毁并重新渲染。
+
 <div class="alert is-helpful">
 
 This will fix rendering issues, but it means that for this component (and its children), you don't get the benefits of hydration. You will need to adjust your component's implementation to avoid hydration-breaking patterns (i.e. Direct DOM Manipulation) to be able to remove the skip hydration annotation.
@@ -162,7 +241,11 @@ This will fix rendering issues, but it means that for this component (and its ch
 
 The `ngSkipHydration` attribute can only be used on component host nodes. Angular throws an error if this attribute is added to other nodes.
 
+`ngSkipHydration` 属性只能在组件主机节点上使用。 如果将此属性添加到其他节点，Angular 会抛出错误。
+
 Keep in mind that adding the `ngSkipHydration` attribute to your root application component would effectively disable hydration for your entire application. Be careful and thoughtful about using this attribute. It is intended as a last resort workaround. Components that break hydration should be considered bugs that need to be fixed.
+
+请记住，将 `ngSkipHydration` 属性添加到根应用程序组件将有效地禁用整个应用程序的水合作用。 使用此属性时要小心谨慎。 它旨在作为最后的解决方法。 破坏水合作用的组件应被视为需要修复的错误。
 
 <a id="i18n"></a>
 
@@ -172,6 +255,12 @@ We don't yet support internationalization with hydration, but support is coming.
 Currently, Angular would skip hydration for components that use i18n blocks, effectively
 re-rendering those components from scratch.
 
+我们还不支持水合作用的国际化，但支持即将到来。 目前，Angular 会跳过使用 i18n 块的组件的水合作用，有效地从头开始重新渲染这些组件。
+
 ## Third Party Libraries with DOM Manipulation
 
+## 具有 DOM 操作的第三方库
+
 There are a number of third party libraries that depend on DOM manipulation to be able to render. D3 charts is a prime example. These libraries worked without hydration, but they may cause DOM mismatch errors when hydration is enabled. For now, if you encounter DOM mismatch errors using one of these libraries, you can add the `ngSkipHydration` attribute to the component that renders using that library.
+
+有许多依赖于 DOM 操作才能呈现的第三方库。 D3 图表是一个典型的例子。 这些库在没有 hydration 的情况下工作，但在启用 hydration 时它们可能会导致 DOM 不匹配错误。 现在，如果您使用这些库之一遇到 DOM 不匹配错误，您可以将 `ngSkipHydration` 属性添加到使用该库呈现的组件。

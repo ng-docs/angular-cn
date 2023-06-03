@@ -146,7 +146,12 @@ export interface TestBed {
   /**
    * Runs the given function in the `EnvironmentInjector` context of `TestBed`.
    *
+   * 在 `TestBed` 的 `EnvironmentInjector` 上下文中运行给定函数。
+   *
    * @see EnvironmentInjector#runInContext
+   *
+   * 环境注入器#runInContext
+   *
    */
   runInInjectionContext<T>(fn: () => T): T;
 
@@ -462,7 +467,12 @@ export class TestBedImpl implements TestBed {
   /**
    * Runs the given function in the `EnvironmentInjector` context of `TestBed`.
    *
+   * 在 `TestBed` 的 `EnvironmentInjector` 上下文中运行给定函数。
+   *
    * @see EnvironmentInjector#runInContext
+   *
+   * 环境注入器#runInContext
+   *
    */
   static runInInjectionContext<T>(fn: () => T): T {
     return TestBedImpl.INSTANCE.runInInjectionContext(fn);

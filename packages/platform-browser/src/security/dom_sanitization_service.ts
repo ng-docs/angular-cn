@@ -114,11 +114,16 @@ export abstract class DomSanitizer implements Sanitizer {
   /**
    * Gets a safe value from either a known safe value or a value with unknown safety.
    *
+   * 从已知安全值或安全性未知的值中获取安全值。
+   *
    * If the given value is already a `SafeValue`, this method returns the unwrapped value.
    * If the security context is HTML and the given value is a plain string, this method
    * sanitizes the string, removing any potentially unsafe content.
    * For any other security context, this method throws an error if provided
    * with a plain string.
+   *
+   * 如果给定值已经是 `SafeValue` ，则此方法返回未包装的值。 如果安全上下文是 HTML 且给定值是纯字符串，则此方法会清理字符串，删除任何可能不安全的内容。 对于任何其他安全上下文，如果提供纯字符串，此方法将引发错误。
+   *
    */
   abstract sanitize(context: SecurityContext, value: SafeValue|string|null): string|null;
 

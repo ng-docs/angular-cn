@@ -96,6 +96,8 @@ import {ComponentRef, createNgModule, Directive, Injector, Input, NgModuleFactor
  *
  * A more complete example with additional options:
  *
+ * 带有附加选项的更完整示例：
+ *
  * {@example common/ngComponentOutlet/ts/module.ts region='CompleteExample'}
  *
  * @publicApi

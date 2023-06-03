@@ -88,6 +88,8 @@ For more information about the required software, see [Setting up the local envi
 
   * [node.js](https://nodejs.org/en/download)
 
+    [节点.js](https://nodejs.org/en/download)
+
     Angular requires an [active long-term-support \(LTS\) or maintenance LTS version](https://nodejs.org/about/releases) of Node.js.
 
     Angular 需要[活动的长期支持（LTS）或维护 LTS 版本](https://nodejs.org/about/releases)的 Node.js。
@@ -95,6 +97,8 @@ For more information about the required software, see [Setting up the local envi
   * [nvm](https://github.com/nvm-sh/nvm#about)
 
   * [Yarn](https://yarnpkg.com/getting-started/install)
+
+    [纱](https://yarnpkg.com/getting-started/install)
 
   * [Homebrew](https://brew.sh) for macOS or [Chocolatey](https://chocolatey.org/install) for Windows
 
@@ -630,6 +634,8 @@ Perform these steps from a command-line tool on your local computer.
 1. From the documentation directory, run these commands to start the automated tests that verify the docs are consistent.
    These are most, but not all, of the tests that are performed after you open your pull request.
    Some tests can only be run in the automated testing environment.
+
+   在文档目录中，运行这些命令以启动验证文档是否一致的自动化测试。 这些是大多数（但不是全部）在您打开拉取请求后执行的测试。 有些测试只能在自动化测试环境中运行。
 
    <code-example format="shell" language="shell">
 

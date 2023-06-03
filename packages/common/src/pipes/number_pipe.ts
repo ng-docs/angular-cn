@@ -23,7 +23,6 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  * decimal point character, and other locale-specific configurations.
  *
  * 根据数字选项和区域设置规则格式化值。区域设置确定组的大小和分隔符、小数点字符和其他特定于区域设置的配置。
- *
  * @see `formatNumber()`
  * @usageNotes
  *
@@ -33,6 +32,8 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  *
  * The value's decimal representation is specified by the `digitsInfo`
  * parameter, written in the following format:<br>
+ *
+ * 值的十进制表示由 `digitsInfo` 参数指定，格式如下：
  *
  * ```
  * {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}
@@ -114,11 +115,16 @@ export class DecimalPipe implements PipeTransform {
    * @param value The value to be formatted.
    *
    * 要格式化的值。
-   *
    * @param digitsInfo Sets digit and decimal representation.
    * [See more](#digitsinfo).
+   *
+   * 设置数字和十进制表示。 [查看更多](#digitsinfo)。
+   *
    * @param locale Specifies what locale format rules to use.
    * [See more](#locale).
+   *
+   * 指定要使用的语言环境格式规则。 [查看更多](#locale)。
+   *
    */
   transform(value: number|string|null|undefined, digitsInfo?: string, locale?: string): string
       |null {
@@ -174,10 +180,11 @@ export class PercentPipe implements PipeTransform {
    * @param value The number to be formatted as a percentage.
    *
    * 要格式化为百分比的数字。
-   *
    * @param digitsInfo Decimal representation options, specified by a string
    * in the following format:<br>
    * <code>{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}</code>.
+   *
+   * 十进制表示选项，由以下格式的字符串指定：
    *
    * - `minIntegerDigits`: The minimum number of integer digits before the decimal point.
    *   Default is `1`.
@@ -199,7 +206,6 @@ export class PercentPipe implements PipeTransform {
    * See [Setting your app locale](guide/i18n-common-locale-id).
    *
    * 可选值。默认值为 `undefined`。
-   *
    */
   transform(value: number|string|null|undefined, digitsInfo?: string, locale?: string): string
       |null {
@@ -296,10 +302,11 @@ export class CurrencyPipe implements PipeTransform {
    * - Boolean \(marked deprecated in v5\): `true` for symbol and false for `code`.
    *
    *   布尔值（在 v5 中标记为已弃用）： symbol 为 `true` ，`code` 为 false 。
-   *
    * @param digitsInfo Decimal representation options, specified by a string
    * in the following format:<br>
    * <code>{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}</code>.
+   *
+   * 十进制表示选项，由以下格式的字符串指定：
    *
    * - `minIntegerDigits`: The minimum number of integer digits before the decimal point.
    *   Default is `1`.
@@ -318,6 +325,7 @@ export class CurrencyPipe implements PipeTransform {
    *   For example, the Canadian dollar has 2 digits, whereas the Chilean peso has none.
    *
    *   `maxFractionDigits` ：小数点后的最大位数。默认为 `2` 。如果未提供，则该数字将根据[ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)指定的内容使用适当的位数格式化。例如，加元有 2 位，而智利比索没有。
+   *
    * @param locale A locale code for the locale format rules to use.
    * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
    * See [Setting your app locale](guide/i18n-common-locale-id).
@@ -364,6 +372,8 @@ function isValue(value: number|string|null|undefined): value is number|string {
 
 /**
  * Transforms a string into a number \(if needed\).
+ *
+ * 将字符串转换为数字（如果需要）。
  *
  */
 function strToNumber(value: number|string): number {

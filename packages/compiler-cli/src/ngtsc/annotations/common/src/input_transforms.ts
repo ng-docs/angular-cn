@@ -11,7 +11,12 @@ import {outputAst} from '@angular/compiler';
 import {ClassPropertyMapping, InputMapping} from '../../../metadata';
 import {CompileResult} from '../../../transform';
 
-/** Generates additional fields to be added to a class that has inputs with transform functions. */
+/**
+ * Generates additional fields to be added to a class that has inputs with transform functions.
+ *
+ * 生成要添加到具有带有转换函数的输入的类的附加字段。
+ *
+ */
 export function compileInputTransformFields(inputs: ClassPropertyMapping<InputMapping>):
     CompileResult[] {
   const extraFields: CompileResult[] = [];

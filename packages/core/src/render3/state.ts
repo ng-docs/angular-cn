@@ -273,6 +273,8 @@ interface InstructionState {
   /**
    * Stores the root TNode that has the 'ngSkipHydration' attribute on it for later reference.
    *
+   * 存储其上具有“ngSkipHydration”属性的根 TNode 以供以后参考。
+   *
    * Example:
    *
    * 范例：
@@ -343,7 +345,15 @@ export function getBindingsEnabled(): boolean {
 
 /**
  * Returns true if currently inside a skip hydration block.
- * @returns boolean
+ *
+ * 如果当前在 skip hydration 块中，则返回 true。
+ *
+ * @returns
+ *
+ * boolean
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  */
 export function isInSkipHydrationBlock(): boolean {
   return instructionState.skipHydrationRootTNode !== null;
@@ -351,11 +361,18 @@ export function isInSkipHydrationBlock(): boolean {
 
 /**
  * Returns true if this is the root TNode of the skip hydration block.
+ *
+ * 如果这是 skip hydration 块的根 TNode，则返回 true。
+ *
  * @param tNode the current TNode
  *
  * 当前 TNode
+ * @returns
  *
- * @returns boolean
+ * boolean
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  */
 export function isSkipHydrationRootTNode(tNode: TNode): boolean {
   return instructionState.skipHydrationRootTNode === tNode;
@@ -391,10 +408,12 @@ export function ɵɵenableBindings(): void {
 
 /**
  * Sets a flag to specify that the TNode is in a skip hydration block.
+ *
+ * 设置一个标志以指定 TNode 处于跳过水合块中。
+ *
  * @param tNode the current TNode
  *
  * 当前 TNode
- *
  */
 export function enterSkipHydrationBlock(tNode: TNode): void {
   instructionState.skipHydrationRootTNode = tNode;
@@ -430,6 +449,9 @@ export function ɵɵdisableBindings(): void {
 
 /**
  * Clears the root skip hydration node when leaving a skip hydration block.
+ *
+ * 离开 skip hydration 块时清除 root skip hydration 节点。
+ *
  */
 export function leaveSkipHydrationBlock(): void {
   instructionState.skipHydrationRootTNode = null;
@@ -1052,6 +1074,9 @@ let _wasLastNodeCreated = true;
 /**
  * Retrieves a global flag that indicates whether the most recent DOM node
  * was created or hydrated.
+ *
+ * 检索一个全局标志，该标志指示最近的 DOM 节点是创建的还是水合的。
+ *
  */
 export function wasLastNodeCreated(): boolean {
   return _wasLastNodeCreated;
@@ -1060,6 +1085,9 @@ export function wasLastNodeCreated(): boolean {
 /**
  * Sets a global flag to indicate whether the most recent DOM node
  * was created or hydrated.
+ *
+ * 设置一个全局标志以指示最近的 DOM 节点是创建的还是水合的。
+ *
  */
 export function lastNodeWasCreated(flag: boolean): void {
   _wasLastNodeCreated = flag;

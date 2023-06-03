@@ -330,6 +330,9 @@ export class DebugElement extends DebugNode {
    * 注意：此对象的值将始终为 `true` 。如果元素上不存在，则类键将不会出现在 KV 对象中。
    *
    * @see [Element.className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)
+   *
+   * [元素类名](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)
+   *
    */
   get classes(): {[key: string]: boolean} {
     const result: {[key: string]: boolean} = {};

@@ -74,35 +74,63 @@ These steps are performed in your web browser.
 
 1. **The commit message follows our guidelines**
 
+   **提交信息遵循我们的指南**
+
    Mark this comment when you're sure your commit messages are in the correct format.
    Remember that the commit messages and the pull request title are different.
    For more information about commit message formatting, see [Preparing a documentation update for a pull request](guide/doc-pr-prep) and [Commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit).
 
+   当您确定提交消息的格式正确时，请标记此评论。 请记住，提交消息和拉取请求标题是不同的。 有关提交消息格式的更多信息，请参阅[为拉取请求准备文档更新](guide/doc-pr-prep)和[提交消息格式](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit)。
+
 1. **Docs have been added / updated \(for bug fixes / features\)**
+
+   **文档已添加/更新（用于错误修复/功能）**
 
    Mark this comment to show that documentation has been updated.
 
+   标记此评论以表明文档已更新。
+
 1. **Documentation content changes**
+
+   **文档内容变更**
 
    Mark this comment to identify this is a documentation pull request.
    If you also updated other types of content, you can mark those as well.
 
+   标记此评论以标识这是文档拉取请求。 如果您还更新了其他类型的内容，您也可以标记这些内容。
+
 1. **What is the current behavior?**
+
+   **目前的行为是什么？**
 
    Briefly describe what wasn't working or what was incorrect in the documentation before you made the changes in this pull request.
    Add the issue number here, if the problem is described in an issue.
 
+   在您在此拉取请求中进行更改之前，简要描述文档中的哪些内容不起作用或不正确。 如果问题在问题中有所描述，请在此处添加问题编号。
+
 1. **What is the new behavior?**
+
+   **什么是新行为？**
 
    Briefly describe what was added to fix the problem.
 
+   简要描述为解决问题而添加的内容。
+
 1. **Does this PR introduce a breaking change?**
+
+   **此 PR 是否引入了重大更改？**
 
    For most documentation updates, the answer to this should be `No`.
 
+   对于大多数文档更新，答案应该是 `No` 。
+
 1. **Other information**
 
+   **其他信息**
+
    Add any other information that can help reviewers understand your pull request here.
+
+   在此处添加可以帮助审阅者理解您的拉取请求的任何其他信息。
 
 <!-- vale Angular.Google_We = YES -->
 

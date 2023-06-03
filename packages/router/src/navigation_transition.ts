@@ -367,6 +367,9 @@ export interface NavigationTransition {
  * Router. This interface should be whittled down with future refactors. For example, we do not need
  * to get `UrlSerializer` from the Router. We can instead inject it in `NavigationTransitions`
  * directly.
+ *
+ * 转换所需的来自路由器的接口。 用于避免对路由器的循环依赖。 这个接口应该在未来的重构中被削减。 例如，我们不需要从 Router 获取 `UrlSerializer` 。 我们可以直接将它注入 `NavigationTransitions` 。
+ *
  */
 interface InternalRouterInterface {
   browserUrlTree: UrlTree;
@@ -409,6 +412,8 @@ export class NavigationTransitions {
   /**
    * Hook that enables you to pause navigation after the preactivation phase.
    * Used by `RouterModule`.
+   *
+   * 使您能够在预激活阶段后暂停导航的挂钩。 由 `RouterModule` 使用。
    *
    * @internal
    */

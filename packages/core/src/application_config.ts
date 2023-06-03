@@ -28,8 +28,17 @@ export interface ApplicationConfig {
 /**
  * Merge multiple application configurations from left to right.
  *
+ * 从左到右合并多个应用程序配置。
+ *
  * @param configs Two or more configurations to be merged.
- * @returns A merged [ApplicationConfig](api/core/ApplicationConfig).
+ *
+ * 要合并的两个或多个配置。
+ *
+ * @returns
+ *
+ * A merged [ApplicationConfig](api/core/ApplicationConfig).
+ *
+ * 合并的[ApplicationConfig](api/core/ApplicationConfig) 。
  *
  * @publicApi
  */

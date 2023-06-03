@@ -185,6 +185,8 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * }
  *
+ * 韩国人【模糊翻译】
+ *
  * export interface TInjector extends Array<any> {
  *
  * 导出接口 TInjector 扩展了 Array<any>{
@@ -244,6 +246,8 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  * [TNODE]: TElementNode|TElementContainerNode|TContainerNode;
  *
  *  }
+ *
+ * 韩国人【模糊翻译】
  *
  */
 

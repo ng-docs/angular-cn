@@ -98,7 +98,11 @@ import {getTView} from '../state';
  *
  * The Order of instruction execution is:
  *
+ * 指令执行顺序为：
+ *
  * NOTE: the comment binding location is for illustrative purposes only.
+ *
+ * 注意：注释绑定位置仅用于说明目的。
  *
  * ```
  * // Template: (ExampleComponent)
@@ -117,6 +121,8 @@ import {getTView} from '../state';
  *
  * The correct priority order of concatenation is:
  *
+ * 正确的串联优先顺序是：
+ *
  * ```
  * // MyComponent
  *     ɵɵstyleMap({color: '#003'});   // Binding index: 20
@@ -134,45 +140,67 @@ import {getTView} from '../state';
  *
  * What color should be rendered?
  *
+ * 应该渲染什么颜色？
+ *
  * Once the items are correctly sorted in the list, the answer is simply the last item in the
  * concatenation list which is `#002`.
+ *
+ * 一旦项目在列表中正确排序，答案就是串联列表中的最后一项，即 `#002` 。
  *
  * To do so we keep a linked list of all of the bindings which pertain to this element.
  * Notice that the bindings are inserted in the order of execution, but the `TView.data` allows
  * us to traverse them in the order of priority.
  *
- * | Idx | `TView.data` | `LView`           | Notes                                  |
- * | --- | ------------ | ----------------- | -------------------------------------- |
- * | Idx | `TView.data` | `LView`           | 说明                                   |
- * | ... |              |                   |                                        |
- * | 10  | `null`       | `{color: '#001'}` | `ɵɵstyleMap('color', {color: '#001'})` |
- * | 11  | `30 | 12`    | ...               |                                        |
- * | 12  | `color`      | `'#002'`          | `ɵɵstyleProp('color', '#002')`         |
- * | 13  | `10 | 0`     | ...               |                                        |
- * | ... |              |                   |                                        |
- * | 20  | `null`       | `{color: '#003'}` | `ɵɵstyleMap('color', {color: '#003'})` |
- * | 21  | `0 | 22`     | ...               |                                        |
- * | 22  | `color`      | `'#004'`          | `ɵɵstyleProp('color', '#004')`         |
- * | 23  | `20 | 24`    | ...               |                                        |
- * | 24  | `null`       | `{color: '#005'}` | `ɵɵstyleMap('color', {color: '#005'})` |
- * | 25  | `22 | 26`    | ...               |                                        |
- * | 26  | `color`      | `'#006'`          | `ɵɵstyleProp('color', '#006')`         |
- * | 27  | `24 | 28`    | ...               |                                        |
- * | 28  | `null`       | `{color: '#007'}` | `ɵɵstyleMap('color', {color: '#007'})` |
- * | 29  | `26 | 30`    | ...               |                                        |
- * | 30  | `color`      | `'#008'`          | `ɵɵstyleProp('color', '#008')`         |
- * | 31  | `28 | 10`    | ...               |                                        |
+ * 为此，我们保留了与此元素相关的所有绑定的链接列表。 请注意，绑定是按执行顺序插入的，但 `TView.data` 允许我们按优先级顺序遍历它们。
+ *
+ * | Idx                | `TView.data` | `LView`            | Notes                                  |
+ * | ------------------ | ------------ | ------------------ | -------------------------------------- |
+ * | Idx                | `TView.data` | `LView`            | 说明                                   |
+ * | ...                |              |                    |                                        |
+ * | 韩国人【模糊翻译】 |              |                    |                                        |
+ * | 10                 | `null`       | `{color: '#001'}`  | `ɵɵstyleMap('color', {color: '#001'})` |
+ * | 11                 | `30 | 12`    | ...                |                                        |
+ * | 11                 | `30 | 12`    | 韩国人【模糊翻译】 |                                        |
+ * | 12                 | `color`      | `'#002'`           | `ɵɵstyleProp('color', '#002')`         |
+ * | 13                 | `10 | 0`     | ...                |                                        |
+ * | 13                 | `10 | 0`     | 韩国人【模糊翻译】 |                                        |
+ * | ...                |              |                    |                                        |
+ * | 韩国人【模糊翻译】 |              |                    |                                        |
+ * | 20                 | `null`       | `{color: '#003'}`  | `ɵɵstyleMap('color', {color: '#003'})` |
+ * | 21                 | `0 | 22`     | ...                |                                        |
+ * | 21                 | `0 | 22`     | 韩国人【模糊翻译】 |                                        |
+ * | 22                 | `color`      | `'#004'`           | `ɵɵstyleProp('color', '#004')`         |
+ * | 23                 | `20 | 24`    | ...                |                                        |
+ * | 23                 | `20 | 24`    | 韩国人【模糊翻译】 |                                        |
+ * | 24                 | `null`       | `{color: '#005'}`  | `ɵɵstyleMap('color', {color: '#005'})` |
+ * | 25                 | `22 | 26`    | ...                |                                        |
+ * | 25                 | `22 | 26`    | 韩国人【模糊翻译】 |                                        |
+ * | 26                 | `color`      | `'#006'`           | `ɵɵstyleProp('color', '#006')`         |
+ * | 27                 | `24 | 28`    | ...                |                                        |
+ * | 27                 | `24 | 28`    | 韩国人【模糊翻译】 |                                        |
+ * | 28                 | `null`       | `{color: '#007'}`  | `ɵɵstyleMap('color', {color: '#007'})` |
+ * | 29                 | `26 | 30`    | ...                |                                        |
+ * | 29                 | `26 | 30`    | 韩国人【模糊翻译】 |                                        |
+ * | 30                 | `color`      | `'#008'`           | `ɵɵstyleProp('color', '#008')`         |
+ * | 31                 | `28 | 10`    | ...                |                                        |
+ * | 31                 | `28 | 10`    | 韩国人【模糊翻译】 |                                        |
  *
  * The above data structure allows us to re-concatenate the styling no matter which data binding
  * changes.
+ *
+ * 上面的数据结构允许我们重新连接样式，无论哪个数据绑定发生变化。
  *
  * NOTE: in addition to keeping track of next/previous index the `TView.data` also stores prev/next
  * duplicate bit. The duplicate bit if true says there either is a binding with the same name or
  * there is a map \(which may contain the name\). This information is useful in knowing if other
  * styles with higher priority need to be searched for overwrites.
  *
+ * 注意：除了跟踪下一个/上一个索引之外， `TView.data` 还存储上一个/下一个重复位。 如果为真，则重复位表示存在具有相同名称的绑定或存在映射（可能包含名称）。 此信息有助于了解是否需要搜索具有更高优先级的其他样式以进行覆盖。
+ *
  * NOTE: See `should support example in 'tnode_linked_list.ts' documentation` in
  * `tnode_linked_list_spec.ts` for working example.
+ *
+ * 注意：有关工作示例，请参阅 `tnode_linked_list_spec.ts` `should support example in 'tnode_linked_list.ts' documentation` 。
  *
  */
 let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefined;

@@ -20,7 +20,12 @@ export interface ImportManagerUpdateRecorder {
   updateExistingImport(namedBindings: ts.NamedImports, newNamedBindings: string): void;
 }
 
-/** Possible types of quotes for imports. */
+/**
+ * Possible types of quotes for imports.
+ *
+ * 可能的进口报价类型。
+ *
+ */
 const enum QuoteStyle {
   Single,
   Double,

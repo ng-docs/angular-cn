@@ -93,6 +93,8 @@ The `check` property causes the tool to enforce a minimum of 80% code coverage w
 
 Read more on coverage configuration options in the [karma coverage documentation](https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md).
 
+在[业力覆盖文档](https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md)中阅读有关覆盖配置选项的更多信息。
+
 <!-- links -->
 
 <!-- external links -->

@@ -13,13 +13,21 @@ import {isLocalize, TranslatePluginOptions} from '../../source_file_utils';
  * This Babel plugin will replace the following code forms with a string literal containing the
  * given `locale`.
  *
+ * 这个 Babel 插件将用包含给定 `locale` 字符串文字替换以下代码形式。
+ *
  * * `$localize.locale`                                            -> `"locale"`
  * * `typeof $localize !== "undefined" && $localize.locale`        -> `"locale"`
  * * `xxx && typeof $localize !== "undefined" && $localize.locale` -> `"xxx && locale"`
  * * `$localize.locale || default`                                 -> `"locale" || default`
  *
  * @param locale The name of the locale to inline into the code.
+ *
+ * 要内联到代码中的语言环境的名称。
+ *
  * @param options Additional options including the name of the `$localize` function.
+ *
+ * 其他选项包括 `$localize` 函数的名称。
+ *
  * @publicApi used by CLI
  */
 export function makeLocalePlugin(
@@ -67,6 +75,8 @@ export function makeLocalePlugin(
 /**
  * Returns true if the expression one of:
  *
+ * 如果表达式是以下之一，则返回 true：
+ *
  * * `typeof $localize !== "undefined"`
  * * `"undefined" !== typeof $localize`
  * * `typeof $localize != "undefined"`
@@ -75,8 +85,10 @@ export function makeLocalePlugin(
  * @param expression the expression to check
  *
  * 要检查的表达式
- *
  * @param localizeName the name of the `$localize` symbol
+ *
+ * `$localize` 符号的名称
+ *
  */
 function isLocalizeGuard(expression: NodePath, localizeName: string): boolean {
   if (!expression.isBinaryExpression() ||

@@ -285,29 +285,28 @@ interface ParameterDecorationInfo {
 /**
  * Gets a transformer for downleveling Angular constructor parameter and property decorators.
  *
+ * 获取用于降低 Angular 构造函数参数和属性装饰器级别的转换器。
+ *
  * Note that Angular class decorators are never processed as those rely on side effects that
  * would otherwise no longer be executed. i.e. the creation of a component definition.
+ *
+ * 请注意，Angular 类装饰器永远不会被处理，因为它们依赖于否则将不再执行的副作用。 即创建组件定义。
  *
  * @param typeChecker Reference to the program's type checker.
  *
  * 对程序的类型检查器的引用。
- *
  * @param host Reflection host that is used for determining decorators.
  *
  * 用于确定装饰器的反射宿主。
- *
  * @param diagnostics List which will be populated with diagnostics if any.
  *
  * 如果有，将使用诊断信息填充的列表。
- *
  * @param isCore Whether the current TypeScript program is for the `@angular/core` package.
  *
  * 当前的 TypeScript 程序是否用于 `@angular/core` 包。
- *
  * @param isClosureCompilerEnabled Whether closure annotations need to be added where needed.
  *
  * 是否需要在需要的地方添加闭包注解。
- *
  */
 export function getDownlevelDecoratorsTransform(
     typeChecker: ts.TypeChecker, host: ReflectionHost, diagnostics: ts.Diagnostic[],

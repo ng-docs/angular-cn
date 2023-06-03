@@ -32,6 +32,8 @@
  *   }\);
  * }\);
  *
+ * 韩国人【模糊翻译】
+ *
  */
 Zone.__load_patch('promisefortest', (global: any, Zone: ZoneType, api: _ZonePrivate) => {
   const symbolState: string = api.symbol('state');

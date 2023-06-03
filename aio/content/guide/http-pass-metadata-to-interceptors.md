@@ -1,5 +1,7 @@
 # HTTP - Pass metadata to interceptors
 
+# HTTP - 将元数据传递给拦截器
+
 Many interceptors require or benefit from configuration.
 Consider an interceptor that retries failed requests.
 By default, the interceptor might retry a request three times, but you might want to override this retry count for particularly error-prone or sensitive requests.
@@ -13,6 +15,8 @@ This lets applications or other interceptors tag requests with configuration par
 `HttpClient` 请求包含一个*上下文*，该上下文可以携带有关请求的元数据。该上下文可供拦截器读取或修改，尽管发送请求时它并不会传输到后端服务器。这允许应用程序或其他拦截器使用配置参数来标记这些请求，比如重试请求的次数。
 
 ## Create a context token
+
+## 创建上下文标记
 
 Angular stores and retrieves a value in the context using an `HttpContextToken`.
 You can create a context token using the `new` operator, as in the following example:
@@ -39,6 +43,8 @@ The lambda function `() => 3` passed during the creation of the `HttpContextToke
 
 ## Set context values when making a request
 
+## 发出请求时设置上下文值
+
 When making a request, you can provide an `HttpContext` instance, in which you have already set the context values.
 
 发出请求时，你可以提供一个 `HttpContext` 实例，在该实例中你已经设置了一些上下文值。
@@ -46,6 +52,8 @@ When making a request, you can provide an `HttpContext` instance, in which you h
 <code-example header="setting context values" path="http/src/app/http-interceptors/retry-interceptor.ts" region="set-context"></code-example>
 
 ## Read context values in an interceptor
+
+## 在拦截器中读取上下文值
 
 Within an interceptor, you can read the value of a token in a given request's context with `HttpContext.get()`.
 If you have not explicitly set a value for the token, Angular returns the default value specified in the token.

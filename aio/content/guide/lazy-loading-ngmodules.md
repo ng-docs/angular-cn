@@ -373,7 +373,11 @@ Preloading modules and standalone components improves UX by loading parts of you
 
 To enable preloading of all lazy loaded modules and standalone components, import the `PreloadAllModules` token from the Angular `router`.
 
+要启用所有延迟加载模块和独立组件的预加载，请从 Angular `router` 导入 `PreloadAllModules` 令牌。
+
 ### Module based application
+
+### 基于模块的应用程序
 
 要启用所有惰性加载模块的预加载，请从 Angular 的 `router` 导入 `PreloadAllModules` 令牌。
 
@@ -400,7 +404,11 @@ RouterModule.forRoot(
 
 ### Standalone application
 
+### 独立应用
+
 For standalone applications configure preloading strategies by adding `withPreloading` to  `provideRouter`s RouterFeatures in `app.config.ts`
+
+对于独立应用程序，通过添加 `withPreloading` 来配置预加载策略以在 `app.config.ts` 中 `provideRouter` Router 的 RouterFeatures
 
 <code-example header="`app.config.ts`">
 

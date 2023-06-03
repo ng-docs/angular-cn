@@ -183,11 +183,12 @@ export function tryUnwrapForwardRef(node: ts.Expression, reflector: ReflectionHo
 /**
  * A foreign function resolver for `staticallyResolve` which unwraps `forwardRef()` expressions.
  *
+ * `staticallyResolve` 的外部函数解析器，它解包 `forwardRef()` 表达式。
+ *
  * @param ref a Reference to the declaration of the function being called \(which might be
  * forwardRef\)
  *
  * 对被调用函数声明的引用（可能是 forwardRef）
- *
  * @param args the arguments to the invocation of the forwardRef expression
  *
  * 调用 forwardRef 表达式的参数

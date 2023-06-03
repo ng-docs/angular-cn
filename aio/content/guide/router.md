@@ -179,6 +179,8 @@ To get information from a route:
 
 1. Add the `withComponentInputBinding` feature to the `provideRouter` method.
 
+   将 `withComponentInputBinding` 功能添加到 `provideRouter` 方法。
+
    <code-example header="provideRouter feature" path="router/src/app/app-routing.module.11.ts" region="withComponentInputBinding"></code-example>
 
 1. Update the component to have an `Input` matching the name of the parameter.

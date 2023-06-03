@@ -468,15 +468,23 @@ A separate standalone injector is created to ensure that providers imported by a
 
 #### Resolve circular dependencies with a forward class reference
 
+#### 使用前向类引用解决循环依赖
+
 The order of class declaration matters in TypeScript. You can't refer directly to a class until it's been defined.
 
 在 TypeScript 里面，类声明的顺序是很重要的。如果一个类尚未定义，就不能引用它。
 
 This isn't usually a problem but sometimes circular references are unavoidable. For example, when class 'A' refers to class 'B' and 'B' refers to 'A'. One of them has to be defined first.
 
+这通常不是问题，但有时循环引用是不可避免的。 例如，当类“A”引用类“B”而“B”引用“A”时。 其中之一必须首先定义。
+
 The Angular `forwardRef()` function creates an indirect reference that Angular can resolve later. 
 
+Angular 的 `forwardRef()` 函数创建了一个 Angular 稍后可以解析的间接引用。
+
 For example, this situation happens when a standalone parent component imports a standalone child component and vice-versa. You can resolve this circular dependency issue by using the `forwardRef` function.
+
+例如，当独立父组件导入独立子组件时会发生这种情况，反之亦然。 您可以使用 `forwardRef` 函数解决此循环依赖问题。
 
 ```ts
 @Component({

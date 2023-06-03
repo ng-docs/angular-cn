@@ -128,6 +128,8 @@ let _locateOrCreateContainerAnchor = createContainerAnchorImpl;
 /**
  * Regular creation mode for LContainers and their anchor \(comment\) nodes.
  *
+ * LContainers 及其锚点（注释）节点的常规创建模式。
+ *
  */
 function createContainerAnchorImpl(
     tView: TView, lView: LView, tNode: TNode, index: number): RComment {
@@ -139,6 +141,8 @@ function createContainerAnchorImpl(
  * Enables hydration code path \(to lookup existing elements in DOM\)
  * in addition to the regular creation mode for LContainers and their
  * anchor \(comment\) nodes.
+ *
+ * 除了 LContainers 及其锚点（注释）节点的常规创建模式之外，还启用水合代码路径（以查找 DOM 中的现有元素）。
  *
  */
 function locateOrCreateContainerAnchorImpl(

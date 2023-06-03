@@ -173,11 +173,17 @@ export interface R3DirectiveMetadata {
 
   /**
    * Whether or not the component or directive is signal-based.
+   *
+   * 组件或指令是否基于信号。
+   *
    */
   isSignal: boolean;
 
   /**
    * Additional directives applied to the directive host.
+   *
+   * 应用于指令主机的附加指令。
+   *
    */
   hostDirectives: R3HostDirectiveMetadata[]|null;
 }
@@ -374,6 +380,9 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
 
 /**
  * Metadata for an individual input on a directive.
+ *
+ * 指令中单个输入的元数据。
+ *
  */
 export interface R3InputMetadata {
   classPropertyName: string;
@@ -600,17 +609,40 @@ export interface R3HostMetadata {
 
 /**
  * Information needed to compile a host directive for the render3 runtime.
+ *
+ * 为 render3 运行时编译主机指令所需的信息。
+ *
  */
 export interface R3HostDirectiveMetadata {
-  /** An expression representing the host directive class itself. */
+  /**
+   * An expression representing the host directive class itself.
+   *
+   * 表示主机指令类本身的表达式。
+   *
+   */
   directive: R3Reference;
 
-  /** Whether the expression referring to the host directive is a forward reference. */
+  /**
+   * Whether the expression referring to the host directive is a forward reference.
+   *
+   * 引用主机指令的表达式是否为前向引用。
+   *
+   */
   isForwardReference: boolean;
 
-  /** Inputs from the host directive that will be exposed on the host. */
+  /**
+   * Inputs from the host directive that will be exposed on the host.
+   *
+   * 来自将在主机上公开的主机指令的输入。
+   *
+   */
   inputs: {[publicName: string]: string}|null;
 
-  /** Outputs from the host directive that will be exposed on the host. */
+  /**
+   * Outputs from the host directive that will be exposed on the host.
+   *
+   * 将在主机上公开的主机指令的输出。
+   *
+   */
   outputs: {[publicName: string]: string}|null;
 }

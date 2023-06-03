@@ -190,8 +190,11 @@ Approximate dates are offered as general guidance and are subject to change.
 | :------ | :----------------- |
 | 版本    | 日期               |
 | v16.1   | Week of 2023-06-12 |
+| v16.1   | 2023-06-12 周      |
 | v16.2   | Week of 2023-07-24 |
+| v16.2   | 2023-07-24 周      |
 | v17.0   | Week of 2023-11-06 |
+| v17.0   | 2023-11-06 周      |
 
 ### Support window
 

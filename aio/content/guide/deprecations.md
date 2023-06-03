@@ -102,12 +102,15 @@ v16 - v19
 | :---------------------- | :--------------------------------------------------------------------------------------------------------- | :------------ | :---------------- |
 | 特性区                  | API 或特性                                                                                                 | 已弃用于      | 可能会移除于      |
 | `@angular/compiler-cli` | [Input setter coercion](#input-setter-coercion)                                                            | v13           | v15               |
+| `@angular/compiler-cli` | [输入设置器强制](#input-setter-coercion)                                                                   | v13           | v15               |
 | `@angular/compiler-cli` | [`fullTemplateTypeCheck`](#full-template-type-check)                                                       | v13           | v15               |
 | `@angular/core`         | [Factory-based signature of `ApplicationRef.bootstrap`](#core)                                             | v13           | v15               |
+| `@angular/core`         | [`ApplicationRef.bootstrap` 的基于工厂的签名](#core)                                                        | v13           | v15               |
 | `@angular/core`         | [`PlatformRef.bootstrapModuleFactory`](#core)                                                              | v13           | v15               |
 | `@angular/core`         | [Factory-based signature of `ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) | v13           | v15               |
 | `@angular/core`         | [`ViewContainerRef.createComponent` 的基于工厂的签名](api/core/ViewContainerRef#createComponent)           | v13           | v15               |
 | `@angular/upgrade`      | [Factory-based signature of `downgradeModule`](#upgrade-static)                                            | v13           | v15               |
+| `@angular/upgrade`      | [`downgradeModule` 的基于工厂的签名](#upgrade-static)                                                       | v13           | v15               |
 | template syntax         | [`bind-`, `on-`, `bindon-`, and `ref-`](#bind-syntax)                                                      | v13           | v15               |
 | 模板语法                | [`bind-`, `on-`, `bindon-`, and `ref-`](#bind-syntax)                                                      | v13           | v15               |
 
@@ -119,6 +122,7 @@ v16 - v19
 | :---------------------------------- | :-------------------------------------------------------------------------------------- | :------------ | :---------------- |
 | 特性区                              | API 或特性                                                                              | 已弃用于      | 可能会移除于      |
 | `@angular/common/http/testing`      | [`TestRequest` accepting `ErrorEvent` for error simulation](#testrequest-errorevent)    | v13           | v16               |
+| `@angular/common/http/testing`      | [`TestRequest` 接受 `ErrorEvent` 进行错误模拟](#testrequest-errorevent)                    | v13           | v16               |
 | `@angular/core`                     | [`getModuleFactory`](#core)                                                             | v13           | v16               |
 | `@angular/core`                     | [`ModuleWithComponentFactories`](#core)                                                 | v13           | v16               |
 | `@angular/core`                     | [`Compiler`](#core)                                                                     | v13           | v16               |
@@ -146,21 +150,30 @@ v16 - v19
 | `@angular/core`   | 用于 [`providedIn`](#core) 中的 NgModule 和 `'any'` 选项                                    | v15           | v17               |
 | `@angular/core`   | [`@Component.moduleId`](api/core/Component#moduleId)                                        | v16           | v17               |
 | `@angular/router` | [`RouterLinkWithHref` directive](#router)                                                   | v15           | v17               |
+| `@angular/router` | [`RouterLinkWithHref` 指令](#router)                                                         | v15           | v17               |
 | `@angular/router` | [Router writeable properties](#router-writable-properties)                                  | v15.1         | v17               |
+| `@angular/router` | [路由器可写属性](#router-writable-properties)                                               | v15.1         | v17               |
 | `@angular/router` | [Router CanLoad guards](#router-can-load)                                                   | v15.1         | v17               |
+| `@angular/router` | [路由器 CanLoad 守卫](#router-can-load)                                                     | v15.1         | v17               |
 | `@angular/router` | [class and `InjectionToken` guards and resolvers](#router-class-and-injection-token-guards) | v15.2         | v17               |
+| `@angular/router` | [类和 `InjectionToken` 守卫和解析器](#router-class-and-injection-token-guards)                | v15.2         | v17               |
 
 ### Deprecated features that can be removed in v18 or later
+
+### 可以在 v18 或更高版本中删除的弃用功能
 
 | Area                        | API or Feature                                                                                                    | Deprecated in | May be removed in |
 | :-------------------------- | :---------------------------------------------------------------------------------------------------------------- | :------------ | :---------------- |
 | 特性区                      | API 或特性                                                                                                        | 已弃用于      | 可能会移除于      |
 | `@angular/common`           | `isPlatformWorkerApp` and `isPlatformWorkerUi`                                                                    | v16           | v18               |
+| `@angular/common`           | `isPlatformWorkerApp` 和 `isPlatformWorkerUi`                                                                       | v16           | v18               |
 | `@angular/core`             | `EnvironmentInjector.runInContext`                                                                                | v16           | v18               |
 | `@angular/platform-server`  | [`PlatformConfig.baseUrl` and `PlatformConfig.useAbsoluteUrl` config options](api/platform-server/PlatformConfig) | v16           | v18               |
+| `@angular/platform-server`  | [`PlatformConfig.baseUrl` 和 `PlatformConfig.useAbsoluteUrl` 配置选项](api/platform-server/PlatformConfig)           | v16           | v18               |
 | `@angular/platform-server`  | [`platformDynamicServer`](api/platform-server/platformDynamicServer)                                              | v16           | v18               |
 | `@angular/platform-browser` | [`BrowserModule.withServerTransition`](api/platform-browser/BrowserModule#withservertransition)                   | v16           | v18               |
 | `@angular/platform-browser` | [`makeStateKey`, `StateKey` and `TransferState`](#platform-browser), symbols were moved to `@angular/core`        | v16           | v18               |
+| `@angular/platform-browser` | [`makeStateKey` ， `StateKey` 和 `TransferState`](#platform-browser) ，符号被移动到 `@angular/core`                  | v16           | v18               |
 
 ### Deprecated features with no planned removal version
 
@@ -195,6 +208,8 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/common
 
+### &commat;角/普通
+
 | API                                                                                  | Replacement                                                             | Deprecation announced | Details                                                                                                                                   |
 | :----------------------------------------------------------------------------------- | :---------------------------------------------------------------------- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
 | API                                                                                  | 替代品                                                                  | 已宣布弃用            | 详情                                                                                                                                      |
@@ -203,10 +218,13 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 | [`DatePipe` - `DATE_PIPE_DEFAULT_TIMEZONE`](api/common/DATE_PIPE_DEFAULT_TIMEZONE)   | `{ provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { timezone: '-1200' }` | v15                   | Use the `DATE_PIPE_DEFAULT_OPTIONS` injection token, which can configure multiple settings at once instead.                               |
 | [`DatePipe` - `DATE_PIPE_DEFAULT_TIMEZONE`](api/common/DATE_PIPE_DEFAULT_TIMEZONE)   | `{ provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { timezone: '-1200' }` | v15                   | 使用 `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌，它可以改为一次配置多个设置。                                                                   |
 | `isPlatformWorkerApp` and `isPlatformWorkerUi`                                       | None                                                                    | v16                   | These two functions have no purpose since the removal of the webworker platform \(they only return `false`\). They can be safely removed. |
+| `isPlatformWorkerApp` 和 `isPlatformWorkerUi`                                          | 没了【模糊翻译】                                                        | v16                   | 这两个函数在移除 webworker 平台后就没有用了（它们只返回 `false` ）。 它们可以安全地移除。                                                  |
 
 <a id="core"></a>
 
 ### &commat;angular/core
+
+### &commat;角/核心
 
 | API                                                                                                        | Replacement                                                                                                                                                 | Deprecation announced | Details                                                                                                                                                                                                                                                           |     |
 | :--------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
@@ -250,12 +268,15 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 | [`providedIn: 'any'`](api/core/Injectable#providedIn)                                                      | none                                                                                                                                                        | v15                   | This option has confusing semantics and nearly zero usage.                                                                                                                                                                                                        |     |
 | [`providedIn: 'any'`](api/core/Injectable#providedIn)                                                      | 没了                                                                                                                                                        | v15                   | 该选项具有容易混淆的语义，并且几乎没人用过。                                                                                                                                                                                                                      |     |
 | [`EnvironmentInjector.runInContext`](api/core/EnvironmentInjector#runInContext)                            | `runInInjectionContext`                                                                                                                                     | v16                   | `runInInjectionContext` is a more flexible operation which supports element injectors as well                                                                                                                                                                     |     |
+| [`EnvironmentInjector.runInContext`](api/core/EnvironmentInjector#runInContext)                            | `runInInjectionContext`                                                                                                                                     | v16                   | `runInInjectionContext` 是一种更灵活的操作，它也支持元素注入器                                                                                                                                                                                                     |     |
 | [`@Component.moduleId`](api/core/Component#moduleId)                                                       | none                                                                                                                                                        | v16                   |                                                                                                                                                                                                                                                                   |     |
 | [`@Component.moduleId`](api/core/Component#moduleId)                                                       | 没了                                                                                                                                                        | v16                   |                                                                                                                                                                                                                                                                   |     |
 
 <a id="testing"></a>
 
 ### &commat;angular/core/testing
+
+### &commat;角/核心/测试
 
 | API                                           | Replacement                                         | Deprecation announced | Details                                       |
 | :-------------------------------------------- | :-------------------------------------------------- | :-------------------- | :-------------------------------------------- |
@@ -269,6 +290,8 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/router
 
+### &commat;角/路由器
+
 | API                                                                           | Replacement                                    | Deprecation announced | Details                                                                                                                                                             |
 | :---------------------------------------------------------------------------- | :--------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | API                                                                           | 替代品                                         | 已宣布弃用            | 详情                                                                                                                                                                |
@@ -277,21 +300,29 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 | [`provideRoutes` function](api/router/provideRoutes)                          | Use `ROUTES` `InjectionToken` instead.         | v15                   | The `provideRoutes` helper function is minimally useful and can be unintentionally used instead of `provideRouter` due to similar spelling.                         |
 | [`provideRoutes` 函数](api/router/provideRoutes)                              | 改用 `ROUTES` `InjectionToken` 。              | v15                   | `provideRoutes` 这个帮助器函数的用处很小，由于和 `provideRouter` 拼写相似，可能会无意间用错。                                                                       |
 | [`setupTestingRouter` function](api/router/testing/setupTestingRouter)        | Use `provideRouter` or `RouterModule` instead. | v15.1                 | The `setupTestingRouter` function is not necessary. The `Router` is initialized based on the DI configuration in tests as it would be in production.                |
+| [`setupTestingRouter` 函数](api/router/testing/setupTestingRouter)             | 请改用 `provideRouter` 或 `RouterModule` 。       | v15.1                 | `setupTestingRouter` 函数不是必需的。 `Router` 根据测试中的 DI 配置进行初始化，就像在生产中一样。                                                                     |
 | [class and `InjectionToken` guards and resolvers](api/router/DeprecatedGuard) | Use plain JavaScript functions instead.        | v15.2                 | Functional guards are simpler and more powerful than class and token-based guards.                                                                                  |
+| [类和 `InjectionToken` 守卫和解析器](api/router/DeprecatedGuard)                | 请改用纯 JavaScript 函数。                     | v15.2                 | 函数式守卫比基于类和令牌的守卫更简单、更强大。                                                                                                                      |
 
 <a id="platform-browser"></a>
 
 ### &commat;angular/platform-browser
 
+### &commat;angular/平台浏览器
+
 | API                                                                                             | Replacement                  | Deprecation announced | Details                                                             |
 | :---------------------------------------------------------------------------------------------- | :--------------------------- | :-------------------- | :------------------------------------------------------------------ |
 | API                                                                                             | 替代品                       | 已宣布弃用            | 详情                                                                |
 | [`BrowserModule.withServerTransition`](api/platform-browser/BrowserModule#withservertransition) | No replacement needed.       | v16.0                 | The `APP_ID`token should be used instead to set the application ID. |
+| [`BrowserModule.withServerTransition`](api/platform-browser/BrowserModule#withservertransition) | 无需更换。                   | v16.0                 | 应该使用 `APP_ID` 令牌来设置应用程序 ID。                             |
 | `makeStateKey`, `StateKey` and `TransferState`                                                  | Import from `@angular/core`. | v16.0                 | Same behavior, but exported from a different package.               |
+| `makeStateKey` , `StateKey` 和 `TransferState`                                                    | 从 `@angular/core` 导入。      | v16.0                 | 相同的行为，但从不同的包中导出。                                    |
 
 <a id="platform-browser-dynamic"></a>
 
 ### &commat;angular/platform-browser-dynamic
+
+### &commat;angular/平台浏览器动态
 
 | API                                                                               | Replacement | Deprecation announced | Details                                                                                                                           |
 | :-------------------------------------------------------------------------------- | :---------- | :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
@@ -305,6 +336,8 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/platform-server
 
+### &commat;angular/平台服务器
+
 | API                                                                                                               | Replacement                                                                     | Deprecation announced | Details                                                                                                                                                                                                        |
 | :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | API                                                                                                               | 替代品                                                                          | 已宣布弃用            | 详情                                                                                                                                                                                                           |
@@ -313,10 +346,13 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 | [`PlatformConfig.baseUrl` and `PlatformConfig.useAbsoluteUrl` config options](api/platform-server/PlatformConfig) | none                                                                            | v16                   | This was previously unused.                                                                                                                                                                                    |
 | [`PlatformConfig.baseUrl` and `PlatformConfig.useAbsoluteUrl` config options](api/platform-server/PlatformConfig) | 没了                                                                            | v16                   | 这段代码以前未曾用过。                                                                                                                                                                                         |
 | [`platformDynamicServer`](api/platform-server/platformDynamicServer)                                              | Import `@angular/compiler` and replace the usage with `platformServer` instead. | v16                   | This is done to decrease the server bundle size for AOT builds.                                                                                                                                                |
+| [`platformDynamicServer`](api/platform-server/platformDynamicServer)                                              | 导入 `@angular/compiler` 并用 `platformServer` 代替用法。                           | v16                   | 这样做是为了减少 AOT 构建的服务器包大小。                                                                                                                                                                      |
 
 <a id="forms"></a>
 
 ### &commat;angular/forms
+
+### &commat;角/形式
 
 | API                                                                         | Replacement                                                                  | Deprecation announced | Details |
 | :-------------------------------------------------------------------------- | :--------------------------------------------------------------------------- | :-------------------- | :------ |
@@ -330,6 +366,8 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/service-worker
 
+### &commat;angular/服务工作者
+
 | API                                                           | Replacement                                                                            | Deprecation announced | Details                                                                                                                                                                    |
 | :------------------------------------------------------------ | :------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | API                                                           | 替代品                                                                                 | 已宣布弃用            | 详情                                                                                                                                                                       |
@@ -342,6 +380,8 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/upgrade
 
+### &commat;角/升级
+
 | API                             | Replacement                                     | Deprecation announced | Details                                        |
 | :------------------------------ | :---------------------------------------------- | :-------------------- | :--------------------------------------------- |
 | API                             | 替代品                                          | 已宣布弃用            | 详情                                           |
@@ -351,6 +391,8 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 <a id="upgrade-static"></a>
 
 ### &commat;angular/upgrade/static
+
+### &commat;angular/升级/静态
 
 | API                                                                                | Replacement                                                                         | Deprecation announced | Details                                                                                                 |
 | :--------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------ |
@@ -510,15 +552,21 @@ This may help to track down where in the code the pattern is being used as the c
 
 ### Router class and InjectionToken guards and resolvers
 
+### 路由器类和 InjectionToken 守卫和解析器
+
 Class and injection token guards and resolvers are deprecated. Instead, `Route`
 objects should use functional-style guards and resolvers. Class-based guards can
 be converted to functions by instead using `inject` to get dependencies.
+
+类和注入令牌守卫和解析器已弃用。 相反， `Route` 对象应该使用函数式风格的守卫和解析器。 基于类的守卫可以通过使用 `inject` 来获取依赖项来转换为函数。
 
 For testing a function `canActivate` guard, using `TestBed` and `TestBed.runInInjectionContext` is recommended.
 Test mocks and stubs can be provided through DI with `{provide: X, useValue: StubX}`.
 Functional guards can also be written in a way that's either testable with
 `runInInjectionContext` or by passing mock implementations of dependencies.
 For example:
+
+为了测试函数 `canActivate` guard，建议使用 `TestBed` 和 `TestBed.runInInjectionContext` 。 可以通过 DI 使用 `{provide: X, useValue: StubX}` 提供测试模拟和存根。 功能性守卫也可以用 `runInInjectionContext` 可测试的方式或通过传递依赖项的模拟实现来编写。 例如：
 
 ```
 export function myGuardWithMockableDeps(
@@ -542,8 +590,12 @@ sense. That said, the interfaces like `CanActivate`,
 to be a function like `canActivate: [() => inject(MyGuard).canActivate()]` is sufficient
 to get rid of the deprecation warning.
 
+此弃用仅影响 `Route` 定义中对类和 `InjectionToken` 守卫的支持。 `Injectable` classes 和 `InjectionToken` providers 在一般意义上 _ 并没有 _ 被弃用。 也就是说，像 `CanActivate` 、 `CanDeactivate` 等接口将在 Angular 的未来版本中删除。 只需从可注入类中删除 `implements CanActivate` 并将路由定义更新为类似 `canActivate: [() => inject(MyGuard).canActivate()]` 就足以消除弃用警告。
+
 Functional guards are robust enough to even support the existing
 class-based guards through a transform:
+
+功能守卫足够健壮，甚至可以通过转换支持现有的基于类的守卫：
 
 ```
 import {CanMatchFn} from '@angular/router';
@@ -560,17 +612,25 @@ const route = {
 That is to say that guards can continue to be implemented as classes and then converted
 to functions at the route definition.
 
+也就是说守卫可以继续作为类实现，然后在路由定义处转为函数。
+
 <a id="router-writable-properties"></a>
 
 ### Public `Router` properties
+
+### 公共 `Router` 属性
 
 None of the public properties of the `Router` are meant to be writeable.
 They should all be configured using other methods, all of which have been
 documented.
 
+`Router` 的所有公共属性都不是可写的。 它们都应该使用其他方法进行配置，所有这些方法都已记录在案。
+
 The following strategies are meant to be configured by registering the
 application strategy in DI via the `providers` in the root `NgModule` or
 `bootstrapApplication`:
+
+以下策略旨在通过根 `NgModule` 或 `bootstrapApplication` 中的 `providers` 在 DI 中注册应用程序策略来配置：
 
 * `routeReuseStrategy`
 * `titleStrategy`
@@ -578,6 +638,8 @@ application strategy in DI via the `providers` in the root `NgModule` or
 
 The following options are meant to be configured using the options
 available in `RouterModule.forRoot` or `provideRouter` and `withRouterConfig`.
+
+以下选项旨在使用 `RouterModule.forRoot` 或 `provideRouter` 和 `withRouterConfig` 中可用的选项进行配置。
 
 * `onSameUrlNavigation`
 * `paramsInheritanceStrategy`
@@ -587,18 +649,29 @@ available in `RouterModule.forRoot` or `provideRouter` and `withRouterConfig`.
 
 The following options are deprecated in entirely:
 
+以下选项已完全弃用：
+
 * `malformedUriErrorHandler` - URI parsing errors should be handled in the `UrlSerializer` instead.
+
+  `malformedUriErrorHandler` - URI 解析错误应该在 `UrlSerializer` 中处理。
+
 * `errorHandler` - Subscribe to the `Router` events and filter for `NavigationError` instead.
+
+  `errorHandler` - 订阅 `Router` 事件并过滤 `NavigationError` 。
 
 <a id="router-can-load"></a>
 
 ### `CanLoad` guards
+
+### `CanLoad` 守卫
 
 `CanLoad` guards in the Router are deprecated in favor of `CanMatch`. These guards execute at the same time
 in the lifecycle of a navigation. A `CanMatch` guard which returns false will prevent the `Route` from being
 matched at all and also prevent loading the children of the `Route`. `CanMatch` guards can accomplish the same
 goals as `CanLoad` but with the addition of allowing the navigation to match other routes when they reject
 \(such as a wildcard route\). There is no need to have both types of guards in the API surface.
+
+路由器中的 `CanLoad` 守卫已弃用，取而代之的是 `CanMatch` 。 这些守卫在导航的生命周期中同时执行。 返回 false 的 `CanMatch` 守卫将完全阻止 `Route` 匹配，并且还会阻止加载 `Route` 的子级。 `CanMatch` 守卫可以实现与 `CanLoad` 相同的目标，但增加了允许导航在拒绝时匹配其他路由（例如通配符路由）。 API 表面中不需要同时拥有这两种类型的守卫。
 
 <a id="loadChildren"></a>
 

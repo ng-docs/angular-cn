@@ -238,6 +238,9 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
    * 序列化映射（例如转换为 .d.ts 文件）时会使用此对象格式。
    *
    * @param transform Function used to transform the values of the generated map.
+   *
+   * 用于转换生成的地图的值的函数。
+   *
    */
   toJointMappedObject<O = T>(transform: (value: T) => O): {[classPropertyName: string]: O} {
     const obj: {[classPropertyName: string]: O} = {};

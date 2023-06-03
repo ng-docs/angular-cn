@@ -94,6 +94,8 @@ interface PipeRenameContext {
    * The string literal for the pipe name that appears in the @Pipe meta
    *
    * @Pipe 元中出现的管道名称的字符串文字
+   *
+   * @Pipe 元中出现的管道名称的字符串文字
    */
   pipeNameExpr: ts.StringLiteral;
 

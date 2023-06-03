@@ -194,6 +194,8 @@ let _locateOrCreateElementContainerNode: typeof locateOrCreateElementContainerNo
  * in addition to the regular creation mode of comment nodes that
  * represent <ng-container>'s anchor.
  *
+ * 除了表示注释节点的常规创建模式之外，还启用水合代码路径（以查找 DOM 中的现有元素）
+ *
  */
 function locateOrCreateElementContainerNode(
     tView: TView, lView: LView, tNode: TNode, index: number): RComment {

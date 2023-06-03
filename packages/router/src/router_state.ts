@@ -147,15 +147,40 @@ export class ActivatedRoute {
    */
   readonly title: Observable<string|undefined>;
 
-  /** An observable of the URL segments matched by this route. */
+  /**
+   * An observable of the URL segments matched by this route.
+   *
+   * 与该路由匹配的 URL 段的可观察值。
+   *
+   */
   public url: Observable<UrlSegment[]>;
-  /** An observable of the matrix parameters scoped to this route. */
+  /**
+   * An observable of the matrix parameters scoped to this route.
+   *
+   * 此路由范围内的矩阵参数的可观察值。
+   *
+   */
   public params: Observable<Params>;
-  /** An observable of the query parameters shared by all the routes. */
+  /**
+   * An observable of the query parameters shared by all the routes.
+   *
+   * 所有路由共享的查询参数的可观察值。
+   *
+   */
   public queryParams: Observable<Params>;
-  /** An observable of the URL fragment shared by all the routes. */
+  /**
+   * An observable of the URL fragment shared by all the routes.
+   *
+   * 所有路由共享的 URL 片段的可观察对象。
+   *
+   */
   public fragment: Observable<string|null>;
-  /** An observable of the static and resolved data of this route. */
+  /**
+   * An observable of the static and resolved data of this route.
+   *
+   * 此路由的静态和已解析数据的可观察对象。
+   *
+   */
   public data: Observable<Data>;
 
   /** @internal */
@@ -291,6 +316,9 @@ export type Inherited = {
 /**
  * Returns the inherited params, data, and resolve for a given route.
  * By default, this only inherits values up to the nearest path-less or component-less route.
+ *
+ * 返回给定路由的继承参数、数据和解析。 默认情况下，这只会继承最近的无路径或无组件路由的值。
+ *
  * @internal
  */
 export function inheritedParamsDataResolve(
@@ -561,6 +589,9 @@ function serializeNode(node: TreeNode<ActivatedRouteSnapshot>): string {
  * The expectation is that the activate route is created with the right set of parameters.
  * So we push new values into the observables only when they are not the initial values.
  * And we detect that by checking if the snapshot field is set.
+ *
+ * 期望是使用正确的参数集创建激活路由。 因此，只有当新值不是初始值时，我们才会将新值推送到可观察对象中。 我们通过检查是否设置了快照字段来检测到这一点。
+ *
  */
 export function advanceActivatedRoute(route: ActivatedRoute): void {
   if (route.snapshot) {

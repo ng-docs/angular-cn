@@ -88,6 +88,8 @@ export type TStylingKeyPrimitive = string|null|false;
  *
  * In the above case the linked list will contain one item:
  *
+ * 在上述情况下，链表将包含一项：
+ *
  * ```
  *   // assume binding location: 10 for `ɵɵclassProp('dynamic', ctx.exp);`
  *   tData[10] = <TStylingStatic>[
@@ -104,7 +106,11 @@ export type TStylingKeyPrimitive = string|null|false;
  * \(there is none\) and than into the static `TStylingStatic` too see if there is a default value for
  * `dynamic` \(there is not\). Therefore it is safe to remove it.
  *
+ * 因此，当函数解析样式值时，它首先需要查看链表（没有），然后查看静态 `TStylingStatic` 是否有 `dynamic` 默认值（没有）。 因此将其移除是安全的。
+ *
  * If setting `true` case:
+ *
+ * 如果设置 `true` 情况：
  *
  * ```
  *   lView[10] = true;     // assume `ctx.exp` is `true`
@@ -114,6 +120,8 @@ export type TStylingKeyPrimitive = string|null|false;
  * So when the function is resolving styling value, it first needs to look into the linked list
  * \(there is none\) and than into `TNode.residualClass` \(TNode.residualStyle\) which contains
  *
+ * 因此，当函数解析样式值时，它首先需要查看链表（没有链表），然后查看包含的 `TNode.residualClass` \(TNode.residualStyle\)
+ *
  * ```
  *   tNode.residualClass = [
  *     'TEMPLATE': true,
@@ -121,6 +129,8 @@ export type TStylingKeyPrimitive = string|null|false;
  * ```
  *
  * This means that it is safe to add class.
+ *
+ * 这意味着添加类是安全的。
  *
  */
 export interface TStylingStatic extends KeyValueArray<any> {}

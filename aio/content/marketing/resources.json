@@ -30,7 +30,8 @@
             "desc": "An Angular-dedicated subreddit.",
             "descCn": "Angular 专用的 subreddit。",
             "title": "Angular Subreddit",
-            "url": "https://www.reddit.com/r/Angular2/"
+            "url": "https://www.reddit.com/r/Angular2/",
+            "titleCn": "Angular 版块"
           },
           "angular-devto": {
             "desc": "Read and share content and chat about Angular on DEV Community.",
@@ -77,7 +78,9 @@
           "This-is-Angular": {
             "desc": "Inclusive Angular publication free from conflict of interest. This publication is all about sharing Angular knowledge for free and not at all about money or KPIs. Cross-posts are welcome. Part of This is Learning.",
             "url": "https://dev.to/this-is-angular",
-            "title": "This is Angular"
+            "title": "This is Angular",
+            "descCn": "无利益冲突的包容性 Angular 出版物。 本出版物完全是关于免费分享 Angular 知识，而不是关于金钱或 KPI。 欢迎交叉帖子。 这是学习的一部分。",
+            "titleCn": "这是有角的"
           }
         }
       },
@@ -112,7 +115,8 @@
             "logo": "",
             "title": "Angular Rocks",
             "url": "https://angularrocks.com",
-            "descCn": "面向那些想了解更多关于 Angular 的人的播客 🚀"
+            "descCn": "面向那些想了解更多关于 Angular 的人的播客 🚀",
+            "titleCn": "角石"
           },
           "angular-master-podcast": {
             "desc": "Listen / Code / Repeat. Everything you need to fall in love with Angular for a long time.",
@@ -168,14 +172,16 @@
             "descCn": "Ionic 提供了一个针对移动设备优化过的 HTML、CSS 和 JS 组件库和工具库，用于构建高度互动的原生和渐进式 Web 应用程序。",
             "logo": "http://ionicframework.com/img/ionic-logo-white.svg",
             "title": "Ionic",
-            "url": "https://ionicframework.com/docs"
+            "url": "https://ionicframework.com/docs",
+            "titleCn": "离子"
           },
           "a4b": {
             "desc": "Electron Platform for Angular.",
             "descCn": "Electron 平台 上的 Angular。",
             "logo": "",
             "title": "Electron",
-            "url": "https://github.com/maximegris/angular-electron"
+            "url": "https://github.com/maximegris/angular-electron",
+            "titleCn": "电子"
           },
           "ab": {
             "desc": "NativeScript is how you build cross-platform, native iOS and Android apps with Angular and TypeScript. Get 100% access to native APIs via JavaScript and reuse of packages from NPM, CocoaPods and Gradle. Open source and backed by Telerik.",
@@ -201,7 +207,8 @@
             "desc": "Formly is a dynamic (JSON powered) form library, built on top of Angular Reactive Forms.",
             "descCn": "Formly 是基于 Angular 响应式表单构建的动态（基于 JSON 的）表单库。",
             "title": "Formly",
-            "url": "https://formly.dev"
+            "url": "https://formly.dev",
+            "titleCn": "正式地"
           },
           "rx-web": {
             "desc": "RxWeb Reactive Form Validators provides all types of complex, conditional, cross field, and dynamic validation on validator-based reactive forms, model-based reactive forms, and template driven forms.",
@@ -220,7 +227,8 @@
             "desc": "RxAngular is a reactive library that provides extensions for developing high performant and scalable applications. It addresses the issues of local state management, rendering performance, and reactive architecture.",
             "title": "rx-angular",
             "url": "https://rx-angular.io",
-            "descCn": "RxAngular 是一个响应式库，为开发高性能和可扩展应用程序提供了扩展。它解决了本地状态管理、渲染性能和响应式架构的问题。"
+            "descCn": "RxAngular 是一个响应式库，为开发高性能和可扩展应用程序提供了扩展。它解决了本地状态管理、渲染性能和响应式架构的问题。",
+            "titleCn": "RX角"
           },
           "ngxs": {
             "desc": "NGXS is a state management pattern + library for Angular. NGXS is modeled after the CQRS pattern popularly implemented in libraries like Redux and NgRx but reduces boilerplate by using modern TypeScript features such as classes and decorators.",
@@ -232,28 +240,32 @@
             "desc": "Akita is a state management pattern, built on top of RxJS, which takes the idea of multiple data stores from Flux and the immutable updates from Redux, along with the concept of streaming data, to create the Observable Data Store model.",
             "descCn": "秋田（Akita）是一种状态管理模式，建立在 RxJS 之上，它采用 Flux 的多数据存储和 Redux 的不可变更新以及流数据的概念来创建 Observable Data Store 模型。",
             "title": "Akita",
-            "url": "https://datorama.github.io/akita/docs/angular/architecture"
+            "url": "https://datorama.github.io/akita/docs/angular/architecture",
+            "titleCn": "秋田"
           },
           "ab": {
             "desc": "The official library for Firebase and Angular",
             "descCn": "Firebase 和 Angular 的官方库",
             "logo": "",
             "title": "Angular Fire",
-            "url": "https://github.com/angular/angularfire2"
+            "url": "https://github.com/angular/angularfire2",
+            "titleCn": "角火"
           },
           "ab2": {
             "desc": "Use Angular and Meteor to build full-stack JavaScript apps  for Mobile and Desktop.",
             "descCn": "使用 Angular 和 Meteor 构建用于移动和桌面的全栈 JavaScript 应用。",
             "logo": "https://angular-meteor.com/assets/images/logo-large.png",
             "title": "Meteor",
-            "url": "https://github.com/urigo/angular-meteor"
+            "url": "https://github.com/urigo/angular-meteor",
+            "titleCn": "流星"
           },
           "ab3": {
             "desc": "Apollo is a data stack for modern apps, built with GraphQL.",
             "descCn": "Apollo 是使用 GraphQL 构建现代应用程序的数据技术栈。",
             "logo": "",
             "title": "Apollo",
-            "url": "https://www.apollographql.com/docs/angular/"
+            "url": "https://www.apollographql.com/docs/angular/",
+            "titleCn": "阿波罗"
           },
           "ngx-api-utils": {
             "desc": "ngx-api-utils is a lean library of utilities and helpers to quickly integrate any HTTP API (REST, Ajax, and any other) with Angular.",
@@ -279,7 +291,8 @@
             "descCn": "VS Code 是用于编辑和调试 Web 应用程序的免费、轻量级工具。",
             "logo": "",
             "title": "Visual Studio Code",
-            "url": "https://code.visualstudio.com/"
+            "url": "https://code.visualstudio.com/",
+            "titleCn": "视觉工作室代码"
           },
           "ab2": {
             "desc": "Lightweight yet powerful IDE, perfectly equipped for complex client-side development and server-side development with Node.js",
@@ -293,7 +306,8 @@
             "descCn": "功能强大且符合人体工程学的 Java * IDE",
             "logo": "",
             "title": "IntelliJ IDEA",
-            "url": "https://www.jetbrains.com/idea/"
+            "url": "https://www.jetbrains.com/idea/",
+            "titleCn": "我明白这个想法"
           },
           "angular-ide": {
             "desc": "Built first and foremost for Angular. Turnkey setup for beginners; powerful for experts.",
@@ -328,40 +342,47 @@
             "descCn": "Angular 应用程序的服务器端渲染。",
             "logo": "https://cloud.githubusercontent.com/assets/1016365/10639063/138338bc-7806-11e5-8057-d34c75f3cafc.png",
             "title": "Angular Universal",
-            "url": "https://angular.io/guide/universal"
+            "url": "https://angular.io/guide/universal",
+            "titleCn": "角通用"
           },
           "c1": {
             "desc": "Lightweight development only Node.js® server",
             "descCn": "仅供开发使用的轻量级 Node.js® 服务器",
             "logo": "",
             "title": "Lite-server",
-            "url": "https://github.com/johnpapa/lite-server"
+            "url": "https://github.com/johnpapa/lite-server",
+            "titleCn": "精简服务器"
           },
           "cli": {
             "desc": "The official Angular CLI makes it easy to create and develop applications from initial commit to production deployment. It already follows our best practices right out of the box!",
             "descCn": "官方的 Angular CLI 使创建和开发应用程序变得很容易，从最初的提交到生产部署。它已经按照我们的最佳实践开箱即用！",
             "title": "Angular CLI",
-            "url": "https://cli.angular.io"
+            "url": "https://cli.angular.io",
+            "titleCn": "角 CLI"
           },
           "angular-eslint": {
             "desc": "The tooling which enables ESLint to lint Angular projects.",
             "descCn": "Angular 项目的静态分析。",
             "logo": "",
             "title": "Angular ESLint",
-            "url": "https://github.com/angular-eslint/angular-eslint#readme"
+            "url": "https://github.com/angular-eslint/angular-eslint#readme",
+            "titleCn": "角度 ESLint"
           },
           "f1": {
             "desc": "This tool generates dedicated documentation for Angular applications.",
             "descCn": "该工具为 Angular 应用程序生成专用文档。",
             "logo": "",
             "title": "Compodoc",
-            "url": "https://github.com/compodoc/compodoc"
+            "url": "https://github.com/compodoc/compodoc",
+            "titleCn": "康波多克"
           },
           "docgeni": {
             "desc": "A modern, powerful and out of the box documentation generator for Angular component lib and markdown docs.",
             "logo": "",
             "title": "Docgeni",
-            "url": "https://github.com/docgeni/docgeni"
+            "url": "https://github.com/docgeni/docgeni",
+            "descCn": "用于 Angular 组件库和降价文档的现代、强大且开箱即用的文档生成器。",
+            "titleCn": "多格尼"
           },
           "angular-playground": {
             "desc": "UI development environment for building, testing, and documenting Angular applications.",
@@ -391,28 +412,32 @@
             "descCn": "Angular 应用的官方端到端测试框架",
             "logo": "",
             "title": "Protractor",
-            "url": "https://protractor.angular.io/"
+            "url": "https://protractor.angular.io/",
+            "titleCn": "量角器"
           },
           "observer-spy": {
             "desc": "A library for testing RxJS observables that offers an alternative to Marble Tests.",
             "logo": "",
             "title": "observer-spy",
             "url": "https://github.com/hirezio/observer-spy",
-            "descCn": "一个用于测试 RxJS observables 的库，它提供了 Marble Tests 的替代方案。"
+            "descCn": "一个用于测试 RxJS observables 的库，它提供了 Marble Tests 的替代方案。",
+            "titleCn": "观察者间谍"
           },
           "scully": {
             "desc": "Scully (Jamstack Toolchain for Angular) makes building, testing, and deploying Jamstack apps extremely simple.",
             "descCn": "Scully（用于 Angular 的 Jamstack 工具链）使构建、测试和部署 Jamstack 应用程序极为简单。",
             "title": "Scully",
             "logo": "https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/Green/scullyio-logo-green.png",
-            "url": "https://scully.io"
+            "url": "https://scully.io",
+            "titleCn": "斯嘉丽"
           },
           "ng-mocks": {
             "desc": "A testing library for creating mock services, components, directives, pipes and modules out of annoying dependencies in unit tests.",
             "title": "ng-mocks",
             "logo": "",
             "url": "https://github.com/ike18t/ng-mocks#readme",
-            "descCn": "一个测试库，用于从单元测试中烦人的依赖项中创建模拟服务、组件、指令、管道和模块。"
+            "descCn": "一个测试库，用于从单元测试中烦人的依赖项中创建模拟服务、组件、指令、管道和模块。",
+            "titleCn": "嘲笑"
           }
         }
       },
@@ -423,7 +448,8 @@
             "desc": "UX guidelines, HTML/CSS framework, and Angular components working together to craft exceptional experiences",
             "descCn": "让 UX 准则、HTML/CSS 框架和 Angular 组件一起工作，以创造出非凡的体验",
             "title": "Clarity Design System",
-            "url": "https://vmware.github.io/clarity/"
+            "url": "https://vmware.github.io/clarity/",
+            "titleCn": "清晰设计系统"
           },
           "AngularUIToolkit": {
             "desc": "Angular UI Toolkit: 115 professionally maintained UI components ranging from a robust grid to charts and more. Try for free & build Angular apps faster.",
@@ -436,13 +462,15 @@
             "desc": "Build modern web apps faster with 115+ pre-built UI components. Try for free and download today.",
             "descCn": "使用 115+ 个预构建的 UI 组件更快地构建现代 Web 应用程序。免费试用并立即下载。",
             "title": "Sencha for Angular",
-            "url": "https://www.sencha.com/products/extangular/"
+            "url": "https://www.sencha.com/products/extangular/",
+            "titleCn": "用于 Angular 的煎茶"
           },
           "IgniteUIforAngular": {
             "desc": "Ignite UI for Angular is a dependency-free Angular toolkit for building modern web apps.",
             "descCn": "Ignite UI for Angular 是用于构建现代 Web 应用程序的无依赖 Angular 工具包。",
             "title": "Ignite UI for Angular",
-            "url": "https://www.infragistics.com/products/ignite-ui-angular?utm_source=angular.io&utm_medium=Referral&utm_campaign=Angular"
+            "url": "https://www.infragistics.com/products/ignite-ui-angular?utm_source=angular.io&utm_medium=Referral&utm_campaign=Angular",
+            "titleCn": "为 Angular 点燃 UI"
           },
           "DevExtreme": {
             "desc": "50+ UI components including data grid, pivot grid, scheduler, charts, editors, maps and other multi-purpose controls for creating highly responsive web applications for touch devices and traditional desktops.",
@@ -454,48 +482,55 @@
             "desc": "The Angular version of the Angular UI Bootstrap library. This library is being built from scratch in Typescript using the Bootstrap 4 CSS framework.",
             "descCn": "Angular UI Bootstrap 库的 Angular 版本。该库是使用 Bootstrap 4 CSS 框架在 Typescript 中从头开始构建的。",
             "title": "ng-bootstrap",
-            "url": "https://ng-bootstrap.github.io/"
+            "url": "https://ng-bootstrap.github.io/",
+            "titleCn": "引导程序"
           },
           "4ab": {
             "desc": "Native Angular components & directives for Lightning Design System",
             "descCn": "Lightning 设计体系的原生 Angular 组件和指令",
             "logo": "https://ng-lightning.github.io/ng-lightning/assets/images/shield.svg",
             "title": "ng-lightning",
-            "url": "https://ng-lightning.github.io/ng-lightning/#/"
+            "url": "https://ng-lightning.github.io/ng-lightning/#/",
+            "titleCn": "闪电的"
           },
           "7ab": {
             "desc": "UI components for hybrid mobile apps with bindings for both Angular & AngularJS.",
             "descCn": "具有 Angular 和 AngularJS 绑定的混合式移动应用的 UI 组件。",
             "title": "Onsen UI",
-            "url": "https://onsen.io/v2/"
+            "url": "https://onsen.io/v2/",
+            "titleCn": "温泉用户界面"
           },
           "a2b": {
             "desc": "PrimeNG is a collection of rich UI components for Angular",
             "descCn": "PrimeNG 是 Angular 的富 UI 组件集合",
             "logo": "https://www.primefaces.org/primeng/resources/images/logo-primeng.svg",
             "title": "Prime Faces",
-            "url": "https://www.primefaces.org/primeng/"
+            "url": "https://www.primefaces.org/primeng/",
+            "titleCn": "素面"
           },
           "a3b": {
             "desc": "A professional grade library of Angular UI components written in TypeScript that includes our Data Grid, TreeView, Charts, Editors, DropDowns, DatePickers, and many more. Features include support for AOT compilation, Tree Shaking for high-performance, localization, and accessibility.",
             "descCn": "用 TypeScript 编写的 Angular UI 组件的专业级库，其中包括我们的数据网格、TreeView、图表、编辑器、下拉框、DatePickers 等。功能包括支持 AOT 编译、支持高性能的摇树优化、支持本地化和无障碍性。",
             "logo": "",
             "title": "Kendo UI",
-            "url": "https://www.telerik.com/kendo-angular-ui"
+            "url": "https://www.telerik.com/kendo-angular-ui",
+            "titleCn": "剑道用户界面"
           },
           "a5b": {
             "desc": "High-performance UI controls with the most complete Angular support available. Wijmo’s controls are all written in TypeScript and have zero dependencies. FlexGrid control includes full declarative markup, including cell templates.",
             "descCn": "具有最完整的 Angular 支持的高性能 UI 控件。 Wijmo 的控件全部用 TypeScript 编写，并且具有零依赖性。 FlexGrid 控件包括完整的声明性标记语言，包括单元格模板。",
             "logo": "",
             "title": "Wijmo",
-            "url": "https://www.grapecity.com/wijmo"
+            "url": "https://www.grapecity.com/wijmo",
+            "titleCn": "维莫"
           },
           "a6b": {
             "desc": "Material design inspired UI components for building great web apps. For mobile and desktop.",
             "descCn": "受 Material Design 启发的用于构建出色的 Web 应用程序的 UI 组件库。适用于手机和台式机。",
             "logo": "",
             "title": "Vaadin",
-            "url": "https://vaadin.com/elements"
+            "url": "https://vaadin.com/elements",
+            "titleCn": "瓦丁"
           },
           "a7b": {
             "desc": "Native Angular directives for Bootstrap",
@@ -509,7 +544,8 @@
             "descCn": "Angular 的 Material Design 组件库",
             "logo": "",
             "title": "Angular Material",
-            "url": "https://material.angular.io/"
+            "url": "https://material.angular.io/",
+            "titleCn": "棱角材料"
           },
           "mdb5": {
             "desc": "Free components, templates & plugins for the latest Bootstrap 5 styled in accordance with Material Design 2.0 (guidelines introduced in 2020)",
@@ -561,7 +597,8 @@
             "desc": "A datagrid for Angular with enterprise style features such as sorting, filtering, custom rendering, editing, grouping, aggregation and pivoting.",
             "descCn": "具有企业风格特性的 Angular 数据网格，比如排序、过滤、自定义渲染、编辑、分组、聚合和透视。",
             "title": "ag-Grid",
-            "url": "https://www.ag-grid.com/best-angular-2-data-grid/"
+            "url": "https://www.ag-grid.com/best-angular-2-data-grid/",
+            "titleCn": "农业网格"
           },
           "angular-slickgrid": {
             "desc": "Angular-SlickGrid is a wrapper of the lightning fast & customizable SlickGrid datagrid library with Bootstrap 3,4 themes",
@@ -579,7 +616,8 @@
             "desc": "Angular smart, light and fast modal handler to manage modals and data everywhere.",
             "descCn": "Angular 智能、轻便、快速的模态框处理程序，可随时随地管理模态框和数据。",
             "title": "ngx-smart-modal",
-            "url": "https://biig-io.github.io/ngx-smart-modal"
+            "url": "https://biig-io.github.io/ngx-smart-modal",
+            "titleCn": "ngx-智能模态"
           },
           "jqwidgets": {
             "desc": "Angular UI Components including data grid, tree grid, pivot grid, scheduler, charts, editors and other multi-purpose components",
@@ -600,26 +638,30 @@
             "descCn": "轻量级的 Angular Material Design 库，基于 Google 的 Web Material 组件",
             "logo": "https://blox.src.zone/assets/bloxmaterial.03ecfe4fa0147a781487749dc1cc4580.svg",
             "title": "Blox Material",
-            "url": "https://github.com/src-zone/material"
+            "url": "https://github.com/src-zone/material",
+            "titleCn": "布洛克材料"
           },
           "essentialjs2": {
             "desc": "Essential JS 2 for Angular is a collection modern TypeScript based true Angular Components. It has support for Ahead Of Time (AOT) compilation and Tree-Shaking. All the components are developed from the ground up to be lightweight, responsive, modular and touch friendly.",
             "descCn": "Essential JS 2 for Angular 是基于现代 TypeScript 的真正 Angular 组件的集合。它支持预先（AOT）编译和摇树优化。所有组件都是从零开始开发的，从而使其轻巧、响应迅速、模块化且对触控友好。",
             "title": "Essential JS 2",
-            "url": "https://www.syncfusion.com/products/angular-js2"
+            "url": "https://www.syncfusion.com/products/angular-js2",
+            "titleCn": "基础 JS 2"
           },
           "trulyui": {
             "desc": "TrulyUI is an Angular UI Framework especially developed for Desktop Applications based on Web Components using the greatest technologies of the world.",
             "descCn": "TrulyUI 是一个 Angular UI 框架，它是使用世界上最先进的技术为基于 Web 组件的桌面应用程序专门开发的。",
             "title": "Truly UI",
-            "url": "https://truly-ui.com/"
+            "url": "https://truly-ui.com/",
+            "titleCn": "真正的用户界面"
           },
           "ngsqui": {
             "desc": "Simple Quality UI (SQ-UI) is a flexible and easily customizable UI-kit, aiming to provide maximum efficiency with as little overhead as possible. Driven by the idea that it should be strictly \"for developers by developers\", every new feature release includes functionalities demanded by the developers who are using it.",
             "descCn": "Simple Quality UI（SQ-UI）是一种灵活且易于自定义的 UI 工具包，旨在以尽可能少的开销提供最大的效率。它严格遵守“供开发人员使用，由开发人员创造”的思想，每个新的特性发行版都包含使用它的开发人员所要求的功能。",
             "logo": "https://sq-ui.github.io/ng-sq-ui/_media/sq-ui-logo.png",
             "title": "Simple Quality UI",
-            "url": "https://sq-ui.github.io/ng-sq-ui/#/"
+            "url": "https://sq-ui.github.io/ng-sq-ui/#/",
+            "titleCn": "简单的质量用户界面"
           },
           "smart": {
             "desc": "Web Components for Angular. Dependency-free Angular components for building modern and mobile-friendly web apps",
@@ -632,13 +674,15 @@
             "desc": "Minimal Design, a set of components for Angular.",
             "descCn": "最小化设计，一组用于 Angular 的组件。",
             "title": "Alyle UI",
-            "url": "https://alyle-ui.firebaseapp.com/"
+            "url": "https://alyle-ui.firebaseapp.com/",
+            "titleCn": "艾丽尔用户界面"
           },
           "nebular": {
             "desc": "Theme System, UI Components, Auth and Security for your next Angular application.",
             "descCn": "为你的下一个 Angular 应用程序准备的主题体系、UI 组件、身份验证和安全性。",
             "title": "Nebular",
-            "url": "https://akveo.github.io/nebular/"
+            "url": "https://akveo.github.io/nebular/",
+            "titleCn": "星云"
           },
           "carbondesignsystem": {
             "desc": "An Angular implementation of the Carbon Design System for IBM.",
@@ -659,7 +703,8 @@
             "descCn": "@ angular/material 的 DateAdapter 的 DayJS 实现，其包比相应的 MomentJS 版小。",
             "rev": true,
             "title": "material-dayjs-adapter",
-            "url": "https://www.npmjs.com/package/@tabuckner/material-dayjs-adapter"
+            "url": "https://www.npmjs.com/package/@tabuckner/material-dayjs-adapter",
+            "titleCn": "材料-dayjs-适配器"
           },
           "ngx-skeleton-loader": {
             "desc": "NGX Skeleton Loader is a lightweight and A11Y friendly solution for blazing fast loading skeletons that automatically adapt to your Angular apps.",
@@ -672,20 +717,23 @@
             "desc": "Taiga UI is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons. We have 130+ components, 100+ directives, dozens of tokens, utils and tools. They are easily customizable and well engineered.",
             "title": "Taiga UI",
             "url": "https://taiga-ui.dev",
-            "descCn": "Taiga UI 是完全可treeshakable 的 Angular UI 工具包，由多个基础库和几个附加组件组成。我们有 130 多个组件、100 多个指令、数十个标记、工具和工具。它们易于定制并且设计精良。"
+            "descCn": "Taiga UI 是完全可treeshakable 的 Angular UI 工具包，由多个基础库和几个附加组件组成。我们有 130 多个组件、100 多个指令、数十个标记、工具和工具。它们易于定制并且设计精良。",
+            "titleCn": "针叶林用户界面"
           },
           "coreui-angular": {
             "desc": "Open Source UI Components library for creating modern, beautiful, and responsive applications in half the time with high-performing and easy-to-customize UI components.",
             "title": "CoreUI for Angular",
             "url": "https://coreui.io/angular",
-            "descCn": "开源 UI 组件库，使用高性能且易于自定义的 UI 组件在一半的时间创建现代、美观和响应式应用程序。"
+            "descCn": "开源 UI 组件库，使用高性能且易于自定义的 UI 组件在一半的时间创建现代、美观和响应式应用程序。",
+            "titleCn": "Angular 的 CoreUI"
           },
           "poui": {
             "desc": "PO UI, Brazilian UI Components, focused on ease and productivity to Angular applications.",
             "rev": true,
             "title": "PO UI",
             "url": "https://po-ui.io",
-            "descCn": "PO UI，巴西 UI 组件，专注于 Angular 应用程序的易用性和生产力。"
+            "descCn": "PO UI，巴西 UI 组件，专注于 Angular 应用程序的易用性和生产力。",
+            "titleCn": "用户界面"
           },
           "ngx-gantt": {
             "desc": "A modern and powerful gantt chart component for Angular",
@@ -698,7 +746,8 @@
             "desc": "NGX-YOUI is an Angular UI Library that can be highly customized with content and styles. You can easily integrate with other CSS frameworks and UI Library, such as Tailwind, Bootstrap, PrimeNG, Angular Material etc.",
             "title": "NGX-YOUI",
             "url": "https://ngx-youi.github.io/NGX-YOUI/",
-            "descCn": "NGX-YOUI 是一个 Angular UI 库，可以用内容和样式进行高度自定义。你可以轻松与其他 CSS 框架和 UI 库集成，例如 Tailwind、Bootstrap、PrimeNG、Angular Material 等。"
+            "descCn": "NGX-YOUI 是一个 Angular UI 库，可以用内容和样式进行高度自定义。你可以轻松与其他 CSS 框架和 UI 库集成，例如 Tailwind、Bootstrap、PrimeNG、Angular Material 等。",
+            "titleCn": "NGX-友"
           },
           "ngx-cookie-service": {
             "desc": "NGX Cookie Service is an Angular Library that can be used to read, set and delete browser cookies",
@@ -735,7 +784,8 @@
             "desc": "The in-depth, complete, and up-to-date book on Angular. Become an Angular expert today.",
             "descCn": "关于 Angular 的深入、完整和最新的书。立即成为 Angular 专家。",
             "title": "ng-book",
-            "url": "https://www.ng-book.com/2/"
+            "url": "https://www.ng-book.com/2/",
+            "titleCn": "这本书的"
           },
           "a7b": {
             "desc": "This ebook will help you getting the philosophy of the framework: what comes from 1.x, what has been introduced and why",
@@ -755,7 +805,8 @@
             "desc": "A free book that covers all facets of working with Rxjs from your first Observable to how to make your code run at optimal speed with Schedulers.",
             "descCn": "一本免费的书，涵盖了从你的第一个 Observable 到使用 Rxjs 的所有方面，以及如何利用 Scheduler 来使代码以最佳速度运行。",
             "title": "RxJS Ultimate",
-            "url": "https://chrisnoring.gitbooks.io/rxjs-5-ultimate/content/"
+            "url": "https://chrisnoring.gitbooks.io/rxjs-5-ultimate/content/",
+            "titleCn": "RxJS 终极版"
           },
           "vsavkin-angular-router": {
             "desc": "This book is a comprehensive guide to the Angular router written by its designer. The book explores the library in depth, including the mental model, design constraints, subtleties of the API.",
@@ -916,21 +967,24 @@
             "descCn": "面向各种技能水平的数百种 Angular 课程",
             "logo": "",
             "title": "Pluralsight",
-            "url": "https://www.pluralsight.com/paths/angular"
+            "url": "https://www.pluralsight.com/paths/angular",
+            "titleCn": "复视"
           },
           "ab3": {
             "desc": "Angular courses hosted by  Udemy",
             "descCn": "Udemy 主持的 Angular 课程",
             "logo": "",
             "title": "Udemy",
-            "url": "https://www.udemy.com/courses/search/?q=angular"
+            "url": "https://www.udemy.com/courses/search/?q=angular",
+            "titleCn": "乌迪米"
           },
           "ab4": {
             "desc": "Angular Fundamentals and advanced topics focused on Redux Style Angular Applications",
             "descCn": "Angular 基础知识和高级主题，侧重于 Redux 风格 Angular 应用程序",
             "logo": "",
             "title": "Egghead.io",
-            "url": "https://egghead.io/browse/frameworks/angular"
+            "url": "https://egghead.io/browse/frameworks/angular",
+            "titleCn": "蛋头.io"
           },
           "ab5": {
             "desc": "Build Web Apps with Angular - recorded video content",
@@ -972,7 +1026,8 @@
             "desc": "Youtube Channel. Online videos in English and Russian providing in-depth coverage of the Angular advanced topics.",
             "title": "Angular Pro Screencast",
             "url": "https://www.youtube.com/playlist?list=PLLf-VBOaoVk1E9fTBZdq1CfnRa2TtL_Kb",
-            "descCn": "Youtube 频道。英语和俄语的在线视频，提供了对 Angular 高级主题的深入报道。"
+            "descCn": "Youtube 频道。英语和俄语的在线视频，提供了对 Angular 高级主题的深入报道。",
+            "titleCn": "Angular Pro 截屏视频"
           },
           "willh-angular-zero": {
             "desc": "Online video course in Chinese for newbies who need to learning from the scratch in Chinese.  It's covering Angular, Angular CLI, TypeScript, VSCode, and some must known knowledge of Angular development.",
@@ -997,7 +1052,8 @@
             "desc": "Build performant and progressive Angular applications.",
             "descCn": "构建高性能和渐进式 Angular 应用。",
             "title": "web.dev/angular",
-            "url": "https://web.dev/angular"
+            "url": "https://web.dev/angular",
+            "titleCn": "web.dev/角度"
           },
           "mdb-angular-boilerplate": {
             "desc": "Angular CRUD application starter with NgRx state management, Firebase backend and installation guide.",
@@ -1030,7 +1086,9 @@
           "angular-gettin-started": {
             "desc": "Want to learn #Angular, but not sure where to start? Check out this in-depth “Angular for Beginners Course“ created by Angular #GDE @SantoshYadavDev.",
             "title": "Angular for Beginners Course",
-            "url": "https://youtu.be/3qBXWUpoPHo"
+            "url": "https://youtu.be/3qBXWUpoPHo",
+            "descCn": "想学习#Angular，但不确定从哪里开始？ 查看由 Angular #GDE &commat;SantoshYadavDev 创建的深入“Angular 初学者课程”。",
+            "titleCn": "Angular 初学者课程"
           }
         }
       },
@@ -1041,12 +1099,15 @@
             "desc": "Customized in-person instructor-led Angular training for private groups and public online instructor-led Angular classes.",
             "descCn": "为私人团体和公共在线讲师指导的 Angular 课程提供量身定制的由讲师指导的 Angular 培训。",
             "title": "Webucator",
-            "url": "https://www.webucator.com/webdev-training/angular-training"
+            "url": "https://www.webucator.com/webdev-training/angular-training",
+            "titleCn": "网络教师"
           },
           "decoded-frontend": {
             "desc": "YouTube Channel about Angular & Web Development",
             "title": "Decoded Frontend",
-            "url": "https://www.youtube.com/DecodedFrontend"
+            "url": "https://www.youtube.com/DecodedFrontend",
+            "descCn": "关于 Angular 和 Web 开发的 YouTube 频道",
+            "titleCn": "解码前端"
           },
           "angular-university": {
             "desc": "A website to learn and keep up with the Angular ecosystem",
@@ -1138,7 +1199,8 @@
             "descCn": "培训和代码审查。我们通过培训和代码审查帮助人们深入了解不同的技术。我们的服务可以在线安排，从而可以从世界任何地方加入，也可以在现场加入以获得最佳体验。",
             "logo": "",
             "title": "Thoughtram",
-            "url": "https://thoughtram.io/"
+            "url": "https://thoughtram.io/",
+            "titleCn": "思维导图"
           },
           "jsru": {
             "desc": "Complete Angular online course. Constantly updating. Real-time webinars with immediate feedback from the teacher.",
@@ -1174,7 +1236,8 @@
             "descCn": "We Are One Sàrl 在瑞士提供的现场 Angular 培训",
             "logo": "https://weareone.ch/wordpress/wao-content/uploads/2014/12/logo_200_2x.png",
             "title": "We Are One Sàrl",
-            "url": "https://weareone.ch/courses/angular/"
+            "url": "https://weareone.ch/courses/angular/",
+            "titleCn": "我们是一个 Sàrl"
           },
           "angular-schule": {
             "desc": "Angular onsite training and public workshops in Germany from the authors of the German Angular book. We also regularly post articles and videos on our blog (in English and German language).",
@@ -1188,7 +1251,8 @@
             "desc": "Angular and RxJS trainings, Code Reviews and consultancy. We help software engineers all over the world to create better web-applications...",
             "descCn": "Angular 和 RxJS 培训、代码审查和咨询。我们帮助世界各地的软件工程师创建更好的 Web 应用程序...",
             "title": "Simplified Courses",
-            "url": "https://simplified.courses/"
+            "url": "https://simplified.courses/",
+            "titleCn": "简化课程"
           },
           "angular.de": {
             "desc": "Onsite Angular Training delivered by the greatest community in the german speaking area in Germany, Austria and Switzerland. We also regularly post articles and tutorials on our blog.",

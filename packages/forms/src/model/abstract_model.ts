@@ -668,8 +668,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当其 `status` 为 `VALID` 时，控件是 `valid` 的。
    *
-   * @see { @link AbstractControl.status}
+   * @see {
    *
+   * 韩国人【模糊翻译】
+   *
+   * @link AbstractControl.status}
    * @returns
    *
    * True if the control has passed all of its validation tests,
@@ -686,8 +689,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当 `status` 为 `INVALID` 时，控件 `invalid` 。
    *
-   * @see { @link AbstractControl.status}
+   * @see {
    *
+   * 韩国人【模糊翻译】
+   *
+   * @link AbstractControl.status}
    * @returns
    *
    * True if this control has failed one or more of its validation checks,
@@ -704,8 +710,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 当 `status` 为 `PENDING` 时，控件处于 `pending` 状态。
    *
-   * @see { @link AbstractControl.status}
+   * @see {
    *
+   * 韩国人【模糊翻译】
+   *
+   * @link AbstractControl.status}
    * @returns
    *
    * True if this control is in the process of conducting a validation check,
@@ -728,8 +737,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * 禁用的控件免于验证检查，并且不包含在其祖先控件的汇总值中。
    *
-   * @see { @link AbstractControl.status}
+   * @see {
    *
+   * 韩国人【模糊翻译】
+   *
+   * @link AbstractControl.status}
    * @returns
    *
    * True if the control is disabled, false otherwise.
@@ -751,9 +763,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * false if the status is 'DISABLED'.
    *
    * 如果控件具有“DISABLED”以外的任何状态，则为 true ，如果状态是“DISABLED”，则为 false 。
+   * @see {
    *
-   * @see { @link AbstractControl.status}
+   * 韩国人【模糊翻译】
    *
+   * @link AbstractControl.status}
    */
   get enabled(): boolean {
     return this.status !== DISABLED;
@@ -846,6 +860,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * event might result in getting a value that has not been updated yet. Subscribe to the
    * `valueChanges` event of the parent control instead.
    *
+   * **注意**：发射发生在更新此控件的值之后。 父控件的值（例如，如果此 FormControl 是 FormGroup 的一部分）稍后更新，因此从该事件的回调中访问父控件的值（使用 `value` 属性）可能会导致获得一个值尚未更新。 改为订阅父控件的 `valueChanges` 事件。
+   *
    */
   public readonly valueChanges!: Observable<TValue>;
 
@@ -856,8 +872,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * 每次重新计算控件的验证 `status` 时都会发出事件的多播 observable。
    *
    * @see `FormControlStatus`
-   * @see { @link AbstractControl.status}
+   * @see {
    *
+   * 韩国人【模糊翻译】
+   *
+   * @link AbstractControl.status}
    */
   public readonly statusChanges!: Observable<FormControlStatus>;
 
@@ -979,6 +998,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * ### Reference to a ValidatorFn
    *
+   * ### 引用 ValidatorFn
+   *
    * ```
    * // Reference to the RequiredValidator
    * const ctrl = new FormControl<string | null>('', Validators.required);
@@ -1001,7 +1022,6 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * @param validators The validator or validators to remove.
    *
    * 要删除的验证器。
-   *
    */
   removeValidators(validators: ValidatorFn|ValidatorFn[]): void {
     this.setValidators(removeValidators(validators, this._rawValidators));
@@ -1039,6 +1059,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * ### Reference to a ValidatorFn
    *
+   * ### 引用 ValidatorFn
+   *
    * ```
    * // Reference to the RequiredValidator
    * const ctrl = new FormControl<number | null>(0, Validators.required);
@@ -1054,13 +1076,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * @param validator The validator to check for presence. Compared by function reference.
    *
    * 要检查是否存在的验证器。通过函数引用进行比较。
-   *
    * @returns
    *
    * Whether the provided validator was found on this control.
    *
    * 是否在此控件上找到提供的验证器。
-   *
    */
   hasValidator(validator: ValidatorFn): boolean {
     return hasValidator(this._rawValidators, validator);
@@ -1563,8 +1583,12 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * @param opts Configuration options that determine how the control propagates
    * changes and emits events after the control errors are set.
    *
+   * 确定控件如何在设置控件错误后传播更改和发出事件的配置选项。
+   *
    * * `emitEvent`: When true or not supplied \(the default\), the `statusChanges`
    *   observable emits an event after the errors are set.
+   *
+   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` observable 在设置错误后发出一个事件。
    *
    * @usageNotes
    *

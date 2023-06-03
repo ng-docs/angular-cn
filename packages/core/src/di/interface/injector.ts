@@ -26,7 +26,12 @@ export const enum DecoratorFlags {
  * DI 的注入标志。
  *
  * @publicApi
- * @deprecated use an options object for `inject` instead.
+ * @deprecated
+ *
+ * use an options object for `inject` instead.
+ *
+ * 改用选项对象进行 `inject` 。
+ *
  */
 export enum InjectFlags {
   // TODO(alxhub): make this 'const' (and remove `InternalInjectFlags` enum) when ngc no longer
@@ -149,28 +154,42 @@ export const enum InternalInjectFlags {
 /**
  * Type of the options argument to `inject`.
  *
+ * 要 `inject` 选项参数的类型。
+ *
  * @publicApi
  */
 export interface InjectOptions {
   /**
    * Use optional injection, and return `null` if the requested token is not found.
+   *
+   * 使用可选注入，如果未找到请求的令牌，则返回 `null` 。
+   *
    */
   optional?: boolean;
 
   /**
    * Start injection at the parent of the current injector.
+   *
+   * 在当前注入器的父级开始注入。
+   *
    */
   skipSelf?: boolean;
 
   /**
    * Only query the current injector for the token, and don't fall back to the parent injector if
    * it's not found.
+   *
+   * 只查询当前注入器的令牌，如果找不到则不要回退到父注入器。
+   *
    */
   self?: boolean;
 
   /**
    * Stop injection at the host component's injector. Only relevant when injecting from an element
    * injector, and a no-op for environment injectors.
+   *
+   * 在宿主组件的注入器处停止注入。 仅在从元素注入器注入时相关，并且对环境注入器无操作。
+   *
    */
   host?: boolean;
 }

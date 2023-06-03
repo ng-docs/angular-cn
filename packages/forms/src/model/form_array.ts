@@ -732,7 +732,10 @@ export const UntypedFormArray: UntypedFormArrayCtor = FormArray;
 
 /**
  * @description
+ *
  * Asserts that the given control is an instance of `FormArray`
+ *
+ * 断言给定的控件是 `FormArray` 的一个实例
  *
  * @publicApi
  */

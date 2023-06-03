@@ -102,6 +102,8 @@ export interface RouterOutletContract {
    * This is similar to `deactivate`, but the activated component should _not_ be destroyed.
    * Instead, it is returned so that it can be reattached later via the `attach` method.
    *
+   * 这类似于 `deactivate` ，但激活的组件 _ 不应 _ 被销毁。 相反，它会被返回，以便稍后可以通过 `attach` 方法重新附加它。
+   *
    */
   detach(): ComponentRef<unknown>;
 
@@ -151,9 +153,14 @@ export interface RouterOutletContract {
    * Used to indicate that the outlet is able to bind data from the `Router` to the outlet
    * component's inputs.
    *
+   * 用于指示出口能够将数据从 `Router` 绑定到出口组件的输入。
+   *
    * When this is `undefined` or `false` and the developer has opted in to the
    * feature using `withComponentInputBinding`, a warning will be logged in dev mode if this outlet
    * is used in the application.
+   *
+   * 当这是 `undefined` 或 `false` 并且开发人员已选择使用 `withComponentInputBinding` 功能时，如果在应用程序中使用此出口，将在开发模式下记录警告。
+   *
    */
   readonly supportsBindingToComponentInputs?: true;
 }
@@ -218,6 +225,9 @@ export interface RouterOutletContract {
  * [路由导航](guide/router-tutorial-toh#named-outlets "命名出口与第二路由的配置范例")。
  * @see `RouterLink`
  * @see `Route`
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  * @ngModule RouterModule
  * @publicApi
  */
@@ -236,7 +246,12 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
   /**
    * The name of the outlet
    *
+   * 出口名称
+   *
    * @see [named outlets](guide/router-tutorial-toh#displaying-multiple-routes-in-named-outlets)
+   *
+   * [命名网点](guide/router-tutorial-toh#displaying-multiple-routes-in-named-outlets)
+   *
    */
   @Input() name = PRIMARY_OUTLET;
 
@@ -330,8 +345,16 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
   }
 
   /**
-   * @returns The currently activated component instance.
+   * @returns
+   *
+   * The currently activated component instance.
+   *
+   * 当前激活的组件实例。
+   *
    * @throws An error if the outlet is not activated.
+   *
+   * 如果插座未激活，则会出现错误。
+   *
    */
   get component(): Object {
     if (!this.activated)
@@ -450,6 +473,8 @@ export const INPUT_BINDER = new InjectionToken<RoutedComponentInputBinder>('');
  * Injectable used as a tree-shakable provider for opting in to binding router data to component
  * inputs.
  *
+ * Injectable 用作 tree-shakable 提供程序，用于选择将路由器数据绑定到组件输入。
+ *
  * The RouterOutlet registers itself with this service when an `ActivatedRoute` is attached or
  * activated. When this happens, the service subscribes to the `ActivatedRoute` observables \(params,
  * queryParams, data\) and sets the inputs of the component using `ComponentRef.setInput`.
@@ -457,8 +482,12 @@ export const INPUT_BINDER = new InjectionToken<RoutedComponentInputBinder>('');
  * input is set to `undefined`. If it were not done this way, the previous information would be
  * retained if the data got removed from the route \(i.e. if a query parameter is removed\).
  *
+ * 当附加或激活 `ActivatedRoute` 时，RouterOutlet 将自己注册到此服务。 发生这种情况时，服务会订阅 `ActivatedRoute` 可观察对象（参数、查询参数、数据）并使用 `ComponentRef.setInput` 设置组件的输入。 重要的是，当输入在路由数据中没有具有匹配键的项目时，此输入将设置为 `undefined` 。 如果不这样做，如果数据从路由中移除（即，如果查询参数被移除），先前的信息将被保留。
+ *
  * The `RouterOutlet` should unregister itself when destroyed via `unsubscribeFromRouteData` so that
  * the subscriptions are cleaned up.
+ *
+ * `RouterOutlet` 应该在通过 `unsubscribeFromRouteData` 销毁时自行注销，以便清理订阅。
  *
  */
 @Injectable()

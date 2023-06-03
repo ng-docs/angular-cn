@@ -13,8 +13,10 @@ import {RuntimeErrorCode} from './errors';
 
 /**
  * The list of features as an enum to uniquely type each `HydrationFeature`.
- * @see HydrationFeature
  *
+ * 作为枚举的功能列表，用于唯一键入每个 `HydrationFeature` 。
+ *
+ * @see HydrationFeature
  * @publicApi
  * @developerPreview
  */
@@ -26,6 +28,8 @@ export const enum HydrationFeatureKind {
 /**
  * Helper type to represent a Hydration feature.
  *
+ * 表示水合功能的助手类型。
+ *
  * @publicApi
  * @developerPreview
  */
@@ -36,6 +40,9 @@ export interface HydrationFeature<FeatureKind extends HydrationFeatureKind> {
 
 /**
  * Helper function to create an object that represents a Hydration feature.
+ *
+ * 用于创建表示水合功能的对象的辅助函数。
+ *
  */
 function hydrationFeature<FeatureKind extends HydrationFeatureKind>(
     kind: FeatureKind, providers: Provider[] = []): HydrationFeature<FeatureKind> {
@@ -46,9 +53,13 @@ function hydrationFeature<FeatureKind extends HydrationFeatureKind>(
  * Disables DOM nodes reuse during hydration. Effectively makes
  * Angular re-render an application from scratch on the client.
  *
+ * 在水合作用期间禁用 DOM 节点重用。 有效地使 Angular 在客户端从头开始重新呈现应用程序。
+ *
  * When this option is enabled, make sure that the initial navigation
  * option is configured for the Router as `enabledBlocking` by using the
  * `withEnabledBlockingInitialNavigation` in the `provideRouter` call:
+ *
+ * 启用此选项后，请确保通过在 `provideRouter` 调用中使用 `withEnabledBlockingInitialNavigation` 将路由器的初始导航选项配置为 `enabledBlocking` ：
  *
  * ```
  * bootstrapApplication(RootComponent, {
@@ -67,6 +78,8 @@ function hydrationFeature<FeatureKind extends HydrationFeatureKind>(
  * waiting for async guards and resolvers\) are completed to avoid
  * clearing the DOM on the client too soon, thus causing content flicker.
  *
+ * 这将确保在 Router 中的所有异步操作（例如组件的延迟加载、等待异步守卫和解析器）完成后重新渲染应用程序，以避免过早清除客户端上的 DOM，从而导致内容闪烁。
+ *
  * @see `provideRouter`
  * @see `withEnabledBlockingInitialNavigation`
  * @publicApi
@@ -82,6 +95,8 @@ export function withNoDomReuse(): HydrationFeature<HydrationFeatureKind.NoDomReu
  * Disables HTTP transfer cache. Effectively causes HTTP requests to be performed twice: once on the
  * server and other one on the browser.
  *
+ * 禁用 HTTP 传输缓存。 有效地导致 HTTP 请求执行两次：一次在服务器上，另一次在浏览器上。
+ *
  * @publicApi
  * @developerPreview
  */
@@ -96,6 +111,9 @@ export function withNoHttpTransferCache():
  * Returns an `ENVIRONMENT_INITIALIZER` token setup with a function
  * that verifies whether compatible ZoneJS was used in an application
  * and logs a warning in a console if it's not the case.
+ *
+ * 返回一个 `ENVIRONMENT_INITIALIZER` 令牌设置，该令牌设置具有验证是否在应用程序中使用了兼容的 ZoneJS 的功能，如果不是这种情况，则在控制台中记录警告。
+ *
  */
 function provideZoneJsCompatibilityDetector(): Provider[] {
   return [{
@@ -126,10 +144,14 @@ function provideZoneJsCompatibilityDetector(): Provider[] {
  * passing special functions \(from the `HydrationFeatures` set\) as arguments to the
  * `provideClientHydration` function.
  *
+ * 设置为应用程序启用水合功能所需的提供程序。 默认情况下，该函数启用推荐的一组功能以获得大多数应用程序的最佳性能。 您可以通过将特殊函数（来自 `HydrationFeatures` 集）作为参数传递给 `provideClientHydration` 函数来启用/禁用功能。
+ *
  * @usageNotes
  *
  * Basic example of how you can enable hydration in your application when
  * `bootstrapApplication` function is used:
+ *
+ * 使用 `bootstrapApplication` 函数时如何在应用程序中启用水合作用的基本示例：
  *
  * ```
  * bootstrapApplication(AppComponent, {
@@ -140,6 +162,8 @@ function provideZoneJsCompatibilityDetector(): Provider[] {
  * Alternatively if you are using NgModules, you would add `provideClientHydration`
  * to your root app module's provider list.
  *
+ * 或者，如果您使用的是 NgModules，您可以将 `provideClientHydration` 添加到根应用程序模块的提供者列表中。
+ *
  * ```
  * @NgModule({
  *   declarations: [RootCmp],
@@ -148,12 +172,18 @@ function provideZoneJsCompatibilityDetector(): Provider[] {
  * })
  * export class AppModule {}
  * ```
+ *
  * @see `withNoDomReuse`
  * @see `withNoHttpTransferCache`
  * @param features Optional features to configure additional router behaviors.
  *
  * 配置其他路由器行为的可选特性。
- * @returns A set of providers to enable hydration.
+ * @returns
+ *
+ * A set of providers to enable hydration.
+ *
+ * 一组启用水合作用的提供程序。
+ *
  * @publicApi
  * @developerPreview
  */

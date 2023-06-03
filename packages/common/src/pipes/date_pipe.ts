@@ -346,10 +346,10 @@ export class DatePipe implements PipeTransform {
 
   /**
    * @param value The date expression: a `Date` object,  a number
-   * \(milliseconds since UTC epoch\), or an ISO string \(https://www.w3.org/TR/NOTE-datetime\\).
+   * \(milliseconds since UTC epoch\), or an ISO string \(https://www.w3.org/TR/NOTE-datetime\\\).
    *
    * 日期表达式：`Date` 对象、数字（从 UTC 时代以来的毫秒数）或一个 ISO 字符串
-   * \(https://www.w3.org/TR/NOTE-datetime\\)。
+   * \(https://www.w3.org/TR/NOTE-datetime\\\)。
    *
    * @param format The date/time components to include, using predefined options or a
    * custom format string.  When not provided, the `DatePipe` looks for the value using the

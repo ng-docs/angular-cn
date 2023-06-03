@@ -130,12 +130,18 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    * later internal use. It ensures the string is all lowercase, converts special
    * characters to a standard spelling, and orders all the values consistently.
    *
+   * 解析用户提供的完整键盘事件定义并将其规范化以供以后内部使用。 它确保字符串全部为小写，将特殊字符转换为标准拼写，并对所有值进行一致排序。
+   *
    * @param eventName The name of the key event to listen for.
    *
    * 要监听的键盘事件的名称。
+   * @returns
    *
-   * @returns an object with the full, normalized string, and the dom event name
+   * an object with the full, normalized string, and the dom event name
    * or null in the case when the event doesn't match a keyboard event.
+   *
+   * 具有完整规范化字符串和 dom 事件名称的对象，或者在事件与键盘事件不匹配的情况下为 null。
+   *
    */
   static parseEventName(eventName: string): {fullKey: string, domEventName: string}|null {
     const parts: string[] = eventName.toLowerCase().split('.');
@@ -182,11 +188,21 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    * event is attached to the DOM during the `addEventListener` call. This is unseen
    * by the end user and is normalized for internal consistency and parsing.
    *
+   * 确定实际按下的键是否与配置的键代码字符串匹配。 当在 `addEventListener` 调用期间将事件附加到 DOM 时， `fullKeyCode` 事件在 `parseEventName` 方法中被规范化。 这是最终用户看不到的，并且针对内部一致性和解析进行了规范化。
+   *
    * @param event The keyboard event.
+   *
+   * 键盘事件。
+   *
    * @param fullKeyCode The normalized user defined expected key event string
+   *
+   * 规范化的用户定义的预期键事件字符串
+   *
    * @returns
    *
    * boolean.
+   *
+   * 。【模糊翻译】。
    *
    */
   static matchEventFullKeyCode(event: KeyboardEvent, fullKeyCode: string): boolean {

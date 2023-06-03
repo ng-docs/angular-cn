@@ -55,17 +55,19 @@ export class EventManager {
    * @param element The HTML element to receive event notifications.
    *
    * 要接收事件通知的 HTML 元素。
-   *
    * @param eventName The name of the event to listen for.
    *
    * 要监听的事件的名称。
-   *
    * @param handler A function to call when the notification occurs. Receives the
    * event object as an argument.
    *
    * 通知发生时调用的函数。接收事件对象作为参数。
+   * @returns
    *
-   * @returns  A callback function that can be used to remove the handler.
+   * A callback function that can be used to remove the handler.
+   *
+   * 可用于删除处理程序的回调函数。
+   *
    */
   addEventListener(element: HTMLElement, eventName: string, handler: Function): Function {
     const plugin = this._findPluginFor(eventName);

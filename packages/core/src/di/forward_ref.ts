@@ -47,13 +47,19 @@ const __forward_ref__ = getClosureSafeProperty({__forward_ref__: getClosureSafeP
  *
  * `forwardRef` is also used to break circularities in standalone components imports.
  *
+ * `forwardRef` 还用于打破独立组件导入中的循环。
+ *
  * @usageNotes
  *
  * ### Circular dependency example
  *
+ * ### 循环依赖示例
+ *
  * {@example core/di/ts/forward_ref/forward_ref_spec.ts region='forward_ref'}
  *
  * ### Circular standalone reference import example
+ *
+ * ### 循环独立引用导入示例
  *
  * ```ts
  * @Component({

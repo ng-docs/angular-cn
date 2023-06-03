@@ -31,6 +31,8 @@ export interface FormControlState<T> {
  * This interface extends all options from {@link AbstractControlOptions}, plus some options
  * unique to `FormControl`.
  *
+ * 此接口扩展了 {@link AbstractControlOptions} 的所有选项，以及一些 `FormControl` 独有的选项。
+ *
  * @publicApi
  */
 export interface FormControlOptions extends AbstractControlOptions {
@@ -48,7 +50,12 @@ export interface FormControlOptions extends AbstractControlOptions {
   nonNullable?: boolean;
 
   /**
-   * @deprecated Use `nonNullable` instead.
+   * @deprecated
+   *
+   * Use `nonNullable` instead.
+   *
+   * 请改用 `nonNullable` 。
+   *
    */
   initialValueIsDefault?: boolean;
 }
@@ -73,11 +80,16 @@ export interface FormControlOptions extends AbstractControlOptions {
  *
  * See [usage examples below](#usage-notes).
  *
+ * 请参阅[下面的用法示例](#usage-notes)。
+ *
  * @see `AbstractControl`
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
  * [响应式表单](/guide/reactive-forms)
  * @see [Usage Notes](#usage-notes)
+ *
+ * [使用说明](#usage-notes)
+ *
  * @publicApi
  * @overriddenImplementation ɵFormControlCtor
  * @usageNotes
@@ -230,13 +242,14 @@ export interface FormControlOptions extends AbstractControlOptions {
  * console.log(control.value); // 'Drew'
  * console.log(control.status); // 'DISABLED'
  * ```
- *
  */
 export interface FormControl<TValue = any> extends AbstractControl<TValue> {
   /**
    * The default value of this FormControl, used whenever the control is reset without an explicit
    * value. See {@link FormControlOptions#nonNullable} for more information on configuring
    * a default value.
+   *
+   * 此 FormControl 的默认值，在没有显式值的情况下重置控件时使用。 有关配置默认值的更多信息，请参阅 {@link FormControlOptions#nonNullable}。
    *
    */
   readonly defaultValue: TValue;
@@ -246,6 +259,9 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
 
   /**
    * This field holds a pending value that has not yet been applied to the form's value.
+   *
+   * 该字段包含尚未应用于表单值的待定值。
+   *
    * @internal
    */
   _pendingValue: TValue;
@@ -265,6 +281,8 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * and emits events when the value changes.
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} method.
+   *
+   * 确定控件如何传播更改并在值更改时发出事件的配置选项。 配置选项被传递给 {@link AbstractControl#updateValueAndValidity updateValueAndValidity} 方法。
    *
    * * `onlySelf`: When true, each change only affects this control, and not its parent. Default is
    *   false.
@@ -307,6 +325,8 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * It exists for symmetry with {@link FormGroup#patchValue patchValue} on `FormGroups` and
    * `FormArrays`, where it does behave differently.
    *
+   * 此功能在功能上与此级别的 {@link FormControl#setValue setValue} 相同。 它的存在是为了与 `FormGroups` 和 `FormArrays` 上的 {@link FormGroup#patchValue patchValue} 对称，但它的行为确实不同。
+   *
    * @see `setValue` for options
    *
    * `setValue` 的配置项
@@ -322,6 +342,8 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * Resets the form control, marking it `pristine` and `untouched`, and resetting
    * the value. The new value will be the provided value \(if passed\), `null`, or the initial value
    * if `nonNullable` was set in the constructor via {@link FormControlOptions}.
+   *
+   * 重置表单控件，将其标记为 `pristine` 和 `untouched` ，并重置值。 如果通过 {@link FormControlOptions} 在构造函数中设置了 `nonNullable` 则新值将是提供的值（如果已传递）、 `null` 或初始值。
    *
    * ```ts
    * // By default, the control will reset to null.
@@ -402,6 +424,9 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
 
   /**
    * Internal function to unregister a change events listener.
+   *
+   * 注销更改事件侦听器的内部函数。
+   *
    * @internal
    */
   _unregisterOnChange(fn: (value?: any, emitModelEvent?: boolean) => void): void;
@@ -420,6 +445,9 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
 
   /**
    * Internal function to unregister a disabled event listener.
+   *
+   * 注销禁用事件侦听器的内部函数。
+   *
    * @internal
    */
   _unregisterOnDisabledChange(fn: (isDisabled: boolean) => void): void;
@@ -441,11 +469,15 @@ type FormControlInterface<TValue = any> = FormControl<TValue>;
  * Various available constructors for `FormControl`.
  * Do not use this interface directly. Instead, use `FormControl`:
  *
+ * `FormControl` 的各种可用构造函数。 不要直接使用这个接口。 相反，使用 `FormControl` ：
+ *
  * ```
  * const fc = new FormControl('foo');
  * ```
  *
  * This symbol is prefixed with ɵ to make plain that it is an internal symbol.
+ *
+ * 该符号以 ɵ 为前缀，表明它是一个内部符号。
  *
  */
 export interface ɵFormControlCtor {
@@ -466,27 +498,38 @@ export interface ɵFormControlCtor {
    * or an object that defines the initial value and disabled state.
    *
    * 使用一个初始值或定义了初始值和禁用状态的对象初始化该控件。
-   *
    * @param validatorOrOpts A synchronous validator function, or an array of
    * such functions, or a `FormControlOptions` object that contains validation functions
    * and a validation trigger.
+   *
+   * 同步验证器函数，或此类函数的数组，或包含验证函数和验证触发器的 `FormControlOptions` 对象。
+   *
    * @param asyncValidator A single async validator or array of async validator functions
    *
    * 单个的异步验证器函数或其数组。
-   *
    */
   new<T = any>(value: FormControlState<T>|T, opts: FormControlOptions&{nonNullable: true}):
       FormControl<T>;
 
   /**
-   * @deprecated Use `nonNullable` instead.
+   * @deprecated
+   *
+   * Use `nonNullable` instead.
+   *
+   * 请改用 `nonNullable` 。
+   *
    */
   new<T = any>(value: FormControlState<T>|T, opts: FormControlOptions&{
     initialValueIsDefault: true
   }): FormControl<T>;
 
   /**
-   * @deprecated When passing an `options` argument, the `asyncValidator` argument has no effect.
+   * @deprecated
+   *
+   * When passing an `options` argument, the `asyncValidator` argument has no effect.
+   *
+   * 传递 `options` 参数时， `asyncValidator` 参数无效。
+   *
    */
   new<T = any>(
       value: FormControlState<T>|T, opts: FormControlOptions,
@@ -664,6 +707,9 @@ interface UntypedFormControlCtor {
 
 /**
  * UntypedFormControl is a non-strongly-typed version of `FormControl`.
+ *
+ * UntypedFormControl 是 `FormControl` 的非强类型版本。
+ *
  */
 export type UntypedFormControl = FormControl<any>;
 
@@ -671,7 +717,10 @@ export const UntypedFormControl: UntypedFormControlCtor = FormControl;
 
 /**
  * @description
+ *
  * Asserts that the given control is an instance of `FormControl`
+ *
+ * 断言给定的控件是 `FormControl` 的一个实例
  *
  * @publicApi
  */

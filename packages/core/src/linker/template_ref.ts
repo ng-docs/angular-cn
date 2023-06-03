@@ -92,9 +92,13 @@ export abstract class TemplateRef<C> {
   /**
    * Implementation of the `createEmbeddedView` function.
    *
+   * `createEmbeddedView` 函数的实现。
+   *
    * This implementation is internal and allows framework code
    * to invoke it with extra parameters \(e.g. for hydration\) without
    * affecting public API.
+   *
+   * 这个实现是内部的，允许框架代码在不影响公共 API 的情况下使用额外的参数（例如水合作用）调用它。
    *
    * @internal
    */
@@ -105,6 +109,8 @@ export abstract class TemplateRef<C> {
   /**
    * Returns an `ssrId` associated with a TView, which was used to
    * create this instance of the `TemplateRef`.
+   *
+   * 返回与 TView 关联的 `ssrId` ，它用于创建 `TemplateRef` 的实例。
    *
    * @internal
    */
@@ -131,6 +137,8 @@ const R3TemplateRef = class TemplateRef<T> extends ViewEngineTemplateRef<T> {
   /**
    * Returns an `ssrId` associated with a TView, which was used to
    * create this instance of the `TemplateRef`.
+   *
+   * 返回与 TView 关联的 `ssrId` ，它用于创建 `TemplateRef` 的实例。
    *
    * @internal
    */

@@ -1,11 +1,15 @@
 # HTTP client - Test requests
 
+# HTTP 客户端 - 测试请求
+
 As for any external dependency, you must mock the HTTP backend so your tests can simulate interaction with a remote server.
 The `@angular/common/http/testing` library makes it straightforward to set up such mocking.
 
 如同所有的外部依赖一样，你必须把 HTTP 后端也 Mock 掉，以便你的测试可以模拟这种与后端的互动。`@angular/common/http/testing` 库能让这种 Mock 工作变得直截了当。
 
 ## HTTP testing library
+
+## HTTP 测试库
 
 Angular's HTTP testing library is designed for a pattern of testing in which the app executes code and makes requests first.
 The test then expects that certain requests have or have not been made, performs assertions against those requests, and finally provides responses by "flushing" each expected request.
@@ -51,6 +55,8 @@ This setup also calls `TestBed.inject()` to inject the `HttpClient` service and 
 
 ## Expect and answer requests
 
+## 期待并回答请求
+
 Now you can write a test that expects a GET Request to occur and provides a mock response.
 
 现在，你就可以编写测试，等待 GET 请求并给出模拟响应。
@@ -80,6 +86,8 @@ As with the previous `expectOne()`, the test fails if 0 or 2+ requests satisfy t
 
 ### Handle more than one request
 
+### 处理多个请求
+
 If you need to respond to duplicate requests in your test, use the `match()` API instead of `expectOne()`.
 It takes the same arguments but returns an array of matching requests.
 Once returned, these requests are removed from future matching and you are responsible for flushing and verifying them.
@@ -89,6 +97,8 @@ Once returned, these requests are removed from future matching and you are respo
 <code-example path="http/src/testing/http-client.spec.ts" region="multi-request"></code-example>
 
 ## Test for errors
+
+## 测试错误
 
 You should test the app's defenses against HTTP requests that fail.
 

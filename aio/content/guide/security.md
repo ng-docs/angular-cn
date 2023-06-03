@@ -261,8 +261,15 @@ When serving your Angular application, the server should include a  randomly-gen
 You must provide this nonce to Angular so that the framework can render `<style>` elements.
 You can set the nonce for Angular in one of two ways:
 
+在为 Angular 应用程序提供服务时，服务器应在每个请求的 HTTP 标头中包含一个随机生成的随机数。 您必须向 Angular 提供此随机数，以便框架可以呈现 `<style>` 元素。 您可以通过以下两种方式之一为 Angular 设置随机数：
+
 1. Set the `ngCspNonce` attribute on the root application element as `<app ngCspNonce="randomNonceGoesHere"></app>`. Use this approach if you have access to server-side templating that can add the nonce both to the header and the `index.html` when constructing the response.
+
+   将根应用程序元素上的 `ngCspNonce` 属性设置为 `<app ngCspNonce="randomNonceGoesHere"></app>` 。 如果您可以访问服务器端模板，在构建响应时可以将随机数添加到标头和 `index.html` 请使用此方法。
+
 2. Provide the nonce using the `CSP_NONCE` injection token. Use this approach if you have access to the nonce at runtime and you want to be able to cache the `index.html`.
+
+   使用 `CSP_NONCE` 注入令牌提供随机数。 如果您可以在运行时访问 nonce 并且希望能够缓存 `index.html` ，请使用此方法。
 
 <code-example format="typescript" language="typescript">
 
@@ -287,13 +294,17 @@ If an attacker can predict future nonces, they can circumvent the protections of
 
 If you cannot generate nonces in your project, you can allow inline styles by adding `'unsafe-inline'` to the `style-src` section of the CSP header.
 
+如果您无法在项目中生成 nonce，则可以通过将 `'unsafe-inline'` 添加到 CSP 标头的 `style-src` 部分来允许内联样式。
+
 | Sections                                         | Details                                                                                                                                                                                                         |
 | :----------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 区段                                             | 详情                                                                                                                                                                                                            |
 | `default-src 'self';`                            | Allows the page to load all its required resources from the same origin.                                                                                                                                        |
 | `default-src 'self';`                            | 允许此页面加载所有来自同源的资源。                                                                                                                                                                              |
 | `style-src 'self' 'nonce-randomNonceGoesHere';`  | Allows the page to load global styles from the same origin \(`'self'`\) and styles inserted by Angular with the `nonce-randomNonceGoesHere`.                                                                    |
+| `style-src 'self' 'nonce-randomNonceGoesHere';`  | 允许页面从同一个来源（ `'self'` ）加载全局样式以及 Angular 使用 `nonce-randomNonceGoesHere` 插入的样式。                                                                                                          |
 | `script-src 'self' 'nonce-randomNonceGoesHere';` | Allows the page to load JavaScript from the same origin \(`'self'`\) and scripts inserted by the Angular CLI with the `nonce-randomNonceGoesHere`. This is only required if you're using critical CSS inlining. |
+| `script-src 'self' 'nonce-randomNonceGoesHere';` | 允许页面从相同来源（ `'self'` ）加载 JavaScript 和由 Angular CLI 使用 `nonce-randomNonceGoesHere` 插入的脚本。 只有在使用关键 CSS 内联时才需要这样做。                                                            |
 
 Angular itself requires only these settings to function correctly.
 As your project grows, you may need to expand your CSP settings to accommodate extra features specific to your application.

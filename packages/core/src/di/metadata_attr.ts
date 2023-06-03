@@ -42,6 +42,8 @@ export interface AttributeDecorator {
    *
    * The following example uses the decorator in a component constructor.
    *
+   * 以下示例在组件构造函数中使用装饰器。
+   *
    * {@example core/ts/metadata/metadata.ts region='attributeFactory'}
    *
    */

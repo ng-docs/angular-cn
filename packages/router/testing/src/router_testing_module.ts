@@ -30,7 +30,12 @@ function throwInvalidConfigError(parameter: string): never {
  * 用于测试的路由器设置工厂函数。
  *
  * @publicApi
- * @deprecated Use `provideRouter` or `RouterModule` instead.
+ * @deprecated
+ *
+ * Use `provideRouter` or `RouterModule` instead.
+ *
+ * 请改用 `provideRouter` 或 `RouterModule` 。
+ *
  */
 export function setupTestingRouter(
     urlSerializer: UrlSerializer, contexts: ChildrenOutletContexts, location: Location,

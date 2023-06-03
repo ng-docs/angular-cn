@@ -49,6 +49,9 @@ export function resetFakeAsyncZone(): void {
  * 可用于包装 `inject()` 调用。
  *
  * @param fn The function that you want to wrap in the `fakeAsync` zone.
+ *
+ * 要包装在 `fakeAsync` 区域中的函数。
+ *
  * @usageNotes
  *
  * ### Example
@@ -57,9 +60,14 @@ export function resetFakeAsyncZone(): void {
  *
  * {@example core/testing/ts/fake_async.ts region='basic'}
  *
- * @returns The function wrapped to be executed in the `fakeAsync` zone.
+ * @returns
+ *
+ * The function wrapped to be executed in the `fakeAsync` zone.
  * Any arguments passed when calling this returned function will be passed through to the `fn`
  * function in the parameters when it is called.
+ *
+ * 包装在 `fakeAsync` 区域中执行的函数。 调用此返回函数时传递的任何参数都将在调用时传递给参数中的 `fn` 函数。
+ *
  * @publicApi
  */
 export function fakeAsync(fn: Function): (...args: any[]) => any {
@@ -114,6 +122,8 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  * `processNewMacroTasksSynchronously` defaults to true, and the nested
  * function is executed on each tick.
  *
+ * 下面的示例包含一个嵌套超时（新的 macroTask），并且 `tickOptions` 参数允许默认。 在这种情况下， `processNewMacroTasksSynchronously` 默认为 true，嵌套函数在每个 tick 上执行。
+ *
  * ```
  * it ('test with nested setTimeout', fakeAsync(() => {
  *   let nestedTimeoutInvoked = false;
@@ -130,6 +140,8 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  *
  * In the following case, `processNewMacroTasksSynchronously` is explicitly
  * set to false, so the nested timeout function is not invoked.
+ *
+ * 在以下情况下， `processNewMacroTasksSynchronously` 显式设置为 false，因此不会调用嵌套超时函数。
  *
  * ```
  * it ('test with nested setTimeout', fakeAsync(() => {
@@ -168,8 +180,12 @@ export function tick(
  *     throwing an error.
  *
  * 可选值。默认值为 `undefined`。
+ * @returns
  *
- * @returns The simulated time elapsed, in milliseconds.
+ * The simulated time elapsed, in milliseconds.
+ *
+ * 经过的模拟时间，以毫秒为单位。
+ *
  * @publicApi
  */
 export function flush(maxTurns?: number): number {

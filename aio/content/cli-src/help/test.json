@@ -40,7 +40,8 @@
     {
       "name": "exclude",
       "type": "array",
-      "description": "Globs of files to exclude, relative to the project root."
+      "description": "Globs of files to exclude, relative to the project root.",
+      "descriptionCn": "相对于项目根目录要排除的文件 Glob。"
     },
     {
       "name": "help",

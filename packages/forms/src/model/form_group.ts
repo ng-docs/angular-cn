@@ -14,6 +14,8 @@ import {AbstractControl, AbstractControlOptions, assertAllValuesPresent, assertC
  * FormGroupValue extracts the type of `.value` from a FormGroup's inner object type. The untyped
  * case falls back to {[key: string]&#x3A; any}.
  *
+ * FormGroupValue 从 FormGroup 的内部对象类型中提取 `.value` 的类型。 未类型化的大小写回落到 { [key: string][key: string] : any}。
+ *
  * Angular uses this type internally to support Typed Forms; do not use it directly.
  *
  * Angular 在内部使用此类型来支持类型化表单；不要直接使用它。
@@ -30,6 +32,8 @@ export type ɵFormGroupValue<T extends {[K in keyof T]?: AbstractControl<any>}> 
  * FormGroupRawValue extracts the type of `.getRawValue()` from a FormGroup's inner object type. The
  * untyped case falls back to {[key: string]&#x3A; any}.
  *
+ * FormGroupRawValue 从 FormGroup 的内部对象类型中提取 `.getRawValue()` 的类型。 未类型化的大小写回落到 { [key: string][key: string] : any}。
+ *
  * Angular uses this type internally to support Typed Forms; do not use it directly.
  *
  * Angular 在内部使用此类型来支持类型化表单；不要直接使用它。
@@ -44,6 +48,8 @@ export type ɵFormGroupRawValue<T extends {[K in keyof T]?: AbstractControl<any>
 
 /**
  * OptionalKeys returns the union of all optional keys in the object.
+ *
+ * OptionalKeys 返回对象中所有可选键的联合。
  *
  * Angular uses this type internally to support Typed Forms; do not use it directly.
  *
@@ -78,6 +84,8 @@ export type ɵOptionalKeys<T> = {
  *
  * `FormGroup` is intended for use cases where the keys are known ahead of time.
  * If you need to dynamically add and remove controls, use {@link FormRecord} instead.
+ *
+ * `FormGroup` 适用于提前知道密钥的用例。 如果您需要动态添加和删除控件，请改用 {@link FormRecord}。
  *
  * `FormGroup` accepts an optional type parameter `TControl`, which is an object type with inner
  * control types as values.
@@ -252,6 +260,8 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * This method does not update the value or validity of the control.
    * Use {@link FormGroup#addControl addControl} instead.
    *
+   * 此方法不更新控件的值或有效性。 使用 {@link FormGroup#addControl addControl} 代替。
+   *
    * @param name The control name to register in the collection
    *
    * 注册到集合中的控件名
@@ -281,6 +291,8 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * If a control with a given name already exists, it would *not* be replaced with a new one.
    * If you want to replace an existing control, use the {@link FormGroup#setControl setControl}
    * method instead. This method also updates the value and validity of the control.
+   *
+   * 如果具有给定名称的控件已经存在，则*不会*用新名称替换它。 如果要替换现有控件，请改用 {@link FormGroup#setControl setControl} 方法。 此方法还更新控件的值和有效性。
    *
    * @param name The control name to add to the collection
    *
@@ -336,6 +348,8 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * 要从集合中移除的控件名
    * @param options Specifies whether this FormGroup instance should emit events after a
    *     control is removed.
+   *
+   * 指定此 FormGroup 实例是否应在删除控件后发出事件。
    *
    * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *   `valueChanges` observables emit events with the latest status and value when the control is
@@ -405,10 +419,17 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * Reports false for disabled controls. If you'd like to check for existence in the group
    * only, use {@link AbstractControl#get get} instead.
    *
+   * 对禁用的控件报告 false。 如果您只想检查组中是否存在，请改用 {@link AbstractControl#get get}。
+   *
    * @param controlName The control name to check for existence in the collection
    *
    * 要在集合中检查是否存在的控件名
-   * @returns false for disabled controls, true otherwise.
+   * @returns
+   *
+   * false for disabled controls, true otherwise.
+   *
+   * 对于禁用的控件为 false，否则为 true。
+   *
    */
   contains<K extends string>(controlName: K): boolean;
   contains(this: FormGroup<{[key: string]: AbstractControl<any>}>, controlName: string): boolean;
@@ -442,6 +463,9 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * ```
    * @throws When strict checks fail, such as setting the value of a control
    * that doesn't exist or if you exclude a value of a control that does exist.
+   *
+   * 当严格检查失败时，例如设置不存在的控件的值，或者如果您排除存在的控件的值。
+   *
    * @param value The new value for the control that matches the structure of the group.
    *
    * 控件的新值，其结构必须和该组的结构相匹配。
@@ -449,6 +473,8 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * and emits events after the value changes.
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} method.
+   *
+   * 确定控件如何传播更改并在值更改后发出事件的配置选项。 配置选项被传递给 {@link AbstractControl#updateValueAndValidity updateValueAndValidity} 方法。
    *
    * * `onlySelf`: When true, each change only affects this control, and not its parent. Default is
    *   false.
@@ -755,6 +781,9 @@ interface UntypedFormGroupCtor {
 
 /**
  * UntypedFormGroup is a non-strongly-typed version of `FormGroup`.
+ *
+ * UntypedFormGroup 是 `FormGroup` 的非强类型版本。
+ *
  */
 export type UntypedFormGroup = FormGroup<any>;
 
@@ -762,7 +791,10 @@ export const UntypedFormGroup: UntypedFormGroupCtor = FormGroup;
 
 /**
  * @description
+ *
  * Asserts that the given control is an instance of `FormGroup`
+ *
+ * 断言给定的控件是 `FormGroup` 的一个实例
  *
  * @publicApi
  */
@@ -776,6 +808,8 @@ export const isFormGroup = (control: unknown): control is FormGroup => control i
  *
  * `FormRecord` is very similar to {@link FormGroup}, except it can be used with a dynamic keys,
  * with controls added and removed as needed.
+ *
+ * `FormRecord` 与 {@link FormGroup} 非常相似，除了它可以与动态键一起使用，并根据需要添加和删除控件。
  *
  * `FormRecord` accepts one generic argument, which describes the type of the controls it contains.
  *
@@ -918,7 +952,10 @@ export interface FormRecord<TControl> {
 
 /**
  * @description
+ *
  * Asserts that the given control is an instance of `FormRecord`
+ *
+ * 断言给定的控件是 `FormRecord` 的一个实例
  *
  * @publicApi
  */

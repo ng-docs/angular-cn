@@ -13,6 +13,9 @@ import {MetadataReader, MetadataReaderWithIndex, MetaKind, NgModuleIndex} from '
 
 /**
  * An index of all NgModules that export or re-export a given trait.
+ *
+ * 导出或重新导出给定特征的所有 NgModule 的索引。
+ *
  */
 export class NgModuleIndexImpl implements NgModuleIndex {
   constructor(private metaReader: MetadataReader, private localReader: MetadataReaderWithIndex) {}

@@ -85,6 +85,8 @@ let moduleUid = 0;
  * For more details on how to use `downgradeModule()` see
  * [Upgrading for Performance](guide/upgrade-performance).
  *
+ * 有关如何使用 `downgradeModule()` 的更多详细信息，请参阅[性能升级](guide/upgrade-performance)。
+ *
  * @usageNotes
  *
  * Apart from `UpgradeModule`, you can use the rest of the `upgrade/static` helpers as usual to
@@ -278,6 +280,8 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *
  * For more details on how to use `downgradeModule()` see
  * [Upgrading for Performance](guide/upgrade-performance).
+ *
+ * 有关如何使用 `downgradeModule()` 的更多详细信息，请参阅[性能升级](guide/upgrade-performance)。
  *
  * @usageNotes
  *
@@ -477,6 +481,8 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *
  * For more details on how to use `downgradeModule()` see
  * [Upgrading for Performance](guide/upgrade-performance).
+ *
+ * 有关如何使用 `downgradeModule()` 的更多详细信息，请参阅[性能升级](guide/upgrade-performance)。
  *
  * @usageNotes
  *

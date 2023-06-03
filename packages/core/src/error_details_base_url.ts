@@ -13,13 +13,23 @@
  *
  * Keep this constant in sync across:
  *
+ * 保持这个常量同步：
+ *
  * - packages/compiler-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts
+ *
+ *   包/编译器-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts
+ *
  * - packages/core/src/error_details_base_url.ts
+ *
+ *   包/核心/src/error_details_base_url.ts
  *
  */
 export const ERROR_DETAILS_PAGE_BASE_URL = 'https://angular.io/errors';
 
 /**
  * URL for the XSS security documentation.
+ *
+ * XSS 安全文档的 URL。
+ *
  */
 export const XSS_SECURITY_URL = 'https://g.co/ng/security#xss';

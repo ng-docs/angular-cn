@@ -54,6 +54,8 @@ import {EmbeddedViewRef, ViewRef} from './view_ref';
  * A view container instance can contain other view containers,
  * creating a [view hierarchy](guide/glossary#view-hierarchy).
  *
+ * 视图容器实例可以包含其他视图容器，从而创建[视图层次结构](guide/glossary#view-hierarchy)。
+ *
  * @see `ComponentRef`
  * @see `EmbeddedViewRef`
  * @publicApi
@@ -89,7 +91,14 @@ export abstract class ViewContainerRef {
    */
   abstract get injector(): Injector;
 
-  /** @deprecated No replacement */
+  /**
+   * @deprecated
+   *
+   * No replacement
+   *
+   * 无更换
+   *
+   */
   abstract get parentInjector(): Injector;
 
   /**
@@ -108,8 +117,12 @@ export abstract class ViewContainerRef {
    * @param index The 0-based index of the view to retrieve.
    *
    * 所要获取视图的从 0 开始的索引。
+   * @returns
    *
-   * @returns The `ViewRef` instance, or null if the index is out of range.
+   * The `ViewRef` instance, or null if the index is out of range.
+   *
+   * `ViewRef` 实例，如果索引超出范围则为 null。
+   *
    */
   abstract get(index: number): ViewRef|null;
 
@@ -118,7 +131,12 @@ export abstract class ViewContainerRef {
    *
    * 报告目前附加到本容器的视图的数量。
    *
-   * @returns The number of views.
+   * @returns
+   *
+   * The number of views.
+   *
+   * 观看次数。
+   *
    */
   abstract get length(): number;
 
@@ -131,12 +149,10 @@ export abstract class ViewContainerRef {
    * @param templateRef The HTML template that defines the view.
    *
    * 用来定义视图的 HTML 模板。
-   *
    * @param context The data-binding context of the embedded view, as declared
    * in the `<ng-template>` usage.
    *
    * 这个新视图的上下文环境，继承自所附着的元素。
-   *
    * @param options Extra configuration for the created view. Includes:
    *
    * 创建的视图的额外配置。包括：
@@ -149,8 +165,12 @@ export abstract class ViewContainerRef {
    * - injector: Injector to be used within the embedded view.
    *
    *   注入器：要在嵌入式视图中使用的注入器。
+   * @returns
    *
-   * @returns The `ViewRef` instance for the newly created view.
+   * The `ViewRef` instance for the newly created view.
+   *
+   * 新创建的视图的 `ViewRef` 实例。
+   *
    */
   abstract createEmbeddedView<C>(templateRef: TemplateRef<C>, context?: C, options?: {
     index?: number,
@@ -166,18 +186,20 @@ export abstract class ViewContainerRef {
    * @param templateRef The HTML template that defines the view.
    *
    * 用来定义视图的 HTML 模板。
-   *
    * @param context The data-binding context of the embedded view, as declared
    * in the `<ng-template>` usage.
    *
    * 这个新视图的上下文环境，继承自所附着的元素。
-   *
    * @param index The 0-based index at which to insert the new view into this container.
    * If not specified, appends the new view as the last entry.
    *
    * 从 0 开始的索引，表示新视图要插入到当前容器的哪个位置。 如果没有指定，就把新的视图追加到最后。
+   * @returns
    *
-   * @returns The `ViewRef` instance for the newly created view.
+   * The `ViewRef` instance for the newly created view.
+   *
+   * 新创建的视图的 `ViewRef` 实例。
+   *
    */
   abstract createEmbeddedView<C>(templateRef: TemplateRef<C>, context?: C, index?: number):
       EmbeddedViewRef<C>;
@@ -190,7 +212,6 @@ export abstract class ViewContainerRef {
    * @param componentType Component Type to use.
    *
    * 要使用的组件类型。
-   *
    * @param options An object that contains extra parameters:
    *
    * 包含额外参数的对象：
@@ -221,8 +242,12 @@ export abstract class ViewContainerRef {
    *                     [`<ng-content>`](api/core/ng-content) of the new component instance.
    *
    *   projectableNodes：应该通过新组件实例的[`<ng-content>`](api/core/ng-content)投影的 DOM 节点列表。
+   * @returns
    *
-   * @returns The new `ComponentRef` which contains the component instance and the host view.
+   * The new `ComponentRef` which contains the component instance and the host view.
+   *
+   * 包含组件实例和宿主视图的新 `ComponentRef` 。
+   *
    */
   abstract createComponent<C>(componentType: Type<C>, options?: {
     index?: number,
@@ -240,24 +265,28 @@ export abstract class ViewContainerRef {
    * @param componentFactory Component factory to use.
    *
    * 要使用的工厂。
-   *
    * @param index The index at which to insert the new component's host view into this container.
    * If not specified, appends the new view as the last entry.
    *
    * 从 0 开始的索引，表示新组件的宿主视图要插入到当前容器的哪个位置。 如果没有指定，就把新的视图追加到最后。
-   *
    * @param injector The injector to use as the parent for the new component.
    *
    * 一个注入器，将用作新组件的父注入器。
-   *
    * @param projectableNodes List of DOM nodes that should be projected through
    *     [`<ng-content>`](api/core/ng-content) of the new component instance.
    *
    * 可选值。默认值为 `undefined`。
-   *
    * @param ngModuleRef An instance of the NgModuleRef that represent an NgModule.
    * This information is used to retrieve corresponding NgModule injector.
-   * @returns The new `ComponentRef` which contains the component instance and the host view.
+   *
+   * NgModuleRef 的一个实例，表示一个 NgModule。 此信息用于检索相应的 NgModule 注入器。
+   *
+   * @returns
+   *
+   * The new `ComponentRef` which contains the component instance and the host view.
+   *
+   * 包含组件实例和宿主视图的新 `ComponentRef` 。
+   *
    * @deprecated
    *
    * Angular no longer requires component factories to dynamically create components.
@@ -265,7 +294,6 @@ export abstract class ViewContainerRef {
    *     Component class directly.
    *
    * Angular 不再需要组件工厂动态创建组件。使用 `createComponent` 方法的不同签名，该方法允许直接传递 Component 类。
-   *
    */
   abstract createComponent<C>(
       componentFactory: ComponentFactory<C>, index?: number, injector?: Injector,
@@ -280,13 +308,16 @@ export abstract class ViewContainerRef {
    * @param viewRef The view to insert.
    *
    * 要插入的视图。
-   *
    * @param index The 0-based index at which to insert the view.
    * If not specified, appends the new view as the last entry.
    *
    * 从 0 开始的索引，表示该视图要插入到当前容器的哪个位置。 如果没有指定，就把新的视图追加到最后。
+   * @returns
    *
-   * @returns The inserted `ViewRef` instance.
+   * The inserted `ViewRef` instance.
+   *
+   * 插入的 `ViewRef` 实例。
+   *
    */
   abstract insert(viewRef: ViewRef, index?: number): ViewRef;
 
@@ -298,9 +329,16 @@ export abstract class ViewContainerRef {
    * @param viewRef The view to move.
    *
    * 要移动的视图。
-   *
    * @param index The 0-based index of the new location.
-   * @returns The moved `ViewRef` instance.
+   *
+   * 新位置的从 0 开始的索引。
+   *
+   * @returns
+   *
+   * The moved `ViewRef` instance.
+   *
+   * 移动的 `ViewRef` 实例。
+   *
    */
   abstract move(viewRef: ViewRef, currentIndex: number): ViewRef;
 
@@ -312,9 +350,13 @@ export abstract class ViewContainerRef {
    * @param viewRef The view to query.
    *
    * 要查询的视图。
+   * @returns
    *
-   * @returns The 0-based index of the view's position in this container,
+   * The 0-based index of the view's position in this container,
    * or `-1` if this container doesn't contain the view.
+   *
+   * 此容器中视图位置的从 0 开始的索引，如果此容器不包含视图，则为 `-1` 。
+   *
    */
   abstract indexOf(viewRef: ViewRef): number;
 
@@ -356,7 +398,14 @@ export abstract class ViewContainerRef {
  * Creates a ViewContainerRef and stores it on the injector. Or, if the ViewContainerRef
  * already exists, retrieves the existing ViewContainerRef.
  *
- * @returns The ViewContainerRef instance to use
+ * 创建一个 ViewContainerRef 并将其存储在注入器上。 或者，如果 ViewContainerRef 已经存在，则检索现有的 ViewContainerRef。
+ *
+ * @returns
+ *
+ * The ViewContainerRef instance to use
+ *
+ * 要使用的 ViewContainerRef 实例
+ *
  */
 export function injectViewContainerRef(): ViewContainerRef {
   const previousTNode = getCurrentTNode() as TElementNode | TElementContainerNode | TContainerNode;
@@ -383,7 +432,14 @@ const R3ViewContainerRef = class ViewContainerRef extends VE_ViewContainerRef {
     return new NodeInjector(this._hostTNode, this._hostLView);
   }
 
-  /** @deprecated No replacement */
+  /**
+   * @deprecated
+   *
+   * No replacement
+   *
+   * 无更换
+   *
+   */
   override get parentInjector(): Injector {
     const parentLocation = getParentInjectorLocation(this._hostTNode, this._hostLView);
     if (hasParentInjector(parentLocation)) {
@@ -691,12 +747,21 @@ function getOrCreateViewRefs(lContainer: LContainer): ViewRef[] {
 /**
  * Creates a ViewContainerRef and stores it on the injector.
  *
+ * 创建一个 ViewContainerRef 并将其存储在注入器上。
+ *
  * @param hostTNode The node that is requesting a ViewContainerRef
+ *
+ * 请求 ViewContainerRef 的节点
+ *
  * @param hostLView The view to which the node belongs
  *
  * 节点所属的视图
+ * @returns
  *
- * @returns The ViewContainerRef instance to use
+ * The ViewContainerRef instance to use
+ *
+ * 要使用的 ViewContainerRef 实例
+ *
  */
 export function createContainerRef(
     hostTNode: TElementNode|TContainerNode|TElementContainerNode,
@@ -724,9 +789,14 @@ export function createContainerRef(
 /**
  * Creates and inserts a comment node that acts as an anchor for a view container.
  *
+ * 创建并插入充当视图容器锚点的注释节点。
+ *
  * If the host is a regular element, we have to insert a comment node manually which will
  * be used as an anchor when inserting elements. In this specific case we use low-level DOM
  * manipulation to insert it.
+ *
+ * 如果宿主是常规元素，我们必须手动插入一个注释节点，该节点将在插入元素时用作锚点。 在这种特定情况下，我们使用低级 DOM 操作来插入它。
+ *
  */
 function insertAnchorNode(hostLView: LView, hostTNode: TNode): RComment {
   const renderer = hostLView[RENDERER];
@@ -745,6 +815,9 @@ let _locateOrCreateAnchorNode = createAnchorNode;
 /**
  * Regular creation mode: an anchor is created and
  * assigned to the `lContainer[NATIVE]` slot.
+ *
+ * 常规创建模式：创建一个锚点并将其分配给 `lContainer[NATIVE]` 插槽。
+ *
  */
 function createAnchorNode(
     lContainer: LContainer, hostLView: LView, hostTNode: TNode, slotValue: any) {
@@ -767,8 +840,15 @@ function createAnchorNode(
 /**
  * Hydration logic that looks up:
  *
+ * 查找的水合逻辑：
+ *
  * - an anchor node in the DOM and stores the node in `lContainer[NATIVE]`
+ *
+ *   DOM 中的锚节点并将该节点存储在 `lContainer[NATIVE]` 中
+ *
  * - all dehydrated views in this container and puts them into `lContainer[DEHYDRATED_VIEWS]`
+ *
+ *   此容器中的所有脱水视图并将它们放入 `lContainer[DEHYDRATED_VIEWS]`
  *
  */
 function locateOrCreateAnchorNode(

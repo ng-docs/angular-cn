@@ -71,7 +71,11 @@ const controlNameBinding: Provider = {
  * form directives has been deprecated in Angular v6 and is scheduled for removal in
  * a future version of Angular.
  *
+ * 在 Angular v6 中已弃用对使用 `ngModel` 输入属性和 `ngModelChange` 事件的响应式指令的支持，并计划在 Angular 的未来版本中删除。
+ *
  * For details, see [Deprecated features](guide/deprecations#ngmodel-with-reactive-forms).
+ *
+ * 有关详细信息，请参阅[弃用的功能](guide/deprecations#ngmodel-with-reactive-forms)。
  *
  * @ngModule ReactiveFormsModule
  * @publicApi

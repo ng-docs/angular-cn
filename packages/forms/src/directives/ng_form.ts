@@ -92,8 +92,12 @@ const resolvedPromise = (() => Promise.resolve())();
  *
  * ### Setting the update options
  *
+ * ### 设置更新选项
+ *
  * The following example shows you how to change the "updateOn" option from its default using
  * ngFormOptions.
+ *
+ * 以下示例向您展示了如何使用 ngFormOptions 更改“updateOn”选项的默认值。
  *
  * ```html
  * <form [ngFormOptions]="{updateOn: 'blur'}">
@@ -103,11 +107,15 @@ const resolvedPromise = (() => Promise.resolve())();
  *
  * ### Native DOM validation UI
  *
+ * ### 原生 DOM 验证 UI
+ *
  * In order to prevent the native DOM form validation UI from interfering with Angular's form
  * validation, Angular automatically adds the `novalidate` attribute on any `<form>` whenever
  * `FormModule` or `ReactiveFormModule` are imported into the application.
  * If you want to explicitly enable native DOM validation UI with Angular forms, you can add the
  * `ngNativeValidate` attribute to the `<form>` element:
+ *
+ * 为了防止原生 DOM 表单验证 UI 干扰 Angular 的表单验证，每当将 `FormModule` 或 `ReactiveFormModule` 导入应用程序时，Angular 都会自动在任何 `<form>` 上添加 `novalidate` 属性。 如果你想显式启用 Angular 表单的原生 DOM 验证 UI，你可以将 `ngNativeValidate` 属性添加到 `<form>` 元素：
  *
  * ```html
  * <form ngNativeValidate>

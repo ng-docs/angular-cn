@@ -152,7 +152,7 @@ For more information about this option, see [Angular Compiler Options](guide/ang
 
 完成迁移后，将 Angular Compiler 选项 `enableI18nLegacyMessageIdFormat` 设置为 `false`。有关此选项的更多信息，请参见[Angular 编译器选项](guide/angular-compiler-options#enablei18nlegacymessageidformat)。
 
-{@searchKeywords i18n}
+{&commat;searchKeywords i18n}
 
 <!-- links -->
 

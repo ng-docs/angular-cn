@@ -12,6 +12,9 @@ import ts from 'typescript';
  * Describes a TypeScript transformation context with the internal emit
  * resolver exposed. There are requests upstream in TypeScript to expose
  * that as public API: https://github.com/microsoft/TypeScript/issues/17516.
+ *
+ * 描述带有公开的内部发射解析器的 TypeScript 转换上下文。 TypeScript 的上游请求将其公开为公共 API：https&#x3A; [//github.com/microsoft/TypeScript/issues/17516](https://github.com/microsoft/TypeScript/issues/17516) 。
+ *
  */
 interface TransformationContextWithResolver extends ts.TransformationContext {
   getEmitResolver: () => EmitResolver;
@@ -105,10 +108,10 @@ interface EmitResolver {
  *
  * See below. Note that this uses sourcegraph as the TypeScript checker file doesn't display on
  * Github.
- * https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257
+ * [https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257](https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257)
  *
  * 见下文。请注意，这使用 sourcegraph 作为 TypeScript 检查器文件不会显示在 Github 上。
- * https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257
+ * [https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257](https://sourcegraph.com/github.com/microsoft/TypeScript@3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/-/blob/src/compiler/checker.ts#L31219-31257)
  *
  */
 export function loadIsReferencedAliasDeclarationPatch(context: ts.TransformationContext):

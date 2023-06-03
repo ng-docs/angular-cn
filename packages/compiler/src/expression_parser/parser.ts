@@ -138,6 +138,8 @@ export class Parser {
    *
    * 1. ngFor -> null
    *
+   *    ngFor -> 空
+   *
    * 2. item -> NgForOfContext.$implicit
    *
    *    项 -> NgForOfContext.$implicit
@@ -1176,6 +1178,8 @@ export class _ParseAST {
    *
    * 1. ngFor -> null
    *
+   *    ngFor -> 空
+   *
    * 2. item -> NgForOfContext.$implicit
    *
    *    项 -> NgForOfContext.$implicit
@@ -1186,7 +1190,11 @@ export class _ParseAST {
    *
    * 4. i -> NgForOfContext.index
    *
+   *    我 - > NgForOfContext.index
+   *
    * 5. ngForTrackBy -> func
+   *
+   *    ngForTrackBy -> 功能
    *
    * For a full description of the microsyntax grammar, see
    * https://gist.github.com/mhevery/d3530294cff2e4a1b3fe15ff75d08855

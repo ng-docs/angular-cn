@@ -241,6 +241,8 @@ let _locateOrCreateElementNode: typeof locateOrCreateElementNodeImpl =
  * Enables hydration code path \(to lookup existing elements in DOM\)
  * in addition to the regular creation mode of element nodes.
  *
+ * 除了元素节点的常规创建模式之外，还启用水合代码路径（以查找 DOM 中的现有元素）。
+ *
  */
 function locateOrCreateElementNodeImpl(
     tView: TView, lView: LView, tNode: TNode, renderer: Renderer, name: string,

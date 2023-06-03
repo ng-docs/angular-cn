@@ -103,13 +103,19 @@ export const ngGroupStatusHost = {
  *
  * * ng-pristine
  *
+ *   原始的
+ *
  * * ng-dirty
  *
  *   ng-脏
  *
  * * ng-untouched
  *
+ *   未受影响的
+ *
  * * ng-touched
+ *
+ *   触摸
  *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule

@@ -13,13 +13,19 @@ import {makePropDecorator} from '../util/decorators';
 /**
  * Type of the `Attribute` decorator / constructor function.
  *
+ * `Attribute` 装饰器/构造函数的类型。
+ *
  * @publicApi
  */
 export interface AttributeDecorator {
   /**
    * Specifies that a constant attribute value should be injected.
    *
+   * 指定应注入常量属性值。
+   *
    * The directive can inject constant string literals of host element attributes.
+   *
+   * 该指令可以注入宿主元素属性的常量字符串文字。
    *
    * @usageNotes
    *
@@ -32,6 +38,8 @@ export interface AttributeDecorator {
    * ```
    *
    * A decorator can inject string literal `text` as in the following example.
+   *
+   * 装饰器可以注入字符串文字 `text` ，如下例所示。
    *
    * {@example core/ts/metadata/metadata.ts region='attributeMetadata'}
    *
@@ -52,12 +60,17 @@ export interface AttributeDecorator {
 export interface Attribute {
   /**
    * The name of the attribute to be injected into the constructor.
+   *
+   * 要注入构造函数的属性的名称。
+   *
    */
   attributeName?: string;
 }
 
 /**
  * Type of the Query metadata.
+ *
+ * 查询元数据的类型。
  *
  * @publicApi
  */
@@ -91,6 +104,8 @@ export abstract class Query {}
 
 /**
  * Type of the ContentChildren decorator / constructor function.
+ *
+ * ContentChildren 装饰器/构造函数的类型。
  *
  * @see `ContentChildren`.
  * @publicApi
@@ -206,8 +221,12 @@ export interface ContentChildrenDecorator {
    *
    * ### Tab-pane example
    *
+   * ### 选项卡窗格示例
+   *
    * Here is a slightly more realistic example that shows how `ContentChildren` decorators
    * can be used to implement a tab pane component.
+   *
+   * 下面是一个稍微更实际的示例，展示了如何使用 `ContentChildren` 装饰器来实现选项卡窗格组件。
    *
    * {@example core/di/ts/contentChildren/content_children_example.ts region='Component'}
    *
@@ -225,6 +244,7 @@ export interface ContentChildrenDecorator {
 /**
  * Type of the ContentChildren metadata.
  *
+ * ContentChildren 元数据的类型。
  *
  * @Annotation
  * @publicApi
@@ -234,6 +254,7 @@ export type ContentChildren = Query;
 /**
  * ContentChildren decorator and metadata.
  *
+ * ContentChildren 装饰器和元数据。
  *
  * @Annotation
  * @publicApi
@@ -251,6 +272,8 @@ export const ContentChildren: ContentChildrenDecorator = makePropDecorator(
 
 /**
  * Type of the ContentChild decorator / constructor function.
+ *
+ * ContentChild 装饰器/构造函数的类型。
  *
  * @publicApi
  */
@@ -368,6 +391,8 @@ export interface ContentChildDecorator {
 /**
  * Type of the ContentChild metadata.
  *
+ * ContentChild 元数据的类型。
+ *
  * @publicApi
  */
 export type ContentChild = Query;
@@ -375,9 +400,9 @@ export type ContentChild = Query;
 /**
  * ContentChild decorator and metadata.
  *
+ * ContentChild 装饰器和元数据。
  *
  * @Annotation
- *
  * @publicApi
  */
 export const ContentChild: ContentChildDecorator = makePropDecorator(
@@ -389,8 +414,9 @@ export const ContentChild: ContentChildDecorator = makePropDecorator(
 /**
  * Type of the ViewChildren decorator / constructor function.
  *
- * @see `ViewChildren`.
+ * ViewChildren 装饰器/构造函数的类型。
  *
+ * @see `ViewChildren`.
  * @publicApi
  */
 export interface ViewChildrenDecorator {
@@ -490,6 +516,8 @@ export interface ViewChildrenDecorator {
    *
    * ### Another example
    *
+   * ### 另一个例子
+   *
    * {@example core/di/ts/viewChildren/view_children_example.ts region='Component'}
    *
    * @Annotation
@@ -503,12 +531,16 @@ export interface ViewChildrenDecorator {
 /**
  * Type of the ViewChildren metadata.
  *
+ * ViewChildren 元数据的类型。
+ *
  * @publicApi
  */
 export type ViewChildren = Query;
 
 /**
  * ViewChildren decorator and metadata.
+ *
+ * ViewChildren 装饰器和元数据。
  *
  * @Annotation
  * @publicApi
@@ -526,6 +558,8 @@ export const ViewChildren: ViewChildrenDecorator = makePropDecorator(
 
 /**
  * Type of the ViewChild decorator / constructor function.
+ *
+ * ViewChild 装饰器/构造函数的类型。
  *
  * @see `ViewChild`.
  * @publicApi
@@ -630,12 +664,16 @@ export interface ViewChildDecorator {
 /**
  * Type of the ViewChild metadata.
  *
+ * ViewChild 元数据的类型。
+ *
  * @publicApi
  */
 export type ViewChild = Query;
 
 /**
  * ViewChild decorator and metadata.
+ *
+ * ViewChild 装饰器和元数据。
  *
  * @Annotation
  * @publicApi

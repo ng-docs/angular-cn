@@ -155,13 +155,20 @@ export function replaceImport(
  * Removes a symbol from the named imports and updates a node
  * that represents a given named imports.
  *
+ * 从命名导入中删除符号并更新表示给定命名导入的节点。
+ *
  * @param node Node that contains the imports.
  *
  * 包含导入的节点。
  * @param symbol Symbol that should be removed.
+ *
+ * 应删除的符号。
+ *
  * @returns
  *
  * An updated node \(ts.NamedImports\).
+ *
+ * 更新的节点 \(ts.NamedImports\)。
  *
  */
 export function removeSymbolFromNamedImports(node: ts.NamedImports, symbol: ts.ImportSpecifier) {

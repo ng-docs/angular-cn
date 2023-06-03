@@ -74,6 +74,8 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 * [Angular CLI](cli)
 
+  [角 CLI](cli)
+
 You might find the [Tour of Heroes tutorial](tutorial/tour-of-heroes) helpful, but it is not required.
 
 你可能会发现[《英雄之旅》教程](tutorial/tour-of-heroes)很有用，但这不是必需的。

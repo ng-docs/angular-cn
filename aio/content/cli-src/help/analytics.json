@@ -89,5 +89,6 @@
       "shortDescriptionCn": "交互式提示用户设置分析收集状态。"
     }
   ],
-  "shortDescriptionCn": "配置 Angular CLI 使用情况度量的收集策略。"
+  "shortDescriptionCn": "配置 Angular CLI 使用情况度量的收集策略。",
+  "longDescriptionCn": "您可以通过允许 Angular 团队向 Google 发送命令行命令使用统计信息来帮助 Angular 团队确定功能和改进的优先级。 除非您明确选择加入，否则 Angular 团队不会收集使用情况统计信息。安装 Angular CLI 时，系统会提示您允许全局收集使用情况统计信息。 如果您拒绝或跳过提示，则不会收集任何数据。\n\n\n\n### 收集什么？\n\n使用情况分析包括每次执行的命令和选定标志。 使用分析可能包括以下信息：\n\n- 您的操作系统（macOS、Linux 发行版、Windows）及其版本。\n\n\n- 包管理器名称和版本（仅限本地版本）。\n\n\n- Node.js 版本（仅限本地版本）。\n\n\n- Angular CLI 版本（仅限本地版本）。\n\n\n- 运行的命令名称。\n\n\n- 工作区信息、应用程序和库项目的数量。\n\n\n- 对于原理图命令（添加、生成和新建）、原理图集合和名称以及所选标志的列表。\n\n\n- 对于构建命令（构建、服务）、构建器名称、包的数量和大小（初始和惰性）、编译单元、构建和重建所花费的时间，以及基本的特定于 Angular 的 API 用法。\n\n\n\n仅报告了 Angular 拥有和开发的原理图和构建器。 第三方原理图和构建器不会向 Angular 团队发送数据。"
 }

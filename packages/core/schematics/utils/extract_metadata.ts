@@ -11,13 +11,23 @@ import ts from 'typescript';
 import {getAngularDecorators} from './ng_decorators';
 import {unwrapExpression} from './typescript/functions';
 
-/** Interface describing metadata of an Angular class. */
+/**
+ * Interface describing metadata of an Angular class.
+ *
+ * 描述 Angular 类的元数据的接口。
+ *
+ */
 export interface AngularClassMetadata {
   type: 'component'|'directive';
   node: ts.ObjectLiteralExpression;
 }
 
-/** Extracts `@Directive` or `@Component` metadata from the given class. */
+/**
+ * Extracts `@Directive` or `@Component` metadata from the given class.
+ *
+ * 从给定类中提取 `@Directive` 或 `@Component` 元数据。
+ *
+ */
 export function extractAngularClassMetadata(
     typeChecker: ts.TypeChecker, node: ts.ClassDeclaration): AngularClassMetadata|null {
   const decorators = ts.getDecorators(node);

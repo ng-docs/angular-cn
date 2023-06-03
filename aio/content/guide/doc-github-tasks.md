@@ -202,7 +202,13 @@ Before you start editing the Angular documentation, you want to:
 在开始编辑 Angular 文档之前，你要：
 
 1. [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
+
+   [更新 `angular/angular` 的克隆](#update-your-clone-of-the-upstream-repo)。
+
 1. [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
+
+   [更新你的 `angular/angular` 分支](#update-your-fork-with-the-upstream-repo)。
+
 1. Create a working branch from the `main` branch.
 
    从 `main` 分支创建一个工作分支。
@@ -227,7 +233,11 @@ You can confirm your current branch by running `git status` from your `working` 
 
 1. [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
 
+   [更新 `angular/angular` 的克隆](#update-your-clone-of-the-upstream-repo)。
+
 1. [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
+
+   [更新你的 `angular/angular` 分支](#update-your-fork-with-the-upstream-repo)。
 
 1. From your `workspace` directory, navigate to your `working` directory.
 
@@ -514,7 +524,11 @@ Either way, the procedure to update your branch is the same.
 
 1. [Update your clone of `angular/angular`](#update-your-clone-of-the-upstream-repo).
 
+   [更新 `angular/angular` 的克隆](#update-your-clone-of-the-upstream-repo)。
+
 1. [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
+
+   [更新你的 `angular/angular` 分支](#update-your-fork-with-the-upstream-repo)。
 
 1. From your workspace directory, navigate to your working directory.
 

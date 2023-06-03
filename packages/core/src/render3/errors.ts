@@ -18,6 +18,9 @@ import {stringifyForError} from './util/stringify_utils';
 
 /**
  * The max length of the string representation of a value in an error message
+ *
+ * 错误消息中值的字符串表示的最大长度
+ *
  */
 const VALUE_STRING_LENGTH_LIMIT = 200;
 

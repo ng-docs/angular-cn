@@ -18,10 +18,15 @@ import {UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
  * 定义当路由器收到一个导航到当前 URL 的请求时应该怎么做。可取下列值之一：
  *
  * - `'ignore'` :  The router ignores the request it is the same as the current state.
+ *
+ *   `'ignore'` : 路由器忽略请求，与当前状态相同。
+ *
  * - `'reload'` : The router processes the URL even if it is not different from the current state.
  *   One example of when you might want this option is if a `canMatch` guard depends on
  *   application state and initially rejects navigation to a route. After fixing the state, you want
  *   to re-navigate to the same URL so the route with the `canMatch` guard can activate.
+ *
+ *   `'reload'` ：路由器处理 URL，即使它与当前状态没有区别。 您可能需要此选项的一个示例是，如果 `canMatch` 守卫取决于应用程序状态并且最初拒绝导航到路由。 修复状态后，您想要重新导航到相同的 URL，以便可以激活带有 `canMatch` 守卫的路由。
  *
  * Note that this only configures whether the Route reprocesses the URL and triggers related
  * action and events like redirects, guards, and resolvers. By default, the router re-uses a
@@ -31,6 +36,8 @@ import {UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
  * _and_ provide a `RouteReuseStrategy` which returns `false` for `shouldReuseRoute`. Additionally,
  * resolvers and most guards for routes do not run unless the path or path params changed
  * \(configured by `runGuardsAndResolvers`\).
+ *
+ * 请注意，这仅配置 Route 是否重新处理 URL 并触发相关操作和事件，如重定向、守卫和解析器。 默认情况下，当路由器重新导航到相同的组件类型而不首先访问不同的组件时，它会重新使用组件实例。 此行为由 `RouteReuseStrategy` 配置。 为了在相同的 url 导航上重新加载路由组件，您需要将 `onSameUrlNavigation` 设置为 `'reload'`_ 并 _ 提供一个 `RouteReuseStrategy` ，它为 `shouldReuseRoute` 返回 `false` 。 此外，除非路径或路径参数更改（由 `runGuardsAndResolvers` 配置），否则解析器和大多数路由守卫不会运行。
  *
  * @publicApi
  * @see `RouteReuseStrategy`
@@ -45,6 +52,8 @@ export type OnSameUrlNavigation = 'reload'|'ignore';
  * of plain JavaScript functions instead.. Dependency injection can still be achieved using the
  * `inject` function from `@angular/core` and an injectable class can be used as a functional guard
  * using `inject`: `canActivate: [() => inject(myGuard).canActivate()]`.
+ *
+ * 守卫和解析器的 `InjectionToken` 和 `@Injectable` 类已弃用，取而代之的是普通的 JavaScript 函数。依赖注入仍然可以使用来自 `@angular/core` `inject` 函数来实现，并且可注入类可以用作使用 `inject` 的功能守卫： `canActivate: [() => inject(myGuard).canActivate()]` 。
  *
  * @deprecated
  * @see `CanMatchFn`
@@ -66,6 +75,9 @@ export type DeprecatedGuard = ProviderToken<any>|any;
  * 表示 Router 服务的路由配置。 `Route` 对象的数组，在 `Route.children` 中使用以及在 `Router.config` 中用于嵌套路由配置。
  *
  * @see `Route`
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  * @see `Router`
  * @see [Router configuration guide](guide/router-reference#configuration)
  *
@@ -222,6 +234,9 @@ export interface DefaultExport<T> {
  * ```
  *
  * @see [Route.loadChildren](api/router/Route#loadChildren)
+ *
+ * [路线.loadChildren](api/router/Route#loadChildren)
+ *
  * @publicApi
  */
 export type LoadChildrenCallback = () => Type<any>|NgModuleFactory<any>|Routes|
@@ -385,6 +400,8 @@ export type RunGuardsAndResolvers =
  *
  * The following route uses the `redirectTo` property to ignore a segment of
  * a given URL when looking for a child path.
+ *
+ * 以下路由在查找子路径时使用 `redirectTo` 属性忽略给定 URL 的一部分。
  *
  * When navigating to '/team/11/legacy/user/jim', the router changes the URL segment
  * '/team/11/legacy/user/jim' to '/team/11/user/jim', and then instantiates
@@ -658,6 +675,9 @@ export interface Route {
       Promise<Type<unknown>|DefaultExport<Type<unknown>>>;
   /**
    * Filled for routes `loadComponent` once the component is loaded.
+   *
+   * 加载组件后为路由 `loadComponent` 填充。
+   *
    * @internal
    */
   _loadedComponent?: Type<unknown>;
@@ -754,7 +774,12 @@ export interface Route {
    *
    * 当使用函数而不是 DI 标记时，函数可以调用 `inject` 来获取任何所需的依赖项。此 `inject` 调用必须在同步上下文中完成。
    *
-   * @deprecated Use `canMatch` instead
+   * @deprecated
+   *
+   * Use `canMatch` instead
+   *
+   * 改为使用 `canMatch`
+   *
    */
   canLoad?: Array<CanLoadFn|DeprecatedGuard>;
   /**
@@ -842,18 +867,27 @@ export interface Route {
 
   /**
    * Injector created from the static route providers
+   *
+   * 从静态路由提供者创建的注入器
+   *
    * @internal
    */
   _injector?: EnvironmentInjector;
 
   /**
    * Filled for routes with `loadChildren` once the routes are loaded.
+   *
+   * 加载路由后，用 `loadChildren` 填充路由。
+   *
    * @internal
    */
   _loadedRoutes?: Route[];
 
   /**
    * Filled for routes with `loadChildren` once the routes are loaded
+   *
+   * 加载路由后，使用 `loadChildren` 填充路由
+   *
    * @internal
    */
   _loadedInjector?: EnvironmentInjector;
@@ -920,11 +954,15 @@ export interface LoadedRouterConfig {
  * })
  * class AppModule {}
  * ```
- *
  * @publicApi
- * @deprecated Class-based `Route` guards are deprecated in favor of functional guards. An
+ * @deprecated
+ *
+ * Class-based `Route` guards are deprecated in favor of functional guards. An
  *     injectable class can be used as a functional guard using the `inject` function:
  *     `canActivate: [() => inject(myGuard).canActivate()]`.
+ *
+ * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。 可注入类可以使用 `inject` 函数用作功能保护： `canActivate: [() => inject(myGuard).canActivate()]` 。
+ *
  * @see `CanActivateFn`
  */
 export interface CanActivate {
@@ -941,8 +979,12 @@ export interface CanActivate {
  * navigation is cancelled. If any guard returns a `UrlTree`, the current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
+ * 如果所有守卫都返回 `true` ，则导航继续。 如果任何守卫返回 `false` ，导航将被取消。 如果任何守卫返回 `UrlTree` ，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree` 。
+ *
  * The following example implements and uses a `CanActivateChildFn` that checks whether the
  * current user has permission to activate the requested route.
+ *
+ * 以下示例实现并使用 `CanActivateChildFn` 检查当前用户是否有权激活请求的路由。
  *
  * {@example router/route_functional_guards.ts region="CanActivateFn"}
  *
@@ -955,6 +997,9 @@ export interface CanActivate {
  *
  * @publicApi
  * @see `Route`
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  */
 export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
     Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree;
@@ -1020,11 +1065,15 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  * })
  * class AppModule {}
  * ```
- *
  * @publicApi
- * @deprecated Class-based `Route` guards are deprecated in favor of functional guards. An
+ * @deprecated
+ *
+ * Class-based `Route` guards are deprecated in favor of functional guards. An
  *     injectable class can be used as a functional guard using the `inject` function:
  *     `canActivateChild: [() => inject(myGuard).canActivateChild()]`.
+ *
+ * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。 可注入类可以使用 `inject` 函数用作功能保护： `canActivateChild: [() => inject(myGuard).canActivateChild()]` 。
+ *
  * @see `CanActivateChildFn`
  */
 export interface CanActivateChild {
@@ -1041,6 +1090,8 @@ export interface CanActivateChild {
  * navigation is cancelled. If any guard returns a `UrlTree`, the current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
+ * 如果所有守卫都返回 `true` ，则导航继续。 如果任何守卫返回 `false` ，导航将被取消。 如果任何守卫返回 `UrlTree` ，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree` 。
+ *
  * The following example implements a `canActivate` function that checks whether the
  * current user has permission to activate the requested route.
  *
@@ -1050,6 +1101,9 @@ export interface CanActivateChild {
  *
  * @publicApi
  * @see `Route`
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  */
 export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
     Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree;
@@ -1112,11 +1166,15 @@ export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: Rou
  * })
  * class AppModule {}
  * ```
- *
  * @publicApi
- * @deprecated Class-based `Route` guards are deprecated in favor of functional guards. An
+ * @deprecated
+ *
+ * Class-based `Route` guards are deprecated in favor of functional guards. An
  *     injectable class can be used as a functional guard using the `inject` function:
  *     `canDeactivate: [() => inject(myGuard).canDeactivate()]`.
+ *
+ * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。 可注入类可以使用 `inject` 函数用作功能保护： `canDeactivate: [() => inject(myGuard).canDeactivate()]` 。
+ *
  * @see `CanDeactivateFn`
  */
 export interface CanDeactivate<T> {
@@ -1135,13 +1193,20 @@ export interface CanDeactivate<T> {
  * navigation is cancelled. If any guard returns a `UrlTree`, the current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
+ * 如果所有守卫都返回 `true` ，则导航继续。 如果任何守卫返回 `false` ，导航将被取消。 如果任何守卫返回 `UrlTree` ，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree` 。
+ *
  * The following example implements and uses a `CanDeactivateFn` that checks whether the
  * user component has unsaved changes before navigating away from the route.
+ *
+ * 以下示例实现并使用 `CanDeactivateFn` ，它在离开路由之前检查用户组件是否有未保存的更改。
  *
  * {@example router/route_functional_guards.ts region="CanDeactivateFn"}
  *
  * @publicApi
  * @see `Route`
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  */
 export type CanDeactivateFn<T> =
     (component: T, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot,
@@ -1211,10 +1276,17 @@ export type CanDeactivateFn<T> =
  * `team/:id` URL, but would load the `NotFoundComponent` because the `Route` for `'team/:id'`
  * could not be used for a URL match but the catch-all `**` `Route` did instead.
  *
+ * 如果 `CanMatchTeamSection` 返回 `false` ，路由器将继续导航到 `team/:id` URL，但会加载 `NotFoundComponent` ，因为 `'team/:id'` 的 `Route` 不能用于 URL 匹配，但包罗万象 `**` `Route` 代替了。
+ *
  * @publicApi
- * @deprecated Class-based `Route` guards are deprecated in favor of functional guards. An
+ * @deprecated
+ *
+ * Class-based `Route` guards are deprecated in favor of functional guards. An
  *     injectable class can be used as a functional guard using the `inject` function:
  *     `canMatch: [() => inject(myGuard).canMatch()]`.
+ *
+ * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。 可注入类可以使用 `inject` 函数用作功能保护： `canMatch: [() => inject(myGuard).canMatch()]` 。
+ *
  * @see `CanMatchFn`
  */
 export interface CanMatch {
@@ -1231,13 +1303,20 @@ export interface CanMatch {
  * activation. If any guard returns `false`, the `Route` is skipped for matching and other `Route`
  * configurations are processed instead.
  *
+ * 如果所有守卫都返回 `true` ，导航将继续， `Router` 将在激活期间使用该 `Route` 。 如果任何 guard 返回 `false` ，则跳过 `Route` 进行匹配，而是处理其他 `Route` 配置。
+ *
  * The following example implements and uses a `CanMatchFn` that checks whether the
  * current user has permission to access the team page.
+ *
+ * 以下示例实现并使用 `CanMatchFn` 检查当前用户是否有权访问团队页面。
  *
  * {@example router/route_functional_guards.ts region="CanMatchFn"}
  *
  * @publicApi
  * @see `Route`
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  */
 export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
     Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree;
@@ -1274,6 +1353,8 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * Here, the defined `resolve()` function is provided as part of the `Route` object
  * in the router configuration:
  *
+ * 在这里，定义的 `resolve()` 函数作为路由器配置中 `Route` 对象的一部分提供：
+ *
  * ```
  * @NgModule({
  *   imports: [
@@ -1293,6 +1374,8 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * ```
  *
  * And you can access to your resolved data from `HeroComponent`:
+ *
+ * 你可以从 `HeroComponent` 访问你解析的数据：
  *
  * ```
  * @Component({
@@ -1339,11 +1422,15 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * The order of execution is: BaseGuard, ChildGuard, BaseDataResolver, ChildDataResolver.
  *
  * 执行顺序为：BaseGuard、ChildGuard、BaseDataResolver、ChildDataResolver。
- *
  * @publicApi
- * @deprecated Class-based `Route` resolvers are deprecated in favor of functional resolvers. An
+ * @deprecated
+ *
+ * Class-based `Route` resolvers are deprecated in favor of functional resolvers. An
  * injectable class can be used as a functional guard using the `inject` function: `resolve:
  * {'user': () => inject(UserResolver).resolve()}`.
+ *
+ * 基于类的 `Route` 解析器已弃用，取而代之的是函数式解析器。 可注入类可以用作使用 `inject` 函数的功能保护： `resolve: {'user': () => inject(UserResolver).resolve()}` 。
+ *
  * @see `ResolveFn`
  */
 export interface Resolve<T> {
@@ -1358,12 +1445,18 @@ export interface Resolve<T> {
  * A data provider can be used with the router to resolve data during navigation.
  * The router waits for the data to be resolved before the route is finally activated.
  *
+ * 数据提供者可以与路由器一起使用以在导航期间解析数据。 路由器在最终激活路由之前等待数据被解析。
+ *
  * The following example implements a function that retrieves the data
  * needed to activate the requested route.
+ *
+ * 以下示例实现了一个函数，该函数检索激活请求路由所需的数据。
  *
  * {@example router/route_functional_guards.ts region="ResolveFn"}
  *
  * And you can access to your resolved data from `HeroComponent`:
+ *
+ * 你可以从 `HeroComponent` 访问你解析的数据：
  *
  * {@example router/route_functional_guards.ts region="ResolveDataUse"}
  *
@@ -1396,6 +1489,9 @@ export interface Resolve<T> {
  * 执行顺序为：BaseGuard、ChildGuard、BaseDataResolver、ChildDataResolver。
  * @publicApi
  * @see `Route`
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  */
 export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
     Observable<T>|Promise<T>|T;
@@ -1459,6 +1555,8 @@ export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSna
  *
  * Use {@link CanMatchFn} instead
  *
+ * 使用 {@link CanMatchFn} 代替
+ *
  */
 export interface CanLoad {
   canLoad(route: Route, segments: UrlSegment[]):
@@ -1473,8 +1571,16 @@ export interface CanLoad {
  * @publicApi
  * @see `CanLoad`
  * @see `Route`
+ *
+ * 。【模糊翻译】【模糊翻译】
+ *
  * @see `CanMatchFn`
- * @deprecated Use `Route.canMatch` and `CanMatchFn` instead
+ * @deprecated
+ *
+ * Use `Route.canMatch` and `CanMatchFn` instead
+ *
+ * 改为使用 `Route.canMatch` 和 `CanMatchFn`
+ *
  */
 export type CanLoadFn = (route: Route, segments: UrlSegment[]) =>
     Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree;
@@ -1505,8 +1611,12 @@ export interface NavigationBehaviorOptions {
   /**
    * How to handle a navigation request to the current URL.
    *
+   * 如何处理对当前 URL 的导航请求。
+   *
    * This value is a subset of the options available in `OnSameUrlNavigation` and
    * will take precedence over the default value set for the `Router`.
+   *
+   * 该值是 `OnSameUrlNavigation` 中可用选项的子集，并且将优先于为 `Router` 设置的默认值。
    *
    * @see `OnSameUrlNavigation`
    * @see `RouterConfigOptions`

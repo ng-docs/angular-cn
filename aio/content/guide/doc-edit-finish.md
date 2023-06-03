@@ -18,6 +18,8 @@ This procedure confirms that your commit is now in the `main` branch of the `ang
 
 #### To review the commit log on <code>github.com</code> for your commit
 
+#### 查看提交日志
+
 In a web browser, open [`https://github.com/angular/angular/commits/main`](https://github.com/angular/angular/commits/main).
 
 在 Web 浏览器中，打开[`https://https://github.com/angular/angular/commits/main`](https://github.com/angular/angular/commits/main) 。

@@ -93,8 +93,13 @@ export const platformServer: (extraProviders?: StaticProvider[]|undefined) => Pl
  * 支持运行时编译器的服务器平台。
  *
  * @see `platformServer`
- * @deprecated add an `import @angular/compiler` and replace the usage with `platformServer`
+ * @deprecated
+ *
+ * add an `import @angular/compiler` and replace the usage with `platformServer`
  *     instead.
+ *
+ * 添加一个 `import @angular/compiler` 并用 `platformServer` 替换用法。
+ *
  * @publicApi
  */
 export const platformDynamicServer = platformServer;

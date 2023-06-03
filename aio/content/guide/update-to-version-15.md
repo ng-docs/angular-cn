@@ -27,8 +27,16 @@ The information in the [Angular Update Guide](https://update.angular.io) and thi
 [Angular 更新指南](https://update.angular.io)和本主题中的信息是从这些更改日志中总结的：
 
 * [angular/angular changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+
+  [角度/角度变更日志](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+
 * [angular/angular-cli changelog](https://github.com/angular/angular-cli/blob/main/CHANGELOG.md)
+
+  [角度/角度-cli 更新日志](https://github.com/angular/angular-cli/blob/main/CHANGELOG.md)
+
 * [angular/components changelog](https://github.com/angular/components/blob/main/CHANGELOG.md)
+
+  [角度/组件变更日志](https://github.com/angular/components/blob/main/CHANGELOG.md)
 
 Information about updating Angular applications to v14 is archived at [Update to version 14](/guide/update-to-version-14).
 
@@ -276,6 +284,8 @@ In v15, the component is not instantiated until after change detection runs.
 This change could affect tests that do not trigger change detection after a router navigation.
 This can also affect production code that relies on the exact timing of component availability,
 for example, if your component's constructor calls `router.getCurrentNavigation()`.
+
+在 v15 中，组件直到更改检测运行后才被实例化。 此更改可能会影响在路由器导航后不触发更改检测的测试。 这也会影响依赖于组件可用性确切时间的生产代码，例如，如果组件的构造函数调用 `router.getCurrentNavigation()` 。
 
 <a id="v15-bc-10"></a>
 

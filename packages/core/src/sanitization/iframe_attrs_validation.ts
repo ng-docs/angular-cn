@@ -24,6 +24,8 @@ import {trustedHTMLFromString} from '../util/security/trusted_types';
  * `packages/compiler/src/schema/dom_security_schema.ts` script for the full list
  * of such attributes.
  *
+ * 在运行时为每个可能代表安全敏感属性的绑定调用的验证函数
+ *
  * @codeGenApi
  */
 export function ɵɵvalidateIframeAttribute(attrValue: any, tagName: string, attrName: string) {

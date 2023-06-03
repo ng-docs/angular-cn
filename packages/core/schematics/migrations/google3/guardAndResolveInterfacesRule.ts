@@ -11,7 +11,12 @@ import ts from 'typescript';
 
 import {migrateFile} from '../guard-and-resolve-interfaces/util';
 
-/** TSLint rule for the guard and resolve interfaces migration. */
+/**
+ * TSLint rule for the guard and resolve interfaces migration.
+ *
+ * 用于防护和解析接口迁移的 TSLint 规则。
+ *
+ */
 export class Rule extends Rules.TypedRule {
   override applyWithProgram(sourceFile: ts.SourceFile, program: ts.Program): RuleFailure[] {
     const failures: RuleFailure[] = [];

@@ -16,6 +16,8 @@ import {makeDecorator, TypeDecorator} from '../util/decorators';
 /**
  * Type of the NgModule decorator / constructor function.
  *
+ * NgModule 装饰器/构造函数的类型。
+ *
  * @publicApi
  */
 export interface NgModuleDecorator {
@@ -32,6 +34,8 @@ export interface NgModuleDecorator {
 /**
  * Type of the NgModule metadata.
  *
+ * NgModule 元数据的类型。
+ *
  * @publicApi
  */
 export interface NgModule {
@@ -45,6 +49,9 @@ export interface NgModule {
    *
    * [“依赖注入指南”](guide/dependency-injection) 。
    * @see [NgModule guide](guide/providers)
+   *
+   * [NgModule 指南](guide/providers)
+   *
    * @usageNotes
    *
    * Dependencies whose providers are listed here become available for injection
@@ -92,7 +99,6 @@ export interface NgModule {
    *   }
    * }
    * ```
-   *
    */
   providers?: Array<Provider|EnvironmentProviders>;
 
@@ -218,6 +224,9 @@ export interface NgModule {
 
   /**
    * The set of components that are bootstrapped when this module is bootstrapped.
+   *
+   * 引导此模块时引导的一组组件。
+   *
    */
   bootstrap?: Array<Type<any>|any[]>;
 
@@ -267,12 +276,22 @@ export const NgModule: NgModuleDecorator = makeDecorator(
    * Decorator that marks the following class as an NgModule, and supplies
    * configuration metadata for it.
    *
+   * 将以下类标记为 NgModule 的装饰器，并为其提供配置元数据。
+   *
    * * The `declarations` option configures the compiler
    *   with information about what belongs to the NgModule.
+   *
+   *   `declarations` 选项用关于什么属于 NgModule 的信息配置编译器。
+   *
    * * The `providers` options configures the NgModule's injector to provide
    *   dependencies the NgModule members.
+   *
+   *   `providers` 选项配置 NgModule 的注入器来为 NgModule 成员提供依赖。
+   *
    * * The `imports` and `exports` options bring in members from other modules, and make
    *   this module's members available to others.
+   *
+   *   `imports` 和 `exports` 选项从其他模块引入成员，并使该模块的成员对其他人可用。
    *
    */
     (type: Type<any>, meta: NgModule) => compileNgModule(type, meta));

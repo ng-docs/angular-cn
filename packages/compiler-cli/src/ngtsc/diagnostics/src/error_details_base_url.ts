@@ -17,11 +17,19 @@
  *
  * - packages/compiler-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts
  *
+ *   包/编译器-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts
+ *
  *   package/compiler-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts
+ *
+ *   包/编译器-cli/src/ngtsc/diagnostics/src/error_details_base_url.ts
  *
  * - packages/core/src/error_details_base_url.ts
  *
+ *   包/核心/src/error_details_base_url.ts
+ *
  *   package/core/src/error_details_base_url.ts
+ *
+ *   包/核心/src/error_details_base_url.ts
  *
  */
 export const ERROR_DETAILS_PAGE_BASE_URL = 'https://angular.io/errors';

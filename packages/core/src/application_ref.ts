@@ -54,6 +54,8 @@ let _platformInjector: Injector|null = null;
  * Internal token to indicate whether having multiple bootstrapped platform should be allowed \(only
  * one bootstrapped platform is allowed by default\). This token helps to support SSR scenarios.
  *
+ * 指示是否应允许具有多个自举平台的内部令牌（默认情况下只允许一个自举平台）。 此令牌有助于支持 SSR 场景。
+ *
  */
 export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultipleToken');
 
@@ -62,6 +64,8 @@ export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultip
  * `PlatformRef.destroy` operation. This token is needed to avoid a direct reference to the
  * `PlatformRef` class \(i.e. register the callback via `PlatformRef.onDestroy`\), thus making the
  * entire class tree-shakeable.
+ *
+ * 允许注册应在 `PlatformRef.destroy` 操作期间调用的额外回调的内部令牌。 需要此令牌以避免直接引用 `PlatformRef` 类（即通过 `PlatformRef.onDestroy` 注册回调），从而使整个类可摇树。
  *
  */
 const PLATFORM_DESTROY_LISTENERS =
@@ -140,6 +144,9 @@ export function publishDefaultGlobalUtils() {
 
 /**
  * Sets the error for an invalid write to a signal to be an Angular `RuntimeError`.
+ *
+ * 将无效写入信号的错误设置为 Angular `RuntimeError` 。
+ *
  */
 export function publishSignalConfiguration(): void {
   setThrowInvalidWriteToSignalError(() => {
@@ -193,6 +200,9 @@ export function createPlatform(injector: Injector): PlatformRef {
  * The goal of this function is to bootstrap a platform injector,
  * but avoid referencing `PlatformRef` class.
  * This function is needed for bootstrapping a Standalone Component.
+ *
+ * 此函数的目标是引导平台注入器，但避免引用 `PlatformRef` 类。 引导独立组件需要此函数。
+ *
  */
 function createOrReusePlatformInjector(providers: StaticProvider[] = []): Injector {
   // If a platform injector already exists, it means that the platform
@@ -217,12 +227,21 @@ function runPlatformInitializers(injector: Injector): void {
  * Internal create application API that implements the core application creation logic and optional
  * bootstrap logic.
  *
+ * 内部创建应用程序 API，实现核心应用程序创建逻辑和可选的引导程序逻辑。
+ *
  * Platforms \(such as `platform-browser`\) may require different set of application and platform
  * providers for an application to function correctly. As a result, platforms may use this function
  * internally and supply the necessary providers during the bootstrap, while exposing
  * platform-specific APIs as a part of their public API.
  *
- * @returns A promise that returns an `ApplicationRef` instance once resolved.
+ * 平台（例如 `platform-browser` ）可能需要不同的应用程序和平台提供商集才能使应用程序正常运行。 因此，平台可以在内部使用此功能并在引导期间提供必要的提供程序，同时将特定于平台的 API 作为其公共 API 的一部分公开。
+ *
+ * @returns
+ *
+ * A promise that returns an `ApplicationRef` instance once resolved.
+ *
+ * 一个承诺，一旦解决就返回一个 `ApplicationRef` 实例。
+ *
  */
 export function internalCreateApplication(config: {
   rootComponent?: Type<unknown>,
@@ -378,6 +397,8 @@ export function assertPlatform(requiredToken: any): PlatformRef {
  * Helper function to create an instance of a platform injector \(that maintains the 'platform'
  * scope\).
  *
+ * 用于创建平台注入器实例的辅助函数（维护“平台”范围）。
+ *
  */
 export function createPlatformInjector(providers: StaticProvider[] = [], name?: string): Injector {
   return Injector.create({
@@ -416,8 +437,9 @@ export function getPlatform(): PlatformRef|null {
 /**
  * Used to configure event and run coalescing with `provideZoneChangeDetection`.
  *
- * @publicApi
+ * 用于配置事件并使用 `provideZoneChangeDetection` 运行合并。
  *
+ * @publicApi
  * @see provideZoneChangeDetection
  */
 export interface NgZoneOptions {
@@ -590,8 +612,13 @@ export class PlatformRef {
    *
    * 为给定的平台创建 `@NgModule` 的实例。
    *
-   * @deprecated Passing NgModule factories as the `PlatformRef.bootstrapModuleFactory` function
+   * @deprecated
+   *
+   * Passing NgModule factories as the `PlatformRef.bootstrapModuleFactory` function
    *     argument is deprecated. Use the `PlatformRef.bootstrapModule` API instead.
+   *
+   * 将 NgModule 工厂作为 `PlatformRef.bootstrapModuleFactory` 函数参数传递已弃用。 请改用 `PlatformRef.bootstrapModule` API。
+   *
    */
   bootstrapModuleFactory<M>(moduleFactory: NgModuleFactory<M>, options?: BootstrapOptions):
       Promise<NgModuleRef<M>> {
@@ -711,6 +738,8 @@ export class PlatformRef {
    * Retrieves the platform {@link Injector}, which is the parent injector for
    * every Angular application on the page and provides singleton providers.
    *
+   * 检索平台 {@link Injector}，它是页面上每个 Angular 应用程序的父注入器，并提供单例提供程序。
+   *
    */
   get injector(): Injector {
     return this._injector;
@@ -819,17 +848,28 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  *
  * ### isStable examples and caveats
  *
+ * ### isStable 示例和注意事项
+ *
  * Note two important points about `isStable`, demonstrated in the examples below:
+ *
+ * 请注意关于 `isStable` 两个要点，在下面的示例中进行了演示：
  *
  * - the application will never be stable if you start any kind
  *   of recurrent asynchronous task when the application starts
  *   \(for example for a polling process, started with a `setInterval`, a `setTimeout`
  *   or using RxJS operators like `interval`\);
+ *
+ *   如果在应用程序启动时启动任何类型的循环异步任务，应用程序将永远不会稳定（例如，对于轮询过程，使用 `setInterval` 、 `setTimeout` 或使用 RxJS 操作符如 `interval` ）；
+ *
  * - the `isStable` Observable runs outside of the Angular zone.
+ *
+ *   `isStable` Observable 在 Angular 区域之外运行。
  *
  * Let's imagine that you start a recurrent task
  * \(here incrementing a counter, using RxJS `interval`\),
  * and at the same time subscribe to `isStable`.
+ *
+ * 假设您开始一个循环任务（这里使用 RxJS `interval` 递增一个计数器），同时订阅 `isStable` 。
  *
  * ```
  * constructor(appRef: ApplicationRef) {
@@ -843,9 +883,13 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * In this example, `isStable` will never emit `true`,
  * and the trace "App is stable now" will never get logged.
  *
+ * 在此示例中， `isStable` 永远不会发出 `true` ，并且永远不会记录“A​​pp 现在稳定”的跟踪。
+ *
  * If you want to execute something when the app is stable,
  * you have to wait for the application to be stable
  * before starting your polling process.
+ *
+ * 如果您想在应用程序稳定时执行某些操作，则必须等待应用程序稳定后再开始轮询过程。
  *
  * ```
  * constructor(appRef: ApplicationRef) {
@@ -860,13 +904,19 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * In this example, the trace "App is stable now" will be logged
  * and then the counter starts incrementing every second.
  *
+ * 在此示例中，将记录跟踪“应用程序现在稳定”，然后计数器开始每秒递增。
+ *
  * Note also that this Observable runs outside of the Angular zone,
  * which means that the code in the subscription
  * to this Observable will not trigger the change detection.
  *
+ * 另请注意，此 Observable 在 Angular 区域之外运行，这意味着订阅此 Observable 中的代码不会触发更改检测。
+ *
  * Let's imagine that instead of logging the counter value,
  * you update a field of your component
  * and display it in its template.
+ *
+ * 假设您不记录计数器值，而是更新组件的一个字段并将其显示在其模板中。
  *
  * ```
  * constructor(appRef: ApplicationRef) {
@@ -881,7 +931,11 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * the `value` field will be updated properly,
  * but the template will not be refreshed!
  *
+ * 由于 `isStable` Observable 在 zone 外运行， `value` 字段会正确更新，但模板不会刷新！
+ *
  * You'll have to manually trigger the change detection to update the template.
+ *
+ * 您必须手动触发更改检测才能更新模板。
  *
  * ```
  * constructor(appRef: ApplicationRef, cd: ChangeDetectorRef) {
@@ -896,6 +950,8 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * ```
  *
  * Or make the subscription callback run inside the zone.
+ *
+ * 或者让订阅回调在区域内运行。
  *
  * ```
  * constructor(appRef: ApplicationRef, zone: NgZone) {
@@ -1016,11 +1072,17 @@ export class ApplicationRef {
    * Optionally, a component can be mounted onto a DOM element that does not match the
    * selector of the bootstrapped component.
    *
+   * 可选地，可以将组件安装到与引导组件的选择器不匹配的 DOM 元素上。
+   *
    * In the following example, we are providing a CSS selector to match the target element.
+   *
+   * 在下面的示例中，我们提供了一个 CSS 选择器来匹配目标元素。
    *
    * {@example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
+   *
+   * 在此示例中，我们提供对 DOM 节点的引用。
    *
    * {@example core/ts/platform/platform.ts region='domNode'}
    *
@@ -1071,16 +1133,27 @@ export class ApplicationRef {
    * Optionally, a component can be mounted onto a DOM element that does not match the
    * selector of the bootstrapped component.
    *
+   * 可选地，可以将组件安装到与引导组件的选择器不匹配的 DOM 元素上。
+   *
    * In the following example, we are providing a CSS selector to match the target element.
+   *
+   * 在下面的示例中，我们提供了一个 CSS 选择器来匹配目标元素。
    *
    * {@example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
    *
+   * 在此示例中，我们提供对 DOM 节点的引用。
+   *
    * {@example core/ts/platform/platform.ts region='domNode'}
    *
-   * @deprecated Passing Component factories as the `Application.bootstrap` function argument is
+   * @deprecated
+   *
+   * Passing Component factories as the `Application.bootstrap` function argument is
    *     deprecated. Pass Component Types instead.
+   *
+   * 将组件工厂作为 `Application.bootstrap` 函数参数传递已弃用。 改为传递组件类型。
+   *
    */
   bootstrap<C>(componentFactory: ComponentFactory<C>, rootSelectorOrNode?: string|any):
       ComponentRef<C>;
@@ -1129,11 +1202,17 @@ export class ApplicationRef {
    * Optionally, a component can be mounted onto a DOM element that does not match the
    * selector of the bootstrapped component.
    *
+   * 可选地，可以将组件安装到与引导组件的选择器不匹配的 DOM 元素上。
+   *
    * In the following example, we are providing a CSS selector to match the target element.
+   *
+   * 在下面的示例中，我们提供了一个 CSS 选择器来匹配目标元素。
    *
    * {@example core/ts/platform/platform.ts region='cssSelector'}
    *
    * While in this example, we are providing reference to a DOM node.
+   *
+   * 在此示例中，我们提供对 DOM 节点的引用。
    *
    * {@example core/ts/platform/platform.ts region='domNode'}
    *
@@ -1298,8 +1377,18 @@ export class ApplicationRef {
   /**
    * Registers a listener to be called when an instance is destroyed.
    *
+   * 注册一个侦听器，在实例被销毁时调用。
+   *
    * @param callback A callback function to add as a listener.
-   * @returns A function which unregisters a listener.
+   *
+   * 添加为侦听器的回调函数。
+   *
+   * @returns
+   *
+   * A function which unregisters a listener.
+   *
+   * 注销侦听器的函数。
+   *
    */
   onDestroy(callback: () => void): VoidFunction {
     (typeof ngDevMode === 'undefined' || ngDevMode) && this.warnIfDestroyed();
@@ -1374,8 +1463,12 @@ function _lastDefined<T>(args: T[]): T|undefined {
 /**
  * `InjectionToken` used to configure how to call the `ErrorHandler`.
  *
+ * `InjectionToken` 用于配置如何调用 `ErrorHandler` 。
+ *
  * `NgZone` is provided by default today so the default \(and only\) implementation for this
  * is calling `ErrorHandler.handleError` outside of the Angular zone.
+ *
+ * 现在默认提供 `NgZone` ，因此默认（也是唯一）实现是在 Angular 区域之外调用 `ErrorHandler.handleError` 。
  *
  */
 const INTERNAL_APPLICATION_ERROR_HANDLER = new InjectionToken<(e: any) => void>(
@@ -1422,6 +1515,9 @@ export class NgZoneChangeDetectionScheduler {
 /**
  * Internal token used to verify that `provideZoneChangeDetection` is not used
  * with the bootstrapModule API.
+ *
+ * 用于验证 `provideZoneChangeDetection` 未与 bootstrapModule API 一起使用的内部令牌。
+ *
  */
 const PROVIDED_NG_ZONE = new InjectionToken<boolean>(
     (typeof ngDevMode === 'undefined' || ngDevMode) ? 'provideZoneChangeDetection token' : '');
@@ -1454,10 +1550,14 @@ export function internalProvideZoneChangeDetection(ngZoneFactory: () => NgZone):
  * Provides `NgZone`-based change detection for the application bootstrapped using
  * `bootstrapApplication`.
  *
+ * 为使用 `bootstrapApplication` 引导的应用程序提供基于 `NgZone` 的更改检测。
+ *
  * `NgZone` is already provided in applications by default. This provider allows you to configure
  * options like `eventCoalescing` in the `NgZone`.
  * This provider is not available for `platformBrowser().bootstrapModule`, which uses
  * `BootstrapOptions` instead.
+ *
+ * 默认情况下，应用程序中已经提供了 `NgZone` 。 该提供程序允许您在 `NgZone` 中配置诸如 `eventCoalescing` 之类的选项。 此提供程序不适用于 `platformBrowser().bootstrapModule` ，它使用 `BootstrapOptions` 代替。
  *
  * @usageNotes
  * ```typescript=
@@ -1465,7 +1565,6 @@ export function internalProvideZoneChangeDetection(ngZoneFactory: () => NgZone):
  *   provideZoneChangeDetection({eventCoalescing: true}),
  * ]});
  * ```
- *
  * @publicApi
  * @see bootstrapApplication
  * @see NgZoneOptions

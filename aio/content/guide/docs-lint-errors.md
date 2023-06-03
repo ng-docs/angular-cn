@@ -139,7 +139,12 @@ Most style tests include links to relevant sections in these documents for more 
 lint 工具会根据这些风格指南中的风格进行测试。大多数风格测试都包含指向这些文档中相关部分的链接，以获取更多信息。
 
 * [Angular documentation style guide][AioGuideDocsStyleGuide]
+
+  [Angular 文档风格指南][AioGuideDocsStyleGuide]
+
 * [Google Developer Documentation Style Guide][GoogleDevelopersStyle]
+
+  [Google 开发者文档风格指南][GoogleDevelopersStyle]
 
 <div class="alert is-helpful">
 

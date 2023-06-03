@@ -1,4 +1,6 @@
-# HTTP: Request data from a server
+# HTTP&#x3A; Request data from a server
+
+# HTTP：从服务器请求数据
 
 Use the [`HttpClient.get()`](api/common/http/HttpClient#get) method to fetch data from a server.
 The asynchronous method sends an HTTP request, and returns an Observable that emits the requested data when the response is received.

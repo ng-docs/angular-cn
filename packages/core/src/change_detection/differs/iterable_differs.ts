@@ -247,6 +247,8 @@ export interface IterableChangeRecord<V> {
  *
  * A custom `trackBy` function must have several properties:
  *
+ * 自定义 `trackBy` 函数必须具有几个属性：
+ *
  * - be [idempotent](https://en.wikipedia.org/wiki/Idempotence) \(be without side effects, and always
  *   return the same value for a given input\)
  *

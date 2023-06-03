@@ -93,10 +93,20 @@ export interface ComponentAnalysisData {
 
   decorator: ts.Decorator|null;
 
-  /** Additional directives applied to the component host. */
+  /**
+   * Additional directives applied to the component host.
+   *
+   * 应用于组件主机的附加指令。
+   *
+   */
   hostDirectives: HostDirectiveMeta[]|null;
 
-  /** Raw expression that defined the host directives array. Used for diagnostics. */
+  /**
+   * Raw expression that defined the host directives array. Used for diagnostics.
+   *
+   * 定义主机指令数组的原始表达式。 用于诊断。
+   *
+   */
   rawHostDirectives: ts.Expression|null;
 }
 

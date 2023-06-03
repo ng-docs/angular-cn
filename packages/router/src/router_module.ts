@@ -28,6 +28,9 @@ import {DefaultUrlSerializer, UrlSerializer} from './url_tree';
 
 /**
  * The directives defined in the `RouterModule`.
+ *
+ * `RouterModule` 中定义的指令。
+ *
  */
 const ROUTER_DIRECTIVES = [RouterOutlet, RouterLink, RouterLinkActive, EmptyOutletComponent];
 
@@ -118,12 +121,13 @@ export class RouterModule {
    * @param routes An array of `Route` objects that define the navigation paths for the application.
    *
    * `Route` 对象的数组，这些对象定义应用程序的导航路径。
-   *
    * @param config An `ExtraOptions` configuration object that controls how navigation is performed.
    *
    * 一个 `ExtraOptions` 配置对象，该对象会控制如何执行导航。
-   *
    * @return The new `NgModule`.
+   *
+   * 新的 `NgModule` 。
+   *
    */
   static forRoot(routes: Routes, config?: ExtraOptions): ModuleWithProviders<RouterModule> {
     return {
@@ -168,8 +172,10 @@ export class RouterModule {
    * @param routes An array of `Route` objects that define the navigation paths for the submodule.
    *
    * `Route` 对象的数组，它们定义了子模块的导航路径。
-   *
    * @return The new NgModule.
+   *
+   * 新的 NgModule。
+   *
    */
   static forChild(routes: Routes): ModuleWithProviders<RouterModule> {
     return {
@@ -182,6 +188,9 @@ export class RouterModule {
 /**
  * For internal use by `RouterModule` only. Note that this differs from `withInMemoryRouterScroller`
  * because it reads from the `ExtraOptions` which should not be used in the standalone world.
+ *
+ * 仅供 `RouterModule` 内部使用。 请注意，这与 `withInMemoryRouterScroller` 不同，因为它从不应在独立世界中使用的 `ExtraOptions` 读取。
+ *
  */
 export function provideRouterScroller(): Provider {
   return {

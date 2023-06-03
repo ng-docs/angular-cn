@@ -12,6 +12,9 @@ import * as i18n from './i18n_ast';
 
 /**
  * A lazily created TextEncoder instance for converting strings into UTF-8 bytes
+ *
+ * 用于将字符串转换为 UTF-8 字节的延迟创建的 TextEncoder 实例
+ *
  */
 let textEncoder: TextEncoder|undefined;
 
@@ -184,8 +187,19 @@ export function sha1(str: string): string {
 
 /**
  * Convert and format a number as a string representing a 32-bit unsigned hexadecimal number.
+ *
+ * 将数字转换并格式化为表示 32 位无符号十六进制数的字符串。
+ *
  * @param value The value to format as a string.
- * @returns A hexadecimal string representing the value.
+ *
+ * 要格式化为字符串的值。
+ *
+ * @returns
+ *
+ * A hexadecimal string representing the value.
+ *
+ * 表示值的十六进制字符串。
+ *
  */
 function toHexU32(value: number): string {
   // unsigned right shift of zero ensures an unsigned 32-bit number

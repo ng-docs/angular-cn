@@ -205,6 +205,9 @@ export class Environment implements ReferenceEmitEnvironment {
    * Generates a `ts.TypeNode` representing a type that is being referenced from a different place
    * in the program. Any type references inside the transplanted type will be rewritten so that
    * they can be imported in the context fiel.
+   *
+   * 生成一个 `ts.TypeNode` 表示从程序中不同位置引用的类型。 移植类型中的任何类型引用都将被重写，以便它们可以在上下文字段中导入。
+   *
    */
   referenceTransplantedType(type: TransplantedType<ts.TypeNode>): ts.TypeNode {
     return translateType(

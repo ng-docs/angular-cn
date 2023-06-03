@@ -1,6 +1,8 @@
 <a id="top"></a>
 
-{@searchKeywords test testing karma jasmine coverage}
+{&commat;searchKeywords test testing karma jasmine coverage}
+
+{&commat;searchKeywords 测试测试业力茉莉花覆盖范围}
 
 # Testing
 
@@ -30,8 +32,12 @@ Before writing tests for your Angular application, you should have a basic under
 
 * [Angular CLI](cli)
 
+  [角 CLI](cli)
+
 The testing documentation offers tips and techniques for unit and integration testing Angular applications through a sample application created with the [Angular CLI](cli).
 This sample application is much like the one in the [*Tour of Heroes* tutorial](tutorial/tour-of-heroes).
+
+测试文档提供了通过使用[Angular CLI](cli)创建的示例应用程序对 Angular 应用程序进行单元和集成测试的提示和技术。 这个示例应用程序与[*英雄之旅*教程](tutorial/tour-of-heroes)中的示例应用程序非常相似。
 
 <div class="alert is-helpful">
 
@@ -116,6 +122,8 @@ The Angular CLI takes care of Jasmine and Karma configuration for you. It constr
 Angular CLI 会为你处理 Jasmine 和 Karma 配置。它根据 `angular.json` 文件中指定的选项在内存中构建完整配置。
 
 If you want to customize Karma, you can create a `karma.conf.js` by running the following command:
+
+如果你想自定义 Karma，你可以通过运行以下命令创建一个 `karma.conf.js` ：
 
 <code-example format="shell" language="shell">
 

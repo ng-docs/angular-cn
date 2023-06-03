@@ -70,15 +70,24 @@ export interface NgModuleMeta {
   /**
    * The primary decorator associated with this `ngModule`.
    *
+   * 与此 `ngModule` 关联的主要装饰器。
+   *
    * If this is `null`, no decorator exists, meaning it's probably from a .d.ts file.
+   *
+   * 如果这是 `null` ，则不存在装饰器，这意味着它可能来自 .d.ts 文件。
+   *
    */
   decorator: ts.Decorator|null;
 
   /**
    * Whether this NgModule may declare providers.
    *
+   * 这个 NgModule 是否可以声明提供者。
+   *
    * If the compiler does not know if the NgModule may declare providers, this will be `true` \(for
    * example, NgModules declared outside the current compilation are assumed to declare providers\).
+   *
+   * 如果编译器不知道 NgModule 是否可以声明提供者，这将是 `true` （例如，假设在当前编译之外声明的 NgModule 声明提供者）。
    *
    */
   mayDeclareProviders: boolean;
@@ -172,22 +181,45 @@ export enum MetaKind {
 
 /**
  * Possible ways that a directive can be matched.
+ *
+ * 指令可以匹配的可能方式。
+ *
  */
 export enum MatchSource {
-  /** The directive was matched by its selector. */
+  /**
+   * The directive was matched by its selector.
+   *
+   * 该指令与其选择器匹配。
+   *
+   */
   Selector,
 
-  /** The directive was applied as a host directive. */
+  /**
+   * The directive was applied as a host directive.
+   *
+   * 该指令已作为主机指令应用。
+   *
+   */
   HostDirective,
 }
 
-/** Metadata for a single input mapping. */
+/**
+ * Metadata for a single input mapping.
+ *
+ * 单个输入映射的元数据。
+ *
+ */
 export type InputMapping = InputOrOutput&{
   required: boolean;
   transform: InputTransform|null
 };
 
-/** Metadata for an input's transform function. */
+/**
+ * Metadata for an input's transform function.
+ *
+ * 输入转换函数的元数据。
+ *
+ */
 export interface InputTransform {
   node: ts.Node;
   type: ts.TypeNode;
@@ -202,7 +234,12 @@ export interface InputTransform {
 export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
   kind: MetaKind.Directive;
 
-  /** Way in which the directive was matched. */
+  /**
+   * Way in which the directive was matched.
+   *
+   * 指令匹配的方式。
+   *
+   */
   matchSource: MatchSource;
 
   ref: Reference<ClassDeclaration>;
@@ -271,6 +308,9 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
 
   /**
    * Whether the directive is a signal entity.
+   *
+   * 指令是否为信号实体。
+   *
    */
   isSignal: boolean;
 
@@ -293,31 +333,69 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
   /**
    * The primary decorator associated with this directive.
    *
+   * 与此指令关联的主要装饰器。
+   *
    * If this is `null`, no decorator exists, meaning it's probably from a .d.ts file.
+   *
+   * 如果这是 `null` ，则不存在装饰器，这意味着它可能来自 .d.ts 文件。
+   *
    */
   decorator: ts.Decorator|null;
 
-  /** Additional directives applied to the directive host. */
+  /**
+   * Additional directives applied to the directive host.
+   *
+   * 应用于指令主机的附加指令。
+   *
+   */
   hostDirectives: HostDirectiveMeta[]|null;
 
   /**
    * Whether the directive should be assumed to export providers if imported as a standalone type.
+   *
+   * 如果作为独立类型导入，是否应假定指令导出提供程序。
+   *
    */
   assumedToExportProviders: boolean;
 }
 
-/** Metadata collected about an additional directive that is being applied to a directive host. */
+/**
+ * Metadata collected about an additional directive that is being applied to a directive host.
+ *
+ * 收集的有关应用于指令主机的附加指令的元数据。
+ *
+ */
 export interface HostDirectiveMeta {
-  /** Reference to the host directive class. */
+  /**
+   * Reference to the host directive class.
+   *
+   * 引用主机指令类。
+   *
+   */
   directive: Reference<ClassDeclaration>;
 
-  /** Whether the reference to the host directive is a forward reference. */
+  /**
+   * Whether the reference to the host directive is a forward reference.
+   *
+   * 对主机指令的引用是否为前向引用。
+   *
+   */
   isForwardReference: boolean;
 
-  /** Inputs from the host directive that have been exposed. */
+  /**
+   * Inputs from the host directive that have been exposed.
+   *
+   * 来自已公开的主机指令的输入。
+   *
+   */
   inputs: {[publicName: string]: string}|null;
 
-  /** Outputs from the host directive that have been exposed. */
+  /**
+   * Outputs from the host directive that have been exposed.
+   *
+   * 已公开的主机指令的输出。
+   *
+   */
   outputs: {[publicName: string]: string}|null;
 }
 
@@ -384,6 +462,9 @@ export interface MetadataReader {
 
 /**
  * A MetadataReader which also allows access to the set of all known trait classes.
+ *
+ * 一个 MetadataReader，它还允许访问所有已知特征类的集合。
+ *
  */
 export interface MetadataReaderWithIndex extends MetadataReader {
   getKnown(kind: MetaKind): Array<ClassDeclaration>;
@@ -391,6 +472,9 @@ export interface MetadataReaderWithIndex extends MetadataReader {
 
 /**
  * An NgModuleIndex allows access to information about traits exported by NgModules.
+ *
+ * NgModuleIndex 允许访问有关 NgModule 导出的特征的信息。
+ *
  */
 export interface NgModuleIndex {
   getNgModulesExporting(directiveOrPipe: ClassDeclaration): Array<Reference<ClassDeclaration>>;

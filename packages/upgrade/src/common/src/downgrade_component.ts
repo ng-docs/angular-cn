@@ -49,10 +49,14 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  * The `downgradeComponent()` function returns a factory function that we
  * can use to define the AngularJS directive that wraps the "downgraded" component.
  *
+ * 我们必须创建一个 AngularJS[指令](https://docs.angularjs.org/guide/directive)，使这个 Angular 组件在 AngularJS 模板中可用。 `downgradeComponent()` 函数返回一个工厂函数，我们可以使用它来定义包装“降级”组件的 AngularJS 指令。
+ *
  * {@example upgrade/static/ts/full/module.ts region="ng2-heroes-wrapper"}
  *
  * For more details and examples on downgrading Angular components to AngularJS components please
  * visit the [Upgrade guide](guide/upgrade#using-angular-components-from-angularjs-code).
+ *
+ * 有关将 Angular 组件降级为 AngularJS 组件的更多详细信息和示例，请访问[升级指南](guide/upgrade#using-angular-components-from-angularjs-code)。
  *
  * @param info contains information about the Component that is being downgraded:
  *

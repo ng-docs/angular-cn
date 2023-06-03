@@ -1,29 +1,56 @@
 # Animation transition and timing
 
+# 动画过渡和计时
+
 An animation *transition* specifies changes that occur between one state and another. Set the transition to make the change less abrupt. An animation *transition* specifies the changes that occur between one state and another.
+
+动画*过渡*指定一种状态与另一种状态之间发生的变化。 设置过渡以使变化不那么突然。 动画*过渡*指定一种状态与另一种状态之间发生的变化。
 
 ## Animation `transition()` function defined
 
+## 动画 `transition()` 函数定义
+
 The `transition()` function accepts two arguments:
+
+`transition()` 函数接受两个参数：
 
 An expression that defines the direction between two transition states
 An expression that accepts one or a series of `animate()` steps
 
+定义两个过渡状态之间方向的表达式 接受一个或一系列 `animate()` 步骤的表达式
+
 Use the `animate()` function of a transition to define:
 
+使用过渡的 `animate()` 函数来定义：
+
 * Length
+
+  长度
+
 * Delay
+
+  延迟
+
 * Easing
+
+  宽松
+
 * Style function for defining styles while transitions are taking place
+
+  用于在发生转换时定义样式的样式函数
 
 Use the `animate()` function to define the `keyframes()` function for multi-step animations.
 These definitions are placed in the second argument of the `animate()` function.
+
+使用 `animate()` 函数定义多步动画的 `keyframes()` 函数。 这些定义放在 `animate()` 函数的第二个参数中。
 
 ## Animation metadata: duration, delay, and easing
 
 ## 动画元数据：持续时间、延迟和缓动效果
 
 The `animate()` function accepts the `timings` and `styles` input parameters.
+
+`animate()` 函数接受 `timings` 和 `styles` 输入参数。
 
 The `timings` parameter takes either a number or a string defined in three parts.
 
@@ -83,6 +110,8 @@ For example, `ease-in` causes the animation to begin slowly, and to pick up spee
 * Wait for 100 ms, run for 200 ms.
   Use a deceleration curve to start out fast and slowly decelerate to a resting point:
 
+  等待 100 毫秒，运行 200 毫秒。 使用减速曲线快速开始并缓慢减速到静止点：
+
   <code-example format="output" language="shell">
 
   0.2s 100ms ease-out
@@ -91,6 +120,8 @@ For example, `ease-in` causes the animation to begin slowly, and to pick up spee
 
 * Run for 200 ms, with no delay.
   Use a standard curve to start slow, speed up in the middle, and then decelerate slowly at the end:
+
+  运行 200 毫秒，没有延迟。 用一条标准曲线开始慢，中间加速，最后慢慢减速：
 
   <code-example format="output" language="shell">
 
@@ -102,7 +133,11 @@ For example, `ease-in` causes the animation to begin slowly, and to pick up spee
   Use an acceleration curve to start slow and end at full velocity:
   <code-example format="output" language="shell">
 
+  立即开始，运行 200 毫秒。 使用加速曲线以缓慢开始并以全速结束：
+
   0.2s ease-in
+
+  0.2 秒缓入
 
   </code-example>
 

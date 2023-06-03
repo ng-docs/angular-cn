@@ -70,6 +70,8 @@ let _locateOrCreateTextNode: typeof locateOrCreateTextNodeImpl =
  * Enables hydration code path \(to lookup existing elements in DOM\)
  * in addition to the regular creation mode of text nodes.
  *
+ * 除了文本节点的常规创建模式之外，还启用水化代码路径（以查找 DOM 中的现有元素）。
+ *
  */
 function locateOrCreateTextNodeImpl(
     tView: TView, lView: LView, tNode: TNode, value: string, index: number): RText {

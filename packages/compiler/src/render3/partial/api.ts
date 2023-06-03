@@ -188,11 +188,17 @@ export interface R3DeclareDirectiveMetadata extends R3PartialDeclaration {
 
   /**
    * Whether the directive is a signal-based directive. Defaults to false.
+   *
+   * 该指令是否是基于信号的指令。 默认为假。
+   *
    */
   isSignal?: boolean;
 
   /**
    * Additional directives applied to the directive host.
+   *
+   * 应用于指令主机的附加指令。
+   *
    */
   hostDirectives?: R3DeclareHostDirectiveMetadata[];
 }
@@ -840,6 +846,9 @@ export interface R3DeclareClassMetadata extends R3PartialDeclaration {
 /**
  * Describes the shape of the object literal that can be
  * passed in as a part of the `hostDirectives` array.
+ *
+ * 描述可以作为 `hostDirectives` 数组的一部分传入的对象文字的形状。
+ *
  */
 export interface R3DeclareHostDirectiveMetadata {
   directive: o.Expression;

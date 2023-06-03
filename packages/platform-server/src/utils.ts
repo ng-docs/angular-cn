@@ -23,6 +23,8 @@ interface PlatformOptions {
  * Creates an instance of a server platform \(with or without JIT compiler support
  * depending on the `ngJitMode` global const value\), using provided options.
  *
+ * 使用提供的选项创建服务器平台的实例（有或没有 JIT 编译器支持取决于 `ngJitMode` 全局常量值）。
+ *
  */
 function createServerPlatform(options: PlatformOptions): PlatformRef {
   const extraProviders = options.platformProviders ?? [];
@@ -35,6 +37,9 @@ function createServerPlatform(options: PlatformOptions): PlatformRef {
 /**
  * Adds the `ng-server-context` attribute to host elements of all bootstrapped components
  * within a given application.
+ *
+ * 将 `ng-server-context` 属性添加到给定应用程序中所有引导组件的宿主元素。
+ *
  */
 function appendServerContextInfo(applicationRef: ApplicationRef) {
   const injector = applicationRef.injector;
@@ -98,6 +103,9 @@ async function _render(platformRef: PlatformRef, applicationRef: ApplicationRef)
 
 /**
  * Specifies the value that should be used if no server context value has been provided.
+ *
+ * 指定在未提供服务器上下文值时应使用的值。
+ *
  */
 const DEFAULT_SERVER_CONTEXT = 'other';
 
@@ -106,14 +114,23 @@ const DEFAULT_SERVER_CONTEXT = 'other';
  * \(e.g. whether SSR or SSG was used\). The value is a string and characters other
  * than [a-zA-Z0-9\-] are removed. See the default value in `DEFAULT_SERVER_CONTEXT` const.
  *
+ * 允许提供有关服务器上下文的额外信息的内部令牌（例如，是否使用了 SSR 或 SSG）。 该值是一个字符串，除了[a-zA-Z0-9-][a-zA-Z0-9\-]之外的字符都被删除了。 查看 `DEFAULT_SERVER_CONTEXT` const 中的默认值。
+ *
  */
 export const SERVER_CONTEXT = new InjectionToken<string>('SERVER_CONTEXT');
 
 /**
  * Sanitizes provided server context:
  *
+ * 清理提供的服务器上下文：
+ *
  * - removes all characters other than a-z, A-Z, 0-9 and `-`
+ *
+ *   删除除 az、AZ、0-9 和 `-` 以外的所有字符
+ *
  * - returns `other` if nothing is provided or the string is empty after sanitization
+ *
+ *   如果未提供任何内容或清理后字符串为空，则返回 `other`
  *
  */
 function sanitizeServerContext(serverContext: string): string {
@@ -173,6 +190,9 @@ export async function renderModule<T>(moduleType: Type<T>, options: {
  *
  * @param bootstrap A method that when invoked returns a promise that returns an `ApplicationRef`
  *     instance once resolved.
+ *
+ * 一种在调用时返回一个承诺的方法，该承诺在解决后返回一个 `ApplicationRef` 实例。
+ *
  * @param options Additional configuration for the render operation:
  *
  * 渲染操作的附加配置：
@@ -192,6 +212,8 @@ export async function renderModule<T>(moduleType: Type<T>, options: {
  * @returns
  *
  * A Promise, that returns serialized \(to a string\) rendered page, once resolved.
+ *
+ * 一个承诺，一旦解决，它就会返回序列化（到一个字符串）呈现的页面。
  *
  * @publicApi
  * @developerPreview

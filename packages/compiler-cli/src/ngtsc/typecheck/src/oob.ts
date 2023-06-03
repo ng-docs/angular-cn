@@ -121,7 +121,12 @@ export interface OutOfBandDiagnosticRecorder {
       templateId: TemplateId, input: TmplAstBoundAttribute, output: TmplAstBoundEvent,
       inputConsumer: ClassDeclaration, outputConsumer: ClassDeclaration|TmplAstElement): void;
 
-  /** Reports required inputs that haven't been bound. */
+  /**
+   * Reports required inputs that haven't been bound.
+   *
+   * 报告需要尚未绑定的输入。
+   *
+   */
   missingRequiredInputs(
       templateId: TemplateId, element: TmplAstElement|TmplAstTemplate, directiveName: string,
       isComponent: boolean, inputAliases: string[]): void;

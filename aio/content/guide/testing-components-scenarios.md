@@ -778,6 +778,8 @@ The test resumes within the promise callback, which calls `detectChanges()` to u
 
 #### Jasmine `done()`
 
+#### 茉莉花 `done()`
+
 While the `waitForAsync()` and `fakeAsync()` functions greatly simplify Angular asynchronous testing, you can still fall back to the traditional technique and pass `it` a function that takes a [`done` callback](https://jasmine.github.io/2.0/introduction.html#section-Asynchronous_Support).
 
 虽然 `waitForAsync()` 和 `fakeAsync()` 函数可以大大简化 Angular 的异步测试，但你仍然可以回退到传统技术，并给 `it` 传一个以 [`done` 回调](https://jasmine.github.io/2.0/introduction.html#section-Asynchronous_Support)为参数的函数。
@@ -1263,6 +1265,8 @@ Testing the `DashboardComponent` seemed daunting in part because it involves the
 <code-example header="app/dashboard/dashboard.component.ts (goToDetail)" path="testing/src/app/dashboard/dashboard.component.ts" region="goto-detail" ></code-example>
 
 Angular provides test helpers to reduce boilerplate and more effectively test code which depends on the Router and HttpClient.
+
+Angular 提供了测试助手来减少样板文件并更有效地测试依赖于 Router 和 HttpClient 的代码。
 
 <code-example header="app/dashboard/dashboard.component.spec.ts" path="testing/src/app/dashboard/dashboard.component.spec.ts" region="router-harness"></code-example>
 

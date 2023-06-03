@@ -1,5 +1,7 @@
 # HTTP client - Handle request errors
 
+# HTTP 客户端 - 处理请求错误
+
 If the request fails on the server, `HttpClient` returns an *error* object instead of a successful response.
 
 如果请求在服务器上失败了，那么 `HttpClient` 就会返回一个*错误*对象而不是一个成功的响应对象。
@@ -10,6 +12,8 @@ The same service that performs your server transactions should also perform erro
 
 When an error occurs, you can obtain details of what failed to inform your user.
 In some cases, you might also automatically [retry the request](#retry).
+
+发生错误时，您可以获得未能通知用户的详细信息。 在某些情况下，您可能还会自动[重试请求](#retry)。
 
 <a id="error-details"></a>
 
@@ -43,6 +47,8 @@ Inspect that response to identify the error's cause.
 `HttpClient` 在其 `HttpErrorResponse` 中会捕获两种错误。可以检查这个响应是否存在错误。
 
 The following example defines an error handler in the previously defined ConfigService.
+
+以下示例在先前定义的 ConfigService 中定义了一个错误处理程序。
 
 <code-example header="app/config/config.service.ts (handleError)" path="http/src/app/config/config.service.ts" region="handleError"></code-example>
 

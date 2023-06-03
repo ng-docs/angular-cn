@@ -18,7 +18,12 @@ You can update the Angular documentation in these ways:
 你可以通过以下方式更新 Angular 文档：
 
 * [Make a minor change][AioGuideContributorsGuideOverviewMakeAMinorChange]
+
+  [做一个小改动][AioGuideContributorsGuideOverviewMakeAMinorChange]
+
 * [Make a major change][AioGuideContributorsGuideOverviewMakeAMajorChange]
+
+  [做出重大改变][AioGuideContributorsGuideOverviewMakeAMajorChange]
 
 <div class="alert is-important">
 
@@ -41,8 +46,16 @@ Examples of minor changes include:
 你可以在不下载任何软件的情况下对文档主题进行细微更改。许多常见的文档维护任务只需要对主题中的几个单词或字符进行细微更改。次要更改的示例包括：
 
 * [Correcting a typo or two][AioGuideContributorGuideOverviewToMakeAMinorChangeToADocumentationTopic]
+
+  [更正一两个错别字][AioGuideContributorGuideOverviewToMakeAMinorChangeToADocumentationTopic]
+
 * [Reviewing a topic and updating its review date][AioGuideReviewingContentUpdateTheLastReviewedDate]
+
+  [审查主题并更新其审查日期][AioGuideReviewingContentUpdateTheLastReviewedDate]
+
 * [Adding or updating search keywords][AioGuideUpdatingSearchKeywords]
+
+  [添加或更新搜索关键字][AioGuideUpdatingSearchKeywords]
 
 For more about keeping the documentation up to date, see [Common documentation maintenance tasks][AioGuideDocTasks].
 
@@ -140,11 +153,15 @@ These topics provide information about how to set up your local computer to edit
 
 * [Overview of the Angular documentation editorial workflow][AioGuideDocUpdateOverview]
 
+  [Angular 文档编辑工作流程概述][AioGuideDocUpdateOverview]
+
   Describes how to configure your local computer to build, edit, and test Angular documentation
 
   描述如何配置本地计算机以构建、编辑和测试 Angular 文档
 
 * [Documentation style guide][AioGuideDocStyleGuide]
+
+  [文档风格指南][AioGuideDocStyleGuide]
 
   Describes the standards used in the Angular documentation
 

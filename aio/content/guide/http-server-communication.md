@@ -1,6 +1,10 @@
 # HTTP Server communication
 
+# HTTP 服务器通信
+
 Most front-end applications need to communicate with a server over the HTTP protocol, to download or upload data and access other back-end services.
+
+大多数前端应用程序需要通过 HTTP 协议与服务器通信，以下载或上传数据以及访问其他后端服务。
 
 ## Setup for server communication
 

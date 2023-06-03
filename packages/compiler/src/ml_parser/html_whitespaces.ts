@@ -30,6 +30,8 @@ function hasPreserveWhitespacesAttr(attrs: html.Attribute[]): boolean {
  * &ngsp; is converted to the 0xE500 PUA \(Private Use Areas\) unicode character
  * and later on replaced by a space.
  *
+ * &ngsp; 是不可移动空间的占位符 &ngsp; 转换为 0xE500 PUA（专用区域）unicode 字符，然后由空格替换。
+ *
  */
 export function replaceNgsp(value: string): string {
   // lexer is replacing the &ngsp; pseudo-entity with NGSP_UNICODE

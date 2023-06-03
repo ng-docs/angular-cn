@@ -51,7 +51,7 @@ enum TranslationType {
  * or an [ISO date-time string](https://www.w3.org/TR/NOTE-datetime).
  *
  * 要格式化的日期，是一个日期、数字（从 UTC 时代以来的毫秒数）或 ISO 字符串
- * \(https://www.w3.org/TR/NOTE-datetime\\)。
+ * \(https://www.w3.org/TR/NOTE-datetime\\\)。
  *
  * @param format The date-time components to include. See `DatePipe` for details.
  *

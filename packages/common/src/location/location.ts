@@ -364,6 +364,9 @@ export class Location implements OnDestroy {
    *
    * 要抛出的异常。
    * @see [onpopstate](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate)
+   *
+   * [onpop 状态](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate)
+   *
    * @returns Subscribed events.
    *
    * 已订阅的事件。

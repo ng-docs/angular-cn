@@ -8,6 +8,8 @@ Following are a number of common uses for interceptors.
 
 ## Set default headers
 
+## 设置默认标题
+
 Apps often use an interceptor to set default headers on outgoing requests.
 
 应用通常会使用拦截器来设置外发请求的默认请求头。
@@ -42,6 +44,8 @@ An interceptor that alters headers can be used for a number of different operati
   XSRF 防护
 
 ## Log request and response pairs
+
+## 记录请求和响应对
 
 Because interceptors can process the request and response *together*, they can perform tasks such as timing and logging an entire HTTP operation.
 
@@ -99,6 +103,8 @@ You provide the `CustomParser` along with the `CustomJsonInterceptor`.
 
 ## Cache requests
 
+## 缓存请求
+
 Interceptors can handle requests by themselves, without forwarding to `next.handle()`.
 
 拦截器还可以自行处理这些请求，而不用转发给 `next.handle()`。
@@ -150,6 +156,8 @@ Data services, such as `PackageSearchService`, are unaware that some of their `H
 <a id="cache-refresh"></a>
 
 ## Use interceptors to request multiple values
+
+## 使用拦截器请求多个值
 
 The `HttpClient.get()` method normally returns an observable that emits a single value, either the data or an error.
 An interceptor can change this to an observable that emits [multiple values](guide/observables).

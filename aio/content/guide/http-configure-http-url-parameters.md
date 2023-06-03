@@ -1,10 +1,14 @@
 # HTTP - Configure URL parameters
 
+# HTTP - 配置 URL 参数
+
 Use the `HttpParams` class with the `params` request option to add URL query strings in your `HttpRequest`.
 
 使用 `HttpParams` 类和 `params` 选项在你的 `HttpRequest` 中添加 URL 查询字符串。
 
 ## Create URL parameter using the search method
+
+## 使用搜索方法创建 URL 参数
 
 The following example, the `searchHeroes()` method queries for heroes whose names contain the search term.
 
@@ -33,6 +37,8 @@ If you need to update the options, save the returned value of the `.set()` metho
 `HttpParams` 是不可变对象。如果需要更新选项，请保留 `.set()` 方法的返回值。
 
 ## Create URL parameters from a query
+
+## 从查询创建 URL 参数
 
 You can also create HTTP parameters directly from a query string by using the `fromString` variable:
 

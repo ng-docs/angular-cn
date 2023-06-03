@@ -59,6 +59,8 @@ class Bindings {
  * We must create a `Directive` that will make this AngularJS component
  * available inside Angular templates.
  *
+ * 我们必须创建一个 `Directive` ，使这个 AngularJS 组件在 Angular 模板中可用。
+ *
  * {@example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper"}
  *
  * In this example you can see that we must derive from the `UpgradeComponent`
@@ -66,14 +68,35 @@ class Bindings {
  * because the AOT compiler requires that this information is statically available at
  * compile time.
  *
+ * 在此示例中，您可以看到我们必须从 `UpgradeComponent` 基类派生，但也提供了一个 {@link Directive `@Directive` } 装饰器。 这是因为 AOT 编译器要求此信息在编译时静态可用。
+ *
  * Note that we must do the following:
  *
+ * 请注意，我们必须执行以下操作：
+ *
  * * specify the directive's selector \(`ng1-hero`\)
+ *
+ *   指定指令的选择器 \( `ng1-hero` \)
+ *
  * * specify all inputs and outputs that the AngularJS component expects
+ *
+ *   指定 AngularJS 组件期望的所有输入和输出
+ *
  * * derive from `UpgradeComponent`
+ *
+ *   派生自 `UpgradeComponent`
+ *
  * * call the base class from the constructor, passing
+ *
+ *   从构造函数调用基类，传递
+ *
  *   * the AngularJS name of the component \(`ng1Hero`\)
+ *
+ *     组件的 AngularJS 名称 \( `ng1Hero` \)
+ *
  *   * the `ElementRef` and `Injector` for the component wrapper
+ *
+ *     组件包装器的 `ElementRef` 和 `Injector`
  *
  * @publicApi
  * @extensible

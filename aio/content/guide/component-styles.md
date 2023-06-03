@@ -122,6 +122,8 @@ The following sections describe these selectors.
 
 ### :host
 
+### ：主持人
+
 Every component is associated within an element that matches the component's selector.
 This element, into which the template is rendered, is called the *host element*.
 The `:host` pseudo-class selector may be used to create styles that target the host element itself, as opposed to targeting elements inside the host.
@@ -168,6 +170,8 @@ Use `:host-context` selector for that purpose instead.
 </div>
 
 ### :host-context
+
+### ：主机上下文
 
 Sometimes it's useful to apply styles to elements within a component's template based on some condition in an element that is an ancestor of the host element.
 For example, a CSS theme class could be applied to the document `<body>` element, and you want to change how your component looks based on that.

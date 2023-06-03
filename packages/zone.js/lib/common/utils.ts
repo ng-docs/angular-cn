@@ -17,15 +17,40 @@
 /// <reference types="node"/>
 
 // issue #989, to reduce bundle size, use short name
-/** Object.getOwnPropertyDescriptor */
+/**
+ * Object.getOwnPropertyDescriptor
+ *
+ * 对象.getOwnPropertyDescriptor
+ *
+ */
 export const ObjectGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-/** Object.defineProperty */
+/**
+ * Object.defineProperty
+ *
+ * 对象.defineProperty
+ *
+ */
 export const ObjectDefineProperty = Object.defineProperty;
-/** Object.getPrototypeOf */
+/**
+ * Object.getPrototypeOf
+ *
+ * 对象.getPrototypeOf
+ *
+ */
 export const ObjectGetPrototypeOf = Object.getPrototypeOf;
-/** Object.create */
+/**
+ * Object.create
+ *
+ * 对象.create
+ *
+ */
 export const ObjectCreate = Object.create;
-/** Array.prototype.slice */
+/**
+ * Array.prototype.slice
+ *
+ * 数组.prototype.slice
+ *
+ */
 export const ArraySlice = Array.prototype.slice;
 /**
  * addEventListener string const

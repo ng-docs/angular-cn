@@ -178,6 +178,8 @@ Perform these steps in a command-line program on your local computer.
 
 1. [Update your fork of `angular/angular`](#update-your-fork-with-the-upstream-repo).
 
+   [更新你的 `angular/angular` 分支](#update-your-fork-with-the-upstream-repo)。
+
 1. From your [workspace](guide/doc-prepare-to-edit#create-a-git-workspace-on-your-local-computer) directory, run this command to navigate to your [working directory](guide/doc-prepare-to-edit#doc-working-directory).
    Remember to replace `personal` with your GitHub username.
 

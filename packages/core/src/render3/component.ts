@@ -169,6 +169,8 @@ export interface ComponentMirror<C> {
   /**
    * // TODO\(signals\): Remove internal and add public documentation
    *
+   * // TODO\(signals\): 删除内部文档并添加公共文档
+   *
    * @internal
    */
   get isSignal(): boolean;

@@ -149,12 +149,18 @@ export interface DirectiveDef<T> {
    * A dictionary mapping the private names of inputs to their transformation functions.
    * Note: the private names are used for the keys, rather than the public ones, because public
    * names can be re-aliased in host directives which would invalidate the lookup.
+   *
+   * 将输入的私有名称映射到它们的转换函数的字典。 注意：私有名称用于密钥，而不是公共名称，因为公共名称可以在主机指令中重新命名，这会使查找无效。
+   *
    */
   readonly inputTransforms: {[classPropertyName: string]: InputTransformFunction}|null;
 
   /**
    * Contains the raw input information produced by the compiler. Can be
    * used to do further processing after the `inputs` have been inverted.
+   *
+   * 包含编译器生成的原始输入信息。 可用于在 `inputs` 反转后进行进一步处理。
+   *
    */
   readonly inputConfig:
       {[classPropertyName: string]: string|[string, string, InputTransformFunction?]};
@@ -316,6 +322,8 @@ export interface DirectiveDef<T> {
   /**
    * Whether this directive \(or component\) uses the signals authoring experience.
    *
+   * 此指令（或组件）是否使用信号创作经验。
+   *
    */
   readonly signals: boolean;
 
@@ -339,17 +347,34 @@ export interface DirectiveDef<T> {
   /**
    * Function that will add the host directives to the list of matches during directive matching.
    * Patched onto the definition by the `HostDirectivesFeature`.
+   *
+   * 在指令匹配期间将主机指令添加到匹配列表的函数。 由 `HostDirectivesFeature` 修补到定义上。
+   *
    * @param currentDef Definition that has been matched.
+   *
+   * 已匹配的定义。
+   *
    * @param matchedDefs List of all matches for a specified node. Will be mutated to include the
    * host directives.
+   *
+   * 指定节点的所有匹配列表。 将被变异以包含主机指令。
+   *
    * @param hostDirectiveDefs Mapping of directive definitions to their host directive
    * configuration. Host directives will be added to the map as they're being matched to the node.
+   *
+   * 将指令定义映射到它们的主机指令配置。 主机指令将在与节点匹配时添加到地图中。
+   *
    */
   findHostDirectiveDefs:
       ((currentDef: DirectiveDef<unknown>, matchedDefs: DirectiveDef<unknown>[],
         hostDirectiveDefs: HostDirectiveDefs) => void)|null;
 
-  /** Additional directives to be applied whenever the directive has been matched. */
+  /**
+   * Additional directives to be applied whenever the directive has been matched.
+   *
+   * 每当指令匹配时要应用的附加指令。
+   *
+   */
   hostDirectives: HostDirectiveDef[]|null;
 
   setInput:
@@ -502,7 +527,12 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
    */
   readonly onPush: boolean;
 
-  /** Whether or not this component is signal-based. */
+  /**
+   * Whether or not this component is signal-based.
+   *
+   * 该组件是否基于信号。
+   *
+   */
   readonly signals: boolean;
 
   /**
@@ -672,15 +702,35 @@ export interface DirectiveDefFeature {
   ngInherit?: true;
 }
 
-/** Runtime information used to configure a host directive. */
+/**
+ * Runtime information used to configure a host directive.
+ *
+ * 用于配置主机指令的运行时信息。
+ *
+ */
 export interface HostDirectiveDef<T = unknown> {
-  /** Class representing the host directive. */
+  /**
+   * Class representing the host directive.
+   *
+   * 表示主机指令的类。
+   *
+   */
   directive: Type<T>;
 
-  /** Directive inputs that have been exposed. */
+  /**
+   * Directive inputs that have been exposed.
+   *
+   * 已公开的指令输入。
+   *
+   */
   inputs: HostDirectiveBindingMap;
 
-  /** Directive outputs that have been exposed. */
+  /**
+   * Directive outputs that have been exposed.
+   *
+   * 已公开的指令输出。
+   *
+   */
   outputs: HostDirectiveBindingMap;
 }
 
@@ -688,6 +738,9 @@ export interface HostDirectiveDef<T = unknown> {
  * Mapping between the public aliases of directive bindings and the underlying inputs/outputs that
  * they represent. Also serves as an allowlist of the inputs/outputs from the host directive that
  * the author has decided to expose.
+ *
+ * 指令绑定的公共别名与其表示的基础输入/输出之间的映射。 还用作作者决定公开的主机指令的输入/输出的白名单。
+ *
  */
 export type HostDirectiveBindingMap = {
   [publicName: string]: string
@@ -696,6 +749,9 @@ export type HostDirectiveBindingMap = {
 /**
  * Mapping between a directive that was used as a host directive
  * and the configuration that was used to define it as such.
+ *
+ * 用作主机指令的指令与用于定义它的配置之间的映射。
+ *
  */
 export type HostDirectiveDefs = Map<DirectiveDef<unknown>, HostDirectiveDef>;
 
@@ -718,7 +774,12 @@ export interface ComponentDefFeature {
   ngInherit?: true;
 }
 
-/** Function that can be used to transform incoming input values. */
+/**
+ * Function that can be used to transform incoming input values.
+ *
+ * 可用于转换传入输入值的函数。
+ *
+ */
 export type InputTransformFunction = (value: any) => any;
 
 /**

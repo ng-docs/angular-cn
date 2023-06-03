@@ -244,16 +244,23 @@ export const enum NavigationCancellationCode {
  * A code for the `NavigationSkipped` event of the `Router` to indicate the
  * reason a navigation was skipped.
  *
+ * `Router` 的 `NavigationSkipped` 事件的代码，用于指示跳过导航的原因。
+ *
  * @publicApi
  */
 export const enum NavigationSkippedCode {
   /**
    * A navigation was skipped because the navigation URL was the same as the current Router URL.
+   *
+   * 导航被跳过，因为导航 URL 与当前路由器 URL 相同。
+   *
    */
   IgnoredSameUrlNavigation,
   /**
    * A navigation was skipped because the configured `UrlHandlingStrategy` return `false` for both
    * the current Router URL and the target of the navigation.
+   *
+   * 导航被跳过，因为配置的 `UrlHandlingStrategy` 为当前路由器 URL 和导航目标返回 `false` 。
    *
    * @see UrlHandlingStrategy
    */
@@ -307,6 +314,8 @@ export class NavigationCancel extends RouterEvent {
  * This can happen for a couple reasons including onSameUrlHandling
  * is set to `ignore` and the navigation URL is not different than the
  * current state.
+ *
+ * 跳过导航时触发的事件。 发生这种情况的原因有很多，包括 onSameUrlHandling 设置为 `ignore` 并且导航 URL 与当前状态没有区别。
  *
  * @publicApi
  */

@@ -545,6 +545,9 @@ function serializeSegment(segment: UrlSegmentGroup, root: boolean): string {
  * `encodeUriQuery` or `encodeUriSegment` as it's the base set of encodings to be used. We need
  * a custom encoding because encodeURIComponent is too aggressive and encodes stuff that doesn't
  * have to be encoded per https://url.spec.whatwg.org.
+ *
+ * 使用默认编码对 URI 字符串进行编码。 此函数只会从 `encodeUriQuery` 或 `encodeUriSegment` 调用，因为它是要使用的基本编码集。 我们需要自定义编码，因为 encodeURIComponent 过于激进，并且编码的内容不必按照 https://url.spec.whatwg.org 进行编码。
+ *
  */
 function encodeUriString(s: string): string {
   return encodeURIComponent(s)
@@ -558,7 +561,10 @@ function encodeUriString(s: string): string {
  * This function should be used to encode both keys and values in a query string key/value. In
  * the following URL, you need to call encodeUriQuery on "k" and "v":
  *
+ * 此函数应用于对查询字符串键/值中的键和值进行编码。 在以下 URL 中，您需要对“k”和“v”调用 encodeUriQuery：
+ *
  * http://www.site.org/html;mk=mv?k=v#f
+ *
  */
 export function encodeUriQuery(s: string): string {
   return encodeUriString(s).replace(/%3B/gi, ';');
@@ -568,7 +574,10 @@ export function encodeUriQuery(s: string): string {
  * This function should be used to encode a URL fragment. In the following URL, you need to call
  * encodeUriFragment on "f":
  *
+ * 此函数应用于对 URL 片段进行编码。 在以下 URL 中，您需要在“f”上调用 encodeUriFragment：
+ *
  * http://www.site.org/html;mk=mv?k=v#f
+ *
  */
 export function encodeUriFragment(s: string): string {
   return encodeURI(s);
@@ -579,7 +588,10 @@ export function encodeUriFragment(s: string): string {
  * pair for matrix params. In the following URL, you need to call encodeUriSegment on "html",
  * "mk", and "mv":
  *
+ * 此函数应在任何 URI 段以及矩阵参数的键/值对中的键和值上运行。 在以下 URL 中，您需要对“html”、“mk”和“mv”调用 encodeUriSegment：
+ *
  * http://www.site.org/html;mk=mv?k=v#f
+ *
  */
 export function encodeUriSegment(s: string): string {
   return encodeUriString(s).replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/%26/gi, '&');
@@ -853,13 +865,23 @@ export function createRoot(rootCandidate: UrlSegmentGroup) {
 /**
  * Recursively
  *
+ * 递归地
+ *
  * - merges primary segment children into their parents
+ *
+ *   将主要部分的子节点合并到他们的父节点中
+ *
  * - drops empty children \(those which have no segments and no children themselves\). This latter
  *   prevents serializing a group into something like `/a(aux:)`, where `aux` is an empty child
  *   segment.
+ *
+ *   丢弃空子节点（那些没有段并且自己也没有子节点的子节点）。 后者防止将组序列化为类似 `/a(aux:)` 的内容，其中 `aux` 是一个空的子段。
+ *
  * - merges named outlets without a primary segment sibling into the children. This prevents
  *   serializing a URL like `//(a:a)(b:b) instead of`/\(a:a//b:b\)`when the aux b route lives on the
  *   root but the`a\` route lives under an empty path primary route.
+ *
+ *   将没有主要段兄弟的命名出口合并到子节点中。 `when the aux b route lives on the root but the` a\` 路由位于空路径下时，这可以防止序列化像 `//(a:a)(b:b) instead of` /\(a:a//b:b\) 这样的 URL 主要路线。
  *
  */
 export function squashSegmentGroup(segmentGroup: UrlSegmentGroup): UrlSegmentGroup {
@@ -885,10 +907,15 @@ export function squashSegmentGroup(segmentGroup: UrlSegmentGroup): UrlSegmentGro
 /**
  * When possible, merges the primary outlet child into the parent `UrlSegmentGroup`.
  *
+ * 如果可能，将主要子出口合并到父 `UrlSegmentGroup` 中。
+ *
  * When a segment group has only one child which is a primary outlet, merges that child into the
  * parent. That is, the child segment group's segments are merged into the `s` and the child's
  * children become the children of `s`. Think of this like a 'squash', merging the child segment
  * group into the parent.
+ *
+ * 当一个段组只有一个作为主要出口的子节点时，将该子节点合并到父节点中。 也就是说，子段组的段合并到 `s` 中，子段的子段成为 `s` 的子段。 把这想象成一个“壁球”，将子段组合并到父段组中。
+ *
  */
 function mergeTrivialChildren(s: UrlSegmentGroup): UrlSegmentGroup {
   if (s.numberOfChildren === 1 && s.children[PRIMARY_OUTLET]) {

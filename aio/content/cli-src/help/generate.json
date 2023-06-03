@@ -152,7 +152,8 @@
         {
           "name": "project-root",
           "type": "string",
-          "description": "The root directory of the new application."
+          "description": "The root directory of the new application.",
+          "descriptionCn": "新应用程序的根目录。"
         },
         {
           "name": "routing",
@@ -189,7 +190,8 @@
           "name": "standalone",
           "type": "boolean",
           "default": false,
-          "description": "Creates an application based upon the standalone API, without NgModules."
+          "description": "Creates an application based upon the standalone API, without NgModules.",
+          "descriptionCn": "创建一个基于独立 API 的应用程序，没有 NgModules。"
         },
         {
           "name": "strict",
@@ -445,7 +447,8 @@
         {
           "name": "project",
           "type": "string",
-          "description": "The name of the project."
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
         },
         {
           "name": "type",
@@ -455,11 +458,13 @@
             "browserslist"
           ],
           "description": "Specifies which type of configuration file to create.",
-          "positional": 0
+          "positional": 0,
+          "descriptionCn": "指定要创建的配置文件类型。"
         }
       ],
       "aliases": [],
-      "deprecated": false
+      "deprecated": false,
+      "shortDescriptionCn": "在给定项目中生成配置文件。"
     },
     {
       "name": "directive",
@@ -584,11 +589,13 @@
         {
           "name": "project",
           "type": "string",
-          "description": "The name of the project."
+          "description": "The name of the project.",
+          "descriptionCn": "项目的名称。"
         }
       ],
       "aliases": [],
-      "deprecated": false
+      "deprecated": false,
+      "shortDescriptionCn": "为项目生成和配置环境文件。"
     },
     {
       "name": "guard",
@@ -606,7 +613,8 @@
           "name": "functional",
           "type": "boolean",
           "default": true,
-          "description": "Specifies whether to generate a guard as a function."
+          "description": "Specifies whether to generate a guard as a function.",
+          "descriptionCn": "指定是否将守卫生成为函数。"
         },
         {
           "name": "implements",
@@ -660,7 +668,8 @@
           "name": "functional",
           "type": "boolean",
           "default": false,
-          "description": "Creates the interceptor as a `HttpInterceptorFn`."
+          "description": "Creates the interceptor as a `HttpInterceptorFn`.",
+          "descriptionCn": "将拦截器创建为`HttpInterceptorFn` 。"
         },
         {
           "name": "name",
@@ -757,7 +766,8 @@
         {
           "name": "project-root",
           "type": "string",
-          "description": "The root directory of the new library."
+          "description": "The root directory of the new library.",
+          "descriptionCn": "新库的根目录。"
         },
         {
           "name": "skip-install",
@@ -937,7 +947,8 @@
           "name": "functional",
           "type": "boolean",
           "default": true,
-          "description": "Creates the resolver as a `ResolveFn`."
+          "description": "Creates the resolver as a `ResolveFn`.",
+          "descriptionCn": "将解析器创建为`ResolveFn` 。"
         },
         {
           "name": "name",

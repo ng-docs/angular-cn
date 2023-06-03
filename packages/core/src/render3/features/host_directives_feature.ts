@@ -13,7 +13,12 @@ import {EMPTY_OBJ} from '../../util/empty';
 import {getComponentDef, getDirectiveDef} from '../definition';
 import {DirectiveDef, HostDirectiveBindingMap, HostDirectiveDef, HostDirectiveDefs} from '../interfaces/definition';
 
-/** Values that can be used to define a host directive through the `HostDirectivesFeature`. */
+/**
+ * Values that can be used to define a host directive through the `HostDirectivesFeature`.
+ *
+ * 可用于通过 `HostDirectivesFeature` 定义主机指令的值。
+ *
+ */
 type HostDirectiveConfig = Type<unknown>|{
   directive: Type<unknown>;
   inputs?: string[];
@@ -24,6 +29,8 @@ type HostDirectiveConfig = Type<unknown>|{
  * This feature adds the host directives behavior to a directive definition by patching a
  * function onto it. The expectation is that the runtime will invoke the function during
  * directive matching.
+ *
+ * 此功能通过将函数修补到指令定义上，将主机指令行为添加到指令定义中。 期望运行时将在指令匹配期间调用该函数。
  *
  * For example:
  *
@@ -86,6 +93,9 @@ function findHostDirectiveDefs(
 /**
  * Converts an array in the form of `['publicName', 'alias', 'otherPublicName', 'otherAlias']` into
  * a map in the form of `{publicName: 'alias', otherPublicName: 'otherAlias'}`.
+ *
+ * 将 `['publicName', 'alias', 'otherPublicName', 'otherAlias']` 形式的数组转换为 `{publicName: 'alias', otherPublicName: 'otherAlias'}` 形式的映射。
+ *
  */
 function bindingArrayToMap(bindings: string[]|undefined): HostDirectiveBindingMap {
   if (bindings === undefined || bindings.length === 0) {
@@ -108,10 +118,14 @@ function bindingArrayToMap(bindings: string[]|undefined): HostDirectiveBindingMa
  * will always be `foo`, and not `alias` or the minified name of `foo` in apps using property
  * minification.
  *
+ * `ngOnChanges` 有一些遗留的旧 ViewEngine 行为，其中 `SimpleChanges` 事件中的键指的是输入的*声明*名称，而不是其公共名称或其缩小名称。 例如，在 `@Input('alias') foo: string` 中， `SimpleChanges` 对象中的名称将始终是 `foo` ，而不是使用属性缩小的应用程序中 `foo` 的 `alias` 或缩小名称。
+ *
  * This is achieved through the `DirectiveDef.declaredInputs` map that is constructed when the
  * definition is declared. When a property is written to the directive instance, the
  * `NgOnChangesFeature` will try to remap the property name being written to using the
  * `declaredInputs`.
+ *
+ * 这是通过在声明定义时构造的 `DirectiveDef.declaredInputs` 映射来实现的。 当属性被写入指令实例时， `NgOnChangesFeature` 将尝试使用 `declaredInputs` 重新映射正在写入的属性名称。
  *
  * Since the host directive input remapping happens during directive matching, `declaredInputs`
  * won't contain the new alias that the input is available under. This function addresses the
@@ -119,6 +133,9 @@ function bindingArrayToMap(bindings: string[]|undefined): HostDirectiveBindingMa
  * this patching accidentally introducing new inputs to the host directive, because `declaredInputs`
  * is used *only* by the `NgOnChangesFeature` when determining what name is used in the
  * `SimpleChanges` object which won't be reached if an input doesn't exist.
+ *
+ * 由于主机指令输入重新映射发生在指令匹配期间，因此 `declaredInputs` 将不包含输入可用的新别名。 此函数通过将主机指令别名修补到 `declaredInputs` 来解决此问题。 *不*存在此修补意外向主机指令引入新输入的风险，因为 `declaredInputs`*仅*由 `NgOnChangesFeature` 在确定 `SimpleChanges` 对象中使用的名称时使用，如果输入不存在则无法访问。
+ *
  */
 function patchDeclaredInputs(
     declaredInputs: Record<string, string>, exposedInputs: HostDirectiveBindingMap): void {
@@ -145,9 +162,21 @@ function patchDeclaredInputs(
 
 /**
  * Verifies that the host directive has been configured correctly.
+ *
+ * 验证主机指令是否已正确配置。
+ *
  * @param hostDirectiveConfig Host directive configuration object.
+ *
+ * 主机指令配置对象。
+ *
  * @param directiveDef Directive definition of the host directive.
+ *
+ * 主机指令的指令定义。
+ *
  * @param matchedDefs Directives that have been matched so far.
+ *
+ * 到目前为止已匹配的指令。
+ *
  */
 function validateHostDirective(
     hostDirectiveConfig: HostDirectiveDef<unknown>, directiveDef: DirectiveDef<any>|null,
@@ -186,9 +215,21 @@ function validateHostDirective(
 
 /**
  * Checks that the host directive inputs/outputs configuration is valid.
+ *
+ * 检查主机指令输入/输出配置是否有效。
+ *
  * @param bindingType Kind of binding that is being validated. Used in the error message.
+ *
+ * 正在验证的绑定类型。 在错误消息中使用。
+ *
  * @param def Definition of the host directive that is being validated against.
+ *
+ * 正在验证的主机指令的定义。
+ *
  * @param hostDirectiveBindings Host directive mapping object that shold be validated.
+ *
+ * 应验证的主机指令映射对象。
+ *
  */
 function validateMappings(
     bindingType: 'input'|'output', def: DirectiveDef<unknown>,

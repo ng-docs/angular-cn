@@ -26,7 +26,11 @@ For example, we release features in the next minor after completion or the next 
 
 ### Explore hydration and server-side rendering improvements
 
+### 探索水合作用和服务器端渲染改进
+
 In v16, we released a developer preview of non-destructive full hydration, see the [hydration guide](guide/hydration) and the [blog post](https://blog.angular.io/whats-next-for-server-side-rendering-in-angular-2a6f27662b67) for additional information. We're already seeing significant improvements to Core Web Vitals, including [LCP](https://web.dev/lcp) and [CLS](https://web.dev/cls). In lab tests, we consistently observed 45% better LCP of a real-world app.
+
+在 v16 中，我们发布了无损完全水合的开发者预览版，请参阅[水合指南](guide/hydration)和[博客文章](https://blog.angular.io/whats-next-for-server-side-rendering-in-angular-2a6f27662b67)了解更多信息。 我们已经看到 Core Web Vitals 的显着改进，包括[LCP](https://web.dev/lcp)和[CLS](https://web.dev/cls) 。 在实验室测试中，我们始终观察到真实应用程序的 LCP 提高了 45%。
 
 ### 探索水化（hydration）和服务器端渲染可用性的改进
 
@@ -40,11 +44,17 @@ As the next step, we will iterate on polishing full hydration and further explor
 
 In v16, we shared a developer preview of Angular Signals which fully implemented make Zone.js optional. The feature resulted from hundreds of discussions, conversations with developers, feedback sessions, user experience studies, and a series of [RFCs](https://github.com/angular/angular/discussions/49685), which received over 1,000 comments. As part of the release, we made a signals library and an RxJS interoperability package available. Next, after addressing the feedback we received from developers, we’ll continue implementing the proposals from the RFC.
 
+在 v16 中，我们分享了 Angular Signals 的开发者预览版，它完全实现了使 Zone.js 可选。 该功能是数百次讨论、与开发人员的对话、反馈会议、用户体验研究和一系列[RFC](https://github.com/angular/angular/discussions/49685)的结果，收到了 1,000 多条评论。 作为发布的一部分，我们提供了一个信号库和一个 RxJS 互操作性包。 接下来，在解决了我们从开发人员那里收到的反馈后，我们将继续实施 RFC 中的建议。
+
 ### Explore ergonomic component-level code-splitting APIs
+
+### 探索符合人体工程学的组件级代码拆分 API
 
 A common problem with web apps is their slow initial load time.
 A way to improve it is to apply more granular code-splitting on a component level.
 We will be working on more ergonomic code-splitting APIs to encourage this practice.
+
+Web 应用程序的一个常见问题是它们的初始加载时间很慢。 改进它的一种方法是在组件级别应用更细粒度的代码拆分。 我们将致力于开发更符合人体工程学的代码拆分 API，以鼓励这种做法。
 
 ### Improve documentation and schematics for standalone components
 
@@ -76,6 +86,8 @@ As part of this initiative, the language service automatically imports component
 
 In Angular v16, we released a developer preview of an esbuild-based builder with support for `ng build` and `ng serve`. The `ng serve` development server uses Vite and a multi-file compilation by esbuild and the Angular compiler. As the next step before we graduate the feature out of developer preview, we'll work on enabling internationalization support and fixing stability issues.
 
+在 Angular v16 中，我们发布了基于 esbuild 的构建器的开发人员预览版，支持 `ng build` 和 `ng serve` 。 `ng serve` 开发服务器使用 Vite 以及 esbuild 和 Angular 编译器的多文件编译。 在我们将该功能从开发人员预览版中移除之前的下一步，我们将致力于启用国际化支持并解决稳定性问题。
+
 ### New CDK primitives
 
 ### 新的 CDK 原语
@@ -94,27 +106,49 @@ We are evaluating components in Angular Material against accessibility standards
 
 ### Investigate micro frontend architecture for scalable development processes
 
+### 研究可扩展开发流程的微前端架构
+
 We understood and defined the problem space for the past couple of quarters. We will follow up with a blog post on best practices when developing apps at scale. The project got delayed due to the prioritization of other initiatives.
+
+我们了解并定义了过去几个季度的问题空间。 我们将跟进一篇关于大规模开发应用程序最佳实践的博文。 由于其他计划的优先顺序，该项目被推迟。
 
 ### Update getting started tutorial
 
+### 更新入门教程
+
 Over the past two quarters, we developed a new video and textual tutorial based on standalone components. They are in the final review stages, and we expect to publish them by the end of Q2.
+
+在过去的两个季度中，我们开发了一个基于独立组件的新视频和文本教程。 它们正处于最终审查阶段，我们希望在第二季度末发布它们。
 
 ## 未来
 
 ### Token-based theming APIs
 
+### 基于令牌的主题 API
+
 To provide better customization of our Angular material components and enable Material 3 capabilities, we'll be collaborating with Google's Material Design team on defining token-based theming APIs. As of Q2 2023, we're refactoring components to use the new API, finalizing the comprehensive set of tokens, and updating the Sass API based on the new tokens.
+
+为了更好地定制我们的 Angular Material 组件并启用 Material 3 功能，我们将与 Google 的 Material Design 团队合作定义基于令牌的主题 API。 从 2023 年第二季度开始，我们正在重构组件以使用新的 API，最终确定完整的令牌集，并根据新令牌更新 Sass API。
 
 ### Modernize Angular's unit testing tooling
 
+### 现代化 Angular 的单元测试工具
+
 In v12, we revisited the Angular end-to-end testing experience by replacing Protractor with modern alternatives such as Cypress, Nightwatch, and Webdriver.io. Next, we'd like to tackle `ng test` to modernize Angular's unit testing experience. In Q2, we introduced experimental [Jest](https://jestjs.io/) support and [announced](https://blog.angular.io/moving-angular-cli-to-jest-and-web-test-runner-ef85ef69ceca) the transition from Karma to the [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/).
+
+在 v12 中，我们通过用 Cypress、Nightwatch 和 Webdriver.io 等现代替代品替换 Protractor，重新审视了 Angular 端到端测试体验。 接下来，我们想解决 `ng test` 以现代化 Angular 的单元测试体验。 在第二季度，我们引入了实验性的[Jest](https://jestjs.io/)支持，并[宣布](https://blog.angular.io/moving-angular-cli-to-jest-and-web-test-runner-ef85ef69ceca)从 Karma 过渡到[Web Test Runner](https://modern-web.dev/docs/test-runner/overview/) 。
 
 ## Future
 
+## 未来
+
 ### Investigation for authoring format improvements
 
+### 创作格式改进调查
+
 Based on our developer surveys' results we saw there are opportunities for improving the ergonomics of the component authoring format. The first step of the process will be to gather requirements and understand the problem space in advanced to an RFC. We'll share updates as we make progress. High priority in the future work will be backward compatibility and interoperability.
+
+根据我们的开发人员调查结果，我们看到了改进组件创作格式的人体工程学的机会。 该过程的第一步是收集需求并提前了解 RFC 的问题空间。 我们将在取得进展时分享更新。 未来工作的重中之重将是向后兼容性和互操作性。
 
 ### Ensure smooth adoption for future RxJS changes \(version 8 and beyond\)
 

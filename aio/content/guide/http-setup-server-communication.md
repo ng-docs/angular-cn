@@ -1,4 +1,6 @@
-# HTTP: Setup for server communication
+# HTTP&#x3A; Setup for server communication
+
+# HTTP：服务器通信设置
 
 Before you can use `HttpClient`, you need to import the Angular `HttpClientModule`.
 Most apps do so in the root `AppModule`.

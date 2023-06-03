@@ -417,7 +417,12 @@ function createRecorderFn(defaultImportTracker: DefaultImportTracker):
   };
 }
 
-/** Creates a `NodeArray` with the correct offsets from an array of decorators. */
+/**
+ * Creates a `NodeArray` with the correct offsets from an array of decorators.
+ *
+ * 从装饰器数组创建一个具有正确偏移量的 `NodeArray` 。
+ *
+ */
 function nodeArrayFromDecoratorsArray(decorators: readonly ts.Decorator[]):
     ts.NodeArray<ts.Decorator> {
   const array = ts.factory.createNodeArray(decorators);

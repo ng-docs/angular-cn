@@ -45,15 +45,21 @@ import {getTypeName, isFunction, validateInjectionKey} from './util';
  *
  * and that we have included this in our upgrade app `NgModule`
  *
+ * 并且我们已经将其包含在我们的升级应用程序 `NgModule` 中
+ *
  * {@example upgrade/static/ts/full/module.ts region="ng2-module"}
  *
  * Now we can register the `downgradeInjectable` factory function for the service
  * on an AngularJS module.
  *
+ * 现在我们可以为 AngularJS 模块上的服务注册 `downgradeInjectable` 工厂函数。
+ *
  * {@example upgrade/static/ts/full/module.ts region="downgrade-ng2-heroes-service"}
  *
  * Inside an AngularJS component's controller we can get hold of the
  * downgraded service via the name we gave when downgrading.
+ *
+ * 在 AngularJS 组件的控制器中，我们可以通过我们在降级时提供的名称来获取降级后的服务。
  *
  * {@example upgrade/static/ts/full/module.ts region="example-app"}
  *

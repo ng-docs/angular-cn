@@ -15,12 +15,21 @@ import {UrlSerializer, UrlTree} from './url_tree';
 /**
  * Error handler that is invoked when a navigation error occurs.
  *
+ * 发生导航错误时调用的错误处理程序。
+ *
  * If the handler returns a value, the navigation Promise is resolved with this value.
  * If the handler throws an exception, the navigation Promise is rejected with
  * the exception.
  *
+ * 如果处理程序返回一个值，则使用该值解析导航 Promise。 如果处理程序抛出异常，则导航 Promise 会因异常而被拒绝。
+ *
  * @publicApi
- * @deprecated Subscribe to the `Router` events and watch for `NavigationError` instead.
+ * @deprecated
+ *
+ * Subscribe to the `Router` events and watch for `NavigationError` instead.
+ *
+ * 订阅 `Router` 事件并观察 `NavigationError` 。
+ *
  */
 export type ErrorHandler = (error: any) => any;
 
@@ -74,6 +83,8 @@ export interface RouterConfigOptions {
    * frequently with `urlUpdateStrategy: 'eager'` and navigations with the browser back/forward
    * buttons.
    *
+   * 'replace' - 始终使用 `location.replaceState` 将浏览器状态设置为导航开始前的路由器状态。 这意味着如果浏览器的 URL 在取消导航 _ 之前 _ 更新，则路由器将简单地替换历史记录中的项目，而不是尝试恢复到会话历史记录中的先前位置。 这种情况最常发生在 `urlUpdateStrategy: 'eager'` 和使用浏览器后退/前进按钮的导航中。
+   *
    * 'computed' - Will attempt to return to the same index in the session history that corresponds
    * to the Angular route when the navigation gets cancelled. For example, if the browser back
    * button is clicked and the navigation is cancelled, the Router will trigger a forward navigation
@@ -97,7 +108,11 @@ export interface RouterConfigOptions {
   /**
    * Configures the default for handling a navigation request to the current URL.
    *
+   * 配置处理对当前 URL 的导航请求的默认值。
+   *
    * If unset, the `Router` will use `'ignore'`.
+   *
+   * 如果未设置， `Router` 将使用 `'ignore'` 。
    *
    * @see `OnSameUrlNavigation`
    */
@@ -175,8 +190,10 @@ export interface InMemoryScrollingOptions {
    *   'top' - 在任何一次导航中都把滚动位置设置为 x=0, y=0。
    *
    * * 'enabled'- Restores the previous scroll position on backward navigation, else sets the
-   *   position to the anchor if one is provided, or sets the scroll position to [0, 0] \\(forward
+   *   position to the anchor if one is provided, or sets the scroll position to [0, 0] \\\(forward
    *   navigation\). This option will be the default in the future.
+   *
+   *   'enabled'- 在向后导航时恢复先前的滚动位置，否则将位置设置为锚点（如果提供），或将滚动位置设置为[0、0][0, 0] \\（向前导航）。 此选项将成为未来的默认选项。
    *
    * You can implement custom scroll restoration behavior by adapting the enabled behavior as
    * in the following example.
@@ -256,6 +273,9 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
   /**
    * When true, enables binding information from the `Router` state directly to the inputs of the
    * component in `Route` configurations.
+   *
+   * 如果为真，则启用从 `Router` 状态直接绑定到 `Route` 配置中组件输入的信息。
+   *
    */
   bindToComponentInputs?: boolean;
 
@@ -266,7 +286,12 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
    *
    * 导航失败的自定义错误处理器。如果处理器返回一个值，则导航的 Promise 将使用该值进行解析。如果处理器引发异常，则导航 Promise 将被拒绝，并带有该异常。
    *
-   * @deprecated Subscribe to the `Router` events and watch for `NavigationError` instead.
+   * @deprecated
+   *
+   * Subscribe to the `Router` events and watch for `NavigationError` instead.
+   *
+   * 订阅 `Router` 事件并观察 `NavigationError` 。
+   *
    */
   errorHandler?: (error: any) => any;
 
@@ -314,7 +339,12 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
    *
    *   `'url'` - 导致 URIError 的格式无效的 URL
    *
-   * @deprecated URI parsing errors should be handled in the `UrlSerializer` instead.
+   * @deprecated
+   *
+   * URI parsing errors should be handled in the `UrlSerializer` instead.
+   *
+   * URI 解析错误应该在 `UrlSerializer` 中处理。
+   *
    */
   malformedUriErrorHandler?:
       (error: URIError, urlSerializer: UrlSerializer, url: string) => UrlTree;

@@ -598,9 +598,13 @@ export class NoopNgZone implements NgZone {
 /**
  * Token used to drive ApplicationRef.isStable
  *
+ * 用于驱动 ApplicationRef.isStable 的令牌
+ *
  * TODO: This should be moved entirely to NgZone \(as a breaking change\) so it can be tree-shakeable
  * for `NoopNgZone` which is always just an `Observable` of `true`. Additionally, we should consider
  * whether the property on `NgZone` should be `Observable` or `Signal`.
+ *
+ * TODO：这应该完全移至 NgZone（作为重大更改），以便它可以对 `NoopNgZone` 进行树摇动，而 NoopNgZone 始终只是一个 `Observable` of `true` 。 此外，我们应该考虑 `NgZone` 上的属性应该是 `Observable` 还是 `Signal` 。
  *
  */
 export const ZONE_IS_STABLE_OBSERVABLE =

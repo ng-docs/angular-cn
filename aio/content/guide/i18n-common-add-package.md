@@ -14,6 +14,8 @@ To add the `@angular/localize` package, use the following command to update the 
 
 It adds `types: ["@angular/localize"]` in the TypeScript configuration files as well as the reference to the type definition of `@angular/localize` at the top of the `main.ts` file.
 
+它在 TypeScript 配置文件中添加 `types: ["@angular/localize"]` ，并在 `main.ts` 文件顶部添加对 `@angular/localize` 类型定义的引用。
+
 <div class="alert is-helpful">
 
 For more information about `package.json` and `tsconfig.json` files, see [Workspace npm dependencies][AioGuideNpmPackages] and [TypeScript Configuration][AioGuideTsConfig].
@@ -34,9 +36,13 @@ If `@angular/localize` is not installed and you try to build a localized version
 | :----------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------- | :------------ |
 | 选项               | 说明                                                                                                                                                                                          | 值的类型   | 默认值        |
 | `--project`        | The name of the project.                                                                                                                                                                      | `string`   |               |
+| `--project`        | 项目的名称。                                                                                                                                                                                  | `string`   |               |
 | `--use-at-runtime` | If set, then `$localize` can be used at runtime. Also `@angular/localize` gets included in the `dependencies` section of `package.json`, rather than `devDependencies`, which is the default. | `boolean`  | `false`       |
+| `--use-at-runtime` | 如果设置，则可以在运行时使用 `$localize` 。 `@angular/localize` 也包含在 `package.json` 的 `dependencies` 部分，而不是默认的 `devDependencies` 。                                                    | `boolean`  | `false`       |
 
 For more available options, see [ng add][AioCliAdd] in [Angular CLI][AioCliMain].
+
+有关更多可用选项，请参阅[Angular CLI][AioCliMain]中的[ng add][AioCliAdd] 。
 
 ## What's next
 

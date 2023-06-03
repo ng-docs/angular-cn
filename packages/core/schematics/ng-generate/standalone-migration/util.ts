@@ -14,19 +14,44 @@ import ts from 'typescript';
 import {normalizePath} from '../../utils/change_tracker';
 import {closestNode} from '../../utils/typescript/nodes';
 
-/** Map used to look up nodes based on their positions in a source file. */
+/**
+ * Map used to look up nodes based on their positions in a source file.
+ *
+ * Map 用于根据节点在源文件中的位置查找节点。
+ *
+ */
 export type NodeLookup = Map<number, ts.Node[]>;
 
-/** Utility to type a class declaration with a name. */
+/**
+ * Utility to type a class declaration with a name.
+ *
+ * 使用名称键入类声明的实用程序。
+ *
+ */
 export type NamedClassDeclaration = ts.ClassDeclaration&{name: ts.Identifier};
 
-/** Text span of an AST node. */
+/**
+ * Text span of an AST node.
+ *
+ * AST 节点的文本跨度。
+ *
+ */
 export type ReferenceSpan = [start: number, end: number];
 
-/** Mapping between a file name and spans for node references inside of it. */
+/**
+ * Mapping between a file name and spans for node references inside of it.
+ *
+ * 文件名和其中节点引用的跨度之间的映射。
+ *
+ */
 export type ReferencesByFile = Map<string, ReferenceSpan[]>;
 
-/** Utility class used to track a one-to-many relationship where all the items are unique. */
+/**
+ * Utility class used to track a one-to-many relationship where all the items are unique.
+ *
+ * 用于跟踪所有项目都是唯一的一对多关系的实用程序类。
+ *
+ */
 export class UniqueItemTracker<K, V> {
   private _nodes = new Map<K, Set<V>>();
 
@@ -49,7 +74,12 @@ export class UniqueItemTracker<K, V> {
   }
 }
 
-/** Resolves references to nodes. */
+/**
+ * Resolves references to nodes.
+ *
+ * 解析对节点的引用。
+ *
+ */
 export class ReferenceResolver {
   private _languageService: ts.LanguageService|undefined;
 
@@ -64,7 +94,12 @@ export class ReferenceResolver {
       private _rootFileNames: string[], private _basePath: string,
       private _excludedFiles?: RegExp) {}
 
-  /** Finds all references to a node within the entire project. */
+  /**
+   * Finds all references to a node within the entire project.
+   *
+   * 查找整个项目中对某个节点的所有引用。
+   *
+   */
   findReferencesInProject(node: ts.Node): ReferencesByFile {
     const languageService = this._getLanguageService();
     const fileName = node.getSourceFile().fileName;
@@ -98,7 +133,12 @@ export class ReferenceResolver {
     return results;
   }
 
-  /** Finds all references to a node within a single file. */
+  /**
+   * Finds all references to a node within a single file.
+   *
+   * 在单个文件中查找对节点的所有引用。
+   *
+   */
   findSameFileReferences(node: ts.Node, fileName: string): ReferenceSpan[] {
     // Even though we're only passing in a single file into `getDocumentHighlights`, the language
     // service ends up traversing the entire project. Prevent it from reading any files aside from
@@ -180,7 +220,12 @@ export class ReferenceResolver {
   }
 }
 
-/** Creates a NodeLookup object from a source file. */
+/**
+ * Creates a NodeLookup object from a source file.
+ *
+ * 从源文件创建一个 NodeLookup 对象。
+ *
+ */
 export function getNodeLookup(sourceFile: ts.SourceFile): NodeLookup {
   const lookup: NodeLookup = new Map();
 
@@ -201,9 +246,21 @@ export function getNodeLookup(sourceFile: ts.SourceFile): NodeLookup {
 
 /**
  * Converts node offsets to the nodes they correspond to.
+ *
+ * 将节点偏移量转换为它们对应的节点。
+ *
  * @param lookup Data structure used to look up nodes at particular positions.
+ *
+ * 用于在特定位置查找节点的数据结构。
+ *
  * @param offsets Offsets of the nodes.
+ *
+ * 节点的偏移量。
+ *
  * @param results Set in which to store the results.
+ *
+ * 设置存储结果的位置。
+ *
  */
 export function offsetsToNodes(
     lookup: NodeLookup, offsets: ReferenceSpan[], results: Set<ts.Node>): Set<ts.Node> {
@@ -220,7 +277,13 @@ export function offsetsToNodes(
 
 /**
  * Finds the class declaration that is being referred to by a node.
+ *
+ * 查找节点引用的类声明。
+ *
  * @param reference Node referring to a class declaration.
+ *
+ * 引用类声明的节点。
+ *
  * @param typeChecker
  */
 export function findClassDeclaration(
@@ -230,13 +293,23 @@ export function findClassDeclaration(
       null;
 }
 
-/** Finds a property with a specific name in an object literal expression. */
+/**
+ * Finds a property with a specific name in an object literal expression.
+ *
+ * 在对象文字表达式中查找具有特定名称的属性。
+ *
+ */
 export function findLiteralProperty(literal: ts.ObjectLiteralExpression, name: string) {
   return literal.properties.find(
       prop => prop.name && ts.isIdentifier(prop.name) && prop.name.text === name);
 }
 
-/** Gets a relative path between two files that can be used inside a TypeScript import. */
+/**
+ * Gets a relative path between two files that can be used inside a TypeScript import.
+ *
+ * 获取可在 TypeScript 导入中使用的两个文件之间的相对路径。
+ *
+ */
 export function getRelativeImportPath(fromFile: string, toFile: string): string {
   let path = relative(dirname(fromFile), toFile).replace(/\.ts$/, '');
 
@@ -249,7 +322,12 @@ export function getRelativeImportPath(fromFile: string, toFile: string): string 
   return normalizePath(path);
 }
 
-/** Function used to remap the generated `imports` for a component to known shorter aliases. */
+/**
+ * Function used to remap the generated `imports` for a component to known shorter aliases.
+ *
+ * 用于将组件生成的 `imports` 重新映射到已知的较短别名的函数。
+ *
+ */
 export function knownInternalAliasRemapper(imports: PotentialImport[]) {
   return imports.map(
       current => current.moduleSpecifier === '@angular/common' && current.symbolName === 'NgForOf' ?
@@ -259,8 +337,17 @@ export function knownInternalAliasRemapper(imports: PotentialImport[]) {
 
 /**
  * Gets the closest node that matches a predicate, including the node that the search started from.
+ *
+ * 获取与谓词匹配的最近节点，包括搜索开始的节点。
+ *
  * @param node Node from which to start the search.
+ *
+ * 开始搜索的节点。
+ *
  * @param predicate Predicate that the result needs to pass.
+ *
+ * 谓结果需要通过。
+ *
  */
 export function closestOrSelf<T extends ts.Node>(
     node: ts.Node, predicate: (n: ts.Node) => n is T): T|null {
@@ -269,9 +356,21 @@ export function closestOrSelf<T extends ts.Node>(
 
 /**
  * Checks whether a node is referring to a specific class declaration.
+ *
+ * 检查节点是否引用特定的类声明。
+ *
  * @param node Node that is being checked.
+ *
+ * 正在检查的节点。
+ *
  * @param className Name of the class that the node might be referring to.
+ *
+ * 节点可能引用的类的名称。
+ *
  * @param moduleName Name of the Angular module that should contain the class.
+ *
+ * 应包含该类的 Angular 模块的名称。
+ *
  * @param typeChecker
  */
 export function isClassReferenceInAngularModule(

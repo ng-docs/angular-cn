@@ -42,6 +42,8 @@ function defaultMalformedUriErrorHandler(
  * The equivalent `IsActiveMatchOptions` options for `Router.isActive` is called with `true`
  * \(exact = true\).
  *
+ * `Router.isActive` 的等效 `IsActiveMatchOptions` 选项使用 `true` \(exact = true\) 调用。
+ *
  */
 export const exactMatchOptions: IsActiveMatchOptions = {
   paths: 'exact',
@@ -53,6 +55,8 @@ export const exactMatchOptions: IsActiveMatchOptions = {
 /**
  * The equivalent `IsActiveMatchOptions` options for `Router.isActive` is called with `false`
  * \(exact = false\).
+ *
+ * `Router.isActive` 的等效 `IsActiveMatchOptions` 选项使用 `false` \(exact = false\) 调用。
  *
  */
 export const subsetMatchOptions: IsActiveMatchOptions = {
@@ -70,6 +74,8 @@ export const subsetMatchOptions: IsActiveMatchOptions = {
  * 一个提供导航和操纵 URL 能力的 NgModule。
  * @see `Route`.
  *
+ * 。【模糊翻译】。
+ *
  * @see [Routing and Navigation Guide](guide/router).
  *
  * [路由和导航指南](guide/router)。
@@ -83,8 +89,12 @@ export class Router {
    * `UrlHandlingStrategy`\). That is, after we find the route config tree that we're going to
    * activate, run guards, and are just about to activate the route, we set the currentUrlTree.
    *
+   * 表示 `Router` 配置为处理（通过 `UrlHandlingStrategy` ）的已激活 `UrlTree` 。 也就是说，在我们找到要激活的路由配置树后，运行守卫，并且即将激活路由，我们设置 currentUrlTree。
+   *
    * This should match the `browserUrlTree` when a navigation succeeds. If the
    * `UrlHandlingStrategy.shouldProcessUrl` is `false`, only the `browserUrlTree` is updated.
+   *
+   * 当导航成功时，这应该与 `browserUrlTree` 匹配。 如果 `UrlHandlingStrategy.shouldProcessUrl` 为 `false` ，则仅更新 `browserUrlTree` 。
    *
    * @internal
    */
@@ -93,13 +103,23 @@ export class Router {
    * Meant to represent the entire browser url after a successful navigation. In the life of a
    * navigation transition:
    *
+   * 意味着在成功导航后代表整个浏览器 url。 在导航过渡的生活中：
+   *
    * 1. The rawUrl represents the full URL that's being navigated to
+   *
+   *    rawUrl 表示要导航到的完整 URL
+   *
    * 2. We apply redirects, which might only apply to _part_ of the URL \(due to
    *    `UrlHandlingStrategy`\).
+   *
+   *    我们应用重定向，这可能只适用于\_ 部分\_URL（由于 `UrlHandlingStrategy` ）。
+   *
    * 3. Right before activation \(because we assume activation will succeed\), we update the
    *    rawUrlTree to be a combination of the urlAfterRedirects \(again, this might only apply to part
    *    of the initial url\) and the rawUrl of the transition \(which was the original navigation url in
    *    its full form\).
+   *
+   *    在激活之前（因为我们假设激活会成功），我们将 rawUrlTree 更新为 urlAfterRedirects（同样，这可能只适用于部分初始 url）和转换的 rawUrl（这是原始导航 url）的组合完整形式）。
    *
    * @internal
    *
@@ -124,14 +144,25 @@ export class Router {
    * the browser url update is skipped via `skipLocationChange`\). With that, note that
    * `browserUrlTree` _may not_ reflect the actual browser URL for two reasons:
    *
+   * 意味着表示 `Router` 设置为处理的浏览器 url 部分（通过 `UrlHandlingStrategy` ）。 该值在浏览器 url 更新后立即更新（或通过 `skipLocationChange` 跳过浏览器 url 更新）。 因此，请注意 `browserUrlTree`_ 可能不会 _ 反映实际的浏览器 URL，原因有两个：
+   *
    * 1. `UrlHandlingStrategy` only handles part of the URL
+   *
+   *    `UrlHandlingStrategy` 只处理部分 URL
+   *
    * 2. `skipLocationChange` does not update the browser url.
+   *
+   *    `skipLocationChange` 不会更新浏览器 url。
    *
    * So to reiterate, `browserUrlTree` only represents the Router's internal understanding of the
    * current route, either before guards with `urlUpdateStrategy === 'eager'` or right before
    * activation with `'deferred'`.
    *
+   * 因此，重申一下， `browserUrlTree` 仅代表路由器对当前路由的内部理解，要么在 `urlUpdateStrategy === 'eager'` 守卫之前，要么在使用 `'deferred'` 激活之前。
+   *
    * This should match the `currentUrlTree` when the navigation succeeds.
+   *
+   * 当导航成功时，这应该与 `currentUrlTree` 匹配。
    *
    * @internal
    */
@@ -170,6 +201,9 @@ export class Router {
 
   /**
    * An event stream for routing events.
+   *
+   * 用于路由事件的事件流。
+   *
    */
   public get events(): Observable<Event> {
     // TODO(atscott): This _should_ be events.asObservable(). However, this change requires internal
@@ -195,8 +229,13 @@ export class Router {
    *
    * 本模块中的导航错误处理器。
    *
-   * @deprecated Subscribe to the `Router` events and watch for `NavigationError` instead.
+   * @deprecated
+   *
+   * Subscribe to the `Router` events and watch for `NavigationError` instead.
    *   `provideRouter` has the `withNavigationErrorHandler` feature to make this easier.
+   *
+   * 订阅 `Router` 事件并观察 `NavigationError` 。 `provideRouter` 具有 `withNavigationErrorHandler` 功能，使这更容易。
+   *
    * @see `withNavigationErrorHandler`
    */
   errorHandler = this.options.errorHandler || defaultErrorHandler;
@@ -209,7 +248,12 @@ export class Router {
    *
    * uri 格式无效错误的处理器，在 `Router.parseUrl(url)` 由于 `url` 包含无效字符而报错时调用。 最常见的情况可能是 `%` 本身既没有被编码，又不是正常 `%` 编码序列的一部分。
    *
-   * @deprecated URI parsing errors should be handled in the `UrlSerializer`.
+   * @deprecated
+   *
+   * URI parsing errors should be handled in the `UrlSerializer`.
+   *
+   * URI 解析错误应该在 `UrlSerializer` 中处理。
+   *
    * @see `RouterModule`
    */
   malformedUriErrorHandler =
@@ -231,8 +275,13 @@ export class Router {
    *
    * 提取并合并 URL。在 AngularJS 向 Angular 迁移时会用到。
    *
-   * @deprecated Configure using `providers` instead:
+   * @deprecated
+   *
+   * Configure using `providers` instead:
    *   `{provide: UrlHandlingStrategy, useClass: MyStrategy}`.
+   *
+   * 改为使用 `providers` 进行配置： `{provide: UrlHandlingStrategy, useClass: MyStrategy}` 。
+   *
    */
   urlHandlingStrategy = inject(UrlHandlingStrategy);
 
@@ -241,8 +290,13 @@ export class Router {
    *
    * 复用路由的策略。
    *
-   * @deprecated Configure using `providers` instead:
+   * @deprecated
+   *
+   * Configure using `providers` instead:
    *   `{provide: RouteReuseStrategy, useClass: MyStrategy}`.
+   *
+   * 改为使用 `providers` 进行配置： `{provide: RouteReuseStrategy, useClass: MyStrategy}` 。
+   *
    */
   routeReuseStrategy = inject(RouteReuseStrategy);
 
@@ -251,16 +305,27 @@ export class Router {
    *
    * 根据 `routerState` 设置标题的策略。
    *
-   * @deprecated Configure using `providers` instead:
+   * @deprecated
+   *
+   * Configure using `providers` instead:
    *   `{provide: TitleStrategy, useClass: MyStrategy}`.
+   *
+   * 改为使用 `providers` 进行配置： `{provide: TitleStrategy, useClass: MyStrategy}` 。
+   *
    */
   titleStrategy?: TitleStrategy = inject(TitleStrategy);
 
   /**
    * How to handle a navigation request to the current URL.
    *
+   * 如何处理对当前 URL 的导航请求。
    *
-   * @deprecated Configure this through `provideRouter` or `RouterModule.forRoot` instead.
+   * @deprecated
+   *
+   * Configure this through `provideRouter` or `RouterModule.forRoot` instead.
+   *
+   * 通过 `provideRouter` 或 `RouterModule.forRoot` 配置它。
+   *
    * @see `withRouterConfig`
    * @see `provideRouter`
    * @see `RouterModule`
@@ -283,7 +348,12 @@ export class Router {
    *
    *   `'always'`：让所有子路由都继承父级的参数、数据和解析到的数据。
    *
-   * @deprecated Configure this through `provideRouter` or `RouterModule.forRoot` instead.
+   * @deprecated
+   *
+   * Configure this through `provideRouter` or `RouterModule.forRoot` instead.
+   *
+   * 通过 `provideRouter` 或 `RouterModule.forRoot` 配置它。
+   *
    * @see `withRouterConfig`
    * @see `provideRouter`
    * @see `RouterModule`
@@ -300,7 +370,12 @@ export class Router {
    *
    * 确定路由器何时更新浏览器 URL。默认情况下（`"deferred"`）在导航完成后更新浏览器 URL。设置为 `'eager'` 可以在浏览开始时更新浏览器 URL。你可以选择早期更新，这样，如果导航失败，则可以显示带有失败 URL 的错误消息。
    *
-   * @deprecated Configure this through `provideRouter` or `RouterModule.forRoot` instead.
+   * @deprecated
+   *
+   * Configure this through `provideRouter` or `RouterModule.forRoot` instead.
+   *
+   * 通过 `provideRouter` 或 `RouterModule.forRoot` 配置它。
+   *
    * @see `withRouterConfig`
    * @see `provideRouter`
    * @see `RouterModule`
@@ -319,6 +394,8 @@ export class Router {
    * frequently with `urlUpdateStrategy: 'eager'` and navigations with the browser back/forward
    * buttons.
    *
+   * 'replace' - 始终使用 `location.replaceState` 将浏览器状态设置为导航开始前的路由器状态。 这意味着如果浏览器的 URL 在取消导航 _ 之前 _ 更新，则路由器将简单地替换历史记录中的项目，而不是尝试恢复到会话历史记录中的先前位置。 这种情况最常发生在 `urlUpdateStrategy: 'eager'` 和使用浏览器后退/前进按钮的导航中。
+   *
    * 'computed' - Will attempt to return to the same index in the session history that corresponds
    * to the Angular route when the navigation gets cancelled. For example, if the browser back
    * button is clicked and the navigation is cancelled, the Router will trigger a forward navigation
@@ -336,7 +413,12 @@ export class Router {
    *
    * 默认值是 `replace` 。
    *
-   * @deprecated Configure this through `provideRouter` or `RouterModule.forRoot` instead.
+   * @deprecated
+   *
+   * Configure this through `provideRouter` or `RouterModule.forRoot` instead.
+   *
+   * 通过 `provideRouter` 或 `RouterModule.forRoot` 配置它。
+   *
    * @see `withRouterConfig`
    * @see `provideRouter`
    * @see `RouterModule`
@@ -353,8 +435,13 @@ export class Router {
   /**
    * Indicates whether the the application has opted in to binding Router data to component inputs.
    *
+   * 指示应用程序是否已选择将路由器数据绑定到组件输入。
+   *
    * This option is enabled by the `withComponentInputBinding` feature of `provideRouter` or
    * `bindToComponentInputs` in the `ExtraOptions` of `RouterModule.forRoot`.
+   *
+   * 此选项由 `provideRouter` 的 `withComponentInputBinding` 功能或 `RouterModule.forRoot` 的 `ExtraOptions` 中的 `bindToComponentInputs` 启用。
+   *
    */
   readonly componentInputBindingEnabled = !!inject(INPUT_BINDER, {optional: true});
 
@@ -486,6 +573,9 @@ export class Router {
   /**
    * The `Navigation` object of the most recent navigation to succeed and `null` if there
    *     has not been a successful navigation yet.
+   *
+   * 最近一次成功导航的 `Navigation` 对象，如果还没有成功导航则为 `null` 。
+   *
    */
   get lastSuccessfulNavigation(): Navigation|null {
     return this.navigationTransitions.lastSuccessfulNavigation;
@@ -550,12 +640,15 @@ export class Router {
    * property of the options object, if supplied.
    *
    * 一个 URL 段的数组，用于构造新的 URL 树。如果此路径是静态的，则可能是 URL 字符串字面量。对于动态路径，可以传入一个路径段的数组，后跟每个段的参数。这些段会应用到当前 URL 树上，或者在选项对象中的 `relativeTo` 属性上（如果有）。
-   *
    * @param navigationExtras Options that control the navigation strategy.
    *
    * 控制导航策略的选项。
+   * @returns
    *
-   * @returns The new URL tree.
+   * The new URL tree.
+   *
+   * 新的 URL 树。
+   *
    * @usageNotes
    *
    * ```
@@ -646,13 +739,16 @@ export class Router {
    *     current URL.
    *
    * 一个绝对 URL。该函数不会对当前 URL 做任何修改。
-   *
    * @param extras An object containing properties that modify the navigation strategy.
    *
    * 一个包含一组属性的对象，它会修改导航策略。
+   * @returns
    *
-   * @returns A Promise that resolves to 'true' when navigation succeeds,
+   * A Promise that resolves to 'true' when navigation succeeds,
    * to 'false' when navigation fails, or is rejected on error.
+   *
+   * 一个 Promise，当导航成功时解析为“true”，当导航失败时解析为“false”，或者因错误而被拒绝。
+   *
    * @usageNotes
    *
    * The following calls request navigation to an absolute path.
@@ -665,11 +761,9 @@ export class Router {
    * // Navigate without updating the URL
    * router.navigateByUrl("/team/33/user/11", { skipLocationChange: true });
    * ```
-   *
    * @see [Routing and Navigation guide](guide/router)
    *
    * [路由和导航指南](guide/router)
-   *
    */
   navigateByUrl(url: string|UrlTree, extras: NavigationBehaviorOptions = {
     skipLocationChange: false
@@ -700,15 +794,18 @@ export class Router {
    * of the options object, if supplied.
    *
    * 一个 URL 段的数组，用于构造目标 URL 树。如果此路径是静态的，则可能是 URL 字符串字面量。对于动态路径，可以传入一个路径段的数组，后跟每个段的参数。这些段会应用到当前 URL，或者在选项对象中的 `relativeTo` 属性上（如果有）。
-   *
    * @param extras An options object that determines how the URL should be constructed or
    *     interpreted.
    *
    * 一个选项对象，用于确定应如何构造或解释 URL。
+   * @returns
    *
-   * @returns A Promise that resolves to `true` when navigation succeeds, to `false` when navigation
+   * A Promise that resolves to `true` when navigation succeeds, to `false` when navigation
    *     fails,
    * or is rejected on error.
+   *
+   * 一个 Promise，当导航成功时解析为 `true` ，当导航失败时解析为 `false` ，或因错误而被拒绝。
+   *
    * @usageNotes
    *
    * The following calls request navigation to a dynamic route path relative to the current URL.
@@ -721,11 +818,9 @@ export class Router {
    * // Navigate without updating the URL, overriding the default behavior
    * router.navigate(['team', 33, 'user', 11], {relativeTo: route, skipLocationChange: true});
    * ```
-   *
    * @see [Routing and Navigation guide](guide/router)
    *
    * [路由和导航指南](guide/router)
-   *
    */
   navigate(commands: any[], extras: NavigationExtras = {skipLocationChange: false}):
       Promise<boolean> {
@@ -767,6 +862,8 @@ export class Router {
    * @deprecated
    *
    * Use `IsActiveMatchOptions` instead.
+   *
+   * 请改用 `IsActiveMatchOptions` 。
    *
    * - The equivalent `IsActiveMatchOptions` for `true` is
    *   `{paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}`.
@@ -891,6 +988,9 @@ export class Router {
   /**
    * Performs the necessary rollback action to restore the browser URL to the
    * state before the transition.
+   *
+   * 执行必要的回滚操作以将浏览器 URL 恢复到转换前的状态。
+   *
    * @internal
    */
   restoreHistory(transition: NavigationTransition, restoringFromCaughtError = false) {

@@ -27,7 +27,11 @@ import {RuntimeErrorCode} from './errors';
  *
  * @publicApi
  * @deprecated
+ *
  * `ApplicationConfig` has moved, please import `ApplicationConfig` from `@angular/core` instead.
+ *
+ * `ApplicationConfig` 已移动，请改为从 `@angular/core` 导入 `ApplicationConfig` 。
+ *
  */
 // The below is a workaround to add a deprecated message.
 type ApplicationConfig = ApplicationConfigFromCore;
@@ -95,7 +99,6 @@ export {ApplicationConfig};
    *
    * await bootstrapApplication(RootComponent, {providers: [provideProtractorTestingSupport()]});
    * ```
-   *
    * @param rootComponent A reference to a standalone component that should be rendered.
    *
    * 对应该渲染的独立组件的引用。
@@ -103,7 +106,12 @@ export {ApplicationConfig};
    *     additional info.
    *
    * 可选值。默认值为 `undefined`。
-   * @returns A promise that returns an `ApplicationRef` instance once resolved.
+   * @returns
+   *
+   * A promise that returns an `ApplicationRef` instance once resolved.
+   *
+   * 一个承诺，一旦解决就返回一个 `ApplicationRef` 实例。
+   *
    * @publicApi
    */
 export function bootstrapApplication(
@@ -123,7 +131,12 @@ export function bootstrapApplication(
  *     additional info.
  *
  * 可选值。默认值为 `undefined`。
- * @returns A promise that returns an `ApplicationRef` instance once resolved.
+ * @returns
+ *
+ * A promise that returns an `ApplicationRef` instance once resolved.
+ *
+ * 一个承诺，一旦解决就返回一个 `ApplicationRef` 实例。
+ *
  * @publicApi
  */
 export function createApplication(options?: ApplicationConfig) {
@@ -148,8 +161,13 @@ function createProvidersConfig(options?: ApplicationConfig) {
  *
  * 返回使用 `bootstrapApplication` 函数引导的应用程序设置[Testability](api/core/Testability)所需的一组提供程序。需要这组提供者来支持使用 Protractor（依赖于存在的 Testability API）测试应用程序。
  *
- * @returns An array of providers required to setup Testability for an application and make it
+ * @returns
+ *
+ * An array of providers required to setup Testability for an application and make it
  *     available for testing using Protractor.
+ *
+ * 为应用程序设置可测试性并使其可用于使用 Protractor 进行测试所需的一组提供程序。
+ *
  * @publicApi
  */
 export function provideProtractorTestingSupport(): Provider[] {
@@ -195,6 +213,9 @@ export const platformBrowser: (extraProviders?: StaticProvider[]) => PlatformRef
  * This is needed to avoid loading `BrowserModule` providers twice. We can't rely on the
  * `BrowserModule` presence itself, since the standalone-based bootstrap just imports
  * `BrowserModule` providers without referencing the module itself.
+ *
+ * 用于指示来自 `BrowserModule` 的提供程序是否已存在于 DI 中的内部标记。 这是为了避免两次加载 `BrowserModule` 提供程序所必需的。 我们不能依赖 `BrowserModule` 存在本身，因为基于独立的引导程序只是导入 `BrowserModule` 提供者而不引用模块本身。
+ *
  */
 const BROWSER_MODULE_PROVIDERS_MARKER = new InjectionToken(
     (typeof ngDevMode === 'undefined' || ngDevMode) ? 'BrowserModule Providers Marker' : '');
@@ -270,10 +291,17 @@ export class BrowserModule {
    * The ID must match between the client and server versions of the app.
    *
    * 包含要迁移的应用 id 的对象。在应用的客户端版本和服务端版本中这个 ID 必须匹配。
-   * @returns The reconfigured `BrowserModule` to import into the app's root `AppModule`.
+   * @returns
+   *
+   * The reconfigured `BrowserModule` to import into the app's root `AppModule`.
+   *
+   * 重新配置的 `BrowserModule` 导入到应用程序的根 `AppModule` 中。
+   *
    * @deprecated
    *
    * Use {@link APP_ID} instead to set the application ID.
+   *
+   * 请改用 {@link APP_ID} 来设置应用程序 ID。
    *
    */
   static withServerTransition(params: {appId: string}): ModuleWithProviders<BrowserModule> {

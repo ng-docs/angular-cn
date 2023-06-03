@@ -10,6 +10,9 @@ import {Subscribable} from 'rxjs';
 
 /**
  * Determine if the argument is shaped like a Promise
+ *
+ * 确定参数的形状是否像 Promise
+ *
  */
 export function isPromise<T = any>(obj: any): obj is Promise<T> {
   // allow any Promise/A+ compliant thenable.
@@ -19,6 +22,9 @@ export function isPromise<T = any>(obj: any): obj is Promise<T> {
 
 /**
  * Determine if the argument is a Subscribable
+ *
+ * 确定参数是否为 Subscribable
+ *
  */
 export function isSubscribable<T>(obj: any|Subscribable<T>): obj is Subscribable<T> {
   return !!obj && typeof obj.subscribe === 'function';

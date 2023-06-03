@@ -102,43 +102,69 @@ export enum ErrorCode {
 
   /**
    * Raised when the compiler wasn't able to resolve the metadata of a host directive.
+   *
+   * 当编译器无法解析主机指令的元数据时引发。
+   *
    */
   HOST_DIRECTIVE_INVALID = 2013,
 
   /**
    * Raised when a host directive isn't standalone.
+   *
+   * 当主机指令不是独立的时引发。
+   *
    */
   HOST_DIRECTIVE_NOT_STANDALONE = 2014,
 
   /**
    * Raised when a host directive is a component.
+   *
+   * 当主机指令是组件时引发。
+   *
    */
   HOST_DIRECTIVE_COMPONENT = 2015,
 
   /**
    * Raised when a type with Angular decorator inherits its constructor from a base class
    * which has a constructor that is incompatible with Angular DI.
+   *
+   * 当具有 Angular 装饰器的类型从具有与 Angular DI 不兼容的构造函数的基类继承其构造函数时引发。
+   *
    */
   INJECTABLE_INHERITS_INVALID_CONSTRUCTOR = 2016,
 
-  /** Raised when a host tries to alias a host directive binding that does not exist. */
+  /**
+   * Raised when a host tries to alias a host directive binding that does not exist.
+   *
+   * 当主机尝试为不存在的主机指令绑定设置别名时引发。
+   *
+   */
   HOST_DIRECTIVE_UNDEFINED_BINDING = 2017,
 
   /**
    * Raised when a host tries to alias a host directive
    * binding to a pre-existing binding's public name.
+   *
+   * 当主机尝试将主机指令绑定到预先存在的绑定的公共名称时引发。
+   *
    */
   HOST_DIRECTIVE_CONFLICTING_ALIAS = 2018,
 
   /**
    * Raised when a host directive definition doesn't expose a
    * required binding from the host directive.
+   *
+   * 当主机指令定义未公开主机指令所需的绑定时引发。
+   *
    */
   HOST_DIRECTIVE_MISSING_REQUIRED_BINDING = 2019,
 
   /**
    * Raised when a component specifies both a `transform` function on an input
    * and has a corresponding `ngAcceptInputType_` member for the same input.
+   *
+   * 当组件在输入上指定了 `transform` 函数并且对同一输入具有相应的 `ngAcceptInputType_` 成员时引发。
+   *
    */
   CONFLICTING_INPUT_TRANSFORM = 2020,
 
@@ -355,6 +381,9 @@ export enum ErrorCode {
 
   /**
    * A directive usage isn't binding to one or more required inputs.
+   *
+   * 指令用法不绑定到一个或多个必需的输入。
+   *
    */
   MISSING_REQUIRED_INPUTS = 8008,
 
@@ -391,11 +420,15 @@ export enum ErrorCode {
    * A known control flow directive \(e.g. `*ngIf`\) is used in a template,
    * but the `CommonModule` is not imported.
    *
+   * 模板中使用了已知的控制流指令（例如 `*ngIf` ），但未导入 `CommonModule` 。
+   *
    */
   MISSING_CONTROL_FLOW_DIRECTIVE = 8103,
 
   /**
    * A text attribute is not interpreted as a binding but likely intended to be.
+   *
+   * 文本属性未被解释为绑定，但很可能被解释为绑定。
    *
    * For example:
    *
@@ -412,12 +445,16 @@ export enum ErrorCode {
    * All of the above attributes will just be static text attributes and will not be interpreted as
    * bindings by the compiler.
    *
+   * 以上所有属性都只是静态文本属性，不会被编译器解释为绑定。
+   *
    */
   TEXT_ATTRIBUTE_NOT_BINDING = 8104,
 
   /**
    * NgForOf is used in a template, but the user forgot to include let
    * in their statement.
+   *
+   * NgForOf 在模板中使用，但用户忘记在他们的声明中包含 let 。
    *
    * For example:
    *
@@ -432,17 +469,26 @@ export enum ErrorCode {
   /**
    * Indicates that the binding suffix is not supported
    *
+   * 表示不支持绑定后缀
+   *
    * Style bindings support suffixes like `style.width.px`, `.em`, and `.%`.
    * These suffixes are _not_ supported for attribute bindings.
+   *
+   * 样式绑定支持后缀，如 `style.width.px` 、 `.em` 和 `.%` 。 属性绑定 _ 不 _ 支持这些后缀。
    *
    * For example `[attr.width.px]="5"` becomes `width.px="5"` when bound.
    * This is almost certainly unintentional and this error is meant to
    * surface this mistake to the developer.
+   *
+   * 例如 `[attr.width.px]="5"` 在绑定时变为 `width.px="5"` 。 这几乎可以肯定是无意的，这个错误是为了向开发人员展示这个错误。
+   *
    */
   SUFFIX_NOT_SUPPORTED = 8106,
 
   /**
    * The left side of an optional chain operation is not nullable.
+   *
+   * 可选链操作的左侧不可为空。
    *
    * ```
    * {{ foo?.bar }}
@@ -461,6 +507,8 @@ export enum ErrorCode {
   /**
    * `ngSkipHydration` should not be a binding \(it should be a static attribute\).
    *
+   * `ngSkipHydration` 不应是绑定（它应该是静态属性）。
+   *
    * For example:
    *
    * 比如：
@@ -471,6 +519,8 @@ export enum ErrorCode {
    *
    * `ngSkipHydration` cannot be a binding and can not have values other than "true" or an empty
    * value
+   *
+   * `ngSkipHydration` 不能是绑定，不能有除“true”或空值以外的值
    *
    */
   SKIP_HYDRATION_NOT_STATIC = 8108,

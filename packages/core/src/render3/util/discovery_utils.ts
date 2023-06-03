@@ -49,13 +49,16 @@ import {unwrapRNode} from './view_utils';
  * Calling the function on `<app-root>` will return the `MyApp` instance.
  *
  * 在 `<my-app>` 上调用该函数将返回 `MyApp` 实例。
- *
  * @param element DOM element from which the component should be retrieved.
  *
  * 要从中检索组件的 DOM 元素。
+ * @returns
  *
- * @returns Component instance associated with the element or `null` if there
+ * Component instance associated with the element or `null` if there
  *    is no component associated with it.
+ *
+ * 与元素关联的组件实例，如果没有关联的组件，则返回 `null` 。
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -86,8 +89,13 @@ export function getComponent<T>(element: Element): T|null {
  * @param element Element for which to get the surrounding component instance.
  *
  * 要获取外围组件实例的元素。
- * @returns Instance of the component that is around the element or null if the element isn't
+ * @returns
+ *
+ * Instance of the component that is around the element or null if the element isn't
  *    inside any component.
+ *
+ * 元素周围的组件实例，如果元素不在任何组件内，则为 null。
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -113,8 +121,13 @@ export function getContext<T extends {}>(element: Element): T|null {
  *    for which to retrieve the root components.
  *
  * 要为其检索根组件的 DOM 元素、组件或指令实例。
- * @returns Component instance whose view owns the DOM element or null if the element is not
+ * @returns
+ *
+ * Component instance whose view owns the DOM element or null if the element is not
  *    part of a component view.
+ *
+ * 其视图拥有 DOM 元素的组件实例，如果该元素不是组件视图的一部分，则返回 null。
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -140,8 +153,12 @@ export function getOwningComponent<T>(elementOrDir: Element|{}): T|null {
  *    for which to retrieve the root components.
  *
  * 要为其检索根组件的 DOM 元素、组件或指令实例。
+ * @returns
  *
- * @returns Root components associated with the target object.
+ * Root components associated with the target object.
+ *
+ * 与目标对象关联的根组件。
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -159,8 +176,12 @@ export function getRootComponents(elementOrDir: Element|{}): {}[] {
  *    retrieve the injector.
  *
  * 要为其获取注入器的 DOM 元素、组件或指令实例。
+ * @returns
  *
- * @returns Injector associated with the element, component or directive instance.
+ * Injector associated with the element, component or directive instance.
+ *
+ * 与元素、组件或指令实例关联的注入器。
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -176,7 +197,12 @@ export function getInjector(elementOrDir: Element|{}): Injector {
 /**
  * Retrieve a set of injection tokens at a given DOM node.
  *
+ * 在给定的 DOM 节点检索一组注入令牌。
+ *
  * @param element Element for which the injection tokens should be retrieved.
+ *
+ * 应为其检索注入令牌的元素。
+ *
  */
 export function getInjectionTokens(element: Element): any[] {
   const context = getLContext(element)!;
@@ -228,12 +254,15 @@ export function getInjectionTokens(element: Element): any[] {
  * Calling `getDirectives` on `<my-comp>` will return an empty array.
  *
  * 在 `<my-comp>` 上调用 `getDirectives` 将返回一个空数组。
- *
  * @param node DOM node for which to get the directives.
  *
  * 要为其获取指令的 DOM 元素。
+ * @returns
  *
- * @returns Array of directives associated with the node.
+ * Array of directives associated with the node.
+ *
+ * 与节点关联的指令数组。
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -317,7 +346,12 @@ export interface ComponentDebugMetadata extends DirectiveDebugMetadata {
  * @param directiveOrComponentInstance Instance of a directive or component
  *
  * 指令或组件的实例
- * @returns metadata of the passed directive or component
+ * @returns
+ *
+ * metadata of the passed directive or component
+ *
+ * 传递的指令或组件的元数据
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -349,10 +383,17 @@ export function getDirectiveMetadata(directiveOrComponentInstance: any): Compone
 /**
  * Retrieve map of local references.
  *
+ * 检索本地参考地图。
+ *
  * The references are retrieved as a map of local reference name to element or directive instance.
+ *
+ * 引用作为本地引用名称到元素或指令实例的映射来检索。
  *
  * @param target DOM element, component or directive instance for which to retrieve
  *    the local references.
+ *
+ * 要为其检索本地引用的 DOM 元素、组件或指令实例。
+ *
  */
 export function getLocalRefs(target: {}): {[key: string]: any} {
   const context = getLContext(target);
@@ -379,8 +420,12 @@ export function getLocalRefs(target: {}): {[key: string]: any} {
  *     element should be retrieved.
  *
  * 要为其检索宿主元素的组件或指令实例。
+ * @returns
  *
- * @returns Host element of the target.
+ * Host element of the target.
+ *
+ * 目标的宿主元素。
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -391,12 +436,19 @@ export function getHostElement(componentOrDirective: {}): Element {
 /**
  * Retrieves the rendered text for a given component.
  *
+ * 检索给定组件的渲染文本。
+ *
  * This function retrieves the host element of a component and
  * and then returns the `textContent` for that element. This implies
  * that the text returned will include re-projected content of
  * the component as well.
  *
+ * 此函数检索组件的宿主元素，然后返回该元素的 `textContent` 。 这意味着返回的文本也将包括组件的重新投影内容。
+ *
  * @param component The component to return the content text for.
+ *
+ * 要为其返回内容文本的组件。
+ *
  */
 export function getRenderedText(component: any): string {
   const hostElement = getHostElement(component);
@@ -483,7 +535,12 @@ export interface Listener {
  * @param element Element for which the DOM listeners should be retrieved.
  *
  * 要为其检索 DOM 监听器的元素。
- * @returns Array of event listeners on the DOM element.
+ * @returns
+ *
+ * Array of event listeners on the DOM element.
+ *
+ * DOM 元素上的事件侦听器数组。
+ *
  * @publicApi
  * @globalApi ng
  */
@@ -530,7 +587,12 @@ function sortListeners(a: Listener, b: Listener) {
 /**
  * This function should not exist because it is megamorphic and only mostly correct.
  *
+ * 这个函数不应该存在，因为它是超态的，而且只是大部分正确。
+ *
  * See call site for more info.
+ *
+ * 有关详细信息，请参阅呼叫站点。
+ *
  */
 function isDirectiveDefHack(obj: any): obj is DirectiveDef<any> {
   return obj.type !== undefined && obj.declaredInputs !== undefined &&
@@ -540,10 +602,17 @@ function isDirectiveDefHack(obj: any): obj is DirectiveDef<any> {
 /**
  * Retrieve the component `LView` from component/element.
  *
+ * 从组件/元素中检索组件 `LView` 。
+ *
  * NOTE: `LView` is a private and should not be leaked outside.
  *       Don't export this method to `ng.*` on window.
  *
+ * 注意： `LView` 是私有的，不应泄露到外部。 不要将此方法导出到窗口上的 `ng.*` 。
+ *
  * @param target DOM element or component instance for which to retrieve the LView.
+ *
+ * 要为其检索 LView 的 DOM 元素或组件实例。
+ *
  */
 export function getComponentLView(target: any): LView {
   const lContext = getLContext(target)!;
@@ -555,7 +624,12 @@ export function getComponentLView(target: any): LView {
   return componentLView;
 }
 
-/** Asserts that a value is a DOM Element. */
+/**
+ * Asserts that a value is a DOM Element.
+ *
+ * 断言一个值是一个 DOM 元素。
+ *
+ */
 function assertDomElement(value: any) {
   if (typeof Element !== 'undefined' && !(value instanceof Element)) {
     throw new Error('Expecting instance of DOM Element');

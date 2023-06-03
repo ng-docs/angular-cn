@@ -185,6 +185,9 @@ function toQueryMetadata<TExpression>(obj: AstObject<R3DeclareQueryMetadata, TEx
 
 /**
  * Derives the host directives structure from the AST object.
+ *
+ * 从 AST 对象派生主机指令结构。
+ *
  */
 function toHostDirectivesMetadata<TExpression>(
     hostDirectives: AstValue<R3DeclareHostDirectiveMetadata[]|undefined, TExpression>):

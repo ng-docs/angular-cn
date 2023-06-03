@@ -30,6 +30,8 @@ Perform these steps in a browser.
 
 1. [Find a topic to review](#find-topics-to-review) by:
 
+   [查找要审查的主题](#find-topics-to-review)：
+
    1. Finding a topic with a **Last reviewed** date that is six months or more in the past.
 
       查找**上次查看**日期是过去六个月或更长时间的主题。
@@ -205,6 +207,7 @@ For example:
 | January 12, 2023   | `@reviewed 2023-01-12` | *Last reviewed on Thu Jan 12, 2023*      |
 | 2023 年 1 月 12 日 | `@reviewed 2023-01-12` | *最后审核时间：2023 年 1 月 12 日星期四* |
 | November 3, 2022   | `@reviewed 2022-11-03` | *Last reviewed on Fri Nov 03, 2022*      |
+| 2022 年 11 月 3 日 | `@reviewed 2022-11-03` | *最后审核于 2022 年 11 月 3 日星期五*    |
 
 ## Reviewing and updating a topic
 
@@ -239,6 +242,8 @@ If the topic requires major changes, you can [make a major change](guide/contrib
 如果主题需要重大更改，你可以[进行重大更改](guide/contributors-guide-overview#make-a-major-change)，或[在 GitHub 中打开一个文档问题](https://github.com/angular/angular/issues/new?assignees=&labels=&template=3-docs-bug.yaml)。你不应该在 GitHub 用户界面中进行重大更改，因为它不允许你在提交之前测试它们。
 
 Whether you make the changes the topic needs or open a docs issue, you should still [update the **Last reviewed** date](#update-the-last-reviewed-date). You can use the GitHub user interface in the browser if you only want to update the **Last reviewed** date.
+
+无论您是进行主题需要的更改还是打开文档问题，您仍然应该[更新**Last reviewed** date](#update-the-last-reviewed-date) 。 如果您只想更新**上次审查**日期，您可以在浏览器中使用 GitHub 用户界面。
 
 <!-- links -->
 

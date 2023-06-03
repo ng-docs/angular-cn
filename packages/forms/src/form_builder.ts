@@ -24,6 +24,9 @@ function isAbstractControlOptions(options: AbstractControlOptions|{[key: string]
 
 /**
  * The union of all validator types that can be accepted by a ControlConfig.
+ *
+ * ControlConfig 可以接受的所有验证器类型的联合。
+ *
  */
 type ValidatorConfig = ValidatorFn|AsyncValidatorFn|ValidatorFn[]|AsyncValidatorFn[];
 
@@ -32,8 +35,12 @@ type ValidatorConfig = ValidatorFn|AsyncValidatorFn|ValidatorFn[]|AsyncValidator
  * \(i.e. occur in a fixed order\). This slightly looser type is used for inference, to catch cases
  * where the compiler cannot prove order and position.
  *
+ * 编译器可能并不总是能够证明控制配置的元素是一个元组（即以固定顺序出现）。 这种稍微松散的类型用于推理，以捕获编译器无法证明顺序和位置的情况。
+ *
  * For example, consider the simple case `fb.group({foo: ['bar', Validators.required]})`. The
  * compiler will infer this as an array, not as a tuple.
+ *
+ * 例如，考虑简单的情况 `fb.group({foo: ['bar', Validators.required]})` 。 编译器会将其推断为数组，而不是元组。
  *
  */
 type PermissiveControlConfig<T> = Array<T|FormControlState<T>|ValidatorConfig>;
@@ -41,6 +48,8 @@ type PermissiveControlConfig<T> = Array<T|FormControlState<T>|ValidatorConfig>;
 /**
  * Helper type to allow the compiler to accept [XXXX, { updateOn: string }] as a valid shorthand
  * argument for .group\(\)
+ *
+ * 允许编译器接受[XXXX, { updateOn: string }][XXXX, { updateOn: string }]作为 .group\(\) 的有效速记参数的辅助类型
  *
  */
 interface PermissiveAbstractControlOptions extends Omit<AbstractControlOptions, 'updateOn'> {
@@ -50,6 +59,8 @@ interface PermissiveAbstractControlOptions extends Omit<AbstractControlOptions, 
 /**
  * ControlConfig<T> is a tuple containing a value of type T, plus optional validators and async
  * validators.
+ *
+ * 控制配置
  *
  * @publicApi
  */
@@ -62,6 +73,9 @@ export type ControlConfig<T> = [T|FormControlState<T>, (ValidatorFn|(ValidatorFn
  * FormBuilder accepts values in various container shapes, as well as raw values.
  * Element returns the appropriate corresponding model class, given the container T.
  * The flag N, if not never, makes the resulting `FormControl` have N in its type.
+ *
+ * FormBuilder 接受各种容器形状的值以及原始值。 给定容器 T，Element 返回适当的对应模型类。标志 N（如果不是从不）使生成的 `FormControl` 在其类型中具有 N。
+ *
  */
 export type ɵElement<T, N extends null> =
   // The `extends` checks are wrapped in arrays in order to prevent TypeScript from applying type unions
@@ -124,6 +138,8 @@ export class FormBuilder {
    *
    * Returns a FormBuilder in which automatically constructed `FormControl` elements
    * have `{nonNullable: true}` and are non-nullable.
+   *
+   * 返回一个 FormBuilder，其中自动构造的 `FormControl` 元素具有 `{nonNullable: true}` 并且不可为 null。
    *
    * **Constructing non-nullable controls**
    *
@@ -225,8 +241,9 @@ export class FormBuilder {
    * Constructs a new `FormGroup` instance.
    *
    * 构造一个新的 `FormGroup` 实例。
+   * @deprecated
    *
-   * @deprecated This API is not typesafe and can result in issues with Closure Compiler renaming.
+   * This API is not typesafe and can result in issues with Closure Compiler renaming.
    * Use the `FormBuilder#group` overload with `AbstractControlOptions` instead.
    * Note that `AbstractControlOptions` expects `validators` and `asyncValidators` to be valid
    * validators. If you have custom validators, make sure their validation function parameter is
@@ -234,11 +251,13 @@ export class FormBuilder {
    * with an object of type `AbstractControl` and that cannot be automatically downcast to a
    * subclass, so TypeScript sees this as an error. For example, change the `(group: FormGroup) =>
    * ValidationErrors|null` signature to be `(group: AbstractControl) => ValidationErrors|null`.
+   *
+   * 此 API 不是类型安全的，可能会导致 Closure Compiler 重命名问题。 改用带有 `AbstractControlOptions` 的 `FormBuilder#group` 重载。 请注意， `AbstractControlOptions` 期望 `validators` 和 `asyncValidators` 是有效的验证器。 如果您有自定义验证器，请确保它们的验证函数参数是 `AbstractControl` 而不是子类，例如 `FormGroup` 。 这些函数将使用 `AbstractControl` 类型的对象调用，并且不能自动向下转换为子类，因此 TypeScript 将此视为错误。 例如，将 `(group: FormGroup) => ValidationErrors|null` 签名更改为 `(group: AbstractControl) => ValidationErrors|null` 。
+   *
    * @param controls A record of child controls. The key for each child is the name
    * under which the control is registered.
    *
    * 子控件的集合。每个子控件的键就是其注册名称。
-   *
    * @param options Configuration options object for the `FormGroup`. The legacy configuration
    * object consists of:
    *
@@ -253,7 +272,6 @@ export class FormBuilder {
    *   of Angular.
    *
    *   `asyncValidator` ：单个异步验证器或异步验证器函数数组。注意：不推荐使用旧格式，并且会在 Angular 的后面的某个主要版本中将其删除。
-   *
    */
   group(
       controls: {[key: string]: any},
@@ -313,7 +331,14 @@ export class FormBuilder {
     return new FormRecord(reducedControls, options) as any;
   }
 
-  /** @deprecated Use `nonNullable` instead. */
+  /**
+   * @deprecated
+   *
+   * Use `nonNullable` instead.
+   *
+   * 请改用 `nonNullable` 。
+   *
+   */
   control<T>(formState: T|FormControlState<T>, opts: FormControlOptions&{
     initialValueIsDefault: true
   }): FormControl<T>;
@@ -322,7 +347,12 @@ export class FormBuilder {
       FormControl<T>;
 
   /**
-   * @deprecated When passing an `options` argument, the `asyncValidator` argument has no effect.
+   * @deprecated
+   *
+   * When passing an `options` argument, the `asyncValidator` argument has no effect.
+   *
+   * 传递 `options` 参数时， `asyncValidator` 参数无效。
+   *
    */
   control<T>(
       formState: T|FormControlState<T>, opts: FormControlOptions,
@@ -342,20 +372,20 @@ export class FormBuilder {
    * control's value.
    *
    * 构建一个新的 `FormControl` 实例。
-   *
    * @param formState Initializes the control with an initial state value, or
    * with an object that contains both a value and a disabled status.
    *
    * 使用一个初始值或一个定义了初始值和禁用状态的对象初始化该控件。
-   *
    * @param validatorOrOpts A synchronous validator function, or an array of
    * such functions, or a `FormControlOptions` object that contains
    * validation functions and a validation trigger.
+   *
+   * 同步验证器函数，或此类函数的数组，或包含验证函数和验证触发器的 `FormControlOptions` 对象。
+   *
    * @param asyncValidator A single async validator or array of async validator
    * functions.
    *
    * 单个的异步验证器函数或其数组。
-   *
    * @usageNotes
    *
    * ### Initialize a control as disabled
@@ -368,7 +398,6 @@ export class FormBuilder {
    *
    * <code-example path="forms/ts/formBuilder/form_builder_example.ts" region="disabled-control">
    * </code-example>
-   *
    */
   control<T>(
       formState: T|FormControlState<T>,
@@ -456,6 +485,8 @@ export class FormBuilder {
  * `NonNullableFormBuilder` is similar to {@link FormBuilder}, but automatically constructed
  * {@link FormControl} elements have `{nonNullable: true}` and are non-nullable.
  *
+ * `NonNullableFormBuilder` 类似于 {@link FormBuilder}，但自动构建的 {@link FormControl} 元素具有 `{nonNullable: true}` 且不可为 null。
+ *
  * @publicApi
  */
 @Injectable({
@@ -516,6 +547,9 @@ export abstract class NonNullableFormBuilder {
 
 /**
  * UntypedFormBuilder is the same as `FormBuilder`, but it provides untyped controls.
+ *
+ * UntypedFormBuilder 与 `FormBuilder` 相同，但它提供无类型控件。
+ *
  */
 @Injectable({providedIn: 'root'})
 export class UntypedFormBuilder extends FormBuilder {
@@ -531,8 +565,13 @@ export class UntypedFormBuilder extends FormBuilder {
       ): UntypedFormGroup;
 
   /**
-   * @deprecated This API is not typesafe and can result in issues with Closure Compiler renaming.
+   * @deprecated
+   *
+   * This API is not typesafe and can result in issues with Closure Compiler renaming.
    * Use the `FormBuilder#group` overload with `AbstractControlOptions` instead.
+   *
+   * 此 API 不是类型安全的，可能会导致 Closure Compiler 重命名问题。 改用带有 `AbstractControlOptions` 的 `FormBuilder#group` 重载。
+   *
    */
   override group(
       controlsConfig: {[key: string]: any},

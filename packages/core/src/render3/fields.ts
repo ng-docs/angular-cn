@@ -31,7 +31,12 @@ export const NG_ELEMENT_ID = getClosureSafeProperty({__NG_ELEMENT_ID__: getClosu
  * getting such tokens from the `EnvironmentInjector` will bypass the standard DI resolution
  * strategy and instead will return implementation produced by the `NG_ENV_ID` factory function.
  *
+ * DI 令牌上的 `NG_ENV_ID` 字段表示 `EnvironmentInjector` 中的特殊处理：从 `EnvironmentInjector` 获取此类令牌将绕过标准 DI 解析策略，而是返回由 `NG_ENV_ID` 工厂函数生成的实现。
+ *
  * This particular retrieval of DI tokens is mostly done to eliminate circular dependencies and
  * improve tree-shaking.
+ *
+ * 这种对 DI 令牌的特殊检索主要是为了消除循环依赖并改进 tree-shaking。
+ *
  */
 export const NG_ENV_ID = getClosureSafeProperty({__NG_ENV_ID__: getClosureSafeProperty});
