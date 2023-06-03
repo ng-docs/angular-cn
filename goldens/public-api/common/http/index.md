@@ -10,7 +10,6 @@ import * as i0 from '@angular/core';
 import { InjectionToken } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
 import { Observable } from 'rxjs';
-import { OnDestroy } from '@angular/core';
 import { Provider } from '@angular/core';
 import { XhrFactory } from '@angular/common';
 
@@ -1783,7 +1782,7 @@ export class HttpHeaderResponse extends HttpResponseBase {
 // @public
 export class HttpHeaders {
     constructor(headers?: string | {
-        [name: string]: string | string[];
+        [name: string]: string | number | (string | number)[];
     });
     append(name: string, value: string | string[]): HttpHeaders;
     delete(name: string, value?: string | string[]): HttpHeaders;
@@ -1918,7 +1917,7 @@ export class HttpRequest<T> {
     readonly params: HttpParams;
     readonly reportProgress: boolean;
     readonly responseType: 'arraybuffer' | 'blob' | 'json' | 'text';
-    serializeBody(): ArrayBuffer | Blob | FormData | string | null;
+    serializeBody(): ArrayBuffer | Blob | FormData | URLSearchParams | string | null;
     // (undocumented)
     readonly url: string;
     readonly urlWithParams: string;
@@ -2129,11 +2128,9 @@ export interface HttpUserEvent<T> {
 }
 
 // @public
-export class HttpXhrBackend implements HttpBackend, OnDestroy {
+export class HttpXhrBackend implements HttpBackend {
     constructor(xhrFactory: XhrFactory);
     handle(req: HttpRequest<any>): Observable<HttpEvent<any>>;
-    // (undocumented)
-    ngOnDestroy(): void;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<HttpXhrBackend, never>;
     // (undocumented)

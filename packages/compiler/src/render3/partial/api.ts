@@ -67,7 +67,10 @@ export interface R3DeclareDirectiveMetadata extends R3PartialDeclaration {
    * 输入从类属性名称到绑定属性名称的映射，如果名称不同，则映射到绑定属性名称和类属性名称的元组。
    *
    */
-  inputs?: {[classPropertyName: string]: string|[string, string]};
+  inputs?: {
+    [classPropertyName: string]: string|
+    [bindingPropertyName: string, classPropertyName: string, transformFunction?: o.Expression]
+  };
 
   /**
    * A mapping of outputs from class property names to binding property names.
@@ -182,6 +185,11 @@ export interface R3DeclareDirectiveMetadata extends R3PartialDeclaration {
    *
    */
   isStandalone?: boolean;
+
+  /**
+   * Whether the directive is a signal-based directive. Defaults to false.
+   */
+  isSignal?: boolean;
 
   /**
    * Additional directives applied to the directive host.

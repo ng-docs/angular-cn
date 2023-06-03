@@ -118,7 +118,7 @@ AOT 编译分为三个阶段。
 | 1   | 代码分析               | 在此阶段，TypeScript 编译器和*AOT 收集器*会创建源代码的表示。收集器不会尝试解释它收集的元数据。它会尽可能地表示元数据，并在检测到元数据语法违规时记录错误。                                                                                                                                              |
 | 2   | code generation        | In this phase, the compiler's `StaticReflector` interprets the metadata collected in phase 1, performs additional validation of the metadata, and throws an error if it detects a metadata restriction violation.                                                                                        |
 | 2   | 代码生成               | 在此阶段，编译器的 `StaticReflector` 会解释在阶段 1 收集的元数据，对元数据执行额外的验证，如果检测到违反元数据限制，则会抛出错误。                                                                                                                                                                       |
-| 3   | template type checking | In this optional phase, the Angular *template compiler* uses the TypeScript compiler to validate the binding expressions in templates. You can enable this phase explicitly by setting the `fullTemplateTypeCheck` configuration option; see [Angular compiler options](guide/angular-compiler-options). |
+| 3   | template type checking | In this optional phase, the Angular *template compiler* uses the TypeScript compiler to validate the binding expressions in templates. You can enable this phase explicitly by setting the `strictTemplates` configuration option; see [Angular compiler options](guide/angular-compiler-options). |
 | 3   | 模板类型检查           | 在此可选阶段，Angular *模板编译器*使用 TypeScript 编译器来验证模板中的绑定表达式。你可以通过设置 `fullTemplateTypeCheck` 配置选项来明确启用此阶段。请参阅 [Angular 编译器选项](guide/angular-compiler-options)。                                                                                         |
 
 ### Metadata restrictions
@@ -141,7 +141,7 @@ You write metadata in a *subset* of TypeScript that must conform to the followin
 
   只能调用编译器[支持的函数](#supported-functions)
 
-* Decorated and data-bound class members must be public
+* Input/Outputs and data-bound class members must be public or protected.
 
   被装饰和用于数据绑定的类成员必须是公共（public）的。
 
@@ -476,7 +476,7 @@ The compiler understands all syntax forms that the collector supports, but it ma
 
 编译器理解收集器支持的所有语法形式，但是它也可能拒绝那些虽然*语法正确*但*语义*违反了编译器规则的元数据。
 
-### Public symbols
+### Public or protected symbols
 
 ### 公共符号
 
@@ -484,14 +484,14 @@ The compiler can only reference *exported symbols*.
 
 编译器只能引用*已导出的符号*。
 
-* Decorated component class members must be public.
-  You cannot make an `@Input()` property private or protected.
+*   Decorated component class members must be public or protected.
+    You cannot make an `@Input()` property private.
 
-  带有装饰器的类成员必须是公开的。你不可能把一个私有或内部使用的属性做成 `@Input()`。
+    带有装饰器的类成员必须是公开的（public）或保护的（protected）。你不可能把一个私有属性做成 `@Input()`。
 
-* Data bound properties must also be public
+*   Data bound properties must also be public or protected
 
-  数据绑定的属性同样必须是公开的
+    数据绑定的属性同样必须是公开的（public）或保护的（protected）
 
 <a id="supported-functions"></a>
 

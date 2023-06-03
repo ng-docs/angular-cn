@@ -7,7 +7,7 @@
  */
 
 
-import {CompilerFacade, CoreEnvironment, ExportedCompilerFacade, InputMap, OpaqueValue, R3ComponentMetadataFacade, R3DeclareComponentFacade, R3DeclareDependencyMetadataFacade, R3DeclareDirectiveDependencyFacade, R3DeclareDirectiveFacade, R3DeclareFactoryFacade, R3DeclareInjectableFacade, R3DeclareInjectorFacade, R3DeclareNgModuleFacade, R3DeclarePipeDependencyFacade, R3DeclarePipeFacade, R3DeclareQueryMetadataFacade, R3DependencyMetadataFacade, R3DirectiveMetadataFacade, R3FactoryDefMetadataFacade, R3InjectableMetadataFacade, R3InjectorMetadataFacade, R3NgModuleMetadataFacade, R3PipeMetadataFacade, R3QueryMetadataFacade, R3TemplateDependencyFacade} from './compiler_facade_interface';
+import {CompilerFacade, CoreEnvironment, ExportedCompilerFacade, InputMap, InputTransformFunction, OpaqueValue, R3ComponentMetadataFacade, R3DeclareComponentFacade, R3DeclareDependencyMetadataFacade, R3DeclareDirectiveDependencyFacade, R3DeclareDirectiveFacade, R3DeclareFactoryFacade, R3DeclareInjectableFacade, R3DeclareInjectorFacade, R3DeclareNgModuleFacade, R3DeclarePipeDependencyFacade, R3DeclarePipeFacade, R3DeclareQueryMetadataFacade, R3DependencyMetadataFacade, R3DirectiveMetadataFacade, R3FactoryDefMetadataFacade, R3InjectableMetadataFacade, R3InjectorMetadataFacade, R3NgModuleMetadataFacade, R3PipeMetadataFacade, R3QueryMetadataFacade, R3TemplateDependencyFacade} from './compiler_facade_interface';
 import {ConstantPool} from './constant_pool';
 import {ChangeDetectionStrategy, HostBinding, HostListener, Input, Output, ViewEncapsulation} from './core';
 import {compileInjectable} from './injectable_compiler_2';
@@ -28,7 +28,7 @@ import {ResourceLoader} from './resource_loader';
 import {DomElementSchemaRegistry} from './schema/dom_element_schema_registry';
 
 export class CompilerFacadeImpl implements CompilerFacade {
-  FactoryTarget = FactoryTarget as any;
+  FactoryTarget = FactoryTarget;
   ResourceLoader = ResourceLoader;
   private elementSchemaRegistry = new DomElementSchemaRegistry();
 
@@ -182,14 +182,14 @@ export class CompilerFacadeImpl implements CompilerFacade {
 
     // Compile the component metadata, including template, into an expression.
     const meta: R3ComponentMetadata<R3TemplateDependency> = {
-      ...facade as R3ComponentMetadataFacadeNoPropAndWhitespace,
+      ...facade,
       ...convertDirectiveFacadeToMetadata(facade),
       selector: facade.selector || this.elementSchemaRegistry.getDefaultComponentElementName(),
       template,
       declarations: facade.declarations.map(convertDeclarationFacadeToMetadata),
       declarationListEmitMode: DeclarationListEmitMode.Direct,
       styles: [...facade.styles, ...template.styles],
-      encapsulation: facade.encapsulation as any,
+      encapsulation: facade.encapsulation,
       interpolation,
       changeDetection: facade.changeDetection,
       animations: facade.animations != null ? new WrappedNodeExpr(facade.animations) : null,
@@ -293,11 +293,6 @@ export class CompilerFacadeImpl implements CompilerFacade {
   }
 }
 
-// This seems to be needed to placate TS v3.0 only
-type R3ComponentMetadataFacadeNoPropAndWhitespace = Pick<
-    R3ComponentMetadataFacade,
-    Exclude<Exclude<keyof R3ComponentMetadataFacade, 'preserveWhitespaces'>, 'propMetadata'>>;
-
 function convertToR3QueryMetadata(facade: R3QueryMetadataFacade): R3QueryMetadata {
   return {
     ...facade,
@@ -343,7 +338,8 @@ function convertDirectiveFacadeToMetadata(facade: R3DirectiveMetadataFacade): R3
           inputsFromType[field] = {
             bindingPropertyName: ann.alias || field,
             classPropertyName: field,
-            required: ann.required || false
+            required: ann.required || false,
+            transformFunction: ann.transform != null ? new WrappedNodeExpr(ann.transform) : null,
           };
         } else if (isOutput(ann)) {
           outputsFromType[field] = ann.alias || field;
@@ -353,7 +349,7 @@ function convertDirectiveFacadeToMetadata(facade: R3DirectiveMetadataFacade): R3
   }
 
   return {
-    ...facade as R3DirectiveMetadataFacadeNoPropAndWhitespace,
+    ...facade,
     typeArgumentCount: 0,
     typeSourceSpan: facade.typeSourceSpan,
     type: wrapReference(facade.type),
@@ -390,6 +386,7 @@ function convertDeclareDirectiveFacadeToMetadata(
     typeArgumentCount: 0,
     fullInheritance: false,
     isStandalone: declaration.isStandalone ?? false,
+    isSignal: declaration.isSignal ?? false,
     hostDirectives: convertHostDirectivesToMetadata(declaration),
   };
 }
@@ -548,10 +545,6 @@ function parseJitTemplate(
   return {template: parsed, interpolation: interpolationConfig};
 }
 
-// This seems to be needed to placate TS v3.0 only
-type R3DirectiveMetadataFacadeNoPropAndWhitespace =
-    Pick<R3DirectiveMetadataFacade, Exclude<keyof R3DirectiveMetadataFacade, 'propMetadata'>>;
-
 /**
  * Convert the expression, if present to an `R3ProviderExpression`.
  *
@@ -675,38 +668,59 @@ function isOutput(value: any): value is Output {
   return value.ngMetadataName === 'Output';
 }
 
-function inputsMappingToInputMetadata(inputs: Record<string, string|[string, string]>) {
-  return Object.keys(inputs).reduce((result, key) => {
+function inputsMappingToInputMetadata(inputs: Record<string, string|[string, string, InputTransformFunction?]>) {
+  return Object.keys(inputs).reduce<InputMap>((result, key) => {
     const value = inputs[key];
-    result[key] = typeof value === 'string' ?
-        {bindingPropertyName: value, classPropertyName: value, required: false} :
-        {bindingPropertyName: value[0], classPropertyName: value[1], required: false};
+
+    if (typeof value === 'string') {
+      result[key] = {
+        bindingPropertyName: value,
+        classPropertyName: value,
+        transformFunction: null,
+        required: false,
+      };
+    } else {
+      result[key] = {
+        bindingPropertyName: value[0],
+        classPropertyName: value[1],
+        transformFunction: value[2] || null,
+        required: false,
+      };
+    }
+
     return result;
-  }, {} as InputMap);
+  }, {});
 }
 
-function parseInputsArray(values: (string|{name: string, alias?: string, required?: boolean})[]) {
-  return values.reduce((results, value) => {
+function parseInputsArray(
+    values: (string|{name: string, alias?: string, required?: boolean, transform?: Function})[]) {
+  return values.reduce<InputMap>((results, value) => {
     if (typeof value === 'string') {
       const [bindingPropertyName, classPropertyName] = parseMappingString(value);
-      results[classPropertyName] = {bindingPropertyName, classPropertyName, required: false};
+      results[classPropertyName] = {
+        bindingPropertyName,
+        classPropertyName,
+        required: false,
+        transformFunction: null,
+      };
     } else {
       results[value.name] = {
         bindingPropertyName: value.alias || value.name,
         classPropertyName: value.name,
-        required: value.required || false
+        required: value.required || false,
+        transformFunction: value.transform != null ? new WrappedNodeExpr(value.transform) : null,
       };
     }
     return results;
-  }, {} as InputMap);
+  }, {});
 }
 
 function parseMappingStringArray(values: string[]): Record<string, string> {
-  return values.reduce((results, value) => {
+  return values.reduce<Record<string, string>>((results, value) => {
     const [alias, fieldName] = parseMappingString(value);
     results[fieldName] = alias;
     return results;
-  }, {} as Record<string, string>);
+  }, {});
 }
 
 function parseMappingString(value: string): [alias: string, fieldName: string] {

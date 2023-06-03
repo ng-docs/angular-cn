@@ -7,20 +7,21 @@
  */
 
 import {ApplicationRef} from '../application_ref';
+import {ViewEncapsulation} from '../metadata';
 import {collectNativeNodes} from '../render3/collect_native_nodes';
+import {getComponentDef} from '../render3/definition';
 import {CONTAINER_HEADER_OFFSET, LContainer} from '../render3/interfaces/container';
-import {TI18n} from '../render3/interfaces/i18n';
 import {TNode, TNodeType} from '../render3/interfaces/node';
 import {RElement} from '../render3/interfaces/renderer_dom';
 import {isComponentHost, isLContainer, isProjectionTNode, isRootView} from '../render3/interfaces/type_checks';
-import {HEADER_OFFSET, HOST, LView, RENDERER, TView, TVIEW, TViewType} from '../render3/interfaces/view';
+import {CONTEXT, FLAGS, HEADER_OFFSET, HOST, LView, LViewFlags, RENDERER, TView, TVIEW, TViewType} from '../render3/interfaces/view';
 import {unwrapRNode} from '../render3/util/view_utils';
 import {TransferState} from '../transfer_state';
 
-import {notYetSupportedI18nBlockError, unsupportedProjectionOfDomNodes} from './error_handling';
+import {unsupportedProjectionOfDomNodes} from './error_handling';
 import {CONTAINERS, DISCONNECTED_NODES, ELEMENT_CONTAINERS, MULTIPLIER, NODES, NUM_ROOT_NODES, SerializedContainerView, SerializedView, TEMPLATE_ID, TEMPLATES} from './interfaces';
 import {calcPathForNode} from './node_lookup_utils';
-import {isInSkipHydrationBlock, SKIP_HYDRATION_ATTR_NAME} from './skip_hydration';
+import {hasInSkipHydrationBlockFlag, isInSkipHydrationBlock, SKIP_HYDRATION_ATTR_NAME} from './skip_hydration';
 import {getComponentLViewForHydration, NGH_ATTR_NAME, NGH_DATA_KEY, TextNodeMarker} from './utils';
 
 /**
@@ -121,11 +122,15 @@ export function annotateForHydration(appRef: ApplicationRef, doc: Document) {
       }
     }
   }
-  const allSerializedViews = serializedViewCollection.getAll();
-  if (allSerializedViews.length > 0) {
-    const transferState = appRef.injector.get(TransferState);
-    transferState.set(NGH_DATA_KEY, allSerializedViews);
-  }
+
+  // Note: we *always* include hydration info key and a corresponding value
+  // into the TransferState, even if the list of serialized views is empty.
+  // This is needed as a signal to the client that the server part of the
+  // hydration logic was setup and enabled correctly. Otherwise, if a client
+  // hydration doesn't find a key in the transfer state - an error is produced.
+  const serializedViews = serializedViewCollection.getAll();
+  const transferState = appRef.injector.get(TransferState);
+  transferState.set(NGH_DATA_KEY, serializedViews);
 }
 
 /**
@@ -210,16 +215,6 @@ function appendDisconnectedNodeIndex(ngh: SerializedView, tNode: TNode) {
   if (!ngh[DISCONNECTED_NODES].includes(noOffsetIndex)) {
     ngh[DISCONNECTED_NODES].push(noOffsetIndex);
   }
-}
-
-/**
- * There is no special TNode type for an i18n block, so we verify
- * whether the structure that we store at the `TView.data[idx]` position
- * has the `TI18n` shape.
- */
-function isTI18nNode(obj: unknown): boolean {
-  const tI18n = obj as TI18n;
-  return tI18n.hasOwnProperty('create') && tI18n.hasOwnProperty('update');
 }
 
 /**
@@ -322,17 +317,6 @@ function serializeLView(lView: LView, context: HydrationContext): SerializedView
       if (!(targetNode as HTMLElement).hasAttribute(SKIP_HYDRATION_ATTR_NAME)) {
         annotateHostElementForHydration(targetNode as RElement, lView[i], context);
       }
-    } else if (isTI18nNode(tNode)) {
-      // Hydration for i18n nodes is not *yet* supported.
-      // Produce an error message which would also describe possible
-      // solutions (switching back to the "destructive" hydration or
-      // excluding a component from hydration via `ngSkipHydration`).
-      //
-      // TODO(akushnir): we should find a better way to get a hold of the node that has the `i18n`
-      // attribute on it. For now, we either refer to the host element of the component or to the
-      // previous element in the LView.
-      const targetNode = (i === HEADER_OFFSET) ? lView[HOST]! : unwrapRNode(lView[i - 1]);
-      throw notYetSupportedI18nBlockError(targetNode);
     } else {
       // <ng-container> case
       if (tNode.type & TNodeType.ElementContainer) {
@@ -383,7 +367,10 @@ function serializeLView(lView: LView, context: HydrationContext): SerializedView
         //     live DOM has exactly the same state as it was before serialization.
         if (tNode.type & TNodeType.Text) {
           const rNode = unwrapRNode(lView[i]) as HTMLElement;
-          if (rNode.textContent?.replace(/\s/gm, '') === '') {
+          // Collect this node as required special annotation only when its
+          // contents is empty. Otherwise, such text node would be present on
+          // the client after server-side rendering and no special handling needed.
+          if (rNode.textContent === '') {
             context.corruptedTextNodes.set(rNode, TextNodeMarker.EmptyNode);
           } else if (rNode.nextSibling?.nodeType === Node.TEXT_NODE) {
             context.corruptedTextNodes.set(rNode, TextNodeMarker.Separator);
@@ -404,7 +391,22 @@ function serializeLView(lView: LView, context: HydrationContext): SerializedView
 }
 
 /**
- * Physically adds the `ngh` attribute and serialized data to the host element.
+ * Determines whether a component instance that is represented
+ * by a given LView uses `ViewEncapsulation.ShadowDom`.
+ */
+function componentUsesShadowDomEncapsulation(lView: LView): boolean {
+  const instance = lView[CONTEXT];
+  return instance?.constructor ?
+      getComponentDef(instance.constructor)?.encapsulation === ViewEncapsulation.ShadowDom :
+      false;
+}
+
+/**
+ * Annotates component host element for hydration:
+ * - by either adding the `ngh` attribute and collecting hydration-related info
+ *   for the serialization and transferring to the client
+ * - or by adding the `ngSkipHydration` attribute in case Angular detects that
+ *   component contents is not compatible with hydration.
  *
  * @param element The Host element to be annotated
  * @param lView The associated LView
@@ -412,10 +414,20 @@ function serializeLView(lView: LView, context: HydrationContext): SerializedView
  */
 function annotateHostElementForHydration(
     element: RElement, lView: LView, context: HydrationContext): void {
-  const ngh = serializeLView(lView, context);
-  const index = context.serializedViewCollection.add(ngh);
   const renderer = lView[RENDERER];
-  renderer.setAttribute(element, NGH_ATTR_NAME, index.toString());
+  if ((lView[FLAGS] & LViewFlags.HasI18n) === LViewFlags.HasI18n ||
+      componentUsesShadowDomEncapsulation(lView)) {
+    // Attach the skip hydration attribute if this component:
+    // - either has i18n blocks, since hydrating such blocks is not yet supported
+    // - or uses ShadowDom view encapsulation, since Domino doesn't support
+    //   shadow DOM, so we can not guarantee that client and server representations
+    //   would exactly match
+    renderer.setAttribute(element, SKIP_HYDRATION_ATTR_NAME, '');
+  } else {
+    const ngh = serializeLView(lView, context);
+    const index = context.serializedViewCollection.add(ngh);
+    renderer.setAttribute(element, NGH_ATTR_NAME, index.toString());
+  }
 }
 
 /**

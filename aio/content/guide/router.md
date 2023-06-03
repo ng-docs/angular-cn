@@ -496,44 +496,39 @@ To use route guards, consider using [component-less routes](api/router/Route#com
 
 要想使用路由守卫，可以考虑使用[无组件路由](api/router/Route#componentless-routes)，因为这对于保护子路由很方便。
 
-Create a service for your guard:
+Create a file for your guard:
 
 为你的守卫创建一项服务：
 
-<!-- TODO: update CLI 
 <code-example format="shell" language="shell">
 
 ng generate guard your-guard
 
 </code-example>
--->
 
-In your guard function, implement the guard you want to use.
-The following example uses `canActivate` to guard the route.
+In your guard file, add the guard functions you want to use.
+The following example uses `canActivateFn` to guard the route.
 
 请在守卫函数里实现你要用到的守卫。下面的例子使用 `canActivate` 来保护该路由。
 
 <code-example header="guard (excerpt)">
 
-export const yourGuard: CanActivateFn = (
+export const yourGuardFunction: CanActivateFn = (
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) => {
       // your  logic goes here
   }
-
 </code-example>
-
 In your routing module, use the appropriate property in your `routes` configuration.
 Here, `canActivate` tells the router to mediate navigation to this particular route.
 
 在路由模块中，在 `routes` 配置中使用相应的属性。这里的 `canActivate` 会告诉路由器它要协调到这个特定路由的导航。
 
 <code-example header="Routing module (excerpt)">
-
 {
   path: '/your-path',
   component: YourComponent,
-  canActivate: [yourGuard],
+  canActivate: [yourGuardFunction],
 }
 
 </code-example>

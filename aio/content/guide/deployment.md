@@ -404,7 +404,7 @@ The `production` configuration engages the following build optimization features
 | 特性                                                      | 详细信息                                                                 |
 | [Ahead-of-Time \(AOT\) Compilation](guide/aot-compiler) | Pre-compiles Angular component templates.                                |
 | [预先（AOT）编译](guide/aot-compiler)                      | 预编译 Angular 的组件模板。                                              |
-| [Production mode](#enable-prod-mode)                    | Deploys the production environment which enables *production mode*.      |
+| [Production mode](#prod-mode)                    | Optimizes the application for the best runtime performance |
 | [生产模式](#enable-prod-mode)                               | 部署到启用了*生产模式*的生产环境。                                       |
 | Bundling                                                | Concatenates your many application and library files into a few bundles. |
 | 打包                                                      | 把你的多个应用于库文件拼接到少量包（bundle）中。                         |
@@ -419,28 +419,22 @@ See [`ng build`](cli/build) for more about CLI build options and what they do.
 
 要了解关于 CLI 构建选项及其作用的更多知识，参阅 [`ng build`](cli/build)。
 
-<a id="enable-prod-mode"></a>
+<a id="prod-mode"></a>
 
-### Enable runtime production mode
+### Production mode at runtime
 
-### 启用生产模式
+When you run an application locally using `ng serve`, Angular uses the development mode configuration
+at runtime. The development mode at runtime enables extra safety checks, more detailed error messages
+and debugging utilities, such as the [expression-changed-after-checked](errors/NG0100) detection. Angular outputs
+a message in the browser console to indicate that the development mode is enabled.
 
-In addition to build optimizations, Angular also has a runtime production mode.
-Angular applications run in development mode by default, as you can see by the following message on the browser console:
+Those extra checks are helpful during the development, but they require an extra code in a bundle, which is
+undesirable in production. To ensure that there are no implications on the bundle size, the build optimizer
+removes the development-only code from the bundle when building in production mode.
 
-除了构建期优化之外，Angular 还支持运行期生产模式。Angular 应用默认运行在开发模式下，你可以在浏览器的控制台中看到如下信息：
-
-<code-example format="output" hideCopy language="shell">
-
-Angular is running in development mode.
-Call `enableProdMode()` to enable production mode.
-
-</code-example>
-
-*Production mode* improves application performance by disabling development-only safety checks and debugging utilities, such as the expression-changed-after-checked detection.
 Building your application with the production configuration automatically enables Angular's runtime production mode.
 
-*生产模式*通过禁用仅供开发用的安全检查和调试工具（比如，expression-changed-after-checked 检测）来提高应用程序性能。使用生产配置构建应用程序时会自动启用 Angular 的运行时生产模式。
+使用生产配置构建应用程序时会自动启用 Angular 的运行时生产模式。
 
 <a id="lazy-loading"></a>
 

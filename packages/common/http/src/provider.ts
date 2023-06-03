@@ -63,18 +63,12 @@ function makeHttpFeature<KindT extends HttpFeatureKind>(
  *
  * 默认情况下， `HttpClient` 将配置为注入，其默认选项是对传出请求的 XSRF 保护。可以通过将特性函数传递给 `provideHttpClient` 来提供其他配置选项。例如，可以用 `withInterceptors(...)` 特性添加 HTTP 拦截器。
  *
- * @see withInterceptors
- *
- * 带有拦截器
- *
- * @see withInterceptorsFromDi
- * @see withXsrfConfiguration
- * @see withNoXsrfProtection
- * @see withJsonpSupport
- *
- * 使用 Jsonp 支持
- *
- * @see withRequestsMadeViaParent
+ * @see {@link withInterceptors}
+ * @see {@link withInterceptorsFromDi}
+ * @see {@link withXsrfConfiguration}
+ * @see {@link withNoXsrfProtection}
+ * @see {@link withJsonpSupport}
+ * @see {@link withRequestsMadeViaParent}
  */
 export function provideHttpClient(...features: HttpFeature<HttpFeatureKind>[]):
     EnvironmentProviders {
@@ -117,11 +111,8 @@ export function provideHttpClient(...features: HttpFeature<HttpFeatureKind>[]):
  *
  * 将一个或多个功能风格的 HTTP 拦截器添加到 `HttpClient` 实例的配置中。
  *
- * @see HttpInterceptorFn
- * @see provideHttpClient
- *
- * 提供 HttpClient
- *
+ * @see {@link HttpInterceptorFn}
+ * @see {@link provideHttpClient}
  * @publicApi
  */
 export function withInterceptors(interceptorFns: HttpInterceptorFn[]):
@@ -146,14 +137,11 @@ const LEGACY_INTERCEPTOR_FN = new InjectionToken<HttpInterceptorFn>('LEGACY_INTE
  * Prefer `withInterceptors` and functional interceptors instead, as support for DI-provided
  * interceptors may be phased out in a later release.
  *
- * 更喜欢 `withInterceptors` 和功能性拦截器，因为对 DI 提供的拦截器的支持可能会在以后的版本中逐步淘汰。
+ * 更推荐 `withInterceptors` 和函数式拦截器，因为对 DI 提供的拦截器的支持可能会在以后的版本中逐步淘汰。
  *
- * @see HttpInterceptor
- * @see HTTP_INTERCEPTORS
- * @see provideHttpClient
- *
- * 提供 HttpClient
- *
+ * @see {@link HttpInterceptor}
+ * @see {@link HTTP_INTERCEPTORS}
+ * @see {@link provideHttpClient}
  */
 export function withInterceptorsFromDi(): HttpFeature<HttpFeatureKind.LegacyInterceptors> {
   // Note: the legacy interceptor function is provided here via an intermediate token
@@ -183,10 +171,7 @@ export function withInterceptorsFromDi(): HttpFeature<HttpFeatureKind.LegacyInte
  *
  * 此特性与 `withNoXsrfProtection` 特性不兼容。
  *
- * @see provideHttpClient
- *
- * 提供 HttpClient
- *
+ * @see {@link provideHttpClient}
  */
 export function withXsrfConfiguration(
     {cookieName, headerName}: {cookieName?: string, headerName?: string}):
@@ -211,10 +196,7 @@ export function withXsrfConfiguration(
  *
  * 此特性与 `withXsrfConfiguration` 特性不兼容。
  *
- * @see provideHttpClient
- *
- * 提供 HttpClient
- *
+ * @see {@link provideHttpClient}
  */
 export function withNoXsrfProtection(): HttpFeature<HttpFeatureKind.NoXsrfProtection> {
   return makeHttpFeature(HttpFeatureKind.NoXsrfProtection, [
@@ -230,10 +212,7 @@ export function withNoXsrfProtection(): HttpFeature<HttpFeatureKind.NoXsrfProtec
  *
  * 将 JSONP 支持添加到当前 `HttpClient` 实例的配置中。
  *
- * @see provideHttpClient
- *
- * 提供 HttpClient
- *
+ * @see {@link provideHttpClient}
  */
 export function withJsonpSupport(): HttpFeature<HttpFeatureKind.JsonpSupport> {
   return makeHttpFeature(HttpFeatureKind.JsonpSupport, [
@@ -268,10 +247,7 @@ export function withJsonpSupport(): HttpFeature<HttpFeatureKind.JsonpSupport> {
  *
  * 如果注入器层次结构中有几个 `HttpClient` 实例，则 `withRequestsMadeViaParent` 可能会在多个级别使用，这将导致请求“冒泡”，直到达到根级别或未配置使用此选项的 `HttpClient` 。
  *
- * @see provideHttpClient
- *
- * 提供 HttpClient
- *
+ * @see {@link provideHttpClient}
  * @developerPreview
  */
 export function withRequestsMadeViaParent(): HttpFeature<HttpFeatureKind.RequestsMadeViaParent> {

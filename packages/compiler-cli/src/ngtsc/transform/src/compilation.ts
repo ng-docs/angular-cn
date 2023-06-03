@@ -458,7 +458,7 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
   }
 
   resolve(): void {
-    const classes = Array.from(this.classes.keys());
+    const classes = this.classes.keys();
     for (const clazz of classes) {
       const record = this.classes.get(clazz)!;
       for (let trait of record.traits) {
@@ -700,8 +700,8 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
             trait.analysisDiagnostics !== null) {
           diagnostics.push(...trait.analysisDiagnostics);
         }
-        if (trait.state === TraitState.Resolved && trait.resolveDiagnostics !== null) {
-          diagnostics.push(...trait.resolveDiagnostics);
+        if (trait.state === TraitState.Resolved) {
+          diagnostics.push(...(trait.resolveDiagnostics ?? []));
         }
       }
     }

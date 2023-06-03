@@ -7,7 +7,7 @@ This topic describes how to select an Angular documentation issue to fix.
 本主题介绍如何选择要修复的 Angular 文档问题。
 
 Angular documentation issues are stored in the **Issues** tab of the [angular/angular](https://github.com/angular/angular) repo.
-Documentation issues can be identified by the `comp: docs` label and they are labeled by priority.
+Documentation issues can be identified by the `area: docs` label and they are labeled by priority.
 
 Angular 文档问题存储在[angular/angular](https://github.com/angular/angular)存储库的**问题**选项卡中。文档问题可以通过 `comp: docs` 标签来识别，并按优先级标记。
 
@@ -48,14 +48,14 @@ After you select an issue to resolve:
 
 | Links to documentation issues                                                                                                                                                                                     |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [All open documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22comp%3A+docs%22)                                                                                      |
-| [All open and unassigned documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22comp%3A+docs%22+no%3Aassignee+-label%3A"state%3A+has+PR")                              |
-| [Unassigned good first documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22comp%3A+docs%22+label%3A%22good+first+issue%22+no%3Aassignee+-label%3A"state%3A+has+PR") |
-| [Unassigned priority 1 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22comp%3A+docs%22+label%3Ap1+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
-| [Unassigned priority 2 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22comp%3A+docs%22+label%3Ap2+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
-| [Unassigned priority 3 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22comp%3A+docs%22+label%3Ap3+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
-| [Unassigned priority 4 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22comp%3A+docs%22+label%3Ap4+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
-| [Unassigned priority 5 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22comp%3A+docs%22+label%3Ap5+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
+| [All open documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22)                                                                                      |
+| [All open and unassigned documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+no%3Aassignee+-label%3A"state%3A+has+PR")                              |
+| [Unassigned good first documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3A%22good+first+issue%22+no%3Aassignee+-label%3A"state%3A+has+PR") |
+| [Unassigned priority 1 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap1+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
+| [Unassigned priority 2 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap2+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
+| [Unassigned priority 3 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap3+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
+| [Unassigned priority 4 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap4+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
+| [Unassigned priority 5 documentation issues](https://github.com/angular/angular/issues?q=is%3Aissue+is%3Aopen+label%3A%22area%3A+docs%22+label%3Ap5+no%3Aassignee+-label%3A"state%3A+has+PR")                     |
 
 <!-- links -->
 

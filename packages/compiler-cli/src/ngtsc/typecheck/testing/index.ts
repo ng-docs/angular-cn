@@ -13,7 +13,7 @@ import {absoluteFrom, AbsoluteFsPath, getSourceFileOrError, LogicalFileSystem} f
 import {TestFile} from '../../file_system/testing';
 import {AbsoluteModuleStrategy, LocalIdentifierStrategy, LogicalProjectStrategy, ModuleResolver, Reference, ReferenceEmitter, RelativePathStrategy} from '../../imports';
 import {NOOP_INCREMENTAL_BUILD} from '../../incremental';
-import {ClassPropertyMapping, CompoundMetadataReader, DirectiveMeta, HostDirectivesResolver, InputMapping, MatchSource, MetadataReaderWithIndex, MetaKind, NgModuleIndex} from '../../metadata';
+import {ClassPropertyMapping, CompoundMetadataReader, DirectiveMeta, HostDirectivesResolver, InputMapping, InputTransform, MatchSource, MetadataReaderWithIndex, MetaKind, NgModuleIndex} from '../../metadata';
 import {NOOP_PERF_RECORDER} from '../../perf';
 import {TsCreateProgramDriver} from '../../program_driver';
 import {ClassDeclaration, isNamedClassDeclaration, TypeScriptReflectionHost} from '../../reflection';
@@ -236,7 +236,10 @@ export interface TestDirective extends Partial<Pick<
   inputs?: {
     [fieldName: string]:
         string|{
-          classPropertyName: string, bindingPropertyName: string, required: boolean
+          classPropertyName: string;
+          bindingPropertyName: string;
+          required: boolean;
+          transform: InputTransform|null;
         }
   };
   outputs?: {[fieldName: string]: string};
@@ -689,6 +692,7 @@ function getDirectiveMetaFromDeclaration(
     queries: decl.queries || [],
     isStructural: false,
     isStandalone: !!decl.isStandalone,
+    isSignal: !!decl.isSignal,
     baseClass: null,
     animationTriggerNames: null,
     decorator: null,
@@ -745,9 +749,11 @@ function makeScope(program: ts.Program, sf: ts.SourceFile, decls: TestDeclaratio
         isStructural: false,
         animationTriggerNames: null,
         isStandalone: false,
+        isSignal: false,
         imports: null,
         schemas: null,
         decorator: null,
+        assumedToExportProviders: false,
         hostDirectives:
             decl.hostDirectives === undefined ? null : decl.hostDirectives.map(hostDecl => {
               return {

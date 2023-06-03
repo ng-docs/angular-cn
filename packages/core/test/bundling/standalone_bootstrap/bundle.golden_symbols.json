@@ -27,6 +27,9 @@
     "name": "BROWSER_MODULE_PROVIDERS"
   },
   {
+    "name": "BehaviorSubject"
+  },
+  {
     "name": "BrowserDomAdapter"
   },
   {
@@ -75,12 +78,6 @@
     "name": "DEFAULT_APP_ID"
   },
   {
-    "name": "DEFAULT_LOCALE_ID"
-  },
-  {
-    "name": "DI_DECORATOR_FLAG"
-  },
-  {
     "name": "DOCUMENT"
   },
   {
@@ -88,6 +85,9 @@
   },
   {
     "name": "DefaultDomRenderer2"
+  },
+  {
+    "name": "DistinctUntilChangedSubscriber"
   },
   {
     "name": "DomAdapter"
@@ -106,9 +106,6 @@
   },
   {
     "name": "ENVIRONMENT_INITIALIZER"
-  },
-  {
-    "name": "ERROR_ORIGINAL_ERROR"
   },
   {
     "name": "EVENT_MANAGER_PLUGINS"
@@ -160,6 +157,9 @@
   },
   {
     "name": "INTERNAL_BROWSER_PLATFORM_PROVIDERS"
+  },
+  {
+    "name": "InitialRenderPendingTasks"
   },
   {
     "name": "InjectFlags"
@@ -243,12 +243,6 @@
     "name": "NG_TEMPLATE_SELECTOR"
   },
   {
-    "name": "NG_TEMP_TOKEN_PATH"
-  },
-  {
-    "name": "NG_TOKEN_PATH"
-  },
-  {
     "name": "NOOP_CLEANUP_FN"
   },
   {
@@ -262,9 +256,6 @@
   },
   {
     "name": "NO_CHANGE"
-  },
-  {
-    "name": "NO_NEW_LINE"
   },
   {
     "name": "NO_PARENT_INJECTOR"
@@ -312,9 +303,6 @@
     "name": "PRESERVE_HOST_CONTENT"
   },
   {
-    "name": "PRESERVE_HOST_CONTENT_DEFAULT"
-  },
-  {
     "name": "R3Injector"
   },
   {
@@ -346,9 +334,6 @@
   },
   {
     "name": "SIMPLE_CHANGES_STORE"
-  },
-  {
-    "name": "SOURCE"
   },
   {
     "name": "SafeSubscriber"
@@ -507,9 +492,6 @@
     "name": "applyView"
   },
   {
-    "name": "assertDefined"
-  },
-  {
     "name": "attachPatchData"
   },
   {
@@ -522,6 +504,9 @@
     "name": "callHook"
   },
   {
+    "name": "callHookInternal"
+  },
+  {
     "name": "callHooks"
   },
   {
@@ -529,6 +514,9 @@
   },
   {
     "name": "cleanUpView"
+  },
+  {
+    "name": "clearViewRefreshFlag"
   },
   {
     "name": "collectNativeNodes"
@@ -582,6 +570,18 @@
     "name": "detachMovedView"
   },
   {
+    "name": "detectChangesInChildComponents"
+  },
+  {
+    "name": "detectChangesInComponent"
+  },
+  {
+    "name": "detectChangesInEmbeddedViews"
+  },
+  {
+    "name": "detectChangesInView"
+  },
+  {
     "name": "detectChangesInternal"
   },
   {
@@ -625,6 +625,9 @@
   },
   {
     "name": "forwardRef"
+  },
+  {
+    "name": "fromArray"
   },
   {
     "name": "generateInitialInputs"
@@ -822,6 +825,9 @@
     "name": "isObject"
   },
   {
+    "name": "isPlatformServer"
+  },
+  {
     "name": "isPositive"
   },
   {
@@ -829,6 +835,9 @@
   },
   {
     "name": "isPromise2"
+  },
+  {
+    "name": "isScheduler"
   },
   {
     "name": "isStableFactory"
@@ -865,6 +874,9 @@
   },
   {
     "name": "markViewDirty"
+  },
+  {
+    "name": "markViewForRefresh"
   },
   {
     "name": "maybeWrapInNotSelector"
@@ -928,12 +940,6 @@
   },
   {
     "name": "refCount"
-  },
-  {
-    "name": "refreshComponent"
-  },
-  {
-    "name": "refreshContainsDirtyView"
   },
   {
     "name": "refreshContentQueries"
@@ -1008,6 +1014,9 @@
     "name": "setUpAttributes"
   },
   {
+    "name": "share"
+  },
+  {
     "name": "shareSubjectFactory"
   },
   {
@@ -1044,19 +1053,19 @@
     "name": "updateMicroTaskStatus"
   },
   {
-    "name": "updateTransplantedViewCount"
+    "name": "updateViewsToRefresh"
   },
   {
     "name": "urlParsingNode"
-  },
-  {
-    "name": "viewAttachedToChangeDetector"
   },
   {
     "name": "walkProviderTree"
   },
   {
     "name": "writeDirectClass"
+  },
+  {
+    "name": "writeToDirectiveInput"
   },
   {
     "name": "ɵɵStandaloneFeature"

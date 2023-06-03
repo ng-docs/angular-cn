@@ -128,7 +128,7 @@ export function getLocaleCurrencyCode(locale: string): string|null {
  *
  * 语言环境的复数函数。
  * @see `NgPlural`
- * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](https://angular.io/guide/i18n-overview)
  *

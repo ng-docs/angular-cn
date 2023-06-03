@@ -225,7 +225,7 @@ export const enum NavigationCancellationCode {
    */
   SupersededByNewNavigation,
   /**
-   * A navigation failed because one of the resolvers completed without emiting a value.
+   * A navigation failed because one of the resolvers completed without emitting a value.
    *
    * 导航失败，因为其中一个解析器在未发出值的情况下完成。
    *

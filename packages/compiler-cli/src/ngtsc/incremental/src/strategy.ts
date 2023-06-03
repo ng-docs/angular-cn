@@ -11,7 +11,7 @@ import ts from 'typescript';
 import {IncrementalState} from './state';
 
 /**
- * Strategy used to manage the association between a `ts.Program` and the `IncrementalDriver` which
+ * Strategy used to manage the association between a `ts.Program` and the `IncrementalState` which
  * represents the reusable Angular part of its compilation.
  *
  * 用于管理 `ts.Program` 和 `IncrementalDriver` 之间关联的策略，IncrementalDriver 表示其编译的可重用
@@ -20,7 +20,7 @@ import {IncrementalState} from './state';
  */
 export interface IncrementalBuildStrategy {
   /**
-   * Determine the Angular `IncrementalDriver` for the given `ts.Program`, if one is available.
+   * Determine the Angular `IncrementalState` for the given `ts.Program`, if one is available.
    *
    * 确定给定 `ts.Program` 的 Angular `IncrementalDriver`（如果有）。
    *
@@ -28,7 +28,7 @@ export interface IncrementalBuildStrategy {
   getIncrementalState(program: ts.Program): IncrementalState|null;
 
   /**
-   * Associate the given `IncrementalDriver` with the given `ts.Program` and make it available to
+   * Associate the given `IncrementalState` with the given `ts.Program` and make it available to
    * future compilations.
    *
    * 将给定的 `IncrementalDriver` 与给定的 `ts.Program` ，并使其可用于将来的编译。
@@ -67,7 +67,7 @@ export class NoopIncrementalBuildStrategy implements IncrementalBuildStrategy {
 }
 
 /**
- * Tracks an `IncrementalDriver` within the strategy itself.
+ * Tracks an `IncrementalState` within the strategy itself.
  *
  * 跟踪策略本身中的 `IncrementalDriver` 。
  *
@@ -94,8 +94,8 @@ export class TrackedIncrementalBuildStrategy implements IncrementalBuildStrategy
 }
 
 /**
- * Manages the `IncrementalDriver` associated with a `ts.Program` by monkey-patching it onto the
- * program under `SYM_INCREMENTAL_DRIVER`.
+ * Manages the `IncrementalState` associated with a `ts.Program` by monkey-patching it onto the
+ * program under `SYM_INCREMENTAL_STATE`.
  *
  * 管理与 `ts.Program` 关联的 `IncrementalDriver` ，方法是通过将其添加到 `SYM_INCREMENTAL_DRIVER`
  * 下的程序上的猴子补丁来管理。
@@ -121,7 +121,7 @@ export class PatchedProgramIncrementalBuildStrategy implements IncrementalBuildS
 
 
 /**
- * Symbol under which the `IncrementalDriver` is stored on a `ts.Program`.
+ * Symbol under which the `IncrementalState` is stored on a `ts.Program`.
  *
  * 在 `ts.Program` 上存储 `IncrementalDriver` 的符号。
  *
@@ -135,8 +135,8 @@ export class PatchedProgramIncrementalBuildStrategy implements IncrementalBuildS
  * 编译（即，它无需是从 `NgCompiler` 创建的）。
  *
  * If it is, though, Angular can benefit from reusing previous analysis work. This reuse is managed
- * by the `IncrementalDriver`, which is inherited from the old program to the new program. To
- * support this behind the API of passing an old `ts.Program`, the `IncrementalDriver` is stored on
+ * by the `IncrementalState`, which is inherited from the old program to the new program. To
+ * support this behind the API of passing an old `ts.Program`, the `IncrementalState` is stored on
  * the `ts.Program` under this symbol.
  *
  * 不过，如果是这样，Angular 可以从重用以前的分析工作中受益。这种重用由 `IncrementalDriver`

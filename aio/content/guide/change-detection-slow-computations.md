@@ -43,10 +43,9 @@ Here are several techniques to remove slow computations:
 
   **优化底层算法**。这是推荐的方法。如果你可以加快导致问题的算法的速度，则可以加快整个变更检测机制。
 
-* **Caching using pure pipes**. You can move the heavy computation to a pure [pipe](https://angular.io/guide/pipes). Angular reevaluates a pure pipe only if it detects that its inputs have changed, compared to the previous time Angular called it.
+* **Caching using pure pipes**. You can move the heavy computation to a pure [pipe](/guide/pipes). Angular reevaluates a pure pipe only if it detects that its inputs have changed, compared to the previous time Angular called it.
 
   **使用纯管道进行缓存**。你可以将繁重的计算移动到纯[管道](https://angular.io/guide/pipes)中。与 Angular 上一次调用它时相比，只有在检测到其输入发生更改时，Angular 才会重新估算纯管道。
-
 * **Using memoization**. [Memoization](https://en.wikipedia.org/wiki/Memoization) is a similar technique to pure pipes, with the difference that pure pipes preserve only the last result from the computation where memoization could store multiple results.
 
   **使用记忆化（memoization）**。[记忆化](https://en.wikipedia.org/wiki/Memoization)是一种与纯管道类似的技术，不同之处在于纯管道仅保留计算中的最后一个结果，而记忆化可以存储多个结果。

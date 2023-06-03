@@ -353,7 +353,7 @@ Angular 应用程序可以通过指定一组可用的提供者来配置依赖注
 
 #### 环境注入器
 
-Making `NgModule`s optional will require new ways of configuring "module" injectors with application-wide providers \(for example, [HttpClient](https://angular.io/api/common/http/HttpClient)\). In the standalone application \(one created with `bootstrapApplication`\), “module” providers can be configured during the bootstrap process, in the `providers` option: 
+Making `NgModule`s optional will require new ways of configuring "module" injectors with application-wide providers \(for example, [HttpClient](/api/common/http/HttpClient)\). In the standalone application \(one created with `bootstrapApplication`\), “module” providers can be configured during the bootstrap process, in the `providers` option: 
 
 使 `NgModule` 变成可选的将需要一种新方法来用应用程序范围的提供者（例如[HttpClient](https://angular.io/api/common/http/HttpClient)）配置“模块”注入器。在独立应用程序（使用 `bootstrapApplication` 创建的）中，可以在引导过程中在 `providers` 选项中配置“模块”提供者：
 
@@ -465,3 +465,42 @@ When Angular creates a standalone component, it needs to know that the current i
 A separate standalone injector is created to ensure that providers imported by a standalone component are “isolated” from the rest of the application. This lets us think of standalone components as truly self-contained pieces that can’t “leak” their implementation details to the rest of the application.
 
 创建了一个单独的独立注入器，以确保独立组件导入的提供者与应用程序的其余部分“隔离”。这让我们将独立组件视为真正独立的部分，不能将它们的实现细节“泄漏”给应用程序的其余部分。
+
+#### Resolve circular dependencies with a forward class reference
+
+The order of class declaration matters in TypeScript. You can't refer directly to a class until it's been defined.
+
+This isn't usually a problem but sometimes circular references are unavoidable. For example, when class 'A' refers to class 'B' and 'B' refers to 'A'. One of them has to be defined first.
+
+The Angular `forwardRef()` function creates an indirect reference that Angular can resolve later. 
+
+For example, this situation happens when a standalone parent component imports a standalone child component and vice-versa. You can resolve this circular dependency issue by using the `forwardRef` function.
+
+```ts
+@Component({
+  standalone: true, 
+  imports: [ChildComponent],
+  selector: 'app-parent',
+  template: `<app-child [hideParent]="hideParent"></app-child>`,
+})
+export class ParentComponent {
+  @Input() hideParent: boolean;
+}
+
+
+@Component({
+  standalone: true,
+  imports: [CommonModule, forwardRef(() => ParentComponent)],
+  selector: 'app-child',
+  template: `<app-parent *ngIf="!hideParent"></app-parent>`,
+})
+export class ChildComponent {
+  @Input() hideParent: boolean;
+}
+```
+
+<div class="alert is-important">
+
+This kind of imports may result in an infinite recursion during component instantiation. Make sure that this recursion has an exit condition that stops it at some point.
+
+</div>

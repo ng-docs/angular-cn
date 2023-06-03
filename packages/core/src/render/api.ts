@@ -264,7 +264,6 @@ export abstract class Renderer2 {
    * 要查询的子节点。
    *
    * @returns The parent node, or null if there is no parent.
-   * For WebWorkers, always returns true.
    * This is because the check is synchronous,
    * and the caller can't rely on checking for null.
    *
@@ -280,7 +279,6 @@ export abstract class Renderer2 {
    * 实现此回调，以获得宿主元素的 DOM 中指定节点的下一个兄弟节点。
    *
    * @returns The sibling node, or null if there is no sibling.
-   * For WebWorkers, always returns a value.
    * This is because the check is synchronous,
    * and the caller can't rely on checking for null.
    *

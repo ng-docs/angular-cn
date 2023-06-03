@@ -82,8 +82,8 @@ export function jsonpCallbackContext(): Object {
  *
  * 通过执行 JSONP 风格的请求，使用 JSONP 方法处理 `HttpRequest`
  *
- * @see `HttpHandler`
- * @see `HttpXhrBackend`
+ * @see {@link HttpHandler}
+ * @see {@link HttpXhrBackend}
  *
  * @publicApi
  */
@@ -293,7 +293,7 @@ export function jsonpInterceptorFn(
  *
  * 使用 JSONP 方法标识这些请求，并将其转移到 `JsonpClientBackend` 。
  *
- * @see `HttpInterceptor`
+ * @see {@link HttpInterceptor}
  *
  * @publicApi
  */

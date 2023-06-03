@@ -2,7 +2,7 @@
 
 # 解决区域（Zone）污染
 
-**Zone.js** is a signaling mechanism that Angular uses to detect when an application state might have changed. It captures asynchronous operations like `setTimeout`, network requests, and event listeners. Angular schedules change detection based on signals from Zone.js
+**Zone.js** is a signaling mechanism that Angular uses to detect when an application state might have changed. It captures asynchronous operations like `setTimeout`, network requests, and event listeners. Angular schedules change detection based on signals from Zone.js.
 
 **Zone.js**是一种信号机制，Angular 用它来检测应用程序状态何时可能已更改。它捕获异步操作，比如 `setTimeout`、网络请求和事件侦听器。Angular 会根据来自 Zone.js 的信号安排变更检测
 
@@ -42,7 +42,7 @@ In the image above, there is a series of change detection calls triggered by eve
 
 ## 在 `NgZone` 之外运行任务
 
-In such cases, you can instruct Angular to avoid calling change detection for tasks scheduled by a given piece of code using [NgZone](https://angular.io/guide/zone).
+In such cases, you can instruct Angular to avoid calling change detection for tasks scheduled by a given piece of code using [NgZone](/guide/zone).
 
 在这种情况下，你可以指示 Angular 避免使用[NgZone](https://angular.io/guide/zone)为给定代码段调度的任务调用变更检测。
 

@@ -39,7 +39,7 @@ const MIN_TS_VERSION = '4.9.3';
  * 配置参数值。
  *
  */
-const MAX_TS_VERSION = '5.1.0';
+const MAX_TS_VERSION = '5.2.0';
 
 /**
  * The currently used version of TypeScript, which can be adjusted for testing purposes using

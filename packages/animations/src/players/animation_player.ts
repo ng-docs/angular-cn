@@ -131,7 +131,7 @@ export interface AnimationPlayer {
    * 持续时间中从 0 开始的偏移量，以毫秒为单位。
    *
    */
-  setPosition(position: any /** TODO #9100 */): void;
+  setPosition(position: number): void;
   /**
    * Reports the current position of the animation.
    *

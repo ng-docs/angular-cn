@@ -26,6 +26,8 @@
     {$ doc.description | marked $}
   </div>
 
+
+  {% if doc.debugging %}
   <br>
 
   <div class="debugging">
@@ -33,4 +35,5 @@
   <h2 translation-origin="off">Debugging the error</h2>
     {$ doc.debugging | marked $}
   </div>
+  {% endif%}
 </div>

@@ -176,7 +176,7 @@ Here, `ref2` is declared in the child scope created by `*ngIf`, and is not acces
 
 ## 模板输入变量
 
-A _template input variable_ is a variable with a value that is set when an instance of that template is created. See: [Writing structural directives](https://angular.io/guide/structural-directives)
+A _template input variable_ is a variable with a value that is set when an instance of that template is created. See: [Writing structural directives](/guide/structural-directives)
 
 *模板输入变量*是一个具有在创建该模板实例时设置的值的变量。请参阅：[编写结构指令](https://angular.io/guide/structural-directives)
 
@@ -216,7 +216,7 @@ When an `<ng-template>` is instantiated, multiple named values can be passed whi
 
 ## 下一步呢？
 
-[Writing structural directives](https://angular.io/guide/structural-directives)
+[Writing structural directives](/guide/structural-directives)
 
 [编写结构指令](https://angular.io/guide/structural-directives)
 

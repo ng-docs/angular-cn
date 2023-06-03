@@ -92,8 +92,8 @@ export function validateElementIsKnown(
     // as a custom element. Note that unknown elements with a dash in their name won't be instances
     // of HTMLUnknownElement in browsers that support web components.
     const isUnknown =
-        // Note that we can't check for `typeof HTMLUnknownElement === 'function'`,
-        // because while most browsers return 'function', IE returns 'object'.
+        // Note that we can't check for `typeof HTMLUnknownElement === 'function'` because
+        // Domino doesn't expose HTMLUnknownElement globally.
         (typeof HTMLUnknownElement !== 'undefined' && HTMLUnknownElement &&
          element instanceof HTMLUnknownElement) ||
         (typeof customElements !== 'undefined' && tagName.indexOf('-') > -1 &&
@@ -154,13 +154,12 @@ export function isPropertyValid(
   if (schemas === null) return true;
 
   // The property is considered valid if the element matches the schema, it exists on the element,
-  // or it is synthetic, and we are in a browser context (web worker nodes should be skipped).
+  // or it is synthetic.
   if (matchingSchemas(schemas, tagName) || propName in element || isAnimationProp(propName)) {
     return true;
   }
 
-  // Note: `typeof Node` returns 'function' in most browsers, but on IE it is 'object' so we
-  // need to account for both here, while being careful with `typeof null` also returning 'object'.
+  // Note: `typeof Node` returns 'function' in most browsers, but is undefined with domino.
   return typeof Node === 'undefined' || Node === null || !(element instanceof Node);
 }
 

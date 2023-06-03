@@ -53,6 +53,7 @@ export interface ApplicationConfig {
 
 // @public
 export class ApplicationInitStatus {
+    constructor();
     // (undocumented)
     readonly done = false;
     // (undocumented)
@@ -119,6 +120,9 @@ export interface AttributeDecorator {
     // (undocumented)
     new (name: string): Attribute;
 }
+
+// @public
+export function booleanAttribute(value: unknown): boolean;
 
 // @public
 export interface BootstrapOptions {
@@ -480,6 +484,7 @@ export interface Directive {
         name: string;
         alias?: string;
         required?: boolean;
+        transform?: (value: any) => any;
     } | string)[];
     jit?: true;
     outputs?: string[];
@@ -512,7 +517,7 @@ export interface DoCheck {
 }
 
 // @public
-export function effect(effectFn: () => EffectCleanupFn | void, options?: CreateEffectOptions): EffectRef;
+export function effect(effectFn: (onCleanup: EffectCleanupRegisterFn) => void, options?: CreateEffectOptions): EffectRef;
 
 // @public
 export type EffectCleanupFn = () => void;
@@ -821,6 +826,7 @@ export interface InjectorType<T> extends Type<T> {
 export interface Input {
     alias?: string;
     required?: boolean;
+    transform?: (value: any) => any;
 }
 
 // @public (undocumented)
@@ -837,7 +843,7 @@ export interface InputDecorator {
 export function isDevMode(): boolean;
 
 // @public
-export function isSignal(value: Function): value is Signal<unknown>;
+export function isSignal(value: unknown): value is Signal<unknown>;
 
 // @public
 export function isStandalone(type: Type<unknown>): boolean;
@@ -1057,6 +1063,9 @@ export interface NgZoneOptions {
 
 // @public
 export const NO_ERRORS_SCHEMA: SchemaMetadata;
+
+// @public
+export function numberAttribute(value: unknown, fallbackValue?: number): number;
 
 // @public
 export interface OnChanges {
@@ -1466,6 +1475,8 @@ export interface TypeDecorator {
     <T extends Type<any>>(type: T): T;
     // (undocumented)
     (target: Object, propertyKey?: string | symbol, parameterIndex?: number): void;
+    // (undocumented)
+    (target: unknown, context: unknown): void;
 }
 
 // @public
@@ -1589,6 +1600,7 @@ export abstract class ViewRef extends ChangeDetectorRef {
 
 // @public
 export interface WritableSignal<T> extends Signal<T> {
+    asReadonly(): Signal<T>;
     mutate(mutatorFn: (value: T) => void): void;
     set(value: T): void;
     update(updateFn: (value: T) => T): void;

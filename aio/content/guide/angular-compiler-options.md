@@ -59,7 +59,7 @@ Do not use this option outside of the Bazel rules.
 
 Modifies how Angular-specific annotations are emitted to improve tree-shaking.
 Non-Angular annotations are not affected.
-One of `static fields` or `decorators`. The default value is `static fields`. 
+One of `static fields` or `decorators`. The default value is `static fields`.
 
 修改 Angular 专有注解的生成方式，以改善摇树优化。非 Angular 注解不受影响。可选值为 `static fields` 或 `decorators`。默认值为 `static fields`。
 
@@ -252,6 +252,12 @@ Set to `true` to preserve blank text nodes.
 
 如果为 `false`（默认值），则从编译的模板中删除空白文本节点，这将生成较小的模板工厂模块。设置为 `true` 以保留空白文本节点。
 
+<div class="alert is-helpful">
+
+When using hydration, it is recommended that you use `preserveWhitespaces: false`, which is the default value. If you choose to enable preserving whitespaces by adding `preserveWhitespaces: true` to your tsconfig, it is possible you may encounter issues with hydration. This is not yet a fully supported configuration. Ensure this is also consistently set between the server and client tsconfig files. See the [hydration guide](guide/hydration#preserve-whitespaces) for more details.
+
+</div>
+
 ### `skipMetadataEmit`
 
 When `true`, does not produce `.metadata.json` files.
@@ -379,4 +385,4 @@ Besides the configuration file, you can also use [`tsc` command line options](ht
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-04-19

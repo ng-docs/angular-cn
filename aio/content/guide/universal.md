@@ -15,7 +15,7 @@ You can enable server-side rendering in your Angular application using the `@ngu
 <div class="alert is-helpful">
 
 Angular Universal requires an [active LTS or maintenance LTS](https://nodejs.org/about/releases) version of Node.js.
-See the `engines` property in the [package.json](https://unpkg.com/browse/@angular/platform-server/package.json) file to learn about the currently supported versions.
+For information see the [version compatibility](guide/versions) guide to learn about the currently supported versions.
 
 </div>
 
@@ -72,12 +72,18 @@ The command updates the application code to enable SSR and adds extra files to t
         </div>
         <div class='children'>
             <div class='file'>
-              app.module.ts &nbsp;&nbsp;&nbsp; // &lt;-- &ast; client-side application module
+              app.config.ts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &lt; client-side application configuration (standalone app only)
+            </div>
+            <div class='file'>
+              app.module.ts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &lt; client-side application module (NgModule app only)
             </div>
         </div>
         <div class='children'>
             <div class='file'>
-              app.server.module.ts &nbsp;&nbsp;&nbsp; // &lt;-- &ast; server-side application module
+              app.config.server.ts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // &lt;-- &ast; server-side application configuration (standalone app only)
+            </div>
+            <div class='file'>
+              app.module.server.ts &nbsp;&nbsp;&nbsp; // &lt;-- &ast; server-side application module (NgModule app only)
             </div>
         </div>
         <div class='file'>
@@ -102,7 +108,7 @@ The command updates the application code to enable SSR and adds extra files to t
 
 <div class="alert is-important">
 
-The hydration feature is available for [developer preview](https://angular.io/guide/releases#developer-preview). It's ready for you to try, but it might change before it is stable.
+The hydration feature is available for [developer preview](/guide/releases#developer-preview). It's ready for you to try, but it might change before it is stable.
 
 </div>
 
@@ -162,11 +168,6 @@ If you throttle your network speed so that the client-side scripts take longer t
 * The *Back* and *Save* buttons on the Details page don't work
 
   “详情”页面上的*后退*和*保存*按钮不起作用
-
-User events other than `routerLink` clicks aren't supported.
-You must wait for the full client application to bootstrap and run, or buffer the events using libraries like [preboot](https://github.com/angular/preboot), which lets you replay these events once the client-side scripts load.
-
-不支持除了点击 `routerLink` 以外的任何用户事件。你必须等待完整的客户端应用启动并运行，或者使用 [preboot 之类的](https://github.com/angular/preboot)库来缓冲这些事件，这样你就可以在客户端脚本加载完毕后重放这些事件。
 
 The transition from the server-rendered application to the client application happens quickly on a development machine, but you should always test your applications in real-world scenarios.
 
@@ -287,7 +288,7 @@ The sample web server for this guide is based on the popular [Express](https://e
 <div class="alert is-helpful">
 
 **NOTE**: <br />
-*Any* web server technology can serve a Universal application as long as it can call Universal's `renderModule()` function.
+*Any* web server technology can serve a Universal application as long as it can call Angular `platform-server` package [`renderModule`](api/platform-server/renderModule) or [`renderApplication`](api/platform-server/renderApplication) functions.
 The principles and decision points discussed here apply to any web server technology.
 
 </div>
@@ -298,17 +299,16 @@ server implementations of the DOM, `XMLHttpRequest`, and other low-level feature
 Universal 应用使用 `platform-server` 包（而不是 `platform-browser`），它提供了 DOM 的服务端实现、`XMLHttpRequest` 以及其它不依赖浏览器的底层特性。
 
 The server \([Node.js Express](https://expressjs.com) in this guide's example\) passes client requests for application pages to the NgUniversal `ngExpressEngine`.
-Under the hood, this calls Universal's `renderModule()` function, while providing caching and other helpful utilities.
+Under the hood, the render functions, while providing caching and other helpful utilities.
 
 服务器（这个例子中使用的是 [Node.js Express](https://expressjs.com) 服务器）会把客户端对应用页面的请求传给 NgUniversal 的 `ngExpressEngine`。在内部实现上，它会调用 Universal 的 `renderModule()` 函数，它还提供了缓存等有用的工具函数。
 
-The `renderModule()` function takes as inputs a *template* HTML page \(usually `index.html`\), an Angular *module* containing components, and a *route* that determines which components to display.
-The route comes from the client's request to the server.
+The render functions takes as inputs a *template* HTML page \(usually `index.html`\), and Angular *module* containing components or a function that when invoked returns a `Promise` that resolves to an `ApplicationRef`, and a *route* that determines which components to display. The route comes from the client's request to the server.
 
 `renderModule()` 函数接受一个*模板* HTML 页面（通常是 `index.html`）、一个包含组件的 Angular *模块*和一个用于决定该显示哪些组件的*路由*作为输入。 该路由从客户端的请求中传给服务器。
 
 Each request results in the appropriate view for the requested route.
-The `renderModule()` function renders the view within the `<app>` tag of the template, creating a finished HTML page for the client.
+The render function renders the view within the `<app>` tag of the template, creating a finished HTML page for the client.
 
 每次请求都会给出所请求路由的一个适当的视图。`renderModule()` 在模板中的 `<app>` 标记中渲染出这个视图，并为客户端创建一个完成的 HTML 页面。
 
@@ -339,6 +339,11 @@ This is a good argument for making the application [routable](guide/router).
 
 同样，由于没有鼠标或键盘事件，因此服务端应用也不能依赖于用户点击某个按钮来显示某个组件。此应用必须仅仅根据客户端过来的请求决定要渲染的内容。把该应用做成[可路由的](guide/router)，就是一种好方案。
 
+<a id="service-worker"></a>
+### Universal and the Angular Service Worker
+
+If you are using Universal in conjunction with the Angular service worker, the behavior is different than the normal server side rendering behavior. The initial server request will be rendered on the server as expected. However, after that initial request, subsequent requests are handled by the service worker. For subsequent requests, the `index.html` file is served statically and bypasses server side rendering.
+
 <a id="universal-engine"></a>
 
 ### Universal template engine
@@ -351,7 +356,8 @@ The important bit in the `server.ts` file is the `ngExpressEngine()` function.
 
 <code-example header="server.ts" path="universal/server.ts" region="ngExpressEngine"></code-example>
 
-The `ngExpressEngine()` function is a wrapper around Universal's `renderModule()` function which turns a client's requests into server-rendered HTML pages.
+The `ngExpressEngine()` function is a wrapper around the Angular `platform-server` package [`renderModule`](api/platform-server/renderModule) and [`renderApplication`](api/platform-server/renderApplication) functions which turns a client's requests into server-rendered HTML pages.
+
 It accepts an object with the following properties:
 
 `ngExpressEngine()` 是对 Universal 的 `renderModule()` 函数的封装。它会把客户端请求转换成服务端渲染的 HTML 页面。它接受一个具有下列属性的对象：
@@ -359,7 +365,7 @@ It accepts an object with the following properties:
 | Properties       | Details                                                                                                                                                                                                                                                 |
 | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 属性             | 详情                                                                                                                                                                                                                                                    |
-| `bootstrap`      | The root `NgModule` to use for bootstrapping the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application.                |
+| `bootstrap`      | The root `NgModule` or function that when invoked returns a `Promise` that resolves to an `ApplicationRef` of the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application.                |
 | `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance. |
 | `extraProviders` | 这是可选的，可以让你指定仅在服务器渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。                                                                                                          |
 
@@ -368,14 +374,6 @@ It's up to the engine to decide what to do with that page.
 This engine's `Promise` callback returns the rendered page to the web server, which then forwards it to the client in the HTTP response.
 
 `ngExpressEngine()` 函数返回了一个会解析成渲染好的页面的*承诺（Promise）*。接下来你的引擎要决定拿这个页面做点什么。在*这个引擎*的 `Promise` 回调函数中，把渲染好的页面返回给了 Web 服务器，然后服务器通过 HTTP 响应把它转发给了客户端。
-
-<div class="alert is-helpful">
-
-**NOTE**: <br />
-These wrappers help hide the complexity of the `renderModule()` function.
-There are more wrappers for different backend technologies at the [Universal repository](https://github.com/angular/universal).
-
-</div>
 
 ### Filtering request URLs
 
@@ -481,7 +479,7 @@ If, for some reason, you are not using an `@nguniversal/*-engine` package, you m
 
 如果出于某种原因，你没有使用 `@nguniversal/*-engine` 包，你可能需要亲自处理它。
 
-The recommended solution is to pass the full request URL to the `options` argument of [`renderModule()`](api/platform-server/renderModule).
+The recommended solution is to pass the full request URL to the `options` argument of [renderModule](api/platform-server/renderModule).
 This option is the least intrusive as it does not require any changes to the application.
 Here, "request URL" refers to the URL of the request as a response to which the application is being rendered on the server.
 For example, if the client requested `https://my-server.com/dashboard` and you are rendering the application on the server to respond to that request, `options.url` should be set to `https://my-server.com/dashboard`.
@@ -512,4 +510,4 @@ Now, on every HTTP request made as part of rendering the application on the serv
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-04-25

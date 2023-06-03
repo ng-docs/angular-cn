@@ -56,7 +56,8 @@ When you register a provider at the component level, you get a new instance of t
 
 当你在组件级别注册提供者时，该组件的每个新实例都会获得一个新的服务实例。
 
-* At the NgModule level, using the `providers` field of the `@NgModule` decorator. In this scenario, the `HeroService` is available to all components, directives, and pipes declared in this NgModule. For example:
+* At the NgModule level, using the `providers` field of the `@NgModule` decorator. In this scenario, the `HeroService` is available to all components, directives, and pipes declared in this NgModule or other NgModule which is within the same ModuleInjector applicable for this NgModule. When you register a provider with a specific NgModule, the same instance of a service is available to all applicable components, directives and pipes.
+To understand all edge-cases, see [Hierarchical injectors](guide/hierarchical-dependency-injection). For example:
 
   在 NgModule 级别，要使用 `@NgModule` 装饰器的 `providers` 字段。在这种情况下， `HeroService` 可用于此 NgModule 中声明的所有组件、指令和管道。例如：
 
@@ -67,11 +68,6 @@ When you register a provider at the component level, you get a new instance of t
 })
 class HeroListModule {}
 </code-example>
-
-When you register a provider with a specific NgModule, the same instance of a service is available to all components in that NgModule.
-To understand all edge-cases, see [Hierarchical injectors](guide/hierarchical-dependency-injection).
-
-当你向特定的 NgModule 注册提供者时，同一个服务实例可用于该 NgModule 中的所有组件。
 
 * At the application root level, which allows injecting it into other classes in the application. This can be done by adding the `providedIn: 'root'` field to the `@Injectable` decorator:
 
@@ -127,4 +123,4 @@ When all requested services have been resolved and returned, Angular can call th
 
   [依赖注入实战](guide/dependency-injection-in-action)
 
-@reviewed 2022-08-02
+@reviewed 2023-05-16

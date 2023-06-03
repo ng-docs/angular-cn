@@ -337,7 +337,7 @@ export class HttpRequest<T> {
    *
    * 把无格式的请求体转换成适合传给服务器的序列化格式。
    */
-  serializeBody(): ArrayBuffer|Blob|FormData|string|null {
+  serializeBody(): ArrayBuffer|Blob|FormData|URLSearchParams|string|null {
     // If no body is present, no need to serialize it.
     if (this.body === null) {
       return null;

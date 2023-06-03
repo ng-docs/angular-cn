@@ -37,7 +37,7 @@ In this example, `HeroBiosComponent` presents three instances of `HeroBioCompone
 
 在这个例子中，`HeroBiosComponent` 渲染了 `HeroBioComponent` 的三个实例。
 
-<code-example header="ap/hero-bios.component.ts" path="dependency-injection-in-action/src/app/hero-bios.component.ts" region="simple"></code-example>
+<code-example header="src/app/hero-bios.component.ts" path="dependency-injection-in-action/src/app/hero-bios.component.ts" region="simple"></code-example>
 
 Each `HeroBioComponent` can edit a single hero's biography.
 `HeroBioComponent` relies on `HeroCacheService` to fetch, cache, and perform other persistence operations on that hero.
@@ -136,7 +136,7 @@ Focus on the template:
 
 注意看模板：
 
-<code-example header="dependency-injection-in-action/src/app/hero-bios.component.ts" path="dependency-injection-in-action/src/app/hero-bios.component.ts" region="template"></code-example>
+<code-example header="src/app/hero-bios.component.ts" path="dependency-injection-in-action/src/app/hero-bios.component.ts" region="template"></code-example>
 
 Now there's a new `<hero-contact>` element between the `<hero-bio>` tags.
 Angular *projects*, or *transcludes*, the corresponding `HeroContactComponent` into the `HeroBioComponent` view, placing it in the `<ng-content>` slot of the `HeroBioComponent` template.
@@ -340,7 +340,7 @@ The `HeroOfTheMonthComponent` example has two value providers.
 
 `HeroOfTheMonthComponent` 例子中有两个*值-提供者*。
 
-<code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-value"></code-example>
+<code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-value"></code-example>
 
 * The first provides an existing instance of the `Hero` class to use for the `Hero` token, rather than requiring the injector to create a new instance with `new` or use its own cached instance.
   Here, the token is the class itself.
@@ -363,7 +363,7 @@ You can't use a variable whose value will be defined later.
 
 一个*值-提供者*的值必须在指定之前定义。比如标题字符串就是立即可用的。该例中的 `someHero` 变量是以前在如下的文件中定义的。你不能使用那些要等以后才能定义其值的变量。
 
-<code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="some-hero"></code-example>
+<code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="some-hero"></code-example>
 
 Other types of providers can create their values *lazily*; that is, when they're needed for injection.
 
@@ -388,7 +388,7 @@ The following code shows two examples in `HeroOfTheMonthComponent`.
 
 请看下面 `HeroOfTheMonthComponent` 里的两个例子：
 
-<code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-class"></code-example>
+<code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-class"></code-example>
 
 The first provider is the *de-sugared*, expanded form of the most typical case in which the class to be created \(`HeroService`\) is also the provider's dependency injection token.
 The short form is generally preferred; this long form makes the details explicit.
@@ -427,7 +427,7 @@ In effect, the first token is an *alias* for the service associated with the sec
 
 `useExisting` 提供了一个键，让你可以把一个令牌映射成另一个令牌。实际上，第一个令牌就是第二个令牌所关联的服务的*别名*，这样就创建了访问同一个服务对象的两种途径。
 
-<code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-existing"></code-example>
+<code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-existing"></code-example>
 
 You can use this technique to narrow an API through an aliasing interface.
 The following example shows an alias introduced for that purpose.
@@ -486,7 +486,7 @@ The `useFactory` provider key lets you create a dependency object by calling a f
 
 `useFactory` 提供了一个键，让你可以通过调用一个工厂函数来创建依赖实例，如下面的例子所示。
 
-<code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-factory"></code-example>
+<code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-factory"></code-example>
 
 The injector provides the dependency value by invoking a factory function, that you provide as the value of the `useFactory` key.
 Notice that this form of provider has a third key, `deps`, which specifies dependencies for the `useFactory` function.
@@ -520,7 +520,7 @@ The provider factory function \(returned by `runnersUpFactory()`\) returns the a
 
   该函数以获胜的 `Hero` 和 `HeroService` 作为参数。Angular 从 `deps` 数组中的两个*令牌*标识的注入值提供这些参数。
 
-* The function returns the string of names, which Angular than injects into the `runnersUp` parameter of `HeroOfTheMonthComponent`
+* The function returns the string of names, which Angular then injects into the `runnersUp` parameter of `HeroOfTheMonthComponent`
 
   该函数返回名字的字符串，Angular 可以把它们注入到 `HeroOfTheMonthComponent` 的 `runnersUp` 参数中。
 
@@ -559,13 +559,13 @@ The previous *Hero of the Month* example used the `MinimalLogger` class as the t
 
 前面的*月度英雄*的例子使用了 `MinimalLogger` 类作为 `LoggerService` 提供者的令牌。
 
-<code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-existing"></code-example>
+<code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-existing"></code-example>
 
 `MinimalLogger` is an abstract class.
 
 该 `MinimalLogger` 是一个抽象类。
 
-<code-example header="dependency-injection-in-action/src/app/minimal-logger.service.ts" path="dependency-injection-in-action/src/app/minimal-logger.service.ts"></code-example>
+<code-example header="src/app/minimal-logger.service.ts" path="dependency-injection-in-action/src/app/minimal-logger.service.ts"></code-example>
 
 An abstract class is usually a base class that you can extend.
 In this app, however there is no class that inherits from `MinimalLogger`.
@@ -602,7 +602,7 @@ The `MinimalLogger` transpiles to this unoptimized, pre-minified JavaScript for 
 
 用类作为接口可以让你获得真实 JavaScript 对象中的接口的特性。但是，为了最小化内存开销，该类应该是*没有实现*的。对于构造函数，`MinimalLogger` 会转译成未优化过的、预先最小化过的 JavaScript。
 
-<code-example header="dependency-injection-in-action/src/app/minimal-logger.service.ts" path="dependency-injection-in-action/src/app/minimal-logger.service.ts" region="minimal-logger-transpiled"></code-example>
+<code-example header="src/app/minimal-logger.service.ts" path="dependency-injection-in-action/src/app/minimal-logger.service.ts" region="minimal-logger-transpiled"></code-example>
 
 **NOTE**: <br />
 It doesn't have any members.
@@ -637,13 +637,13 @@ You encountered them twice in the *Hero of the Month* example, in the *title* va
 
 `InjectionToken` 具有这些特征。在*Hero of the Month*例子中遇见它们两次，一个是 *title* 的值，一个是 *runnersUp* 工厂提供者。
 
-<code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="provide-injection-token"></code-example>
+<code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="provide-injection-token"></code-example>
 
 You created the `TITLE` token like this:
 
 这样创建 `TITLE` 令牌：
 
-<code-example header="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="injection-token"></code-example>
+<code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="injection-token"></code-example>
 
 The type parameter, while optional, conveys the dependency's type to developers and tooling.
 The token description is another developer aid.
@@ -724,7 +724,7 @@ These complications argue for *avoiding component inheritance*.
 
 <a id="forwardref"></a>
 
-## Break circularities with a forward class reference \(*forwardRef*\)
+## Resolve circular dependencies with a forward class reference \(*forwardRef*\)
 
 ## 使用一个前向引用（*forwardRef*）来打破循环
 
@@ -735,7 +735,7 @@ You can't refer directly to a class until it's been defined.
 
 This isn't usually a problem, especially if you adhere to the recommended *one class per file* rule.
 But sometimes circular references are unavoidable.
-You're in a bind when class 'A' refers to class 'B' and 'B' refers to 'A'.
+For example, when class 'A' refers to class 'B' and 'B' refers to 'A'.
 One of them has to be defined first.
 
 这通常不是一个问题，特别是当你遵循*一个文件一个类*规则的时候。但是有时候循环引用可能不能避免。当一个类*A 引用类 B*，同时'B'引用'A'的时候，你就陷入困境了：它们中间的某一个必须要先定义。

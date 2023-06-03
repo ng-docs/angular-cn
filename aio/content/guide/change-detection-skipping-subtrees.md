@@ -10,7 +10,7 @@ Change detection is sufficiently fast for most applications. However, when an ap
 
 对于大多数应用程序，变更检测都足够快。但是，当应用程序有特别大的组件树时，在整个应用程序中运行变更检测可能会导致性能问题。你可以通过将变更检测配置为仅在组件树的子集上运行来解决这个问题。
 
-If you are confident that a part of the application is not affected by a state change, you can use [OnPush](https://angular.io/api/core/ChangeDetectionStrategy) to skip change detection in an entire component subtree.
+If you are confident that a part of the application is not affected by a state change, you can use [OnPush](/api/core/ChangeDetectionStrategy) to skip change detection in an entire component subtree.
 
 如果你确信应用程序的一部分不受状态更改的影响，可以用 [OnPush](https://angular.io/api/core/ChangeDetectionStrategy) 跳过整个组件子树中的变更检测。
 
@@ -105,7 +105,7 @@ As an example, in the diagram below, Angular handles an event in `LoginComponent
 
 ## 具有 OnPush 策略的组件的新输入
 
-Angular will run change detection within a child component with `OnPush` setting an input property as result of a template binding.
+Angular will run change detection within a child component with `OnPush` when setting an input property as result of a template binding.
 
 Angular 将在具有 `OnPush` 策略的子组件中运行变更检测，将 input 属性设置为模板绑定的结果。
 

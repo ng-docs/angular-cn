@@ -186,7 +186,7 @@ export class PipeDecoratorHandler implements
     const classMetadata = analysis.classMetadata !== null ?
         compileClassMetadata(analysis.classMetadata).toStmt() :
         null;
-    return compileResults(fac, def, classMetadata, 'ɵpipe');
+    return compileResults(fac, def, classMetadata, 'ɵpipe', null);
   }
 
   compilePartial(node: ClassDeclaration, analysis: Readonly<PipeHandlerData>): CompileResult[] {
@@ -195,6 +195,6 @@ export class PipeDecoratorHandler implements
     const classMetadata = analysis.classMetadata !== null ?
         compileDeclareClassMetadata(analysis.classMetadata).toStmt() :
         null;
-    return compileResults(fac, def, classMetadata, 'ɵpipe');
+    return compileResults(fac, def, classMetadata, 'ɵpipe', null);
   }
 }

@@ -446,7 +446,7 @@ If those symbols are not imported and used, it's often desirable to remove them 
 Build tools such as Webpack support a flag which allows packages to declare that they do not depend on side-effectful code at the top level of their modules, giving the tools more freedom to tree-shake code from the package.
 The end result of these optimizations should be smaller bundle size and better code distribution in bundle chunks after code-splitting.
 This optimization can break your code if it contains non-local side-effects - this is however not common in Angular applications and it's usually a sign of bad design.
-The recommendation is for all packages to claim the side-effect free status by setting the `sideEffects` property to `false`, and that developers follow the [Angular Style Guide](https://angular.io/guide/styleguide) which naturally results in code without non-local side-effects.
+The recommendation is for all packages to claim the side-effect free status by setting the `sideEffects` property to `false`, and that developers follow the [Angular Style Guide](/guide/styleguide) which naturally results in code without non-local side-effects.
 
 诸如 Webpack 之类的构建工具支持一个标志，该标志允许包声明它们并不依赖于其模块顶层的副作用代码，从而使工具可以更自由地对包中的代码进行摇树优化。这些优化的最终结果应该是较小的包大小和代码拆分后包块中更好的代码分布。如果此优化包含非本地副作用，则此优化可能会破坏你的代码 - 然而，这在 Angular 应用程序中并不常见，并且通常是糟糕设计的标志。建议让所有包通过将 `sideEffects` 属性设置为 `false` 来声明无副作用状态，并且让开发人员遵循 [Angular 风格指南](https://angular.io/guide/styleguide)，这自然会导致代码没有非本地副作用。
 

@@ -230,18 +230,13 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
    * \(for cases where the binding property name is the same\) or to an array which contains both
    * names if they differ.
    *
-   * 将此映射转换为原始 JS
-   * 对象，该对象将每个类属性映射到本身（对于绑定属性名称相同的情况），或者映射到包含两个名称（如果不同）的数组。
-   *
-   * This object format is used when mappings are serialized \(for example into .d.ts files\).
-   *
-   * 序列化映射（例如转换为 .d.ts 文件）时会使用此对象格式。
-   *
+   * This object format is used when mappings are serialized (for example into .d.ts files).
+   * @param transform Function used to transform the values of the generated map.
    */
-  toJointMappedObject(): {[classPropertyName: string]: T} {
-    const obj: {[classPropertyName: string]: T} = {};
+  toJointMappedObject<O = T>(transform: (value: T) => O): {[classPropertyName: string]: O} {
+    const obj: {[classPropertyName: string]: O} = {};
     for (const [classPropertyName, inputOrOutput] of this.forwardMap) {
-      obj[classPropertyName] = inputOrOutput;
+      obj[classPropertyName] = transform(inputOrOutput);
     }
     return obj;
   }

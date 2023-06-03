@@ -619,9 +619,15 @@ function serializeQueryParams(params: {[key: string]: any}): string {
   return strParams.length ? `?${strParams.join('&')}` : '';
 }
 
-const SEGMENT_RE = /^[^\/()?;=#]+/;
+const SEGMENT_RE = /^[^\/()?;#]+/;
 function matchSegments(str: string): string {
   const match = str.match(SEGMENT_RE);
+  return match ? match[0] : '';
+}
+
+const MATRIX_PARAM_SEGMENT_RE = /^[^\/()?;=#]+/;
+function matchMatrixKeySegments(str: string): string {
+  const match = str.match(MATRIX_PARAM_SEGMENT_RE);
   return match ? match[0] : '';
 }
 
@@ -730,7 +736,7 @@ class UrlParser {
   }
 
   private parseParam(params: {[key: string]: string}): void {
-    const key = matchSegments(this.remaining);
+    const key = matchMatrixKeySegments(this.remaining);
     if (!key) {
       return;
     }

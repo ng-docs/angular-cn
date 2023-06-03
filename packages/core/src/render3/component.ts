@@ -73,7 +73,7 @@ import {assertComponentDef} from './errors';
  * 要使用的选项集：
  *
  * - `environmentInjector`: An `EnvironmentInjector` instance to be used for the component, see
- *   additional info about it at https://angular.io/guide/standalone-components#environment-injectors.
+ *   additional info about it [here](/guide/standalone-components#environment-injectors).
  *
  *   `environmentInjector` ：要用于组件的 `EnvironmentInjector` 实例，请在 https://angular.io/guide/standalone-components#environment-injectors 中查看有关它的其他信息。
  *
@@ -83,8 +83,8 @@ import {assertComponentDef} from './errors';
  *
  *   `hostElement` （可选）：应该作为组件的宿主节点的 DOM 节点。如果未提供，Angular 会根据组件选择器中使用的标签名称创建一个（如果选择器没有标签名称信息，则回用 `div` ）。
  *
- * - `elementInjector` \(optional\): An `ElementInjector` instance, see additional info about it at
- *   https://angular.io/guide/hierarchical-dependency-injection#elementinjector.
+ * - `elementInjector` \(optional\): An `ElementInjector` instance, see additional info about it
+ *   [here](/guide/hierarchical-dependency-injection#elementinjector).
  *
  *   `elementInjector` （可选）：一个 `ElementInjector` 实例，请在 https://angular.io/guide/hierarchical-dependency-injection#elementinjector 上查看有关它的其他信息。
  *
@@ -166,6 +166,11 @@ export interface ComponentMirror<C> {
  *
  */
   get isStandalone(): boolean;
+  /**
+   * // TODO(signals): Remove internal and add public documentation
+   * @internal
+   */
+  get isSignal(): boolean;
 }
 
 /**
@@ -241,6 +246,9 @@ export function reflectComponentType<C>(component: Type<C>): ComponentMirror<C>|
     },
     get isStandalone(): boolean {
       return componentDef.standalone;
+    },
+    get isSignal(): boolean {
+      return componentDef.signals;
     },
   };
 }

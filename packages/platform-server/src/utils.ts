@@ -6,11 +6,11 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ApplicationRef, InjectionToken, NgModuleRef, PlatformRef, Provider, Renderer2, StaticProvider, Type, ɵannotateForHydration as annotateForHydration, ɵInitialRenderPendingTasks as InitialRenderPendingTasks, ɵIS_HYDRATION_FEATURE_ENABLED as IS_HYDRATION_FEATURE_ENABLED, ɵisPromise} from '@angular/core';
+import {ApplicationRef, InjectionToken, PlatformRef, Provider, Renderer2, StaticProvider, Type, ɵannotateForHydration as annotateForHydration, ɵENABLED_SSR_FEATURES as ENABLED_SSR_FEATURES, ɵInitialRenderPendingTasks as InitialRenderPendingTasks, ɵIS_HYDRATION_DOM_REUSE_ENABLED as IS_HYDRATION_DOM_REUSE_ENABLED} from '@angular/core';
 import {first} from 'rxjs/operators';
 
 import {PlatformState} from './platform_state';
-import {platformDynamicServer} from './server';
+import {platformServer} from './server';
 import {BEFORE_APP_SERIALIZED, INITIAL_CONFIG} from './tokens';
 
 interface PlatformOptions {
@@ -19,11 +19,13 @@ interface PlatformOptions {
   platformProviders?: Provider[];
 }
 
-function _getPlatform(
-    platformFactory: (extraProviders: StaticProvider[]) => PlatformRef,
-    options: PlatformOptions): PlatformRef {
+/**
+ * Creates an instance of a server platform (with or without JIT compiler support
+ * depending on the `ngJitMode` global const value), using provided options.
+ */
+function createServerPlatform(options: PlatformOptions): PlatformRef {
   const extraProviders = options.platformProviders ?? [];
-  return platformFactory([
+  return platformServer([
     {provide: INITIAL_CONFIG, useValue: {document: options.document, url: options.url}},
     extraProviders
   ]);
@@ -33,7 +35,14 @@ function _getPlatform(
  * Adds the `ng-server-context` attribute to host elements of all bootstrapped components
  * within a given application.
  */
-function appendServerContextInfo(serverContext: string, applicationRef: ApplicationRef) {
+function appendServerContextInfo(applicationRef: ApplicationRef) {
+  const injector = applicationRef.injector;
+  let serverContext = sanitizeServerContext(injector.get(SERVER_CONTEXT, DEFAULT_SERVER_CONTEXT));
+  const features = injector.get(ENABLED_SSR_FEATURES);
+  if (features.size > 0) {
+    // Append features information into the server context value.
+    serverContext += `|${Array.from(features).join(',')}`;
+  }
   applicationRef.components.forEach(componentRef => {
     const renderer = componentRef.injector.get(Renderer2);
     const element = componentRef.location.nativeElement;
@@ -43,69 +52,47 @@ function appendServerContextInfo(serverContext: string, applicationRef: Applicat
   });
 }
 
-function _render<T>(
-    platform: PlatformRef,
-    bootstrapPromise: Promise<NgModuleRef<T>|ApplicationRef>): Promise<string> {
-  return bootstrapPromise.then((moduleOrApplicationRef) => {
-    const environmentInjector = moduleOrApplicationRef.injector;
-    const applicationRef: ApplicationRef = moduleOrApplicationRef instanceof ApplicationRef ?
-        moduleOrApplicationRef :
-        environmentInjector.get(ApplicationRef);
-    const serverContext =
-        sanitizeServerContext(environmentInjector.get(SERVER_CONTEXT, DEFAULT_SERVER_CONTEXT));
-    const isStablePromise =
-        applicationRef.isStable.pipe((first((isStable: boolean) => isStable))).toPromise();
-    const pendingTasks = environmentInjector.get(InitialRenderPendingTasks);
-    const pendingTasksPromise = pendingTasks.whenAllTasksComplete;
-    return Promise.allSettled([isStablePromise, pendingTasksPromise]).then(() => {
-      appendServerContextInfo(serverContext, applicationRef);
+async function _render(platformRef: PlatformRef, applicationRef: ApplicationRef): Promise<string> {
+  const environmentInjector = applicationRef.injector;
 
-      const platformState = platform.injector.get(PlatformState);
+  // Block until application is stable.
+  await applicationRef.isStable.pipe((first((isStable: boolean) => isStable))).toPromise();
 
-      const asyncPromises: Promise<any>[] = [];
+  const platformState = platformRef.injector.get(PlatformState);
+  if (applicationRef.injector.get(IS_HYDRATION_DOM_REUSE_ENABLED, false)) {
+    annotateForHydration(applicationRef, platformState.getDocument());
+  }
 
-      if (applicationRef.injector.get(IS_HYDRATION_FEATURE_ENABLED, false)) {
-        annotateForHydration(applicationRef, platformState.getDocument());
+  // Run any BEFORE_APP_SERIALIZED callbacks just before rendering to string.
+  const callbacks = environmentInjector.get(BEFORE_APP_SERIALIZED, null);
+  if (callbacks) {
+    const asyncCallbacks: Promise<void>[] = [];
+    for (const callback of callbacks) {
+      try {
+        const callbackResult = callback();
+        if (callbackResult) {
+          asyncCallbacks.push(callbackResult);
+        }
+      } catch (e) {
+        // Ignore exceptions.
+        console.warn('Ignoring BEFORE_APP_SERIALIZED Exception: ', e);
       }
+    }
 
-      // Run any BEFORE_APP_SERIALIZED callbacks just before rendering to string.
-      const callbacks = environmentInjector.get(BEFORE_APP_SERIALIZED, null);
-
-      if (callbacks) {
-        for (const callback of callbacks) {
-          try {
-            const callbackResult = callback();
-            if (ɵisPromise(callbackResult)) {
-              // TODO: in TS3.7, callbackResult is void.
-              asyncPromises.push(callbackResult as any);
-            }
-
-          } catch (e) {
-            // Ignore exceptions.
-            console.warn('Ignoring BEFORE_APP_SERIALIZED Exception: ', e);
-          }
+    if (asyncCallbacks.length) {
+      for (const result of await Promise.allSettled(asyncCallbacks)) {
+        if (result.status === 'rejected') {
+          console.warn('Ignoring BEFORE_APP_SERIALIZED Exception: ', result.reason);
         }
       }
+    }
+  }
 
-      const complete = () => {
-        const output = platformState.renderToString();
-        platform.destroy();
-        return output;
-      };
+  appendServerContextInfo(applicationRef);
+  const output = platformState.renderToString();
+  platformRef.destroy();
 
-      if (asyncPromises.length === 0) {
-        return complete();
-      }
-
-      return Promise
-          .all(asyncPromises.map(asyncPromise => {
-            return asyncPromise.catch(e => {
-              console.warn('Ignoring BEFORE_APP_SERIALIZED Exception: ', e);
-            });
-          }))
-          .then(complete);
-    });
-  });
+  return output;
 }
 
 /**
@@ -161,14 +148,16 @@ function sanitizeServerContext(serverContext: string): string {
  *
  * @publicApi
  */
-export function renderModule<T>(moduleType: Type<T>, options: {
+export async function renderModule<T>(moduleType: Type<T>, options: {
   document?: string|Document,
   url?: string,
   extraProviders?: StaticProvider[],
 }): Promise<string> {
   const {document, url, extraProviders: platformProviders} = options;
-  const platform = _getPlatform(platformDynamicServer, {document, url, platformProviders});
-  return _render(platform, platform.bootstrapModule(moduleType));
+  const platformRef = createServerPlatform({document, url, platformProviders});
+  const moduleRef = await platformRef.bootstrapModule(moduleType);
+  const applicationRef = moduleRef.injector.get(ApplicationRef);
+  return _render(platformRef, applicationRef);
 }
 
 /**
@@ -206,12 +195,12 @@ export function renderModule<T>(moduleType: Type<T>, options: {
  * @publicApi
  * @developerPreview
  */
-export function renderApplication<T>(bootstrap: () => Promise<ApplicationRef>, options: {
+export async function renderApplication<T>(bootstrap: () => Promise<ApplicationRef>, options: {
   document?: string|Document,
   url?: string,
   platformProviders?: Provider[],
 }): Promise<string> {
-  const platform = _getPlatform(platformDynamicServer, options);
-
-  return _render(platform, bootstrap());
+  const platformRef = createServerPlatform(options);
+  const applicationRef = await bootstrap();
+  return _render(platformRef, applicationRef);
 }

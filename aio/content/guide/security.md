@@ -285,7 +285,7 @@ If an attacker can predict future nonces, they can circumvent the protections of
 
 </div>
 
-If you cannot generate nones in your project, you can allow inline styles by adding `'unsafe-inline'` to the `style-src` section of the CSP header.
+If you cannot generate nonces in your project, you can allow inline styles by adding `'unsafe-inline'` to the `style-src` section of the CSP header.
 
 | Sections                                         | Details                                                                                                                                                                                                         |
 | :----------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -558,4 +558,4 @@ Angular 应用应该遵循和常规 Web 应用一样的安全原则并按照这�
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-05-16

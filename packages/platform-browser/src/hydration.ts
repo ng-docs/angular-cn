@@ -7,7 +7,9 @@
  */
 
 import {ɵwithHttpTransferCache as withHttpTransferCache} from '@angular/common/http';
-import {EnvironmentProviders, makeEnvironmentProviders, Provider, ɵwithDomHydration as withDomHydration} from '@angular/core';
+import {ENVIRONMENT_INITIALIZER, EnvironmentProviders, inject, makeEnvironmentProviders, NgZone, Provider, ɵConsole as Console, ɵformatRuntimeError as formatRuntimeError, ɵwithDomHydration as withDomHydration} from '@angular/core';
+
+import {RuntimeErrorCode} from './errors';
 
 /**
  * The list of features as an enum to uniquely type each `HydrationFeature`.
@@ -44,6 +46,30 @@ function hydrationFeature<FeatureKind extends HydrationFeatureKind>(
  * Disables DOM nodes reuse during hydration. Effectively makes
  * Angular re-render an application from scratch on the client.
  *
+ * When this option is enabled, make sure that the initial navigation
+ * option is configured for the Router as `enabledBlocking` by using the
+ * `withEnabledBlockingInitialNavigation` in the `provideRouter` call:
+ *
+ * ```
+ * bootstrapApplication(RootComponent, {
+ *   providers: [
+ *     provideRouter(
+ *       // ... other features ...
+ *       withEnabledBlockingInitialNavigation()
+ *     ),
+ *     provideClientHydration(withNoDomReuse())
+ *   ]
+ * });
+ * ```
+ *
+ * This would ensure that the application is rerendered after all async
+ * operations in the Router (such as lazy-loading of components,
+ * waiting for async guards and resolvers) are completed to avoid
+ * clearing the DOM on the client too soon, thus causing content flicker.
+ *
+ * @see `provideRouter`
+ * @see `withEnabledBlockingInitialNavigation`
+ *
  * @publicApi
  * @developerPreview
  */
@@ -65,6 +91,33 @@ export function withNoHttpTransferCache():
   // This feature has no providers and acts as a flag that turns off
   // HTTP transfer cache (which otherwise is turned on by default).
   return hydrationFeature(HydrationFeatureKind.NoHttpTransferCache);
+}
+
+/**
+ * Returns an `ENVIRONMENT_INITIALIZER` token setup with a function
+ * that verifies whether compatible ZoneJS was used in an application
+ * and logs a warning in a console if it's not the case.
+ */
+function provideZoneJsCompatibilityDetector(): Provider[] {
+  return [{
+    provide: ENVIRONMENT_INITIALIZER,
+    useValue: () => {
+      const ngZone = inject(NgZone);
+      // Checking `ngZone instanceof NgZone` would be insufficient here,
+      // because custom implementations might use NgZone as a base class.
+      if (ngZone.constructor !== NgZone) {
+        const console = inject(Console);
+        const message = formatRuntimeError(
+            RuntimeErrorCode.UNSUPPORTED_ZONEJS_INSTANCE,
+            'Angular detected that hydration was enabled for an application ' +
+                'that uses a custom or a noop Zone.js implementation. ' +
+                'This is not yet a fully supported configuration.');
+        // tslint:disable-next-line:no-console
+        console.warn(message);
+      }
+    },
+    multi: true,
+  }];
 }
 
 /**
@@ -119,6 +172,7 @@ export function provideClientHydration(...features: HydrationFeature<HydrationFe
   }
 
   return makeEnvironmentProviders([
+    (typeof ngDevMode !== 'undefined' && ngDevMode) ? provideZoneJsCompatibilityDetector() : [],
     (featuresKind.has(HydrationFeatureKind.NoDomReuseFeature) ? [] : withDomHydration()),
     (featuresKind.has(HydrationFeatureKind.NoHttpTransferCache) ? [] : withHttpTransferCache()),
     providers,

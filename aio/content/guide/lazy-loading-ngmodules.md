@@ -359,19 +359,21 @@ For more information, see the [`forRoot()` pattern](guide/singleton-services#for
 ## 预加载
 
 Preloading improves UX by loading parts of your application in the background.
-You can preload modules or component data.
+You can preload modules, standalone components or component data. 
 
 预加载通过在后台加载部分应用来改进用户体验。你可以预加载模块或组件数据。
 
-### Preloading modules
+### Preloading modules and standalone components
 
 ### 预加载模块
 
-Preloading modules improves UX by loading parts of your application in the background. By doing this, users don't have to wait for the elements to download when they activate a route.
+Preloading modules and standalone components improves UX by loading parts of your application in the background. By doing this, users don't have to wait for the elements to download when they activate a route.
 
 预加载模块通过在后台加载部分应用来改善用户体验。这样一来，用户在激活路由时就无需等待下载这些元素。
 
-To enable preloading of all lazy loaded modules, import the `PreloadAllModules` token from the Angular `router`.
+To enable preloading of all lazy loaded modules and standalone components, import the `PreloadAllModules` token from the Angular `router`.
+
+### Module based application
 
 要启用所有惰性加载模块的预加载，请从 Angular 的 `router` 导入 `PreloadAllModules` 令牌。
 
@@ -393,6 +395,32 @@ RouterModule.forRoot(
     preloadingStrategy: PreloadAllModules
   }
 )
+
+</code-example>
+
+### Standalone application
+
+For standalone applications configure preloading strategies by adding `withPreloading` to  `provideRouter`s RouterFeatures in `app.config.ts`
+
+<code-example header="`app.config.ts`">
+
+import { ApplicationConfig } from '@angular/core';
+import {
+  PreloadAllModules,
+  provideRouter
+  withPreloading,
+} from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(
+      routes,
+      withPreloading(PreloadAllModules)
+    ),
+  ],
+};
 
 </code-example>
 
@@ -420,7 +448,7 @@ ng generate service &lt;service-name&gt;
 
 </code-example>
 
-In the newly created service, implement the `Resolve` interface provided by the `&commat;angular/router` package:
+In the newly created service, implement the `Resolve` interface provided by the `@angular/router` package:
 
 在新创建的服务中，实现由 `@angular/router` 包提供的 `Resolve` 接口：
 
@@ -565,4 +593,4 @@ You might also be interested in the following:
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2022-05-07

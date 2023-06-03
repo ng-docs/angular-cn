@@ -13,6 +13,11 @@ Tutorials and guides include downloadable examples to help you start your projec
 这些教程和指南中都包含可下载的范例，以加速你的学习。
 
 <div class="card-container">
+  <a href="tutorial/first-app" class="docs-card" title="Work through a full tutorial">
+    <section>Build your first Angular app</section>
+    <p>Work through a full tutorial to create your first application.</p>
+    <p class="card-footer">Homes App Tutorial</p>
+  </a>
   <a href="guide/what-is-angular" class="docs-card" title="Angular Platform Overview">
     <section>What is Angular</section>
     <section>什么是 Angular</section>
@@ -20,14 +25,6 @@ Tutorials and guides include downloadable examples to help you start your projec
     <p>对 Angular 平台进行一次高层概览。</p>
     <p class="card-footer">Platform overview</p>
     <p class="card-footer">平台概览</p>
-  </a>
-  <a href="start" class="docs-card" title="Getting started">
-    <section>Getting started</section>
-    <section>开始工作</section>
-    <p>Examine and work with a small ready-made Angular application, without any setup.</p>
-    <p>无需搭建环境，试用一个现成的小型 Angular 应用</p>
-    <p class="card-footer">Try it now</p>
-    <p class="card-footer">立即试用</p>
   </a>
   <a href="guide/architecture" class="docs-card" title="Angular Concepts">
     <section>Learn and Explore</section>
@@ -44,13 +41,6 @@ Tutorials and guides include downloadable examples to help you start your projec
     <p>使用 Angular CLI 搭建本地开发环境。</p>
     <p class="card-footer">Local setup</p>
     <p class="card-footer">本地搭建</p>
-  </a>
-  <a href="tutorial" class="docs-card" title="Work through a full tutorial">
-    <section>Hello World</section>
-    <p>Work through a full tutorial to create your first application.</p>
-    <p>一个完整教程，带你从头到尾创建首个应用</p>
-    <p class="card-footer">Tour of Heroes tutorial</p>
-    <p class="card-footer">英雄之旅教程</p>
   </a>
 </div>
 

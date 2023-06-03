@@ -176,7 +176,7 @@ This cadence of releases gives eager developers access to new features as soon a
 
 <div class="alert is-helpful">
 
-Dates are offered as general guidance and are subject to change.
+Approximate dates are offered as general guidance and are subject to change.
 
 这些日期仅供一般性参考，如有更改，恕不另行通知。
 
@@ -187,11 +187,11 @@ Dates are offered as general guidance and are subject to change.
 ### 发布时间表
 
 | Version | Date               |
-| :------ | :----------------- |
+|:--------|:-------------------|
 | 版本    | 日期               |
-| v15.1   | Week of 2023-01-09 |
-| v15.2   | Week of 2023-02-20 |
-| v16.0   | Week of 2023-05-01 |
+| v16.1   | Week of 2023-06-12 |
+| v16.2   | Week of 2023-07-24 |
+| v17.0   | Week of 2023-11-06 |
 
 ### Support window
 
@@ -218,16 +218,13 @@ The following table provides the status for Angular versions under support.
 下表中提供了目前受支持的 Angular 版本的状态。
 
 | Version | Status | Released   | Active ends | LTS ends   |
-| :------ | :----- | :--------- | :---------- | :--------- |
+|:--------|:-------|:-----------|:------------|:-----------|
 | 版本    | 状态   | 发布       | 停止活跃    | LTS 结束   |
-| ^15.0.0 | Active | 2022-11-18 | 2023-05-18  | 2024-05-18 |
-| ^15.0.0 | 活跃   | 2022-11-18 | 2023-05-18  | 2024-05-18 |
+| ^16.0.0 | Active | 2023-05-03 | 2023-11-03  | 2024-11-08 |
+| ^15.0.0 | LTS    | 2022-11-18 | 2023-05-03  | 2024-05-18 |
 | ^14.0.0 | LTS    | 2022-06-02 | 2022-11-18  | 2023-11-18 |
-| ^14.0.0 | LTS    | 2022-06-02 | 2022-11-18  | 2023-11-18 |
-| ^13.0.0 | LTS    | 2021-11-04 | 2022-06-02  | 2023-05-04 |
-| ^13.0.0 | LTS    | 2021-11-04 | 2022-06-02  | 2023-05-04 |
 
-Angular versions v2 to v12 are no longer under support.
+Angular versions v2 to v13 are no longer supported.
 
 不再为 v2 到 v12  版提供支持。
 
@@ -323,4 +320,4 @@ The policies and practices that are described in this document do not apply to A
 
 <!-- end links -->
 
-@reviewed 2022-11-21
+@reviewed 2023-05-03

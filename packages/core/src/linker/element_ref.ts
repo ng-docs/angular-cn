@@ -76,12 +76,6 @@ export function createElementRef(tNode: TNode, lView: LView): ElementRef {
 // and could do better codegen in the future.
 export class ElementRef<T = any> {
   /**
-   * The underlying native element or `null` if direct access to native elements is not supported
-   * \(e.g. when the application runs in a web worker\).
-   *
-   * 背后的原生元素，如果不支持直接访问原生元素，则为 `null`（比如：在 Web Worker
-   * 环境下运行此应用的时候）。
-   *
    * <div class="callout is-critical">
    *
    *   <header>Use with caution</header>
@@ -91,25 +85,7 @@ export class ElementRef<T = any> {
    *   <p>
    *    Use this API as the last resort when direct access to DOM is needed. Use templating and
    *    data-binding provided by Angular instead. Alternatively you can take a look at {@link
-   * Renderer2} which provides API that can safely be used even when direct access to native
-   * elements is not supported.
-   *   </p>
-   *   <p>当需要直接访问 DOM 时，请将此 API 作为最后的手段。改用 Angular
-   * 提供的模板和数据绑定。或者，你可以看一下 {@link Renderer2}
-   * ，它提供了即使不支持直接访问本机元素也可以安全使用的 API。
-   *
-   *   </p>
-   *
-   *   <p>
-   *    当需要直接访问 DOM 时，请把本 API 作为最后选择。优先使用 Angular
-   * 提供的模板和数据绑定机制。或者你还可以看看 {@link Renderer2}，它提供了可安全使用的 API ——
-   * 即使环境没有提供直接访问原生元素的功能。
-   *   </p>
-   *
-   *   <p>
-   *    Relying on direct DOM access creates tight coupling between your application and rendering
-   *    layers which will make it impossible to separate the two and deploy your application into a
-   *    web worker.
+   * Renderer2} which provides an API that can be safely used.
    *   </p>
    *   <p>
    *     依赖直接 DOM
@@ -124,7 +100,6 @@ export class ElementRef<T = any> {
    *   </p>
    *
    * </div>
-   *
    */
   public nativeElement: T;
 

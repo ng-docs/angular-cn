@@ -2789,13 +2789,11 @@ Create a new file named `auth.guard.ts` in the `auth` folder. The `auth.guard.ts
 
 在 `auth` 文件夹中创建一个名为 `auth.guard.ts` 的新文件。 `auth.guard.ts` 文件将包含 `authGuard` 函数。
 
-<!-- TODO(atscott): update schematics to generate functional guards
 <code-example format="shell" language="shell">
 
 ng generate guard auth/auth
 
 </code-example>
- -->
 
 To demonstrate the fundamentals, this example only logs to the console, returns `true` immediately, and lets navigation proceed:
 
@@ -3015,13 +3013,11 @@ Create a guard that checks for the presence of a `canDeactivate()` method in a c
 
 生成一个守卫（guard），以检查组件（任意组件均可）中是否存在 `canDeactivate()` 方法。
 
-<!-- TODO: Update CLI schematic for guards
 <code-example format="shell" language="shell">
 
 ng generate guard can-deactivate
 
 </code-example>
--->
 
 Paste the following code into your guard.
 
@@ -3110,13 +3106,11 @@ Create a `crisis-detail-resolver.ts` file within the `Crisis Center` feature are
 
 在 `Crisis Center` 特性区域中创建一个 `crisis-detail-resolver.ts` 文件。此文件将包含 `crisisDetailResolver` 函数。
 
-<!-- TODO: Update CLI schematic for resolvers
 <code-example format="shell" language="shell">
 
-ng generate service crisis-center/crisis-detail-resolver
+ng generate resolver crisis-center/crisis-detail-resolver
 
 </code-example>
- -->
 
 <code-example header="src/app/crisis-center/crisis-detail-resolver.ts" path="router/src/app/crisis-center/crisis-detail-resolver.1.ts"></code-example>
 

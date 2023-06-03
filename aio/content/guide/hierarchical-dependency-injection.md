@@ -15,25 +15,25 @@ This topic uses the following pictographs.
 **注意**：<br />
 本主题使用以下象形图。
 
-| html entities | pictographs |
-| :------------ | :---------- |
-| html 实体 | 象形文字 |
-| <code>🌺</code> | red hibiscus (`🌺`) |
-| <code>🌺</code> | 红芙蓉（`🌺`） |
-| <code>🌻</code> | sunflower (`🌻`) |
-| <code>🌻</code> | 向日葵 ( `🌻` ) |
-| <code>🌼</code> | yellow flower (`🌼`) |
-| <code>🌼</code> | 黄色花（`🌼`） |
-| <code>🌿</code> | fern (`🌿`) |
-| <code>🌿</code> | 蕨类 ( `🌿` ) |
-| <code>🍁</code> | maple leaf (`🍁`) |
-| <code>🍁</code> | 枫叶（`🍁`） |
-| <code>🐳</code> | whale (`🐳`) |
-| <code>🐳</code> | 鲸鱼 ( `🐳` ) |
-| <code>🐶</code> | dog (`🐶`) |
-| <code>🐶</code> | 狗 ( `🐶` ) |
-| <code>🦔</code> | hedgehog (`🦔`) |
-| <code>🦔</code> | 刺猬 ( `🦔` ) |
+| html entities | pictographs           |
+| :------------ |:----------------------|
+| html 实体 | 象形文字                  |
+| <code>&#x1F33A;</code> | red hibiscus \(`🌺`\) |
+| <code>&#x1F33A;</code> | 红芙蓉（`🌺`）             |
+| <code>&#x1F33B;</code> | sunflower \(`🌻`\)    |
+| <code>&#x1F33B;</code> | 向日葵（`🌻`）             |
+| <code>&#x1F337;</code> | tulip \(`🌷`\)        |
+| <code>&#x1F337;</code> | 郁金香 \(`🌷`\)          |
+| <code>&#x1F33F;</code> | fern \(`🌿`\)         |
+| <code>&#x1F33F;</code> | 蕨类 ( `🌿` )           |
+| <code>&#x1F341;</code> | maple leaf \(`🍁`\)   |
+| <code>&#x1F341;</code> | 枫叶（`🍁`）              |
+| <code>&#x1F433;</code> | whale \(`🐳`\)        |
+| <code>&#x1F433;</code> | 鲸鱼 ( `🐳` )           |
+| <code>&#x1F436;</code> | dog \(`🐶`\)          |
+| <code>&#x1F436;</code> | 狗 ( `🐶` )            |
+| <code>&#x1F994;</code> | hedgehog \(`🦔`\)     |
+| <code>&#x1F994;</code> | 刺猬 ( `🦔` )           |
 
 </div>
 
@@ -349,7 +349,7 @@ In the following example, the service, `OptionalService`, isn't provided in the 
 
 `@Optional()` 允许 Angular 将你注入的服务视为可选服务。这样，如果无法在运行时解析它，Angular 只会将服务解析为 `null`，而不会抛出错误。在下面的范例中，服务 `OptionalService` 没有在 `@NgModule()` 或组件类中提供，所以它没有在应用中的任何地方。
 
-<code-example header="resolution-modifiers/src/app/optional/optional.component.ts" path="resolution-modifiers/src/app/optional/optional.component.ts" region="optional-component"></code-example>
+<code-example header="src/app/optional/optional.component.ts" path="resolution-modifiers/src/app/optional/optional.component.ts" region="optional-component"></code-example>
 
 ### `@Self()`
 
@@ -366,18 +366,18 @@ For example, in the following `SelfComponent`, notice the injected `LeafService`
 
 比如，在下面的 `SelfComponent` 中。请注意在构造函数中注入的 `LeafService`。
 
-<code-example header="resolution-modifiers/src/app/self-no-data/self-no-data.component.ts" path="resolution-modifiers/src/app/self-no-data/self-no-data.component.ts" region="self-no-data-component"></code-example>
+<code-example header="src/app/self-no-data/self-no-data.component.ts" path="resolution-modifiers/src/app/self-no-data/self-no-data.component.ts" region="self-no-data-component"></code-example>
 
 In this example, there is a parent provider and injecting the service will return the value, however, injecting the service with `@Self()` and `@Optional()` will return `null` because `@Self()` tells the injector to stop searching in the current host element.
 
 在这个例子中，有一个父提供者，注入服务将返回该值，但是，使用 `@Self()` 和 `@Optional()` 注入的服务将返回 `null` 因为 `@Self()` 告诉注入器在当前宿主元素上就要停止搜索。
 
 Another example shows the component class with a provider for `FlowerService`.
-In this case, the injector looks no further than the current `ElementInjector` because it finds the `FlowerService` and returns the yellow flower <code>🌼</code>.
+In this case, the injector looks no further than the current `ElementInjector` because it finds the `FlowerService` and returns the tulip <code>&#x1F337;</code>.
 
-另一个范例显示了具有 `FlowerService` 提供者的组件类。在这个例子中，注入器没有超出当前 `ElementInjector` 就停止了，因为它已经找到了 `FlowerService` 并返回了黄色花朵🌼。
+另一个范例显示了具有 `FlowerService` 提供者的组件类。在这个例子中，注入器没有超出当前 `ElementInjector` 就停止了，因为它已经找到了 `FlowerService` 并返回了郁金香<code>&#x1F337;</code>。
 
-<code-example header="resolution-modifiers/src/app/self/self.component.ts" path="resolution-modifiers/src/app/self/self.component.ts" region="self-component"></code-example>
+<code-example header="src/app/self/self.component.ts" path="resolution-modifiers/src/app/self/self.component.ts" region="self-component"></code-example>
 
 ### `@SkipSelf()`
 
@@ -391,14 +391,14 @@ To see this in code, assume that the following value for `emoji` is what the par
 
 要在代码中看到这一点，请先假定 `emoji` 的以下值就是父组件正在使用的值，如本服务所示：
 
-<code-example header="resolution-modifiers/src/app/leaf.service.ts" path="resolution-modifiers/src/app/leaf.service.ts" region="leafservice"></code-example>
+<code-example header="src/app/leaf.service.ts" path="resolution-modifiers/src/app/leaf.service.ts" region="leafservice"></code-example>
 
 Imagine that in the child component, you had a different value, maple leaf <code>🍁</code> but you wanted to use the parent's value instead.
 This is when you'd use `@SkipSelf()`:
 
 想象一下，在子组件中，你有一个不同的值 `🍁`（枫叶），但你想使用父项的值。你就要使用 `@SkipSelf()` ：
 
-<code-example header="resolution-modifiers/src/app/skipself/skipself.component.ts" path="resolution-modifiers/src/app/skipself/skipself.component.ts" region="skipself-component"></code-example>
+<code-example header="src/app/skipself/skipself.component.ts" path="resolution-modifiers/src/app/skipself/skipself.component.ts" region="skipself-component"></code-example>
 
 In this case, the value you'd get for `emoji` would be fern <code>🌿</code>, not maple leaf <code>🍁</code>.
 
@@ -430,11 +430,11 @@ Use `@Host()` as follows:
 
 `@Host()` 使你可以在搜索提供者时将当前组件指定为注入器树的最后一站。即使树的更上级有一个服务实例，Angular 也不会继续寻找。使用 `@Host()` 的例子如下：
 
-<code-example header="resolution-modifiers/src/app/host/host.component.ts" path="resolution-modifiers/src/app/host/host.component.ts" region="host-component"></code-example>
+<code-example header="src/app/host/host.component.ts" path="resolution-modifiers/src/app/host/host.component.ts" region="host-component"></code-example>
 
-Since `HostComponent` has `@Host()` in its constructor, no matter what the parent of `HostComponent` might have as a `flower.emoji` value, the `HostComponent` will use yellow flower <code>🌼</code>.
+Since `HostComponent` has `@Host()` in its constructor, no matter what the parent of `HostComponent` might have as a `flower.emoji` value, the `HostComponent` will use tulip <code>&#x1F337;</code>.
 
-由于 `HostComponent` 在其构造函数中具有 `@Host()`，因此，无论 `HostComponent` 的父级是否可能有 `flower.emoji` 值，该 `HostComponent` 都将使用 `🌼`（黄色花朵）。
+由于 `HostComponent` 在其构造函数中具有 `@Host()`，因此，无论 `HostComponent` 的父级是否可能有 `flower.emoji` 值，该 `HostComponent` 都将使用 <code>&#x1F337;</code>（郁金香）。
 
 ## Logical structure of the template
 
@@ -548,7 +548,7 @@ The example application has a `FlowerService` provided in `root` with an `emoji`
 
 范例应用程序的 `root` 提供了 `FlowerService`，其 `emoji` 值为 `🌺`（红色芙蓉）。
 
-<code-example header="providers-viewproviders/src/app/flower.service.ts" path="providers-viewproviders/src/app/flower.service.ts" region="flowerservice"></code-example>
+<code-example header="src/app/flower.service.ts" path="providers-viewproviders/src/app/flower.service.ts" region="flowerservice"></code-example>
 
 Consider an application with only an `AppComponent` and a `ChildComponent`.
 The most basic rendered view would look like nested HTML elements such as the following:
@@ -594,13 +594,13 @@ Now, consider that `<app-root>` injects the `FlowerService`:
 
 现在，考虑 `<app-root>` 只注入了 `FlowerService` ：
 
-<code-example header="providers-viewproviders/src/app/app.component.ts" path="providers-viewproviders/src/app/app.component.1.ts" region="injection"></code-example>
+<code-example header="src/app/app.component.ts" path="providers-viewproviders/src/app/app.component.1.ts" region="injection"></code-example>
 
 Add a binding to the `<app-root>` template to visualize the result:
 
 将绑定添加到 `<app-root>` 模板来将结果可视化：
 
-<code-example header="providers-viewproviders/src/app/app.component.html" path="providers-viewproviders/src/app/app.component.html" region="binding-flower"></code-example>
+<code-example header="src/app/app.component.html" path="providers-viewproviders/src/app/app.component.html" region="binding-flower"></code-example>
 
 The output in the view would be:
 
@@ -676,7 +676,7 @@ Now, in the `ChildComponent` class, add a provider for `FlowerService` to demons
 
 现在，在 `ChildComponent` 类中，为 `FlowerService` 添加一个提供者，以便在接下来的小节中演示更复杂的解析规则：
 
-<code-example header="providers-viewproviders/src/app/child.component.ts" path="providers-viewproviders/src/app/child/child.component.1.ts" region="flowerservice"></code-example>
+<code-example header="src/app/child.component.ts" path="providers-viewproviders/src/app/child/child.component.1.ts" region="flowerservice"></code-example>
 
 Now that the `FlowerService` is provided in the `@Component()` decorator, when the `<app-child>` requests the service, the injector has only to look as far as the `ElementInjector` in the `<app-child>`.
 It won't have to continue the search any further through the injector tree.
@@ -687,7 +687,7 @@ The next step is to add a binding to the `ChildComponent` template.
 
 下一步是将绑定添加到 `ChildComponent` 模板。
 
-<code-example header="providers-viewproviders/src/app/child.component.html" path="providers-viewproviders/src/app/child/child.component.html" region="flower-binding"></code-example>
+<code-example header="src/app/child.component.html" path="providers-viewproviders/src/app/child/child.component.html" region="flower-binding"></code-example>
 
 To render the new values, add `<app-child>` to the bottom of the `AppComponent` template so the view also displays the sunflower:
 
@@ -761,13 +761,13 @@ First, create an `AnimalService` with an `emoji` property of whale <code>🐳</c
 
 首先，创建一个 `AnimalService` 与 `emoji` 的🐳（鲸鱼）属性：
 
-<code-example header="providers-viewproviders/src/app/animal.service.ts" path="providers-viewproviders/src/app/animal.service.ts" region="animal-service"></code-example>
+<code-example header="src/app/animal.service.ts" path="providers-viewproviders/src/app/animal.service.ts" region="animal-service"></code-example>
 
 Following the same pattern as with the `FlowerService`, inject the `AnimalService` in the `AppComponent` class:
 
 遵循与 `FlowerService` 相同的模式，将 `AnimalService` 注入 `AppComponent` 类：
 
-<code-example header="providers-viewproviders/src/app/app.component.ts" path="providers-viewproviders/src/app/app.component.ts" region="inject-animal-service"></code-example>
+<code-example header="src/app/app.component.ts" path="providers-viewproviders/src/app/app.component.ts" region="inject-animal-service"></code-example>
 
 <div class="alert is-helpful">
 
@@ -784,20 +784,20 @@ Here, it has a value of dog <code>🐶</code>.
 
 添加一个 `viewProviders` 数组，并将 `AnimalService` 也注入到 `<app-child>` 类中，但是给 `emoji` 一个不同的值。在这里，它的值为🐶（小狗）。
 
-<code-example header="providers-viewproviders/src/app/child.component.ts" path="providers-viewproviders/src/app/child/child.component.ts" region="provide-animal-service"></code-example>
+<code-example header="src/app/child.component.ts" path="providers-viewproviders/src/app/child/child.component.ts" region="provide-animal-service"></code-example>
 
 Add bindings to the `ChildComponent` and the `AppComponent` templates.
 In the `ChildComponent` template, add the following binding:
 
 将绑定添加到 `ChildComponent` 和 `AppComponent` 模板。在 `ChildComponent` 模板中，添加以下绑定：
 
-<code-example header="providers-viewproviders/src/app/child.component.html" path="providers-viewproviders/src/app/child/child.component.html" region="animal-binding"></code-example>
+<code-example header="src/app/child.component.html" path="providers-viewproviders/src/app/child/child.component.html" region="animal-binding"></code-example>
 
 Additionally, add the same to the `AppComponent` template:
 
 此外，将其添加到 `AppComponent` 模板：
 
-<code-example header="providers-viewproviders/src/app/app.component.html" path="providers-viewproviders/src/app/app.component.html" region="binding-animal"></code-example>
+<code-example header="src/app/app.component.html" path="providers-viewproviders/src/app/app.component.html" region="binding-animal"></code-example>
 
 Now you should see both values in the browser:
 
@@ -850,26 +850,26 @@ In `inspector.component.ts`, inject the `FlowerService` and `AnimalService` in t
 
 为了看清 `providers` 和 `viewProviders` 的差异，请在范例中添加另一个组件，并将其命名为 `InspectorComponent`。`InspectorComponent` 将是 `ChildComponent` 的子 `ChildComponent`。在 `inspector.component.ts` 中，将 `FlowerService` 和 `AnimalService` 注入构造函数中：
 
-<code-example header="providers-viewproviders/src/app/inspector/inspector.component.ts" path="providers-viewproviders/src/app/inspector/inspector.component.ts" region="injection"></code-example>
+<code-example header="src/app/inspector/inspector.component.ts" path="providers-viewproviders/src/app/inspector/inspector.component.ts" region="injection"></code-example>
 
 You do not need a `providers` or `viewProviders` array.
 Next, in `inspector.component.html`, add the same markup from previous components:
 
 你不需要 `providers` 或 `viewProviders` 数组。接下来，在 `inspector.component.html` 中，从以前的组件中添加相同的 html：
 
-<code-example header="providers-viewproviders/src/app/inspector/inspector.component.html" path="providers-viewproviders/src/app/inspector/inspector.component.html" region="binding"></code-example>
+<code-example header="src/app/inspector/inspector.component.html" path="providers-viewproviders/src/app/inspector/inspector.component.html" region="binding"></code-example>
 
 Remember to add the `InspectorComponent` to the `AppModule` `declarations` array.
 
 别忘了将 `InspectorComponent` 添加到 `AppModule` `declarations` 数组。
 
-<code-example header="providers-viewproviders/src/app/app.module.ts" path="providers-viewproviders/src/app/app.module.ts" region="appmodule"></code-example>
+<code-example header="src/app/app.module.ts" path="providers-viewproviders/src/app/app.module.ts" region="appmodule"></code-example>
 
 Next, make sure your `child.component.html` contains the following:
 
 接下来，确保你的 `child.component.html` 包含以下内容：
 
-<code-example header="providers-viewproviders/src/app/child/child.component.html" path="providers-viewproviders/src/app/child/child.component.html" region="child-component"></code-example>
+<code-example header="src/app/child/child.component.html" path="providers-viewproviders/src/app/child/child.component.html" region="child-component"></code-example>
 
 The first two lines, with the bindings, are there from previous steps.
 The new parts are  `<ng-content>` and `<app-inspector>`.
@@ -881,7 +881,7 @@ Next, add the following to `app.component.html` to take advantage of content pro
 
 接下来，将以下内容添加到 `app.component.html` 中以利用内容投影的优势。
 
-<code-example header="providers-viewproviders/src/app/app.component.html" path="providers-viewproviders/src/app/app.component.html" region="content-projection"></code-example>
+<code-example header="src/app/app.component.html" path="providers-viewproviders/src/app/app.component.html" region="content-projection"></code-example>
 
 The browser now renders the following, omitting the previous examples for brevity:
 
@@ -1061,7 +1061,7 @@ Because the injector has only to look at the `ElementInjector` of the `<app-chil
 
 该 `<app-child>` 目前提供在 `viewProviders` 数组中提供了值为 🐶（小狗）的 `AnimalService`。由于注入器只需要查看 `<app-child>` 的 `ElementInjector` 中的 `AnimalService`，它就不会看到🐳（鲸鱼）。
 
-As in the `FlowerService` example, if you add `@SkipSelf()` to the constructor for the `AnimalService`, the injector won't look in the  `ElementInjector` or the current `<app-child>` for the `AnimalService`.
+As in the `FlowerService` example, if you add `@SkipSelf()` to the constructor for the `AnimalService`, the injector won't look in the  `ElementInjector` of the current `<app-child>` for the `AnimalService`.
 
 在 `FlowerService` 这个例子中，如果将 `@SkipSelf()` 添加到 `AnimalService` 的构造函数中，则注入器将不在 `AnimalService` 的当前 `<app-child>` 的 `ElementInjector` 中查找 `AnimalService`。
 

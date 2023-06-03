@@ -11,6 +11,14 @@ import {throwInvalidWriteToSignalError} from './errors';
 import {ReactiveNode} from './graph';
 
 /**
+ * If set, called after `WritableSignal`s are updated.
+ *
+ * This hook can be used to achieve various effects, such as running effects synchronously as part
+ * of setting a signal.
+ */
+let postSignalSetFn: (() => void)|null = null;
+
+/**
  * A `Signal` with a value that can be mutated via a setter interface.
  *
  * @developerPreview
@@ -32,9 +40,18 @@ export interface WritableSignal<T> extends Signal<T> {
    * notify any dependents.
    */
   mutate(mutatorFn: (value: T) => void): void;
+
+  /**
+   * Returns a readonly version of this signal. Readonly signals can be accessed to read their value
+   * but can't be changed using set, update or mutate methods. The readonly signals do _not_ have
+   * any built-in mechanism that would prevent deep-mutation of their value.
+   */
+  asReadonly(): Signal<T>;
 }
 
 class WritableSignalImpl<T> extends ReactiveNode {
+  private readonlySignal: Signal<T>|undefined;
+
   protected override readonly consumerAllowSignalWrites = false;
 
   constructor(private value: T, private equal: ValueEqualityFn<T>) {
@@ -64,6 +81,8 @@ class WritableSignalImpl<T> extends ReactiveNode {
       this.value = newValue;
       this.valueVersion++;
       this.producerMayHaveChanged();
+
+      postSignalSetFn?.();
     }
   }
 
@@ -91,6 +110,15 @@ class WritableSignalImpl<T> extends ReactiveNode {
     mutator(this.value);
     this.valueVersion++;
     this.producerMayHaveChanged();
+
+    postSignalSetFn?.();
+  }
+
+  asReadonly(): Signal<T> {
+    if (this.readonlySignal === undefined) {
+      this.readonlySignal = createSignalFromFunction(this, () => this.signal());
+    }
+    return this.readonlySignal;
   }
 
   signal(): T {
@@ -125,6 +153,13 @@ export function signal<T>(initialValue: T, options?: CreateSignalOptions<T>): Wr
                      set: signalNode.set.bind(signalNode),
                      update: signalNode.update.bind(signalNode),
                      mutate: signalNode.mutate.bind(signalNode),
+                     asReadonly: signalNode.asReadonly.bind(signalNode)
                    }) as unknown as WritableSignal<T>;
   return signalFn;
+}
+
+export function setPostSignalSetFn(fn: (() => void)|null): (() => void)|null {
+  const prev = postSignalSetFn;
+  postSignalSetFn = fn;
+  return prev;
 }

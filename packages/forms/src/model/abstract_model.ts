@@ -837,10 +837,11 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * the UI or programmatically. It also emits an event each time you call enable\(\) or disable\(\)
    * without passing along {emitEvent: false} as a function argument.
    *
-   * 一种多播 observable，每次控件的值发生更改（在 UI
-   * 中或以编程方式）时都会发出事件。它还会在你每次调用 enable\(\) 或 disable\(\)
-   * 时发出一个事件，而不将 {emitEvent: false} 作为函数参数传递。
-   *
+   * **Note**: the emit happens right after a value of this control is updated. The value of a
+   * parent control (for example if this FormControl is a part of a FormGroup) is updated later, so
+   * accessing a value of a parent control (using the `value` property) from the callback of this
+   * event might result in getting a value that has not been updated yet. Subscribe to the
+   * `valueChanges` event of the parent control instead.
    */
   public readonly valueChanges!: Observable<TValue>;
 

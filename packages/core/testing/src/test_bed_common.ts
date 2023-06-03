@@ -48,13 +48,12 @@ export class TestComponentRenderer {
 /**
  * @publicApi
  */
-export const ComponentFixtureAutoDetect =
-    new InjectionToken<boolean[]>('ComponentFixtureAutoDetect');
+export const ComponentFixtureAutoDetect = new InjectionToken<boolean>('ComponentFixtureAutoDetect');
 
 /**
  * @publicApi
  */
-export const ComponentFixtureNoNgZone = new InjectionToken<boolean[]>('ComponentFixtureNoNgZone');
+export const ComponentFixtureNoNgZone = new InjectionToken<boolean>('ComponentFixtureNoNgZone');
 
 /**
  * @publicApi
@@ -73,7 +72,7 @@ export interface TestModuleMetadata {
    * 当组件的模板中存在未知元素时，是否应抛出 NG0304 运行时错误。默认为 `false`
    * ，仅记录错误。如果设置为 `true` ，则抛出错误。
    *
-   * @see https://angular.io/errors/NG8001 for the description of the problem and how to fix it
+   * @see [NG8001](/errors/NG8001) for the description of the problem and how to fix it
    *
    * https://angular.io/errors/NG8001 用于问题的描述以及如何解决它
    *
@@ -87,7 +86,7 @@ export interface TestModuleMetadata {
    * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
    * ，则抛出错误。
    *
-   * @see https://angular.io/errors/NG8002 for the description of the error and how to fix it
+   * @see [NG8002](/errors/NG8002) for the description of the error and how to fix it
    *
    * https://angular.io/errors/NG8002 用于错误的描述以及如何解决它
    *
@@ -114,7 +113,7 @@ export interface TestEnvironmentOptions {
    * 当组件的模板中存在未知元素时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
    * ，则抛出错误。
    *
-   * @see https://angular.io/errors/NG8001 for the description of the error and how to fix it
+   * @see [NG8001](/errors/NG8001) for the description of the error and how to fix it
    *
    * https://angular.io/errors/NG8001 用于错误的描述以及如何解决它
    *
@@ -128,7 +127,7 @@ export interface TestEnvironmentOptions {
    * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
    * ，则抛出错误。
    *
-   * @see https://angular.io/errors/NG8002 for the description of the error and how to fix it
+   * @see [NG8002](/errors/NG8002) for the description of the error and how to fix it
    *
    * https://angular.io/errors/NG8002 用于错误的描述以及如何解决它
    *

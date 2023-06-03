@@ -275,7 +275,7 @@ describe('`restoredState#ɵrouterPageId`', () => {
      }));
 
 
-  it('should work when an error occured during navigation', fakeAsync(() => {
+  it('should work when an error occurred during navigation', fakeAsync(() => {
        const location = TestBed.inject(Location);
        const router = TestBed.inject(Router);
 
@@ -354,6 +354,55 @@ describe('`restoredState#ɵrouterPageId`', () => {
        // Note that this test is different from the above case because we are able to specifically
        // handle the `UrlTree` case as a proper redirect and set `replaceUrl: true` on the
        // follow-up navigation.
+       const location = TestBed.inject(Location);
+       const router = TestBed.inject(Router);
+       router.urlUpdateStrategy = 'eager';
+       let allowNavigation = true;
+       router.resetConfig([
+         {path: 'initial', children: []},
+         {path: 'redirectFrom', redirectTo: 'redirectTo'},
+         {path: 'redirectTo', children: [], canActivate: [() => allowNavigation]},
+       ]);
+
+       // already at '2' from the `beforeEach` navigations
+       expect(location.getState()).toEqual(jasmine.objectContaining({ɵrouterPageId: 2}));
+       router.navigateByUrl('/initial');
+       advance(fixture);
+       expect(location.path()).toEqual('/initial');
+       expect(location.getState()).toEqual(jasmine.objectContaining({ɵrouterPageId: 3}));
+
+       TestBed.inject(MyCanActivateGuard).redirectTo = null;
+
+       router.navigateByUrl('redirectTo');
+       advance(fixture);
+       expect(location.path()).toEqual('/redirectTo');
+       expect(location.getState()).toEqual(jasmine.objectContaining({ɵrouterPageId: 4}));
+
+       // Navigate to different URL but get redirected to same URL should result in same page id
+       router.navigateByUrl('redirectFrom');
+       advance(fixture);
+       expect(location.path()).toEqual('/redirectTo');
+       expect(location.getState()).toEqual(jasmine.objectContaining({ɵrouterPageId: 4}));
+
+       // Back and forward should have page IDs 1 apart
+       location.back();
+       advance(fixture);
+       expect(location.path()).toEqual('/initial');
+       expect(location.getState()).toEqual(jasmine.objectContaining({ɵrouterPageId: 3}));
+       location.forward();
+       advance(fixture);
+       expect(location.path()).toEqual('/redirectTo');
+       expect(location.getState()).toEqual(jasmine.objectContaining({ɵrouterPageId: 4}));
+
+       // Rejected navigation after redirect to same URL should have the same page ID
+       allowNavigation = false;
+       router.navigateByUrl('redirectFrom');
+       advance(fixture);
+       expect(location.path()).toEqual('/redirectTo');
+       expect(location.getState()).toEqual(jasmine.objectContaining({ɵrouterPageId: 4}));
+     }));
+
+  it('urlUpdateStrategy="eager", redirectTo with same url, and guard reject', fakeAsync(() => {
        const location = TestBed.inject(Location);
        const router = TestBed.inject(Router);
        router.urlUpdateStrategy = 'eager';

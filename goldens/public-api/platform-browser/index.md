@@ -48,16 +48,6 @@ export class BrowserModule {
     static ɵmod: i0.ɵɵNgModuleDeclaration<BrowserModule, never, never, [typeof i1.CommonModule, typeof i0.ApplicationModule]>;
 }
 
-// @public @deprecated
-export class BrowserTransferStateModule {
-    // (undocumented)
-    static ɵfac: i0.ɵɵFactoryDeclaration<BrowserTransferStateModule, never>;
-    // (undocumented)
-    static ɵinj: i0.ɵɵInjectorDeclaration<BrowserTransferStateModule>;
-    // (undocumented)
-    static ɵmod: i0.ɵɵNgModuleDeclaration<BrowserTransferStateModule, never, never, never>;
-}
-
 // @public
 export class By {
     static all(): Predicate<DebugNode>;
@@ -245,6 +235,9 @@ export class Title {
 }
 
 // @public @deprecated
+export type TransferState = TransferState_2;
+
+// @public (undocumented)
 export const TransferState: {
     new (): TransferState_2;
 };

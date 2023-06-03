@@ -251,7 +251,12 @@ export interface Directive {
    * ```
    *
    */
-  inputs?: ({name: string, alias?: string, required?: boolean}|string)[];
+  inputs?: ({
+    name: string,
+    alias?: string,
+    required?: boolean,
+    transform?: (value: any) => any,
+  }|string)[];
 
   /**
    * Enumerates the set of event-bound output properties.
@@ -445,6 +450,13 @@ export interface Directive {
    *
    */
   standalone?: boolean;
+
+  /**
+   * // TODO(signals): Remove internal and add public documentation
+   *
+   * @internal
+   */
+  signals?: boolean;
 
   /**
    * Standalone directives that should be applied to the host whenever the directive is matched.
@@ -807,6 +819,12 @@ export interface Component extends Directive {
   standalone?: boolean;
 
   /**
+   * // TODO(signals): Remove internal and add public documentation.
+   * @internal
+   */
+  signals?: boolean;
+
+  /**
    * The imports property specifies the standalone component's template dependencies — those
    * directives, components, and pipes that can be used within its template. Standalone components
    * can import other standalone components, directives, and pipes as well as existing NgModules.
@@ -1033,6 +1051,11 @@ export interface Input {
    * Whether the input is required for the directive to function.
    */
   required?: boolean;
+
+  /**
+   * Function with which to transform the input value before assigning it to the directive instance.
+   */
+  transform?: (value: any) => any;
 }
 
 /**

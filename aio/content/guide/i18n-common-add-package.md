@@ -16,7 +16,7 @@ It adds `types: ["@angular/localize"]` in the TypeScript configuration files as 
 
 <div class="alert is-helpful">
 
-For more information about `package.json` and `tsconfig.json` files, see [Workspace npm dependencies][AioGuideNpmPackages] and [TypeScript Configuraiton][AioGuideTsConfig].
+For more information about `package.json` and `tsconfig.json` files, see [Workspace npm dependencies][AioGuideNpmPackages] and [TypeScript Configuration][AioGuideTsConfig].
 
 有关 `package.json` 和 `polyfill` 包的更多信息，请参阅[工作区的 npm 依赖项][AioGuideNpmPackages]。
 

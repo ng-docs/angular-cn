@@ -172,6 +172,11 @@ export interface R3DirectiveMetadata {
   isStandalone: boolean;
 
   /**
+   * Whether or not the component or directive is signal-based.
+   */
+  isSignal: boolean;
+
+  /**
    * Additional directives applied to the directive host.
    */
   hostDirectives: R3HostDirectiveMetadata[]|null;
@@ -374,6 +379,7 @@ export interface R3InputMetadata {
   classPropertyName: string;
   bindingPropertyName: string;
   required: boolean;
+  transformFunction: o.Expression|null;
 }
 
 export enum R3TemplateDependencyKind {

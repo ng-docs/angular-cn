@@ -89,7 +89,7 @@ executors:
         type: string
         default: medium
     docker:
-      - image: cimg/node:16.13.0
+      - image: cimg/node:16.14.0
     resource_class: << parameters.resource_class >>
     working_directory: ~/ng
 
@@ -99,7 +99,7 @@ executors:
         type: string
         default: medium
     docker:
-      - image: cimg/node:16.13.0-browsers
+      - image: cimg/node:16.14.0-browsers
     resource_class: << parameters.resource_class >>
     working_directory: ~/ng
 
@@ -275,7 +275,6 @@ jobs:
     steps:
       - custom_attach_workspace
       - init_environment
-      - install_java
       - run:
           # We need to explicitly specify the --symlink_prefix option because otherwise we would
           # not be able to easily find the output bin directory when uploading artifacts for size
@@ -309,18 +308,21 @@ jobs:
       # container for this job. This is necessary because we launch a lot of browsers concurrently
       # and therefore the tunnel and Karma need to process a lot of file requests and tests.
       resource_class: xlarge
+    environment:
+      NUMBER_OF_PARALLEL_BROWSERS: 2
     steps:
       - custom_attach_workspace
       - init_environment
       - init_saucelabs_environment
       - run:
+          name: Start Saucelabs daemon service
+          command: yarn bazel run //tools/saucelabs-daemon/background-service -- ${NUMBER_OF_PARALLEL_BROWSERS}
+          background: true
+      - run:
           name: Run Bazel tests on Saucelabs
-          # See /tools/saucelabs/README.md for more info
           command: |
-            yarn bazel run //tools/saucelabs:sauce_service_setup
             TESTS=$(./node_modules/.bin/bazelisk query --output label '(kind(karma_web_test, ...) intersect attr("tags", "saucelabs", ...)) except attr("tags", "fixme-saucelabs", ...)')
-            yarn bazel test --config=saucelabs ${TESTS}
-            yarn bazel run //tools/saucelabs:sauce_service_stop
+            yarn bazel test --config=saucelabs --jobs=${NUMBER_OF_PARALLEL_BROWSERS} ${TESTS}
           no_output_timeout: 40m
       - notify_webhook_on_fail:
           webhook_url_env_var: SLACK_DEV_INFRA_CI_FAILURES_WEBHOOK_URL

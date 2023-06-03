@@ -45,13 +45,35 @@ const __forward_ref__ = getClosureSafeProperty({__forward_ref__: getClosureSafeP
  * 比如，当我们需要为所声明的 DI 而引用此 `token`，但尚未定义该令牌时，将使用
  * `forwardRef`。当我们创建尚未定义的查询的 `token` 时，也会使用它。
  *
+ * `forwardRef` is also used to break circularities in standalone components imports.
+ *
  * @usageNotes
- *
- * ### Example
- *
- * ### 例子
- *
+ * ### Circular dependency example
  * {@example core/di/ts/forward_ref/forward_ref_spec.ts region='forward_ref'}
+ *
+ * ### Circular standalone reference import example
+ * ```ts
+ * @Component({
+ *   standalone: true,
+ *   imports: [ChildComponent],
+ *   selector: 'app-parent',
+ *   template: `<app-child [hideParent]="hideParent"></app-child>`,
+ * })
+ * export class ParentComponent {
+ *   @Input() hideParent: boolean;
+ * }
+ *
+ *
+ * @Component({
+ *   standalone: true,
+ *   imports: [CommonModule, forwardRef(() => ParentComponent)],
+ *   selector: 'app-child',
+ *   template: `<app-parent *ngIf="!hideParent"></app-parent>`,
+ * })
+ * export class ChildComponent {
+ *   @Input() hideParent: boolean;
+ * }
+ * ```
  *
  * @publicApi
  */

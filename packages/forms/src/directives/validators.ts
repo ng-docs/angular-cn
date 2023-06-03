@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Directive, forwardRef, Input, OnChanges, Provider, SimpleChanges, ɵcoerceToBoolean as coerceToBoolean} from '@angular/core';
+import {booleanAttribute, Directive, forwardRef, Input, OnChanges, Provider, SimpleChanges} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {AbstractControl} from '../model/abstract_model';
@@ -491,7 +491,7 @@ export class RequiredValidator extends AbstractValidatorDirective {
   override inputName = 'required';
 
   /** @internal */
-  override normalizeInput = coerceToBoolean;
+  override normalizeInput = booleanAttribute;
 
   /** @internal */
   override createValidator = (input: boolean): ValidatorFn => requiredValidator;
@@ -610,7 +610,7 @@ export class EmailValidator extends AbstractValidatorDirective {
   override inputName = 'email';
 
   /** @internal */
-  override normalizeInput = coerceToBoolean;
+  override normalizeInput = booleanAttribute;
 
   /** @internal */
   override createValidator = (input: number): ValidatorFn => emailValidator;

@@ -159,7 +159,7 @@ function formatNumberToLocaleString(
  * 要格式化的货币值。
  * @see `formatNumber()`
  * @see `DecimalPipe`
- * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *
@@ -210,7 +210,7 @@ export function formatCurrency(
  * 已格式化的百分比值。
  * @see `formatNumber()`
  * @see `DecimalPipe`
- * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *
@@ -247,7 +247,7 @@ export function formatPercent(value: number, locale: string, digitsInfo?: string
  * @returns The formatted text string.
  *
  * 已格式化的文本字符串。
- * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *

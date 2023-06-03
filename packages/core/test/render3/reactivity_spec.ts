@@ -6,7 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {AfterViewInit, Component, destroyPlatform, effect, inject, Injector, NgZone, signal} from '@angular/core';
+import {AsyncPipe} from '@angular/common';
+import {AfterViewInit, Component, ContentChildren, createComponent, destroyPlatform, effect, EnvironmentInjector, inject, Injector, Input, NgZone, OnChanges, QueryList, signal, SimpleChanges, ViewChild} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {TestBed} from '@angular/core/testing';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {withBody} from '@angular/private/testing';
@@ -130,11 +132,11 @@ describe('effects', () => {
     })
     class Cmp {
       counter = signal(0);
-      effectRef = effect(() => {
+      effectRef = effect((onCleanup) => {
         counterLog.push(this.counter());
-        return () => {
+        onCleanup(() => {
           cleanupCount++;
-        };
+        });
       });
     }
 
@@ -179,6 +181,7 @@ describe('effects', () => {
 
     expect(didRun).toBeTrue();
   });
+
   it('should disallow writing to signals within effects by default',
      withBody('<test-cmp></test-cmp>', async () => {
        @Component({
@@ -216,4 +219,190 @@ describe('effects', () => {
 
        await bootstrapApplication(Cmp);
      }));
+
+  it('should allow writing to signals in ngOnChanges', () => {
+    @Component({
+      selector: 'with-input',
+      standalone: true,
+      template: '{{inSignal()}}',
+    })
+    class WithInput implements OnChanges {
+      inSignal = signal<string|undefined>(undefined);
+      @Input() in : string|undefined;
+
+      ngOnChanges(changes: SimpleChanges): void {
+        if (changes.in) {
+          this.inSignal.set(changes.in.currentValue);
+        }
+      }
+    }
+
+    @Component({
+      selector: 'test-cmp',
+      standalone: true,
+      imports: [WithInput],
+      template: `<with-input [in]="'A'" />|<with-input [in]="'B'" />`,
+    })
+    class Cmp {
+    }
+
+    const fixture = TestBed.createComponent(Cmp);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toBe('A|B');
+  });
+
+  it('should allow writing to signals in a constructor', () => {
+    @Component({
+      selector: 'with-constructor',
+      standalone: true,
+      template: '{{state()}}',
+    })
+    class WithConstructor {
+      state = signal('property initializer');
+
+      constructor() {
+        this.state.set('constructor');
+      }
+    }
+
+    @Component({
+      selector: 'test-cmp',
+      standalone: true,
+      imports: [WithConstructor],
+      template: `<with-constructor />`,
+    })
+    class Cmp {
+    }
+
+    const fixture = TestBed.createComponent(Cmp);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toBe('constructor');
+  });
+
+  it('should allow writing to signals in input setters', () => {
+    @Component({
+      selector: 'with-input-setter',
+      standalone: true,
+      template: '{{state()}}',
+    })
+    class WithInputSetter {
+      state = signal('property initializer');
+
+      @Input()
+      set testInput(newValue: string) {
+        this.state.set(newValue);
+      }
+    }
+
+    @Component({
+      selector: 'test-cmp',
+      standalone: true,
+      imports: [WithInputSetter],
+      template: `
+          <with-input-setter [testInput]="'binding'" />|<with-input-setter testInput="static" />
+      `,
+    })
+    class Cmp {
+    }
+
+    const fixture = TestBed.createComponent(Cmp);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toBe('binding|static');
+  });
+
+  it('should allow writing to signals in query result setters', () => {
+    @Component({
+      selector: 'with-query',
+      standalone: true,
+      template: '{{items().length}}',
+    })
+    class WithQuery {
+      items = signal<unknown[]>([]);
+
+      @ContentChildren('item')
+      set itemsQuery(result: QueryList<unknown>) {
+        this.items.set(result.toArray());
+      }
+    }
+
+    @Component({
+      selector: 'test-cmp',
+      standalone: true,
+      imports: [WithQuery],
+      template: `<with-query><div #item></div></with-query>`,
+    })
+    class Cmp {
+    }
+
+    const fixture = TestBed.createComponent(Cmp);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toBe('1');
+  });
+
+  it('should not execute query setters in the reactive context', () => {
+    const state = signal('initial');
+
+    @Component({
+      selector: 'with-query-setter',
+      standalone: true,
+      template: '<div #el></div>',
+
+    })
+    class WithQuerySetter {
+      el: unknown;
+      @ViewChild('el', {static: true})
+      set elQuery(result: unknown) {
+        // read a signal in a setter - I want to verify that framework executes this code outside of
+        // the reactive context
+        state();
+        this.el = result;
+      }
+    }
+
+    @Component({
+      selector: 'test-cmp',
+      standalone: true,
+      template: ``,
+    })
+    class Cmp {
+      noOfCmpCreated = 0;
+      constructor(environmentInjector: EnvironmentInjector) {
+        // A slightly artificial setup where a component instance is created using imperative APIs.
+        // We don't have control over the timing / reactive context of such API calls so need to
+        // code defensively in the framework.
+
+        // Here we want to specifically verify that an effect is _not_ re-run if a signal read
+        // happens in a query setter of a dynamically created component.
+        effect(() => {
+          createComponent(WithQuerySetter, {environmentInjector});
+          this.noOfCmpCreated++;
+        });
+      }
+    }
+
+    const fixture = TestBed.createComponent(Cmp);
+    fixture.detectChanges();
+    expect(fixture.componentInstance.noOfCmpCreated).toBe(1);
+
+    state.set('changed');
+    fixture.detectChanges();
+    expect(fixture.componentInstance.noOfCmpCreated).toBe(1);
+  });
+
+  it('should allow toObservable subscription in template (with async pipe)', () => {
+    @Component({
+      selector: 'test-cmp',
+      standalone: true,
+      imports: [AsyncPipe],
+      template: '{{counter$ | async}}',
+    })
+    class Cmp {
+      counter$ = toObservable(signal(0));
+    }
+
+    const fixture = TestBed.createComponent(Cmp);
+    expect(() => fixture.detectChanges(true)).not.toThrow();
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toBe('0');
+  });
 });

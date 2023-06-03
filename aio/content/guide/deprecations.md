@@ -12,7 +12,9 @@ This gives you time to update your applications to the latest APIs and best prac
 
 为了使这些转换尽可能简单，API 和特性在被删除之前会被弃用一段时间。这让你有时间将应用程序更新到最新的 API 和最佳实践。
 
-This guide contains a summary of all Angular APIs and features that are currently deprecated.
+This guide contains a summary of noteworthy Angular APIs and features that are currently deprecated.
+See the [full changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md) for
+comprehensive details on deprecations and breaking changes.
 
 本指南包含了当前已弃用的所有 Angular API 和特性的汇总表。
 
@@ -125,7 +127,6 @@ v16 - v19
 | `@angular/core`                     | [`ComponentFactory`](#core)                                                             | v13           | v16               |
 | `@angular/core`                     | [`ComponentFactoryResolver`](#core)                                                     | v13           | v16               |
 | `@angular/core`                     | [`CompilerOptions.useJit and CompilerOptions.missingTranslation config options`](#core) | v13           | v16               |
-| `@angular/platform-browser`         | [`BrowserTransferStateModule`](#platform-browser)                                       | v14           | v16               |
 | `@angular/platform-browser-dynamic` | [`JitCompilerFactory`](#platform-browser-dynamic)                                       | v13           | v16               |
 | `@angular/platform-browser-dynamic` | [`RESOURCE_CACHE_PROVIDER`](#platform-browser-dynamic)                                  | v13           | v16               |
 | `@angular/platform-server`          | [`ServerTransferStateModule`](#platform-server)                                         | v14           | v16               |
@@ -154,8 +155,10 @@ v16 - v19
 | Area                        | API or Feature                                                                                                    | Deprecated in | May be removed in |
 | :-------------------------- | :---------------------------------------------------------------------------------------------------------------- | :------------ | :---------------- |
 | 特性区                      | API 或特性                                                                                                        | 已弃用于      | 可能会移除于      |
+| `@angular/common` | `isPlatformWorkerApp` and `isPlatformWorkerUi` | v16 | v18 |
 | `@angular/core`             | `EnvironmentInjector.runInContext`                                                                                | v16           | v18               |
 | `@angular/platform-server`  | [`PlatformConfig.baseUrl` and `PlatformConfig.useAbsoluteUrl` config options](api/platform-server/PlatformConfig) | v16           | v18               |
+| `@angular/platform-server`          | [`platformDynamicServer`](api/platform-server/platformDynamicServer) | v16           | v18               |
 | `@angular/platform-browser` | [`BrowserModule.withServerTransition`](api/platform-browser/BrowserModule#withservertransition)                   | v16           | v18               |
 | `@angular/platform-browser` | [`makeStateKey`, `StateKey` and `TransferState`](#platform-browser), symbols were moved to `@angular/core`        | v16           | v18               |
 
@@ -199,6 +202,7 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 | [`NgComponentOutlet.ngComponentOutletNgModuleFactory`](api/common/NgComponentOutlet) | `NgComponentOutlet.ngComponentOutletNgModule`                           | v14                   | 改用 `ngComponentOutletNgModule` 输入。此输入不需要解析 NgModule 工厂。                                     |
 | [`DatePipe` - `DATE_PIPE_DEFAULT_TIMEZONE`](api/common/DATE_PIPE_DEFAULT_TIMEZONE)   | `{ provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { timezone: '-1200' }` | v15                   | Use the `DATE_PIPE_DEFAULT_OPTIONS` injection token, which can configure multiple settings at once instead. |
 | [`DatePipe` - `DATE_PIPE_DEFAULT_TIMEZONE`](api/common/DATE_PIPE_DEFAULT_TIMEZONE)   | `{ provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { timezone: '-1200' }` | v15                   | 使用 `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌，它可以改为一次配置多个设置。                                     |
+| `isPlatformWorkerApp` and `isPlatformWorkerUi` | None  | v16 | These two functions have no purpose since the removal of the webworker platform (they only return `false`). They can be safely removed. |
 
 <a id="core"></a>
 
@@ -279,15 +283,11 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/platform-browser
 
-| API                                                                                             | Replacement                  | Deprecation announced | Details                                                                                                                                        |
-| :---------------------------------------------------------------------------------------------- | :--------------------------- | :-------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| API                                                              | Replacement                                        | Deprecation announced | Details |
+|:---                                                              |:---                                                |:---                   |:---     |
 | API                                                                                             | 替代品                       | 已宣布弃用            | 详情                                                                                                                                           |
-| [`BrowserTransferStateModule`](api/platform-browser/BrowserTransferStateModule)                 | No replacement needed.       | v14.1                 | The `TransferState` class is available for injection without importing additional modules on the client side of a server-rendered application. |
-| [`BrowserTransferStateModule`](api/platform-browser/BrowserTransferStateModule)                 | 无需更换。                   | v14.1                 | `TransferState` 类无需导入额外的模块即可用于在服务端渲染应用的客户端进行注入。                                                                 |
-| [`BrowserModule.withServerTransition`](api/platform-browser/BrowserModule#withservertransition) | No replacement needed.       | v16.0                 | The `APP_ID`token should be used instead to set the application ID.                                                                            |
-| [`BrowserModule.withServerTransition`](api/platform-browser/BrowserModule#withservertransition) | 无需更换。                   | v16.0                 | The `APP_ID`token should be used instead to set the application ID.                                                                            |
-| `makeStateKey`, `StateKey` and `TransferState`                                                  | Import from `@angular/core`. | v16.0                 | Same behavior, but exported from a different package.                                                                                          |
-
+| [`BrowserModule.withServerTransition`](api/platform-browser/BrowserModule#withservertransition) | No replacement needed.  | v16.0                   | The `APP_ID`token should be used instead to set the application ID. |
+| `makeStateKey`, `StateKey` and `TransferState` | Import from `@angular/core`.  | v16.0                   | Same behavior, but exported from a different package. |
 <a id="platform-browser-dynamic"></a>
 
 ### &commat;angular/platform-browser-dynamic
@@ -305,12 +305,13 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 ### &commat;angular/platform-server
 
 | API                                                                                                               | Replacement            | Deprecation announced | Details                                                                                                                                                                                                        |
-| :---------------------------------------------------------------------------------------------------------------- | :--------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| API                                                                                                               | 替代品                 | 已宣布弃用            | 详情                                                                                                                                                                                                           |
+| :---------------------------------------------------------------------------------------------------------------- | :--------------------- | :-------------------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| API                                                                                                               | 替代品                 | 已宣布弃用            | 详情                                                                                                                                                                                                             |
 | [`ServerTransferStateModule`](api/platform-server/ServerTransferStateModule)                                      | No replacement needed. | v14.1                 | The `TransferState` class is available for injection without importing additional modules during server side rendering, when `ServerModule` is imported or `renderApplication` function is used for bootstrap. |
-| [`ServerTransferStateModule`](api/platform-server/ServerTransferStateModule)                                      | 无需更换。             | v14.1                 | 当已导入 `ServerModule` 或 使用 `renderApplication` 函数进行引导时，`TransferState` 类无需导入额外的模块即在服务端渲染期间使用。                                                                               |
+| [`ServerTransferStateModule`](api/platform-server/ServerTransferStateModule)                                      | 无需更换。             | v14.1                 | 当已导入 `ServerModule` 或 使用 `renderApplication` 函数进行引导时，`TransferState` 类无需导入额外的模块即在服务端渲染期间使用。                                                                                                                    |
 | [`PlatformConfig.baseUrl` and `PlatformConfig.useAbsoluteUrl` config options](api/platform-server/PlatformConfig) | none                   | v16                   | This was previously unused.                                                                                                                                                                                    |
-| [`PlatformConfig.baseUrl` and `PlatformConfig.useAbsoluteUrl` config options](api/platform-server/PlatformConfig) | 没了                   | v16                   | This was previously unused.                                                                                                                                                                                    |
+| [`PlatformConfig.baseUrl` and `PlatformConfig.useAbsoluteUrl` config options](api/platform-server/PlatformConfig) | 没了                   | v16                   | 这段代码以前未曾用过。                                                                                                                                                                                                    |
+| [`platformDynamicServer`](api/platform-server/platformDynamicServer) | Import `@angular/compiler` and replace the usage with `platformServer` instead. | v16                   | This is done to decrease the server bundle size for AOT builds.                                                                                                                                                |
 
 <a id="forms"></a>
 
@@ -878,8 +879,8 @@ Projects that currently have `fullTemplateTypeCheck: true` configured can migrat
 
 ## 由于 ViewEngine 弃用而导致的 JIT API 更改
 
-In ViewEngine, [JIT compilation](https://angular.io/guide/glossary#jit) required special providers \(such as `Compiler` or `CompilerFactory`\) to be injected in the app and corresponding methods to be invoked.
-With Ivy, JIT compilation takes place implicitly if the Component, NgModule, etc. have not already been [AOT compiled](https://angular.io/guide/glossary#aot).
+In ViewEngine, [JIT compilation](/guide/glossary#jit) required special providers \(such as `Compiler` or `CompilerFactory`\) to be injected in the app and corresponding methods to be invoked.
+With Ivy, JIT compilation takes place implicitly if the Component, NgModule, etc. have not already been [AOT compiled](/guide/glossary#aot).
 Those special providers were made available in Ivy for backwards-compatibility with ViewEngine to make the transition to Ivy smoother.
 Since ViewEngine is deprecated and will soon be removed, those symbols are now deprecated as well.
 
@@ -1018,4 +1019,4 @@ If you rely on the behavior that the same object instance should cause change de
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-05-03

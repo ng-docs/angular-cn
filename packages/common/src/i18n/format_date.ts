@@ -70,7 +70,7 @@ enum TranslationType {
  *
  * 格式化之后的日期字符串。
  * @see `DatePipe`
- * @see [Internationalization \(i18n\) Guide](https://angular.io/guide/i18n-overview)
+ * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
  *

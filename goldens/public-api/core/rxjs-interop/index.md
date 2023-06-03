@@ -11,21 +11,42 @@ import { Observable } from 'rxjs';
 import { Signal } from '@angular/core';
 
 // @public
-export function fromObservable<T>(source: Observable<T>): Signal<T>;
+export function takeUntilDestroyed<T>(destroyRef?: DestroyRef): MonoTypeOperatorFunction<T>;
 
 // @public
-export function fromObservable<T, U extends T | null | undefined>(source: Observable<T>, initialValue: U): Signal<T | U>;
+export function toObservable<T>(source: Signal<T>, options?: ToObservableOptions): Observable<T>;
 
 // @public
-export function fromSignal<T>(source: Signal<T>, options?: FromSignalOptions): Observable<T>;
-
-// @public
-export interface FromSignalOptions {
+export interface ToObservableOptions {
     injector?: Injector;
 }
 
 // @public
-export function takeUntilDestroyed<T>(destroyRef?: DestroyRef): MonoTypeOperatorFunction<T>;
+export function toSignal<T>(source: Observable<T>): Signal<T | undefined>;
+
+// @public
+export function toSignal<T>(source: Observable<T>, options?: ToSignalOptions<undefined> & {
+    requireSync?: false;
+}): Signal<T | undefined>;
+
+// @public
+export function toSignal<T, U extends T | null | undefined>(source: Observable<T>, options: ToSignalOptions<U> & {
+    initialValue: U;
+    requireSync?: false;
+}): Signal<T | U>;
+
+// @public
+export function toSignal<T>(source: Observable<T>, options: ToSignalOptions<undefined> & {
+    requireSync: true;
+}): Signal<T>;
+
+// @public
+export interface ToSignalOptions<T> {
+    initialValue?: T;
+    injector?: Injector;
+    manualCleanup?: boolean;
+    requireSync?: boolean;
+}
 
 // (No @packageDocumentation comment for this package)
 

@@ -6,6 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import {hasInSkipHydrationBlockFlag} from '../hydration/skip_hydration';
 import {ViewEncapsulation} from '../metadata/view';
 import {RendererStyleFlags2} from '../render/api_flags';
 import {addToArray, removeFromArray} from '../util/array_utils';
@@ -28,7 +29,7 @@ import {assertTNodeType} from './node_assert';
 import {profiler, ProfilerEvent} from './profiler';
 import {setUpAttributes} from './util/attrs_utils';
 import {getLViewParent} from './util/view_traversal_utils';
-import {getNativeByTNode, unwrapRNode, updateTransplantedViewCount} from './util/view_utils';
+import {clearViewRefreshFlag, getNativeByTNode, unwrapRNode} from './util/view_utils';
 
 const enum WalkTNodeTreeAction {
   /** node create in the native environment. Run on initial creation. */
@@ -324,12 +325,8 @@ function detachMovedView(declarationContainer: LContainer, lView: LView) {
   ngDevMode && assertLContainer(insertionLContainer);
 
   // If the view was marked for refresh but then detached before it was checked (where the flag
-  // would be cleared and the counter decremented), we need to decrement the view counter here
-  // instead.
-  if (lView[FLAGS] & LViewFlags.RefreshTransplantedView) {
-    lView[FLAGS] &= ~LViewFlags.RefreshTransplantedView;
-    updateTransplantedViewCount(insertionLContainer, -1);
-  }
+  // would be cleared and the counter decremented), we need to update the status here.
+  clearViewRefreshFlag(lView);
 
   movedViews.splice(declarationViewIndex, 1);
 }
@@ -479,12 +476,14 @@ function processCleanups(tView: TView, lView: LView): void {
   }
   const destroyHooks = lView[ON_DESTROY_HOOKS];
   if (destroyHooks !== null) {
+    // Reset the ON_DESTROY_HOOKS array before iterating over it to prevent hooks that unregister
+    // themselves from mutating the array during iteration.
+    lView[ON_DESTROY_HOOKS] = null;
     for (let i = 0; i < destroyHooks.length; i++) {
       const destroyHooksFn = destroyHooks[i];
       ngDevMode && assertFunction(destroyHooksFn, 'Expecting destroy hook to be a function.');
       destroyHooksFn();
     }
-    lView[ON_DESTROY_HOOKS] = null;
   }
 }
 
@@ -1002,6 +1001,11 @@ function applyProjectionRecursive(
   } else {
     let nodeToProject: TNode|null = nodeToProjectOrRNodes;
     const projectedComponentLView = componentLView[PARENT] as LView;
+    // If a parent <ng-content> is located within a skip hydration block,
+    // annotate an actual node that is being projected with the same flag too.
+    if (hasInSkipHydrationBlockFlag(tProjectionNode)) {
+      nodeToProject.flags |= TNodeFlags.inSkipHydrationBlock;
+    }
     applyNodes(
         renderer, action, nodeToProject, projectedComponentLView, parentRElement, beforeNode, true);
   }

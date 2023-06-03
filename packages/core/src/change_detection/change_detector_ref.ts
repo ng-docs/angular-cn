@@ -44,7 +44,7 @@ import {ViewRef} from '../render3/view_ref';
  *
  * The following example sets the `OnPush` change-detection strategy for a component
  * \(`CheckOnce`, rather than the default `CheckAlways`\), then forces a second check
- * after an interval. See [live demo](https://plnkr.co/edit/GC512b?p=preview).
+ * after an interval.
  *
  * 下面的例子为组件设置了 `OnPush` 变更检测策略（`CheckOnce` 而不是默认的
  * `CheckAlways`），然后每隔一段时间强制进行第二轮检测。

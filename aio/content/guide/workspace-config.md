@@ -385,8 +385,8 @@ Some extra options can only be set through the configuration file, either by dir
 一些额外的选项（如下所列）只能通过配置文件来设置，可以直接编辑，也可以使用 [`ng config`](cli/config) 命令。
 
 | Options properties         | Details                                                                                                                                                                                                                                                                                                 |
-| :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 选项属性                   | 详情                                                                                                                                                                                                                                                                                                    |
+|:---------------------------| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 选项属性                       | 详情                                                                                                                                                                                                                                                                                                    |
 | `assets`                   | An object containing paths to static assets to add to the global context of the project. The default paths point to the project's icon file and its `assets` directory. See more in the [Assets configuration](#asset-config) section.                                                                  |
 | `assets`                   | 一个对象，包含一些用于添加到项目的全局上下文中的静态文件路径。它的默认路径指向项目的图标文件及项目的 `assets` 文件夹。参阅[项目资产（asset）配置](#asset-config)部分。                                                                                                                                  |
 | `styles`                   | An array of style files to add to the global context of the project. Angular CLI supports CSS imports and all major CSS preprocessors: [sass/scss](https://sass-lang.com) and [less](http://lesscss.org). See more in the [Styles and scripts configuration](#style-script-config) section.             |
@@ -399,6 +399,8 @@ Some extra options can only be set through the configuration file, either by dir
 | `budgets`                  | 全部或部分应用的默认尺寸预算的类型和阈值。当构建的输出达到或超过阈值大小时，你可以将构建器配置为报告警告或错误。参阅[配置尺寸预算](guide/build#configure-size-budgets)。（不适用于 `test` 部分。）                                                                                                      |
 | `fileReplacements`         | An object containing files and their compile-time replacements. See more in [Configure target-specific file replacements](guide/build#configure-target-specific-file-replacements).                                                                                                                     |
 | `fileReplacements`         | 一个对象，包含一些文件及其编译时替代品。参阅[为指定的目标配置文件替换规则](guide/build#configure-target-specific-file-replacements) 部分。                                                                                                                                                              |
+| `index`                    | Configures the generation of the application's HTML index. See more in [Index configuration](#index-config). \(Only available in `browser` section.\)                                                                                                         |                                                                                                        |                                                                                                      
+
 
 <a id="complex-config"></a>
 
@@ -406,7 +408,7 @@ Some extra options can only be set through the configuration file, either by dir
 
 ## 复杂配置的值
 
-The `assets`, `styles`, and `scripts` options can have either simple path string values, or object values with specific fields.
+The `assets`, `index`, `styles`, and `scripts` options can have either simple path string values, or object values with specific fields.
 The `sourceMap` and `optimization` options can be set to a simple Boolean value with a command flag. They can also be given a complex value using the configuration file.
 The following sections provide more details of how these complex values are used in each case.
 
@@ -763,6 +765,23 @@ These are useful if you only want source maps to map error stack traces in error
 使用隐藏式源码映射时，捆绑包中不会引用源码映射。如果你只希望在错误报告工具中通过源码映射映射错误堆栈跟踪时会很有用。隐藏源码映射就不会在浏览器开发工具中暴露你的源码映射。
 
 </div>
+
+<a id="index-config"></a>
+
+### Index configuration
+
+Configures the generation of the application's HTML index.
+
+The `index` option can be either a String or an Object for more fine-tune configuration.
+
+When supplying the value as a String the filename of the specified path will be used for the generated file and will be created in the root of the application's configured output path.
+
+#### Index options
+| Options  | Details                                                                                                                                                                          | Value type | Default value |
+|:---      |:---                                                                                                                                                                              |:---        |:---           |
+| `input`  | The path of a file to use for the application's generated HTML index.                                                                                                            | `string`   |               |
+| `output` | The output path of the application's generated HTML index file. The full provided path will be used and will be considered relative to the application's configured output path. | `string`   | `index.html`  |
+
 
 <!-- links -->
 
