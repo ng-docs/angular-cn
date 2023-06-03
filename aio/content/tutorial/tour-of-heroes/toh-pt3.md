@@ -210,7 +210,7 @@ As [before](tutorial/tour-of-heroes/toh-pt2), whenever a user clicks on a hero n
 the hero detail appears below the hero list.
 Now the `HeroDetailComponent` is presenting those details instead of the `HeroesComponent`.
 
-像[以前](tutorial/toh-pt2)一样，一旦用户点击了一个英雄的名字，该英雄的详情就显示在了英雄列表下方。现在，`HeroDetailComponent` 负责显示那些详情，而不再是 `HeroesComponent`。
+像[以前](tutorial/tour-of-heroes/toh-pt2)一样，一旦用户点击了一个英雄的名字，该英雄的详情就显示在了英雄列表下方。现在，`HeroDetailComponent` 负责显示那些详情，而不再是 `HeroesComponent`。
 
 Refactoring the original `HeroesComponent` into two components yields benefits, both now and in the future:
 

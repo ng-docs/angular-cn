@@ -289,7 +289,7 @@ and have [`HttpClient.get()`](guide/http) return an `Observable`.
 In [the tutorial on HTTP](tutorial/tour-of-heroes/toh-pt6), you can see how Angular's `HttpClient` methods return RxJS `Observable` objects.
 This tutorial simulates getting data from the server with the RxJS `of()` function.
 
-在[稍后的 HTTP 教程](tutorial/toh-pt6)中，你就会知道 Angular `HttpClient` 的方法会返回 RxJS 的 `Observable`。这节课，你将使用 RxJS 的 `of()` 函数来模拟从服务器返回数据。
+在[稍后的 HTTP 教程](tutorial/tour-of-heroes/toh-pt6)中，你就会知道 Angular `HttpClient` 的方法会返回 RxJS 的 `Observable`。这节课，你将使用 RxJS 的 `of()` 函数来模拟从服务器返回数据。
 
 Open the `HeroService` file and import the `Observable` and `of` symbols from RxJS.
 
@@ -311,7 +311,7 @@ Replace the `getHeroes()` method with the following:
 
 The [HTTP tutorial](tutorial/tour-of-heroes/toh-pt6) shows you how to call `HttpClient.get<Hero[]>()`, which also returns an `Observable<Hero[]>` that emits  *a single value*, an array of heroes from the body of the HTTP response.
 
-在 [HTTP 教程](tutorial/toh-pt6)中，你将会调用 `HttpClient.get<Hero[]>()` 它也同样返回一个 `Observable<Hero[]>`，它也会发出单个值，这个值就是来自 HTTP 响应体中的英雄数组。
+在 [HTTP 教程](tutorial/tour-of-heroes/toh-pt6)中，你将会调用 `HttpClient.get<Hero[]>()` 它也同样返回一个 `Observable<Hero[]>`，它也会发出单个值，这个值就是来自 HTTP 响应体中的英雄数组。
 
 </div>
 
@@ -552,7 +552,7 @@ The messages look better after you add the private CSS styles to `messages.compo
 The following example shows how to display a history of each time the user clicks on a hero.
 This helps when you get to the next section on [Routing](tutorial/tour-of-heroes/toh-pt5).
 
-下面的例子展示了当用户点击某个英雄时发生的历史。当你学到后面的[路由](tutorial/toh-pt5)一章时，这会很有帮助。
+下面的例子展示了当用户点击某个英雄时发生的历史。当你学到后面的[路由](tutorial/tour-of-heroes/toh-pt5)一章时，这会很有帮助。
 
 <code-example header="src/app/heroes/heroes.component.ts" path="toh-pt4/src/app/heroes/heroes.component.ts"></code-example>
 

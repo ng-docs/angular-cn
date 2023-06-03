@@ -157,7 +157,7 @@ hover over and select a hero from the list.
 In the [first tutorial](tutorial/tour-of-heroes/toh-pt0#app-wide-styles), you set the basic styles for the entire application in `styles.css`.
 That style sheet didn't include styles for this list of heroes.
 
-在[教程的第一章](tutorial/toh-pt0#app-wide-styles)，你曾在 `styles.css` 中为整个应用设置了一些基础的样式。但那个样式表并不包含英雄列表所需的样式。
+在[教程的第一章](tutorial/tour-of-heroes/toh-pt0#app-wide-styles)，你曾在 `styles.css` 中为整个应用设置了一些基础的样式。但那个样式表并不包含英雄列表所需的样式。
 
 You could add more styles to `styles.css` and keep growing that style sheet as you add components.
 

@@ -65,10 +65,6 @@ You may also be interested in the following:
 
   [特性模块](guide/feature-modules)
 
-* [Entry Components](guide/entry-components)
-
-  [入口组件](guide/entry-components)
-
 * [Providers](guide/providers)
 
   [服务提供者](guide/providers)

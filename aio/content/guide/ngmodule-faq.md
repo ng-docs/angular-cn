@@ -238,7 +238,7 @@ Don't export the following:
   Such components can never be selected in another component's template.
   While there's no harm in exporting them, there's also no benefit.
 
-  那些只被路由器或引导函数动态加载的组件。比如[入口组件](guide/ngmodule-faq#q-entry-component-defined)可能从来不会在其它组件的模板中出现。导出它们没有坏处，但也没有好处。
+  那些只被路由器或引导函数动态加载的组件。比如那些从来不会在其它组件的模板中出现的组件。导出它们没有坏处，但也没有好处。
 
 * Pure service modules that don't have public \(exported\) declarations.
   For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.

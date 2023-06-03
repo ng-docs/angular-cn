@@ -322,7 +322,7 @@ Most web APIs support a *get by id* request in the form `:baseURL/:id`.
 Here, the *base URL* is the `heroesURL` defined in the [Heroes and HTTP](tutorial/tour-of-heroes/toh-pt6#heroes-and-http) section in `api/heroes` and *id* is the number of the hero that you want to retrieve.
 For example, `api/heroes/11`.
 
-这里的 `baseURL` 就是在 [英雄列表与 HTTP](tutorial/toh-pt6#heroes-and-http) 部分定义过的 `heroesURL`（在 `api/heroes` 中）。而 `id` 则是你要获取的英雄的编号，比如，`api/heroes/11`。
+这里的 `baseURL` 就是在 [英雄列表与 HTTP](tutorial/tour-of-heroes/toh-pt6#heroes-and-http) 部分定义过的 `heroesURL`（在 `api/heroes` 中）。而 `id` 则是你要获取的英雄的编号，比如，`api/heroes/11`。
 
 Update the `HeroService` `getHero()` method with the following to make that request:
 

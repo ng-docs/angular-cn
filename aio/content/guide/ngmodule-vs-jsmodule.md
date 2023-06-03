@@ -14,7 +14,7 @@ JavaScript 模块和 NgModule 都可以帮你模块化你的代码，但它们�
 A [JavaScript module](https://javascript.info/modules "JavaScript.Info - Modules") is an individual file with JavaScript code, usually containing a class or a library of functions for a specific purpose within your application.
 JavaScript modules let you spread your work across multiple files.
 
-[JavaScript 模块](https://javascript.info/modules "JavaScript.Info  - 模块")是一个带有 JavaScript 代码的单独文件，它通常包含一个应用中特定用途的类或函数库。JavaScript 模块让你可以跨多个文件进行工作。
+[JavaScript 模块](https://javascript.info/modules "JavaScript.Info - 模块")是一个带有 JavaScript 代码的单独文件，它通常包含一个应用中特定用途的类或函数库。JavaScript 模块让你可以跨多个文件进行工作。
 
 <div class="alert is-helpful">
 
@@ -119,7 +119,7 @@ It then configures the `@NgModule` with the following arrays:
 * `bootstrap`: The component that Angular creates and inserts into the `index.html` host web page, thereby bootstrapping the application.
   This component, `AppComponent`, appears in both the `declarations` and the `bootstrap` arrays.
 
-  `bootstrap` ：[Angular 创建的入口组件](guide/entry-components "指定一个入口组件")，Angular 会创建它，并把它插入到宿主页面 `index.html` 中，从而引导该应用。这个入口组件 `AppComponent` 会同时出现在 `declarations` 和 `bootstrap` 数组中。
+  `bootstrap` ：由 Angular 创建并插入到宿主页面 `index.html` 中的组件，以便引导该应用。这个组件 `AppComponent` 会同时出现在 `declarations` 和 `bootstrap` 数组中。
 
 ## Next steps
 

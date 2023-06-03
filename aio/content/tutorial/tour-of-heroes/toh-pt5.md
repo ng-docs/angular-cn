@@ -585,7 +585,7 @@ The "id" parameter is the `id` of the hero to display.
 
 The [`HeroService`](tutorial/tour-of-heroes/toh-pt4) gets hero data from the remote server and this component uses it to get the hero-to-display.
 
-[`HeroService`](tutorial/toh-pt4) 从远端服务器获取英雄数据，本组件将使用它来获取要显示的英雄。
+[`HeroService`](tutorial/tour-of-heroes/toh-pt4) 从远端服务器获取英雄数据，本组件将使用它来获取要显示的英雄。
 
 The [`location`](api/common/Location) is an Angular service for interacting with the browser.
 This service lets you navigate back to the previous view.
@@ -647,7 +647,7 @@ The backtick ( <code>\`</code> ) characters define a JavaScript [template litera
 Like [`getHeroes()`](tutorial/tour-of-heroes/toh-pt4#observable-heroservice), `getHero()` has an asynchronous signature.
 It returns a *mock hero* as an `Observable`, using the RxJS `of()` function.
 
-像 [`getHeroes()`](tutorial/toh-pt4#observable-heroservice) 一样，`getHero()` 也有一个异步函数签名。它用 RxJS 的 `of()` 函数返回一个 `Observable` 形式的*模拟英雄数据*。
+像 [`getHeroes()`](tutorial/tour-of-heroes/toh-pt4#observable-heroservice) 一样，`getHero()` 也有一个异步函数签名。它用 RxJS 的 `of()` 函数返回一个 `Observable` 形式的*模拟英雄数据*。
 
 You can rewrite `getHero()` as a real `Http` request without having to change the `HeroDetailComponent` that calls it.
 
