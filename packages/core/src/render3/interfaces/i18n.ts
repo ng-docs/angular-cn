@@ -46,17 +46,17 @@ export interface I18nRemoveOpCodes extends Array<number> {
  *
  * OpCodes 包含三部分：
  *
- *  1. Parent node index offset. \(p\)
+ * 1. Parent node index offset. \(p\)
  *
- *     父节点索引偏移量。（p）
+ *    父节点索引偏移量。（p）
  *
- *  2. Reference node index offset. \(r\)
+ * 1. Reference node index offset. \(r\)
  *
- *     参考节点索引偏移量。（r）
+ *    参考节点索引偏移量。（r）
  *
- *  3. The instruction to execute. \(i\)
+ * 1. The instruction to execute. \(i\)
  *
- *     要执行的指令。（i）
+ *    要执行的指令。（i）
  *
  * pppp pppp pppp pppp rrrr rrrr rrrr riii
  * 3322 2222 2222 1111 1111 1110 0000 0000

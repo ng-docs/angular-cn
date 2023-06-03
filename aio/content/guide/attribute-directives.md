@@ -97,9 +97,9 @@ This section shows you how to detect when a user mouses into or out of the eleme
 
 本节会展示如何检测用户何时将鼠标移入或移出元素以及如何通过设置或清除突出显示颜色来进行响应。
 
-1. Import `HostListener` from '@angular/core'.
+1. Import `HostListener` from '&commat;angular/core'.
 
-   从 '@angular/core' 导入 `HostListener`。
+   从 '&commat;angular/core' 导入 `HostListener`。
 
    <code-example header="src/app/highlight.directive.ts (imports)" path="attribute-directives/src/app/highlight.directive.2.ts" region="imports"></code-example>
 

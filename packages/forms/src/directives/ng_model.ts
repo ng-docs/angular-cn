@@ -107,7 +107,6 @@ const resolvedPromise = (() => Promise.resolve())();
  * 你也可以使用该指令的 `control` 属性来访问此控件，实际上你要用到的大多数属性（如 `valid` 和
  *  `dirty`）都会委托给该控件，这样你就可以直接访问这些属性了。
  * 你可以在 `AbstractControlDirective` 中直接查看这些属性的完整列表。
- *
  * @see `RadioControlValueAccessor`
  * @see `SelectControlValueAccessor`
  * @usageNotes

@@ -340,6 +340,7 @@ This is a good argument for making the application [routable](guide/router).
 同样，由于没有鼠标或键盘事件，因此服务端应用也不能依赖于用户点击某个按钮来显示某个组件。此应用必须仅仅根据客户端过来的请求决定要渲染的内容。把该应用做成[可路由的](guide/router)，就是一种好方案。
 
 <a id="service-worker"></a>
+
 ### Universal and the Angular Service Worker
 
 If you are using Universal in conjunction with the Angular service worker, the behavior is different than the normal server side rendering behavior. The initial server request will be rendered on the server as expected. However, after that initial request, subsequent requests are handled by the service worker. For subsequent requests, the `index.html` file is served statically and bypasses server side rendering.
@@ -362,12 +363,12 @@ It accepts an object with the following properties:
 
 `ngExpressEngine()` 是对 Universal 的 `renderModule()` 函数的封装。它会把客户端请求转换成服务端渲染的 HTML 页面。它接受一个具有下列属性的对象：
 
-| Properties       | Details                                                                                                                                                                                                                                                 |
-| :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 属性             | 详情                                                                                                                                                                                                                                                    |
-| `bootstrap`      | The root `NgModule` or function that when invoked returns a `Promise` that resolves to an `ApplicationRef` of the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application.                |
-| `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance. |
-| `extraProviders` | 这是可选的，可以让你指定仅在服务器渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。                                                                                                          |
+| Properties       | Details                                                                                                                                                                                                                                                                                                   |
+| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 属性             | 详情                                                                                                                                                                                                                                                                                                      |
+| `bootstrap`      | The root `NgModule` or function that when invoked returns a `Promise` that resolves to an `ApplicationRef` of the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application. |
+| `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance.                                                   |
+| `extraProviders` | 这是可选的，可以让你指定仅在服务器渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。                                                                                                                                                            |
 
 The `ngExpressEngine()` function returns a `Promise` callback that resolves to the rendered page.
 It's up to the engine to decide what to do with that page.

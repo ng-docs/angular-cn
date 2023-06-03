@@ -470,6 +470,8 @@ A separate standalone injector is created to ensure that providers imported by a
 
 The order of class declaration matters in TypeScript. You can't refer directly to a class until it's been defined.
 
+在 TypeScript 里面，类声明的顺序是很重要的。如果一个类尚未定义，就不能引用它。
+
 This isn't usually a problem but sometimes circular references are unavoidable. For example, when class 'A' refers to class 'B' and 'B' refers to 'A'. One of them has to be defined first.
 
 The Angular `forwardRef()` function creates an indirect reference that Angular can resolve later. 
@@ -486,7 +488,6 @@ For example, this situation happens when a standalone parent component imports a
 export class ParentComponent {
   @Input() hideParent: boolean;
 }
-
 
 @Component({
   standalone: true,

@@ -70,8 +70,6 @@ export const subsetMatchOptions: IsActiveMatchOptions = {
  * 一个提供导航和操纵 URL 能力的 NgModule。
  * @see `Route`.
  *
- * 。【模糊翻译】
- *
  * @see [Routing and Navigation Guide](guide/router).
  *
  * [路由和导航指南](guide/router)。

@@ -1,10 +1,15 @@
 # Update Angular to v16
 
 <!-- NOTE to writers: When creating the topic for the next version,                               -->
+
 <!--   remember to update the redirect link in angular/aio/firebase.json                          -->
+
 <!-- To update the redirect link in angular/aio/firebase.json:                                    -->
+
 <!--   1. Search for the entry in firebase.json with "source": "guide/update-to-latest-version"   -->
+
 <!--   2,  Update the destination value to refer to the new guide's URL                           -->
+
 <!--                                                                                              -->
 
 This topic provides information about updating your Angular applications to Angular version 16.
@@ -15,9 +20,11 @@ to v16, see the [Angular Update Guide](https://update.angular.io).
 The information in the [Angular Update Guide](https://update.angular.io) and this topic is
 summarized from these changelogs:
 
-*  [angular/angular changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-*  [angular/angular-cli changelog](https://github.com/angular/angular-cli/blob/main/CHANGELOG.md)
-*  [angular/components changelog](https://github.com/angular/components/blob/main/CHANGELOG.md)
+[Angular 更新指南](https://update.angular.io)和本主题中的信息是从这些更改日志中总结的：
+
+* [angular/angular changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+* [angular/angular-cli changelog](https://github.com/angular/angular-cli/blob/main/CHANGELOG.md)
+* [angular/components changelog](https://github.com/angular/components/blob/main/CHANGELOG.md)
 
 Information about updating Angular applications to v15 is archived at
 [Update to version 15](/guide/update-to-version-15).
@@ -110,10 +117,10 @@ See [Version compatibility](/guide/versions) for full version compatibility deta
 
 <a id="v16-bc-03"></a>
 
-### Angular Compatibility Compiler (ngcc) has been removed
+### Angular Compatibility Compiler \(ngcc\) has been removed
 
-The Angular Compatibility Compiler (ngcc) was a build tool that facilitated compatibility between
-Angular's previous compiler and rendering architecture (View Engine) and its new architecture (Ivy).
+The Angular Compatibility Compiler \(ngcc\) was a build tool that facilitated compatibility between
+Angular's previous compiler and rendering architecture \(View Engine\) and its new architecture \(Ivy\).
 
 View Engine was removed in Angular v13, and v16 finally removes ngcc. As a result, Angular
 libraries built with View Engine cannot be used in Angular v16+.
@@ -122,11 +129,11 @@ libraries built with View Engine cannot be used in Angular v16+.
 
 #### Angular Package Format changes
 
-The Angular Package Format (APF) has been updated
+The Angular Package Format \(APF\) has been updated
 with the following changes:
 
-* Flattened ESM 2015 (FESM2015) outputs have been removed.
-* EcmaScript 2020 outputs have been updated to EcmaScript 2022 (including the flattened output).
+* Flattened ESM 2015 \(FESM2015\) outputs have been removed.
+* EcmaScript 2020 outputs have been updated to EcmaScript 2022 \(including the flattened output\).
 
 See [Angular Package Format](/guide/angular-package-format) for background.
 
@@ -163,9 +170,10 @@ These APIs remain available in v16, but may be removed in future versions as des
 To maintain the reliability of your Angular application, always update your application as soon as
 practicable.
 
-| Removed                                                                              | Replacement | Details                                                                                                                                                                                                                                       |
-|:-------------------------------------------------------------------------------------|:------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <a id="v16-dp-01"></a>Class and `InjectionToken` router guards and resolvers         | See details | Class and `InjectionToken` guards and resolvers are deprecated. Instead, write guards as plain JavaScript functions and inject dependencies with `inject` from `@angular/core`.<br>[PR #47924](https://github.com/angular/angular/pull/47924) |
-| <a id="v16-dp-02"></a>The `ripple` properties of several Angular Material components | None        | The `ripple` property of `MatButton`, `MatCheckbox`, `MatChip` is deprecated. This change moves ripples to being a private implementation detail of the components.                                                                           |
+| Removed                                                                              | Replacement              | Details                                                                                                                                                                                                                                       |
+| :----------------------------------------------------------------------------------- | :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 已移除                                                                               | 替代品                   | 详情                                                                                                                                                                                                                                          |
+| <a id="v16-dp-01"></a>Class and `InjectionToken` router guards and resolvers         | See details              | Class and `InjectionToken` guards and resolvers are deprecated. Instead, write guards as plain JavaScript functions and inject dependencies with `inject` from `@angular/core`.<br>[PR #47924](https://github.com/angular/angular/pull/47924) |
+| <a id="v16-dp-02"></a>The `ripple` properties of several Angular Material components | None                     | The `ripple` property of `MatButton`, `MatCheckbox`, `MatChip` is deprecated. This change moves ripples to being a private implementation detail of the components.                                                                           |
 
 @reviewed 2023-05-03

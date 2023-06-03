@@ -27,8 +27,9 @@ function hasPreserveWhitespacesAttr(attrs: html.Attribute[]): boolean {
 
 /**
  * &ngsp; is a placeholder for non-removable space
- * &ngsp; is converted to the 0xE500 PUA (Private Use Areas) unicode character
+ * &ngsp; is converted to the 0xE500 PUA \(Private Use Areas\) unicode character
  * and later on replaced by a space.
+ *
  */
 export function replaceNgsp(value: string): string {
   // lexer is replacing the &ngsp; pseudo-entity with NGSP_UNICODE

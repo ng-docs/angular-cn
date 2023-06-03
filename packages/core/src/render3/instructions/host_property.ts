@@ -38,7 +38,6 @@ import {elementPropertyInternal, loadComponentRenderer, storePropertyBindingMeta
  * \(e.g. `property('name', ctx.name)('title', ctx.title)`\)
  *
  * 此函数返回自己，以便它可以被链接（例如 `property('name', ctx.name)('title', ctx.title)`）
- *
  * @codeGenApi
  */
 export function ɵɵhostProperty<T>(

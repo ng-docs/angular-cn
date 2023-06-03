@@ -16,14 +16,16 @@ import type {ComponentCompilation, ViewCompilation} from '../compilation';
  * any variables that be referenced in other operations in the block.
  *
  * Variables generated include:
- *   * a saved view context to be used to restore the current view in event listeners.
- *   * the context of the restored view within event listener handlers.
- *   * context variables from the current view as well as all parent views (including the root
- *     context if needed).
- *   * local references from elements within the current view and any lexical parents.
+ *
+ * - a saved view context to be used to restore the current view in event listeners.
+ * - the context of the restored view within event listener handlers.
+ * - context variables from the current view as well as all parent views \(including the root
+ *   context if needed\).
+ * - local references from elements within the current view and any lexical parents.
  *
  * Variables are generated here unconditionally, and may optimized away in future operations if it
- * turns out their values (and any side effects) are unused.
+ * turns out their values \(and any side effects\) are unused.
+ *
  */
 export function phaseGenerateVariables(cpl: ComponentCompilation): void {
   recursivelyProcessView(cpl.root, /* there is no parent scope for the root view */ null);
@@ -103,7 +105,8 @@ interface Reference {
   /**
    * `XrefId` of the element-like node which this reference targets.
    *
-   * The reference may be either to the element (or template) itself, or to a directive on it.
+   * The reference may be either to the element \(or template\) itself, or to a directive on it.
+   *
    */
   targetId: ir.XrefId;
 

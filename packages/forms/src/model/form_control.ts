@@ -357,7 +357,6 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    *   When false, no events are emitted.
    *
    *   `emitEvent`：如果为 `true` 或未提供（默认），则当控件被重置时， `statusChanges` 和 `valueChanges` 这两个 Observable 都会以最近的状态和值发出事件。 如果为 `false`，则不会发出事件。
-   *
    */
   reset(formState?: TValue|FormControlState<TValue>, options?: {
     onlySelf?: boolean,

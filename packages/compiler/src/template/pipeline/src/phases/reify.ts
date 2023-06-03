@@ -18,7 +18,8 @@ import * as ng from '../instruction';
  *
  * Reification replaces semantic operations with selected Ivy instructions and other generated code
  * structures. After reification, the create/update operation lists of all views should only contain
- * `ir.StatementOp`s (which wrap generated `o.Statement`s).
+ * `ir.StatementOp`s \(which wrap generated `o.Statement`s\).
+ *
  */
 export function phaseReify(cpl: ComponentCompilation): void {
   for (const [_, view] of cpl.views) {

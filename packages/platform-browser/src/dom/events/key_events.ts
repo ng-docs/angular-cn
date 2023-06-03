@@ -188,8 +188,6 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    *
    * boolean.
    *
-   * 。【模糊翻译】
-   *
    */
   static matchEventFullKeyCode(event: KeyboardEvent, fullKeyCode: string): boolean {
     let keycode = _keyMap[event.key] || event.key;

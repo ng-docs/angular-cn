@@ -19,7 +19,7 @@ import {Subject} from 'rxjs';
  *
  * Results in:
  *
- * $1 = http:
+ * $1 = http&#x3A;
  * $2 = http
  * $3 = //www.ics.uci.edu
  * $4 = www.ics.uci.edu

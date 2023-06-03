@@ -55,12 +55,12 @@ Angular offers two ways to compile your application:
 Angular 提供了两种方式来编译你的应用：
 
 | Angular compile       | Details                                                                                           |
-|:----------------------| :------------------------------------------------------------------------------------------------ |
-| Angular 编译方式          | 详情                                                                                              |
+| :-------------------- | :------------------------------------------------------------------------------------------------ |
+| Angular 编译方式      | 详情                                                                                              |
 | Just-in-Time \(JIT\)  | Compiles your application in the browser at runtime. This was the default until Angular 8.        |
-| 即时（JIT）               | 当运行时在浏览器中编译你的应用程序。在 Angular 8 之前，这是默认值。                               |
+| 即时（JIT）           | 当运行时在浏览器中编译你的应用程序。在 Angular 8 之前，这是默认值。                               |
 | Ahead-of-Time \(AOT\) | Compiles your application and libraries at build time. This is the default starting in Angular 9. |
-| 预先（AOT）             | 在构建时编译你的应用程序和库。这是从 Angular 9 开始的默认值。                                     |
+| 预先（AOT）           | 在构建时编译你的应用程序和库。这是从 Angular 9 开始的默认值。                                     |
 
 When you run the [`ng build`](cli/build) \(build only\) or [`ng serve`](cli/serve) \(build and serve locally\) CLI commands, the type of compilation \(JIT or AOT\) depends on the value of the `aot` property in your build configuration specified in `angular.json`.
 By default, `aot` is set to `true` for new CLI applications.
@@ -111,15 +111,15 @@ There are three phases of AOT compilation.
 
 AOT 编译分为三个阶段。
 
-|     | Phase                  | Details                                                                                                                                                                                                                                                                                                  |
-| :-- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|     | 阶段                   | 详情                                                                                                                                                                                                                                                                                                     |
-| 1   | code analysis          | In this phase, the TypeScript compiler and *AOT collector* create a representation of the source. The collector does not attempt to interpret the metadata it collects. It represents the metadata as best it can and records errors when it detects a metadata syntax violation.                        |
-| 1   | 代码分析               | 在此阶段，TypeScript 编译器和*AOT 收集器*会创建源代码的表示。收集器不会尝试解释它收集的元数据。它会尽可能地表示元数据，并在检测到元数据语法违规时记录错误。                                                                                                                                              |
-| 2   | code generation        | In this phase, the compiler's `StaticReflector` interprets the metadata collected in phase 1, performs additional validation of the metadata, and throws an error if it detects a metadata restriction violation.                                                                                        |
-| 2   | 代码生成               | 在此阶段，编译器的 `StaticReflector` 会解释在阶段 1 收集的元数据，对元数据执行额外的验证，如果检测到违反元数据限制，则会抛出错误。                                                                                                                                                                       |
+|     | Phase                  | Details                                                                                                                                                                                                                                                                                            |
+| :-- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|     | 阶段                   | 详情                                                                                                                                                                                                                                                                                               |
+| 1   | code analysis          | In this phase, the TypeScript compiler and *AOT collector* create a representation of the source. The collector does not attempt to interpret the metadata it collects. It represents the metadata as best it can and records errors when it detects a metadata syntax violation.                  |
+| 1   | 代码分析               | 在此阶段，TypeScript 编译器和*AOT 收集器*会创建源代码的表示。收集器不会尝试解释它收集的元数据。它会尽可能地表示元数据，并在检测到元数据语法违规时记录错误。                                                                                                                                        |
+| 2   | code generation        | In this phase, the compiler's `StaticReflector` interprets the metadata collected in phase 1, performs additional validation of the metadata, and throws an error if it detects a metadata restriction violation.                                                                                  |
+| 2   | 代码生成               | 在此阶段，编译器的 `StaticReflector` 会解释在阶段 1 收集的元数据，对元数据执行额外的验证，如果检测到违反元数据限制，则会抛出错误。                                                                                                                                                                 |
 | 3   | template type checking | In this optional phase, the Angular *template compiler* uses the TypeScript compiler to validate the binding expressions in templates. You can enable this phase explicitly by setting the `strictTemplates` configuration option; see [Angular compiler options](guide/angular-compiler-options). |
-| 3   | 模板类型检查           | 在此可选阶段，Angular *模板编译器*使用 TypeScript 编译器来验证模板中的绑定表达式。你可以通过设置 `fullTemplateTypeCheck` 配置选项来明确启用此阶段。请参阅 [Angular 编译器选项](guide/angular-compiler-options)。                                                                                         |
+| 3   | 模板类型检查           | 在此可选阶段，Angular *模板编译器*使用 TypeScript 编译器来验证模板中的绑定表达式。你可以通过设置 `fullTemplateTypeCheck` 配置选项来明确启用此阶段。请参阅 [Angular 编译器选项](guide/angular-compiler-options)。                                                                                   |
 
 ### Metadata restrictions
 
@@ -484,14 +484,14 @@ The compiler can only reference *exported symbols*.
 
 编译器只能引用*已导出的符号*。
 
-*   Decorated component class members must be public or protected.
-    You cannot make an `@Input()` property private.
+* Decorated component class members must be public or protected.
+  You cannot make an `@Input()` property private.
 
-    带有装饰器的类成员必须是公开的（public）或保护的（protected）。你不可能把一个私有属性做成 `@Input()`。
+  带有装饰器的类成员必须是公开的（public）或保护的（protected）。你不可能把一个私有属性做成 `@Input()`。
 
-*   Data bound properties must also be public or protected
+* Data bound properties must also be public or protected
 
-    数据绑定的属性同样必须是公开的（public）或保护的（protected）
+  数据绑定的属性同样必须是公开的（public）或保护的（protected）
 
 <a id="supported-functions"></a>
 

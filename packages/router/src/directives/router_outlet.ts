@@ -212,12 +212,10 @@ export interface RouterOutletContract {
  *   (attach)='onAttach($event)'
  *   (detach)='onDetach($event)'></router-outlet>
  * ```
- *
  * @see [Routing tutorial](guide/router-tutorial-toh#named-outlets "Example of a named
  * outlet and secondary route configuration").
  *
  * [路由导航](guide/router-tutorial-toh#named-outlets "命名出口与第二路由的配置范例")。
- *
  * @see `RouterLink`
  * @see `Route`
  * @ngModule RouterModule

@@ -21,7 +21,12 @@ import {stringifyForError} from './util/stringify_utils';
  */
 const VALUE_STRING_LENGTH_LIMIT = 200;
 
-/** Verifies that a given type is a Standalone Component. */
+/**
+ * Verifies that a given type is a Standalone Component.
+ *
+ * 验证给定类型是否是独立组件。
+ *
+ */
 export function assertStandaloneComponentType(type: Type<unknown>) {
   assertComponentDef(type);
   const componentDef = getComponentDef(type)!;

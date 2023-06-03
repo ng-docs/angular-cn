@@ -13,8 +13,9 @@ import {ElementAttributes} from '../../ir/src/element';
 import {ComponentCompilation} from '../compilation';
 
 /**
- * Converts the semantic attributes of element-like operations (elements, templates) into constant
+ * Converts the semantic attributes of element-like operations \(elements, templates\) into constant
  * array expressions, and lifts them into the overall component `consts`.
+ *
  */
 export function phaseConstCollection(cpl: ComponentCompilation): void {
   for (const [_, view] of cpl.views) {

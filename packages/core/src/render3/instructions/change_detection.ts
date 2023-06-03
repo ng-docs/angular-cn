@@ -76,9 +76,9 @@ export function detectChanges(component: {}): void {
 /**
  * Different modes of traversing the logical view tree during change detection.
  *
- *
  * The change detection traversal algorithm switches between these modes based on various
  * conditions.
+ *
  */
 const enum ChangeDetectionMode {
   /**
@@ -99,19 +99,22 @@ const enum ChangeDetectionMode {
    * TODO: we should work to remove this mode. It's used in `refreshView` because that's how the
    * code worked before introducing ChangeDetectionMode. Instead, it should pass `Global` to the
    * `detectChangesInEmbeddedViews`. We should aim to fix this by v17 or, at the very least, prevent
-   * this flag from affecting signal views not specifically marked for refresh (currently, this flag
-   * would _also_ force signal views to be refreshed).
+   * this flag from affecting signal views not specifically marked for refresh \(currently, this flag
+   * would _also_ force signal views to be refreshed\).
+   *
    */
   BugToForceRefreshAndIgnoreViewFlags
 }
 
 /**
  * Processes a view in update mode. This includes a number of steps in a specific order:
+ *
  * - executing a template function in update mode;
  * - executing hooks;
  * - refreshing queries;
  * - setting host bindings;
- * - refreshing child (embedded and component) views.
+ * - refreshing child \(embedded and component\) views.
+ *
  */
 
 export function refreshView<T>(
@@ -242,8 +245,9 @@ export function refreshView<T>(
 }
 
 /**
- * Goes over embedded views (ones created through ViewContainerRef APIs) and refreshes
+ * Goes over embedded views \(ones created through ViewContainerRef APIs\) and refreshes
  * them by executing an associated template function.
+ *
  */
 function detectChangesInEmbeddedViews(lView: LView, mode: ChangeDetectionMode) {
   for (let lContainer = getFirstLContainer(lView); lContainer !== null;
@@ -280,7 +284,8 @@ function markTransplantedViewsForRefresh(lView: LView) {
  * Detects changes in a component by entering the component view and processing its bindings,
  * queries, etc. if it is CheckAlways, OnPush and Dirty, etc.
  *
- * @param componentHostIdx  Element index in LView[] (adjusted for HEADER_OFFSET)
+ * @param componentHostIdx  Element index in LView\[\] \(adjusted for HEADER_OFFSET\)
+ *
  */
 function detectChangesInComponent(
     hostLView: LView, componentHostIdx: number, mode: ChangeDetectionMode): void {
@@ -295,6 +300,7 @@ function detectChangesInComponent(
  * - If the view is detached, no additional traversal happens.
  *
  * The view is refreshed if:
+ *
  * - If the view is CheckAlways or Dirty and ChangeDetectionMode is `Global`
  * - If the view has the `RefreshTransplantedView` flag
  *
@@ -324,7 +330,10 @@ function detectChangesInView(lView: LView, mode: ChangeDetectionMode) {
   }
 }
 
-/** Refreshes child components in the current view (update mode). */
+/**
+ * Refreshes child components in the current view \(update mode\).
+ *
+ */
 function detectChangesInChildComponents(
     hostLView: LView, components: number[], mode: ChangeDetectionMode): void {
   for (let i = 0; i < components.length; i++) {

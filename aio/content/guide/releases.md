@@ -187,7 +187,7 @@ Approximate dates are offered as general guidance and are subject to change.
 ### 发布时间表
 
 | Version | Date               |
-|:--------|:-------------------|
+| :------ | :----------------- |
 | 版本    | 日期               |
 | v16.1   | Week of 2023-06-12 |
 | v16.2   | Week of 2023-07-24 |
@@ -218,9 +218,10 @@ The following table provides the status for Angular versions under support.
 下表中提供了目前受支持的 Angular 版本的状态。
 
 | Version | Status | Released   | Active ends | LTS ends   |
-|:--------|:-------|:-----------|:------------|:-----------|
+| :------ | :----- | :--------- | :---------- | :--------- |
 | 版本    | 状态   | 发布       | 停止活跃    | LTS 结束   |
 | ^16.0.0 | Active | 2023-05-03 | 2023-11-03  | 2024-11-08 |
+| ^16.0.0 | 活跃   | 2023-05-03 | 2023-11-03  | 2024-11-08 |
 | ^15.0.0 | LTS    | 2022-11-18 | 2023-05-03  | 2024-05-18 |
 | ^14.0.0 | LTS    | 2022-06-02 | 2022-11-18  | 2023-11-18 |
 

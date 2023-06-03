@@ -152,7 +152,6 @@ export const formArrayNameProvider: any = {
  *
  * 它接受你要链接的嵌套 `FormArray` 的字符串名称，并寻找使用这个名字在你传给 `FormGroupDirective`
  * 的父 `FormGroup` 实例中注册的 `FormGroup`。
- *
  * @see [Reactive Forms Guide](guide/reactive-forms)
  *
  * [响应式表单指南](guide/reactive-forms)

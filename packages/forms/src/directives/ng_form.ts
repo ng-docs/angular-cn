@@ -78,7 +78,6 @@ const resolvedPromise = (() => Promise.resolve())();
  * `ngNoForm` 属性，这样标签就不会在 `<form>` 上创建 `NgForm` 指令了。 在响应式表单中，则不需要用
  * `ngNoForm`，因为 `NgForm` 指令不会自动应用到 `<form>` 标签上，你只要别主动添加 `formGroup`
  * 指令就可以了。
- *
  * @usageNotes
  *
  * ### Listening for form submission

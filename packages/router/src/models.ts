@@ -70,7 +70,6 @@ export type DeprecatedGuard = ProviderToken<any>|any;
  * @see [Router configuration guide](guide/router-reference#configuration)
  *
  * [路由器配置指南](guide/router-reference#configuration)
- *
  * @publicApi
  */
 export type Routes = Route[];

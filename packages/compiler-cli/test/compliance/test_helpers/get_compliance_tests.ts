@@ -300,7 +300,7 @@ export interface ComplianceTest {
    */
   expectations: Expectation[];
   /**
-   * If set to `true`, then focus on this test (equivalent to jasmine's `fit()`).
+   * If set to `true`, then focus on this test \(equivalent to jasmine's `fit()`\).
    *
    * 如果设置为 `true` ，则专注于此测试（等效于 jasmine 的 `fit()`）。
    *

@@ -519,6 +519,7 @@ export const yourGuardFunction: CanActivateFn = (
       // your  logic goes here
   }
 </code-example>
+
 In your routing module, use the appropriate property in your `routes` configuration.
 Here, `canActivate` tells the router to mediate navigation to this particular route.
 

@@ -63,13 +63,12 @@ function hydrationFeature<FeatureKind extends HydrationFeatureKind>(
  * ```
  *
  * This would ensure that the application is rerendered after all async
- * operations in the Router (such as lazy-loading of components,
- * waiting for async guards and resolvers) are completed to avoid
+ * operations in the Router \(such as lazy-loading of components,
+ * waiting for async guards and resolvers\) are completed to avoid
  * clearing the DOM on the client too soon, thus causing content flicker.
  *
  * @see `provideRouter`
  * @see `withEnabledBlockingInitialNavigation`
- *
  * @publicApi
  * @developerPreview
  */

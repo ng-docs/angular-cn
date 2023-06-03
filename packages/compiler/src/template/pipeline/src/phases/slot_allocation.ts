@@ -14,8 +14,9 @@ import type {ComponentCompilation} from '../compilation';
  * assigned data slots of those operations to any expressions which reference them via
  * `UsesSlotIndexTrait`.
  *
- * This phase is also responsible for counting the number of slots used for each view (its `decls`)
+ * This phase is also responsible for counting the number of slots used for each view \(its `decls`\)
  * and propagating that number into the `Template` operations which declare embedded views.
+ *
  */
 export function phaseSlotAllocation(cpl: ComponentCompilation): void {
   // Map of all declarations in all views within the component which require an assigned slot index.

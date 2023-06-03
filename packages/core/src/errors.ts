@@ -19,12 +19,14 @@ import {ERROR_DETAILS_PAGE_BASE_URL} from './error_details_base_url';
  * Full list of available error guides can be found at https://angular.io/errors.
  *
  * Error code ranges per package:
- *  - core (this package): 100-999
- *  - forms: 1000-1999
- *  - common: 2000-2999
- *  - animations: 3000-3999
- *  - router: 4000-4999
- *  - platform-browser: 5000-5500
+ *
+ * - core \(this package\): 100-999
+ * - forms: 1000-1999
+ * - common: 2000-2999
+ * - animations: 3000-3999
+ * - router: 4000-4999
+ * - platform-browser: 5000-5500
+ *
  */
 export const enum RuntimeErrorCode {
   // Change Detection Errors

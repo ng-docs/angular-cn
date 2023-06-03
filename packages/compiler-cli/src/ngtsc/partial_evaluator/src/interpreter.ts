@@ -781,7 +781,8 @@ function owningModule(context: Context, override: OwningModule|null = null): Own
 /**
  * Gets the original keyword kind of an identifier. This is a compatibility
  * layer while we need to support TypeScript versions less than 5.1
- * TODO(crisbeto): remove this function once support for TS 4.9 is removed.
+ * TODO\(crisbeto\): remove this function once support for TS 4.9 is removed.
+ *
  */
 function getOriginalKeywordKind(identifier: ts.Identifier): ts.SyntaxKind|undefined {
   return typeof (ts as any).identifierToKeywordKind === 'function' ?

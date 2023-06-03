@@ -105,7 +105,6 @@ export class RouterTestingHarness {
    *
    * The activated component instance of the `RouterOutlet` after navigation completes
    *     \(`null` if the outlet does not get activated\).
-   *
    */
   async navigateByUrl(url: string): Promise<null|{}>;
   /**

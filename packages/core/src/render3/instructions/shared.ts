@@ -61,11 +61,11 @@ import {handleUnknownPropertyError, isPropertyValid, matchingSchemas} from './el
  *
  * @param tView Current `TView`.
  *
- * 当前 `TView`。【模糊翻译】
+ * 当前 `TView`。
  *
  * @param lView Current `LView`.
  *
- * 当前的 `LView`。【模糊翻译】
+ * 当前的 `LView`。
  *
  */
 export function processHostBindingOpCodes(tView: TView, lView: LView): void {
@@ -561,7 +561,7 @@ export function storeCleanupWithContext(
  * @param tView `TView` to which this `TNode` belongs
  * @param tParent Parent `TNode`
  *
- * 父 `TNode`【模糊翻译】
+ * 父 `TNode`
  *
  * @param type The type of the node
  * @param index The index of the TNode in TView.data, adjusted for HEADER_OFFSET

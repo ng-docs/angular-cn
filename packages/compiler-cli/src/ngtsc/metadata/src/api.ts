@@ -77,8 +77,9 @@ export interface NgModuleMeta {
   /**
    * Whether this NgModule may declare providers.
    *
-   * If the compiler does not know if the NgModule may declare providers, this will be `true` (for
-   * example, NgModules declared outside the current compilation are assumed to declare providers).
+   * If the compiler does not know if the NgModule may declare providers, this will be `true` \(for
+   * example, NgModules declared outside the current compilation are assumed to declare providers\).
+   *
    */
   mayDeclareProviders: boolean;
 }

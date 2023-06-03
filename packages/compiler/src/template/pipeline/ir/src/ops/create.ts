@@ -31,7 +31,8 @@ export interface LocalRef {
   name: string;
 
   /**
-   * Target of the local reference variable (often `''`).
+   * Target of the local reference variable \(often `''`\).
+   *
    */
   target: string;
 }

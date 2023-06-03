@@ -412,7 +412,8 @@ function applyRootComponentStyling(
 
 /**
  * Creates a root component and sets it up with features and host bindings.Shared by
- * renderComponent() and ViewContainerRef.createComponent().
+ * renderComponent\(\) and ViewContainerRef.createComponent\(\).
+ *
  */
 function createRootComponent<T>(
     componentView: LView, rootComponentDef: ComponentDef<T>, rootDirectives: DirectiveDef<any>[],

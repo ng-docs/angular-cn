@@ -15,8 +15,9 @@ const REPLACEMENTS = new Map<ir.OpKind, [ir.OpKind, ir.OpKind]>([
 ]);
 
 /**
- * Replace sequences of mergable elements (e.g. `ElementStart` and `ElementEnd`) with a consolidated
- * element (e.g. `Element`).
+ * Replace sequences of mergable elements \(e.g. `ElementStart` and `ElementEnd`\) with a consolidated
+ * element \(e.g. `Element`\).
+ *
  */
 export function phaseEmptyElements(cpl: ComponentCompilation): void {
   for (const [_, view] of cpl.views) {

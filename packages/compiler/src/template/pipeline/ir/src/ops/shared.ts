@@ -87,8 +87,9 @@ export function createVariableOp<OpT extends Op<OpT>>(
 /**
  * Static structure shared by all operations.
  *
- * Used as a convenience via the spread operator (`...NEW_OP`) when creating new operations, and
+ * Used as a convenience via the spread operator \(`...NEW_OP`\) when creating new operations, and
  * ensures the fields are always in the same order.
+ *
  */
 export const NEW_OP: Pick<Op<any>, 'debugListId'|'prev'|'next'> = {
   debugListId: null,

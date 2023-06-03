@@ -101,16 +101,19 @@ export type TStylingKeyPrimitive = string|null|false;
  * ```
  *
  * So when the function is resolving styling value, it first needs to look into the linked list
- * (there is none) and than into the static `TStylingStatic` too see if there is a default value for
- * `dynamic` (there is not). Therefore it is safe to remove it.
+ * \(there is none\) and than into the static `TStylingStatic` too see if there is a default value for
+ * `dynamic` \(there is not\). Therefore it is safe to remove it.
  *
  * If setting `true` case:
+ *
  * ```
  *   lView[10] = true;     // assume `ctx.exp` is `true`
  *   lView[10 + 1] = true; // Just normalized `lView[10]`
  * ```
+ *
  * So when the function is resolving styling value, it first needs to look into the linked list
- * (there is none) and than into `TNode.residualClass` (TNode.residualStyle) which contains
+ * \(there is none\) and than into `TNode.residualClass` \(TNode.residualStyle\) which contains
+ *
  * ```
  *   tNode.residualClass = [
  *     'TEMPLATE': true,
@@ -118,6 +121,7 @@ export type TStylingKeyPrimitive = string|null|false;
  * ```
  *
  * This means that it is safe to add class.
+ *
  */
 export interface TStylingStatic extends KeyValueArray<any> {}
 

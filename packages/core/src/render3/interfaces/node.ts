@@ -447,7 +447,7 @@ export interface TNode {
    *
    * Pseudo code:
    *
-   * 伪代码：【模糊翻译】
+   * 伪代码：
    *
    * ```
    *   if (insertBeforeIndex === null) {

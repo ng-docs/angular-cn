@@ -399,8 +399,7 @@ Some extra options can only be set through the configuration file, either by dir
 | `budgets`                  | 全部或部分应用的默认尺寸预算的类型和阈值。当构建的输出达到或超过阈值大小时，你可以将构建器配置为报告警告或错误。参阅[配置尺寸预算](guide/build#configure-size-budgets)。（不适用于 `test` 部分。）                                                                                                      |
 | `fileReplacements`         | An object containing files and their compile-time replacements. See more in [Configure target-specific file replacements](guide/build#configure-target-specific-file-replacements).                                                                                                                     |
 | `fileReplacements`         | 一个对象，包含一些文件及其编译时替代品。参阅[为指定的目标配置文件替换规则](guide/build#configure-target-specific-file-replacements) 部分。                                                                                                                                                              |
-| `index`                    | Configures the generation of the application's HTML index. See more in [Index configuration](#index-config). \(Only available in `browser` section.\)                                                                                                         |                                                                                                        |                                                                                                      
-
+| `index`                    | Configures the generation of the application's HTML index. See more in [Index configuration](#index-config). \(Only available in `browser` section.\)                                                                                                         |
 
 <a id="complex-config"></a>
 
@@ -777,11 +776,12 @@ The `index` option can be either a String or an Object for more fine-tune config
 When supplying the value as a String the filename of the specified path will be used for the generated file and will be created in the root of the application's configured output path.
 
 #### Index options
-| Options  | Details                                                                                                                                                                          | Value type | Default value |
-|:---      |:---                                                                                                                                                                              |:---        |:---           |
-| `input`  | The path of a file to use for the application's generated HTML index.                                                                                                            | `string`   |               |
-| `output` | The output path of the application's generated HTML index file. The full provided path will be used and will be considered relative to the application's configured output path. | `string`   | `index.html`  |
 
+| Options  | Details                                                                                                                                                                          | Value type     | Default value      |
+| :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:---------------| :----------------- |
+| 选项     | 详情                                                                                                                                                                             | 值的类型           | 默认值 |
+| `input`  | The path of a file to use for the application's generated HTML index.                                                                                                            | `string`       |                    |
+| `output` | The output path of the application's generated HTML index file. The full provided path will be used and will be considered relative to the application's configured output path. | `string`       | `index.html`       |
 
 <!-- links -->
 

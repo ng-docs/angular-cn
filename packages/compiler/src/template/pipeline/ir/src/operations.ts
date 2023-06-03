@@ -17,8 +17,9 @@ export type XrefId = number&{__brand: 'XrefId'};
 /**
  * Base interface for semantic operations being performed within a template.
  *
- * @param OpT a specific narrower type of `Op` (for example, creation operations) which this
+ * @param OpT a specific narrower type of `Op` \(for example, creation operations\) which this
  *     specific subtype of `Op` can be linked with in a linked list.
+ *
  */
 export interface Op<OpT extends Op<OpT>> {
   /**
@@ -190,7 +191,8 @@ export class OpList<OpT extends Op<OpT>> {
   }
 
   /**
-   * Replace `oldOp` with some number of new operations in the list (which may include `oldOp`).
+   * Replace `oldOp` with some number of new operations in the list \(which may include `oldOp`\).
+   *
    */
   static replaceWithMany<OpT extends Op<OpT>>(oldOp: OpT, newOps: OpT[]): void {
     if (newOps.length === 0) {

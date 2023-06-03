@@ -21,16 +21,17 @@ export interface VariableOptimizationOptions {
  * referenced. This stage processes the list of declared variables and all variable usages,
  * and optimizes where possible. It performs 3 main optimizations:
  *
- *   * It transforms variable declarations to side effectful expressions when the
- *     variable is not used, but its initializer has global effects which other
- *     operations rely upon.
- *   * It removes variable declarations if those variables are not referenced and
- *     either they do not have global effects, or nothing relies on them.
- *   * It inlines variable declarations when those variables are only used once
- *     and the inlining is semantically safe.
+ * - It transforms variable declarations to side effectful expressions when the
+ *   variable is not used, but its initializer has global effects which other
+ *   operations rely upon.
+ * - It removes variable declarations if those variables are not referenced and
+ *   either they do not have global effects, or nothing relies on them.
+ * - It inlines variable declarations when those variables are only used once
+ *   and the inlining is semantically safe.
  *
  * To guarantee correctness, analysis of "fences" in the instruction lists is used to determine
  * which optimizations are safe to perform.
+ *
  */
 export function phaseVariableOptimization(
     cpl: ComponentCompilation, options: VariableOptimizationOptions): void {
@@ -54,7 +55,8 @@ export function phaseVariableOptimization(
  */
 enum Fence {
   /**
-   * Empty flag (no fence exists).
+   * Empty flag \(no fence exists\).
+   *
    */
   None = 0b000,
 
@@ -274,8 +276,9 @@ function fencesForIrExpression(expr: ir.Expression): Fence {
 /**
  * Build the `OpInfo` structure for the given `op`. This performs two operations:
  *
- *  * It tracks which variables are used in the operation's expressions.
- *  * It rolls up fence flags for expressions within the operation.
+ * - It tracks which variables are used in the operation's expressions.
+ * - It rolls up fence flags for expressions within the operation.
+ *
  */
 function collectOpInfo(op: ir.CreateOp|ir.UpdateOp): OpInfo {
   let fences = Fence.None;

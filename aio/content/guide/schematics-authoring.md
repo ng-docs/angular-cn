@@ -204,19 +204,19 @@ In the short form, the type is inferred from the property's type and constraints
 
 简而言之，类型是根据属性的类型和约束来推断的。
 
-| Property schema      | Prompt type                                |
-|:---------------------| :----------------------------------------- |
-| 属性模式                 | 提示类型                                   |
-| "type": "boolean"    | confirmation ("yes"=`true`, "no"=`false`)  |
-| "type": "boolean"    | 确认（“yes” = `true`，“no” = `false`）     |
-| "type": "string"     | input                                      |
-| "type": "string"     | 输入                                       |
-| "type": "number"     | input (only valid numbers accepted)        |
-| "type": "number"     | 输入（仅接受有效数字）                     |
-| "type": "integer"    | input (only valid numbers accepted)        |
-| "type": "integer"    | 输入（仅接受有效数字）                     |
-| "enum": [&hellip;]   | list (enum members become list selections) |
-| "enum": [&hellip;] | 列表（枚举成员成为列表中的选择项） |
+| Property schema     | Prompt type                                  |
+| :------------------ | :------------------------------------------- |
+| 属性模式            | 提示类型                                     |
+| "type": "boolean"   | confirmation \("yes"=`true`, "no"=`false`\)  |
+| "type": "boolean"   | 确认（“yes” = `true`，“no” = `false`）       |
+| "type": "string"    | input                                        |
+| "type": "string"    | 输入                                         |
+| "type": "number"    | input \(only valid numbers accepted\)        |
+| "type": "number"    | 输入（仅接受有效数字）                       |
+| "type": "integer"   | input \(only valid numbers accepted\)        |
+| "type": "integer"   | 输入（仅接受有效数字）                       |
+| "enum": […&hellip;] | list \(enum members become list selections\) |
+| "enum": […&hellip;] | 列表（枚举成员成为列表中的选择项）           |
 
 In the following example, the property takes an enumerated value, so the schematic automatically chooses the list type, and creates a menu from the possible values.
 

@@ -72,37 +72,37 @@ These steps are performed in your web browser.
 
 <!-- vale Angular.Google_We = NO -->
 
-  1.  **The commit message follows our guidelines**
+1. **The commit message follows our guidelines**
 
-      Mark this comment when you're sure your commit messages are in the correct format.
-      Remember that the commit messages and the pull request title are different.
-      For more information about commit message formatting, see [Preparing a documentation update for a pull request](guide/doc-pr-prep) and [Commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit).
+   Mark this comment when you're sure your commit messages are in the correct format.
+   Remember that the commit messages and the pull request title are different.
+   For more information about commit message formatting, see [Preparing a documentation update for a pull request](guide/doc-pr-prep) and [Commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit).
 
-  1.  **Docs have been added / updated \(for bug fixes / features\)**
+1. **Docs have been added / updated \(for bug fixes / features\)**
 
-      Mark this comment to show that documentation has been updated.
+   Mark this comment to show that documentation has been updated.
 
-  1.  **Documentation content changes**
+1. **Documentation content changes**
 
-  Mark this comment to identify this is a documentation pull request.
-  If you also updated other types of content, you can mark those as well.
+   Mark this comment to identify this is a documentation pull request.
+   If you also updated other types of content, you can mark those as well.
 
-  1.  **What is the current behavior?**
+1. **What is the current behavior?**
 
-      Briefly describe what wasn't working or what was incorrect in the documentation before you made the changes in this pull request.
-      Add the issue number here, if the problem is described in an issue.
+   Briefly describe what wasn't working or what was incorrect in the documentation before you made the changes in this pull request.
+   Add the issue number here, if the problem is described in an issue.
 
-  1.  **What is the new behavior?**
+1. **What is the new behavior?**
 
-      Briefly describe what was added to fix the problem.
+   Briefly describe what was added to fix the problem.
 
-  1.  **Does this PR introduce a breaking change?**
+1. **Does this PR introduce a breaking change?**
 
-      For most documentation updates, the answer to this should be `No`.
+   For most documentation updates, the answer to this should be `No`.
 
-  1.  **Other information**
+1. **Other information**
 
-      Add any other information that can help reviewers understand your pull request here.
+   Add any other information that can help reviewers understand your pull request here.
 
 <!-- vale Angular.Google_We = YES -->
 

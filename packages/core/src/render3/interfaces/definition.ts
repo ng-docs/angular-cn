@@ -314,7 +314,8 @@ export interface DirectiveDef<T> {
   readonly standalone: boolean;
 
   /**
-   * Whether this directive (or component) uses the signals authoring experience.
+   * Whether this directive \(or component\) uses the signals authoring experience.
+   *
    */
   readonly signals: boolean;
 

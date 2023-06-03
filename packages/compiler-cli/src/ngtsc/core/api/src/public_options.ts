@@ -633,9 +633,10 @@ export interface TargetOptions {
    *   “full”：使用 Ivy 指令生成完全 AOT 编译的代码。
    *
    * - 'partial': generates code in a stable, but intermediate form suitable for publication to NPM.
+   *
    * - 'experimental-local': generates code based on each individual source file without using its
-   * dependencies. This mode is suitable only for fast edit/refresh during development. It will be
-   * eventually replaced by the value `local` once the feature is ready to be public.
+   *   dependencies. This mode is suitable only for fast edit/refresh during development. It will be
+   *   eventually replaced by the value `local` once the feature is ready to be public.
    *
    *   “partial”：以适合发布到 NPM 的稳定但中间形式生成代码。
    *

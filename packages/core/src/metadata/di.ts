@@ -196,7 +196,6 @@ export interface ContentChildrenDecorator {
    * - `TemplateRef`, `ElementRef`, and `ViewContainerRef`
    *
    *   `TemplateRef`、`ElementRef` 和 `ViewContainerRef`
-   *
    * @usageNotes
    *
    * Here is a simple demonstration of how the `ContentChildren` decorator can be used.
@@ -348,7 +347,6 @@ export interface ContentChildDecorator {
    * - `TemplateRef`, `ElementRef`, and `ViewContainerRef`
    *
    *   `TemplateRef`、`ElementRef` 和 `ViewContainerRef`
-   *
    * @usageNotes
    *
    * {@example core/di/ts/contentChild/content_child_howto.ts region='HowTo'}
@@ -486,7 +484,6 @@ export interface ViewChildrenDecorator {
    * - `TemplateRef`, `ElementRef`, and `ViewContainerRef`
    *
    *   `TemplateRef`、`ElementRef` 和 `ViewContainerRef`
-   *
    * @usageNotes
    *
    * {@example core/di/ts/viewChildren/view_children_howto.ts region='HowTo'}
@@ -613,7 +610,6 @@ export interface ViewChildDecorator {
    * - `TemplateRef`, `ElementRef`, and `ViewContainerRef`
    *
    *   `TemplateRef`、`ElementRef` 和 `ViewContainerRef`
-   *
    * @usageNotes
    *
    * {@example core/di/ts/viewChild/view_child_example.ts region='Component'}

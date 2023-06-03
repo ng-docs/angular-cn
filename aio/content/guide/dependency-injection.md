@@ -57,7 +57,7 @@ When you register a provider at the component level, you get a new instance of t
 当你在组件级别注册提供者时，该组件的每个新实例都会获得一个新的服务实例。
 
 * At the NgModule level, using the `providers` field of the `@NgModule` decorator. In this scenario, the `HeroService` is available to all components, directives, and pipes declared in this NgModule or other NgModule which is within the same ModuleInjector applicable for this NgModule. When you register a provider with a specific NgModule, the same instance of a service is available to all applicable components, directives and pipes.
-To understand all edge-cases, see [Hierarchical injectors](guide/hierarchical-dependency-injection). For example:
+  To understand all edge-cases, see [Hierarchical injectors](guide/hierarchical-dependency-injection). For example:
 
   在 NgModule 级别，要使用 `@NgModule` 装饰器的 `providers` 字段。在这种情况下， `HeroService` 可用于此 NgModule 中声明的所有组件、指令和管道。例如：
 

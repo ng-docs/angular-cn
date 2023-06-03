@@ -43,7 +43,8 @@ export enum CompilationMode {
 
   /**
    * Generates code based on each individual source file without using its
-   * dependencies (suitable for local dev edit/refresh workflow).
+   * dependencies \(suitable for local dev edit/refresh workflow\).
+   *
    */
   LOCAL,
 }

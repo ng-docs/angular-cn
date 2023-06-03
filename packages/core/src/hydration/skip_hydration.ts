@@ -50,9 +50,10 @@ export function hasInSkipHydrationBlockFlag(tNode: TNode): boolean {
  * by navigating up the TNode tree to see if any parent nodes have skip hydration
  * attribute.
  *
- * TODO(akushnir): this function should contain the logic of `hasInSkipHydrationBlockFlag`,
- * there is no need to traverse parent nodes when we have a TNode flag (which would also
- * make this lookup O(1)).
+ * TODO\(akushnir\): this function should contain the logic of `hasInSkipHydrationBlockFlag`,
+ * there is no need to traverse parent nodes when we have a TNode flag \(which would also
+ * make this lookup O\(1\)\).
+ *
  */
 export function isInSkipHydrationBlock(tNode: TNode): boolean {
   let currentTNode: TNode|null = tNode.parent;

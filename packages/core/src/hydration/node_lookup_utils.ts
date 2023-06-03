@@ -215,8 +215,9 @@ export function navigateBetween(start: Node, finish: Node): NodeNavigationStep[]
 }
 
 /**
- * Calculates a path between 2 sibling nodes (generates a number of `NextSibling` navigations).
+ * Calculates a path between 2 sibling nodes \(generates a number of `NextSibling` navigations\).
  * Returns `null` if no such path exists between the given nodes.
+ *
  */
 function navigateBetweenSiblings(start: Node, finish: Node): NodeNavigationStep[]|null {
   const nav: NodeNavigationStep[] = [];

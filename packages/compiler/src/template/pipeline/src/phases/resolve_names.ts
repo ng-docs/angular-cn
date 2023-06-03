@@ -11,11 +11,12 @@ import * as ir from '../../ir';
 import {ComponentCompilation, ViewCompilation} from '../compilation';
 
 /**
- * Resolves lexical references in views (`ir.LexicalReadExpr`) to either a target variable or to
+ * Resolves lexical references in views \(`ir.LexicalReadExpr`\) to either a target variable or to
  * property reads on the top-level component context.
  *
  * Also matches `ir.RestoreViewExpr` expressions with the variables of their corresponding saved
  * views.
+ *
  */
 export function phaseResolveNames(cpl: ComponentCompilation): void {
   for (const [_, view] of cpl.views) {

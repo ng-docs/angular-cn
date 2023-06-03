@@ -17,7 +17,6 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  * Creates a new `Array` or `String` containing a subset \(slice\) of the elements.
  *
  * 从一个 `Array` 或 `String` 中创建其元素一个新子集（slice）。
- *
  * @usageNotes
  *
  * All behavior is based on the expected behavior of the JavaScript API `Array.prototype.slice()`

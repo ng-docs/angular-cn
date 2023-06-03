@@ -81,7 +81,6 @@ export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionE
  * ```
  * <custom-input-component ngDefaultControl [(ngModel)]="value"></custom-input-component>
  * ```
- *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule
  * @publicApi

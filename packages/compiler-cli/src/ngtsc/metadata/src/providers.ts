@@ -29,7 +29,7 @@ export class ExportedProviderStatusResolver {
    * Determines whether `ref` may or may not export providers to NgModules which import it.
    *
    * NgModules export providers if any are declared, and standalone components export providers from
-   * their `imports` array (if any).
+   * their `imports` array \(if any\).
    *
    * If `true`, then `ref` should be assumed to export providers. In practice, this could mean
    * either that `ref` is a local type that we _know_ exports providers, or it's imported from a

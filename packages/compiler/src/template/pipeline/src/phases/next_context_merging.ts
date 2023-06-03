@@ -19,9 +19,10 @@ import type {ComponentCompilation} from '../compilation';
  * `NextContextExpr` that steps multiple contexts. This merging is possible if all conditions are
  * met:
  *
- *   * The result of the `NextContextExpr` that's folded into the subsequent one is not stored (that
- *     is, the call is purely side-effectful).
- *   * No operations in between them uses the implicit context.
+ * - The result of the `NextContextExpr` that's folded into the subsequent one is not stored \(that
+ *   is, the call is purely side-effectful\).
+ * - No operations in between them uses the implicit context.
+ *
  */
 export function phaseMergeNextContext(cpl: ComponentCompilation): void {
   for (const view of cpl.views.values()) {

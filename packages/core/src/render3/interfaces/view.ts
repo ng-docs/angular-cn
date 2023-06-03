@@ -311,7 +311,7 @@ export interface LView<T = unknown> extends Array<any> {
    *
    * see also:
    *
-   * - https://hackmd.io/@mhevery/rJUJsvv9H write up of the problem
+   * - [https://hackmd.io/@mhevery/rJUJsvv9H](https://hackmd.io/@mhevery/rJUJsvv9H) write up of the problem
    * - `LContainer[HAS_TRANSPLANTED_VIEWS]` which marks which `LContainer` has transplanted views.
    * - `LContainer[TRANSPLANT_HEAD]` and `LContainer[TRANSPLANT_TAIL]` storage for transplanted
    * - `LView[DECLARATION_LCONTAINER]` similar problem for queries
@@ -464,7 +464,8 @@ export const enum LViewFlags {
    */
   IndexWithinInitPhaseIncrementer = 1 << 13,
   /**
-   * This is the count of the bits the 1 was shifted above (base 10)
+   * This is the count of the bits the 1 was shifted above \(base 10\)
+   *
    */
   IndexWithinInitPhaseShift = 13,
 
@@ -964,8 +965,8 @@ export type DestroyHookData = (HookEntry|HookData)[];
  *
  * `id="prefix {{ v0 }} a {{ v1 }} b {{ v2 }} suffix"`
  *
- * | LView    | TView.data           |
- * | -------- | -------------------- |
+ * | LView      | TView.data             |
+ * | ---------- | ---------------------- |
  * | `v0` value | `'a'`                  |
  * | `v1` value | `'b'`                  |
  * | `v2` value | `id � prefix � suffix` |

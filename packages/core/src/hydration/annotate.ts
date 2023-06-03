@@ -403,6 +403,7 @@ function componentUsesShadowDomEncapsulation(lView: LView): boolean {
 
 /**
  * Annotates component host element for hydration:
+ *
  * - by either adding the `ngh` attribute and collecting hydration-related info
  *   for the serialization and transferring to the client
  * - or by adding the `ngSkipHydration` attribute in case Angular detects that

@@ -167,7 +167,8 @@ export interface ComponentMirror<C> {
  */
   get isStandalone(): boolean;
   /**
-   * // TODO(signals): Remove internal and add public documentation
+   * // TODO\(signals\): Remove internal and add public documentation
+   *
    * @internal
    */
   get isSignal(): boolean;

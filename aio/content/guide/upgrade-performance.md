@@ -15,7 +15,7 @@
 </div>
 
 This guide describes some of the built-in tools for efficiently migrating AngularJS projects over to the Angular platform, one piece at a time.
-It is very similar to [Upgrading from AngularJS](guide/upgrade) with the exception that this one uses the [`downgradeModule(`)](api/upgrade/static/downgradeModule) helper function instead of the [`UpgradeModule`](api/upgrade/static/UpgradeModule) class.
+It is very similar to [Upgrading from AngularJS](guide/upgrade) with the exception that this one uses the [`downgradeModule(`\)](api/upgrade/static/downgradeModule) helper function instead of the [`UpgradeModule`](api/upgrade/static/UpgradeModule) class.
 This affects how the application is bootstrapped and how change detection is propagated between the two frameworks.
 It allows you to upgrade incrementally while improving the speed of your hybrid applications and leveraging the latest of Angular in AngularJS applications early in the process of upgrading.
 
@@ -195,7 +195,7 @@ You define that recipe by providing a factory function that can create an instan
 
 * `(extraProviders: StaticProvider[]) => Promise<NgModuleRef>`
 
-When you pass an `NgModuleFactory`, `downgradeModule()` uses it to instantiate the module using [`platformBrowser`](api/platform-browser/platformBrowser)'s [`bootstrapModuleFactory()`](api/core/PlatformRef#bootstrapModuleFactory), which is compatible with ahead-of-time (AOT) compilation.
+When you pass an `NgModuleFactory`, `downgradeModule()` uses it to instantiate the module using [`platformBrowser`](api/platform-browser/platformBrowser)'s [`bootstrapModuleFactory()`](api/core/PlatformRef#bootstrapModuleFactory), which is compatible with ahead-of-time \(AOT\) compilation.
 AOT compilation helps make your applications load faster
 For more about AOT and how to create an `NgModuleFactory`, see the [Ahead-of-Time Compilation](guide/aot-compiler) guide.
 

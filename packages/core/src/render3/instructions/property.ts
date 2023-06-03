@@ -46,7 +46,6 @@ import {elementPropertyInternal, setInputsForProperty, storePropertyBindingMetad
  * \(e.g. `property('name', ctx.name)('title', ctx.title)`\)
  *
  * 此函数返回自身，以便它可以被链接（例如 `property('name', ctx.name)('title', ctx.title)`）
- *
  * @codeGenApi
  */
 export function ɵɵproperty<T>(

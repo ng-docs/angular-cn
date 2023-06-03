@@ -51,7 +51,7 @@ enum TranslationType {
  * or an [ISO date-time string](https://www.w3.org/TR/NOTE-datetime).
  *
  * 要格式化的日期，是一个日期、数字（从 UTC 时代以来的毫秒数）或 ISO 字符串
- * \(https://www.w3.org/TR/NOTE-datetime\)。
+ * \(https://www.w3.org/TR/NOTE-datetime\\)。
  *
  * @param format The date-time components to include. See `DatePipe` for details.
  *
@@ -65,7 +65,6 @@ enum TranslationType {
  *
  * 时区。可以是 GMT 中的时区偏移（如 `'+0430'`），或一个标准的 UTC/GMT 或美国大陆时区的缩写。
  * 如果没有指定，就会使用宿主系统中的设定。
- *
  * @returns The formatted date string.
  *
  * 格式化之后的日期字符串。
@@ -73,7 +72,6 @@ enum TranslationType {
  * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
- *
  * @publicApi
  */
 export function formatDate(

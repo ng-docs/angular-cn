@@ -24,8 +24,9 @@ export type Expression = LexicalReadExpr|ReferenceExpr|ContextExpr|NextContextEx
     PureFunctionParameterExpr|PipeBindingExpr|PipeBindingVariadicExpr;
 
 /**
- * Transformer type which converts expressions into general `o.Expression`s (which may be an
- * identity transformation).
+ * Transformer type which converts expressions into general `o.Expression`s \(which may be an
+ * identity transformation\).
+ *
  */
 export type ExpressionTransform = (expr: o.Expression, flags: VisitorContextFlag) => o.Expression;
 
@@ -105,7 +106,8 @@ export class ReferenceExpr extends ExpressionBase implements UsesSlotIndexTrait 
 }
 
 /**
- * A reference to the current view context (usually the `ctx` variable in a template function).
+ * A reference to the current view context \(usually the `ctx` variable in a template function\).
+ *
  */
 export class ContextExpr extends ExpressionBase {
   override readonly kind = ExpressionKind.Context;
@@ -281,7 +283,8 @@ export class PureFunctionExpr extends ExpressionBase implements ConsumesVarsTrai
    * The expression which should be memoized as a pure computation.
    *
    * This expression contains internal `PureFunctionParameterExpr`s, which are placeholders for the
-   * positional argument expressions in `args.
+   * positional argument expressions in \`args.
+   *
    */
   body: o.Expression|null;
 

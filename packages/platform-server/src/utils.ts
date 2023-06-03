@@ -20,8 +20,9 @@ interface PlatformOptions {
 }
 
 /**
- * Creates an instance of a server platform (with or without JIT compiler support
- * depending on the `ngJitMode` global const value), using provided options.
+ * Creates an instance of a server platform \(with or without JIT compiler support
+ * depending on the `ngJitMode` global const value\), using provided options.
+ *
  */
 function createServerPlatform(options: PlatformOptions): PlatformRef {
   const extraProviders = options.platformProviders ?? [];

@@ -11,9 +11,10 @@ import * as ir from '../../ir';
 import {ComponentCompilation, ViewCompilation} from '../compilation';
 
 /**
- * Resolves `ir.ContextExpr` expressions (which represent embedded view or component contexts) to
- * either the `ctx` parameter to component functions (for the current view context) or to variables
- * that store those contexts (for contexts accessed via the `nextContext()` instruction).
+ * Resolves `ir.ContextExpr` expressions \(which represent embedded view or component contexts\) to
+ * either the `ctx` parameter to component functions \(for the current view context\) or to variables
+ * that store those contexts \(for contexts accessed via the `nextContext()` instruction\).
+ *
  */
 export function phaseResolveContexts(cpl: ComponentCompilation): void {
   for (const view of cpl.views.values()) {

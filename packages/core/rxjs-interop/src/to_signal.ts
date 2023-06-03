@@ -44,11 +44,12 @@ export interface ToSignalOptions<T> {
   injector?: Injector;
 
   /**
-   * Whether the subscription should be automatically cleaned up (via `DestroyRef`) when
+   * Whether the subscription should be automatically cleaned up \(via `DestroyRef`\) when
    * `toObservable`'s creation context is destroyed.
    *
    * If manual cleanup is enabled, then `DestroyRef` is not used, and the subscription will persist
    * until the `Observable` itself completes.
+   *
    */
   manualCleanup?: boolean;
 }

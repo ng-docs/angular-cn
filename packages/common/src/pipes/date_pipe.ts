@@ -346,10 +346,10 @@ export class DatePipe implements PipeTransform {
 
   /**
    * @param value The date expression: a `Date` object,  a number
-   * \(milliseconds since UTC epoch\), or an ISO string \(https://www.w3.org/TR/NOTE-datetime\).
+   * \(milliseconds since UTC epoch\), or an ISO string \(https://www.w3.org/TR/NOTE-datetime\\).
    *
    * 日期表达式：`Date` 对象、数字（从 UTC 时代以来的毫秒数）或一个 ISO 字符串
-   * \(https://www.w3.org/TR/NOTE-datetime\)。
+   * \(https://www.w3.org/TR/NOTE-datetime\\)。
    *
    * @param format The date/time components to include, using predefined options or a
    * custom format string.  When not provided, the `DatePipe` looks for the value using the
@@ -359,7 +359,6 @@ export class DatePipe implements PipeTransform {
    * 要包含的日期/时间组件，使用预定义的选项或自定义格式字符串。当未提供时， `DatePipe` 会使用
    * `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌查找值（并读取 `dateFormat` 属性）。如果未配置令牌，则使用
    * `mediumDate` 作为值。
-   *
    * @param timezone A timezone offset \(such as `'+0430'`\), or a standard UTC/GMT, or continental US
    * timezone abbreviation. When not provided, the `DatePipe` looks for the value using the
    * `DATE_PIPE_DEFAULT_OPTIONS` injection token \(and reads the `timezone` property\). If the token
@@ -367,7 +366,6 @@ export class DatePipe implements PipeTransform {
    *
    * 一个时区偏移（比如 `'+0430'`）或标准的 UTC/GMT
    * 或美国大陆时区的缩写。默认为最终用户机器上的本地系统时区。
-   *
    * @param locale A locale code for the locale format rules to use.
    * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
    * See [Setting your app locale](guide/i18n-common-locale-id).

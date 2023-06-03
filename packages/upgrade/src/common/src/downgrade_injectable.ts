@@ -83,7 +83,6 @@ import {getTypeName, isFunction, validateInjectionKey} from './util';
  * 可注入“属于”的降级模块的名称（如果有），由对 `downgradeModule()`
  * 的调用返回。它是模块，其注入器将用于实例化可注入。<br />（仅在使用 `downgradeModule()` 降级多个
  * Angular 模块时才需要此选项。）
- *
  * @returns
  *
  * a [factory function](https://docs.angularjs.org/guide/di) that can be

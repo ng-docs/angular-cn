@@ -26,7 +26,7 @@ export function isFunctionLikeDeclaration(node: ts.Node): node is ts.FunctionLik
  * TypeScript node referring to the inner expression. e.g "exp".
  *
  * 展开给定的表达式 TypeScript
- * 节点。表达式可以用多个括号或作为表达式包装。例如`(((({exp})))))()`。该函数应返回引用内部表达式的
+ * 节点。表达式可以用多个括号或作为表达式包装。例如 `(((({exp})))))()`。该函数应返回引用内部表达式的
  * TypeScript 节点。例如“exp”。
  *
  */

@@ -5,6 +5,7 @@
 This section contains tutorials to help you get started developing applications with Angular.
 
 ## First App Tutorial - Angular Homes
+
 [First App Tutorial - Angular Homes](tutorial/first-app) gets you started with Angular
 The First App tutorial guides you through building an Angular app by taking you step by step through the fundamentals of building an application in Angular.
 

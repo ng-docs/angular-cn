@@ -22,7 +22,7 @@ You can try out the new build system for applications that use the `browser` bui
 
 ### Updating the application configuration
 
-The new build system was implemented to minimize the amount of changes necessary to transition your applications. Currently, the new build system is provided via an alternate builder (`browser-esbuild`). You can update the `build` target for any application target to try out the new build system.
+The new build system was implemented to minimize the amount of changes necessary to transition your applications. Currently, the new build system is provided via an alternate builder \(`browser-esbuild`\). You can update the `build` target for any application target to try out the new build system.
 
 The following is what you would typically find in `angular.json` for an application:
 
@@ -76,16 +76,16 @@ The developer preview currently does not provide HMR support and the HMR related
 
 Several build options are not yet implemented but will be added in the future as the build system moves towards a stable status. If your application uses these options, you can still try out the build system without removing them. Warnings will be issued for any unimplemented options but they will otherwise be ignored. However, if your application relies on any of these options to function, you may want to wait to try.
 
-- [Bundle budgets](https://github.com/angular/angular-cli/issues/25100) (`budgets`)
-- [Localization](https://github.com/angular/angular-cli/issues/25099) (`localize`/`i18nDuplicateTranslation`/`i18nMissingTranslation`)
-- [Web workers](https://github.com/angular/angular-cli/issues/25101) (`webWorkerTsConfig`)
+- [Bundle budgets](https://github.com/angular/angular-cli/issues/25100) \(`budgets`\)
+- [Localization](https://github.com/angular/angular-cli/issues/25099) \(`localize`/`i18nDuplicateTranslation`/`i18nMissingTranslation`\)
+- [Web workers](https://github.com/angular/angular-cli/issues/25101) \(`webWorkerTsConfig`\)
 - [WASM imports](https://github.com/angular/angular-cli/issues/25102) -- WASM can still be loaded manually via [standard web APIs](https://developer.mozilla.org/en-US/docs/WebAssembly/Loading_and_running).
 
 Building libraries with the new build system via `ng-packagr` is also not yet possible but library build support will be available in a future release.
 
 ### ESM default imports vs. namespace imports
 
-TypeScript by default allows default exports to be imported as namespace imports and then used in call expressions. This is unfortunately a divergence from the ECMAScript specification. The underlying bundler (`esbuild`) within the new build system expects ESM code that conforms to the specification. The build system will now generate a warning if your application uses an incorrect type of import of a package. However, to allow TypeScript to accept the correct usage, a TypeScript option must be enabled within the application's `tsconfig` file. When enabled, the [`esModuleInterop`](https://www.typescriptlang.org/tsconfig#esModuleInterop) option provides better alignment with the ECMAScript specification and is also recommended by the TypeScript team. Once enabled, you can update package imports where applicable to an ECMAScript conformant form.
+TypeScript by default allows default exports to be imported as namespace imports and then used in call expressions. This is unfortunately a divergence from the ECMAScript specification. The underlying bundler \(`esbuild`\) within the new build system expects ESM code that conforms to the specification. The build system will now generate a warning if your application uses an incorrect type of import of a package. However, to allow TypeScript to accept the correct usage, a TypeScript option must be enabled within the application's `tsconfig` file. When enabled, the [`esModuleInterop`](https://www.typescriptlang.org/tsconfig#esModuleInterop) option provides better alignment with the ECMAScript specification and is also recommended by the TypeScript team. Once enabled, you can update package imports where applicable to an ECMAScript conformant form.
 
 Using the [`moment`](https://npmjs.com/package/moment) package as an example, the following application code will cause runtime errors:
 

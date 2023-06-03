@@ -48,10 +48,13 @@ const __forward_ref__ = getClosureSafeProperty({__forward_ref__: getClosureSafeP
  * `forwardRef` is also used to break circularities in standalone components imports.
  *
  * @usageNotes
+ *
  * ### Circular dependency example
+ *
  * {@example core/di/ts/forward_ref/forward_ref_spec.ts region='forward_ref'}
  *
  * ### Circular standalone reference import example
+ *
  * ```ts
  * @Component({
  *   standalone: true,
@@ -62,7 +65,6 @@ const __forward_ref__ = getClosureSafeProperty({__forward_ref__: getClosureSafeP
  * export class ParentComponent {
  *   @Input() hideParent: boolean;
  * }
- *
  *
  * @Component({
  *   standalone: true,

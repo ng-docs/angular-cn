@@ -87,7 +87,7 @@ As the `query` signal changes, the `query$` Observable emits the latest query an
 
 ### Timing of `toObservable`
 
-`toObservable` uses an effect to track the value of the signal in a `ReplaySubject`. On subscription, the first value (if available) may be emitted synchronously, and all subsequent values will be asynchronous.
+`toObservable` uses an effect to track the value of the signal in a `ReplaySubject`. On subscription, the first value \(if available\) may be emitted synchronously, and all subsequent values will be asynchronous.
 
 Unlike Observables, signals never provide a synchronous notification of changes. Even if your code updates a signal's value multiple times, effects which depend on its value run only after the signal has "settled".
 
@@ -100,4 +100,4 @@ mySignal.set(2);
 mySignal.set(3);
 ```
 
-Here, only the last value (3) will be logged.
+Here, only the last value \(3\) will be logged.

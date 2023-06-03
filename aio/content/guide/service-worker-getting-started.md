@@ -209,7 +209,7 @@ The `ngsw-config.json` boilerplate configuration is set up to cache the specific
 * Images and fonts directly under the configured `outputPath` \(by default `./dist/<project-name>/`\) or `resourcesOutputPath`.
   See [`ng build`](cli/build) for more information about these options.
 
-  图片和字体直接位于所配置的 `outputPath`(认为 `./dist/<project-name>/`）或 `resourcesOutputPath` 下。关于这些配置的更多信息，请参阅 [`ng build`](cli/build)。
+  图片和字体直接位于所配置的 `outputPath`\(认为 `./dist/<project-name>/`）或 `resourcesOutputPath` 下。关于这些配置的更多信息，请参阅 [`ng build`](cli/build)。
 
 <div class="alert is-important">
 

@@ -37,12 +37,14 @@ export function renderComponent(hostLView: LView, componentHostIdx: number) {
  * will be skipped. However, consider this case of two components side-by-side:
  *
  * App template:
+ *
  * ```
  * <comp></comp>
  * <comp></comp>
  * ```
  *
  * The following will happen:
+ *
  * 1. App template begins processing.
  * 2. First <comp> is matched as a component and its LView is created.
  * 3. Second <comp> is matched as a component and its LView is created.
@@ -65,10 +67,12 @@ export function syncViewWithBlueprint(tView: TView, lView: LView) {
 
 /**
  * Processes a view in the creation mode. This includes a number of steps in a specific order:
- * - creating view query functions (if any);
+ *
+ * - creating view query functions \(if any\);
  * - executing a template function in the creation mode;
- * - updating static queries (if any);
+ * - updating static queries \(if any\);
  * - creating child components defined in a given view.
+ *
  */
 export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
   ngDevMode && assertEqual(isCreationMode(lView), true, 'Should be run in creation mode');
@@ -130,7 +134,10 @@ export function renderView<T>(tView: TView, lView: LView<T>, context: T): void {
   }
 }
 
-/** Renders child components in the current view (creation mode). */
+/**
+ * Renders child components in the current view \(creation mode\).
+ *
+ */
 function renderChildComponents(hostLView: LView, components: number[]): void {
   for (let i = 0; i < components.length; i++) {
     renderComponent(hostLView, components[i]);

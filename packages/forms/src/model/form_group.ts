@@ -197,7 +197,6 @@ export type ɵOptionalKeys<T> = {
  * without providing the optional key `one` will cause it to become `null`.
  *
  * 请注意，`c.value.one` 的类型为 `string|null|undefined` 。这是因为在不提供可选键 `one` 的情况下调用 `c.reset({})` 将导致它变为 `null` 。
- *
  * @publicApi
  */
 export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<any>} = any> extends
@@ -299,7 +298,6 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   added. When false, no events are emitted.
    *
    *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges` 可观察对象在添加控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
-   *
    */
   addControl(
       this: FormGroup<{[key: string]: AbstractControl<any>}>, name: string,

@@ -87,8 +87,9 @@ function emitChildViews(parent: ViewCompilation, pool: ConstantPool): void {
 }
 
 /**
- * Emit a template function for an individual `ViewCompilation` (which may be either the root view
- * or an embedded view).
+ * Emit a template function for an individual `ViewCompilation` \(which may be either the root view
+ * or an embedded view\).
+ *
  */
 function emitView(view: ViewCompilation): o.FunctionExpr {
   if (view.fnName === null) {

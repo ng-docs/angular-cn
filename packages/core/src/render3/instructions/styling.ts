@@ -856,9 +856,20 @@ export function styleKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: st
  *
  * See: `keyValueArraySet` for details
  *
+ * 有关详细信息，请参阅： `keyValueArraySet`
+ *
  * @param keyValueArray KeyValueArray to add to.
+ *
+ * 要添加到的 KeyValueArray。
+ *
  * @param key Style key to add.
+ *
+ * 要添加的样式键。
+ *
  * @param value The value to set.
+ *
+ * 要设置的值。
+ *
  */
 export function classKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: unknown, value: any) {
   // We use `classList.add` to eventually add the CSS classes to the DOM node. Any value passed into

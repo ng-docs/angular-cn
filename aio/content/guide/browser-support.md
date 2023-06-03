@@ -8,20 +8,20 @@ This includes the following specific versions:
 Angular 支持大多数常用浏览器，包括下列版本：
 
 | Browser | Supported versions                          |
-| :------ |:--------------------------------------------|
-| 浏览器  | 支持的版本                                       |
+| :------ | :------------------------------------------ |
+| 浏览器  | 支持的版本                                  |
 | Chrome  | 2 most recent versions                      |
-| Chrome  | 最近的两个版本                                     |
+| Chrome  | 最近的两个版本                              |
 | Firefox | latest and extended support release \(ESR\) |
-| Firefox | 最新版以及扩展支持版本（ESR）                          |
+| Firefox | 最新版以及扩展支持版本（ESR）               |
 | Edge    | 2 most recent major versions                |
-| Edge    | 最近的两个主版本                                    |
+| Edge    | 最近的两个主版本                            |
 | Safari  | 2 most recent major versions                |
-| Safari  | 最近的两个主版本                                    |
+| Safari  | 最近的两个主版本                            |
 | iOS     | 2 most recent major versions                |
-| iOS     | 最近的两个主版本                                    |
+| iOS     | 最近的两个主版本                            |
 | Android | 2 most recent major versions                |
-| Android | 最近的两个主版本                                    |
+| Android | 最近的两个主版本                            |
 
 <div class="alert is-helpful">
 

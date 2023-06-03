@@ -46,9 +46,9 @@ import {getCurrentICUCaseIndex, getParentFromIcuCreateOpCode, getRefFromIcuCreat
  *    JS 中允许使用 32 位。
  *
  * 3. Bit 32 is special as it is shared for all changes past 32. \(In other words if you have more
- * than 32 `ɵɵi18nExp` then all changes past 32nd `ɵɵi18nExp` will be mapped to same bit. This means
- * that we may end up changing more than we need to. But i18n expressions with 32 bindings is rare
- * so in practice it should not be an issue.\)
+ *    than 32 `ɵɵi18nExp` then all changes past 32nd `ɵɵi18nExp` will be mapped to same bit. This means
+ *    that we may end up changing more than we need to. But i18n expressions with 32 bindings is rare
+ *    so in practice it should not be an issue.\)
  *
  *    第 32 位是特殊的，因为它是为 32 以后的所有更改共享的。（换句话说，如果你有超过 32 `ɵɵi18nExp` ，那么超过 32nd `ɵɵi18nExp` 的所有更改都将映射到同一个位。这意味着我们最终可能会更改超过我们需要。但具有 32 个绑定的 i18n 表达式很少见，因此在实践中这应该不是问题。）
  *
