@@ -1,8 +1,8 @@
 <a id="top"></a>
 
-{&commat;searchKeywords test testing karma jasmine coverage}
+{@searchKeywords test testing karma jasmine coverage}
 
-{&commat;searchKeywords 测试测试业力茉莉花覆盖范围}
+{@searchKeywords 测试测试业力茉莉花覆盖范围}
 
 # Testing
 
