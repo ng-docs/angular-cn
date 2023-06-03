@@ -16,6 +16,7 @@ js_library(
         "//aio/tools/transforms/angular-extended-diagnostics-package",
         "//aio/tools/transforms/cli-docs-package",
         "@aio_npm//dgeni",
+        "@aio_npm//@node-rs/jieba",
         "@aio_npm//dgeni-packages",
         "@aio_npm//rimraf",
     ],
