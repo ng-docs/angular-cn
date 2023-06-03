@@ -403,9 +403,9 @@ The `production` configuration engages the following build optimization features
 |:--------------------------------------------------------| :----------------------------------------------------------------------- |
 | 特性                                                      | 详细信息                                                                 |
 | [Ahead-of-Time \(AOT\) Compilation](guide/aot-compiler) | Pre-compiles Angular component templates.                                |
-| [预先（AOT）编译](guide/aot-compiler)                      | 预编译 Angular 的组件模板。                                              |
-| [Production mode](#prod-mode)                    | Optimizes the application for the best runtime performance |
-| [生产模式](#enable-prod-mode)                               | 部署到启用了*生产模式*的生产环境。                                       |
+| [预先（AOT）编译](guide/aot-compiler)                         | 预编译 Angular 的组件模板。                                              |
+| [Production mode](#prod-mode)                           | Optimizes the application for the best runtime performance |
+| [生产模式](#prod-mode)                                      | 部署到启用了*生产模式*的生产环境。                                       |
 | Bundling                                                | Concatenates your many application and library files into a few bundles. |
 | 打包                                                      | 把你的多个应用于库文件拼接到少量包（bundle）中。                         |
 | Minification                                            | Removes excess whitespace, comments, and optional tokens.                |
