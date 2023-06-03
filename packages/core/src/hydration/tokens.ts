@@ -12,7 +12,7 @@ import {InjectionToken} from '../di/injection_token';
  * Internal token that specifies whether DOM reuse logic
  * during hydration is enabled.
  *
- * 指定是否启用水合作用期间的 DOM 重用逻辑的内部令牌。
+ * 指定是否启用水合期间的 DOM 重用逻辑的内部令牌。
  *
  */
 export const IS_HYDRATION_DOM_REUSE_ENABLED = new InjectionToken<boolean>(

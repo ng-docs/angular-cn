@@ -1335,7 +1335,7 @@ export interface TView {
   /**
    * Unique id of this TView for hydration purposes:
    *
-   * 此 TView 用于水合作用的唯一 ID：
+   * 此 TView 用于水合的唯一 ID：
    *
    * - TViewType.Embedded: a unique id generated during serialization on the server
    *

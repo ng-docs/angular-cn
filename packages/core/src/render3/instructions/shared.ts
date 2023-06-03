@@ -566,7 +566,7 @@ export function locateHostElement(
  * Applies any root element transformations that are needed. If hydration is enabled,
  * this will process corrupted text nodes.
  *
- * 应用任何需要的根元素转换。 如果启用水合作用，这将处理损坏的文本节点。
+ * 应用任何需要的根元素转换。 如果启用水合，这将处理损坏的文本节点。
  *
  * @param rootElement the app root HTML Element
  *
@@ -597,7 +597,7 @@ let _applyRootElementTransformImpl: typeof applyRootElementTransformImpl =
  * nodes that were added prior to serialization are swapped out to restore proper text
  * nodes before hydration.
  *
- * 在水合作用开始之前处理文本节点标记。 这将替换在序列化之前添加的任何特殊注释节点，这些节点在水化之前被换出以恢复正确的文本节点。
+ * 在水合开始之前处理文本节点标记。 这将替换在序列化之前添加的任何特殊注释节点，这些节点在水化之前被换出以恢复正确的文本节点。
  *
  * @param rootElement the app root HTML Element
  *

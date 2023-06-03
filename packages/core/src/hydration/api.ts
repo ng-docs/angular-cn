@@ -60,7 +60,7 @@ const APPLICATION_IS_STABLE_TIMEOUT = 10_000;
  * enabled. It brings in the appropriate version of the method that
  * supports hydration only when enabled.
  *
- * 这种技术允许我们交换方法的实现，以便在禁用或启用水合作用时 tree shaking 适当地工作。 它引入了仅在启用时才支持水合作用的方法的适当版本。
+ * 这种技术允许我们交换方法的实现，以便在禁用或启用水合时 tree shaking 适当地工作。 它引入了仅在启用时才支持水合的方法的适当版本。
  *
  */
 function enableHydrationRuntimeSupport() {
@@ -92,7 +92,7 @@ function isBrowser(): boolean {
 /**
  * Outputs a message with hydration stats into a console.
  *
- * 将包含水合作用统计信息的消息输出到控制台。
+ * 将包含水合统计信息的消息输出到控制台。
  *
  */
 function printHydrationStats(injector: Injector) {

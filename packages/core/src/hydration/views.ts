@@ -56,7 +56,7 @@ export function locateDehydratedViewsInContainer(
  * stored on a given lContainer.
  * Returns `null` by default, when hydration is not enabled.
  *
- * 对搜索存储在给定 lContainer 上的匹配脱水视图的函数的引用。 未启用水合作用时，默认返回 `null` 。
+ * 对搜索存储在给定 lContainer 上的匹配脱水视图的函数的引用。 未启用水合时，默认返回 `null` 。
  *
  */
 let _findMatchingDehydratedViewImpl: typeof findMatchingDehydratedViewImpl =

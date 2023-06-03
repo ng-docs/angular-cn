@@ -21,7 +21,7 @@ import {CONTAINERS, DehydratedView, DISCONNECTED_NODES, ELEMENT_CONTAINERS, MULT
  * The name of the key used in the TransferState collection,
  * where hydration information is located.
  *
- * TransferState 集合中使用的键的名称，水合作用信息所在的位置。
+ * TransferState 集合中使用的键的名称，水合信息所在的位置。
  *
  */
 const TRANSFER_STATE_TOKEN_ID = '__ɵnghData__';
@@ -39,7 +39,7 @@ export const NGH_DATA_KEY = makeStateKey<Array<SerializedView>>(TRANSFER_STATE_T
  * nodes and contain a reference to a particular slot in transferred
  * state that contains the necessary hydration info for this component.
  *
- * 将添加到宿主组件节点的属性的名称，并包含对处于传输状态的特定插槽的引用，该插槽包含此组件的必要水合作用信息。
+ * 将添加到宿主组件节点的属性的名称，并包含对处于传输状态的特定插槽的引用，该插槽包含此组件的必要水合信息。
  *
  */
 export const NGH_ATTR_NAME = 'ngh';
@@ -65,7 +65,7 @@ export const enum TextNodeMarker {
    * just one text node. This separator is replaced during hydration to restore
    * the proper separation and amount of text nodes that should be present.
    *
-   * 在相邻文本节点的情况下添加的文本注释的内容。 当相邻的文本节点被服务器序列化并发送给客户端时，浏览器将失去对节点数量的参考并假定只有一个文本节点。 此分隔符在水合作用期间被替换，以恢复应存在的文本节点的适当分隔和数量。
+   * 在相邻文本节点的情况下添加的文本注释的内容。 当相邻的文本节点被服务器序列化并发送给客户端时，浏览器将失去对节点数量的参考并假定只有一个文本节点。 此分隔符在水合期间被替换，以恢复应存在的文本节点的适当分隔和数量。
    *
    */
   Separator = 'ngtns',
@@ -76,7 +76,7 @@ export const enum TextNodeMarker {
  * and retrieves hydration information from the TransferState using that value
  * as an index. Returns `null` by default, when hydration is not enabled.
  *
- * 引用从给定 RNode 读取 `ngh` 属性值并使用该值作为索引从 TransferState 检索水化信息的函数。 未启用水合作用时，默认返回 `null` 。
+ * 引用从给定 RNode 读取 `ngh` 属性值并使用该值作为索引从 TransferState 检索水化信息的函数。 未启用水合时，默认返回 `null` 。
  *
  * @param rNode Component's host element.
  *
@@ -145,7 +145,7 @@ export function enableRetrieveHydrationInfoImpl() {
  * Retrieves hydration info by reading the value from the `ngh` attribute
  * and accessing a corresponding slot in TransferState storage.
  *
- * 通过从 `ngh` 属性中读取值并访问 TransferState 存储中的相应插槽来检索水合作用信息。
+ * 通过从 `ngh` 属性中读取值并访问 TransferState 存储中的相应插槽来检索水合信息。
  *
  */
 export function retrieveHydrationInfo(rNode: RElement, injector: Injector): DehydratedView|null {
@@ -325,7 +325,7 @@ export function calcSerializedContainerSize(hydrationInfo: DehydratedView, index
  * in the DOM at serialization time. We should not attempt hydration for
  * such nodes and instead, use a regular "creation mode".
  *
- * 检查节点是否被注释为“断开连接”，即在序列化时不存在于 DOM 中。 我们不应尝试对此类节点进行水合作用，而应使用常规的“创建模式”。
+ * 检查节点是否被注释为“断开连接”，即在序列化时不存在于 DOM 中。 我们不应尝试对此类节点进行水合，而应使用常规的“创建模式”。
  *
  */
 export function isDisconnectedNode(hydrationInfo: DehydratedView, index: number): boolean {

@@ -98,7 +98,7 @@ export abstract class TemplateRef<C> {
    * to invoke it with extra parameters \(e.g. for hydration\) without
    * affecting public API.
    *
-   * 这个实现是内部的，允许框架代码在不影响公共 API 的情况下使用额外的参数（例如水合作用）调用它。
+   * 这个实现是内部的，允许框架代码在不影响公共 API 的情况下使用额外的参数（例如水合）调用它。
    *
    * @internal
    */

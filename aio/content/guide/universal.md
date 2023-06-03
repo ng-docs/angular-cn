@@ -138,7 +138,7 @@ Hydration 是在客户端恢复服务端渲染的应用程序的过程。 这包
 
 You can enable hydration by updating the `app.module.ts` file. Import the `provideClientHydration` function from `@angular/platform-browser` and add the function call to the `providers` section of the `AppModule` as shown below.
 
-你可以通过更新 `app.module.ts` 文件来启用水合作用。 从 `@angular/platform-browser` 导入 `provideClientHydration` 函数，并将函数调用添加到 `AppModule` 的 `providers` 部分，如下所示。
+你可以通过更新 `app.module.ts` 文件来启用水合。 从 `@angular/platform-browser` 导入 `provideClientHydration` 函数，并将函数调用添加到 `AppModule` 的 `providers` 部分，如下所示。
 
 ```typescript
 import {provideClientHydration} from '@angular/platform-browser';

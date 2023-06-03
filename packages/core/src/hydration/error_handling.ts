@@ -130,7 +130,7 @@ export function validateNodeExists(
 /**
  * Builds the hydration error message when a node is not found
  *
- * 找不到节点时构建水合作用错误消息
+ * 找不到节点时构建水合错误消息
  *
  * @param lView the LView where the node exists
  *
@@ -152,7 +152,7 @@ export function nodeNotFoundError(lView: LView, tNode: TNode): Error {
 /**
  * Builds a hydration error message when a node is not found at a path location
  *
- * 当在路径位置找不到节点时构建水合作用错误消息
+ * 当在路径位置找不到节点时构建水合错误消息
  *
  * @param host the Host Node
  *
@@ -176,7 +176,7 @@ export function nodeNotFoundAtPathError(host: Node, path: string): Error {
  * Builds the hydration error message in the case that dom nodes are created outside of
  * the Angular context and are being used as projected nodes
  *
- * 在 dom 节点是在 Angular 上下文之外创建并被用作投影节点的情况下构建水合作用错误消息
+ * 在 dom 节点是在 Angular 上下文之外创建并被用作投影节点的情况下构建水合错误消息
  *
  * @param lView the LView
  *
@@ -208,7 +208,7 @@ export function unsupportedProjectionOfDomNodes(rNode: RNode): Error {
  * Builds the hydration error message in the case that ngSkipHydration was used on a
  * node that is not a component host element or host binding
  *
- * 在 ngSkipHydration 用于非组件宿主元素或宿主绑定的节点上时构建水合作用错误消息
+ * 在 ngSkipHydration 用于非组件宿主元素或宿主绑定的节点上时构建水合错误消息
  *
  * @param rNode the HTML Element
  *
@@ -469,7 +469,7 @@ function shortRNodeDescription(
 /**
  * Builds the footer hydration error message
  *
- * 构建页脚水合作用错误消息
+ * 构建页脚水合错误消息
  *
  * @param componentClassName the name of the component class
  *
@@ -489,7 +489,7 @@ function getHydrationErrorFooter(componentClassName?: string): string {
 /**
  * An attribute related note for hydration errors
  *
- * 水合作用错误的属性相关注释
+ * 水合错误的属性相关注释
  *
  */
 function getHydrationAttributeNote(): string {

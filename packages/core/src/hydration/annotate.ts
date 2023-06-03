@@ -168,7 +168,7 @@ export function annotateForHydration(appRef: ApplicationRef, doc: Document) {
  *
  * @param context the hydration context
  *
- * 水合作用
+ * 水合
  *
  * @returns
  *
@@ -271,7 +271,7 @@ function appendDisconnectedNodeIndex(ngh: SerializedView, tNode: TNode) {
  *
  * @param context the hydration context
  *
- * 水合作用
+ * 水合
  *
  * @returns
  *
@@ -461,12 +461,12 @@ function componentUsesShadowDomEncapsulation(lView: LView): boolean {
 /**
  * Annotates component host element for hydration:
  *
- * 注释组件宿主元素以进行水合作用：
+ * 注释组件宿主元素以进行水合：
  *
  * - by either adding the `ngh` attribute and collecting hydration-related info
  *   for the serialization and transferring to the client
  *
- *   通过添加 `ngh` 属性并收集与水合作用相关的信息以进行序列化并传输到客户端
+ *   通过添加 `ngh` 属性并收集与水合相关的信息以进行序列化并传输到客户端
  *
  * - or by adding the `ngSkipHydration` attribute in case Angular detects that
  *   component contents is not compatible with hydration.
@@ -483,7 +483,7 @@ function componentUsesShadowDomEncapsulation(lView: LView): boolean {
  *
  * @param context The hydration context
  *
- * 水合作用
+ * 水合
  *
  */
 function annotateHostElementForHydration(
@@ -510,7 +510,7 @@ function annotateHostElementForHydration(
  * These get swapped back for empty text nodes or separators once hydration happens
  * on the client.
  *
- * 物理插入注释节点以确保空文本节点和相邻的文本节点分隔符在 DOM 的服务器序列化后得到保留。 一旦在客户端发生水合作用，这些就会换回空文本节点或分隔符。
+ * 物理插入注释节点以确保空文本节点和相邻的文本节点分隔符在 DOM 的服务器序列化后得到保留。 一旦在客户端发生水合，这些就会换回空文本节点或分隔符。
  *
  * @param corruptedTextNodes The Map of text nodes to be replaced with comments
  *

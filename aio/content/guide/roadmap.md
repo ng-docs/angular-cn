@@ -26,7 +26,7 @@ For example, we release features in the next minor after completion or the next 
 
 ### Explore hydration and server-side rendering improvements
 
-### 探索水合作用和服务端渲染改进
+### 探索水合和服务端渲染改进
 
 In v16, we released a developer preview of non-destructive full hydration, see the [hydration guide](guide/hydration) and the [blog post](https://blog.angular.io/whats-next-for-server-side-rendering-in-angular-2a6f27662b67) for additional information. We're already seeing significant improvements to Core Web Vitals, including [LCP](https://web.dev/lcp) and [CLS](https://web.dev/cls). In lab tests, we consistently observed 45% better LCP of a real-world app.
 
