@@ -46,7 +46,7 @@ export interface SemanticTypeParameter {
  * Converts the type parameters of the given class into their semantic representation. If the class
  * does not have any type parameters, then `null` is returned.
  *
- * 将给定类的类型参数转换为它们的语义表示。如果类没有任何类型参数，则返回 `null` 。
+ * 将给定类的类型参数转换为它们的语义表示。如果类没有任何类型参数，则返回 `null`。
  *
  */
 export function extractSemanticTypeParameters(node: ClassDeclaration): SemanticTypeParameter[]|

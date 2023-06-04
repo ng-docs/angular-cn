@@ -47,7 +47,7 @@ export interface NgModule {
    *
    * @see [Dependency Injection guide](guide/dependency-injection)
    *
-   * [“依赖注入指南”](guide/dependency-injection) 。
+   * [“依赖注入指南”](guide/dependency-injection)。
    * @see [NgModule guide](guide/providers)
    *
    * [NgModule 指南](guide/providers)
@@ -59,7 +59,7 @@ export interface NgModule {
    * The NgModule used for bootstrapping uses the root injector, and can provide dependencies
    * to any part of the app.
    *
-   * 惰性加载的模块有自己的注入器，通常它是根注入器的一个子注入器。 惰性加载的服务，其作用范围局限于这个惰性加载模块的注入器。 如果惰性加载模块也提供了 `UserService`，则任何在该模块的上下文中创建的组件（比如通过路由导航）都会获得该服务的一个局部实例， 而不是根注入器中的全局实例。 而外部模块中的组件仍然会使用由它们的注入器提供的实例。
+   * 惰性加载的模块有自己的注入器，通常它是根注入器的一个子注入器。惰性加载的服务，其作用范围局限于这个惰性加载模块的注入器。如果惰性加载模块也提供了 `UserService`，则任何在该模块的上下文中创建的组件（比如通过路由导航）都会获得该服务的一个局部实例，而不是根注入器中的全局实例。而外部模块中的组件仍然会使用由它们的注入器提供的实例。
    *
    * A lazy-loaded module has its own injector, typically a child of the app root injector.
    * Lazy-loaded services are scoped to the lazy-loaded module's injector.
@@ -68,7 +68,7 @@ export interface NgModule {
    * of the service, not the instance in the root injector.
    * Components in external modules continue to receive the instance provided by their injectors.
    *
-   * 惰性加载的模块有自己的注入器，通常它是根注入器的一个子注入器。 惰性加载的服务，其作用范围局限于这个惰性加载模块的注入器。 如果惰性加载模块也提供了 `UserService`，则任何在该模块的上下文中创建的组件（比如通过路由导航）都会获得该服务的一个局部实例， 而不是根注入器中的全局实例。 而外部模块中的组件仍然会使用由它们的注入器提供的实例。
+   * 惰性加载的模块有自己的注入器，通常它是根注入器的一个子注入器。惰性加载的服务，其作用范围局限于这个惰性加载模块的注入器。如果惰性加载模块也提供了 `UserService`，则任何在该模块的上下文中创建的组件（比如通过路由导航）都会获得该服务的一个局部实例，而不是根注入器中的全局实例。而外部模块中的组件仍然会使用由它们的注入器提供的实例。
    *
    * ### Example
    *
@@ -113,13 +113,13 @@ export interface NgModule {
    * The set of selectors that are available to a template include those declared here, and
    * those that are exported from imported NgModules.
    *
-   * 可声明对象必须属于也只能属于一个模块。 如果你尝试把同一个类声明在多个模块中，那么编译器就会报错。 要注意不能声明那些从其它模块中导入的类。
+   * 可声明对象必须属于也只能属于一个模块。如果你尝试把同一个类声明在多个模块中，那么编译器就会报错。要注意不能声明那些从其它模块中导入的类。
    *
    * Declarables must belong to exactly one module.
    * The compiler emits an error if you try to declare the same class in more than one module.
    * Be careful not to declare a class that is imported from another module.
    *
-   * 可声明对象必须属于也只能属于一个模块。 如果你尝试把同一个类声明在多个模块中，那么编译器就会报错。 要注意不能声明那些从其它模块中导入的类。
+   * 可声明对象必须属于也只能属于一个模块。如果你尝试把同一个类声明在多个模块中，那么编译器就会报错。要注意不能声明那些从其它模块中导入的类。
    *
    * ### Example
    *
@@ -155,7 +155,7 @@ export interface NgModule {
    * it, which makes the declarables from `ModuleB` available
    * wherever `ModuleA` is imported.
    *
-   * 模板可以使用来自任何导入模块中所导出的可声明对象，包括它们从别的模块导入后重新导出的。 比如，`ModuleA` 导入了 `ModuleB` 并导出了它，就会让 `ModuleB` 中的可声明对象也同样在那些导入了 `ModuleA` 的模块中可用。
+   * 模板可以使用来自任何导入模块中所导出的可声明对象，包括它们从别的模块导入后重新导出的。比如，`ModuleA` 导入了 `ModuleB` 并导出了它，就会让 `ModuleB` 中的可声明对象也同样在那些导入了 `ModuleA` 的模块中可用。
    *
    * ### Example
    *
@@ -182,7 +182,7 @@ export interface NgModule {
    * NgModule that can be used in the template of any component that is part of an
    * NgModule that imports this NgModule. Exported declarations are the module's public API.
    *
-   * 此 NgModule 中声明的一组组件、指令和管道可以在导入了本模块的模块下任何组件的模板中使用。 导出的这些可声明对象就是该模块的公共 API。
+   * 此 NgModule 中声明的一组组件、指令和管道可以在导入了本模块的模块下任何组件的模板中使用。导出的这些可声明对象就是该模块的公共 API。
    *
    * A declarable belongs to one and only one NgModule.
    * A module can list another module among its exports, in which case all of that module's
@@ -196,7 +196,7 @@ export interface NgModule {
    * If this ModuleA does not export UserComponent, then only the components within this
    * ModuleA can use UserComponent.
    *
-   * 默认情况下，可声明对象是私有的。 如果 ModuleA 不导出 UserComponent，那么只有这个 ModuleA 中的组件才能使用 UserComponent。
+   * 默认情况下，可声明对象是私有的。如果 ModuleA 不导出 UserComponent，那么只有这个 ModuleA 中的组件才能使用 UserComponent。
    *
    * ModuleA can import ModuleB and also export it, making exports from ModuleB
    * available to an NgModule that imports ModuleA.
@@ -235,7 +235,7 @@ export interface NgModule {
    * Elements and properties that are neither Angular components nor directives
    * must be declared in a schema.
    *
-   * 该 NgModule 中允许使用的声明元素的 schema（HTML 架构）。 元素和属性（无论是 Angular 组件还是指令）都必须声明在 schema 中。
+   * 该 NgModule 中允许使用的声明元素的 schema（HTML 架构）。元素和属性（无论是 Angular 组件还是指令）都必须声明在 schema 中。
    *
    * Allowed value are `NO_ERRORS_SCHEMA` and `CUSTOM_ELEMENTS_SCHEMA`.
    *
@@ -250,7 +250,7 @@ export interface NgModule {
    * A name or path that uniquely identifies this NgModule in `getNgModuleById`.
    * If left `undefined`, the NgModule is not registered with `getNgModuleById`.
    *
-   * 当前 NgModule 在 `getModuleFactory` 中的名字或唯一标识符。 如果为 `undefined`，则该模块不会被注册进 `getModuleFactory` 中。
+   * 当前 NgModule 在 `getModuleFactory` 中的名字或唯一标识符。如果为 `undefined`，则该模块不会被注册进 `getModuleFactory` 中。
    *
    */
   id?: string;
@@ -261,7 +261,7 @@ export interface NgModule {
    * at run time, in the browser.
    * To ensure the correct behavior, the app must import `@angular/compiler`.
    *
-   * 如果存在，则该指令/组件将被 AOT 编译器忽略。它会保留在发布代码中，并且 JIT 编译器会尝试在运行时在浏览器中对其进行编译。为了确保其行为正确，该应用程序必须导入 `@angular/compiler` 。
+   * 如果存在，则该指令/组件将被 AOT 编译器忽略。它会保留在发布代码中，并且 JIT 编译器会尝试在运行时在浏览器中对其进行编译。为了确保其行为正确，该应用程序必须导入 `@angular/compiler`。
    *
    */
   jit?: true;

@@ -111,7 +111,7 @@ export interface OptionalDecorator {
    *
    * @see ["Dependency Injection Guide"](guide/dependency-injection).
    *
-   * [“依赖注入指南”](guide/dependency-injection) 。
+   * [“依赖注入指南”](guide/dependency-injection)。
    *
    */
   (): any;
@@ -288,7 +288,7 @@ export interface HostDecorator {
    * For an extended example, see ["Dependency Injection
    * Guide"](guide/dependency-injection-in-action#optional).
    *
-   * 有关扩展的示例，请参见[“依赖项注入指南”](guide/dependency-injection-in-action#optional) 。
+   * 有关扩展的示例，请参见[“依赖项注入指南”](guide/dependency-injection-in-action#optional)。
    *
    */
   (): any;

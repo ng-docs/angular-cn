@@ -56,7 +56,7 @@ let moduleUid = 0;
  *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
  *     bootstrap function instead.
  *
- *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
+ *   `NgModuleFactory`：如果你传递了 `NgModuleFactory`，它将用于使用 `platformBrowser` 的 {@link
  *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}
  *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
@@ -70,7 +70,7 @@ let moduleUid = 0;
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
  *   that are expected to be available from the returned `NgModuleRef`'s `Injector`.
  *
- *   `Function` ：如果你传递了一个函数，它应该会返回一个解析为 `NgModuleRef` 的
+ *   `Function`：如果你传递了一个函数，它应该会返回一个解析为 `NgModuleRef` 的
  *   Promise。使用额外的 {@link StaticProvider Providers} 数组来调用该函数，这些数组可以从返回的
  *   `NgModuleRef` 的 `Injector` 中获得。
  *
@@ -94,7 +94,7 @@ let moduleUid = 0;
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
- * 除了 `UpgradeModule` ，你可以像往常一样使用其余的 `upgrade/static`
+ * 除了 `UpgradeModule`，你可以像往常一样使用其余的 `upgrade/static`
  * 帮助器来构建混合应用程序。请注意，在降级的模块被引导（即通过实例化降级组件）之前，Angular
  * 部分（例如降级的服务）将不可用。
  *
@@ -103,7 +103,7 @@ let moduleUid = 0;
  *   You cannot use `downgradeModule()` and `UpgradeModule` in the same hybrid application.<br />
  *   Use one or the other.
  *
- * 你不能在同一个混合应用程序中使用 `downgradeModule()` 和 `UpgradeModule` 。<br />使用两者之一。
+ * 你不能在同一个混合应用程序中使用 `downgradeModule()` 和 `UpgradeModule`。<br />使用两者之一。
  *
  * </div>
  *
@@ -128,7 +128,7 @@ let moduleUid = 0;
  *    detected in the Angular part of the application.
  *
  *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
- *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
+ *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -186,7 +186,7 @@ let moduleUid = 0;
  *   module. See `downgradeComponent()` and `downgradeInjectable()` for more details.
  *
  *   每个降级的组件/可注入物都需要与降级的模块显式关联。有关更多详细信息，请参阅
- *   `downgradeComponent()` 和 `downgradeInjectable()` 。
+ *   `downgradeComponent()` 和 `downgradeInjectable()`。
  *
  * - If you want some injectables to be shared among all downgraded modules, you can provide them as
  *   `StaticProvider`s, when creating the `PlatformRef` \(e.g. via `platformBrowser` or
@@ -252,7 +252,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
  *     bootstrap function instead.
  *
- *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
+ *   `NgModuleFactory`：如果你传递了 `NgModuleFactory`，它将用于使用 `platformBrowser` 的 {@link
  *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}
  *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
@@ -266,7 +266,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
  *   that are expected to be available from the returned `NgModuleRef`'s `Injector`.
  *
- *   `Function` ：如果你传递了一个函数，它应该会返回一个解析为 `NgModuleRef` 的
+ *   `Function`：如果你传递了一个函数，它应该会返回一个解析为 `NgModuleRef` 的
  *   Promise。使用额外的 {@link StaticProvider Providers} 数组来调用该函数，这些数组可以从返回的
  *   `NgModuleRef` 的 `Injector` 中获得。
  *
@@ -290,7 +290,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
- * 除了 `UpgradeModule` ，你可以像往常一样使用其余的 `upgrade/static`
+ * 除了 `UpgradeModule`，你可以像往常一样使用其余的 `upgrade/static`
  * 帮助器来构建混合应用程序。请注意，在降级的模块被引导（即通过实例化降级组件）之前，Angular
  * 部分（例如降级的服务）将不可用。
  *
@@ -299,7 +299,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *   You cannot use `downgradeModule()` and `UpgradeModule` in the same hybrid application.<br />
  *   Use one or the other.
  *
- * 你不能在同一个混合应用程序中使用 `downgradeModule()` 和 `UpgradeModule` 。<br />使用两者之一。
+ * 你不能在同一个混合应用程序中使用 `downgradeModule()` 和 `UpgradeModule`。<br />使用两者之一。
  *
  * </div>
  *
@@ -324,7 +324,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *    detected in the Angular part of the application.
  *
  *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
- *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
+ *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -382,7 +382,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: Type<T>|(
  *   module. See `downgradeComponent()` and `downgradeInjectable()` for more details.
  *
  *   每个降级的组件/可注入物都需要与降级的模块显式关联。有关更多详细信息，请参阅
- *   `downgradeComponent()` 和 `downgradeInjectable()` 。
+ *   `downgradeComponent()` 和 `downgradeInjectable()`。
  *
  * - If you want some injectables to be shared among all downgraded modules, you can provide them as
  *   `StaticProvider`s, when creating the `PlatformRef` \(e.g. via `platformBrowser` or
@@ -453,7 +453,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *     NOTE: this type of the argument is deprecated. Please either provide an `NgModule` class or a
  *     bootstrap function instead.
  *
- *   `NgModuleFactory` ：如果你传递了 `NgModuleFactory` ，它将用于使用 `platformBrowser` 的 {@link
+ *   `NgModuleFactory`：如果你传递了 `NgModuleFactory`，它将用于使用 `platformBrowser` 的 {@link
  *   PlatformRef#bootstrapModuleFactory bootstrapModuleFactory\(\)}
  *     来实例化模块。注意：这种类型的参数已被弃用。请提供 `NgModule` 类或引导函数。
  *
@@ -467,7 +467,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *   `NgModuleRef`. The function is called with an array of extra {@link StaticProvider Providers}
  *   that are expected to be available from the returned `NgModuleRef`'s `Injector`.
  *
- *   `Function` ：如果你传递了一个函数，它应该会返回一个解析为 `NgModuleRef` 的
+ *   `Function`：如果你传递了一个函数，它应该会返回一个解析为 `NgModuleRef` 的
  *   Promise。使用额外的 {@link StaticProvider Providers} 数组来调用该函数，这些数组可以从返回的
  *   `NgModuleRef` 的 `Injector` 中获得。
  *
@@ -491,7 +491,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  * available until the downgraded module has been bootstrapped, i.e. by instantiating a downgraded
  * component.
  *
- * 除了 `UpgradeModule` ，你可以像往常一样使用其余的 `upgrade/static`
+ * 除了 `UpgradeModule`，你可以像往常一样使用其余的 `upgrade/static`
  * 帮助器来构建混合应用程序。请注意，在降级的模块被引导（即通过实例化降级组件）之前，Angular
  * 部分（例如降级的服务）将不可用。
  *
@@ -500,7 +500,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *   You cannot use `downgradeModule()` and `UpgradeModule` in the same hybrid application.<br />
  *   Use one or the other.
  *
- * 你不能在同一个混合应用程序中使用 `downgradeModule()` 和 `UpgradeModule` 。<br />使用两者之一。
+ * 你不能在同一个混合应用程序中使用 `downgradeModule()` 和 `UpgradeModule`。<br />使用两者之一。
  *
  * </div>
  *
@@ -525,7 +525,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *    detected in the Angular part of the application.
  *
  *    与 `UpgradeModule` 不同，当检测到应用程序的 Angular 部分发生更改时，`downgradeModule()`
- *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) 。
+ *    不会自动运行[$digest\(\)](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)。
  *
  * What this means is that applications using `UpgradeModule` will run change detection more
  * frequently in order to ensure that both frameworks are properly notified about possible changes.
@@ -583,7 +583,7 @@ export function downgradeModule<T>(moduleOrBootstrapFn: NgModuleFactory<T>): str
  *   module. See `downgradeComponent()` and `downgradeInjectable()` for more details.
  *
  *   每个降级的组件/可注入物都需要与降级的模块显式关联。有关更多详细信息，请参阅
- *   `downgradeComponent()` 和 `downgradeInjectable()` 。
+ *   `downgradeComponent()` 和 `downgradeInjectable()`。
  *
  * - If you want some injectables to be shared among all downgraded modules, you can provide them as
  *   `StaticProvider`s, when creating the `PlatformRef` \(e.g. via `platformBrowser` or

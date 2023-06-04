@@ -112,7 +112,7 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * See: https://en.wikipedia.org/wiki/Bloom_filter for more about bloom filters.
  *
- * 有关布隆过滤器的更多信息，请参阅： https://en.wikipedia.org/wiki/Bloom_filter 。
+ * 有关布隆过滤器的更多信息，请参阅：https://en.wikipedia.org/wiki/Bloom_filter。
  *
  * Because all injectors have been flattened into `LView` and `TViewData`, they cannot typed
  * using interfaces as they were previously. The start index of each `LInjector` and `TInjector`
@@ -121,7 +121,7 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  * for documentation purposes.
  *
  * 因为所有注入器都已被展平为 `LView` 和 `TViewData`
- * ，所以它们不能像以前一样使用接口进行类型化。每个 `LInjector` 和 `TInjector`
+ *，所以它们不能像以前一样使用接口进行类型化。每个 `LInjector` 和 `TInjector`
  * 的开始索引将根据它在主数组中展平的位置而不同，因此不可能提前知道索引并在此保存它们的类型。出于文档目的，这些接口仍包含在此。
  *
  * export interface LInjector extends Array<any> {
@@ -213,15 +213,15 @@ export const NO_PARENT_INJECTOR: RelativeInjectorLocation = -1 as any;
  *
  * - Single factory: Only `resolving` and `factory` is defined.
  *
- *   单个工厂：仅定义 `resolving` 和 `factory` 。
+ *   单个工厂：仅定义 `resolving` 和 `factory`。
  *
  * - `providers` factory: `componentProviders` is a number and `index = -1`.
  *
- *   `providers` 工厂： `componentProviders` 是一个数字，并且 `index = -1` 。
+ *   `providers` 工厂：`componentProviders` 是一个数字，并且 `index = -1`。
  *
  * - `viewProviders` factory: `componentProviders` is a number and `index` points to `providers`.
  *
- *   `viewProviders` 工厂： `componentProviders` 是一个数字，并且 `index` 指向 `providers` 。
+ *   `viewProviders` 工厂：`componentProviders` 是一个数字，并且 `index` 指向 `providers`。
  *
  */
 export class NodeInjectorFactory {
@@ -299,7 +299,7 @@ export class NodeInjectorFactory {
    * the component.
    *
    * 考虑它的方式是 `viewProviders`
-   * 已经插入到组件之后、指令之前，这就是为什么我们需要知道组件声明了多少 `multi` 。
+   * 已经插入到组件之后、指令之前，这就是为什么我们需要知道组件声明了多少 `multi`。
    *
    */
   componentProviders?: number;
@@ -309,7 +309,7 @@ export class NodeInjectorFactory {
    * See `providerFactory`.
    *
    * `data` 中 Factory 的当前索引。合并 `viewProviders` 和 `providers` 时需要。请参阅
-   * `providerFactory` 。
+   * `providerFactory`。
    *
    */
   index?: number;
@@ -320,8 +320,8 @@ export class NodeInjectorFactory {
    * `provideFactory` of the `providers` so that `providers` can be extended with `viewProviders`.
    *
    * 因为可以在 sources 和 `viewProvides` 中声明同一个 `multi` `provides` 程序，所以 viewProvides
-   * `provides` `viewProvides` 。出于这个原因，我们存储了 `providers` `providers` `provideFactory`
-   * ，以便可以用 `viewProviders` 扩展提供者。
+   * `provides` `viewProvides`。出于这个原因，我们存储了 `providers` `providers` `provideFactory`
+   *，以便可以用 `viewProviders` 扩展提供者。
    *
    * Example:
    *
@@ -344,8 +344,8 @@ export class NodeInjectorFactory {
    * `providers` \(`['all']`\) and then extend it with `viewProviders` \(`['all'] + ['viewOnly'] =
    * ['all', 'viewOnly']`\).
    *
-   * 在内容注入的情况下，我们必须返回 `['all']` ，但在视图注入的情况下必须返回 \[' `['all',
-   * 'viewOnly']` 。我们还必须确保共享实例（在我们的示例中为 `all`
+   * 在内容注入的情况下，我们必须返回 `['all']`，但在视图注入的情况下必须返回 \[' `['all',
+   * 'viewOnly']`。我们还必须确保共享实例（在我们的示例中为 `all`
    * ）在内容和视图注入中是完全相同的实例。（我们必须确保我们不会双重实例化。）因此，
    * `viewProvides` `Factory` 有一个指向影子 sources 工厂的指针，以便它可以实例化 `provides`
    * `providers`（`['all']`），然后使用 `viewProviders`（`['all'] + ['viewOnly'] = ['all',

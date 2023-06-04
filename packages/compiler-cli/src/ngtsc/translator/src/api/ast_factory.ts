@@ -17,7 +17,7 @@
  *
  * 请注意，`AstFactory` 不对正在生成的目标语言做任何假设。这取决于调用者 - 例如仅调用
  * `createTaggedTemplate()` 或通过 `let` |如果最终的 JS 允许，则 `const` 为
- * `createVariableDeclaration()` 。
+ * `createVariableDeclaration()`。
  *
  */
 export interface AstFactory<TStatement, TExpression> {
@@ -122,7 +122,7 @@ export interface AstFactory<TStatement, TExpression> {
    * 如果 `condition` 为真，则执行的表达式。
    * @param elseExpression an expression that is executed if `condition` is falsy.
    *
-   * 如果 `condition` 为 false ，则执行的表达式。
+   * 如果 `condition` 为 false，则执行的表达式。
    */
   createConditional(
       condition: TExpression, thenExpression: TExpression,
@@ -241,7 +241,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create an expression that is instantiating the `expression` as a class.
    *
-   * 创建一个将表达式实例化为类的 `expression` 。
+   * 创建一个将表达式实例化为类的 `expression`。
    *
    * @param expression an expression that evaluates to a constructor to be instantiated.
    *
@@ -364,7 +364,7 @@ export interface AstFactory<TStatement, TExpression> {
   /**
    * Create an expression that declares a new variable, possibly initialized to `initializer`.
    *
-   * 创建一个声明一个新变量的表达式，可能初始化为 `initializer` 。
+   * 创建一个声明一个新变量的表达式，可能初始化为 `initializer`。
    *
    * @param variableName the name of the variable.
    *
@@ -372,11 +372,11 @@ export interface AstFactory<TStatement, TExpression> {
    *
    * @param initializer if not `null` then this expression is assigned to the declared variable.
    *
-   * 如果不为 `null` ，则此表达式被分配给声明的变量。
+   * 如果不为 `null`，则此表达式被分配给声明的变量。
    *
    * @param type whether this variable should be declared as `var`, `let` or `const`.
    *
-   * 此变量是应该声明为 `var`、`let` 或 `const` 。
+   * 此变量是应该声明为 `var`、`let` 或 `const`。
    *
    */
   createVariableDeclaration(
@@ -394,13 +394,13 @@ export interface AstFactory<TStatement, TExpression> {
    *
    * @param sourceMapRange the range to attach to the node, or null if there is no range to attach.
    *
-   * 要附加到节点的范围，如果没有要附加的范围，则为 null 。
+   * 要附加到节点的范围，如果没有要附加的范围，则为 null。
    *
    * @returns
    *
    * the `node` with the `sourceMapRange` attached.
    *
-   * 附加了 `sourceMapRange` 的 `node` 。
+   * 附加了 `sourceMapRange` 的 `node`。
    *
    */
   setSourceMapRange<T extends TStatement|TExpression>(node: T, sourceMapRange: SourceMapRange|null):

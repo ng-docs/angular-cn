@@ -22,7 +22,7 @@ import {SecurityContext} from '../core';
 /**
  * Map from tagName|propertyName to SecurityContext. Properties applying to all tags use '\*'.
  *
- * 从 tagName|propertyName 映射到 SecurityContext。 适用于所有标签的属性使用“\*”。
+ * 从 tagName|propertyName 映射到 SecurityContext。适用于所有标签的属性使用“\*”。
  *
  */
 let _SECURITY_SCHEMA!: {[k: string]: SecurityContext};
@@ -88,7 +88,7 @@ function registerContext(ctx: SecurityContext, specs: string[]) {
  * attributes are taken into account while creating an instance of an `<iframe>`
  * at runtime.
  *
- * `<iframe>` 的一组安全敏感属性，*必须*仅作为静态属性应用。 这确保在运行时创建 `<iframe>` 实例时考虑所有安全敏感属性。
+ * `<iframe>` 的一组安全敏感属性，*必须*仅作为静态属性应用。这确保在运行时创建 `<iframe>` 实例时考虑所有安全敏感属性。
  *
  * Note: avoid using this set directly, use the `isIframeSecuritySensitiveAttr` function
  * in the code instead.

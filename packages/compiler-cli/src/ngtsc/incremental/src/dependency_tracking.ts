@@ -83,7 +83,7 @@ export class FileDependencyGraph<T extends {fileName: string} = ts.SourceFile> i
    *
    * In essence, for build `n`, this method performs:
    *
-   * 本质上，对于构建 `n` ，此方法会执行：
+   * 本质上，对于构建 `n`，此方法会执行：
    *
    * `G(n) + L(n) = G(n - 1) + P(n)`
    *

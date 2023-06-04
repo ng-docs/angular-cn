@@ -14,7 +14,7 @@
  *
  * @see `@NgModule`, `CUSTOM_ELEMENTS_SCHEMA`, `NO_ERRORS_SCHEMA`
  *
- * `@NgModule` ，`CUSTOM_ELEMENTS_SCHEMA` ，`NO_ERRORS_SCHEMA`
+ * `@NgModule`，`CUSTOM_ELEMENTS_SCHEMA`，`NO_ERRORS_SCHEMA`
  *
  * @param name The name of a defined schema.
  *
@@ -55,7 +55,7 @@ export const CUSTOM_ELEMENTS_SCHEMA: SchemaMetadata = {
  * and may hide real errors in your template. Consider using the `CUSTOM_ELEMENTS_SCHEMA` instead.
  *
  * 此模式允许你忽略与模板中任何未知元素或属性相关的错误。通常不鼓励使用此模式，因为它会阻止有用的验证，并且可能会在你的模板中隐藏真正的错误。考虑改用
- * `CUSTOM_ELEMENTS_SCHEMA` 。
+ * `CUSTOM_ELEMENTS_SCHEMA`。
  *
  * @publicApi
  */

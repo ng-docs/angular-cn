@@ -40,7 +40,7 @@ export interface TranslationHandler {
   /**
    * Returns true if the given file can be translated by this handler.
    *
-   * 如果此处理程序可以翻译给定文件，则返回 true 。
+   * 如果此处理程序可以翻译给定文件，则返回 true。
    *
    * @param relativeFilePath A relative path from the sourceRoot to the resource file to handle.
    *
@@ -57,7 +57,7 @@ export interface TranslationHandler {
    * Translate the file at `relativeFilePath` containing `contents`, using the given `translations`,
    * and write the translated content to the path computed by calling `outputPathFn()`.
    *
-   * 使用给定的 `translations` ，翻译包含 `contents` 的 `relativeFilePath`
+   * 使用给定的 `translations`，翻译包含 `contents` 的 `relativeFilePath`
    * 文件路径的文件，并将翻译后的内容写入通过调用 `outputPathFn()` 计算的路径。
    *
    * @param diagnostics An object for collecting translation diagnostic messages.

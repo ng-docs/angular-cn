@@ -33,7 +33,7 @@ const CHARS_TO_ESCAPE = /[^a-zA-Z0-9/_]/g;
  * from '@angular/common' as well.
  *
  * 给定 NgModule 的导入（例如 `CommonModule`），编译器必须在特定模板中使用此模块导出的指令和管道（例如 `NgIf`）时生成对此的导入。在其默认配置中，如果编译器无法直接从同一个项目中的另一个文件导入组件，它将尝试从导入模块的相同（绝对）路径导入组件。因此，在上面的示例中，如果
- * `CommonModule` 是从 '@angular/common' 导入的，则编译器将尝试从 '@angular/common' 导入 `NgIf` 。
+ * `CommonModule` 是从 '@angular/common' 导入的，则编译器将尝试从 '@angular/common' 导入 `NgIf`。
  *
  * The aliasing system interacts with the above logic in two distinct ways.
  *
@@ -85,14 +85,14 @@ export interface AliasingHost {
    *
    * `maybeAliasSymbolAs` can return `null`, in which case no alias export should be generated.
    *
-   * `maybeAliasSymbolAs` 可以返回 `null` ，在这种情况下，不应该生成别名导出。
+   * `maybeAliasSymbolAs` 可以返回 `null`，在这种情况下，不应该生成别名导出。
    *
    * @param ref a `Reference` to the directive/pipe to consider for aliasing.
    *
-   * a 对要考虑用于别名的指令/管道的 `Reference` 。
+   * a 对要考虑用于别名的指令/管道的 `Reference`。
    * @param context the `ts.SourceFile` in which the alias re-export might need to be generated.
    *
-   * 可能需要在其中生成别名重新导出的 `ts.SourceFile` 。
+   * 可能需要在其中生成别名重新导出的 `ts.SourceFile`。
    * @param ngModuleName the declared name of the `NgModule` within `context` for which the alias
    * would be generated.
    *
@@ -111,12 +111,12 @@ export interface AliasingHost {
    * Determine an `Expression` by which `decl` should be imported from `via` using an alias export
    * \(which should have been previously created when compiling `via`\).
    *
-   * 使用别名 export（应该以前在编译 `via` `via` 创建）确定应该从中导入 `decl` 的 `Expression` 。
+   * 使用别名 export（应该以前在编译 `via` `via` 创建）确定应该从中导入 `decl` 的 `Expression`。
    *
    * `getAliasIn` can return `null`, in which case no alias is needed to import `decl` from `via`
    * \(and the normal import rules should be used\).
    *
-   * `getAliasIn` 可以返回 `null` ，在这种情况下，从 `via` 导入 `decl`
+   * `getAliasIn` 可以返回 `null`，在这种情况下，从 `via` 导入 `decl`
    * 不需要别名（并且应该使用正常的导入规则）。
    *
    * @param decl the declaration of the directive/pipe which is being imported, and which might be
@@ -125,7 +125,7 @@ export interface AliasingHost {
    * 正在导入的指令/管道的声明，可能是别名。
    * @param via the `ts.SourceFile` which might contain an alias to the
    *
-   * `ts.SourceFile` ，可能包含 的别名
+   * `ts.SourceFile`，可能包含 的别名
    */
   getAliasIn(decl: ClassDeclaration, via: ts.SourceFile, isReExport: boolean): Expression|null;
 }
@@ -134,14 +134,14 @@ export interface AliasingHost {
  * An `AliasingHost` which generates and consumes alias re-exports when module names for each file
  * are determined by a `UnifiedModulesHost`.
  *
- * 一个 `AliasingHost` ，当每个文件的模块名称由 `UnifiedModulesHost`
+ * 一个 `AliasingHost`，当每个文件的模块名称由 `UnifiedModulesHost`
  * 确定时，它会生成并使用别名重新导出。
  *
  * When using a `UnifiedModulesHost`, aliasing prevents issues with transitive dependencies. See the
  * README.md for more details.
  *
  * 使用 `UnifiedModulesHost` 时，别名可以防止可传递依赖项出现问题。有关更多详细信息，请参阅
- * README.md 。
+ * README.md。
  *
  */
 export class UnifiedModulesAliasingHost implements AliasingHost {
@@ -151,7 +151,7 @@ export class UnifiedModulesAliasingHost implements AliasingHost {
    * With a `UnifiedModulesHost`, aliases are chosen automatically without the need to look through
    * the exports present in a .d.ts file, so we can avoid cluttering the .d.ts files.
    *
-   * 使用 `UnifiedModulesHost` ，会自动选择别名，而无需查看 .d.ts
+   * 使用 `UnifiedModulesHost`，会自动选择别名，而无需查看 .d.ts
    * 文件中存在的导出，因此我们可以避免混乱 .d.ts 文件。
    *
    */
@@ -174,7 +174,7 @@ export class UnifiedModulesAliasingHost implements AliasingHost {
    * Generates an `Expression` to import `decl` from `via`, assuming an export was added when `via`
    * was compiled per `maybeAliasSymbolAs` above.
    *
-   * 生成一个 `Expression` 以从 `via` 导入 `decl` ，假定在按照上面的 `maybeAliasSymbolAs` 编译 `via`
+   * 生成一个 `Expression` 以从 `via` 导入 `decl`，假定在按照上面的 `maybeAliasSymbolAs` 编译 `via`
    * 时添加了导出。
    *
    */
@@ -210,7 +210,7 @@ export class UnifiedModulesAliasingHost implements AliasingHost {
  * An `AliasingHost` which exports directives from any file containing an NgModule in which they're
  * declared/exported, under a private symbol name.
  *
- * 一个 `AliasingHost` ，它从包含在私有符号名称下声明/导出的 NgModule 的任何文件中导出指令。
+ * 一个 `AliasingHost`，它从包含在私有符号名称下声明/导出的 NgModule 的任何文件中导出指令。
  *
  * These exports support cases where an NgModule is imported deeply from an absolute module path
  * \(that is, it's not part of an Angular Package Format entrypoint\), and the compiler needs to
@@ -219,7 +219,7 @@ export class UnifiedModulesAliasingHost implements AliasingHost {
  *
  * 这些导出支持从绝对模块路径深度导入 NgModule 的情况（即，它不是 Angular
  * 包格式入口点的一部分），并且编译器需要从同一路径导入任何匹配的指令/管道（到 NgModule
- * 文件）。有关更多详细信息，请参阅 README.md 。
+ * 文件）。有关更多详细信息，请参阅 README.md。
  *
  */
 export class PrivateExportAliasingHost implements AliasingHost {
@@ -283,7 +283,7 @@ export class PrivateExportAliasingHost implements AliasingHost {
    *
    * Thus, `getAliasIn` always returns `null`.
    *
-   * 因此，`getAliasIn` 始终返回 `null` 。
+   * 因此，`getAliasIn` 始终返回 `null`。
    *
    */
   getAliasIn(): null {
@@ -295,7 +295,7 @@ export class PrivateExportAliasingHost implements AliasingHost {
  * A `ReferenceEmitStrategy` which will consume the alias attached to a particular `Reference` to a
  * directive or pipe, if it exists.
  *
- * 一个 `ReferenceEmitStrategy` ，它将使用附加到指令或管道的特定 `Reference` 的别名（如果存在）。
+ * 一个 `ReferenceEmitStrategy`，它将使用附加到指令或管道的特定 `Reference` 的别名（如果存在）。
  *
  */
 export class AliasStrategy implements ReferenceEmitStrategy {

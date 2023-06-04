@@ -156,11 +156,11 @@ export class DefaultKeyValueDiffer<K, V> implements KeyValueDiffer<K, V>, KeyVal
    *
    * - This method appends at `this._appendAfter`,
    *
-   *   此方法附加在 `this._appendAfter` ，
+   *   此方法附加在 `this._appendAfter`，
    *
    * - This method updates `this._appendAfter`,
    *
-   *   此方法会更新 `this._appendAfter` ，
+   *   此方法会更新 `this._appendAfter`，
    *
    * - The return value is the new value for the insertion pointer.
    *

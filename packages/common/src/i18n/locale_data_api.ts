@@ -18,7 +18,7 @@ import {CURRENCIES_EN, CurrenciesSymbols} from './currencies';
  *
  * @see `getLocaleNumberFormat()`.
  *
- * `getLocaleNumberFormat()` 。
+ * `getLocaleNumberFormat()`。
  * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
@@ -145,7 +145,7 @@ export enum FormatWidth {
    * For `en-US`, `'MMM d, y, h:mm:ss a'`
    * \(Example: `Jun 15, 2015, 9:03:01 AM`\)
    *
-   * 对于 `en-US`，是 `'MMM d, y, h:mm:ss a'`（比如： `Jun 15, 2015, 9:03:01 AM`）
+   * 对于 `en-US`，是 `'MMM d, y, h:mm:ss a'`（比如：`Jun 15, 2015, 9:03:01 AM`）
    *
    */
   Medium,
@@ -153,7 +153,7 @@ export enum FormatWidth {
    * For `en-US`, `'MMMM d, y, h:mm:ss a z'`
    * \(Example: `June 15, 2015 at 9:03:01 AM GMT+1`\)
    *
-   * 对于 `en-US`，是 `'MMMM d, y, h:mm:ss a z'`，（比如： `June 15, 2015 at 9:03:01 AM GMT+1`）
+   * 对于 `en-US`，是 `'MMMM d, y, h:mm:ss a z'`，（比如：`June 15, 2015 at 9:03:01 AM GMT+1`）
    *
    */
   Long,
@@ -324,10 +324,10 @@ export enum WeekDay {
  *
  * @param locale A locale code, such as `fr-FR`.
  *
- * 语言环境代码，比如 `fr-FR` 。
+ * 语言环境代码，比如 `fr-FR`。
  * @returns The locale code. For example, `fr`.
  *
- * 语言环境代码。比如，`fr` 。
+ * 语言环境代码。比如，`fr`。
  * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
@@ -354,7 +354,7 @@ export function getLocaleId(locale: string): string {
  * 所需的字符宽度。
  * @returns An array of localized period strings. For example, `[AM, PM]` for `en-US`.
  *
- * 本地化的区间字符串数组。比如，`en-US` `[AM, PM]` 。
+ * 本地化的区间字符串数组。比如，`en-US` `[AM, PM]`。
  * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
@@ -388,7 +388,7 @@ export function getLocaleDayPeriods(
  * @returns An array of localized name strings.
  * For example,`[Sunday, Monday, ... Saturday]` for `en-US`.
  *
- * 本地化名称字符串的数组。比如，`en-US` `[Sunday, Monday, ... Saturday]` 。
+ * 本地化名称字符串的数组。比如，`en-US` `[Sunday, Monday, ... Saturday]`。
  * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
@@ -480,7 +480,7 @@ export function getLocaleEraNames(
  * For example, for `fr-FR`, returns 1 to indicate that the first day is Monday.
  *
  * 工作日索引号，使用基于 0 的 `en-US` 的工作日索引（星期日= 0，星期一= 1，...）。比如，对于 `fr-FR`
- * ，返回 1 表示第一天是星期一。
+ *，返回 1 表示第一天是星期一。
  *
  * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
@@ -503,7 +503,7 @@ export function getLocaleFirstDayOfWeek(locale: string): WeekDay {
  * 用于要使用的语言环境格式规则的语言环境代码。
  * @returns The range of day values, `[startDay, endDay]`.
  *
- * 日期值的范围 `[startDay, endDay]` 。
+ * 日期值的范围 `[startDay, endDay]`。
  * @see [Internationalization \(i18n\) Guide](/guide/i18n-overview)
  *
  * [国际化（i18n）指南](guide/i18n-overview)
@@ -660,21 +660,21 @@ export function getLocaleNumberSymbol(locale: string, symbol: NumberSymbol): str
  * | ------ | ---------------------------------------------------------------------------------- |
  * | 符号   | 含义                                                                               |
  * | .      | Replaced automatically by the character used for the decimal point.                |
- * | .      | 自动替换为用作小数点的字符。                                                       |
+ * | .      | 自动替换为用作小数点的字符。|
  * | ,      | Replaced by the "grouping" \(thousands\) separator.                                |
- * | ,      | 替换为（千）“分组”分隔符。                                                         |
+ * | ,      | 替换为（千）“分组”分隔符。|
  * | 0      | Replaced by a digit \(or zero if there aren't enough digits\).                     |
- * | 0      | 替换为一个数字（如果没有足够的数字，则为零）。                                     |
+ * | 0      | 替换为一个数字（如果没有足够的数字，则为零）。|
  * | #      | Replaced by a digit \(or nothing if there aren't enough\).                         |
- * | #      | 用数字代替（如果数字不足，则不进行任何替换）。                                     |
+ * | #      | 用数字代替（如果数字不足，则不进行任何替换）。|
  * | ¤      | Replaced by a currency symbol, such as $ or USD.                                   |
- * | ¤      | 替换为货币符号，比如 $ 或 USD。                                                    |
+ * | ¤      | 替换为货币符号，比如 $ 或 USD。|
  * | %      | Marks a percent format. The % symbol may change position, but must be retained.    |
- * | %      | 标记百分比格式。％符号可能会更改位置，但必须保留。                                 |
+ * | %      | 标记百分比格式。％符号可能会更改位置，但必须保留。|
  * | E      | Marks a scientific format. The E symbol may change position, but must be retained. |
- * | E      | 标记科学计数法格式。 E 符号可能会改变位置，但必须保留。                            |
+ * | E      | 标记科学计数法格式。E 符号可能会改变位置，但必须保留。|
  * | '      | Special characters used as literal characters are quoted with ASCII single quotes. |
- * | '      | 表示文本字面量的特殊字符，用 ASCII 单引号引起来。                                  |
+ * | '      | 表示文本字面量的特殊字符，用 ASCII 单引号引起来。|
  *
  * @param locale A locale code for the locale format rules to use.
  *
@@ -830,7 +830,7 @@ function checkFullData(data: any) {
  * See the ["I18n guide"](guide/i18n-common-format-data-locale).
  *
  * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n
- * 指南”](guide/i18n-common-format-data-locale) 。
+ * 指南”](guide/i18n-common-format-data-locale)。
  *
  * @param locale A locale code for the locale format rules to use.
  *
@@ -870,7 +870,7 @@ export function getLocaleExtraDayPeriodRules(locale: string): (Time|[Time, Time]
  * See the ["I18n guide"](guide/i18n-common-format-data-locale).
  *
  * 仅当你加载了完整的语言环境数据时，此功能才可用。请参阅 [“I18n
- * 指南”](guide/i18n-common-format-data-locale) 。
+ * 指南”](guide/i18n-common-format-data-locale)。
  *
  * @param locale A locale code for the locale format rules to use.
  *
@@ -1000,7 +1000,7 @@ function extractTime(time: string): Time {
  * 货币代码。
  * @param format The format, `wide` or `narrow`.
  *
- * 格式，如 `wide` 或 `narrow` 。
+ * 格式，如 `wide` 或 `narrow`。
  * @param locale A locale code for the locale format rules to use.
  *
  * 要用作语言环境格式规则的语言环境代码。

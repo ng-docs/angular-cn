@@ -25,7 +25,7 @@ export interface PerfResults {
 /**
  * A `PerfRecorder` that actively tracks performance statistics.
  *
- * 主动跟踪性能统计信息的 `PerfRecorder` 。
+ * 主动跟踪性能统计信息的 `PerfRecorder`。
  *
  */
 export class ActivePerfRecorder implements PerfRecorder {
@@ -39,7 +39,7 @@ export class ActivePerfRecorder implements PerfRecorder {
   /**
    * Creates an `ActivePerfRecorder` with its zero point set to the current time.
    *
-   * 创建一个 `ActivePerfRecoder` ，其零点设置为当前时间。
+   * 创建一个 `ActivePerfRecoder`，其零点设置为当前时间。
    *
    */
   static zeroedToNow(): ActivePerfRecorder {
@@ -131,7 +131,7 @@ export class ActivePerfRecorder implements PerfRecorder {
 /**
  * A `PerfRecorder` that delegates to a target `PerfRecorder` which can be updated later.
  *
- * 委托给目标 `PerfRecorder` 的 `PerfRecorder` ，可以在以后更新。
+ * 委托给目标 `PerfRecorder` 的 `PerfRecorder`，可以在以后更新。
  *
  * `DelegatingPerfRecorder` is useful when a compiler class that needs a `PerfRecorder` can outlive
  * the current compilation. This is true for most compiler classes as resource-only changes reuse

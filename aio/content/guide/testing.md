@@ -33,7 +33,7 @@ Before writing tests for your Angular application, you should have a basic under
 The testing documentation offers tips and techniques for unit and integration testing Angular applications through a sample application created with the [Angular CLI](cli).
 This sample application is much like the one in the [*Tour of Heroes* tutorial](tutorial/tour-of-heroes).
 
-测试文档提供了通过使用 [Angular CLI](cli) 创建的示例应用程序对 Angular 应用程序进行单元和集成测试的提示和技术。 这个示例应用程序与[*英雄之旅*教程](tutorial/tour-of-heroes)中的示例应用程序非常相似。
+测试文档提供了通过使用 [Angular CLI](cli) 创建的示例应用程序对 Angular 应用程序进行单元和集成测试的提示和技术。这个示例应用程序与[*英雄之旅*教程](tutorial/tour-of-heroes)中的示例应用程序非常相似。
 
 <div class="alert is-helpful">
 
@@ -121,7 +121,7 @@ Angular CLI 会为你处理 Jasmine 和 Karma 配置。它根据 `angular.json` 
 
 If you want to customize Karma, you can create a `karma.conf.js` by running the following command:
 
-如果你想自定义 Karma，你可以通过运行以下命令创建一个 `karma.conf.js` ：
+如果你想自定义 Karma，你可以通过运行以下命令创建一个 `karma.conf.js`：
 
 <code-example format="shell" language="shell">
 
@@ -256,21 +256,21 @@ After you've set up your application for testing, you might find the following t
 | :----------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
 |                                                                    | 详情                                                                              |
 | [Code coverage](guide/testing-code-coverage)                       | How much of your app your tests are covering and how to specify required amounts. |
-| [代码覆盖](guide/testing-code-coverage)                            | 找出你的测试覆盖了多少应用，以及如何指定所需的数量。                              |
+| [代码覆盖](guide/testing-code-coverage)                            | 找出你的测试覆盖了多少应用，以及如何指定所需的数量。|
 | [Testing services](guide/testing-services)                         | How to test the services your application uses.                                   |
-| [测试服务](guide/testing-services)                                 | 如何测试应用中所用的服务。                                                        |
+| [测试服务](guide/testing-services)                                 | 如何测试应用中所用的服务。|
 | [Basics of testing components](guide/testing-components-basics)    | Basics of testing Angular components.                                             |
-| [测试组件的基础知识](guide/testing-components-basics)              | 测试 Angular 组件的基础知识。                                                     |
+| [测试组件的基础知识](guide/testing-components-basics)              | 测试 Angular 组件的基础知识。|
 | [Component testing scenarios](guide/testing-components-scenarios)  | Various kinds of component testing scenarios and use cases.                       |
-| [组件测试场景](guide/testing-components-scenarios)                 | 了解各种组件测试场景和用例。                                                      |
+| [组件测试场景](guide/testing-components-scenarios)                 | 了解各种组件测试场景和用例。|
 | [Testing attribute directives](guide/testing-attribute-directives) | How to test your attribute directives.                                            |
-| [测试属性型指令](guide/testing-attribute-directives)               | 如何测试你的属性型指令。                                                          |
+| [测试属性型指令](guide/testing-attribute-directives)               | 如何测试你的属性型指令。|
 | [Testing pipes](guide/testing-pipes)                               | How to test pipes.                                                                |
-| [测试管道](guide/testing-pipes)                                    | 如何测试管道。                                                                    |
+| [测试管道](guide/testing-pipes)                                    | 如何测试管道。|
 | [Debugging tests](guide/test-debugging)                            | Common testing bugs.                                                              |
-| [调试测试代码](guide/test-debugging)                               | 发现测试代码的常见 BUG。                                                          |
+| [调试测试代码](guide/test-debugging)                               | 发现测试代码的常见 BUG。|
 | [Testing utility APIs](guide/testing-utility-apis)                 | Angular testing features.                                                         |
-| [测试实用工具 API](guide/testing-utility-apis)                     | Angular 的测试特性。                                                              |
+| [测试实用工具 API](guide/testing-utility-apis)                     | Angular 的测试特性。|
 
 <!-- links -->
 

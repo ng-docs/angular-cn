@@ -4,7 +4,7 @@
 
 An animation *transition* specifies changes that occur between one state and another. Set the transition to make the change less abrupt. An animation *transition* specifies the changes that occur between one state and another.
 
-动画*转场*用于指定一种状态与另一种状态之间发生的变化。 设置转场可以使变化不那么突然。
+动画*转场*用于指定一种状态与另一种状态之间发生的变化。设置转场可以使变化不那么突然。
 
 ## Animation `transition()` function defined
 
@@ -42,7 +42,7 @@ Use the `animate()` function of a transition to define:
 Use the `animate()` function to define the `keyframes()` function for multi-step animations.
 These definitions are placed in the second argument of the `animate()` function.
 
-使用 `animate()` 函数定义多步动画的 `keyframes()` 函数。 这些定义作为 `animate()` 函数的第二个参数传入。
+使用 `animate()` 函数定义多步动画的 `keyframes()` 函数。这些定义作为 `animate()` 函数的第二个参数传入。
 
 ## Animation metadata: duration, delay, and easing
 
@@ -110,7 +110,7 @@ For example, `ease-in` causes the animation to begin slowly, and to pick up spee
 * Wait for 100 ms, run for 200 ms.
   Use a deceleration curve to start out fast and slowly decelerate to a resting point:
 
-  等待 100 毫秒，运行 200 毫秒。 使用减速曲线快速开始并缓慢减速到静止点：
+  等待 100 毫秒，运行 200 毫秒。使用减速曲线快速开始并缓慢减速到静止点：
 
   <code-example format="output" language="shell">
 
@@ -121,7 +121,7 @@ For example, `ease-in` causes the animation to begin slowly, and to pick up spee
 * Run for 200 ms, with no delay.
   Use a standard curve to start slow, speed up in the middle, and then decelerate slowly at the end:
 
-  运行 200 毫秒，没有延迟。 用一条标准曲线开始慢，中间加速，最后慢慢减速：
+  运行 200 毫秒，没有延迟。用一条标准曲线开始慢，中间加速，最后慢慢减速：
 
   <code-example format="output" language="shell">
 
@@ -132,7 +132,7 @@ For example, `ease-in` causes the animation to begin slowly, and to pick up spee
 * Start immediately, run for 200 ms.
   Use an acceleration curve to start slow and end at full velocity:
 
-  立即开始，运行 200 毫秒。 使用加速曲线以缓慢开始并以全速结束：
+  立即开始，运行 200 毫秒。使用加速曲线以缓慢开始并以全速结束：
 
   <code-example format="output" language="shell">
 

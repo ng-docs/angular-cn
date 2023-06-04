@@ -22,11 +22,11 @@
  *
  * - Subsequent odd indices: attr keys
  *
- *   后续的奇数索引： attr 键
+ *   后续的奇数索引：attr 键
  *
  * - Subsequent even indices: attr values
  *
- *   后续的偶数索引： attr 值
+ *   后续的偶数索引：attr 值
  *
  * After SelectorFlags.CLASS flag
  *

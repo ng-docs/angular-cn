@@ -420,7 +420,7 @@ export class RenameBuilder {
  * `ts.RenameLocation`s to have and creates an initial entry for indirect renames \(one which is
  * required for the rename operation, but cannot be found by the native TS LS\).
  *
- * 从提供的 `RenameRequest` ，确定我们应该期望所有生成的 `ts.RenameLocation`
+ * 从提供的 `RenameRequest`，确定我们应该期望所有生成的 `ts.RenameLocation`
  * 具有的文本，并为间接重命名创建一个初始条目（重命名操作所需，但原生 TS LS 找不到）。
  *
  */
@@ -457,7 +457,7 @@ function getExpectedRenameTextAndInitialRenameEntries(renameRequest: RenameReque
  * Given a `RenameRequest`, determines the `FilePosition` to use asking the native TS LS for rename
  * locations.
  *
- * 给定 `RenameRequest` ，确定要用于向原生 TS LS 请求重命名位置的 `FilePosition` 。
+ * 给定 `RenameRequest`，确定要用于向原生 TS LS 请求重命名位置的 `FilePosition`。
  *
  */
 function getRenameRequestPosition(renameRequest: RenameRequest): FilePosition {

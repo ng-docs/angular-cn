@@ -76,7 +76,7 @@ export interface TestBed {
    * first use `resetTestEnvironment`.
    *
    * 这只能调用一次，以在当前平台上为当前测试套件设置公用提供者。如果你必须要更改提供者，请首先使用
-   * `resetTestEnvironment` 。
+   * `resetTestEnvironment`。
    *
    * Test modules and platforms for individual platforms are available from
    * '@angular/&lt;platform_name>/testing'.
@@ -114,7 +114,7 @@ export interface TestBed {
    *
    * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 \( `InjectOptions` \) 。
+   * 改用基于对象的标志 \( `InjectOptions` \)。
    *
    */
   inject<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
@@ -123,7 +123,7 @@ export interface TestBed {
    *
    * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 \( `InjectOptions` \) 。
+   * 改用基于对象的标志 \( `InjectOptions` \)。
    *
    */
   inject<T>(token: ProviderToken<T>, notFoundValue: null, flags?: InjectFlags): T|null;
@@ -300,7 +300,7 @@ export class TestBedImpl implements TestBed {
    * suite on the current platform. If you absolutely need to change the providers,
    * first use `resetTestEnvironment`.
    *
-   * 这可能只会调用一次，以在当前平台上为当前测试套件设置通用提供者。如果你绝对需要更改提供者，请首先使用 `resetTestEnvironment` 。
+   * 这可能只会调用一次，以在当前平台上为当前测试套件设置通用提供者。如果你绝对需要更改提供者，请首先使用 `resetTestEnvironment`。
    *
    * Test modules and platforms for individual platforms are available from
    * '@angular/&lt;platform_name>/testing'.
@@ -414,7 +414,7 @@ export class TestBedImpl implements TestBed {
    *
    * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 \( `InjectOptions` \) 。
+   * 改用基于对象的标志 \( `InjectOptions` \)。
    *
    */
   static inject<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
@@ -423,7 +423,7 @@ export class TestBedImpl implements TestBed {
    *
    * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 \( `InjectOptions` \) 。
+   * 改用基于对象的标志 \( `InjectOptions` \)。
    *
    */
   static inject<T>(token: ProviderToken<T>, notFoundValue: null, flags?: InjectFlags): T|null;
@@ -528,7 +528,7 @@ export class TestBedImpl implements TestBed {
    * suite on the current platform. If you absolutely need to change the providers,
    * first use `resetTestEnvironment`.
    *
-   * 这可能只会调用一次，以在当前平台上为当前测试套件设置通用提供者。如果你绝对需要更改提供者，请首先使用 `resetTestEnvironment` 。
+   * 这可能只会调用一次，以在当前平台上为当前测试套件设置通用提供者。如果你绝对需要更改提供者，请首先使用 `resetTestEnvironment`。
    *
    * Test modules and platforms for individual platforms are available from
    * '@angular/&lt;platform_name>/testing'.
@@ -660,7 +660,7 @@ export class TestBedImpl implements TestBed {
    *
    * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 \( `InjectOptions` \) 。
+   * 改用基于对象的标志 \( `InjectOptions` \)。
    *
    */
   inject<T>(token: ProviderToken<T>, notFoundValue?: T, flags?: InjectFlags): T;
@@ -669,7 +669,7 @@ export class TestBedImpl implements TestBed {
    *
    * use object-based flags \(`InjectOptions`\) instead.
    *
-   * 改用基于对象的标志 \( `InjectOptions` \) 。
+   * 改用基于对象的标志 \( `InjectOptions` \)。
    *
    */
   inject<T>(token: ProviderToken<T>, notFoundValue: null, flags?: InjectFlags): T|null;

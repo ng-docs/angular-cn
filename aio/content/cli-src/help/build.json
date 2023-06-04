@@ -49,7 +49,7 @@
         "c"
       ],
       "description": "One or more named builder configurations as a comma-separated list as specified in the \"configurations\" section in angular.json.\nThe builder uses the named configurations to run the given target.\nFor more information, see https://angular.io/guide/workspace-config#alternate-build-configurations.",
-      "descriptionCn": "以逗号分隔列表形式表示的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations> 。"
+      "descriptionCn": "以逗号分隔列表形式表示的一个或多个命名构建器配置，在 angular.json 的 `configurations` 部分指定。构建器使用命名配置来运行给定的目标。有关更多信息，请参阅<https://angular.io/guide/workspace-config#alternate-build-configurations>。"
     },
     {
       "name": "cross-origin",
@@ -285,5 +285,5 @@
     }
   ],
   "shortDescriptionCn": "将 Angular 应用程序或库编译到给定输出路径处名为 dist/ 的输出目录中。",
-  "longDescriptionCn": "该命令可用于构建“应用程序”或“库”类型的项目。当用于构建库时，会调用不同的构建器，并且仅应用`ts-config`、`configuration`和`watch`选项。所有其他选项仅适用于构建应用程序。\n\n应用程序构建器使用 [Webpack](https://webpack.js.org/) 构建工具，可以在工作区配置文件 ( `angular.json` ) 中指定默认配置选项或使用命名的替代配置。默认情况下，当你使用 CLI 创建项目时会创建一个`development` 配置，你可以通过指定 `--configuration development` 来使用该配置。\n\n配置选项通常对应于命令选项。你可以通过在命令行中指定相应的选项来覆盖单个配置默认值。该命令可以接受以 dash-case 或 camelCase 给出的选项名称。请注意，在配置文件中，你必须以 camelCase 指定名称。\n\n某些附加选项只能通过配置文件设置，可以通过直接编辑或使用`ng config`命令来完成。其中包括 `assets`、`styles` 和 `scripts` 对象，它们提供了要包含在项目中的运行时全局资源。 CSS 中的资源，例如图像和字体，会在输出文件夹的根目录自动写入并添加指纹。\n\n有关更多详细信息，请参阅[工作区配置](guide/workspace-config)。"
+  "longDescriptionCn": "该命令可用于构建“应用程序”或“库”类型的项目。当用于构建库时，会调用不同的构建器，并且仅应用`ts-config`、`configuration`和`watch`选项。所有其他选项仅适用于构建应用程序。\n\n应用程序构建器使用 [Webpack](https://webpack.js.org/) 构建工具，可以在工作区配置文件 ( `angular.json` ) 中指定默认配置选项或使用命名的替代配置。默认情况下，当你使用 CLI 创建项目时会创建一个`development` 配置，你可以通过指定 `--configuration development` 来使用该配置。\n\n配置选项通常对应于命令选项。你可以通过在命令行中指定相应的选项来覆盖单个配置默认值。该命令可以接受以 dash-case 或 camelCase 给出的选项名称。请注意，在配置文件中，你必须以 camelCase 指定名称。\n\n某些附加选项只能通过配置文件设置，可以通过直接编辑或使用`ng config`命令来完成。其中包括 `assets`、`styles` 和 `scripts` 对象，它们提供了要包含在项目中的运行时全局资源。CSS 中的资源，例如图像和字体，会在输出文件夹的根目录自动写入并添加指纹。\n\n有关更多详细信息，请参阅[工作区配置](guide/workspace-config)。"
 }

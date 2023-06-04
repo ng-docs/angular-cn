@@ -5,7 +5,7 @@
 This topic describes how to prepare your update to the Angular documentation so that you can open a pull request.
 A pull request is how you share your update in a way that allows it to be merged it into the `angular/angular` repo.
 
-本主题介绍如何准备对 Angular 文档的更新，以便你可以打开 Pull Request。 Pull Request 是你以允许将更新合并到 `angular/angular` 存储库的方式共享更新的方式。
+本主题介绍如何准备对 Angular 文档的更新，以便你可以打开 Pull Request。Pull Request 是你以允许将更新合并到 `angular/angular` 存储库的方式共享更新的方式。
 
 <div class="alert is-important">
 
@@ -184,7 +184,7 @@ Rebasing your working branch changes the starting point of your commits from whe
 
 Before you can rebase your working branch, you must update both your *clone* and your *fork* of the upstream repo.
 
-在你可以 rebase 你的工作分支之前，你必须更新你的*克隆*和上游存储库的*fork* 。
+在你可以 rebase 你的工作分支之前，你必须更新你的*克隆*和上游存储库的*fork*。
 
 #### Why you rebase your working branch
 

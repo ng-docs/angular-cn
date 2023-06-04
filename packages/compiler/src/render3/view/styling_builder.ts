@@ -755,7 +755,7 @@ function getStylePropInterpolationExpression(interpolation: Interpolation) {
  * Checks whether property name is a custom CSS property.
  * See: https://www.w3.org/TR/css-variables-1
  *
- * 检查属性名称是否是自定义 CSS 属性。请参阅： https://www.w3.org/TR/css-variables-1
+ * 检查属性名称是否是自定义 CSS 属性。请参阅：https://www.w3.org/TR/css-variables-1
  *
  */
 function isCssCustomProperty(name: string): boolean {

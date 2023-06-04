@@ -86,7 +86,7 @@ export abstract class ViewRef extends ChangeDetectorRef {
  *
  * This is the outer `TemplateRef`:
  *
- * 这是外部 `TemplateRef` ：
+ * 这是外部 `TemplateRef`：
  *
  * ```
  * Count: {{items.length}}
@@ -97,7 +97,7 @@ export abstract class ViewRef extends ChangeDetectorRef {
  *
  * This is the inner `TemplateRef`:
  *
- * 这是内部的 `TemplateRef` ：
+ * 这是内部的 `TemplateRef`：
  *
  * ```
  *   <li>{{item}}</li>

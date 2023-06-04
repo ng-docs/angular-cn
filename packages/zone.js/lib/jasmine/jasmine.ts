@@ -233,7 +233,7 @@ Zone.__load_patch('jasmine', (global: any, Zone: ZoneType, api: _ZonePrivate) =>
    * This will run in `testProxyZone`. The `testProxyZone` will be reset by the `ZoneQueueRunner`
    *
    * 获取一个函数，该函数包装要在 ProxyZone 区域中执行的 Jasmine `it/beforeEach/afterEach`
-   * 块的主体。这将在 `testProxyZone` 中运行。 `testProxyZone` 将由 `ZoneQueueRunner` 重置
+   * 块的主体。这将在 `testProxyZone` 中运行。`testProxyZone` 将由 `ZoneQueueRunner` 重置
    *
    */
   function wrapTestInZone(testBody: Function): Function {

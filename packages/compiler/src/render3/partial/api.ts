@@ -165,7 +165,7 @@ export interface R3DeclareDirectiveMetadata extends R3PartialDeclaration {
   /**
    * Whether the directive has an inheritance clause. Defaults to false.
    *
-   * 指令是否有继承子句。默认为 false 。
+   * 指令是否有继承子句。默认为 false。
    *
    */
   usesInheritance?: boolean;
@@ -173,7 +173,7 @@ export interface R3DeclareDirectiveMetadata extends R3PartialDeclaration {
   /**
    * Whether the directive implements the `ngOnChanges` hook. Defaults to false.
    *
-   * 指令是否实现 `ngOnChanges` 钩子。默认为 false 。
+   * 指令是否实现 `ngOnChanges` 钩子。默认为 false。
    *
    */
   usesOnChanges?: boolean;
@@ -189,7 +189,7 @@ export interface R3DeclareDirectiveMetadata extends R3PartialDeclaration {
   /**
    * Whether the directive is a signal-based directive. Defaults to false.
    *
-   * 该指令是否是基于信号的指令。 默认为假。
+   * 该指令是否是基于信号的指令。默认为假。
    *
    */
   isSignal?: boolean;
@@ -301,7 +301,7 @@ export interface R3DeclareComponentMetadata extends R3DeclareDirectiveMetadata {
    * Strategy used for detecting changes in the component.
    * Defaults to `ChangeDetectionStrategy.Default`.
    *
-   * 用于检测组件更改的策略。默认为 `ChangeDetectionStrategy.Default` 。
+   * 用于检测组件更改的策略。默认为 `ChangeDetectionStrategy.Default`。
    *
    */
   changeDetection?: ChangeDetectionStrategy;
@@ -310,7 +310,7 @@ export interface R3DeclareComponentMetadata extends R3DeclareDirectiveMetadata {
    * An encapsulation policy for the component's styling.
    * Defaults to `ViewEncapsulation.Emulated`.
    *
-   * 组件样式的封装策略。默认为 `ViewEncapsulation.Emulated` 。
+   * 组件样式的封装策略。默认为 `ViewEncapsulation.Emulated`。
    *
    */
   encapsulation?: ViewEncapsulation;
@@ -326,7 +326,7 @@ export interface R3DeclareComponentMetadata extends R3DeclareDirectiveMetadata {
   /**
    * Whether whitespace in the template should be preserved. Defaults to false.
    *
-   * 是否应保留模板中的空格。默认为 false 。
+   * 是否应保留模板中的空格。默认为 false。
    *
    */
   preserveWhitespaces?: boolean;
@@ -448,7 +448,7 @@ export interface R3DeclareQueryMetadata {
    * An expression representing a type to read from each matched node, or null if the default value
    * for a given node is to be returned.
    *
-   * 表示要从每个匹配的节点读取的类型的表达式，如果要返回给定节点的默认值，则为 null 。
+   * 表示要从每个匹配的节点读取的类型的表达式，如果要返回给定节点的默认值，则为 null。
    *
    */
   read?: o.Expression;
@@ -456,7 +456,7 @@ export interface R3DeclareQueryMetadata {
   /**
    * Whether or not this query should collect only static results. Defaults to false.
    *
-   * 此查询是否应该仅收集静态结果。默认为 false 。
+   * 此查询是否应该仅收集静态结果。默认为 false。
    *
    * If static is true, the query's results will be set on the component after nodes are created,
    * but before change detection runs. This means that any results that relied upon change detection
@@ -590,7 +590,7 @@ export interface R3DeclarePipeMetadata extends R3PartialDeclaration {
    *
    * Default: true.
    *
-   * 默认值： true 。
+   * 默认值：true。
    *
    */
   pure?: boolean;
@@ -602,7 +602,7 @@ export interface R3DeclarePipeMetadata extends R3PartialDeclaration {
    *
    * Default: false.
    *
-   * 默认值： false 。
+   * 默认值：false。
    *
    */
   isStandalone?: boolean;
@@ -629,12 +629,12 @@ export interface R3DeclareFactoryMetadata extends R3PartialDeclaration {
    * If this is `null`, then the type's constructor is nonexistent and will be inherited from an
    * ancestor of the type.
    *
-   * 如果这是 `null` ，则该类型的构造函数不存在，将继承自该类型的祖先。
+   * 如果这是 `null`，则该类型的构造函数不存在，将继承自该类型的祖先。
    *
    * If this is `'invalid'`, then one or more of the parameters wasn't resolvable and any attempt to
    * use these deps will result in a runtime error.
    *
-   * 如果这是 `'invalid'` ，则一个或多个参数不可解析，并且任何使用这些 deps
+   * 如果这是 `'invalid'`，则一个或多个参数不可解析，并且任何使用这些 deps
    * 的尝试都将导致运行时错误。
    *
    */
@@ -676,7 +676,7 @@ export interface R3DeclareInjectableMetadata extends R3PartialDeclaration {
    *
    * - `InjectorType` such as `NgModule`,
    *
-   *   `InjectorType` 类型，例如 `NgModule` ，
+   *   `InjectorType` 类型，例如 `NgModule`，
    *
    * - `'root'` the root injector
    *
@@ -747,7 +747,7 @@ export interface R3DeclareDependencyMetadata {
    * An expression representing the token or value to be injected, or `null` if the dependency is
    * not valid.
    *
-   * 表示要注入的令牌或值的表达式，如果依赖项无效，则为 `null` 。
+   * 表示要注入的令牌或值的表达式，如果依赖项无效，则为 `null`。
    *
    * If this dependency is due to the `@Attribute()` decorator, then this is an expression
    * evaluating to the name of the attribute.
@@ -761,7 +761,7 @@ export interface R3DeclareDependencyMetadata {
    * Whether the dependency is injecting an attribute value.
    * Default: false.
    *
-   * 依赖项是否注入属性值。默认值： false 。
+   * 依赖项是否注入属性值。默认值：false。
    *
    */
   attribute?: boolean;
@@ -770,7 +770,7 @@ export interface R3DeclareDependencyMetadata {
    * Whether the dependency has an @Host qualifier.
    * Default: false,
    *
-   * 依赖项是否具有 @Host 限定符。默认： false ，
+   * 依赖项是否具有 @Host 限定符。默认：false，
    *
    */
   host?: boolean;
@@ -779,7 +779,7 @@ export interface R3DeclareDependencyMetadata {
    * Whether the dependency has an @Optional qualifier.
    * Default: false,
    *
-   * 依赖项是否具有 @Optional 限定符。默认： false ，
+   * 依赖项是否具有 @Optional 限定符。默认：false，
    *
    */
   optional?: boolean;
@@ -788,7 +788,7 @@ export interface R3DeclareDependencyMetadata {
    * Whether the dependency has an @Self qualifier.
    * Default: false,
    *
-   * 依赖项是否具有 @Self 限定符。默认： false ，
+   * 依赖项是否具有 @Self 限定符。默认：false，
    *
    */
   self?: boolean;
@@ -797,7 +797,7 @@ export interface R3DeclareDependencyMetadata {
    * Whether the dependency has an @SkipSelf qualifier.
    * Default: false,
    *
-   * 依赖项是否具有 @SkipSelf 限定符。默认： false ，
+   * 依赖项是否具有 @SkipSelf 限定符。默认：false，
    *
    */
   skipSelf?: boolean;

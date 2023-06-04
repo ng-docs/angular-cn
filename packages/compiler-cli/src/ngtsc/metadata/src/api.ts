@@ -36,7 +36,7 @@ export interface NgModuleMeta {
    * If this is `null`, then either no declarations exist, or no expression was available \(likely
    * because the module came from a .d.ts file\).
    *
-   * 如果这是 `null` ，则不存在声明，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
+   * 如果这是 `null`，则不存在声明，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
    *
    */
   rawDeclarations: ts.Expression|null;
@@ -49,7 +49,7 @@ export interface NgModuleMeta {
    * If this is `null`, then either no imports exist, or no expression was available \(likely
    * because the module came from a .d.ts file\).
    *
-   * 如果这是 `null` ，则不存在导入，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
+   * 如果这是 `null`，则不存在导入，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
    *
    */
   rawImports: ts.Expression|null;
@@ -62,7 +62,7 @@ export interface NgModuleMeta {
    * If this is `null`, then either no exports exist, or no expression was available \(likely
    * because the module came from a .d.ts file\).
    *
-   * 如果这是 `null` ，则不存在导出，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
+   * 如果这是 `null`，则不存在导出，或没有表达式可用（可能是因为模块来自 .d.ts 文件）。
    *
    */
   rawExports: ts.Expression|null;
@@ -74,7 +74,7 @@ export interface NgModuleMeta {
    *
    * If this is `null`, no decorator exists, meaning it's probably from a .d.ts file.
    *
-   * 如果这是 `null` ，则不存在装饰器，这意味着它可能来自 .d.ts 文件。
+   * 如果这是 `null`，则不存在装饰器，这意味着它可能来自 .d.ts 文件。
    *
    */
   decorator: ts.Decorator|null;
@@ -124,7 +124,7 @@ export interface DirectiveTypeCheckMeta {
    *
    * 在 Directive 的类上具有对应的静态 `ngAcceptInputType_`
    * 的输入字段集。这允许输入接受更广泛的类型，并使用 getter/setter
-   * 将输入强制转换为更窄的类型。请参阅 https://angular.io/guide/template-typecheck 。
+   * 将输入强制转换为更窄的类型。请参阅 https://angular.io/guide/template-typecheck。
    *
    */
   coercedInputFields: Set<ClassPropertyName>;
@@ -161,7 +161,7 @@ export interface DirectiveTypeCheckMeta {
   /**
    * Whether the Directive's class is generic, i.e. `class MyDir<T> {...}`.
    *
-   * 指令的类是否是通用的，即 `class MyDir<T> {...}` 。
+   * 指令的类是否是通用的，即 `class MyDir<T> {...}`。
    *
    */
   isGeneric: boolean;
@@ -246,7 +246,7 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
   /**
    * Unparsed selector of the directive, or null if the directive does not have a selector.
    *
-   * 指令的未解析的选择器，如果指令没有选择器，则为 null 。
+   * 指令的未解析的选择器，如果指令没有选择器，则为 null。
    *
    */
   selector: string|null;
@@ -337,7 +337,7 @@ export interface DirectiveMeta extends T2DirectiveMeta, DirectiveTypeCheckMeta {
    *
    * If this is `null`, no decorator exists, meaning it's probably from a .d.ts file.
    *
-   * 如果这是 `null` ，则不存在装饰器，这意味着它可能来自 .d.ts 文件。
+   * 如果这是 `null`，则不存在装饰器，这意味着它可能来自 .d.ts 文件。
    *
    */
   decorator: ts.Decorator|null;

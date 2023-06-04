@@ -26,7 +26,7 @@ import {ProviderToken} from './provider_token';
  *
  * @see ["DI Providers"](guide/dependency-injection-providers).
  *
- * [“DI 提供者”](guide/dependency-injection-providers) 。
+ * [“DI 提供者”](guide/dependency-injection-providers)。
  * @see `StaticProvider`
  * @usageNotes
  *
@@ -44,7 +44,7 @@ import {ProviderToken} from './provider_token';
  *
  * `Injector` returns itself when given `Injector` as a token:
  *
- * 当给定 `Injector` 作为标记时， `Injector` 返回自身：
+ * 当给定 `Injector` 作为标记时，`Injector` 返回自身：
  *
  * {@example core/di/ts/injector_spec.ts region='injectInjector'}
  *
@@ -71,7 +71,7 @@ export abstract class Injector {
    *
    * @returns The instance from the injector if defined, otherwise the `notFoundValue`.
    *
-   * 注入器的实例（如果已定义），否则为 `notFoundValue` 。
+   * 注入器的实例（如果已定义），否则为 `notFoundValue`。
    *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
@@ -90,7 +90,7 @@ export abstract class Injector {
    *
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
-   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue`。
    *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
@@ -108,7 +108,7 @@ export abstract class Injector {
    *
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
-   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue`。
    *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
@@ -126,7 +126,7 @@ export abstract class Injector {
    *
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
-   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue`。
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
    * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
@@ -169,15 +169,15 @@ export abstract class Injector {
    *
    * * `providers`: An array of providers of the [StaticProvider type](api/core/StaticProvider).
    *
-   *   `providers` ：一组 [StaticProvider 类型](api/core/StaticProvider)的提供者。
+   *   `providers`：一组 [StaticProvider 类型](api/core/StaticProvider)的提供者。
    *
    * * `parent`: \(optional\) A parent injector.
    *
-   *   `parent` ：（可选）父注入器。
+   *   `parent`：（可选）父注入器。
    *
    * - `name`: \(optional\) A developer-defined identifying name for the new injector.
    *
-   *   `name` ：（可选）新注入器的开发人员自定义的标识名称。
+   *   `name`：（可选）新注入器的开发人员自定义的标识名称。
    *
    * @returns The new injector instance.
    *

@@ -153,7 +153,7 @@ function formatNumberToLocaleString(
  * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
  *
  * 十进制表示形式的选项，通过字符串以如下格式指定：`{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`
- * 。欲知详情，请参见 `DecimalPipe`。
+ *。欲知详情，请参见 `DecimalPipe`。
  * @returns The formatted currency value.
  *
  * 要格式化的货币值。
@@ -243,7 +243,7 @@ export function formatPercent(value: number, locale: string, digitsInfo?: string
  * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
  *
  * 十进制表示形式的选项，通过字符串以如下格式指定：`{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`
- * 。欲知详情，请参见 `DecimalPipe`。
+ *。欲知详情，请参见 `DecimalPipe`。
  * @returns The formatted text string.
  *
  * 已格式化的文本字符串。

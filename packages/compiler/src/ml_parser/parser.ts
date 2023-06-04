@@ -339,7 +339,7 @@ class _TreeBuilder {
    * not have a closing tag (for example, this happens when an incomplete
    * opening tag is recovered).
    *
-   * 关闭解析树中带有标签名 `fullName` 的最近元素。 `endSourceSpan`
+   * 关闭解析树中带有标签名 `fullName` 的最近元素。`endSourceSpan`
    * 是关闭标签的跨度，如果元素没有关闭标签，则为 null
    *（例如，恢复不完整的开始标签时会发生这种情况）。
    *

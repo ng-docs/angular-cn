@@ -41,13 +41,13 @@ const OBJECT = 'object';
  * Here the individual elements are separated by `,` \(commas\). Every element in the list
  * has identical properties.
  *
- * `element_inheritance` 可以进一步细分为 `element1,element2,...^parentElement` 。在这里，各个元素用
+ * `element_inheritance` 可以进一步细分为 `element1,element2,...^parentElement`。在这里，各个元素用
  * `,`（逗号）分隔。列表中的每个元素都具有相同的属性。
  *
  * An `element` may inherit additional properties from `parentElement` If no `^parentElement` is
  * specified then `""` \(blank\) element is assumed.
  *
- * `element` 可以从 `parentElement` 继承其他属性如果没有指定 `^parentElement` ，则假定为 `""`
+ * `element` 可以从 `parentElement` 继承其他属性如果没有指定 `^parentElement`，则假定为 `""`
  * （空白）元素。
  *
  * NOTE: The blank element inherits from root `[Element]` element, the super element of all
@@ -74,7 +74,7 @@ const OBJECT = 'object';
  *
  * - `*`: property represents an event.
  *
- *   `*` ：属性表示一个事件。
+ *   `*`：属性表示一个事件。
  *
  * - `!`: property is a boolean.
  *
@@ -82,11 +82,11 @@ const OBJECT = 'object';
  *
  * - `#`: property is a number.
  *
- *   `#` ：属性是一个数字。
+ *   `#`：属性是一个数字。
  *
  * - `%`: property is an object.
  *
- *   `%` ：属性是一个对象。
+ *   `%`：属性是一个对象。
  *
  * ## Query
  *

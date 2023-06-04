@@ -42,7 +42,7 @@ export interface R3ClassMetadata {
    * An expression representing the Angular decorators applied to constructor parameters, or `null`
    * if there is no constructor.
    *
-   * 表示应用于构造函数参数的 Angular 装饰器的表达式，如果没有构造函数，则为 `null` 。
+   * 表示应用于构造函数参数的 Angular 装饰器的表达式，如果没有构造函数，则为 `null`。
    *
    */
   ctorParameters: o.Expression|null;
@@ -51,7 +51,7 @@ export interface R3ClassMetadata {
    * An expression representing the Angular decorators that were applied on the properties of the
    * class, or `null` if no properties have decorators.
    *
-   * 表示应用于类属性的 Angular 装饰器的表达式，如果没有属性具有装饰器，则为 `null` 。
+   * 表示应用于类属性的 Angular 装饰器的表达式，如果没有属性具有装饰器，则为 `null`。
    *
    */
   propDecorators: o.Expression|null;

@@ -73,7 +73,7 @@ export abstract class AnimationDriver {
   /**
    * Obtains the parent element, if any. `null` is returned if the element does not have a parent.
    *
-   * 获取父元素（如果有）。如果元素没有父级，则返回 `null` 。
+   * 获取父元素（如果有）。如果元素没有父级，则返回 `null`。
    *
    */
   abstract getParentElement(element: unknown): unknown;

@@ -111,11 +111,11 @@ Template-driven forms rely on directives defined in the `FormsModule`.
 | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 指令           | 详情                                                                                                                                                                                                                                                                            |
 | `NgModel`      | Reconciles value changes in the attached form element with changes in the data model, allowing you to respond to user input with input validation and error handling.                                                                                                           |
-| `NgModel`      | 会协调其附着在的表单元素中的值变更与数据模型中的变更，以便你通过输入验证和错误处理来响应用户输入。                                                                                                                                                                              |
+| `NgModel`      | 会协调其附着在的表单元素中的值变更与数据模型中的变更，以便你通过输入验证和错误处理来响应用户输入。|
 | `NgForm`       | Creates a top-level `FormGroup` instance and binds it to a `<form>` element to track aggregated form value and validation status. As soon as you import `FormsModule`, this directive becomes active by default on all `<form>` tags. You don't need to add a special selector. |
-| `NgForm`       | 会创建一个顶级的 `FormGroup` 实例，并把它绑定到 `<form>` 元素上，以跟踪它所聚合的那些表单值并验证状态。只要你导入了 `FormsModule`，默认情况下这个指令就会在所有 `<form>` 标签上激活。你不需要添加特殊的选择器。                                                                 |
+| `NgForm`       | 会创建一个顶级的 `FormGroup` 实例，并把它绑定到 `<form>` 元素上，以跟踪它所聚合的那些表单值并验证状态。只要你导入了 `FormsModule`，默认情况下这个指令就会在所有 `<form>` 标签上激活。你不需要添加特殊的选择器。|
 | `NgModelGroup` | Creates and binds a `FormGroup` instance to a DOM element.                                                                                                                                                                                                                      |
-| `NgModelGroup` | 会创建 `FormGroup` 的实例并把它绑定到 DOM 元素中。                                                                                                                                                                                                                              |
+| `NgModelGroup` | 会创建 `FormGroup` 的实例并把它绑定到 DOM 元素中。|
 
 ### The sample application
 
@@ -496,11 +496,11 @@ The following table describes the class names that Angular applies based on the 
 | :------------------------------- | :--------------- | :---------------- |
 | 状态                             | 为 true 时的类名 | 为 false 时的类名 |
 | The control has been visited.    | `ng-touched`     | `ng-untouched`    |
-| 该控件已被访问过。               | `ng-touched`     | `ng-untouched`    |
+| 该控件已被访问过。| `ng-touched`     | `ng-untouched`    |
 | The control's value has changed. | `ng-dirty`       | `ng-pristine`     |
-| 控件的值已被更改。               | `ng-dirty`       | `ng-pristine`     |
+| 控件的值已被更改。| `ng-dirty`       | `ng-pristine`     |
 | The control's value is valid.    | `ng-valid`       | `ng-invalid`      |
-| 控件的值是有效的。               | `ng-valid`       | `ng-invalid`      |
+| 控件的值是有效的。| `ng-valid`       | `ng-invalid`      |
 
 Angular also applies the `ng-submitted` class to `form` elements upon submission,
 but not to the controls inside the `form` element.

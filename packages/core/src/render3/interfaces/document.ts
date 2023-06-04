@@ -24,7 +24,7 @@ import {RuntimeError, RuntimeErrorCode} from '../../errors';
  * Wherever ivy needs the global document, it calls `getDocument()` instead.
  *
  * 解决方案是为 ivy 定义 `getDocument()` 和 `setDocument()` 顶级函数。无论 ivy
- * 需要全局文档，它都会改为调用 `getDocument()` 。
+ * 需要全局文档，它都会改为调用 `getDocument()`。
  *
  * When running ivy outside of a browser environment, it is necessary to call `setDocument()` to
  * tell ivy what the global `document` is.

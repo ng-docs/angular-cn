@@ -110,7 +110,7 @@ export interface TraitBase<D, A, S extends SemanticSymbol|null, R> {
   /**
    * The `DecoratorHandler` which matched on the class to create this trait.
    *
-   * 在类上匹配以创建此 trait 的 `DecoratorHandler` 。
+   * 在类上匹配以创建此 trait 的 `DecoratorHandler`。
    *
    */
   handler: DecoratorHandler<D, A, S, R>;
@@ -201,7 +201,7 @@ export interface AnalyzedTrait<D, A, S extends SemanticSymbol|null, R> extends
    * Analysis results of the given trait \(if able to be produced\), or `null` if analysis failed
    * completely.
    *
-   * 给定性状的分析结果（如果能够生成），如果分析完全失败，则为 `null` 。
+   * 给定性状的分析结果（如果能够生成），如果分析完全失败，则为 `null`。
    *
    */
   analysis: Readonly<A>|null;
@@ -209,7 +209,7 @@ export interface AnalyzedTrait<D, A, S extends SemanticSymbol|null, R> extends
   /**
    * Any diagnostics that resulted from analysis, or `null` if none.
    *
-   * 从分析产生的任何诊断，如果没有，则为 `null` 。
+   * 从分析产生的任何诊断，如果没有，则为 `null`。
    *
    */
   analysisDiagnostics: ts.Diagnostic[]|null;
@@ -357,7 +357,7 @@ class TraitImpl<D, A, S extends SemanticSymbol|null, R> {
   /**
    * Construct a new `TraitImpl` in the pending state.
    *
-   * 构造一个处于挂起状态的新 `TraitImpl` 。
+   * 构造一个处于挂起状态的新 `TraitImpl`。
    *
    */
   static pending<D, A, S extends SemanticSymbol|null, R>(

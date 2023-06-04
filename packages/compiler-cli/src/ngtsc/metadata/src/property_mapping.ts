@@ -82,7 +82,7 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
   /**
    * Mapping from class property names to the single `InputOrOutput` for that class property.
    *
-   * 从类属性名称映射到该类属性的单个 `InputOrOutput` 。
+   * 从类属性名称映射到该类属性的单个 `InputOrOutput`。
    *
    */
   private forwardMap: Map<ClassPropertyName, T>;
@@ -90,7 +90,7 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
   /**
    * Mapping from property names to one or more `InputOrOutput`s which share that name.
    *
-   * 从属性名称映射到共享该名称的一个或多个 `InputOrOutput` 。
+   * 从属性名称映射到共享该名称的一个或多个 `InputOrOutput`。
    *
    */
   private reverseMap: Map<BindingPropertyName, T[]>;
@@ -103,7 +103,7 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
   /**
    * Construct a `ClassPropertyMapping` with no entries.
    *
-   * 构造一个没有条目的 `ClassPropertyMapping` 。
+   * 构造一个没有条目的 `ClassPropertyMapping`。
    *
    */
   static empty<T extends InputOrOutput>(): ClassPropertyMapping<T> {
@@ -116,7 +116,7 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
    * metadata formats \(e.g. in .d.ts files\).
    *
    * 从原始 JS 对象构造一个 `ClassPropertyMapping`
-   * ，该对象将类属性名称映射到绑定属性名称或包含这两个名称的数组，用于磁盘上的元数据格式（例如
+   *，该对象将类属性名称映射到绑定属性名称或包含这两个名称的数组，用于磁盘上的元数据格式（例如
    * .d.ts 文件）。
    *
    */
@@ -193,7 +193,7 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
   /**
    * Lookup all `InputOrOutput`s that use this `propertyName`.
    *
-   * 查找使用此 `propertyName` 的所有 `InputOrOutput` 。
+   * 查找使用此 `propertyName` 的所有 `InputOrOutput`。
    *
    */
   getByBindingPropertyName(propertyName: string): ReadonlyArray<T>|null {
@@ -203,7 +203,7 @@ export class ClassPropertyMapping<T extends InputOrOutput = InputOrOutput> imple
   /**
    * Lookup the `InputOrOutput` associated with a `classPropertyName`.
    *
-   * 查找与 `InputOrOutput` 关联的 `classPropertyName` 。
+   * 查找与 `InputOrOutput` 关联的 `classPropertyName`。
    *
    */
   getByClassPropertyName(classPropertyName: string): T|null {

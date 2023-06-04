@@ -42,7 +42,7 @@ export interface ReferenceCompletion {
   /**
    * The `TmplAstReference` from the template which should be available as a completion.
    *
-   * 模板中的 `TmplAstReference` ，应该作为自动完成提供。
+   * 模板中的 `TmplAstReference`，应该作为自动完成提供。
    *
    */
   node: TmplAstReference;
@@ -60,7 +60,7 @@ export interface VariableCompletion {
   /**
    * The `TmplAstVariable` from the template which should be available as a completion.
    *
-   * 模板中的 `TmplAstVariable` ，应该作为自动完成提供。
+   * 模板中的 `TmplAstVariable`，应该作为自动完成提供。
    *
    */
   node: TmplAstVariable;

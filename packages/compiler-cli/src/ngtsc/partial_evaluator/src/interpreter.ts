@@ -26,7 +26,7 @@ import {SyntheticValue} from './synthetic';
  * Tracks the scope of a function body, which includes `ResolvedValue`s for the parameters of that
  * body.
  *
- * 跟踪函数体的范围，包括该函数体参数的 `ResolvedValue` 。
+ * 跟踪函数体的范围，包括该函数体参数的 `ResolvedValue`。
  *
  */
 type Scope = Map<ts.ParameterDeclaration, ResolvedValue>;
@@ -783,7 +783,7 @@ function owningModule(context: Context, override: OwningModule|null = null): Own
  * layer while we need to support TypeScript versions less than 5.1
  * TODO\(crisbeto\): remove this function once support for TS 4.9 is removed.
  *
- * 获取标识符的原始关键字种类。 这是一个兼容层，我们需要支持低于 5.1 的 TypeScript 版本 TODO\(crisbeto\)：删除对 TS 4.9 的支持后删除此功能。
+ * 获取标识符的原始关键字种类。这是一个兼容层，我们需要支持低于 5.1 的 TypeScript 版本 TODO\(crisbeto\)：删除对 TS 4.9 的支持后删除此功能。
  *
  */
 function getOriginalKeywordKind(identifier: ts.Identifier): ts.SyntaxKind|undefined {

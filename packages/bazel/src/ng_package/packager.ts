@@ -14,7 +14,7 @@ import * as path from 'path';
  * https://docs.bazel.build/versions/main/skylark/lib/File.html.
  *
  * 描述在 Bazel 操作中捕获的文件的接口。
- * https://docs.bazel.build/versions/main/skylark/lib/File.html 。
+ * https://docs.bazel.build/versions/main/skylark/lib/File.html。
  *
  */
 interface BazelFileInfo {
@@ -28,7 +28,7 @@ interface BazelFileInfo {
   /**
    * The path of this file relative to its root. e.g. omitting `bazel-out/<..>/bin`.
    *
-   * 此文件相对于其根目录的路径。例如，省略 `bazel-out/<..>/bin` 。
+   * 此文件相对于其根目录的路径。例如，省略 `bazel-out/<..>/bin`。
    *
    */
   shortPath: string;
@@ -261,8 +261,8 @@ function main(args: string[]): void {
    * is `packages/core/testing/index.d.ts`. This function would return the
    * relative path as followed: `testing/index.d.ts`.
    *
-   * 例如，考虑拥有的包是 `packages/core` ，输入文件是 `packages/core/testing/index.d.ts`
-   * 。此函数将返回相对路径： `testing/index.d.ts` 。
+   * 例如，考虑拥有的包是 `packages/core`，输入文件是 `packages/core/testing/index.d.ts`
+   *。此函数将返回相对路径：`testing/index.d.ts`。
    *
    */
   function getOwningPackageRelativePath(file: BazelFileInfo): string {
@@ -330,8 +330,8 @@ function main(args: string[]): void {
    * Gets the entry-point sub-path from the package root. e.g. if the package name
    * is `@angular/cdk`, then for `@angular/cdk/a11y` just `a11y` would be returned.
    *
-   * 从包根获取入口点子路径。例如，如果包名是 `@angular/cdk` ，那么对于 `@angular/cdk/a11y` `a11y`
-   * 返回 a11y 。
+   * 从包根获取入口点子路径。例如，如果包名是 `@angular/cdk`，那么对于 `@angular/cdk/a11y` `a11y`
+   * 返回 a11y。
    *
    */
   function getEntryPointSubpath(moduleName: string): string {
@@ -343,8 +343,8 @@ function main(args: string[]): void {
    * e.g. if the package name is `@angular/cdk`, then for `@angular/cdk/a11y`
    * this would return `true`.
    *
-   * 获取给定的模块名称是否解析为辅助入口点。例如，如果包名是 `@angular/cdk` ，那么对于
-   * `@angular/cdk/a11y` ，这将返回 `true` 。
+   * 获取给定的模块名称是否解析为辅助入口点。例如，如果包名是 `@angular/cdk`，那么对于
+   * `@angular/cdk/a11y`，这将返回 `true`。
    *
    */
   function isSecondaryEntryPoint(moduleName: string): boolean {
@@ -416,7 +416,7 @@ function main(args: string[]): void {
    * 解析的 package.json 内容
    * @param isGeneratedPackageJson Whether the passed package.json has been generated.
    *
-   * 是否已生成传递的 package.json 。
+   * 是否已生成传递的 package.json。
    */
   function insertFormatFieldsIntoPackageJson(
       packageJsonOutRelativePath: string, parsedPackage: Readonly<PackageJson>,

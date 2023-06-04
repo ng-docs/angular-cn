@@ -25,7 +25,7 @@ import {TrustedHTML, TrustedScript, TrustedScriptURL, TrustedTypePolicy, Trusted
  * The Trusted Types policy, or null if Trusted Types are not
  * enabled/supported, or undefined if the policy has not been created yet.
  *
- * 受信任的类型策略，如果不启用/支持受信任的类型，则为 null ，如果尚未创建策略，则为 undefined 。
+ * 受信任的类型策略，如果不启用/支持受信任的类型，则为 null，如果尚未创建策略，则为 undefined。
  *
  */
 let policy: TrustedTypePolicy|null|undefined;
@@ -34,7 +34,7 @@ let policy: TrustedTypePolicy|null|undefined;
  * Returns the Trusted Types policy, or null if Trusted Types are not
  * enabled/supported. The first call to this function will create the policy.
  *
- * 返回受信任的类型策略，如果不启用/支持受信任的类型，则返回 null 。对此函数的第一次调用将创建策略。
+ * 返回受信任的类型策略，如果不启用/支持受信任的类型，则返回 null。对此函数的第一次调用将创建策略。
  *
  */
 function getPolicy(): TrustedTypePolicy|null {

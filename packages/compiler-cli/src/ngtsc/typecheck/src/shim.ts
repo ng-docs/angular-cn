@@ -14,7 +14,7 @@ import {PerFileShimGenerator, TopLevelShimGenerator} from '../../shims/api';
 /**
  * A `ShimGenerator` which adds type-checking files to the `ts.Program`.
  *
- * 一个 `ShimGenerator` ，它将类型检查文件添加到 `ts.Program` 。
+ * 一个 `ShimGenerator`，它将类型检查文件添加到 `ts.Program`。
  *
  * This is a requirement for performant template type-checking, as TypeScript will only reuse
  * information in the main program when creating the type-checking program if the set of files in

@@ -226,7 +226,7 @@ Perform these steps from a command-line tool on your local computer.
 1. Count the lines that are on top of the entry that contains `upstream/main`.
    For example, in this log output, the working branch name is `update-doc-contribution` and there are five commit entries that are on top of the entry that contains `upstream/main`.
 
-   计算包含 `upstream/main` 的条目顶部的行数。例如，在此日志输出中，工作分支名称是 `update-doc-contribution` ，并且在包含 `upstream/main` 的条目之上有五个提交条目。
+   计算包含 `upstream/main` 的条目顶部的行数。例如，在此日志输出中，工作分支名称是 `update-doc-contribution`，并且在包含 `upstream/main` 的条目之上有五个提交条目。
 
    <div class="lightbox">
 
@@ -262,7 +262,7 @@ Perform these steps from a command-line tool on your local computer.
    The possible command options are listed in the editor below the commands.
    To squash the commits for your pull request, you only need: `pick` and `squash`.
 
-   要压缩提交，请编辑编辑器中显示的文件中的命令。编辑器中的命令从最旧到最新列出，这与 `git log` 命令列出它们的顺序相反。可能的命令选项在命令下方的编辑器中列出。要压缩你的 Pull Request 的提交，你只需要： `pick` 和 `squash` 。
+   要压缩提交，请编辑编辑器中显示的文件中的命令。编辑器中的命令从最旧到最新列出，这与 `git log` 命令列出它们的顺序相反。可能的命令选项在命令下方的编辑器中列出。要压缩你的 Pull Request 的提交，你只需要：`pick` 和 `squash`。
 
 1. Review the commands in the editor and change them to match your intention.
 
@@ -272,7 +272,7 @@ Perform these steps from a command-line tool on your local computer.
    To merge all commits in this branch for this pull request, change the `pick` commands to `squash` for all commits except for the first one.
    This text shows how this looks for this example.
 
-   命令会从上到下处理，即从最旧的提交到最近的提交。要合并此 Pull Request 中此分支中的所有提交，请将除了第一个提交之外的所有提交的 `pick` 命令更改为 `squash` 。本文本显示了它在此示例中的外观。
+   命令会从上到下处理，即从最旧的提交到最近的提交。要合并此 Pull Request 中此分支中的所有提交，请将除了第一个提交之外的所有提交的 `pick` 命令更改为 `squash`。本文本显示了它在此示例中的外观。
 
    <code-example language="none" hideCopy>
 
@@ -286,7 +286,7 @@ Perform these steps from a command-line tool on your local computer.
 
    With this edit, `git rebase` picks the first commit and combines the later commits into the first one.
 
-   通过此编辑， `git rebase` 会选择第一个提交并将后提交的合并到第一个提交中。
+   通过此编辑，`git rebase` 会选择第一个提交并将后提交的合并到第一个提交中。
 
    The commit message of the commit with the `pick` command, is the commit message used for the resulting commit.
    Make sure that it in the correct format and starts with `docs:`.
@@ -299,7 +299,7 @@ Perform these steps from a command-line tool on your local computer.
    In this example, the rebase command combined the five commits to create a single commit in your working branch.
    This is the commit log after the rebase command completes.
 
-   更新命令后，保存并退出编辑器。 `git rebase` commit 会处理这些命令并更新你工作区中的提交日志。在此示例中，rebase 命令结合了五个提交，以在你的工作分支中创建一个提交。这是 rebase 命令完成后的提交日志。
+   更新命令后，保存并退出编辑器。`git rebase` commit 会处理这些命令并更新你工作区中的提交日志。在此示例中，rebase 命令结合了五个提交，以在你的工作分支中创建一个提交。这是 rebase 命令完成后的提交日志。
 
    <div class="lightbox">
 
@@ -341,7 +341,7 @@ Repeat these update steps as necessary to respond to all the feedback you receiv
 After you address all the feedback and your pull request has been approved, it is merged into `angular/angular`.
 The changes in your pull request should appear in the documentation shortly afterwards.
 
-在你解决所有反馈并且你的 Pull Request 被批准后，它会合并到 `angular/angular` 。你的 Pull Request 中的更改应该很快出现在文档中。
+在你解决所有反馈并且你的 Pull Request 被批准后，它会合并到 `angular/angular`。你的 Pull Request 中的更改应该很快出现在文档中。
 
 After your pull request is merged into `angular/angular`, you can [clean up your workspace](guide/doc-edit-finish).
 

@@ -57,7 +57,7 @@ import {unwrapRNode} from './view_utils';
  * Component instance associated with the element or `null` if there
  *    is no component associated with it.
  *
- * 与元素关联的组件实例，如果没有关联的组件，则返回 `null` 。
+ * 与元素关联的组件实例，如果没有关联的组件，则返回 `null`。
  *
  * @publicApi
  * @globalApi ng
@@ -414,7 +414,7 @@ export function getLocalRefs(target: {}): {[key: string]: any} {
  * Retrieves the host element of a component or directive instance.
  * The host element is the DOM element that matched the selector of the directive.
  *
- * 检索组件或指令实例的宿主元素。 宿主元素是与指令的选择器匹配的 DOM 元素。
+ * 检索组件或指令实例的宿主元素。宿主元素是与指令的选择器匹配的 DOM 元素。
  *
  * @param componentOrDirective Component or directive instance for which the host
  *     element should be retrieved.
@@ -443,7 +443,7 @@ export function getHostElement(componentOrDirective: {}): Element {
  * that the text returned will include re-projected content of
  * the component as well.
  *
- * 此函数检索组件的宿主元素，然后返回该元素的 `textContent` 。 这意味着返回的文本也将包括组件的重新投影内容。
+ * 此函数检索组件的宿主元素，然后返回该元素的 `textContent`。这意味着返回的文本也将包括组件的重新投影内容。
  *
  * @param component The component to return the content text for.
  *
@@ -602,12 +602,12 @@ function isDirectiveDefHack(obj: any): obj is DirectiveDef<any> {
 /**
  * Retrieve the component `LView` from component/element.
  *
- * 从组件/元素中检索组件 `LView` 。
+ * 从组件/元素中检索组件 `LView`。
  *
  * NOTE: `LView` is a private and should not be leaked outside.
  *       Don't export this method to `ng.*` on window.
  *
- * 注意： `LView` 是私有的，不应泄露到外部。 不要将此方法导出到窗口上的 `ng.*` 。
+ * 注意：`LView` 是私有的，不应泄露到外部。不要将此方法导出到窗口上的 `ng.*`。
  *
  * @param target DOM element or component instance for which to retrieve the LView.
  *

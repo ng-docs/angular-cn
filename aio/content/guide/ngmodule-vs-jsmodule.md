@@ -104,22 +104,22 @@ It then configures the `@NgModule` with the following arrays:
 * `declarations`: The components, directives, and pipes that belong to the NgModule.
   A new application project's root NgModule has only one component, called `AppComponent`.
 
-  `declarations` ：属于该 NgModule 的组件、指令和管道。新应用项目的根模块中只有一个叫做 `AppComponent` 的组件。
+  `declarations`：属于该 NgModule 的组件、指令和管道。新应用项目的根模块中只有一个叫做 `AppComponent` 的组件。
 
 * `imports`: Other NgModules you are using, so that you can use their declarables.
   The newly generated root NgModule imports [`BrowserModule`](api/platform-browser/BrowserModule "BrowserModule NgModule") in order to use browser-specific services such as [DOM](https://www.w3.org/TR/DOM-Level-2-Core/introduction.html "Definition of Document Object Model") rendering, sanitization, and location.
 
-  `imports` ：你要用的其他 NgModule，这样你才可以使用它们的可声明对象。新生成的根模块会导入[`BrowserModule`](api/platform-browser/BrowserModule "BrowserModule NgModule")，以便使用特定于浏览器的服务，比如 [DOM](https://www.w3.org/TR/DOM-Level-2-Core/introduction.html "文档对象模型的定义") 渲染、无害化处理和定位。
+  `imports`：你要用的其他 NgModule，这样你才可以使用它们的可声明对象。新生成的根模块会导入[`BrowserModule`](api/platform-browser/BrowserModule "BrowserModule NgModule")，以便使用特定于浏览器的服务，比如 [DOM](https://www.w3.org/TR/DOM-Level-2-Core/introduction.html "文档对象模型的定义") 渲染、无害化处理和定位。
 
 * `providers`: Providers of services that components in other NgModules can use.
   There are no providers in a newly generated root NgModule.
 
-  `providers` ：一些服务提供者，可供其他 NgModule 中的组件使用。新生成的根模块中没有提供者。
+  `providers`：一些服务提供者，可供其他 NgModule 中的组件使用。新生成的根模块中没有提供者。
 
 * `bootstrap`: The component that Angular creates and inserts into the `index.html` host web page, thereby bootstrapping the application.
   This component, `AppComponent`, appears in both the `declarations` and the `bootstrap` arrays.
 
-  `bootstrap` ：由 Angular 创建并插入到宿主页面 `index.html` 中的组件，以便引导该应用。这个组件 `AppComponent` 会同时出现在 `declarations` 和 `bootstrap` 数组中。
+  `bootstrap`：由 Angular 创建并插入到宿主页面 `index.html` 中的组件，以便引导该应用。这个组件 `AppComponent` 会同时出现在 `declarations` 和 `bootstrap` 数组中。
 
 ## Next steps
 

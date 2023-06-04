@@ -35,7 +35,7 @@ const enum WalkTNodeTreeAction {
   /**
    * node create in the native environment. Run on initial creation.
    *
-   * 在原生环境中创建节点。 在初始创建时运行。
+   * 在原生环境中创建节点。在初始创建时运行。
    *
    */
   Create = 0,
@@ -44,7 +44,7 @@ const enum WalkTNodeTreeAction {
    * node insert in the native environment.
    * Run when existing node has been detached and needs to be re-attached.
    *
-   * 在原生环境中插入节点。 当现有节点已分离并需要重新连接时运行。
+   * 在原生环境中插入节点。当现有节点已分离并需要重新连接时运行。
    *
    */
   Insert = 1,
@@ -208,7 +208,7 @@ export function removeViewFromContainer(tView: TView, lView: LView): void {
  *
  * @param parentTNode The `TNode` where the `LView` should be attached to.
  *
- * `LView` 应附加到的 `TNode` 。
+ * `LView` 应附加到的 `TNode`。
  *
  * @param renderer Current renderer to use for DOM manipulations.
  *
@@ -220,7 +220,7 @@ export function removeViewFromContainer(tView: TView, lView: LView): void {
  *
  * @param parentNativeNode The parent `RElement` where it should be inserted into.
  *
- * 它应该被插入到的父 `RElement` 。
+ * 它应该被插入到的父 `RElement`。
  *
  * @param beforeNode The node before which elements should be added, if insert mode
  *
@@ -239,7 +239,7 @@ export function addViewToContainer(
 /**
  * Detach a `LView` from the DOM by detaching its nodes.
  *
- * 通过分离节点从 DOM 中分离 `LView` 。
+ * 通过分离节点从 DOM 中分离 `LView`。
  *
  * @param tView The `TView` of the `LView` to be detached
  *
@@ -247,7 +247,7 @@ export function addViewToContainer(
  *
  * @param lView the `LView` to be detached.
  *
- * 要分离的 `LView` 。
+ * 要分离的 `LView`。
  *
  */
 export function renderDetachView(tView: TView, lView: LView) {
@@ -335,7 +335,7 @@ export function destroyViewTree(rootView: LView): void {
  * root node of another view \(in that case, the view's elements will be added when
  * the container's parent view is added later\).
  *
- * 这会将视图添加到容器的活动视图数组中的正确位置。 如果容器不是另一个视图的根节点，它还会将视图的元素添加到 DOM（在这种情况下，将在稍后添加容器的父视图时添加视图的元素）。
+ * 这会将视图添加到容器的活动视图数组中的正确位置。如果容器不是另一个视图的根节点，它还会将视图的元素添加到 DOM（在这种情况下，将在稍后添加容器的父视图时添加视图的元素）。
  *
  * @param tView The `TView` of the `LView` to insert
  *
@@ -445,7 +445,7 @@ function detachMovedView(declarationContainer: LContainer, lView: LView) {
  * This method removes the view from the container's array of active views. It also
  * removes the view's elements from the DOM.
  *
- * 此方法从容器的活动视图数组中删除视图。 它还从 DOM 中删除视图的元素。
+ * 此方法从容器的活动视图数组中删除视图。它还从 DOM 中删除视图的元素。
  *
  * @param lContainer The container from which to detach a view
  *
@@ -530,7 +530,7 @@ export function destroyLView(tView: TView, lView: LView) {
  * listeners. Listeners are removed as the last step so events delivered in the onDestroys hooks
  * can be propagated to @Output listeners.
  *
- * 为给定视图中的所有指令和管道调用 onDestroys 挂钩，然后删除所有侦听器。 最后一步删除了侦听器，因此可以将 onDestroys 挂钩中传递的事件传播到 @Output 侦听器。
+ * 为给定视图中的所有指令和管道调用 onDestroys 挂钩，然后删除所有侦听器。最后一步删除了侦听器，因此可以将 onDestroys 挂钩中传递的事件传播到 @Output 侦听器。
  *
  * @param tView `TView` for the `LView` to clean up.
  *
@@ -683,14 +683,14 @@ function executeOnDestroys(tView: TView, lView: LView): void {
  *   insertion because the content of a component will be projected.
  *   `<component><content>delayed due to projection</content></component>`
  *
- *   投影：当创建组件的子内容元素时，我们必须跳过插入，因为组件的内容将被投影。 `<component><content>delayed due to projection</content></component>`
+ *   投影：当创建组件的子内容元素时，我们必须跳过插入，因为组件的内容将被投影。`<component><content>delayed due to projection</content></component>`
  *
  * - Parent container is disconnected: This can happen when we are inserting a view into
  *   parent container, which itself is disconnected. For example the parent container is part
  *   of a View which has not be inserted or is made for projection but has not been inserted
  *   into destination.
  *
- *   父容器已断开连接：当我们将视图插入父容器时，这可能会发生，而父容器本身已断开连接。 例如，父容器是尚未插入或用于投影但尚未插入目标的视图的一部分。
+ *   父容器已断开连接：当我们将视图插入父容器时，这可能会发生，而父容器本身已断开连接。例如，父容器是尚未插入或用于投影但尚未插入目标的视图的一部分。
  *
  * @param tView: Current `TView`.
  * @param tNode: `TNode` for which we wish to retrieve render parent.
@@ -703,13 +703,13 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
 /**
  * Get closest `RElement` or `null` if it can't be found.
  *
- * 获取最近的 `RElement` ，如果找不到则返回 `null` 。
+ * 获取最近的 `RElement`，如果找不到则返回 `null`。
  *
  * If `TNode` is `TNodeType.Element` => return `RElement` at `LView[tNode.index]` location.
  * If `TNode` is `TNodeType.ElementContainer|IcuContain` => return the parent \(recursively\).
  * If `TNode` is `null` then return host `RElement`:
  *
- * 如果 `TNode` 是 `TNodeType.Element` => 在 `LView[tNode.index]` 位置返回 `RElement` 。 如果 `TNode` 是 `TNodeType.ElementContainer|IcuContain` => 返回父级（递归）。 如果 `TNode` 为 `null` 则返回宿主 `RElement` ：
+ * 如果 `TNode` 是 `TNodeType.Element` => 在 `LView[tNode.index]` 位置返回 `RElement`。如果 `TNode` 是 `TNodeType.ElementContainer|IcuContain` => 返回父级（递归）。如果 `TNode` 为 `null` 则返回宿主 `RElement`：
  *
  * - return `null` if projection
  *
@@ -717,7 +717,7 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
  *
  * - return `null` if parent container is disconnected \(we have no parent.\)
  *
- *   如果父容器断开连接（我们没有父容器），则返回 `null` 。
+ *   如果父容器断开连接（我们没有父容器），则返回 `null`。
  *
  * @param tView: Current `TView`.
  * @param tNode: `TNode` for which we wish to retrieve `RElement` (or `null` if host element is
@@ -727,7 +727,7 @@ export function getParentRElement(tView: TView, tNode: TNode, lView: LView): REl
  *
  * `null` if the `RElement` can't be determined at this time \(no parent / projection\)
  *
- * 如果此时无法确定 `RElement` （无父项/投影）， `null`
+ * 如果此时无法确定 `RElement` （无父项/投影），`null`
  *
  */
 export function getClosestRElement(tView: TView, tNode: TNode|null, lView: LView): RElement|null {
@@ -773,7 +773,7 @@ export function getClosestRElement(tView: TView, tNode: TNode|null, lView: LView
  * Inserts a native node before another native node for a given parent.
  * This is a utility function that can be used when native nodes were determined.
  *
- * 在给定父节点的另一个原生节点之前插入一个原生节点。 这是一个实用函数，可以在确定原生节点时使用。
+ * 在给定父节点的另一个原生节点之前插入一个原生节点。这是一个实用函数，可以在确定原生节点时使用。
  *
  */
 export function nativeInsertBefore(
@@ -847,7 +847,7 @@ export function nativeNextSibling(renderer: Renderer, node: RNode): RNode|null {
  * This method determines the `RNode` in front of which we should insert the `currentRNode`. This
  * takes `TNode.insertBeforeIndex` into account if i18n code has been invoked.
  *
- * 此方法确定我们应该在其前面插入 `currentRNode` `RNode` 。 如果已调用 i18n 代码，这会将 `TNode.insertBeforeIndex` 考虑在内。
+ * 此方法确定我们应该在其前面插入 `currentRNode` `RNode`。如果已调用 i18n 代码，这会将 `TNode.insertBeforeIndex` 考虑在内。
  *
  * @param parentTNode parent `TNode`
  *
@@ -869,12 +869,12 @@ function getInsertInFrontOfRNode(parentTNode: TNode, currentTNode: TNode, lView:
  * Find a node in front of which `currentTNode` should be inserted. \(Does not take i18n into
  * account\)
  *
- * 查找应在其前面插入 `currentTNode` 节点。 （不考虑 i18n）
+ * 查找应在其前面插入 `currentTNode` 节点。（不考虑 i18n）
  *
  * This method determines the `RNode` in front of which we should insert the `currentRNode`. This
  * does not take `TNode.insertBeforeIndex` into account.
  *
- * 此方法确定我们应该在其前面插入 `currentRNode` `RNode` 。 这不考虑 `TNode.insertBeforeIndex` 。
+ * 此方法确定我们应该在其前面插入 `currentRNode` `RNode`。这不考虑 `TNode.insertBeforeIndex`。
  *
  * @param parentTNode parent `TNode`
  *
@@ -934,7 +934,7 @@ export function setI18nHandling(
 /**
  * Appends the `child` native node \(or a collection of nodes\) to the `parent`.
  *
- * 将 `child` 原生节点（或节点集合）附加到 `parent` 。
+ * 将 `child` 原生节点（或节点集合）附加到 `parent`。
  *
  * @param tView The `TView` to be appended
  *
@@ -1060,7 +1060,7 @@ export function getBeforeNodeForView(viewIndexInContainer: number, lContainer: L
  * parent from the native tree as not all platforms / browsers support the equivalent of
  * node.remove\(\).
  *
- * 使用给定的渲染器删除原生节点本身。 要删除节点，我们要从原生树中查找其父节点，因为并非所有平台/浏览器都支持 node.remove\(\) 的等价物。
+ * 使用给定的渲染器删除原生节点本身。要删除节点，我们要从原生树中查找其父节点，因为并非所有平台/浏览器都支持 node.remove\(\) 的等价物。
  *
  * @param renderer A renderer to be used
  *
@@ -1102,7 +1102,7 @@ export function clearElementContents(rElement: RElement): void {
  * Performs the operation of `action` on the node. Typically this involves inserting or removing
  * nodes on the LView or projection boundary.
  *
- * 在节点上执行 `action` 操作。 通常这涉及在 LView 或投影边界上插入或删除节点。
+ * 在节点上执行 `action` 操作。通常这涉及在 LView 或投影边界上插入或删除节点。
  *
  */
 function applyNodes(
@@ -1154,11 +1154,11 @@ function applyNodes(
  * Inserting a view without projection or containers at top level is simple. Just iterate over the
  * root nodes of the View, and for each node perform the `action`.
  *
- * 在顶层插入没有投影或容器的视图很简单。 只需遍历视图的根节点，并为每个节点执行 `action` 。
+ * 在顶层插入没有投影或容器的视图很简单。只需遍历视图的根节点，并为每个节点执行 `action`。
  *
  * Things get more complicated with containers and projections. That is because coming across:
  *
- * 容器和投影让事情变得更加复杂。 那是因为遇到：
+ * 容器和投影让事情变得更加复杂。那是因为遇到：
  *
  * - Container: implies that we have to insert/remove/destroy the views of that container as well
  *              which in turn can have their own Containers at the View roots.
@@ -1169,12 +1169,12 @@ function applyNodes(
  *               complication is that the nodes we are projecting can themselves have Containers
  *               or other Projections.
  *
- *   投影：意味着我们必须插入/删除/销毁投影的节点。 复杂的是我们投影的节点本身可以​​有容器或其他投影。
+ *   投影：意味着我们必须插入/删除/销毁投影的节点。复杂的是我们投影的节点本身可以​​有容器或其他投影。
  *
  * As you can see this is a very recursive problem. Yes recursion is not most efficient but the
  * code is complicated enough that trying to implemented with recursion becomes unmaintainable.
  *
- * 如你所见，这是一个非常递归的问题。 是的，递归不是最有效的，但代码足够复杂，以至于尝试用递归实现变得无法维护。
+ * 如你所见，这是一个非常递归的问题。是的，递归不是最有效的，但代码足够复杂，以至于尝试用递归实现变得无法维护。
  *
  * @param tView The `TView` which needs to be inserted, detached, destroyed
  *
@@ -1221,7 +1221,7 @@ function applyView(
  * Inserting a projection requires us to locate the projected nodes from the parent component. The
  * complication is that those nodes themselves could be re-projected from their parent component.
  *
- * 插入投影需要我们从父组件定位投影节点。 复杂的是，这些节点本身可以​​从它们的父组件中重新投影。
+ * 插入投影需要我们从父组件定位投影节点。复杂的是，这些节点本身可以​​从它们的父组件中重新投影。
  *
  * @param tView The `TView` of `LView` which needs to be inserted, detached, destroyed
  *
@@ -1229,7 +1229,7 @@ function applyView(
  *
  * @param lView The `LView` which needs to be inserted, detached, destroyed.
  *
- * 需要插入、分离、销毁的 `LView` 。
+ * 需要插入、分离、销毁的 `LView`。
  *
  * @param tProjectionNode node to project
  *
@@ -1254,7 +1254,7 @@ export function applyProjection(tView: TView, lView: LView, tProjectionNode: TPr
  * Inserting a projection requires us to locate the projected nodes from the parent component. The
  * complication is that those nodes themselves could be re-projected from their parent component.
  *
- * 插入投影需要我们从父组件定位投影节点。 复杂的是，这些节点本身可以​​从它们的父组件中重新投影。
+ * 插入投影需要我们从父组件定位投影节点。复杂的是，这些节点本身可以​​从它们的父组件中重新投影。
  *
  * @param renderer Render to use
  *
@@ -1389,12 +1389,12 @@ function applyContainer(
  *
  * @param prop Property to write to. This would be the class/style name.
  *
- * 要写入的属性。 这将是类/样式名称。
+ * 要写入的属性。这将是类/样式名称。
  *
  * @param value Value to write. If `null`/`undefined`/`false` this is considered a remove \(set/add
  *        otherwise\).
  *
- * 写值。 如果 `null` / `undefined` / `false` 这被认为是删除（否则设置/添加）。
+ * 写值。如果 `null` / `undefined` / `false` 这被认为是删除（否则设置/添加）。
  *
  */
 export function applyStyling(
@@ -1434,12 +1434,12 @@ export function applyStyling(
 /**
  * Write `cssText` to `RElement`.
  *
- * 将 `cssText` 写入 `RElement` 。
+ * 将 `cssText` 写入 `RElement`。
  *
  * This function does direct write without any reconciliation. Used for writing initial values, so
  * that static styling values do not pull in the style parser.
  *
- * 此函数不进行任何协调直接写入。 用于写入初始值，以便静态样式值不会引入样式解析器。
+ * 此函数不进行任何协调直接写入。用于写入初始值，以便静态样式值不会引入样式解析器。
  *
  * @param renderer Renderer to use
  *
@@ -1463,12 +1463,12 @@ export function writeDirectStyle(renderer: Renderer, element: RElement, newValue
 /**
  * Write `className` to `RElement`.
  *
- * 将 `className` 写入 `RElement` 。
+ * 将 `className` 写入 `RElement`。
  *
  * This function does direct write without any reconciliation. Used for writing initial values, so
  * that static styling values do not pull in the style parser.
  *
- * 此函数不进行任何协调直接写入。 用于写入初始值，以便静态样式值不会引入样式解析器。
+ * 此函数不进行任何协调直接写入。用于写入初始值，以便静态样式值不会引入样式解析器。
  *
  * @param renderer Renderer to use
  *

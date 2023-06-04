@@ -4,7 +4,7 @@
 
 The Creating and injecting services topic describes how to use classes as dependencies. Besides classes, you can also use other values such as Boolean, string, date, and objects as dependencies. Angular DI provides the necessary APIs to make the dependency configuration flexible, so you can make those values available in DI.
 
-“创建与注入服务”这个主题介绍的是如何使用类作为依赖项。除了类之外，你还可以用其他值作为依赖项，例如 Boolean、字符串、日期和对象。 Angular DI 提供了一些必要的 API 来让依赖的配置方式更加灵活，以便你可以把这些值在 DI 中可用。
+“创建与注入服务”这个主题介绍的是如何使用类作为依赖项。除了类之外，你还可以用其他值作为依赖项，例如 Boolean、字符串、日期和对象。Angular DI 提供了一些必要的 API 来让依赖的配置方式更加灵活，以便你可以把这些值在 DI 中可用。
 
 ## Specifying a provider token
 
@@ -44,7 +44,7 @@ The expanded provider configuration is an object literal with two properties:
 
 - The second property is a provider definition object, which tells the injector how to create the dependency value. The provider-definition key can be one of the following:
 
-  第二个属性是一个提供者定义对象，它会告诉注入器如何创建依赖值。 提供者定义对象中的键可以是以下值之一：
+  第二个属性是一个提供者定义对象，它会告诉注入器如何创建依赖值。提供者定义对象中的键可以是以下值之一：
 
   - useClass - this option tells Angular DI to instantiate a provided class when a dependency is injected
 
@@ -115,7 +115,7 @@ In the following example, the injector injects the singleton instance of `NewLog
 
 Ensure you do not alias `OldLogger` to `NewLogger` with `useClass`, as this creates two different `NewLogger` instances.
 
-确保你没有使用 `OldLogger` 将 `NewLogger` 别名为 `useClass` ，因为这会创建两个不同 `NewLogger` 实例。
+确保你没有使用 `OldLogger` 将 `NewLogger` 别名为 `useClass`，因为这会创建两个不同 `NewLogger` 实例。
 
 ### Factory providers: useFactory
 
@@ -157,7 +157,7 @@ You inject both `Logger` and `UserService` into the factory provider so the inje
   The `Logger` and `UserService` classes serve as tokens for their own class providers.
   The injector resolves these tokens and injects the corresponding services into the matching `heroServiceFactory` factory function parameters.
 
-  `deps` 属性是一个提供者令牌的数组。 `Logger` 和 `UserService` 类作为它们自己的类提供者的令牌。注入器会解析这些令牌，并将相应的服务注入到匹配的 `heroServiceFactory` 工厂函数参数中。
+  `deps` 属性是一个提供者令牌的数组。`Logger` 和 `UserService` 类作为它们自己的类提供者的令牌。注入器会解析这些令牌，并将相应的服务注入到匹配的 `heroServiceFactory` 工厂函数参数中。
 
 Capturing the factory provider in the exported variable, `heroServiceProvider`, makes the factory provider reusable.
 

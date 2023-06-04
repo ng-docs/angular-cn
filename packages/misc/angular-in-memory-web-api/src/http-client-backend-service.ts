@@ -22,7 +22,7 @@ import {InMemoryBackendConfig, InMemoryBackendConfigArgs, InMemoryDbService, Res
  * Conforms mostly to behavior described here:
  * https://www.restapitutorial.com/lessons/httpmethods.html
  *
- * 对于 Angular `HttpClient` ，模拟由注入的 `InMemoryDbService` 提供的简单内存数据存储支持的 RESTy
+ * 对于 Angular `HttpClient`，模拟由注入的 `InMemoryDbService` 提供的简单内存数据存储支持的 RESTy
  * Web api 的行为。主要符合此处描述的行为：
  * https://www.restapitutorial.com/lessons/httpmethods.html
  *

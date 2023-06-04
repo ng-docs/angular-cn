@@ -213,7 +213,7 @@ export const enum NavigationCancellationCode {
   /**
    * A navigation failed because a guard returned a `UrlTree` to redirect.
    *
-   * 导航失败，因为守卫返回了要重定向的 `UrlTree` 。
+   * 导航失败，因为守卫返回了要重定向的 `UrlTree`。
    *
    */
   Redirect,
@@ -234,7 +234,7 @@ export const enum NavigationCancellationCode {
   /**
    * A navigation failed because a guard returned `false`.
    *
-   * 导航失败，因为守卫返回 `false` 。
+   * 导航失败，因为守卫返回 `false`。
    *
    */
   GuardRejected,
@@ -260,7 +260,7 @@ export const enum NavigationSkippedCode {
    * A navigation was skipped because the configured `UrlHandlingStrategy` return `false` for both
    * the current Router URL and the target of the navigation.
    *
-   * 导航被跳过，因为配置的 `UrlHandlingStrategy` 为当前路由器 URL 和导航目标返回 `false` 。
+   * 导航被跳过，因为配置的 `UrlHandlingStrategy` 为当前路由器 URL 和导航目标返回 `false`。
    *
    * @see UrlHandlingStrategy
    */
@@ -315,7 +315,7 @@ export class NavigationCancel extends RouterEvent {
  * is set to `ignore` and the navigation URL is not different than the
  * current state.
  *
- * 跳过导航时触发的事件。 发生这种情况的原因有很多，包括 onSameUrlHandling 设置为 `ignore` 并且导航 URL 与当前状态没有区别。
+ * 跳过导航时触发的事件。发生这种情况的原因有很多，包括 onSameUrlHandling 设置为 `ignore` 并且导航 URL 与当前状态没有区别。
  *
  * @publicApi
  */
@@ -710,67 +710,67 @@ export class Scroll {
  *   the router [lazy loads](/guide/router#lazy-loading) a route configuration.
  *
  *   [RouteConfigLoadStart](api/router/RouteConfigLoadStart)
- *   ：在路由器[惰性加载](/guide/router#lazy-loading)路由配置之前。
+ *：在路由器[惰性加载](/guide/router#lazy-loading)路由配置之前。
  *
  * * [RouteConfigLoadEnd](api/router/RouteConfigLoadEnd): After a route has been lazy loaded.
  *
- *   [RouteConfigLoadEnd](api/router/RouteConfigLoadEnd) ：惰性加载路由后。
+ *   [RouteConfigLoadEnd](api/router/RouteConfigLoadEnd)：惰性加载路由后。
  *
  * * [RoutesRecognized](api/router/RoutesRecognized): When the router parses the URL
  *   and the routes are recognized.
  *
- *   [RoutesRecognized](api/router/RoutesRecognized) ：路由器解析 URL 并识别出路由时。
+ *   [RoutesRecognized](api/router/RoutesRecognized)：路由器解析 URL 并识别出路由时。
  *
  * * [GuardsCheckStart](api/router/GuardsCheckStart): When the router begins the *guards*
  *   phase of routing.
  *
- *   [GuardsCheckStart](api/router/GuardsCheckStart) ：当路由器开始*路由的守卫*阶段时。
+ *   [GuardsCheckStart](api/router/GuardsCheckStart)：当路由器开始*路由的守卫*阶段时。
  *
  * * [ChildActivationStart](api/router/ChildActivationStart): When the router
  *   begins activating a route's children.
  *
- *   [ChildActivationStart](api/router/ChildActivationStart) ：当路由器开始激活子路由时。
+ *   [ChildActivationStart](api/router/ChildActivationStart)：当路由器开始激活子路由时。
  *
  * * [ActivationStart](api/router/ActivationStart): When the router begins activating a route.
  *
- *   [ActivationStart](api/router/ActivationStart) ：路由器开始激活路由时。
+ *   [ActivationStart](api/router/ActivationStart)：路由器开始激活路由时。
  *
  * * [GuardsCheckEnd](api/router/GuardsCheckEnd): When the router finishes the *guards*
  *   phase of routing successfully.
  *
- *   [GuardsCheckEnd](api/router/GuardsCheckEnd) ：当路由器*成功完成路由的保护*阶段时。
+ *   [GuardsCheckEnd](api/router/GuardsCheckEnd)：当路由器*成功完成路由的保护*阶段时。
  *
  * * [ResolveStart](api/router/ResolveStart): When the router begins the *resolve*
  *   phase of routing.
  *
- *   [ResolveStart](api/router/ResolveStart) ：路由器开始*路由的解析*阶段时。
+ *   [ResolveStart](api/router/ResolveStart)：路由器开始*路由的解析*阶段时。
  *
  * * [ResolveEnd](api/router/ResolveEnd): When the router finishes the *resolve*
  *   phase of routing successfully.
  *
- *   [ResolveEnd](api/router/ResolveEnd) ：当路由器*成功完成路由的解析*阶段时。
+ *   [ResolveEnd](api/router/ResolveEnd)：当路由器*成功完成路由的解析*阶段时。
  *
  * * [ChildActivationEnd](api/router/ChildActivationEnd): When the router finishes
  *   activating a route's children.
  *
- *   [ChildActivationEnd](api/router/ChildActivationEnd) ：当路由器完成激活子路由时。
+ *   [ChildActivationEnd](api/router/ChildActivationEnd)：当路由器完成激活子路由时。
  *
  * * [ActivationEnd](api/router/ActivationEnd): When the router finishes activating a route.
  *
- *   [ActivationEnd](api/router/ActivationEnd) ：路由器完成路由激活后。
+ *   [ActivationEnd](api/router/ActivationEnd)：路由器完成路由激活后。
  *
  * * [NavigationEnd](api/router/NavigationEnd): When navigation ends successfully.
  *
- *   [NavigationEnd](api/router/NavigationEnd) ：导航成功结束时。
+ *   [NavigationEnd](api/router/NavigationEnd)：导航成功结束时。
  *
  * * [NavigationCancel](api/router/NavigationCancel): When navigation is canceled.
  *
- *   [NavigationCancel](api/router/NavigationCancel) ：取消导航时。
+ *   [NavigationCancel](api/router/NavigationCancel)：取消导航时。
  *
  * * [NavigationError](api/router/NavigationError): When navigation fails
  *   due to an unexpected error.
  *
- *   [NavigationError](api/router/NavigationError) ：由于意外错误导致导航失败时。
+ *   [NavigationError](api/router/NavigationError)：由于意外错误导致导航失败时。
  *
  * * [Scroll](api/router/Scroll): When the user scrolls.
  *

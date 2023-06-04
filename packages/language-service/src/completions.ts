@@ -310,7 +310,7 @@ export class CompletionBuilder<N extends TmplAstNode|AST> {
   /**
    * Get the `ts.Symbol` for a specific completion for a property expression.
    *
-   * 获取属性表达式的特定自动完成的 `ts.Symbol` 。
+   * 获取属性表达式的特定自动完成的 `ts.Symbol`。
    *
    */
   private getPropertyExpressionCompletionSymbol(

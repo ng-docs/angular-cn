@@ -30,7 +30,7 @@ enum NavigationResult {
  *   `NavigationCancellationCode.SupersededByNewNavigation`. In these cases, the
  *   redirecting/superseding navigation must finish.
  *
- *   `NavigationCancel` 事件发出并且代码不是 `NavigationCancellationCode.Redirect` 或 `NavigationCancellationCode.SupersededByNewNavigation` 。 在这些情况下，重定向/取代导航必须完成。
+ *   `NavigationCancel` 事件发出并且代码不是 `NavigationCancellationCode.Redirect` 或 `NavigationCancellationCode.SupersededByNewNavigation`。在这些情况下，重定向/取代导航必须完成。
  *
  * - `NavigationError`, `NavigationEnd`, or `NavigationSkipped` event emits
  *

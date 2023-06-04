@@ -21,7 +21,7 @@ import {getInstructionFromIcuCreateOpCode, getParentFromIcuCreateOpCode, getRefF
  * This function provides a human readable view of the opcodes. This is useful when debugging the
  * application as well as writing more readable tests.
  *
- * 如果启用了 `ngDevMode` ，则此函数附加到 `I18nCreateOpCodes.debug`
+ * 如果启用了 `ngDevMode`，则此函数附加到 `I18nCreateOpCodes.debug`
  * 属性。此函数提供了人类可读的操作码视图。这在调试应用程序以及编写更具可读性的测试时很有用。
  *
  * @param this `I18nCreateOpCodes` if attached as a method.
@@ -62,7 +62,7 @@ export function i18nCreateOpCodesToString(
  * This function provides a human readable view of the opcodes. This is useful when debugging the
  * application as well as writing more readable tests.
  *
- * 如果启用了 `ngDevMode` ，则此函数附加到 `I18nUpdateOpCodes.debug`
+ * 如果启用了 `ngDevMode`，则此函数附加到 `I18nUpdateOpCodes.debug`
  * 属性。此函数提供了人类可读的操作码视图。这在调试应用程序以及编写更具可读性的测试时很有用。
  *
  * @param this `I18nUpdateOpCodes` if attached as a method.
@@ -135,8 +135,8 @@ export function i18nUpdateOpCodesToString(
  * function provides a human readable view of the opcodes. This is useful when debugging the
  * application as well as writing more readable tests.
  *
- * 如果启用了 `ngDevMode` ，则此函数附加到 `I18nCreateOpCodes.debug`
- * 。此函数提供了人类可读的操作码视图。这在调试应用程序以及编写更具可读性的测试时很有用。
+ * 如果启用了 `ngDevMode`，则此函数附加到 `I18nCreateOpCodes.debug`
+ *。此函数提供了人类可读的操作码视图。这在调试应用程序以及编写更具可读性的测试时很有用。
  *
  * @param this `I18nCreateOpCodes` if attached as a method.
  *
@@ -199,8 +199,8 @@ export function icuCreateOpCodesToString(
  * function provides a human readable view of the opcodes. This is useful when debugging the
  * application as well as writing more readable tests.
  *
- * 如果启用了 `ngDevMode` ，则此函数附加到 `I18nRemoveOpCodes.debug`
- * 。此函数提供了人类可读的操作码视图。这在调试应用程序以及编写更具可读性的测试时很有用。
+ * 如果启用了 `ngDevMode`，则此函数附加到 `I18nRemoveOpCodes.debug`
+ *。此函数提供了人类可读的操作码视图。这在调试应用程序以及编写更具可读性的测试时很有用。
  *
  * @param this `I18nRemoveOpCodes` if attached as a method.
  *

@@ -125,7 +125,7 @@ Zone.__load_patch('Error', (global: any, Zone: ZoneType, api: _ZonePrivate) => {
    * This is ZoneAwareError which processes the stack frame and cleans up extra frames as well as
    * adds zone information to it.
    *
-   * 这是 ZoneAwareError ，它会处理堆栈帧并清理额外的帧以及向其添加区域信息。
+   * 这是 ZoneAwareError，它会处理堆栈帧并清理额外的帧以及向其添加区域信息。
    *
    */
   function ZoneAwareError(this: unknown|typeof NativeError): Error {

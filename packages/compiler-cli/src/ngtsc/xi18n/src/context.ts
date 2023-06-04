@@ -18,7 +18,7 @@ import {InterpolationConfig} from '@angular/compiler';
  * can't depend directly on `MessageBundle`.
  *
  * 此接口与 View Engine 编译器的 `MessageBundle` 类兼容，该类用于为 VE 实现 xi18n。由于 ngtsc
- * 的依赖图，需要一个接口，因为它不能直接依赖于 `MessageBundle` 。
+ * 的依赖图，需要一个接口，因为它不能直接依赖于 `MessageBundle`。
  *
  */
 export interface Xi18nContext {
@@ -32,7 +32,7 @@ export interface Xi18nContext {
    * as diagnostics anyway.
    *
    * 在 `MessageBundle` 本身中，这会返回模板中的任何 `ParseError`
-   * 。在此接口中，为简单起见，返回类型被声明为 `void` ，因为任何解析错误都会被报告为诊断错误。
+   *。在此接口中，为简单起见，返回类型被声明为 `void`，因为任何解析错误都会被报告为诊断错误。
    *
    */
   updateFromTemplate(html: string, url: string, interpolationConfig: InterpolationConfig): void;

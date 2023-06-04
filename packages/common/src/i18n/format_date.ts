@@ -122,7 +122,7 @@ export function formatDate(
  * We cannot use `new Date(year, month, date)` because it maps years between 0 and 99 to 1900-1999.
  * See: https://github.com/angular/angular/issues/40377
  *
- * 我们不能使用 `new Date(year, month, date)` 因为它将 0 到 99 之间的年份映射到 1900-1999 。请参阅：
+ * 我们不能使用 `new Date(year, month, date)` 因为它将 0 到 99 之间的年份映射到 1900-1999。请参阅：
  * https://github.com/angular/angular/issues/40377
  *
  * Note that this function returns a Date object whose time is midnight in the current locale's

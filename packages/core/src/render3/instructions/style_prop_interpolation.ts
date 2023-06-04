@@ -53,7 +53,7 @@ import {checkStylingProperty} from './styling';
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * @returns
  *
@@ -121,7 +121,7 @@ export function ɵɵstylePropInterpolate1(
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * @returns
  *
@@ -197,7 +197,7 @@ export function ɵɵstylePropInterpolate2(
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * @returns
  *
@@ -281,7 +281,7 @@ export function ɵɵstylePropInterpolate3(
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * @returns
  *
@@ -373,7 +373,7 @@ export function ɵɵstylePropInterpolate4(
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * @returns
  *
@@ -475,7 +475,7 @@ export function ɵɵstylePropInterpolate5(
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * @returns
  *
@@ -586,7 +586,7 @@ export function ɵɵstylePropInterpolate6(
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * @returns
  *
@@ -705,7 +705,7 @@ export function ɵɵstylePropInterpolate7(
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * @returns
  *
@@ -766,7 +766,7 @@ export function ɵɵstylePropInterpolate8(
  *
  * @param valueSuffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  * @returns
  *
  * itself, so that it may be chained.

@@ -71,7 +71,7 @@ export interface DirectiveDecorator {
    *
    * - either mark the directive as [standalone](guide/standalone-components),
    *
-   *   要么将指令标记为[Standalone](guide/standalone-components) ，
+   *   要么将指令标记为[Standalone](guide/standalone-components)，
    *
    * - or declare it in an NgModule by adding it to the `declarations` and `exports` fields.
    *
@@ -84,7 +84,7 @@ export interface DirectiveDecorator {
    * You can add the `standalone: true` flag to the Directive decorator metadata to declare it as
    * [standalone](guide/standalone-components):
    *
-   * 你可以将 `standalone: true` 标志添加到 Directive 装饰器元数据中，以将其声明为[Standalone](guide/standalone-components) ：
+   * 你可以将 `standalone: true` 标志添加到 Directive 装饰器元数据中，以将其声明为[Standalone](guide/standalone-components)：
    *
    * ```ts
    * @Directive({
@@ -226,7 +226,7 @@ export interface Directive {
    * The `inputs` property accepts either strings or object literals that configure the directive
    * properties that should be exposed as inputs.
    *
-   * Angular 在变更检测期间自动更新输入属性。 `inputs` 属性接受配置应作为输入公开的指令属性的字符串或对象文字。
+   * Angular 在变更检测期间自动更新输入属性。`inputs` 属性接受配置应作为输入公开的指令属性的字符串或对象文字。
    *
    * When an object literal is passed in, the `name` property indicates which property on the
    * class the input should write to, while the `alias` determines the name under
@@ -234,14 +234,14 @@ export interface Directive {
    * the input is required which will trigger a compile-time error if it isn't passed in when the
    * directive is used.
    *
-   * 传入对象文字时， `name` 属性指示输入应写入类的哪个属性，而 `alias` 确定输入在模板绑定中可用的名称。 `required` 属性指示输入是必需的，如果在使用指令时未传入，将触发编译时错误。
+   * 传入对象文字时，`name` 属性指示输入应写入类的哪个属性，而 `alias` 确定输入在模板绑定中可用的名称。`required` 属性指示输入是必需的，如果在使用指令时未传入，将触发编译时错误。
    *
    * When a string is passed into the `inputs` array, it can have a format of `'name'` or
    * `'name: alias'` where `name` is the property on the class that the directive should write
    * to, while the `alias` determines the name under which the input will be available in
    * template bindings. String-based input definitions are assumed to be optional.
    *
-   * 当一个字符串被传递到 `inputs` 数组时，它的格式可以是 `'name'` 或 `'name: alias'` ，其中 `name` 是指令应该写入的类的属性，而 `alias` 确定输入的名称将在模板绑定中可用。 假定基于字符串的输入定义是可选的。
+   * 当一个字符串被传递到 `inputs` 数组时，它的格式可以是 `'name'` 或 `'name: alias'`，其中 `name` 是指令应该写入的类的属性，而 `alias` 确定输入的名称将在模板绑定中可用。假定基于字符串的输入定义是可选的。
    *
    * @usageNotes
    *
@@ -431,13 +431,13 @@ export interface Directive {
    *   To listen to global events, add the target to the event name.
    *   The target can be `window`, `document` or `body`.
    *
-   *   它的 key 就是该指令想要监听的 DOM 事件。 要想监听全局事件，请把要监听的目标添加到事件名的前面。 这个目标可以是 `window`、`document` 或 `body`。
+   *   它的 key 就是该指令想要监听的 DOM 事件。要想监听全局事件，请把要监听的目标添加到事件名的前面。这个目标可以是 `window`、`document` 或 `body`。
    *
    * - The value is the statement to execute when the event occurs. If the
    *   statement evaluates to `false`, then `preventDefault` is applied on the DOM
    *   event. A handler method can refer to the `$event` local variable.
    *
-   *   它的 value 就是当该事件发生时要执行的语句。如果该语句返回 `false`，那么就会调用这个 DOM 事件的 `preventDefault` 函数。 这个语句中可以引用局部变量 `$event` 来获取事件数据。
+   *   它的 value 就是当该事件发生时要执行的语句。如果该语句返回 `false`，那么就会调用这个 DOM 事件的 `preventDefault` 函数。这个语句中可以引用局部变量 `$event` 来获取事件数据。
    *
    */
   host?: {[key: string]: string};
@@ -448,7 +448,7 @@ export interface Directive {
    * at run time, in the browser.
    * To ensure the correct behavior, the app must import `@angular/compiler`.
    *
-   * 如果存在，则该指令/组件将被 AOT 编译器忽略。它会保留在发布代码中，并且 JIT 编译器会尝试在运行时在浏览器中对其进行编译。为了确保其行为正确，该应用程序必须导入 `@angular/compiler` 。
+   * 如果存在，则该指令/组件将被 AOT 编译器忽略。它会保留在发布代码中，并且 JIT 编译器会尝试在运行时在浏览器中对其进行编译。为了确保其行为正确，该应用程序必须导入 `@angular/compiler`。
    *
    */
   jit?: true;
@@ -489,7 +489,7 @@ export interface Directive {
    * defines an input named `menuDisabled`, you can alias this to `disabled` by adding
    * `'menuDisabled: disabled'` as an entry to `inputs`.
    *
-   * 你可以通过在原始输入或输出名称后面放一个冒号和别名来为输入和输出额外别名。例如，如果通过 `hostDirectives` 应用的指令定义了一个名为 `menuDisabled` 的 `inputs` ，你可以通过将 `'menuDisabled: disabled'` `disabled` 条目添加到 sources 来将其别名为 enabled 。
+   * 你可以通过在原始输入或输出名称后面放一个冒号和别名来为输入和输出额外别名。例如，如果通过 `hostDirectives` 应用的指令定义了一个名为 `menuDisabled` 的 `inputs`，你可以通过将 `'menuDisabled: disabled'` `disabled` 条目添加到 sources 来将其别名为 enabled。
    *
    */
   hostDirectives?: (Type<unknown>|{
@@ -528,26 +528,26 @@ export interface ComponentDecorator {
    * Components are the most basic UI building block of an Angular app.
    * An Angular app contains a tree of Angular components.
    *
-   * 注意，除了这些用来对指令进行配置的选项之外，你还可以通过实现生命周期钩子来控制组件的运行期行为。 要了解更多，参见 [生命周期钩子](guide/lifecycle-hooks) 章。
+   * 注意，除了这些用来对指令进行配置的选项之外，你还可以通过实现生命周期钩子来控制组件的运行期行为。要了解更多，参见 [生命周期钩子](guide/lifecycle-hooks) 章。
    *
    * Angular components are a subset of directives, always associated with a template.
    * Unlike other directives, only one component can be instantiated for a given element in a
    * template.
    *
-   * Angular 的组件是指令的一个子集，它总是有一个与之关联的模板。 和其它指令不同，模板中的每个元素只能具有一个组件实例。
+   * Angular 的组件是指令的一个子集，它总是有一个与之关联的模板。和其它指令不同，模板中的每个元素只能具有一个组件实例。
    *
    * A component must belong to an NgModule in order for it to be available
    * to another component or application. To make it a member of an NgModule,
    * list it in the `declarations` field of the `NgModule` metadata.
    *
-   * 组件必须从属于某个 NgModule 才能被其它组件或应用使用。 要想让它成为某个 NgModule 中的一员，请把它列在 `@NgModule` 元数据的 `declarations` 字段中。
+   * 组件必须从属于某个 NgModule 才能被其它组件或应用使用。要想让它成为某个 NgModule 中的一员，请把它列在 `@NgModule` 元数据的 `declarations` 字段中。
    *
    * Note that, in addition to these options for configuring a directive,
    * you can control a component's runtime behavior by implementing
    * life-cycle hooks. For more information, see the
    * [Lifecycle Hooks](guide/lifecycle-hooks) guide.
    *
-   * 注意，除了这些用来对指令进行配置的选项之外，你还可以通过实现生命周期钩子来控制组件的运行期行为。 要了解更多，参见 [生命周期钩子](guide/lifecycle-hooks) 章。
+   * 注意，除了这些用来对指令进行配置的选项之外，你还可以通过实现生命周期钩子来控制组件的运行期行为。要了解更多，参见 [生命周期钩子](guide/lifecycle-hooks) 章。
    *
    * @usageNotes
    *
@@ -620,7 +620,7 @@ export interface ComponentDecorator {
    * To change the default setting for all components in your application, set
    * the `preserveWhitespaces` option of the AOT compiler.
    *
-   * 删除空格可以大大减少 AOT 生成的代码大小并加快视图创建。 从 Angular 6 开始， `preserveWhitespaces` 的默认值为 false（删除空格）。 要更改应用程序中所有组件的默认设置，请设置 AOT 编译器的 `preserveWhitespaces` 选项。
+   * 删除空格可以大大减少 AOT 生成的代码大小并加快视图创建。从 Angular 6 开始，`preserveWhitespaces` 的默认值为 false（删除空格）。要更改应用程序中所有组件的默认设置，请设置 AOT 编译器的 `preserveWhitespaces` 选项。
    *
    * By default, the AOT compiler removes whitespace characters as follows:
    *
@@ -632,7 +632,7 @@ export interface ComponentDecorator {
    *
    * * Removes whitespace-only text nodes. For example,
    *
-   *   删除只有空白的文本节点。 例如，
+   *   删除只有空白的文本节点。例如，
    *
    * ```html
    * <button>Action 1</button>  <button>Action 2</button>
@@ -649,12 +649,12 @@ export interface ComponentDecorator {
    * * Replaces a series of whitespace characters in text nodes with a single space.
    *   For example, `<span>\n some text\n</span>` becomes `<span> some text </span>`.
    *
-   *   用单个空格替换文本节点中的一系列空白字符。 例如， `<span>\n some text\n</span>` 变成了 `<span> some text </span>` 。
+   *   用单个空格替换文本节点中的一系列空白字符。例如，`<span>\n some text\n</span>` 变成了 `<span> some text </span>`。
    *
    * * Does NOT alter text nodes inside HTML tags such as `<pre>` or `<textarea>`,
    *   where whitespace characters are significant.
    *
-   *   不改变 HTML 标签内的文本节点，例如 `<pre>` 或 `<textarea>` ，其中空白字符很重要。
+   *   不改变 HTML 标签内的文本节点，例如 `<pre>` 或 `<textarea>`，其中空白字符很重要。
    *
    * Note that these transformations can influence DOM nodes layout, although impact
    * should be minimal.
@@ -665,7 +665,7 @@ export interface ComponentDecorator {
    * in certain fragments of a template. For example, you can exclude an entire
    * DOM sub-tree by using the `ngPreserveWhitespaces` attribute:
    *
-   * 你可以覆盖默认行为以在模板的某些片段中保留空白字符。 例如，你可以使用 `ngPreserveWhitespaces` 属性排除整个 DOM 子树：
+   * 你可以覆盖默认行为以在模板的某些片段中保留空白字符。例如，你可以使用 `ngPreserveWhitespaces` 属性排除整个 DOM 子树：
    *
    * ```html
    * <div ngPreserveWhitespaces>
@@ -678,7 +678,7 @@ export interface ComponentDecorator {
    * which is replaced with a space character by Angular's template
    * compiler:
    *
-   * 你可以使用 `&ngsp;` ，它被 Angular 的模板编译器替换为空格字符：
+   * 你可以使用 `&ngsp;`，它被 Angular 的模板编译器替换为空格字符：
    *
    * ```html
    * <a>Spaces</a>&ngsp;<a>between</a>&ngsp;<a>links.</a>
@@ -731,7 +731,7 @@ export interface Component extends Directive {
    * which is responsible for propagating the component's bindings.
    * The strategy is one of:
    *
-   * 当组件实例化之后，Angular 就会创建一个变更检测器，它负责传播组件各个绑定值的变化。 该策略是下列值之一：
+   * 当组件实例化之后，Angular 就会创建一个变更检测器，它负责传播组件各个绑定值的变化。该策略是下列值之一：
    *
    * - `ChangeDetectionStrategy#OnPush` sets the strategy to `CheckOnce` \(on demand\).
    *
@@ -748,7 +748,7 @@ export interface Component extends Directive {
    * Defines the set of injectable objects that are visible to its view DOM children.
    * See [example](#injecting-a-class-with-a-view-provider).
    *
-   * 定义对其视图 DOM 子级可见的可注入对象集。 请参见[示例](#injecting-a-class-with-a-view-provider)。
+   * 定义对其视图 DOM 子级可见的可注入对象集。请参见[示例](#injecting-a-class-with-a-view-provider)。
    *
    */
   viewProviders?: Provider[];
@@ -759,13 +759,13 @@ export interface Component extends Directive {
    * SystemJS exposes the `__moduleName` variable within each module.
    * In CommonJS, this can  be set to `module.id`.
    *
-   * 包含该组件的那个模块的 ID。该组件必须能解析模板和样式表中使用的相对 URL。 SystemJS 在每个模块中都导出了 `__moduleName` 变量。在 CommonJS 中，它可以设置为 `module.id`。
+   * 包含该组件的那个模块的 ID。该组件必须能解析模板和样式表中使用的相对 URL。SystemJS 在每个模块中都导出了 `__moduleName` 变量。在 CommonJS 中，它可以设置为 `module.id`。
    *
    * @deprecated
    *
    * This option does not have any effect. Will be removed in Angular v17.
    *
-   * 该选项没有任何作用。 将在 Angular v17 中删除。
+   * 该选项没有任何作用。将在 Angular v17 中删除。
    *
    */
   moduleId?: string;
@@ -811,7 +811,7 @@ export interface Component extends Directive {
    * [`state()`](api/animations/state) and `transition()` definitions.
    * See the [Animations guide](/guide/animations) and animations API documentation.
    *
-   * 一个或多个动画 `trigger()` 调用，包含一些 `state()` 和 `transition()` 定义。 参见[动画](/guide/animations)和相关的 API 文档。
+   * 一个或多个动画 `trigger()` 调用，包含一些 `state()` 和 `transition()` 定义。参见[动画](/guide/animations)和相关的 API 文档。
    *
    */
   animations?: any[];
@@ -829,7 +829,7 @@ export interface Component extends Directive {
    *
    * - `ViewEncapsulation.None`: Apply component styles globally without any sort of encapsulation.
    *
-   *   `ViewEncapsulation.None` ：使用不带任何封装的全局 CSS。
+   *   `ViewEncapsulation.None`：使用不带任何封装的全局 CSS。
    *
    * - `ViewEncapsulation.ShadowDom`: Use the browser's native Shadow DOM API to encapsulate styles.
    *
@@ -844,7 +844,7 @@ export interface Component extends Directive {
    * {@link Component#styles styles} nor {@link Component#styleUrls styleUrls},
    * the policy is automatically switched to `ViewEncapsulation.None`.
    *
-   * 如果策略是 `ViewEncapsulation.Emulated` 并且组件没有 {@link Component#styles styles} 也没有 {@link Component#styleUrls styleUrls}，策略会自动切换到 `ViewEncapsulation.None` 。
+   * 如果策略是 `ViewEncapsulation.Emulated` 并且组件没有 {@link Component#styles styles} 也没有 {@link Component#styleUrls styleUrls}，策略会自动切换到 `ViewEncapsulation.None`。
    *
    */
   encapsulation?: ViewEncapsulation;
@@ -863,7 +863,7 @@ export interface Component extends Directive {
    * character class in JavaScript regular expressions. Default is false, unless
    * overridden in compiler options.
    *
-   * 为 `true` 则保留，为 `false` 则从编译后的模板中移除可能多余的空白字符。 空白字符就是指那些能在 JavaScript 正则表达式中匹配 `\s` 的字符。默认为 `false`，除非通过编译器选项改写了它。
+   * 为 `true` 则保留，为 `false` 则从编译后的模板中移除可能多余的空白字符。空白字符就是指那些能在 JavaScript 正则表达式中匹配 `\s` 的字符。默认为 `false`，除非通过编译器选项改写了它。
    *
    */
   preserveWhitespaces?: boolean;
@@ -897,7 +897,7 @@ export interface Component extends Directive {
    * directives, components, and pipes that can be used within its template. Standalone components
    * can import other standalone components, directives, and pipes as well as existing NgModules.
    *
-   * imports 属性指定独立组件的模板依赖项——那些可以在其模板中使用的指令、组件和管道。 独立组件可以导入其他独立组件、指令和管道以及现有的 NgModule。
+   * imports 属性指定独立组件的模板依赖项——那些可以在其模板中使用的指令、组件和管道。独立组件可以导入其他独立组件、指令和管道以及现有的 NgModule。
    *
    * This property is only available for standalone components - specifying it for components
    * declared in an NgModule generates a compilation error.
@@ -1005,7 +1005,7 @@ export interface Pipe {
    * Typically uses [lowerCamelCase](guide/glossary#case-types)
    * because the name cannot contain hyphens.
    *
-   * 在模板中绑定时使用的管道名。 通常使用 [lowerCamelCase](guide/glossary#case-types) 拼写方式，因为名字中不允许包含减号（-）。
+   * 在模板中绑定时使用的管道名。通常使用 [lowerCamelCase](guide/glossary#case-types) 拼写方式，因为名字中不允许包含减号（-）。
    *
    */
   name: string;
@@ -1022,7 +1022,7 @@ export interface Pipe {
    * In this case, the pipe is invoked on each change-detection cycle,
    * even if the arguments have not changed.
    *
-   * 如果该管道具有内部状态（也就是说，其结果会依赖内部状态，而不仅仅依赖参数），就要把 `pure` 设置为 `false`。 这种情况下，该管道会在每个变更检测周期中都被调用一次 —— 即使其参数没有发生任何变化。
+   * 如果该管道具有内部状态（也就是说，其结果会依赖内部状态，而不仅仅依赖参数），就要把 `pure` 设置为 `false`。这种情况下，该管道会在每个变更检测周期中都被调用一次 —— 即使其参数没有发生任何变化。
    *
    */
   pure?: boolean;
@@ -1060,7 +1060,7 @@ export interface InputDecorator {
    * The input property is bound to a DOM property in the template. During change detection,
    * Angular automatically updates the data property with the DOM property's value.
    *
-   * 一个装饰器，用来把某个类字段标记为输入属性，并提供配置元数据。 该输入属性会绑定到模板中的某个 DOM 属性。当变更检测时，Angular 会自动使用这个 DOM 属性的值来更新此数据属性。
+   * 一个装饰器，用来把某个类字段标记为输入属性，并提供配置元数据。该输入属性会绑定到模板中的某个 DOM 属性。当变更检测时，Angular 会自动使用这个 DOM 属性的值来更新此数据属性。
    *
    * @usageNotes
    *
@@ -1170,7 +1170,7 @@ export interface OutputDecorator {
    * Decorator that marks a class field as an output property and supplies configuration metadata.
    * The DOM property bound to the output property is automatically updated during change detection.
    *
-   * 一个装饰器，用于把一个类字段标记为输出属性，并提供配置元数据。 凡是绑定到输出属性上的 DOM 属性，Angular 在变更检测期间都会自动进行更新。
+   * 一个装饰器，用于把一个类字段标记为输出属性，并提供配置元数据。凡是绑定到输出属性上的 DOM 属性，Angular 在变更检测期间都会自动进行更新。
    *
    * @usageNotes
    *
@@ -1233,7 +1233,7 @@ export interface HostBindingDecorator {
    * Angular automatically checks host property bindings during change detection, and
    * if a binding changes it updates the host element of the directive.
    *
-   * 一个装饰器，用于把一个 DOM 属性标记为绑定到宿主的属性，并提供配置元数据。 Angular 在变更检测期间会自动检查宿主属性绑定，如果这个绑定变化了，它就会更新该指令所在的宿主元素。
+   * 一个装饰器，用于把一个 DOM 属性标记为绑定到宿主的属性，并提供配置元数据。Angular 在变更检测期间会自动检查宿主属性绑定，如果这个绑定变化了，它就会更新该指令所在的宿主元素。
    *
    * @usageNotes
    *
@@ -1310,7 +1310,7 @@ export interface HostListenerDecorator {
    *
    * If the handler method returns false, applies `preventDefault` on the bound element.
    *
-   * 如果处理程序方法返回 false ，则在绑定元素上应用 `preventDefault` 。
+   * 如果处理程序方法返回 false，则在绑定元素上应用 `preventDefault`。
    *
    */
   (eventName: string, args?: string[]): any;
@@ -1346,11 +1346,11 @@ export interface HostListener {
  * Angular invokes the supplied handler method when the host element emits the specified event,
  * and updates the bound element with the result.
  *
- * 将 DOM 事件绑定到宿主侦听器并提供配置元数据的装饰器。 当宿主元素发出指定事件时，Angular 调用提供的处理程序方法，并用结果更新绑定元素。
+ * 将 DOM 事件绑定到宿主侦听器并提供配置元数据的装饰器。当宿主元素发出指定事件时，Angular 调用提供的处理程序方法，并用结果更新绑定元素。
  *
  * If the handler method returns false, applies `preventDefault` on the bound element.
  *
- * 如果处理程序方法返回 false ，则在绑定元素上应用 `preventDefault` 。
+ * 如果处理程序方法返回 false，则在绑定元素上应用 `preventDefault`。
  *
  * @usageNotes
  *
@@ -1411,12 +1411,12 @@ export interface HostListener {
  *
  * Note that keys can also be combined, e.g. `@HostListener('keydown.shift.a')`.
  *
- * 请注意，键也可以组合，例如 `@HostListener('keydown.shift.a')` 。
+ * 请注意，键也可以组合，例如 `@HostListener('keydown.shift.a')`。
  *
  * The global target names that can be used to prefix an event name are
  * `document:`, `window:` and `body:`.
  *
- * 可用于事件名称前缀的全局目标名称是 `document:` 、 `window:` 和 `body:` 。
+ * 可用于事件名称前缀的全局目标名称是 `document:` 、 `window:` 和 `body:`。
  *
  * @Annotation
  * @publicApi

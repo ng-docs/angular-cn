@@ -32,7 +32,7 @@ OnPush 变更检测会指示 Angular 仅在以下情况下为组件子树运行�
 
 You can set the change detection strategy of a component to `OnPush` in the `@Component` decorator:
 
-你可以在 `@Component` 装饰器中将组件的变更检测策略设置为 `OnPush` ：
+你可以在 `@Component` 装饰器中将组件的变更检测策略设置为 `OnPush`：
 
 ```ts
 import { ChangeDetectionStrategy, Component } from '@angular/core';

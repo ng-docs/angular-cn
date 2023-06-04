@@ -18,7 +18,7 @@ import {TestRequest} from './request';
  * A testing backend for `HttpClient` which both acts as an `HttpBackend`
  * and as the `HttpTestingController`.
  *
- * `HttpClient` 的测试后端，既作为 `HttpBackend` 又作为 `HttpTestingController` 。
+ * `HttpClient` 的测试后端，既作为 `HttpBackend` 又作为 `HttpTestingController`。
  *
  * `HttpClientTestingBackend` works by keeping a list of all open requests.
  * As requests come in, they're added to the list. Users can assert that specific

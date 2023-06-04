@@ -76,7 +76,7 @@ Perform these steps on the app code in your IDE.
 
 In lesson 10, you added a second route to `src/app/routes.ts`, this route includes a special segment that identifies the route parameter, `id`:
 
-在第 10 课中，你向 `src/app/routes.ts` 添加了第二条路由，该路由包含一个特殊区段，用于标识路由参数 `id` ：
+在第 10 课中，你向 `src/app/routes.ts` 添加了第二条路由，该路由包含一个特殊区段，用于标识路由参数 `id`：
 
     <code-example format="javascript" language="javascript">
     'details/:id'
@@ -120,7 +120,7 @@ In this step, you will get the route parameter in the `DetailsComponent`. Curren
 
 1. Update the `template` property of the `@Component` decorator to display the value `housingLocationId`:
 
-   更新 `@Component` 装饰器的 `template` 属性以显示值 `housingLocationId` ：
+   更新 `@Component` 装饰器的 `template` 属性以显示值 `housingLocationId`：
 
    <code-example format="javascript" language="javascript">
      template: `&lt;p&gt;details works! {{ housingLocationId }}&lt;/p&gt;`,
@@ -208,7 +208,7 @@ To access the data you will add a call to the `HousingService`.
 
 In a previous lesson you updated the `AppComponent` template to include a `routerLink`. Adding that code updated your app to enable navigation back to the `HomeComponent` whenever the logo is clicked.
 
-在上一课中，你更新了 `AppComponent` 模板以包含 `routerLink` 。添加该代码会更新应用程序，以便在单击徽标时能够导航回 `HomeComponent` 。
+在上一课中，你更新了 `AppComponent` 模板以包含 `routerLink`。添加该代码会更新应用程序，以便在单击徽标时能够导航回 `HomeComponent`。
 
 1. Confirm that your code matches the following:
 

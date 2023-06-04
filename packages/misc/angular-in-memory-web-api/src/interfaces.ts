@@ -38,7 +38,7 @@ export abstract class InMemoryDbService {
    *
    * returns Observable of the database because could have to create it asynchronously.
    *
-   * 返回数据库的 Observable ，因为可能不得不异步创建它。
+   * 返回数据库的 Observable，因为可能不得不异步创建它。
    *
    * This method must be safe to call repeatedly.
    * Each time it should return a new object with new arrays containing new item objects.
@@ -85,8 +85,8 @@ export abstract class InMemoryBackendConfigArgs {
    * false \(default\) put content directly inside the response body.
    * true: encapsulate content in a `data` property inside the response body, `{ data: ... }`.
    *
-   * false（默认）将内容直接放在响应正文中。 true ：将内容封装在响应正文中的 `data` 属性中 `{ data:
-   * ... }` 。
+   * false（默认）将内容直接放在响应正文中。true：将内容封装在响应正文中的 `data` 属性中 `{ data:
+   * ... }`。
    *
    */
   dataEncapsulation?: boolean;
@@ -100,7 +100,7 @@ export abstract class InMemoryBackendConfigArgs {
   /**
    * false \(default\) should 204 when object-to-delete not found; true: 404
    *
-   * false（默认）当找不到 object-to-delete 时应该为 204；真： 404
+   * false（默认）当找不到 object-to-delete 时应该为 204；真：404
    *
    */
   delete404?: boolean;
@@ -114,28 +114,28 @@ export abstract class InMemoryBackendConfigArgs {
   /**
    * false \(default\) should pass unrecognized request URL through to original backend; true: 404
    *
-   * false（默认）应该将无法识别的请求 URL 传递到原始后端；真： 404
+   * false（默认）应该将无法识别的请求 URL 传递到原始后端；真：404
    *
    */
   passThruUnknownUrl?: boolean;
   /**
    * true \(default\) should NOT return the item \(204\) after a POST. false: return the item \(200\).
    *
-   * true（默认）不应该在 POST 之后返回条目 \(204\)。 false ：返回条目 \(200\)。
+   * true（默认）不应该在 POST 之后返回条目 \(204\)。false：返回条目 \(200\)。
    *
    */
   post204?: boolean;
   /**
    * false \(default\) should NOT update existing item with POST. false: OK to update.
    *
-   * false（默认）不应使用 POST 更新现有项。 false：可以更新。
+   * false（默认）不应使用 POST 更新现有项。false：可以更新。
    *
    */
   post409?: boolean;
   /**
    * true \(default\) should NOT return the item \(204\) after a POST. false: return the item \(200\).
    *
-   * true（默认）不应该在 POST 之后返回条目 \(204\)。 false ：返回条目 \(200\)。
+   * true（默认）不应该在 POST 之后返回条目 \(204\)。false：返回条目 \(200\)。
    *
    */
   put204?: boolean;
@@ -161,13 +161,13 @@ export abstract class InMemoryBackendConfigArgs {
  *  Usage:
  *    InMemoryWebApiModule.forRoot\(InMemHeroService, {delay: 600}\)
  *
- * InMemoryBackendService 配置选项 用法： InMemoryWebApiModule.forRoot\(InMemHeroService, {delay:
+ * InMemoryBackendService 配置选项 用法：InMemoryWebApiModule.forRoot\(InMemHeroService, {delay:
  * 600}\)
  *
  *  or if providing separately:
  *    provide\(InMemoryBackendConfig, {useValue: {delay: 600}}\),
  *
- * 或者如果单独提供： provide\(InMemoryBackendConfig, {useValue: {delay: 600}}\),
+ * 或者如果单独提供：provide\(InMemoryBackendConfig, {useValue: {delay: 600}}\),
  *
  */
 @Injectable()
@@ -240,7 +240,7 @@ export function parseUri(str: string): UriInfo {
  *     resourceUrl: 'http://localhost/api/customers/'
  *
  * `parseRequestUrl` 方法结果的接口：给定 URL “ http://localhost:8080/api/customers/42?foo=1
- * ，默认实现返回 base: 'api/' collectionName: 'customers' id: '42' 查询： this.createQuery\('foo=1'\)
+ *，默认实现返回 base: 'api/' collectionName: 'customers' id: '42' 查询：this.createQuery\('foo=1'\)
  * resourceUrl: ' http://localhost/api/customers/ '
  *
  */
@@ -313,7 +313,7 @@ export interface RequestInfoUtilities {
    * Create a cold response Observable from a factory for ResponseOptions
    * the same way that the in-mem backend service does.
    *
-   * 从工厂为 ResponseOptions 创建冷响应 Observable ，方式与 in-mem 后端服务相同。
+   * 从工厂为 ResponseOptions 创建冷响应 Observable，方式与 in-mem 后端服务相同。
    *
    * @param resOptionsFactory - creates ResponseOptions when observable is subscribed
    *
@@ -387,8 +387,8 @@ export interface RequestInfoUtilities {
    * Parses the request URL into a `ParsedRequestUrl` object.
    * Parsing depends upon certain values of `config`: `apiBase`, `host`, and `urlRoot`.
    *
-   * 将请求 URL 解析为 `ParsedRequestUrl` 对象。解析取决于 `config` 的某些值： `apiBase`、`host`
-   * 和 `urlRoot` 。
+   * 将请求 URL 解析为 `ParsedRequestUrl` 对象。解析取决于 `config` 的某些值：`apiBase`、`host`
+   * 和 `urlRoot`。
    *
    */
   parseRequestUrl(url: string): ParsedRequestUrl;

@@ -64,7 +64,7 @@ function numOfWhiteSpaceLeadingChars(text: string): number {
 /**
  * Jasmine AsymmetricMatcher which can be used to assert `.debug` properties.
  *
- * Jasmine AsymmetricMatcher ，可用于断言 `.debug` 属性。
+ * Jasmine AsymmetricMatcher，可用于断言 `.debug` 属性。
  *
  * ```
  * expect(obj).toEqual({
@@ -74,7 +74,7 @@ function numOfWhiteSpaceLeadingChars(text: string): number {
  *
  * In the above example it will assert that `obj.create.debug === 'someValue'`.
  *
- * 在上面的示例中，它将断言 `obj.create.debug === 'someValue'` 。
+ * 在上面的示例中，它将断言 `obj.create.debug === 'someValue'`。
  *
  * @param expected Expected value.
  *

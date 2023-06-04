@@ -177,7 +177,7 @@ function isNotSpreadElement(e: ts.Expression|ts.SpreadElement): e is ts.Expressi
 /**
  * Return true if the expression can be considered a text based property name.
  *
- * 如果表达式可以被认为是基于文本的属性名称，则返回 true 。
+ * 如果表达式可以被认为是基于文本的属性名称，则返回 true。
  *
  */
 function isPropertyName(e: ts.PropertyName): e is ts.Identifier|ts.StringLiteral|ts.NumericLiteral {
@@ -187,7 +187,7 @@ function isPropertyName(e: ts.PropertyName): e is ts.Identifier|ts.StringLiteral
 /**
  * Return true if the node is either `true` or `false` literals.
  *
- * 如果节点是 `true` 或 `false` 文字，则返回 true 。
+ * 如果节点是 `true` 或 `false` 文字，则返回 true。
  *
  */
 function isBooleanLiteral(node: ts.Expression): node is ts.TrueLiteral|ts.FalseLiteral {
@@ -199,7 +199,7 @@ type MinifiedBooleanLiteral = ts.PrefixUnaryExpression&{operand: ts.NumericLiter
 /**
  * Return true if the node is either `!0` or `!1`.
  *
- * 如果节点是 `!0` 或 `!1` ，则返回 true 。
+ * 如果节点是 `!0` 或 `!1`，则返回 true。
  *
  */
 function isMinifiedBooleanLiteral(node: ts.Expression): node is MinifiedBooleanLiteral {

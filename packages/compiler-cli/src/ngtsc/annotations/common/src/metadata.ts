@@ -18,13 +18,13 @@ import {valueReferenceToExpression, wrapFunctionExpressionsInParens} from './uti
  * present on the class or its member fields. An ngDevMode guard is used to allow the call to be
  * tree-shaken away, as the `setClassMetadata` invocation is only needed for testing purposes.
  *
- * 给定一个类声明，使用类或其成员字段上的 Angular 元数据生成对 `setClassMetadata` 的调用。 ngDevMode
+ * 给定一个类声明，使用类或其成员字段上的 Angular 元数据生成对 `setClassMetadata` 的调用。ngDevMode
  * 保护用于允许对调用进行树形摇动，因为 `setClassMetadata` 调用仅用于测试目的。
  *
  * If no such metadata is present, this function returns `null`. Otherwise, the call is returned
  * as a `Statement` for inclusion along with the class.
  *
- * 如果不存在这样的元数据，则此函数返回 `null` 。否则，调用将作为 `Statement` 返回，以与类一起包含。
+ * 如果不存在这样的元数据，则此函数返回 `null`。否则，调用将作为 `Statement` 返回，以与类一起包含。
  *
  */
 export function extractClassMetadata(

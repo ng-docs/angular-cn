@@ -38,7 +38,7 @@ import {phaseAlignPipeVariadicVarOffset} from './phases/align_pipe_variadic_var_
  * Run all transformation phases in the correct order against a `ComponentCompilation`. After this
  * processing, the compilation should be in a state where it can be emitted via `emitTemplateFn`.s
  *
- * 针对 `ComponentCompilation` 以正确的顺序运行所有转换阶段。 在这个处理之后，编译应该处于可以通过 `emitTemplateFn` 发出的状态
+ * 针对 `ComponentCompilation` 以正确的顺序运行所有转换阶段。在这个处理之后，编译应该处于可以通过 `emitTemplateFn` 发出的状态
  *
  */
 export function transformTemplate(cpl: ComponentCompilation): void {

@@ -67,7 +67,7 @@ export class ImportGraph {
    * an array of source files that connect the `start` and `end` source files, or `null` if
    *     no path could be found.
    *
-   * 连接 `start` 和 `end` 源文件的源文件数组，如果找不到路径，则为 `null` 。
+   * 连接 `start` 和 `end` 源文件的源文件数组，如果找不到路径，则为 `null`。
    *
    */
   findPath(start: ts.SourceFile, end: ts.SourceFile): ts.SourceFile[]|null {

@@ -77,7 +77,7 @@ export const ID_SEPARATOR = '@@';
  * https://graphemica.com/%E2%90%9F.
  *
  * 请注意，此字符是“单位分隔符的符号” \(␟\)
- * 而不是“单位分隔符”本身，因为它没有视觉表示。请参阅 https://graphemica.com/%E2%90%9F 。
+ * 而不是“单位分隔符”本身，因为它没有视觉表示。请参阅 https://graphemica.com/%E2%90%9F。
  *
  * Here is some background for the original "unit separator character":
  * https://stackoverflow.com/questions/8695118/whats-the-file-group-record-unit-separator-control-characters-and-its-usage

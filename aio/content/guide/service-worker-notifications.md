@@ -90,13 +90,13 @@ Angular Service Worker 支持以下操作：
 | :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 操作                        | 详情                                                                                                                                             |
 | `openWindow`                | Opens a new tab at the specified URL.                                                                                                            |
-| `openWindow`                | 在指定的 URL 处打开新选项卡。                                                                                                                    |
+| `openWindow`                | 在指定的 URL 处打开新选项卡。|
 | `focusLastFocusedOrOpen`    | Focuses the last focused client. If there is no client open, then it opens a new tab at the specified URL.                                       |
-| `focusLastFocusedOrOpen`    | 聚焦最后一个有焦点的客户端。如果没有打开客户端，则会在指定的 URL 处打开一个新选项卡。                                                            |
+| `focusLastFocusedOrOpen`    | 聚焦最后一个有焦点的客户端。如果没有打开客户端，则会在指定的 URL 处打开一个新选项卡。|
 | `navigateLastFocusedOrOpen` | Focuses the last focused client and navigates it to the specified URL. If there is no client open, then it opens a new tab at the specified URL. |
-| `navigateLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端并将其导航到指定的 URL。如果没有打开客户端，则会在指定的 URL 处打开一个新选项卡。                                      |
+| `navigateLastFocusedOrOpen` | 聚焦最后一个有焦点的客户端并将其导航到指定的 URL。如果没有打开客户端，则会在指定的 URL 处打开一个新选项卡。|
 | `sendRequest`               | Send a simple GET request to the specified URL.                                                                                                  |
-| `sendRequest`               | 向指定的 URL 发送简单的 GET 请求。                                                                                                               |
+| `sendRequest`               | 向指定的 URL 发送简单的 GET 请求。|
 
 <div class="alert is-important">
 

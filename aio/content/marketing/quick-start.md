@@ -63,11 +63,11 @@ To give your component a reset button that sets the counter back to 0:
 
 1. Click **Add one** several times and then click **Reset**. The counter value should return to zero.
 
-   多次单击 **Add one**，然后单击 **Reset** 。计数器值应返回零。
+   多次单击 **Add one**，然后单击 **Reset**。计数器值应返回零。
 
 The new line adds a new `<button>` element. When the `click` event occurs in the button, the TypeScript code in the double quotes sets the `count` property to `0`.
 
-新行添加了一个新的 `<button>` 元素。当按钮中发生 `click` 事件时，双引号中的 TypeScript 代码会将 `count` 属性设置为 `0` 。
+新行添加了一个新的 `<button>` 元素。当按钮中发生 `click` 事件时，双引号中的 TypeScript 代码会将 `count` 属性设置为 `0`。
 
 You can also add styles to your new component.
 
@@ -99,7 +99,7 @@ To create a new Angular app, perform these steps in a command-line tool on your 
 
 1. Make sure you have the correct version of `node.js` and `npm` installed on your system.
 
-   确保你的系统上安装了正确版本的 `node.js` 和 `npm` 。
+   确保你的系统上安装了正确版本的 `node.js` 和 `npm`。
 
    1. Run this command to display the current version of npm.
 
@@ -175,7 +175,7 @@ To create a new Angular app, perform these steps in a command-line tool on your 
    1. In the browser's address bar, enter the URL in the message displayed in the command-line tool.
       The default URL is `http://localhost:4200`.
 
-      在浏览器的地址栏中，输入命令行工具中显示的消息中的 URL。默认 URL 是 `http://localhost:4200` 。
+      在浏览器的地址栏中，输入命令行工具中显示的消息中的 URL。默认 URL 是 `http://localhost:4200`。
 
 Your new Angular app displays its default landing page with the Angular logo. Review the tutorials in the following section for ideas about how to start changing your new app to make it your own.
 
@@ -192,7 +192,7 @@ For more demonstrations of Angular coding, visit:
 * [Introduction to Angular][intro-to-angular-video]
     A video tutorial about developing an Angular app. The Angular team produced this video for beginners to get *hands-on* with Angular. \(42-min\)
 
-  [Angular 简介][intro-to-angular-video]是关于开发 Angular 应用程序的视频教程。 Angular 团队制作了这个视频，供初学者*亲身体验* Angular。 （42 分钟）
+  [Angular 简介][intro-to-angular-video]是关于开发 Angular 应用程序的视频教程。Angular 团队制作了这个视频，供初学者*亲身体验* Angular。（42 分钟）
 
 * [A basic shopping cart demo][shopping-cart]
     A basic app that demonstrates a few more Angular features. This demonstration takes you through the steps of building a simple app in a StackBlitz editor.

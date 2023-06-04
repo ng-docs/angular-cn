@@ -23,7 +23,7 @@ export const ERR_SW_NOT_SUPPORTED = 'Service workers are disabled or not support
  * Use the {@link VersionReadyEvent} instead, which is emitted by {@link SwUpdate#versionUpdates}.
  * See {@link SwUpdate#available} docs for an example.
  *
- * 此事件仅由已过时的 {@link SwUpdate#available} 发出。改用 {@link VersionReadyEvent} ，它由 {@link
+ * 此事件仅由已过时的 {@link SwUpdate#available} 发出。改用 {@link VersionReadyEvent}，它由 {@link
  * SwUpdate#versionUpdates} 发出。有关示例，请参阅 {@link SwUpdate#available} 文档。
  *
  * @publicApi

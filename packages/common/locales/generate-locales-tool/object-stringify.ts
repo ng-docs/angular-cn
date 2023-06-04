@@ -15,9 +15,9 @@ const UNDEFINED_PLACEHOLDER_REGEX = new RegExp(`["']${UNDEFINED_PLACEHOLDER}["']
  * JavaScript, the `undefined` values are separate from `null`, and `undefined` can be minified
  * more efficiently. For example in arrays: `[, , someValue]`.
  *
- * 将给定对象字符串化，同时保留 `undefined` 的值，这些值通常会使用 JSON5 转换为 `null` 。我们要保留
- * `undefined` ，因为在生成的 JavaScript 中，`undefined` 值与 `null` 是分开的，并且 `undefined`
- * 可以更有效地最小化。例如在数组中： `[, , someValue]` 。
+ * 将给定对象字符串化，同时保留 `undefined` 的值，这些值通常会使用 JSON5 转换为 `null`。我们要保留
+ * `undefined`，因为在生成的 JavaScript 中，`undefined` 值与 `null` 是分开的，并且 `undefined`
+ * 可以更有效地最小化。例如在数组中：`[, , someValue]`。
  *
  * Note that we do not use `JSON5` or similar formats where properties are not explicitly
  * wrapped in quotes. Quotes are necessary so that Closure compiler does not accidentally

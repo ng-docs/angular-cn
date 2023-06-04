@@ -35,7 +35,7 @@
       "name": "from",
       "type": "string",
       "description": "Version from which to migrate from. Only available with a single package being updated, and only with 'migrate-only'.",
-      "descriptionCn": "要从中迁移的版本。仅适用于要更新的单个包，并且仅适用于 `migrate-only` 。"
+      "descriptionCn": "要从中迁移的版本。仅适用于要更新的单个包，并且仅适用于 `migrate-only`。"
     },
     {
       "name": "help",
@@ -92,6 +92,6 @@
       "descriptionCn": "在执行期间显示内部操作的详细信息。"
     }
   ],
-  "shortDescriptionCn": "更新你的工作区及其依赖项。请参阅<https://update.angular.io/> 。",
+  "shortDescriptionCn": "更新你的工作区及其依赖项。请参阅<https://update.angular.io/>。",
   "longDescriptionCn": "通过运行以下命令，对核心框架和 CLI 的当前稳定版本执行基本更新。\n\n```\n ng update @angular/cli @angular/core\n```\n\n要更新到下一个 Beta 版或预发行版本，请使用`--next`选项。\n\n要从一个主要版本更新到另一个，请使用以下格式\n\n```\nng update @angular/cli@^<major_version> @angular/core@^<major_version>\n```\n\n我们建议你始终更新到最新的补丁版本，因为它包含我们自初始主要版本以来发布的修复。例如，使用以下命令获取最新的 10.xx 版本并用它进行更新。\n\n```\n ng update @angular/cli@^10 @angular/core@^10\n```\n\n有关更新应用程序的详细信息和指导，请参阅交互式[Angular 更新指南](https://update.angular.io/)。"
 }

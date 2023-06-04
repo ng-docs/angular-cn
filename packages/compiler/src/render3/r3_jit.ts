@@ -17,7 +17,7 @@ import {ExternalReferenceResolver} from '../output/output_jit';
  *
  * Only supports `resolveExternalReference`, all other methods throw.
  *
- * 仅支持 `resolveExternalReference` ，所有其他方法都会抛出。
+ * 仅支持 `resolveExternalReference`，所有其他方法都会抛出。
  *
  */
 export class R3JitReflector implements ExternalReferenceResolver {

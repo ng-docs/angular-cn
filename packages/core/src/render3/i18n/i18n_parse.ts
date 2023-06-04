@@ -201,7 +201,7 @@ export function i18nStartFirstCreatePass(
  * @param rootTNode Root `TNode` of the i18n block. This node determines if the new TNode will be
  *     added as part of the `i18nStart` instruction or as part of the `TNode.insertBeforeIndex`.
  *
- * i18n 块的根 `TNode` 。此节点确定新的 TNode 是作为 `i18nStart` 指令的一部分还是作为
+ * i18n 块的根 `TNode`。此节点确定新的 TNode 是作为 `i18nStart` 指令的一部分还是作为
  * `TNode.insertBeforeIndex` 的一部分添加。
  * @param existingTNodes internal state for `addTNodeAndUpdateInsertBeforeIndex`.
  *
@@ -217,7 +217,7 @@ export function i18nStartFirstCreatePass(
  * 创建 `Text` 或 `Comment` 节点时要添加的文本。
  * @param isICU true if a `Comment` node for ICU \(instead of `Text`\) node should be created.
  *
- * 如果要创建 ICU 的 `Comment` 节点（而不是 `Text`）节点，则为 true 。
+ * 如果要创建 ICU 的 `Comment` 节点（而不是 `Text`）节点，则为 true。
  *
  */
 function createTNodeAndAddOpCode(
@@ -288,7 +288,7 @@ function createTNodeAndAddOpCode(
  *
  *   - populate `updateOpCodes` with update instructions.
  *
- *     使用更新操作指南填充 `updateOpCodes` 。
+ *     使用更新操作指南填充 `updateOpCodes`。
  *
  * @param tView Current `TView`
  *
@@ -297,7 +297,7 @@ function createTNodeAndAddOpCode(
  *     be added as part of the `i18nStart` instruction or as part of the
  *     `TNode.insertBeforeIndex`.
  *
- * i18n 块的根 `TNode` 。此节点确定新的 TNode 是作为 `i18nStart` 指令的一部分还是作为
+ * i18n 块的根 `TNode`。此节点确定新的 TNode 是作为 `i18nStart` 指令的一部分还是作为
  * `TNode.insertBeforeIndex` 的一部分添加。
  * @param existingTNodes internal state for `addTNodeAndUpdateInsertBeforeIndex`.
  *
@@ -327,7 +327,7 @@ function i18nStartFirstCreatePassProcessTextNode(
 /**
  * See `i18nAttributes` above.
  *
- * 请参阅上面的 `i18nAttributes` 。
+ * 请参阅上面的 `i18nAttributes`。
  *
  */
 export function i18nAttributesFirstPass(tView: TView, index: number, values: string[]) {
@@ -703,15 +703,15 @@ export function parseICUBlock(pattern: string): IcuExpression {
  *
  * An `Array<string|IcuExpression>` where:
  *
- * 一个 `Array<string|IcuExpression>` ，其中：
+ * 一个 `Array<string|IcuExpression>`，其中：
  *
  * - odd positions: `string` => text between ICU expressions
  *
- *   奇数位置： `string` => ICU 表达式之间的文本
+ *   奇数位置：`string` => ICU 表达式之间的文本
  *
  * - even positions: `ICUExpression` => ICU expression parsed into `ICUExpression` record.
  *
- *   偶数位置： `ICUExpression` => ICU 表达式解析为 `ICUExpression` 记录。
+ *   偶数位置：`ICUExpression` => ICU 表达式解析为 `ICUExpression` 记录。
  */
 export function i18nParseTextIntoPartsAndICU(pattern: string): (string|IcuExpression)[] {
   if (!pattern) {

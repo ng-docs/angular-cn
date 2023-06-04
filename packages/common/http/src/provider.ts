@@ -18,7 +18,7 @@ import {HttpXsrfCookieExtractor, HttpXsrfTokenExtractor, XSRF_COOKIE_NAME, XSRF_
 /**
  * Identifies a particular kind of `HttpFeature`.
  *
- * 标识一种特定类型的 `HttpFeature` 。
+ * 标识一种特定类型的 `HttpFeature`。
  *
  * @publicApi
  */
@@ -61,7 +61,7 @@ function makeHttpFeature<KindT extends HttpFeatureKind>(
  * feature functions to `provideHttpClient`. For example, HTTP interceptors can be added using the
  * `withInterceptors(...)` feature.
  *
- * 默认情况下， `HttpClient` 将配置为注入，其默认选项是对传出请求的 XSRF 保护。可以通过将特性函数传递给 `provideHttpClient` 来提供其他配置选项。例如，可以用 `withInterceptors(...)` 特性添加 HTTP 拦截器。
+ * 默认情况下，`HttpClient` 将配置为注入，其默认选项是对传出请求的 XSRF 保护。可以通过将特性函数传递给 `provideHttpClient` 来提供其他配置选项。例如，可以用 `withInterceptors(...)` 特性添加 HTTP 拦截器。
  *
  * @see {@link withInterceptors}
  * @see {@link withInterceptorsFromDi}
@@ -232,7 +232,7 @@ export function withJsonpSupport(): HttpFeature<HttpFeatureKind.JsonpSupport> {
  * instance. For example, even if `HttpClient` is configured in the parent injector with
  * one or more interceptors, they will not intercept requests made via this instance.
  *
- * 默认情况下， `provideHttpClient` 将其注入器中的 `HttpClient` 配置为独立实例。例如，即使 `HttpClient` 在父注入器中配置为一个或多个拦截器，它们也不会拦截通过此实例发出的请求。
+ * 默认情况下，`provideHttpClient` 将其注入器中的 `HttpClient` 配置为独立实例。例如，即使 `HttpClient` 在父注入器中配置为一个或多个拦截器，它们也不会拦截通过此实例发出的请求。
  *
  * With this option enabled, once the request has passed through the current injector's
  * interceptors, it will be delegated to the parent injector's `HttpClient` chain instead of
@@ -245,7 +245,7 @@ export function withJsonpSupport(): HttpFeature<HttpFeatureKind.JsonpSupport> {
  * "bubble up" until either reaching the root level or an `HttpClient` which was not configured with
  * this option.
  *
- * 如果注入器层次结构中有几个 `HttpClient` 实例，则 `withRequestsMadeViaParent` 可能会在多个级别使用，这将导致请求“冒泡”，直到达到根级别或未配置使用此选项的 `HttpClient` 。
+ * 如果注入器层次结构中有几个 `HttpClient` 实例，则 `withRequestsMadeViaParent` 可能会在多个级别使用，这将导致请求“冒泡”，直到达到根级别或未配置使用此选项的 `HttpClient`。
  *
  * @see {@link provideHttpClient}
  * @developerPreview

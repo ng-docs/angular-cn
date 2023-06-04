@@ -94,7 +94,7 @@ export function newArray<T>(size: number, value?: T): T[] {
  * removed. This causes memory pressure and slows down code when most of the time we don't
  * care about the deleted items array.
  *
- * `Array.splice()` 没有那么快，因为它必须为被删除的元素分配一个数组。 当大多数时候我们不关心已删除的项目数组时，这会导致内存压力并减慢代码速度。
+ * `Array.splice()` 没有那么快，因为它必须为被删除的元素分配一个数组。当大多数时候我们不关心已删除的项目数组时，这会导致内存压力并减慢代码速度。
  *
  * https://jsperf.com/fast-array-splice \(About 20x faster\)
  *
@@ -133,7 +133,7 @@ export function arraySplice(array: any[], index: number, count: number): void {
  * removed. This causes memory pressure and slows down code when most of the time we don't
  * care about the deleted items array.
  *
- * `Array.splice()` 并不快，因为它必须为被删除的元素分配一个数组。 当大多数时候我们不关心已删除的项目数组时，这会导致内存压力并减慢代码速度。
+ * `Array.splice()` 并不快，因为它必须为被删除的元素分配一个数组。当大多数时候我们不关心已删除的项目数组时，这会导致内存压力并减慢代码速度。
  *
  * @param array Array to splice.
  *
@@ -168,7 +168,7 @@ export function arrayInsert(array: any[], index: number, value: any): void {
  * removed. This causes memory pressure and slows down code when most of the time we don't
  * care about the deleted items array.
  *
- * `Array.splice()` 并不快，因为它必须为被删除的元素分配一个数组。 当大多数时候我们不关心已删除的项目数组时，这会导致内存压力并减慢代码速度。
+ * `Array.splice()` 并不快，因为它必须为被删除的元素分配一个数组。当大多数时候我们不关心已删除的项目数组时，这会导致内存压力并减慢代码速度。
  *
  * @param array Array to splice.
  *
@@ -245,7 +245,7 @@ export function arrayInsert2(array: any[], index: number, value1: any, value2: a
  * - negative index if value not found. \(`~index` to get the value where it should have been
  *   located\)
  *
- *   如果找不到值，则为负索引。 （ `~index` 获取它应该位于的值）
+ *   如果找不到值，则为负索引。（ `~index` 获取它应该位于的值）
  *
  */
 export function arrayIndexOfSorted(array: string[], value: string): number {
@@ -262,16 +262,16 @@ export function arrayIndexOfSorted(array: string[], value: string): number {
  * sets \(~10\) the cost of binary searching an `KeyValueArray` has about the same performance
  * characteristics that of a `Map` with significantly better memory footprint.
  *
- * `KeyValueArray` 提供了一种非常有效的方法来迭代其内容。 对于小集合（~10），二进制搜索 `KeyValueArray` 的成本具有与 `Map` 大致相同的性能特征，但内存占用明显更好。
+ * `KeyValueArray` 提供了一种非常有效的方法来迭代其内容。对于小集合（~10），二进制搜索 `KeyValueArray` 的成本具有与 `Map` 大致相同的性能特征，但内存占用明显更好。
  *
  * If used as a `Map` the keys are stored in alphabetical order so that they can be binary searched
  * for retrieval.
  *
- * 如果用作 `Map` ，则键按字母顺序存储，以便可以对它们进行二进制搜索以进行检索。
+ * 如果用作 `Map`，则键按字母顺序存储，以便可以对它们进行二进制搜索以进行检索。
  *
  * See: `keyValueArraySet`, `keyValueArrayGet`, `keyValueArrayIndexOf`, `keyValueArrayDelete`.
  *
- * 请参阅： `keyValueArraySet` 、 `keyValueArrayGet` 、 `keyValueArrayIndexOf` 、 `keyValueArrayDelete` 。
+ * 请参阅：`keyValueArraySet` 、 `keyValueArrayGet` 、 `keyValueArrayIndexOf` 、 `keyValueArrayDelete`。
  *
  */
 export interface KeyValueArray<VALUE> extends Array<VALUE|string> {
@@ -281,7 +281,7 @@ export interface KeyValueArray<VALUE> extends Array<VALUE|string> {
 /**
  * Set a `value` for a `key`.
  *
- * 为 `key` 设置 `value` 。
+ * 为 `key` 设置 `value`。
  *
  * @param keyValueArray to modify.
  *
@@ -318,7 +318,7 @@ export function keyValueArraySet<V>(
 /**
  * Retrieve a `value` for a `key` \(on `undefined` if not found.\)
  *
- * 检索 `key` 的 `value` （如果未找到则 `undefined` 。）
+ * 检索 `key` 的 `value` （如果未找到则 `undefined`。）
  *
  * @param keyValueArray to search.
  *
@@ -330,7 +330,7 @@ export function keyValueArraySet<V>(
  *
  * @return The `value` stored at the `key` location or `undefined` if not found.
  *
- * 存储在 `key` 位置的 `value` ，如果未找到则 `undefined` 。
+ * 存储在 `key` 位置的 `value`，如果未找到则 `undefined`。
  *
  */
 export function keyValueArrayGet<V>(keyValueArray: KeyValueArray<V>, key: string): V|undefined {
@@ -345,7 +345,7 @@ export function keyValueArrayGet<V>(keyValueArray: KeyValueArray<V>, key: string
 /**
  * Retrieve a `key` index value in the array or `-1` if not found.
  *
- * 检索数组中的 `key` 索引值，如果未找到则为 `-1` 。
+ * 检索数组中的 `key` 索引值，如果未找到则为 `-1`。
  *
  * @param keyValueArray to search.
  *
@@ -368,7 +368,7 @@ export function keyValueArrayGet<V>(keyValueArray: KeyValueArray<V>, key: string
  * - negative index if key not found. \(`~index` \(even\) to get the index where it should have
  *   been inserted.\)
  *
- *   如果找不到键，则为负索引。 （ `~index` \(even\) 获取应该插入的索引。）
+ *   如果找不到键，则为负索引。（ `~index` \(even\) 获取应该插入的索引。）
  *
  */
 export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: string): number {
@@ -401,7 +401,7 @@ export function keyValueArrayIndexOf<V>(keyValueArray: KeyValueArray<V>, key: st
  * - negative index if key not found. \(`~index` \(even\) to get the index where it should have
  *   been.\)
  *
- *   如果找不到键，则为负索引。 （ `~index` \(even\) 获取它应该在的位置的索引。）
+ *   如果找不到键，则为负索引。（ `~index` \(even\) 获取它应该在的位置的索引。）
  *
  */
 export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: string): number {
@@ -461,7 +461,7 @@ export function keyValueArrayDelete<V>(keyValueArray: KeyValueArray<V>, key: str
  * - negative index if value not found. \(`~index` to get the value where it should have been
  *   inserted\)
  *
- *   如果找不到值，则为负索引。 （ `~index` 获取应该插入的值）
+ *   如果找不到值，则为负索引。（ `~index` 获取应该插入的值）
  *
  */
 function _arrayIndexOfSorted(array: string[], value: string, shift: number): number {

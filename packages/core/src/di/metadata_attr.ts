@@ -28,7 +28,7 @@ export interface AttributeDecorator {
    *
    * Suppose we have an `<input>` element and want to know its `type`.
    *
-   * 假设我们有一个 `<input>` 元素，并且想知道它的 `type` 。
+   * 假设我们有一个 `<input>` 元素，并且想知道它的 `type`。
    *
    * ```html
    * <input type="text">

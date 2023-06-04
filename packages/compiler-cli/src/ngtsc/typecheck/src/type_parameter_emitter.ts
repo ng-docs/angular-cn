@@ -16,7 +16,7 @@ import {canEmitType, TypeEmitter} from './type_emitter';
 /**
  * See `TypeEmitter` for more information on the emitting process.
  *
- * 有关发出过程的更多信息，请参阅 `TypeEmitter` 。
+ * 有关发出过程的更多信息，请参阅 `TypeEmitter`。
  *
  */
 export class TypeParameterEmitter {
@@ -30,7 +30,7 @@ export class TypeParameterEmitter {
    * called, as it would fail.
    *
    * 确定是否可以发出类型参数。如果返回 true，则已知对 `emit` 的调用成功。反之亦然，如果返回 false
-   * ，则不应该调用 `emit` ，因为它会失败。
+   *，则不应该调用 `emit`，因为它会失败。
    *
    */
   canEmit(canEmitReference: (ref: Reference) => boolean): boolean {

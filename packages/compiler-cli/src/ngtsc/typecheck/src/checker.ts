@@ -47,7 +47,7 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
   /**
    * Stores the `CompletionEngine` which powers autocompletion for each component class.
    *
-   * 存储为每个组件类提供自动完成的 `CompletionEngine` 。
+   * 存储为每个组件类提供自动完成的 `CompletionEngine`。
    *
    * Must be invalidated whenever the component's template or the `ts.Program` changes. Invalidation
    * on template changes is performed within this `TemplateTypeCheckerImpl` instance. When the
@@ -61,7 +61,7 @@ export class TemplateTypeCheckerImpl implements TemplateTypeChecker {
   /**
    * Stores the `SymbolBuilder` which creates symbols for each component class.
    *
-   * 存储为每个组件类创建符号的 `SymbolBuilder` 。
+   * 存储为每个组件类创建符号的 `SymbolBuilder`。
    *
    * Must be invalidated whenever the component's template or the `ts.Program` changes. Invalidation
    * on template changes is performed within this `TemplateTypeCheckerImpl` instance. When the

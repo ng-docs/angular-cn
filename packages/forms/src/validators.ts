@@ -126,7 +126,7 @@ export const NG_ASYNC_VALIDATORS =
  * - `tld` consists of one or more `labels` separated by periods \(`.`\). For example `localhost` or
  *   `foo.com`.
  *
- *   `tld` 由一个或多个用句点 \( `.` \) 分隔的 `labels` 组成。例如 `localhost` 或 `foo.com` 。
+ *   `tld` 由一个或多个用句点 \( `.` \) 分隔的 `labels` 组成。例如 `localhost` 或 `foo.com`。
  *
  * - A `label` consists of one or more of the allowed characters \(alphanumeric, dashes \(`-`\) and
  *   periods \(`.`\)\).
@@ -593,7 +593,7 @@ export class Validators {
  * Validator that requires the control's value to be greater than or equal to the provided number.
  * See `Validators.min` for additional information.
  *
- * 要求控件的值大于或等于提供的数字的验证器。有关其他信息，请参阅 `Validators.min` 。
+ * 要求控件的值大于或等于提供的数字的验证器。有关其他信息，请参阅 `Validators.min`。
  *
  */
 export function minValidator(min: number): ValidatorFn {
@@ -612,7 +612,7 @@ export function minValidator(min: number): ValidatorFn {
  * Validator that requires the control's value to be less than or equal to the provided number.
  * See `Validators.max` for additional information.
  *
- * 要求控件的值小于或等于提供的数字的验证器。有关其他信息，请参阅 `Validators.max` 。
+ * 要求控件的值小于或等于提供的数字的验证器。有关其他信息，请参阅 `Validators.max`。
  *
  */
 export function maxValidator(max: number): ValidatorFn {
@@ -631,7 +631,7 @@ export function maxValidator(max: number): ValidatorFn {
  * Validator that requires the control have a non-empty value.
  * See `Validators.required` for additional information.
  *
- * 需要控件的验证器具有非空值。有关其他信息，请参阅 `Validators.required` 。
+ * 需要控件的验证器具有非空值。有关其他信息，请参阅 `Validators.required`。
  *
  */
 export function requiredValidator(control: AbstractControl): ValidationErrors|null {
@@ -644,7 +644,7 @@ export function requiredValidator(control: AbstractControl): ValidationErrors|nu
  * See `Validators.requiredTrue` for additional information.
  *
  * 要求控件的值为 true 的验证器。此验证器通常用于所需的复选框。有关其他信息，请参阅
- * `Validators.requiredTrue` 。
+ * `Validators.requiredTrue`。
  *
  */
 export function requiredTrueValidator(control: AbstractControl): ValidationErrors|null {
@@ -655,7 +655,7 @@ export function requiredTrueValidator(control: AbstractControl): ValidationError
  * Validator that requires the control's value pass an email validation test.
  * See `Validators.email` for additional information.
  *
- * 需要控件值的验证器通过电子邮件验证测试。有关其他信息，请参阅 `Validators.email` 。
+ * 需要控件值的验证器通过电子邮件验证测试。有关其他信息，请参阅 `Validators.email`。
  *
  */
 export function emailValidator(control: AbstractControl): ValidationErrors|null {
@@ -669,7 +669,7 @@ export function emailValidator(control: AbstractControl): ValidationErrors|null 
  * Validator that requires the length of the control's value to be greater than or equal
  * to the provided minimum length. See `Validators.minLength` for additional information.
  *
- * 要求控件值的长度大于或等于提供的最小长度的验证器。有关其他信息，请参阅 `Validators.minLength` 。
+ * 要求控件值的长度大于或等于提供的最小长度的验证器。有关其他信息，请参阅 `Validators.minLength`。
  *
  */
 export function minLengthValidator(minLength: number): ValidatorFn {
@@ -690,7 +690,7 @@ export function minLengthValidator(minLength: number): ValidatorFn {
  * Validator that requires the length of the control's value to be less than or equal
  * to the provided maximum length. See `Validators.maxLength` for additional information.
  *
- * 要求控件值的长度小于或等于提供的最大长度的验证器。有关其他信息，请参阅 `Validators.maxLength` 。
+ * 要求控件值的长度小于或等于提供的最大长度的验证器。有关其他信息，请参阅 `Validators.maxLength`。
  *
  */
 export function maxLengthValidator(maxLength: number): ValidatorFn {
@@ -705,7 +705,7 @@ export function maxLengthValidator(maxLength: number): ValidatorFn {
  * Validator that requires the control's value to match a regex pattern.
  * See `Validators.pattern` for additional information.
  *
- * 需要控件的值与正则表达式模式匹配的验证器。有关其他信息，请参阅 `Validators.pattern` 。
+ * 需要控件的值与正则表达式模式匹配的验证器。有关其他信息，请参阅 `Validators.pattern`。
  *
  */
 export function patternValidator(pattern: string|RegExp): ValidatorFn {
@@ -808,7 +808,7 @@ export function normalizeValidators<V>(validators: (V|Validator|AsyncValidator)[
  * Merges synchronous validators into a single validator function.
  * See `Validators.compose` for additional information.
  *
- * 将同步验证器合并到单个验证器函数中。有关其他信息，请参阅 `Validators.compose` 。
+ * 将同步验证器合并到单个验证器函数中。有关其他信息，请参阅 `Validators.compose`。
  *
  */
 function compose(validators: (ValidatorFn|null|undefined)[]|null): ValidatorFn|null {
@@ -838,7 +838,7 @@ export function composeValidators(validators: Array<Validator|ValidatorFn>): Val
  * Merges asynchronous validators into a single validator function.
  * See `Validators.composeAsync` for additional information.
  *
- * 将异步验证器合并到单个验证器函数中。有关其他信息，请参阅 `Validators.composeAsync` 。
+ * 将异步验证器合并到单个验证器函数中。有关其他信息，请参阅 `Validators.composeAsync`。
  *
  */
 function composeAsync(validators: (AsyncValidatorFn|null)[]): AsyncValidatorFn|null {
@@ -906,11 +906,11 @@ export function getControlAsyncValidators(control: AbstractControl): AsyncValida
  * Accepts a singleton validator, an array, or null, and returns an array type with the provided
  * validators.
  *
- * 接受单例验证器、数组或 null ，并返回使用提供的验证器的数组类型。
+ * 接受单例验证器、数组或 null，并返回使用提供的验证器的数组类型。
  *
  * @param validators A validator, validators, or null.
  *
- * 一个验证器，一个或多个验证器，或 null 。
+ * 一个验证器，一个或多个验证器，或 null。
  *
  * @returns
  *

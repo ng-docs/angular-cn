@@ -20,7 +20,7 @@ import {extractDirectiveTypeCheckMeta, extractReferencesFromType, extraReference
  * A `MetadataReader` that can read metadata from `.d.ts` files, which have static Ivy properties
  * from an upstream compilation already.
  *
- * 一个 `MetadataReader` ，可以从 `.d.ts` 文件中读取元数据，这些文件已经具有来自上游编译的静态 Ivy
+ * 一个 `MetadataReader`，可以从 `.d.ts` 文件中读取元数据，这些文件已经具有来自上游编译的静态 Ivy
  * 属性。
  *
  */
@@ -35,7 +35,7 @@ export class DtsMetadataReader implements MetadataReader {
    *
    * @param ref `Reference` to the class of interest, with the context of how it was obtained.
    *
-   * 对感兴趣的类的 `Reference` ，以及它是如何获取的上下文。
+   * 对感兴趣的类的 `Reference`，以及它是如何获取的上下文。
    */
   getNgModuleMetadata(ref: Reference<ClassDeclaration>): NgModuleMeta|null {
     const clazz = ref.node;

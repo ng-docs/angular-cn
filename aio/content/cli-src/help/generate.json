@@ -46,7 +46,7 @@
       "type": "string",
       "description": "The [collection:schematic] to run.",
       "positional": 0,
-      "descriptionCn": "要运行的 [collection:schematic] 。"
+      "descriptionCn": "要运行的 [collection:schematic]。"
     }
   ],
   "subcommands": [
@@ -296,7 +296,7 @@
           ],
           "default": false,
           "description": "Specifies if the style will contain `:host { display: block; }`.",
-          "descriptionCn": "指定是否要在样式中包含 `:host { display: block; }` 。"
+          "descriptionCn": "指定是否要在样式中包含 `:host { display: block; }`。"
         },
         {
           "name": "export",

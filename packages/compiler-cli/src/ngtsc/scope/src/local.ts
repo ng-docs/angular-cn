@@ -31,7 +31,7 @@ export interface LocalNgModuleData {
  * which summarize the compilation scope of a component.
  *
  * 一个注册表，它收集有关本地的 NgModules、指令、组件和管道的信息（在正在编译的 ts.Program
- * 中声明），并且可以生成 `LocalModuleScope` ，它总结了组件的编译范围。
+ * 中声明），并且可以生成 `LocalModuleScope`，它总结了组件的编译范围。
  *
  * This class implements the logic of NgModule declarations, imports, and exports and can produce,
  * for a given component, the set of directives and pipes which are "visible" in that component's
@@ -51,7 +51,7 @@ export interface LocalNgModuleData {
  * NgModule、Directive、组件和管道的数据都会添加到注册表。不会尝试遍历或验证 NgModule
  * 图（导入、导出等）。经过分析，可以调用 `getScopeOfModule` 或 `getScopeForComponent`
  * 之一，它会遍历 NgModule 图并应用 NgModule 逻辑生成 `LocalModuleScope`
- * ，即给定模块或组件的完整范围。
+ *，即给定模块或组件的完整范围。
  *
  * The `LocalModuleScopeRegistry` is also capable of producing `ts.Diagnostic` errors when Angular
  * semantics are violated.
@@ -109,7 +109,7 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
   /**
    * Tracks the `RemoteScope` for components requiring "remote scoping".
    *
-   * 跟踪需要“远程范围界定”的组件的 `RemoteScope` 。
+   * 跟踪需要“远程范围界定”的组件的 `RemoteScope`。
    *
    * Remote scoping is when the set of directives which apply to a given component is set in the
    * NgModule's file instead of directly on the component def (which is sometimes needed to get
@@ -118,7 +118,7 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
    *
    * 远程作用域是指适用于给定组件的指令集在 NgModule 的文件中设置，而不是直接在组件 def
    * 上设置（有时需要解决循环导入问题）。这不会用于计算 `LocalModuleScope`
-   * ，但为方便起见，在此进行跟踪。
+   *，但为方便起见，在此进行跟踪。
    *
    */
   private remoteScoping = new Map<ClassDeclaration, RemoteScope>();
@@ -176,12 +176,12 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
    * If `node` is declared in more than one NgModule \(duplicate declaration\), then get the
    * `DeclarationData` for each offending declaration.
    *
-   * 如果 `node` 在多个 NgModule（重复声明）中声明，则获取每个有问题的声明的 `DeclarationData` 。
+   * 如果 `node` 在多个 NgModule（重复声明）中声明，则获取每个有问题的声明的 `DeclarationData`。
    *
    * Ordinarily a class is only declared in one NgModule, in which case this function returns
    * `null`.
    *
-   * 通常，一个类仅在一个 NgModule 中声明，在这种情况下，此函数会返回 `null` 。
+   * 通常，一个类仅在一个 NgModule 中声明，在这种情况下，此函数会返回 `null`。
    *
    */
   getDuplicateDeclarations(node: ClassDeclaration): DeclarationData[]|null {
@@ -196,15 +196,15 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
    * Collects registered data for a module and its directives/pipes and convert it into a full
    * `LocalModuleScope`.
    *
-   * 收集模块及其指令/管道的注册数据，并将其转换为完整的 `LocalModuleScope` 。
+   * 收集模块及其指令/管道的注册数据，并将其转换为完整的 `LocalModuleScope`。
    *
    * This method implements the logic of NgModule imports and exports. It returns the
    * `LocalModuleScope` for the given NgModule if one can be produced, `null` if no scope was ever
    * defined, or the string `'error'` if the scope contained errors.
    *
    * 此方法实现了 NgModule 导入和导出的逻辑。如果可以生成，它会返回给定 `LocalModuleScope` 的
-   * LocalModuleScope ，如果没有定义范围，则返回 `null` ，如果范围包含错误，则返回字符串 `'error'`
-   * 。
+   * LocalModuleScope，如果没有定义范围，则返回 `null`，如果范围包含错误，则返回字符串 `'error'`
+   *。
    *
    */
   getScopeOfModule(clazz: ClassDeclaration): LocalModuleScope|null {
@@ -218,7 +218,7 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
    * the given NgModule, or `null` if no errors were present.
    *
    * 检索在计算给定 NgModule 的 `LocalModuleScope` 期间生成的任何 `ts.Diagnostic`
-   * ，如果不存在错误，则为 `null` 。
+   *，如果不存在错误，则为 `null`。
    *
    */
   getDiagnosticsOfModule(clazz: ClassDeclaration): ts.Diagnostic[]|null {
@@ -569,7 +569,7 @@ export class LocalModuleScopeRegistry implements MetadataRegistry, ComponentScop
    * `null` if no scope could be found, or `'invalid'` if the `Reference` is not a valid
    *     NgModule.
    *
-   * 如果找不到范围，则为 `null` ，如果 `Reference` 不是有效的 NgModule ，则为 `'invalid'` 。
+   * 如果找不到范围，则为 `null`，如果 `Reference` 不是有效的 NgModule，则为 `'invalid'`。
    *
    * May also contribute diagnostics of its own by adding to the given `diagnostics`
    * array parameter.
@@ -710,7 +710,7 @@ function invalidRef(
 /**
  * Produce a `ts.Diagnostic` for an import or export which itself has errors.
  *
- * 为本身有错误的导入或导出生成 `ts.Diagnostic` 。
+ * 为本身有错误的导入或导出生成 `ts.Diagnostic`。
  *
  */
 function invalidTransitiveNgModuleRef(
@@ -756,7 +756,7 @@ function invalidReexport(
 /**
  * Produce a `ts.Diagnostic` for a collision in re-export names between two directives/pipes.
  *
- * 为两个指令/管道之间的重新导出名称冲突生成 `ts.Diagnostic` 。
+ * 为两个指令/管道之间的重新导出名称冲突生成 `ts.Diagnostic`。
  *
  */
 function reexportCollision(

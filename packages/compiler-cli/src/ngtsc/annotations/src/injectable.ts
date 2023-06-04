@@ -162,7 +162,7 @@ export class InjectableDecoratorHandler implements
  * Read metadata from the `@Injectable` decorator and produce the `IvyInjectableMetadata`, the
  * input metadata needed to run `compileInjectable`.
  *
- * 从 `@Injectable` 装饰器读取元数据并生成 `IvyInjectableMetadata` ，这是运行 `compileInjectable`
+ * 从 `@Injectable` 装饰器读取元数据并生成 `IvyInjectableMetadata`，这是运行 `compileInjectable`
  * 所需的输入元数据。
  *
  * A `null` return value indicates this is @Injectable has invalid data.
@@ -238,7 +238,7 @@ function extractInjectableMetadata(
 /**
  * Get the `R3ProviderExpression` for this `expression`.
  *
- * 获取此 `expression` 的 `R3ProviderExpression` 。
+ * 获取此 `expression` 的 `R3ProviderExpression`。
  *
  * The `useValue`, `useExisting` and `useClass` properties might be wrapped in a `ForwardRef`, which
  * needs to be unwrapped. This function will do that unwrapping and set a flag on the returned

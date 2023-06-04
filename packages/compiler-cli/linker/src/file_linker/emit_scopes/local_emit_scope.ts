@@ -24,7 +24,7 @@ export class LocalEmitScope<TStatement, TExpression> extends EmitScope<TStatemen
   /**
    * Translate the given Output AST definition expression into a generic `TExpression`.
    *
-   * 将给定的输出 AST 定义表达式转换为通用 `TExpression` 。
+   * 将给定的输出 AST 定义表达式转换为通用 `TExpression`。
    *
    * Merges the `ConstantPool` statements with the definition statements when generating the
    * definition expression. This means that `ConstantPool` statements will be emitted into an IIFE.

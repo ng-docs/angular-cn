@@ -21,7 +21,7 @@ const RESOURCE_MARKER_TS = RESOURCE_MARKER + '.ts';
 /**
  * `ResourceLoader` which delegates to an `NgCompilerAdapter`'s resource loading methods.
  *
- * `ResourceLoader` ，它委托给 `NgCompilerAdapter` 的资源加载方法。
+ * `ResourceLoader`，它委托给 `NgCompilerAdapter` 的资源加载方法。
  *
  */
 export class AdapterResourceLoader implements ResourceLoader {
@@ -49,7 +49,7 @@ export class AdapterResourceLoader implements ResourceLoader {
    * Otherwise, uses a fallback mechanism that searches the module resolution candidates.
    *
    * 如果支持将资源映射到文件名，则使用提供的 CompilerHost
-   * 。否则，使用搜索模块解析候选者的后备机制。
+   *。否则，使用搜索模块解析候选者的后备机制。
    *
    * @param url The, possibly relative, url of the resource.
    *
@@ -106,7 +106,7 @@ export class AdapterResourceLoader implements ResourceLoader {
    * A Promise that is resolved once the resource has been loaded or `undefined` if the
    * file has already been loaded.
    *
-   * 加载资源后解析的 Promise ，如果已加载文件，则为 `undefined` 。
+   * 加载资源后解析的 Promise，如果已加载文件，则为 `undefined`。
    * @throws An Error if pre-loading is not available.
    *
    * 如果预加载不可用，则会出现错误。
@@ -231,7 +231,7 @@ export class AdapterResourceLoader implements ResourceLoader {
    * Attempt to resolve `url` in the context of `fromFile`, while respecting the rootDirs
    * option from the tsconfig. First, normalize the file name.
    *
-   * 尝试在 `fromFile` 的上下文中解析 `url` ，同时尊重 tsconfig 中的 rootDirs
+   * 尝试在 `fromFile` 的上下文中解析 `url`，同时尊重 tsconfig 中的 rootDirs
    * 选项。首先，规范化文件名。
    *
    */
@@ -318,7 +318,7 @@ export class AdapterResourceLoader implements ResourceLoader {
  * marker and does not go to the filesystem for these requests, as they are known not to exist.
  *
  * 从可识别特殊资源标记的编译器适配器派生一个 `ts.ModuleResolutionHost`
- * ，并且不会转到这些请求的文件系统，因为已知它们不存在。
+ *，并且不会转到这些请求的文件系统，因为已知它们不存在。
  *
  */
 function createLookupResolutionHost(adapter: NgCompilerAdapter):

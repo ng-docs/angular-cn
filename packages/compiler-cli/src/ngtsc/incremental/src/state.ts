@@ -82,7 +82,7 @@ export interface AnalyzedIncrementalState {
    * All generated template type-checking files produced as part of this compilation, or `null` if
    * type-checking was not \(yet\) performed.
    *
-   * 作为此编译的一部分生成的所有生成的模板类型检查文件，如果（尚未）执行类型检查，则为 `null` 。
+   * 作为此编译的一部分生成的所有生成的模板类型检查文件，如果（尚未）执行类型检查，则为 `null`。
    *
    */
   typeCheckResults: Map<AbsoluteFsPath, FileTypeCheckingData>|null;

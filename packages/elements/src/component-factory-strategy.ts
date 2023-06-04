@@ -26,7 +26,7 @@ const DESTROY_DELAY = 10;
  * Factory that creates new ComponentNgElementStrategy instance. Gets the component factory with the
  * constructor's injector's factory resolver and passes that factory to each strategy.
  *
- * 创建新的 ComponentNgElementStrategy 实例的工厂。 使用构造函数的注入器的工厂解析器获取组件工厂，并将该工厂传递给每个策略。
+ * 创建新的 ComponentNgElementStrategy 实例的工厂。使用构造函数的注入器的工厂解析器获取组件工厂，并将该工厂传递给每个策略。
  *
  */
 export class ComponentNgElementStrategyFactory implements NgElementStrategyFactory {
@@ -162,7 +162,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Returns the component property value. If the component has not yet been created, the value is
    * retrieved from the cached initialization values.
    *
-   * 返回组件属性值。 如果尚未创建组件，则从缓存的初始化值中检索该值。
+   * 返回组件属性值。如果尚未创建组件，则从缓存的初始化值中检索该值。
    *
    */
   getInputValue(property: string): any {
@@ -179,7 +179,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Sets the input value for the property. If the component has not yet been created, the value is
    * cached and set when the component is created.
    *
-   * 设置属性的输入值。 如果尚未创建组件，则在创建组件时缓存并设置该值。
+   * 设置属性的输入值。如果尚未创建组件，则在创建组件时缓存并设置该值。
    *
    */
   setInputValue(property: string, value: any): void {
@@ -290,7 +290,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Marks the component view for check, if necessary.
    * \(NOTE: This is required when the `ChangeDetectionStrategy` is set to `OnPush`.\)
    *
-   * 如有必要，标记要检查的组件视图。 （注意：当 `ChangeDetectionStrategy` 设置为 `OnPush` 时，这是必需的。）
+   * 如有必要，标记要检查的组件视图。（注意：当 `ChangeDetectionStrategy` 设置为 `OnPush` 时，这是必需的。）
    *
    */
   protected markViewForCheck(viewChangeDetectorRef: ChangeDetectorRef): void {
@@ -304,7 +304,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Schedules change detection to run on the component.
    * Ignores subsequent calls if already scheduled.
    *
-   * 安排变更检测在组件上运行。 如果已经安排，则忽略后续呼叫。
+   * 安排变更检测在组件上运行。如果已经安排，则忽略后续呼叫。
    *
    */
   protected scheduleDetectChanges(): void {

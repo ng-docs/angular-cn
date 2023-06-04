@@ -23,7 +23,7 @@ import {ClassPropertyMapping, ClassPropertyName} from './property_mapping';
  * followed.
  *
  * 如果继承链可以被完全解析，则返回的 `DirectiveMeta` 将具有 `baseClass: null`
- * ，如果不能完全遵循继承链，则返回的 DirectiveMeta 将具有 baseClass `baseClass: 'dynamic'` 。
+ *，如果不能完全遵循继承链，则返回的 DirectiveMeta 将具有 baseClass `baseClass: 'dynamic'`。
  *
  */
 export function flattenInheritedDirectiveMetadata(

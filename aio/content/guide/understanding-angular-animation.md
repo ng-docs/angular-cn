@@ -4,7 +4,7 @@
 
 Animation provides the illusion of motion: HTML elements change styling over time. Well-designed animations can make your application more fun and straightforward to use, but they aren't just cosmetic.
 
-动画提供了运动的错觉：HTML 元素会随时间改变样式。 精心设计的动画可以让你的应用程序更加有趣和易于使用，但它们不仅仅是装饰性的。
+动画提供了运动的错觉：HTML 元素会随时间改变样式。精心设计的动画可以让你的应用程序更加有趣和易于使用，但它们不仅仅是装饰性的。
 
 ## Prerequisites
 
@@ -41,11 +41,11 @@ Animations can improve your application and user experience in many ways:
 Typically, animations involve multiple style *transformations* over time.
 An HTML element can move, change color, grow, shrink, fade, or slide off the page. These changes can occur simultaneously or sequentially. You can control the timing of each transformation.
 
-通常，动画会随时间进行多种样式*转换*。 HTML 元素可以移动、改变颜色、增大、缩小、淡化或滑出页面。 这些变化可以同时或依次发生。 你可以控制每个转换的时间。
+通常，动画会随时间进行多种样式*转换*。HTML 元素可以移动、改变颜色、增大、缩小、淡化或滑出页面。这些变化可以同时或依次发生。你可以控制每个转换的时间。
 
 Angular's animation system is built on CSS capability, which means you can animate any property that the browser considers animatable. This includes positions, sizes, transforms, colors, borders, and more.
 
-Angular 的动画系统建立在 CSS 能力之上，这意味着你可以对浏览器认为可设置动画的任何属性设置动画。 这包括位置、大小、变换、颜色、边框等。
+Angular 的动画系统建立在 CSS 能力之上，这意味着你可以对浏览器认为可设置动画的任何属性设置动画。这包括位置、大小、变换、颜色、边框等。
 
 The W3C maintains a list of animatable properties on its [CSS Transitions](https://www.w3.org/TR/css-transitions-1) page.
 
@@ -57,11 +57,11 @@ W3C 在其 [CSS Transitions](https://www.w3.org/TR/css-transitions-1) 页面上�
 
 Animation transition states represent a style at certain points in your animations that you can animate to and from. For example, you can animate a state as the starting point to a different state and the end of an animation.
 
-动画过渡状态表示动画中某些点的样式，你可以对其进行动画处理。 例如，你可以将一个状态设置为不同状态的起点和动画的结束点。
+动画过渡状态表示动画中某些点的样式，你可以对其进行动画处理。例如，你可以将一个状态设置为不同状态的起点和动画的结束点。
 
 Animate a transition that changes a single HTML element from one state to another. For example, you can specify that a button displays either **Open** or **Closed** based on the user's last action. When the button is in the `open` state, it's visible and yellow. When it's in the `closed` state, it's translucent and blue.
 
-为将单个 HTML 元素从一种状态更改为另一种状态之间的过渡设置动画。 例如，你可以指定按钮根据用户的最后一个操作显示**打开**或**关闭**。 当按钮处于 `open` 状态时，它是完全可见的黄色。 当它处于 `closed` 状态时，它是半透明的蓝色。
+为将单个 HTML 元素从一种状态更改为另一种状态之间的过渡设置动画。例如，你可以指定按钮根据用户的最后一个操作显示**打开**或**关闭**。当按钮处于 `open` 状态时，它是完全可见的黄色。当它处于 `closed` 状态时，它是半透明的蓝色。
 
 In HTML, these attributes are set using ordinary CSS styles such as color and opacity. In Angular, use the `style()` function to specify a set of CSS styles for use with animations. Collect a set of styles in an animation state, and give the state a name, such as `open` or `closed`.
 

@@ -23,7 +23,7 @@ export interface MigrateFilesOptions {
   /**
    * Paths to the files that should be migrated. Should be relative to the `rootPath`.
    *
-   * 应该迁移的文件的路径。应该相对于 `rootPath` 。
+   * 应该迁移的文件的路径。应该相对于 `rootPath`。
    *
    */
   translationFilePaths: string[];
@@ -31,7 +31,7 @@ export interface MigrateFilesOptions {
   /**
    * Path to the file containing the message ID mappings. Should be relative to the `rootPath`.
    *
-   * 包含消息 ID 映射的文件的路径。应该相对于 `rootPath` 。
+   * 包含消息 ID 映射的文件的路径。应该相对于 `rootPath`。
    *
    */
   mappingFilePath: string;

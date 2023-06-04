@@ -54,7 +54,7 @@ export interface TemplateSourceResolver {
    * absolute offsets and gives access to the original template source.
    *
    * 将与给定模板 id 关联的绝对源范围转换为完整的 `ParseSourceSpan`
-   * 。返回的解析跨度除了绝对偏移量之外还有行号和列号，并提供对原始模板源的访问。
+   *。返回的解析跨度除了绝对偏移量之外还有行号和列号，并提供对原始模板源的访问。
    *
    */
   toParseSourceSpan(id: TemplateId, span: AbsoluteSourceSpan): ParseSourceSpan|null;
@@ -163,7 +163,7 @@ export function findTypeCheckBlock(
  * returns null.
  *
  * 从给定节点开始向上遍历 AST，以从已发出到 TCB 的注释中提取源位置。如果该节点在 TCB
- * 中不存在，或者在树上找到了忽略标记注释（这是诊断请求的一部分），则此函数返回 null 。
+ * 中不存在，或者在树上找到了忽略标记注释（这是诊断请求的一部分），则此函数返回 null。
  *
  */
 export function findSourceLocation(

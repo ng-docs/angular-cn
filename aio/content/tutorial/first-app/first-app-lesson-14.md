@@ -68,7 +68,7 @@ JSON Server 是一种用于创建模拟 REST API 的开源工具。你将使用�
 
 1. Install `json-server` from npm by using the following command.
 
-   使用以下命令从 npm 安装 `json-server` 。
+   使用以下命令从 npm 安装 `json-server`。
 
    <code-example language="bash" format="bash">
        npm install -g json-server
@@ -245,7 +245,7 @@ The data source has been configured, the next step is to update your web app to 
 
       The code now uses asynchronous code to make a `get` request over `HTTP`. Notice, for this example, the code uses fetch. For more advanced use cases consider using `HttpClient` provided by Angular.
 
-      该代码现在使用异步代码通过 `HTTP` 发出 `get` 请求。请注意，对于此示例，代码使用了 `fetch`。对于更高级的用例，请考虑使用 Angular 提供的 `HttpClient` 。
+      该代码现在使用异步代码通过 `HTTP` 发出 `get` 请求。请注意，对于此示例，代码使用了 `fetch`。对于更高级的用例，请考虑使用 Angular 提供的 `HttpClient`。
 
    1. Update the `getHousingLocationsById` function to make a call to the web server you configured.
 

@@ -124,7 +124,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
 * [Internationalization][AioGuideI18nOverview]: Make your application available in multiple languages with Angular's internationalization \(i18n\) tools.
 
-  [国际化][AioGuideI18nOverview] ：借助 Angular 的国际化（i18n）工具，可以让你的应用支持多本地环境。
+  [国际化][AioGuideI18nOverview]：借助 Angular 的国际化（i18n）工具，可以让你的应用支持多本地环境。
 
 * [Accessibility](guide/accessibility): Make your application accessible to all users.
 
@@ -164,7 +164,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
 * [Schematics](guide/schematics): Learn about customizing and extending the CLI's generation capabilities.
 
-  学习[原理图](guide/schematics) ：学习如何自定义和扩展 CLI 的生成（`generate`）能力。
+  学习[原理图](guide/schematics)：学习如何自定义和扩展 CLI 的生成（`generate`）能力。
 
 * [CLI builders](guide/cli-builder): Learn about customizing and extending the CLI's ability to apply tools to perform complex tasks, such as building and testing applications.
 

@@ -89,7 +89,7 @@ export function getParentClassDeclaration(startNode: ts.Node): ts.ClassDeclarati
  * Returns a property assignment from the assignment value if the property name
  * matches the specified `key`, or `null` if there is no match.
  *
- * 如果属性名称与指定的 `key` 匹配，则从赋值值返回属性赋值，如果不匹配，则返回 `null` 。
+ * 如果属性名称与指定的 `key` 匹配，则从赋值值返回属性赋值，如果不匹配，则返回 `null`。
  *
  */
 export function getPropertyAssignmentFromValue(value: ts.Node, key: string): ts.PropertyAssignment|
@@ -180,7 +180,7 @@ export function addElementToArrayLiteral(
  * the given key. `null` if no such key exists.
  *
  * 给定一个 ObjectLiteralExpression 节点，提取并返回与给定键对应的
- * PropertyAssignment。如果不存在这样的键，则为 `null` 。
+ * PropertyAssignment。如果不存在这样的键，则为 `null`。
  *
  */
 export function objectPropertyAssignmentForKey(
@@ -217,8 +217,8 @@ export function updateObjectValueForKey(
  * If no update is needed, returns `null`.
  *
  * 创建一个新的 ArrayLiteralExpression
- * ，或接受现有的。确保数组包含提供的标识符。返回已更新或新创建的数组。如果不需要更新，则返回 `null`
- * 。
+ *，或接受现有的。确保数组包含提供的标识符。返回已更新或新创建的数组。如果不需要更新，则返回 `null`
+ *。
  *
  */
 export function ensureArrayWithIdentifier(
@@ -357,7 +357,7 @@ export function nonCollidingImportName(
 /**
  * If the provided trait is standalone, just return it. Otherwise, returns the owning ngModule.
  *
- * 如果提供的特征是独立的，则返回它。 否则，返回拥有的 ngModule。
+ * 如果提供的特征是独立的，则返回它。否则，返回拥有的 ngModule。
  *
  */
 export function standaloneTraitOrNgModule(
@@ -380,7 +380,7 @@ export function standaloneTraitOrNgModule(
  * Updates the imports on a TypeScript file, by ensuring the provided import is present.
  * Returns the text changes, as well as the name with which the imported symbol can be referred to.
  *
- * 通过确保提供的导入存在，更新 TypeScript 文件上的导入。 返回文本更改，以及可以引用导入符号的名称。
+ * 通过确保提供的导入存在，更新 TypeScript 文件上的导入。返回文本更改，以及可以引用导入符号的名称。
  *
  */
 export function updateImportsForTypescriptFile(
@@ -486,7 +486,7 @@ export function updateImportsForAngularTrait(
 /**
  * Return whether a given Angular decorator specifies `standalone: true`.
  *
- * 返回给定的 Angular 装饰器是否指定 `standalone: true` 。
+ * 返回给定的 Angular 装饰器是否指定 `standalone: true`。
  *
  */
 export function isStandaloneDecorator(decorator: ts.Decorator): boolean|null {
@@ -520,7 +520,7 @@ export function isStandaloneDecorator(decorator: ts.Decorator): boolean|null {
  * If `exportedSpecifierName` is null, or is equal to `name`, then the qualified import alias will
  * be omitted.
  *
- * 如果 `exportedSpecifierName` 为 null 或等于 `name` ，则限定的导入别名将被忽略。
+ * 如果 `exportedSpecifierName` 为 null 或等于 `name`，则限定的导入别名将被忽略。
  *
  */
 export function generateImport(
@@ -546,7 +546,7 @@ export function generateImport(
  * be omitted.
  *
  * 使用新成员更新现有的命名导入。如果 `exportedSpecifierName` 为 null 或等于 `name`
- * ，则限定的导入别名将被忽略。
+ *，则限定的导入别名将被忽略。
  *
  */
 export function updateImport(
@@ -580,7 +580,7 @@ function getOrCreatePrinter(): ts.Printer {
  * which will not have `.text` or `.fullText` set.
  *
  * 将给定的 TypeScript 节点打印为字符串。用于序列化完全合成生成的 AST，它不会设置 `.text` 或
- * `.fullText` 。
+ * `.fullText`。
  *
  */
 export function printNode(node: ts.Node, sourceFile: ts.SourceFile): string {

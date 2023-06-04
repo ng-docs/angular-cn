@@ -49,7 +49,7 @@ export const enum DynamicValueReason {
    * such as `window`.
    *
    * 外部引用无法解析为可以估算的值。例如，在 `.d.ts`
-   * 中声明的函数的调用表达式，或访问原生全局变量，例如 `window` 。
+   * 中声明的函数的调用表达式，或访问原生全局变量，例如 `window`。
    *
    */
   EXTERNAL_REFERENCE,
@@ -110,7 +110,7 @@ export const enum DynamicValueReason {
    * 'foo', 'bar' or any arbitrary string, so we evaluate it to a DynamicValue.
    *
    * 估算 `foo` 会给出一个包装在数组中的 DynamicValue，其原因为 DYNAMIC_TYPE
-   * 。这是因为静态估算器对此元组的第一个元素具有 `string` 类型，并且该字符串的值无法静态确定。
+   *。这是因为静态估算器对此元组的第一个元素具有 `string` 类型，并且该字符串的值无法静态确定。
    * `string` 类型允许它是 'foo'、'bar' 或任何任意字符串，因此我们将其估算为 DynamicValue。
    *
    */

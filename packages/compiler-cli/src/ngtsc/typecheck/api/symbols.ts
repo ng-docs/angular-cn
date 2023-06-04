@@ -40,7 +40,7 @@ export type Symbol = InputBindingSymbol|OutputBindingSymbol|ElementSymbol|Refere
 /**
  * A `Symbol` which declares a new named entity in the template scope.
  *
- * 在模板范围内声明一个新的命名实体的 `Symbol` 。
+ * 在模板范围内声明一个新的命名实体的 `Symbol`。
  *
  */
 export type TemplateDeclarationSymbol = ReferenceSymbol|VariableSymbol;
@@ -90,7 +90,7 @@ export interface TsNodeSymbolInfo {
   /**
    * The `ts.Type` of the template node.
    *
-   * 模板节点的 `ts.Type` 。
+   * 模板节点的 `ts.Type`。
    *
    */
   tsType: ts.Type;
@@ -124,7 +124,7 @@ export interface ExpressionSymbol {
   /**
    * The `ts.Type` of the expression AST.
    *
-   * 表达式 AST 的 `ts.Type` 。
+   * 表达式 AST 的 `ts.Type`。
    *
    */
   tsType: ts.Type;
@@ -133,8 +133,8 @@ export interface ExpressionSymbol {
    * The `ts.Symbol` of the entity. This could be `null`, for example `AST` expression
    * `{{foo.bar + foo.baz}}` does not have a `ts.Symbol` but `foo.bar` and `foo.baz` both do.
    *
-   * 实体的 `ts.Symbol` 。这可以是 `null` ，例如 `AST` 表达式 `{{foo.bar + foo.baz}}` 没有
-   * `ts.Symbol` ，但 `foo.bar` 和 `foo.baz` 都有。
+   * 实体的 `ts.Symbol`。这可以是 `null`，例如 `AST` 表达式 `{{foo.bar + foo.baz}}` 没有
+   * `ts.Symbol`，但 `foo.bar` 和 `foo.baz` 都有。
    *
    */
   tsSymbol: ts.Symbol|null;
@@ -160,7 +160,7 @@ export interface BindingSymbol {
   /**
    * The `ts.Type` of the class member on the directive that is the target of the binding.
    *
-   * 作为绑定目标的指令上类成员的 `ts.Type` 。
+   * 作为绑定目标的指令上类成员的 `ts.Type`。
    *
    */
   tsType: ts.Type;
@@ -168,7 +168,7 @@ export interface BindingSymbol {
   /**
    * The `ts.Symbol` of the class member on the directive that is the target of the binding.
    *
-   * 作为绑定目标的指令上类成员的 `ts.Symbol` 。
+   * 作为绑定目标的指令上类成员的 `ts.Symbol`。
    *
    */
   tsSymbol: ts.Symbol;
@@ -177,7 +177,7 @@ export interface BindingSymbol {
    * The `DirectiveSymbol` or `ElementSymbol` for the Directive, Component, or `HTMLElement` with
    * the binding.
    *
-   * 具有绑定的 Directive、组件或 `HTMLElement` 的 `DirectiveSymbol` 或 `ElementSymbol` 。
+   * 具有绑定的 Directive、组件或 `HTMLElement` 的 `DirectiveSymbol` 或 `ElementSymbol`。
    *
    */
   target: DirectiveSymbol|ElementSymbol|TemplateSymbol;
@@ -239,14 +239,14 @@ export interface ReferenceSymbol {
   /**
    * The `ts.Type` of the Reference value.
    *
-   * 参考值的 `ts.Type` 。
+   * 参考值的 `ts.Type`。
    *
    * `TmplAstTemplate` - The type of the `TemplateRef`
    * `TmplAstElement` - The `ts.Type` for the `HTMLElement`.
    * Directive - The `ts.Type` for the class declaration.
    *
-   * `TmplAstTemplate` - `TemplateRef` 的类型 `TmplAstElement` - `HTMLElement` 的 `ts.Type` 。
-   * Directive - 类声明的 `ts.Type` 。
+   * `TmplAstTemplate` - `TemplateRef` 的类型 `TmplAstElement` - `HTMLElement` 的 `ts.Type`。
+   * Directive - 类声明的 `ts.Type`。
    *
    */
   tsType: ts.Type;
@@ -254,13 +254,13 @@ export interface ReferenceSymbol {
   /**
    * The `ts.Symbol` for the Reference value.
    *
-   * 参考值的 `ts.Symbol` 。
+   * 参考值的 `ts.Symbol`。
    *
    * `TmplAstTemplate` - A `TemplateRef` symbol.
    * `TmplAstElement` - The symbol for the `HTMLElement`.
    * Directive - The symbol for the class declaration of the directive.
    *
-   * `TmplAstTemplate` - 一个 `TemplateRef` 符号。 `TmplAstElement` - `HTMLElement` 的符号。指令 -
+   * `TmplAstTemplate` - 一个 `TemplateRef` 符号。`TmplAstElement` - `HTMLElement` 的符号。指令 -
    * 指令的类声明的符号。
    *
    */
@@ -308,7 +308,7 @@ export interface ReferenceSymbol {
    *
    * This `targetLocation` is `[_t1 variable declaration].getStart()`.
    *
-   * 此 `targetLocation` 是 `[_t1 variable declaration].getStart()` 。
+   * 此 `targetLocation` 是 `[_t1 variable declaration].getStart()`。
    *
    */
   targetLocation: TcbLocation;
@@ -319,8 +319,8 @@ export interface ReferenceSymbol {
    * `var _t2 = _t1`, this location is `[_t2 node].getStart()`. This location can
    * be used to find references to the variable within the template.
    *
-   * 引用变量声明中标识符节点在 TCB 中的位置。例如，给定模板引用的变量声明语句： `var _t2 = _t1`
-   * ，此位置是 `[_t2 node].getStart()` 。此位置可用于查找对模板中变量的引用。
+   * 引用变量声明中标识符节点在 TCB 中的位置。例如，给定模板引用的变量声明语句：`var _t2 = _t1`
+   *，此位置是 `[_t2 node].getStart()`。此位置可用于查找对模板中变量的引用。
    *
    */
   referenceVarLocation: TcbLocation;
@@ -338,11 +338,11 @@ export interface VariableSymbol {
   /**
    * The `ts.Type` of the entity.
    *
-   * 实体的 `ts.Type` 。
+   * 实体的 `ts.Type`。
    *
    * This will be `any` if there is no `ngTemplateContextGuard`.
    *
-   * 如果没有 `ngTemplateContextGuard` ，这将是 `any` 。
+   * 如果没有 `ngTemplateContextGuard`，这将是 `any`。
    *
    */
   tsType: ts.Type;
@@ -350,11 +350,11 @@ export interface VariableSymbol {
   /**
    * The `ts.Symbol` for the context variable.
    *
-   * 上下文变量的 `ts.Symbol` 。
+   * 上下文变量的 `ts.Symbol`。
    *
    * This will be `null` if there is no `ngTemplateContextGuard`.
    *
-   * 如果没有 `ngTemplateContextGuard` ，这将是 `null` 。
+   * 如果没有 `ngTemplateContextGuard`，这将是 `null`。
    *
    */
   tsSymbol: ts.Symbol|null;
@@ -398,7 +398,7 @@ export interface ElementSymbol {
   /**
    * The `ts.Type` for the `HTMLElement`.
    *
-   * `HTMLElement` 的 `ts.Type` 。
+   * `HTMLElement` 的 `ts.Type`。
    *
    */
   tsType: ts.Type;
@@ -406,7 +406,7 @@ export interface ElementSymbol {
   /**
    * The `ts.Symbol` for the `HTMLElement`.
    *
-   * `HTMLElement` 的 `ts.Symbol` 。
+   * `HTMLElement` 的 `ts.Symbol`。
    *
    */
   tsSymbol: ts.Symbol|null;
@@ -456,7 +456,7 @@ interface DirectiveSymbolBase extends PotentialDirective {
   /**
    * The `ts.Type` for the class declaration.
    *
-   * 类声明的 `ts.Type` 。
+   * 类声明的 `ts.Type`。
    *
    */
   tsType: ts.Type;
@@ -516,7 +516,7 @@ export interface PipeSymbol {
   /**
    * The `ts.Type` of the transform node.
    *
-   * 转换节点的 `ts.Type` 。
+   * 转换节点的 `ts.Type`。
    *
    */
   tsType: ts.Type;
@@ -525,8 +525,8 @@ export interface PipeSymbol {
    * The `ts.Symbol` for the transform call. This could be `null` when `checkTypeOfPipes` is set to
    * `false` because the transform call would be of the form `(_pipe1 as any).transform()`
    *
-   * 转换调用的 `ts.Symbol` 。当 `checkTypeOfPipes` 设置为 `false` 时，这可能为 `null`
-   * ，因为转换调用的格式 `(_pipe1 as any).transform()`
+   * 转换调用的 `ts.Symbol`。当 `checkTypeOfPipes` 设置为 `false` 时，这可能为 `null`
+   *，因为转换调用的格式 `(_pipe1 as any).transform()`
    *
    */
   tsSymbol: ts.Symbol|null;
@@ -558,7 +558,7 @@ export interface ClassSymbol {
   /**
    * The `ts.Type` of class.
    *
-   * 类的 `ts.Type` 。
+   * 类的 `ts.Type`。
    *
    */
   tsType: ts.Type;
@@ -566,7 +566,7 @@ export interface ClassSymbol {
   /**
    * The `ts.Symbol` for class.
    *
-   * 类的 `ts.Symbol` 。
+   * 类的 `ts.Symbol`。
    *
    */
   tsSymbol: SymbolWithValueDeclaration;

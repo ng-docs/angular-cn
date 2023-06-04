@@ -33,7 +33,7 @@ export abstract class SemanticSymbol {
    * uniquely identify the symbol relative to `file`. This is typically just the name of a
    * top-level class declaration, as that uniquely identifies the class within the file.
    *
-   * 此符号的标识符，如果无法确定标识符，则为 null 。它应该唯一地标识相对于 `file`
+   * 此符号的标识符，如果无法确定标识符，则为 null。它应该唯一地标识相对于 `file`
    * 的符号。这通常只是顶级类声明的名称，因为它可以唯一标识文件中的类。
    *
    * If the identifier is null, then this symbol cannot be recognized across rebuilds. In that
@@ -41,7 +41,7 @@ export abstract class SemanticSymbol {
    * rebuild.
    *
    * 如果标识符为 null
-   * ，则无法在重建中识别此符号。在这种情况下，始终假定符号在语义上已发生更改，以确保正确重建。
+   *，则无法在重建中识别此符号。在这种情况下，始终假定符号在语义上已发生更改，以确保正确重建。
    *
    */
   public readonly identifier: string|null;
@@ -71,7 +71,7 @@ export abstract class SemanticSymbol {
    * Note: `previousSymbol` is obtained from the most recently succeeded compilation. Symbols of
    * failed compilations are never provided.
    *
-   * 注意： `previousSymbol` 是从最近成功的编译中获取的。永远不会提供编译失败的符号。
+   * 注意：`previousSymbol` 是从最近成功的编译中获取的。永远不会提供编译失败的符号。
    *
    * @param previousSymbol The symbol from a prior compilation.
    *
@@ -110,7 +110,7 @@ export abstract class SemanticSymbol {
    * to be compared to see if the type-check block of components that use this symbol is affected.
    *
    * 类似于 `isPublicApiAffected`
-   * ，但在这里需要比较来自先前编译的等效符号，以查看使用此符号的组件的类型检查块是否受到影响。
+   *，但在这里需要比较来自先前编译的等效符号，以查看使用此符号的组件的类型检查块是否受到影响。
    *
    * This method determines whether a change to _this_ symbol require the symbols that
    * use to this symbol to have their type-check block regenerated.
@@ -120,7 +120,7 @@ export abstract class SemanticSymbol {
    * Note: `previousSymbol` is obtained from the most recently succeeded compilation. Symbols of
    * failed compilations are never provided.
    *
-   * 注意： `previousSymbol` 是从最近成功的编译中获取的。永远不会提供编译失败的符号。
+   * 注意：`previousSymbol` 是从最近成功的编译中获取的。永远不会提供编译失败的符号。
    *
    * @param previousSymbol The symbol from a prior compilation.
    *
@@ -134,7 +134,7 @@ export abstract class SemanticSymbol {
    * determines whether a change to _other_ symbols, i.e. those present in `typeCheckApiAffected`,
    * should cause _this_ symbol's type-check block to be regenerated.
    *
-   * 类似于 `isEmitAffected` ，但专注于此符号的类型检查块。此方法确定对 _ 其他 _ 符号（即
+   * 类似于 `isEmitAffected`，但专注于此符号的类型检查块。此方法确定对 _ 其他 _ 符号（即
    * `typeCheckApiAffected` 中存在的符号）的更改是否会导致重新生成 _ 此 _ 符号的类型检查块。
    *
    * @param previousSymbol The equivalent symbol from a prior compilation. Note that it may be a

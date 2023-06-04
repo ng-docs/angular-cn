@@ -293,7 +293,7 @@ The following actions describe the translation process for French.
 
    The `id="introductionHeader"` is a [custom ID][AioGuideI18nOptionalManageMarkedText], but without the `@@` prefix required in the source HTML.
 
-   `id="introductionHeader"` 是[自定义 ID][AioGuideI18nOptionalManageMarkedText] ，但没有源 HTML 中所需的 `@@` 前缀。
+   `id="introductionHeader"` 是[自定义 ID][AioGuideI18nOptionalManageMarkedText]，但没有源 HTML 中所需的 `@@` 前缀。
 
 1. Duplicate the `<source>... </source>` element in the text node, rename it to `target`, and then replace the content with the French text.
 

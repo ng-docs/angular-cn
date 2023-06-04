@@ -142,7 +142,7 @@ export class HttpContext {
    *
    * True if the token exists, false otherwise.
    *
-   * 如果令牌存在，则为 true ，否则为 false 。
+   * 如果令牌存在，则为 true，否则为 false。
    *
    */
   has(token: HttpContextToken<unknown>): boolean {

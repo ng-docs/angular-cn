@@ -92,8 +92,8 @@ export interface Injectable {
    *     and must be added to a `providers` array of an [@NgModule](api/core/NgModule#providers),
    *     [@Component](api/core/Directive#providers) or [@Directive](api/core/Directive#providers).
    *
-   *   'null' ：等效于 `undefined`
-   *   。可注入物不会在任何范围内自动提供，必须添加到[@NgModule](api/core/NgModule#providers) 、
+   *   'null'：等效于 `undefined`
+   *。可注入物不会在任何范围内自动提供，必须添加到[@NgModule](api/core/NgModule#providers) 、
    *   [@Component](api/core/Directive#providers)或[@Directive](api/core/Directive#providers)的
    *   `providers` 数组中。
    *
@@ -110,16 +110,16 @@ export interface Injectable {
    * - 'platform' : A special singleton platform injector shared by all
    *   applications on the page.
    *
-   *   'platform' ：由页面上所有应用程序共享的特殊单例平台注入器。
+   *   'platform'：由页面上所有应用程序共享的特殊单例平台注入器。
    *
    *   ```
-   *   'platform' ：页面上所有应用程序共享的平台注入器的特殊单例。
+   *   'platform'：页面上所有应用程序共享的平台注入器的特殊单例。
    *   ```
    *
    * - 'any' : Provides a unique instance in each lazy loaded module while all eagerly loaded
    *   modules share one instance. This option is DEPRECATED.
    *
-   *   'any' ：在每个惰性加载的模块中提供一个唯一实例，而所有热切加载的模块共享一个实例。
+   *   'any'：在每个惰性加载的模块中提供一个唯一实例，而所有热切加载的模块共享一个实例。
    *
    *   ```
    *   'any'：在每个惰性加载的模块中提供一个唯一的实例，而所有急性加载的模块共享一个实例。

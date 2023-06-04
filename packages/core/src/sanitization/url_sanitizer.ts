@@ -42,7 +42,7 @@ import {XSS_SECURITY_URL} from '../error_details_base_url';
  * that. More importantly, it disallows masking of a colon,
  * e.g. "javascript:...".
  *
- * 该模式不允许 & ，在 HTML 实体声明中使用 `[/?#]` 中的字符之一。这不允许在协议名称中使用 HTML
+ * 该模式不允许 &，在 HTML 实体声明中使用 `[/?#]` 中的字符之一。这不允许在协议名称中使用 HTML
  * 实体，这种情况永远不应该发生，例如“http”代表“http”。它还不允许在相对路径的第一个路径部分中出现
  * HTML
  * 实体，例如“foo&lt;bar/baz”。我们现有的转义函数不应该产生它。更重要的是，它不允许屏蔽冒号，例如“javascript:…”。

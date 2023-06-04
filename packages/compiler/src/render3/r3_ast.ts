@@ -24,7 +24,7 @@ export interface Node {
  *
  * 这是原始 `html.Comment` 节点的类似于 R3 `Node` 的包装器。我们当前不要求为 Comments
  * 实现访问器，因为它们只会在 R3 AST 的顶级收集，并且 `Render3ParseOptions['collectCommentNodes']`
- * 为 true 。
+ * 为 true。
  *
  */
 export class Comment implements Node {
@@ -56,7 +56,7 @@ export class BoundText implements Node {
  * `valueSpan` may not be present in cases where there is no value `<div a></div>`.
  * `keySpan` may also not be present for synthetic attributes from ICU expansions.
  *
- * 在不存在值 `<div a></div>` 的情况下，可能不存在 `valueSpan` 。对于 ICU 扩展的合成属性，`keySpan`
+ * 在不存在值 `<div a></div>` 的情况下，可能不存在 `valueSpan`。对于 ICU 扩展的合成属性，`keySpan`
  * 也可能不存在。
  *
  */

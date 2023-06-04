@@ -137,11 +137,11 @@ export interface UrlCreationOptions {
    *
    * * `preserve` : Preserve current parameters.
    *
-   *   `preserve` ：保留当前参数。
+   *   `preserve`：保留当前参数。
    *
    * * `merge` : Merge new with current parameters.
    *
-   *   `merge` ：合并新的当前参数。
+   *   `merge`：合并新的当前参数。
    *
    * The "preserve" option discards any new query params:
    *
@@ -234,7 +234,7 @@ export type RestoredState = {
  *
  * * *id* : The unique identifier of the current navigation.
  *
- *   *id* ：当前导航的唯一标识符。
+ *   *id*：当前导航的唯一标识符。
  *
  * * *initialUrl* : The target URL passed into the `Router#navigateByUrl()` call before navigation.
  *   This is the value before the router has parsed or applied redirects to it.
@@ -256,7 +256,7 @@ export type RestoredState = {
  *   \-- 'popstate'--Triggered by a popstate event.
  *   \-- 'hashchange'--Triggered by a hashchange event.
  *
- *   *trigger*：表明这次导航是如何触发的。 -- 'imperative'-- 由 `router.navigateByUrl` 或 `router.navigate` 触发。 -- 'popstate'-- 由 popstate 事件触发。 -- 'hashchange'-- 由 hashchange 事件触发。
+ *   *trigger*：表明这次导航是如何触发的。-- 'imperative'-- 由 `router.navigateByUrl` 或 `router.navigate` 触发。-- 'popstate'-- 由 popstate 事件触发。-- 'hashchange'-- 由 hashchange 事件触发。
  *
  * * *extras* : A `NavigationExtras` options object that controlled the strategy used for this
  *   navigation.
@@ -299,7 +299,7 @@ export interface Navigation {
    * This URL may not be available immediately, therefore this property can be `undefined`.
    * It is guaranteed to be set after the `RoutesRecognized` event fires.
    *
-   * 应用重定向后提取的 URL。此 URL 可能无法立即使用，因此此属性可以是 `undefined` 。保证在 `RoutesRecognized` 事件触发之后设置。
+   * 应用重定向后提取的 URL。此 URL 可能无法立即使用，因此此属性可以是 `undefined`。保证在 `RoutesRecognized` 事件触发之后设置。
    *
    */
   finalUrl?: UrlTree;
@@ -326,7 +326,7 @@ export interface Navigation {
    * Options that controlled the strategy used for this navigation.
    * See `NavigationExtras`.
    *
-   * 控制此导航使用的策略的选项。请参阅 `NavigationExtras` 。
+   * 控制此导航使用的策略的选项。请参阅 `NavigationExtras`。
    *
    */
   extras: NavigationExtras;
@@ -335,7 +335,7 @@ export interface Navigation {
    * is available, therefore this previous `Navigation` object has a `null` value
    * for its own `previousNavigation`.
    *
-   * 以前成功的 `Navigation` 对象。只有一个以前的导航可用，因此这 `previousNavigation` 的 `Navigation` 对象的 `null` 。
+   * 以前成功的 `Navigation` 对象。只有一个以前的导航可用，因此这 `previousNavigation` 的 `Navigation` 对象的 `null`。
    *
    */
   previousNavigation: Navigation|null;
@@ -368,7 +368,7 @@ export interface NavigationTransition {
  * to get `UrlSerializer` from the Router. We can instead inject it in `NavigationTransitions`
  * directly.
  *
- * 转换所需的来自路由器的接口。 用于避免对路由器的循环依赖。 这个接口应该在未来的重构中被削减。 例如，我们不需要从 Router 获取 `UrlSerializer` 。 我们可以直接将它注入 `NavigationTransitions` 。
+ * 转换所需的来自路由器的接口。用于避免对路由器的循环依赖。这个接口应该在未来的重构中被削减。例如，我们不需要从 Router 获取 `UrlSerializer`。我们可以直接将它注入 `NavigationTransitions`。
  *
  */
 interface InternalRouterInterface {
@@ -413,7 +413,7 @@ export class NavigationTransitions {
    * Hook that enables you to pause navigation after the preactivation phase.
    * Used by `RouterModule`.
    *
-   * 使你能够在预激活阶段后暂停导航的挂钩。 由 `RouterModule` 使用。
+   * 使你能够在预激活阶段后暂停导航的挂钩。由 `RouterModule` 使用。
    *
    * @internal
    */

@@ -28,7 +28,7 @@ export interface Import {
   /**
    * The `ts.Identifier` by which the imported module is known.
    *
-   * 已知导入模块的 `ts.Identifer` 。
+   * 已知导入模块的 `ts.Identifer`。
    *
    */
   qualifier: ts.Identifier;

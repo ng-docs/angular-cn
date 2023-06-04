@@ -29,7 +29,7 @@ const enum Char {
  * @param value string representation of style as used in the `style` attribute in HTML.
  *   Example: `color: red; height: auto`.
  *
- * HTML 中的 `style` 属性中使用的 style 的字符串表示。示例： `color: red; height: auto` 。
+ * HTML 中的 `style` 属性中使用的 style 的字符串表示。示例：`color: red; height: auto`。
  *
  * @returns
  *

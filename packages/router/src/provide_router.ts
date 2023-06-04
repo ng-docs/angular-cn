@@ -64,7 +64,7 @@ import {afterNextNavigation} from './utils/navigations';
  * @publicApi
  * @param routes A set of `Route`s to use for the application routing table.
  *
- * 用于应用程序路由表的一组 `Route` 。
+ * 用于应用程序路由表的一组 `Route`。
  * @param features Optional features to configure additional router behaviors.
  *
  * 配置其他路由器行为的可选特性。
@@ -264,7 +264,7 @@ export function getBootstrapListener() {
  * `enabledBlocking`, the first navigation waits until bootstrapping is finished before continuing
  * to the activation phase.
  *
- * 用于指示引导阶段已完成的主题。 当初始导航为 `enabledBlocking` 时，第一个导航会等待引导完成，然后再继续激活阶段。
+ * 用于指示引导阶段已完成的主题。当初始导航为 `enabledBlocking` 时，第一个导航会等待引导完成，然后再继续激活阶段。
  *
  */
 const BOOTSTRAP_DONE = new InjectionToken<Subject<void>>(
@@ -278,24 +278,24 @@ const BOOTSTRAP_DONE = new InjectionToken<Subject<void>>(
  * This and the INITIAL_NAVIGATION token are used internally only. The public API side of this is
  * configured through the `ExtraOptions`.
  *
- * 这和 INITIAL_NAVIGATION 令牌仅在内部使用。 公共 API 端是通过 `ExtraOptions` 配置的。
+ * 这和 INITIAL_NAVIGATION 令牌仅在内部使用。公共 API 端是通过 `ExtraOptions` 配置的。
  *
  * When set to `EnabledBlocking`, the initial navigation starts before the root
  * component is created. The bootstrap is blocked until the initial navigation is complete. This
  * value is required for [server-side rendering](guide/universal) to work.
  *
- * 当设置为 `EnabledBlocking` 时，初始导航在创建根组件之前开始。 引导程序被阻止，直到初始导航完成。 [服务端渲染](guide/universal)需要此值才能工作。
+ * 当设置为 `EnabledBlocking` 时，初始导航在创建根组件之前开始。引导程序被阻止，直到初始导航完成。[服务端渲染](guide/universal)需要此值才能工作。
  *
  * When set to `EnabledNonBlocking`, the initial navigation starts after the root component has been
  * created. The bootstrap is not blocked on the completion of the initial navigation.
  *
- * 当设置为 `EnabledNonBlocking` 时，初始导航在根组件创建后开始。 初始导航完成后，引导程序不会被阻止。
+ * 当设置为 `EnabledNonBlocking` 时，初始导航在根组件创建后开始。初始导航完成后，引导程序不会被阻止。
  *
  * When set to `Disabled`, the initial navigation is not performed. The location listener is set up
  * before the root component gets created. Use if there is a reason to have more control over when
  * the router starts its initial navigation due to some complex initialization logic.
  *
- * 设置为 `Disabled` 时，不执行初始导航。 位置侦听器是在创建根组件之前设置的。 如果由于某些复杂的初始化逻辑而有理由对路由器何时开始其初始导航进行更多控制，请使用。
+ * 设置为 `Disabled` 时，不执行初始导航。位置侦听器是在创建根组件之前设置的。如果由于某些复杂的初始化逻辑而有理由对路由器何时开始其初始导航进行更多控制，请使用。
  *
  * @see `ExtraOptions`
  */
@@ -638,7 +638,7 @@ export type RouterConfigurationFeature =
  * @param options A set of parameters to configure Router, see `RouterConfigOptions` for
  *     additional information.
  *
- * 用于配置路由器的一组参数，有关其他信息，请参阅 `RouterConfigOptions` 。
+ * 用于配置路由器的一组参数，有关其他信息，请参阅 `RouterConfigOptions`。
  * @returns
  *
  * A set of providers for use with `provideRouter`.
@@ -657,7 +657,7 @@ export function withRouterConfig(options: RouterConfigOptions): RouterConfigurat
 /**
  * A type alias for providers returned by `withHashLocation` for use with `provideRouter`.
  *
- * `withHashLocation` 返回的提供者的类型别名，用于 `provideRouter` 。
+ * `withHashLocation` 返回的提供者的类型别名，用于 `provideRouter`。
  *
  * @see `withHashLocation`
  * @see `provideRouter`
@@ -707,7 +707,7 @@ export function withHashLocation(): RouterConfigurationFeature {
 /**
  * A type alias for providers returned by `withNavigationErrorHandler` for use with `provideRouter`.
  *
- * `withNavigationErrorHandler` 返回的提供者的类型别名，用于 `provideRouter` 。
+ * `withNavigationErrorHandler` 返回的提供者的类型别名，用于 `provideRouter`。
  *
  * @see `withNavigationErrorHandler`
  * @see `provideRouter`
@@ -775,7 +775,7 @@ export function withNavigationErrorHandler(fn: (error: NavigationError) => void)
 /**
  * A type alias for providers returned by `withComponentInputBinding` for use with `provideRouter`.
  *
- * `withComponentInputBinding` 返回的提供者的类型别名，用于 `provideRouter` 。
+ * `withComponentInputBinding` 返回的提供者的类型别名，用于 `provideRouter`。
  *
  * @see `withComponentInputBinding`
  * @see `provideRouter`

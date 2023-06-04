@@ -24,20 +24,20 @@ declare global {
    *
    * ngDevMode may also be set to false. This can happen in one of a few ways:
    *
-   * ngDevMode 也可以设置为 false 。这可以通过以下几种方式之一发生：
+   * ngDevMode 也可以设置为 false。这可以通过以下几种方式之一发生：
    *
    * - The user explicitly sets `window.ngDevMode = false` somewhere in their app.
    *
-   *   用户在他们的应用程序中的某处显式设置 `window.ngDevMode = false` 。
+   *   用户在他们的应用程序中的某处显式设置 `window.ngDevMode = false`。
    *
    * - The user calls `enableProdMode()`.
    *
-   *   用户调用 `enableProdMode()` 。
+   *   用户调用 `enableProdMode()`。
    *
    * - The URL contains a `ngDevMode=false` text.
    *   Finally, ngDevMode may not have been defined at all.
    *
-   *   URL 包含 `ngDevMode=false` 文本。最后，可能根本没有定义 ngDevMode 。
+   *   URL 包含 `ngDevMode=false` 文本。最后，可能根本没有定义 ngDevMode。
    *
    */
   const ngDevMode: null|NgDevModePerfCounters;
@@ -117,7 +117,7 @@ export function ngDevModeResetPerfCounters(): NgDevModePerfCounters {
  * This function checks to see if the `ngDevMode` has been set. If yes,
  * then we honor it, otherwise we default to dev mode with additional checks.
  *
- * 此函数会检查是否已设置 `ngDevMode` 。如果是，那么我们就会尊重它，否则我们默认为 dev
+ * 此函数会检查是否已设置 `ngDevMode`。如果是，那么我们就会尊重它，否则我们默认为 dev
  * 模式并进行额外的检查。
  *
  * The idea is that unless we are doing production build where we explicitly
@@ -132,7 +132,7 @@ export function ngDevModeResetPerfCounters(): NgDevModePerfCounters {
  * is defined for the entire instruction set.
  *
  * `ɵɵdefineComponent` 保证已在任何组件模板函数（因此是 Ivy
- * 指令）之前调用，因此那里的单个初始化足以确保为整个指令集定义 ngDevMode 。
+ * 指令）之前调用，因此那里的单个初始化足以确保为整个指令集定义 ngDevMode。
  *
  * When checking `ngDevMode` on toplevel, always init it before referencing it
  * \(e.g. `((typeof ngDevMode === 'undefined' || ngDevMode) && initNgDevMode())`\), otherwise you can
@@ -142,7 +142,7 @@ export function ngDevModeResetPerfCounters(): NgDevModePerfCounters {
  * 'undefined' || ngDevMode) && initNgDevMode())`
  * ），否则你会得到像 https://github.com/angular/angular/issues/31595 中那样的
  * `ReferenceError`。
- * 。
+ *。
  *
  * Details on possible values for `ngDevMode` can be found on its docstring.
  *
@@ -154,7 +154,7 @@ export function ngDevModeResetPerfCounters(): NgDevModePerfCounters {
  *
  * - changes to the `ngDevMode` name must be synced with `compiler-cli/src/tooling.ts`.
  *
- *   对 `ngDevMode` 名称的更改必须与 `compiler-cli/src/tooling.ts` 。
+ *   对 `ngDevMode` 名称的更改必须与 `compiler-cli/src/tooling.ts`。
  *
  */
 export function initNgDevMode(): boolean {

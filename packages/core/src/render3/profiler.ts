@@ -111,7 +111,7 @@ let profilerCallback: Profiler|null = null;
  * completely.
  *
  * 警告：此函数是*INTERNAL*
- * ，不应在应用程序代码中依赖。函数的契约可能会在任何版本中更改和/或可以完全删除该函数。
+ *，不应在应用程序代码中依赖。函数的契约可能会在任何版本中更改和/或可以完全删除该函数。
  *
  * @param profiler function provided by the caller or null value to disable profiling.
  *

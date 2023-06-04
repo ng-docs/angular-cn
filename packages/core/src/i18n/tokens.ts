@@ -21,7 +21,7 @@ declare const $localize: {locale?: string};
  *
  * * Closure Compiler: use `goog.LOCALE`.
  *
- *   闭包编译器：使用 `goog.LOCALE` 。
+ *   闭包编译器：使用 `goog.LOCALE`。
  *
  * * Ivy enabled: use `$localize.locale`
  *
@@ -181,7 +181,7 @@ export const TRANSLATIONS = new InjectionToken<string>('Translations');
  * Provide this token at bootstrap to set the format of your {@link TRANSLATIONS}: `xtb`,
  * `xlf` or `xlf2`.
  *
- * 在引导程序中提供此令牌以设置 {@link TRANSLATIONS} 的格式： `xtb`、`xlf` 或 `xlf2`。
+ * 在引导程序中提供此令牌以设置 {@link TRANSLATIONS} 的格式：`xtb`、`xlf` 或 `xlf2`。
  *
  * See the [i18n guide](guide/i18n-common-merge) for more information.
  *

@@ -102,7 +102,7 @@ function _extractId(valueString: string): string {
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event#browser_compatibility
  *
  * **注意：**我们要监听 `change` 事件，因为 `input` 事件不会在 IE 的 `select`
- * 元素上触发： https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event#browser_compatibility
+ * 元素上触发：https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event#browser_compatibility
  *
  * @ngModule ReactiveFormsModule
  * @ngModule FormsModule

@@ -96,7 +96,7 @@ export const TESTABILITY_GETTER = new InjectionToken<GetTestability>('');
  * providers using the `provideProtractorTestingSupport()` function and adding them into the
  * `options.providers` array. Example:
  *
- * 对于使用 `bootstrapApplication` 函数引导的应用程序，默认情况下不包括 Testability 。你可以通过使用
+ * 对于使用 `bootstrapApplication` 函数引导的应用程序，默认情况下不包括 Testability。你可以通过使用
  * `provideProtractorTestingSupport()` 函数获取必要的提供程序列表并将它们添加到 `options.providers`
  * 数组中来将其包含到你的应用程序中。示例：
  *

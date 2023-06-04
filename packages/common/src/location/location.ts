@@ -354,7 +354,7 @@ export class Location implements OnDestroy {
    * Note: `Location.go()` does not trigger the `popState` event in the browser. Use
    * `Location.onUrlChange()` to subscribe to URL changes instead.
    *
-   * 注意： `Location.go()` 不会触发浏览器中的 `popState` 事件。改用 `Location.onUrlChange()` 来订阅
+   * 注意：`Location.go()` 不会触发浏览器中的 `popState` 事件。改用 `Location.onUrlChange()` 来订阅
    * URL 更改。
    *
    * @param value Event that is triggered when the state history changes.

@@ -20,7 +20,7 @@ import {takeUntil} from 'rxjs/operators';
  *     passed explicitly to use `takeUntilDestroyed` outside of an injection context. Otherwise, the
  * current `DestroyRef` is injected.
  *
- * 可选地，代表当前上下文的 `DestroyRef` 。 这可以显式传递以在注入上下文之外使用 `takeUntilDestroyed` 。 否则，将注入当前的 `DestroyRef` 。
+ * 可选地，代表当前上下文的 `DestroyRef`。这可以显式传递以在注入上下文之外使用 `takeUntilDestroyed`。否则，将注入当前的 `DestroyRef`。
  *
  * @developerPreview
  */

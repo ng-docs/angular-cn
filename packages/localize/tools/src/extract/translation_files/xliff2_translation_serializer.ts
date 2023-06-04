@@ -194,7 +194,7 @@ export class Xliff2TranslationSerializer implements TranslationSerializer {
    * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
    *
    * Xliff 2.0 旧版消息 ID 是编码为十进制字符串的 64 位数字，最多有 20 位数字，因为 2^65-1 =
-   * 36,893,488,147,419,103,231 。本摘要基于：
+   * 36,893,488,147,419,103,231。本摘要基于：
    * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
    *
    */
@@ -216,8 +216,8 @@ export class Xliff2TranslationSerializer implements TranslationSerializer {
  * `other`. Certain formatting tags \(e.g. bold, italic, etc\) have type `fmt`. Line-breaks, images
  * and links are special cases.
  *
- * 如果标签是未知的但以 `TAG_`、`START_TAG_` 或 `CLOSE_TAG_` ，则类型是 `other`
- * 。某些格式标签（例如粗体、斜体等）具有 `fmt` 类型。换行符、图像和链接是特例。
+ * 如果标签是未知的但以 `TAG_`、`START_TAG_` 或 `CLOSE_TAG_`，则类型是 `other`
+ *。某些格式标签（例如粗体、斜体等）具有 `fmt` 类型。换行符、图像和链接是特例。
  *
  */
 function getTypeForPlaceholder(placeholder: string): string|null {

@@ -125,7 +125,7 @@ export class XmbTranslationSerializer implements TranslationSerializer {
    * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
    *
    * XMB 旧版消息 ID 是编码为十进制字符串的 64 位数字，最多有 20 位，因为 2^65-1 =
-   * 36,893,488,147,419,103,231 。本摘要基于：
+   * 36,893,488,147,419,103,231。本摘要基于：
    * <https://github.com/google/closure-compiler/blob/master/src/com/google/javascript/jscomp/GoogleJsMessageIdGenerator.java>
    *
    */

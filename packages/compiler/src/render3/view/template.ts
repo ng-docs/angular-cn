@@ -1620,7 +1620,7 @@ function getLiteralFactory(
  * `:xlink:href` turns into `[AttributeMarker.NamespaceURI, 'xlink', 'href']`.
  *
  * 获取可以添加到表达式中以表示属性名称和命名空间的文字数组。例如 `:xlink:href` 会变成
- * `[AttributeMarker.NamespaceURI, 'xlink', 'href']` 。
+ * `[AttributeMarker.NamespaceURI, 'xlink', 'href']`。
  *
  * @param name Name of the attribute, including the namespace.
  *
@@ -1664,11 +1664,11 @@ const SHARED_CONTEXT_KEY = '$$shared_ctx$$';
 /**
  * This is used when one refers to variable such as: `let abc = nextContext(2).$implicit`.
  *
- * 当引用变量时使用此变量，例如： `let abc = nextContext(2).$implicit`。
+ * 当引用变量时使用此变量，例如：`let abc = nextContext(2).$implicit`。
  *
  * - key to the map is the string literal `"abc"`.
  *
- *   映射的键是字符串文字 `"abc"` 。
+ *   映射的键是字符串文字 `"abc"`。
  *
  * - value `retrievalLevel` is the level from which this value can be retrieved, which is 2 levels
  *   up in example.
@@ -2141,7 +2141,7 @@ export interface ParseTemplateOptions {
   /**
    * Preserve original line endings instead of normalizing '\\r\\n' endings to '\\n'.
    *
-   * 保留原始行结尾，而不是将 '\\r\\n' 结尾规范化为 '\\n' 。
+   * 保留原始行结尾，而不是将 '\\r\\n' 结尾规范化为 '\\n'。
    *
    */
   preserveLineEndings?: boolean;
@@ -2175,7 +2175,7 @@ export interface ParseTemplateOptions {
    *
    * - The `\"` must be converted to `"`.
    *
-   *   `\"` 必须转换为 `"` 。
+   *   `\"` 必须转换为 `"`。
    *
    * - The `\n` must be converted to a new line character in a token,
    *   but it should not increment the current line for source mapping.
@@ -2216,13 +2216,13 @@ export interface ParseTemplateOptions {
    *
    * This option defaults to `true` but in the future the default will be flipped.
    *
-   * 此选项默认为 `true` ，但将来默认值将被翻转。
+   * 此选项默认为 `true`，但将来默认值将被翻转。
    *
    * For now set this option to false if you have migrated the translation files to use the new
    * `$localize` message id format and you are not using compile time translation merging.
    *
    * 如果你已迁移翻译文件以使用新的 `$localize` 消息 ID
-   * 格式，并且你不使用编译时翻译合并，现在将此选项设置为 false 。
+   * 格式，并且你不使用编译时翻译合并，现在将此选项设置为 false。
    *
    */
   enableI18nLegacyMessageIdFormat?: boolean;
@@ -2238,8 +2238,8 @@ export interface ParseTemplateOptions {
    * If `true` then we will normalize ICU expression line endings.
    * The default is `false`, but this will be switched in a future major release.
    *
-   * 如果 `true` ，那么我们将规范化 ICU 表达式行结尾。默认值为 `false`
-   * ，但这将在未来的主要版本中切换。
+   * 如果 `true`，那么我们将规范化 ICU 表达式行结尾。默认值为 `false`
+   *，但这将在未来的主要版本中切换。
    *
    */
   i18nNormalizeLineEndingsInICUs?: boolean;
@@ -2264,7 +2264,7 @@ export interface ParseTemplateOptions {
    * Note that even when `true` the HTML parse and i18n errors are still appended to the errors
    * output, but this is done after converting the HTML AST to R3 AST.
    *
-   * 请注意，即使为 `true` ，HTML 解析和 i18n 错误仍然会附加到错误输出，但这是在将 HTML AST 转换为
+   * 请注意，即使为 `true`，HTML 解析和 i18n 错误仍然会附加到错误输出，但这是在将 HTML AST 转换为
    * R3 AST 之后完成的。
    *
    */
@@ -2281,7 +2281,7 @@ export interface ParseTemplateOptions {
    * rules on a case by case basis, instead of for their whole project within a configuration file.
    *
    * 需要知道注释节点在 AST 中位置的工具需要此选项。一个具体的例子是 @angular-eslint
-   * ，它需要这个才能在 HTML
+   *，它需要这个才能在 HTML
    * 模板中启用“eslint-disable”注释，然后允许用户逐个关闭特定规则，而不是在配置中为整个项目关闭文件。
    *
    */
@@ -2400,7 +2400,7 @@ const elementRegistry = new DomElementSchemaRegistry();
 /**
  * Construct a `BindingParser` with a default configuration.
  *
- * 构造具有默认配置的 `BindingParser` 。
+ * 构造具有默认配置的 `BindingParser`。
  *
  */
 export function makeBindingParser(
@@ -2516,10 +2516,10 @@ const NG_I18N_CLOSURE_MODE = 'ngI18nClosureMode';
  * 原始 i18n AST 消息节点
  * @param variable The variable that will be assigned the translation, e.g. `I18N_1`.
  *
- * 将分配给翻译的变量，例如 `I18N_1` 。
+ * 将分配给翻译的变量，例如 `I18N_1`。
  * @param closureVar The variable for Closure `goog.getMsg` calls, e.g. `MSG_EXTERNAL_XXX`.
  *
- * Closure `goog.getMsg` 调用的变量，例如 `MSG_EXTERNAL_XXX` 。
+ * Closure `goog.getMsg` 调用的变量，例如 `MSG_EXTERNAL_XXX`。
  * @param params Object mapping placeholder names to their values \(e.g.
  * `{ "interpolation": "\uFFFD0\uFFFD" }`\).
  *
@@ -2607,7 +2607,7 @@ export interface ParsedTemplate {
    *
    * `null` if there are no errors. Otherwise, the array of errors is guaranteed to be non-empty.
    *
-   * 如果没有错误，则为 `null` 。否则，错误数组保证是非空的。
+   * 如果没有错误，则为 `null`。否则，错误数组保证是非空的。
    *
    */
   errors: ParseError[]|null;

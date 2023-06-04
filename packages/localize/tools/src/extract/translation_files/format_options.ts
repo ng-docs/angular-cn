@@ -13,7 +13,7 @@ export type ValidOptions = ValidOption[];
 /**
  * Check that the given `options` are allowed based on the given `validOptions`.
  *
- * 根据给定的 `validOptions` 检查是否允许给定的 `options` 。
+ * 根据给定的 `validOptions` 检查是否允许给定的 `options`。
  *
  * @param name The name of the serializer that is receiving the options.
  *

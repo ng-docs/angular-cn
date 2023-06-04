@@ -67,7 +67,7 @@ export interface TemplateTarget {
  * captures the node itself, as well as this additional contextual disambiguation.
  *
  * 某些节点有多个内部上下文。例如，`t.Element`
- * 节点既有标签名称也有主体，并且给定的位置最终指向了两者。 `TargetNode`
+ * 节点既有标签名称也有主体，并且给定的位置最终指向了两者。`TargetNode`
  * 捕获节点本身，以及这种额外的上下文消歧。
  *
  */
@@ -91,7 +91,7 @@ export type SingleNodeTarget = RawExpression|CallExpressionInArgContext|RawTempl
  * 逻辑上以模板 AST
  * 中的多个节点为目标的上下文，在给定单个位置的情况下无法消除歧义，因为它们都是同样相关的。例如，在
  * banner-in-a-box 语法 `[(ngModel)]="formValues.person"` 中，键 `ngModel`
- * 在模板中的位置是指绑定事件 `ngModelChange` 和输入 `ngModel` 。
+ * 在模板中的位置是指绑定事件 `ngModelChange` 和输入 `ngModel`。
  *
  */
 export type MultiNodeTarget = TwoWayBindingContext;
@@ -99,7 +99,7 @@ export type MultiNodeTarget = TwoWayBindingContext;
 /**
  * Differentiates the various kinds of `TargetNode`s.
  *
- * 区分各种类型的 `TargetNode` 。
+ * 区分各种类型的 `TargetNode`。
  *
  */
 export enum TargetNodeKind {

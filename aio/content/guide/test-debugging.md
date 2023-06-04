@@ -21,7 +21,7 @@ Debug specs in the browser in the same way that you debug an application.
 
 2. Open the browser's **Developer Tools**. On Windows, press `Ctrl-Shift-I`. On macOS, press `Command-Option-I`.
 
-   打开浏览器的**开发者工具**。在 Windows 上，按 `Ctrl-Shift-I` 。在 macOS 上，按 `Command-Option-I` 。
+   打开浏览器的**开发者工具**。在 Windows 上，按 `Ctrl-Shift-I`。在 macOS 上，按 `Command-Option-I`。
 
 3. Pick the **Sources** section.
 
@@ -29,7 +29,7 @@ Debug specs in the browser in the same way that you debug an application.
 
 4. Press `Control/Command-P`, and then start typing the name of your test file to open it.
 
-   按 `Control/Command-P` ，然后开始键入测试文件的名称以打开它。
+   按 `Control/Command-P`，然后开始键入测试文件的名称以打开它。
 
 5. Set a breakpoint in the test.
 

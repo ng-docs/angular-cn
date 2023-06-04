@@ -12,7 +12,7 @@ import {OpKind} from './enums';
  * Branded type for a cross-reference ID. During ingest, `XrefId`s are generated to link together
  * different IR operations which need to reference each other.
  *
- * 交叉引用 ID 的品牌类型。 在摄取期间，生成 `XrefId` 以将需要相互引用的不同 IR 操作链接在一起。
+ * 交叉引用 ID 的品牌类型。在摄取期间，生成 `XrefId` 以将需要相互引用的不同 IR 操作链接在一起。
  *
  */
 export type XrefId = number&{__brand: 'XrefId'};
@@ -44,7 +44,7 @@ export interface Op<OpT extends Op<OpT>> {
    *
    * This is `null` for operation nodes not currently in a list, or for the special head/tail nodes.
    *
-   * 对于当前不在列表中的操作节点或特殊的头/尾节点，这为 `null` 。
+   * 对于当前不在列表中的操作节点或特殊的头/尾节点，这为 `null`。
    *
    */
   prev: OpT|null;
@@ -56,7 +56,7 @@ export interface Op<OpT extends Op<OpT>> {
    *
    * This is `null` for operation nodes not currently in a list, or for the special head/tail nodes.
    *
-   * 对于当前不在列表中的操作节点或特殊的头/尾节点，这为 `null` 。
+   * 对于当前不在列表中的操作节点或特殊的头/尾节点，这为 `null`。
    *
    */
   next: OpT|null;
@@ -65,7 +65,7 @@ export interface Op<OpT extends Op<OpT>> {
    * Debug id of the list to which this node currently belongs, or `null` if this node is not part
    * of a list.
    *
-   * 此节点当前所属列表的调试 ID，如果此节点不属于列表，则为 `null` 。
+   * 此节点当前所属列表的调试 ID，如果此节点不属于列表，则为 `null`。
    *
    */
   debugListId: number|null;
@@ -181,7 +181,7 @@ export class OpList<OpT extends Op<OpT>> {
    * and including the last operation returned. Mutations beyond that point _may_ be safe, but may
    * also corrupt the iteration position and should be avoided.
    *
-   * 改变迭代器已经返回的列表部分是安全的，直到并包括返回的最后一个操作。 超过该点的突变 _ 可能 _ 是安全的，但也可能破坏迭代位置，应该避免。
+   * 改变迭代器已经返回的列表部分是安全的，直到并包括返回的最后一个操作。超过该点的突变 _ 可能 _ 是安全的，但也可能破坏迭代位置，应该避免。
    *
    */
   * [Symbol.iterator](): Generator<OpT> {
@@ -211,7 +211,7 @@ export class OpList<OpT extends Op<OpT>> {
   /**
    * Replace `oldOp` with `newOp` in the list.
    *
-   * 将列表中的 `oldOp` 替换为 `newOp` 。
+   * 将列表中的 `oldOp` 替换为 `newOp`。
    *
    */
   static replace<OpT extends Op<OpT>>(oldOp: OpT, newOp: OpT): void {
@@ -319,7 +319,7 @@ export class OpList<OpT extends Op<OpT>> {
   /**
    * Insert `op` before `before`.
    *
-   * 在 `before` 插入 `op` 。
+   * 在 `before` 插入 `op`。
    *
    */
   static insertBefore<OpT extends Op<OpT>>(op: OpT, before: OpT): void {
@@ -360,7 +360,7 @@ export class OpList<OpT extends Op<OpT>> {
    * Asserts that `op` currently belongs to a list. If `byList` is passed, `op` is asserted to
    * specifically belong to that list.
    *
-   * 断言 `op` 当前属于列表。 如果传递了 `byList` ，则断言 `op` 明确属于该列表。
+   * 断言 `op` 当前属于列表。如果传递了 `byList`，则断言 `op` 明确属于该列表。
    *
    */
   static assertIsOwned<OpT extends Op<OpT>>(op: OpT, byList?: number): void {

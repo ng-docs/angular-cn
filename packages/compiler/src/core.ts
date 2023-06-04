@@ -110,7 +110,7 @@ export const enum InjectFlags {
   /**
    * Inject `defaultValue` instead if token not found.
    *
-   * 如果找不到令牌，则注入 `defaultValue` 。
+   * 如果找不到令牌，则注入 `defaultValue`。
    *
    */
   Optional = 1 << 3,
@@ -254,7 +254,7 @@ export const enum AttributeMarker {
    * namespaceUri, attributeName, attributeValue
    * in that order.
    *
-   * 标记表明 properties 数组中的以下 3 个值依次是： namespaceUri、attributeName、attributeValue 。
+   * 标记表明 properties 数组中的以下 3 个值依次是：namespaceUri、attributeName、attributeValue。
    *
    */
   NamespaceURI = 0,
@@ -385,7 +385,7 @@ export const enum AttributeMarker {
   /**
    * Signals that the following attribute is `ngProjectAs` and its value is a parsed `CssSelector`.
    *
-   * 表明以下属性是 `ngProjectAs` ，其值是解析后的 `CssSelector` 。
+   * 表明以下属性是 `ngProjectAs`，其值是解析后的 `CssSelector`。
    *
    * For example, given the following HTML:
    *

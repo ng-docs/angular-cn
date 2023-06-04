@@ -25,7 +25,7 @@ import {getRegisteredNgModuleType} from './ng_module_registration';
  *
  * Use `getNgModuleById` instead.
  *
- * 改用 `getNgModuleById` 。
+ * 改用 `getNgModuleById`。
  */
 export function getModuleFactory(id: string): NgModuleFactory<any> {
   const type = getRegisteredNgModuleType(id);
@@ -39,7 +39,7 @@ export function getModuleFactory(id: string): NgModuleFactory<any> {
  * not specify an `id` cannot be retrieved. Throws if an NgModule cannot be found.
  *
  * 返回具有给定 id（使用[@NgModule.id 字段](api/core/NgModule#id)指定）的 NgModule
- * 类（如果存在并且已加载）。无法检索未指定 `id` 的 NgModules 类。如果找不到 NgModule ，则抛出。
+ * 类（如果存在并且已加载）。无法检索未指定 `id` 的 NgModules 类。如果找不到 NgModule，则抛出。
  *
  * @publicApi
  */

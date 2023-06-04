@@ -25,7 +25,7 @@ export function onError(e: any) {
  * Equivalent to how jqLite/jQuery invoke `cleanData()` on an Element when removed:
  *
  * 清理元素及其所有后代上的 jqLite/jQuery 数据。等效于 jqLite/jQuery 删除时如何在 Element 上调用
- * `cleanData()` ：
+ * `cleanData()`：
  *
  *   https://github.com/angular/angular.js/blob/2e72ea13fa98bebf6ed4b5e3c45eaf5f990ed16f/src/jqLite.js#L349-L355
  *   https://github.com/jquery/jquery/blob/6984d1747623dbc5e87fd6c261a5b6b1628c107c/src/manipulation.js#L182
@@ -61,7 +61,7 @@ export function controllerKey(name: string): string {
  *       destroying `$rootScope` and clean the jqLite/jQuery data on `$rootElement` and all
  *       descendants.
  *
- * 注意： AngularJS 不官方支持销毁应用程序，但请尽量通过销毁 `$rootScope` 并清理 `$rootElement`
+ * 注意：AngularJS 不官方支持销毁应用程序，但请尽量通过销毁 `$rootScope` 并清理 `$rootElement`
  * 和所有后代上的 jqLite/jQuery 数据来做到最好。
  *
  * @param $injector The `$injector` of the AngularJS app to destroy.

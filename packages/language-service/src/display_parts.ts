@@ -75,7 +75,7 @@ export function getSymbolDisplayInfo(
  * Construct a compound `ts.SymbolDisplayPart[]` which incorporates the container and type of a
  * target declaration.
  *
- * 构造一个复合 `ts.SymbolDisplayPart[]` ，它包含 target 声明的容器和类型。
+ * 构造一个复合 `ts.SymbolDisplayPart[]`，它包含 target 声明的容器和类型。
  *
  * @param name Name of the target
  *

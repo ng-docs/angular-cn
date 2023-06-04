@@ -60,7 +60,7 @@ const CIRCULAR = {};
 /**
  * A lazily initialized NullInjector.
  *
- * 延迟初始化的 NullInjector 。
+ * 延迟初始化的 NullInjector。
  *
  */
 let NULL_INJECTOR: Injector|undefined = undefined;
@@ -102,7 +102,7 @@ export abstract class EnvironmentInjector implements Injector {
    *
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
-   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue`。
    *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
@@ -121,7 +121,7 @@ export abstract class EnvironmentInjector implements Injector {
    *
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
-   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue`。
    *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
@@ -139,7 +139,7 @@ export abstract class EnvironmentInjector implements Injector {
    *
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
-   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue`。
    *
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
@@ -156,7 +156,7 @@ export abstract class EnvironmentInjector implements Injector {
    *
    * The instance from the injector if defined, otherwise the `notFoundValue`.
    *
-   * 注入器中的实例（如果已定义），否则为 `notFoundValue` 。
+   * 注入器中的实例（如果已定义），否则为 `notFoundValue`。
    * @throws When the `notFoundValue` is `undefined` or `Injector.THROW_IF_NOT_FOUND`.
    *
    * 当 `notFoundValue` 为 `undefined` 或 `Injector.THROW_IF_NOT_FOUND` 时。
@@ -188,7 +188,7 @@ export abstract class EnvironmentInjector implements Injector {
    * injector. Note that `inject` is only usable synchronously, and cannot be used in any
    * asynchronous callbacks or after any `await` points.
    *
-   * 在函数的堆栈框架中， `inject` 可用于从此注入器注入依赖项。请注意， `inject` 仅可同步使用，不能在任何异步回调或任何 `await` 点之后使用。
+   * 在函数的堆栈框架中，`inject` 可用于从此注入器注入依赖项。请注意，`inject` 仅可同步使用，不能在任何异步回调或任何 `await` 点之后使用。
    *
    * @param fn the closure to be run in the context of this injector
    *

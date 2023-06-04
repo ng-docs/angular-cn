@@ -124,7 +124,7 @@ In the **Edit** pane of your IDE, in `src/app/details/details.component.ts`:
 
    In Angular, `FormGroup` and `FormControl` are types that enable you to build forms. The `FormControl` type can provide a default value and shape the form data. In this example `firstName` is a `string` and the default value is empty string.
 
-   在 Angular 中，`FormGroup` 和 `FormControl` 是能帮你构建出表单的类型。 `FormControl` 类型可以提供默认值并塑造表单数据的形态。在此示例中， `firstName` 是一个 `string` ，默认值为空字符串。
+   在 Angular 中，`FormGroup` 和 `FormControl` 是能帮你构建出表单的类型。`FormControl` 类型可以提供默认值并塑造表单数据的形态。在此示例中，`firstName` 是一个 `string`，默认值为空字符串。
 
 1. In the `DetailsComponent` class, after the `constructor()` method, add the following code to handle the **Apply now** click.
 
@@ -134,7 +134,7 @@ In the **Edit** pane of your IDE, in `src/app/details/details.component.ts`:
 
    This button does not exist yet - you will add it in the next step. In the above code, the `FormControl`s may return `null`. This code uses the nullish coalescing operator to default to empty string if the value is `null`.
 
-   此按钮尚不存在 - 你将在下一步中添加它。在上面的代码中， `FormControl` 可能会返回 `null` 。如果值为 `null` ，此代码使用空值合并运算符 `??` 将其默认为空字符串。
+   此按钮尚不存在 - 你将在下一步中添加它。在上面的代码中，`FormControl` 可能会返回 `null`。如果值为 `null`，此代码使用空值合并运算符 `??` 将其默认为空字符串。
 
 1. Confirm that the app builds without error.
    Correct any errors before you continue to the next step.
@@ -161,7 +161,7 @@ In the **Edit** pane of your IDE, in `src/app/details/details.component.ts`:
 
    The template now includes an event handler `(submit)="submitApplication()"`. Angular uses parentheses syntax around the event name to create define events in the template code. The code on the right hand side of the equals sign is the code that should be executed when this event is triggered. You can bind to browser events and custom events.
 
-   该模板现在包含一个事件处理程序 `(submit)="submitApplication()"` 。 Angular 在事件名称周围使用圆括号语法来在模板代码中创建定义事件。等号右边的代码是当触发此事件时应执行的代码。你可以绑定到浏览器事件和自定义事件。
+   该模板现在包含一个事件处理程序 `(submit)="submitApplication()"`。Angular 在事件名称周围使用圆括号语法来在模板代码中创建定义事件。等号右边的代码是当触发此事件时应执行的代码。你可以绑定到浏览器事件和自定义事件。
 
 1. Confirm that the app builds without error.
    Correct any errors before you continue to the next step.
@@ -191,7 +191,7 @@ This step tests the new form to see that when the form data is submitted to the 
 
 1. In your app, right click in the app and from the context menu, choose **Inspect**.
 
-   在应用程序中，右键单击应用程序，然后从上下文菜单中选择 **Inspect** 。
+   在应用程序中，右键单击应用程序，然后从上下文菜单中选择 **Inspect**。
 
 1. In the developer tools window, choose the **Console** tab.
    Make sure that the developer tools window is visible for the next steps

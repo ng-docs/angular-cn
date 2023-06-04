@@ -23,7 +23,7 @@ export interface FileUpdate {
    * Represents the source file from the original program that is being updated. If the file update
    * targets a shim file then this is null, as shim files do not have an associated original file.
    *
-   * 表示正在更新的原始程序中的源文件。如果文件更新的目标是 shim 文件，则为 null ，因为 shim
+   * 表示正在更新的原始程序中的源文件。如果文件更新的目标是 shim 文件，则为 null，因为 shim
    * 文件没有关联的原始文件。
    *
    */

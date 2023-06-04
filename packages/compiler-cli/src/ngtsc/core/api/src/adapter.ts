@@ -44,7 +44,7 @@ export type ExtendedCompilerHostMethods =
  * `NgCompilerHost` or implement `NgCompilerAdapter` itself.
  *
  * `NgCompilerAdapter` 是 ts.CompilerHost 的 `NgCompilerHost` 实现的子集，`ts.CompilerHost` 依赖于
- * `NgCompiler` 。因此，`NgCompiler` 的使用者可以使用 `NgCompilerHost` 或实现 `NgCompilerAdapter`
+ * `NgCompiler`。因此，`NgCompiler` 的使用者可以使用 `NgCompilerHost` 或实现 `NgCompilerAdapter`
  * 本身。
  *
  */
@@ -64,7 +64,7 @@ export interface NgCompilerAdapter extends
    * This is used to emit a flat module index if requested, and can be left `null` if that is not
    * required.
    *
-   * 如果请求，这用于发出平面模块索引，如果不需要，可以保留为 `null` 。
+   * 如果请求，这用于发出平面模块索引，如果不需要，可以保留为 `null`。
    *
    */
   readonly entryPoint: AbsoluteFsPath|null;
@@ -72,7 +72,7 @@ export interface NgCompilerAdapter extends
   /**
    * An array of `ts.Diagnostic`s that occurred during construction of the `ts.Program`.
    *
-   * 在 `ts.Diagnostic` 构建期间发生的 `ts.Program` 。
+   * 在 `ts.Diagnostic` 构建期间发生的 `ts.Program`。
    *
    */
   readonly constructionDiagnostics: ts.Diagnostic[];
@@ -81,7 +81,7 @@ export interface NgCompilerAdapter extends
    * A `Set` of `ts.SourceFile`s which are internal to the program and should not be emitted as JS
    * files.
    *
-   * 一 `Set` `ts.SourceFile` ，是程序内部的，不应作为 JS 文件发出。
+   * 一 `Set` `ts.SourceFile`，是程序内部的，不应作为 JS 文件发出。
    *
    * Often these are shim files such as `ngtypecheck` shims used for template type-checking in
    * command-line ngc.
@@ -99,7 +99,7 @@ export interface NgCompilerAdapter extends
    *
    * If not required, this can be `null`.
    *
-   * 如果不需要，这可以是 `null` 。
+   * 如果不需要，这可以是 `null`。
    *
    */
   readonly unifiedModulesHost: UnifiedModulesHost|null;
@@ -126,7 +126,7 @@ export interface SourceFileTypeIdentifier {
    * `true` if a file was written by the user, and `false` if a file was added by the compiler.
    *
    * 这主要用于将类型检查操作限制为仅用户文件。如果文件是由用户编写的，它应该返回 `true`
-   * ，如果是编译器添加的文件，则应该返回 `false` 。
+   *，如果是编译器添加的文件，则应该返回 `false`。
    *
    */
   isShim(sf: ts.SourceFile): boolean;

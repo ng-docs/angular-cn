@@ -21,7 +21,7 @@ import {AbsoluteFsPath} from '../file_system';
  * input file, which is generic for the same reason.
  *
  * `AnalysisT` 是表示工作单元的泛型类型。这是通用的，可以避免增量引擎 API
- * 定义及其使用者之间的循环依赖。 `FileTypeCheckDataT`
+ * 定义及其使用者之间的循环依赖。`FileTypeCheckDataT`
  * 是一种泛型类型，表示特定输入文件的模板类型检查数据，出于相同的原因，它是通用的。
  *
  */

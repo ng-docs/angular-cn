@@ -117,7 +117,7 @@ export interface ComponentScopeReader {
    * that component. If remote scoping is not required \(the common case\), returns `null`.
    *
    * 如果组件需要远程范围，则检索为该组件注册的指令/管道。如果不需要远程范围设定（常见情况），则返回
-   * `null` 。
+   * `null`。
    *
    */
   getRemoteScope(clazz: ClassDeclaration): RemoteScope|null;

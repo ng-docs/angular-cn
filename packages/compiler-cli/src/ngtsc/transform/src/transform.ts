@@ -420,7 +420,7 @@ function createRecorderFn(defaultImportTracker: DefaultImportTracker):
 /**
  * Creates a `NodeArray` with the correct offsets from an array of decorators.
  *
- * 从装饰器数组创建一个具有正确偏移量的 `NodeArray` 。
+ * 从装饰器数组创建一个具有正确偏移量的 `NodeArray`。
  *
  */
 function nodeArrayFromDecoratorsArray(decorators: readonly ts.Decorator[]):

@@ -36,7 +36,7 @@ Perform these steps from a command-line tool on your local computer or in the **
 
 2. From your working directory, run this command to navigate to the `aio` directory. The `aio` directory contains Angular's documentation files and tools.
 
-   从你的工作目录，运行此命令以导航到 `aio` 目录。 `aio` 目录包含 Angular 的文档文件和工具。
+   从你的工作目录，运行此命令以导航到 `aio` 目录。`aio` 目录包含 Angular 的文档文件和工具。
 
    <code-example language="shell">
 
@@ -136,7 +136,7 @@ After you open your pull request, GitHub tests the code in your pull request.
 The tests that GitHub runs include the end-to-end tests that you just ran and other tests that only run in the GitHub repo.
 Because of that, even though your update passed the end-to-end tests locally, your update could still report an error after you open a pull request.
 
-打开 Pull Request 后，GitHub 会测试你的 Pull 请求中的代码。 GitHub 运行的测试包括你刚刚运行的端到端测试以及仅在 GitHub 存储库中运行的其他测试。因此，即使你的更新在本地通过了端到端测试，但你的更新在你打开 Pull Request 后仍然可能会报告错误。
+打开 Pull Request 后，GitHub 会测试你的 Pull 请求中的代码。GitHub 运行的测试包括你刚刚运行的端到端测试以及仅在 GitHub 存储库中运行的其他测试。因此，即使你的更新在本地通过了端到端测试，但你的更新在你打开 Pull Request 后仍然可能会报告错误。
 
 ## Errors reported
 

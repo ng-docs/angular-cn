@@ -44,7 +44,7 @@ export function isPlatformServer(platformId: Object): boolean {
  * This function serves no purpose since the removal of the Webworker platform. It will
  *     always return `false`.
  *
- * 自从 Webworker 平台被移除后，这个功能就没有用了。 它总是会返回 `false` 。
+ * 自从 Webworker 平台被移除后，这个功能就没有用了。它总是会返回 `false`。
  *
  */
 export function isPlatformWorkerApp(platformId: Object): boolean {
@@ -62,7 +62,7 @@ export function isPlatformWorkerApp(platformId: Object): boolean {
  * This function serves no purpose since the removal of the Webworker platform. It will
  *     always return `false`.
  *
- * 自从 Webworker 平台被移除后，这个功能就没有用了。 它总是会返回 `false` 。
+ * 自从 Webworker 平台被移除后，这个功能就没有用了。它总是会返回 `false`。
  *
  */
 export function isPlatformWorkerUi(platformId: Object): boolean {

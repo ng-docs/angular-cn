@@ -32,7 +32,7 @@ export interface OwningModule {
  * The Angular compiler uses `Reference`s instead of `ts.Node`s when tracking classes or generating
  * imports.
  *
- * Angular 编译器在跟踪类或生成导入时使用 `Reference` 而不是 `ts.Node` 。
+ * Angular 编译器在跟踪类或生成导入时使用 `Reference` 而不是 `ts.Node`。
  *
  */
 export class Reference<T extends ts.Node = ts.Node> {
@@ -55,7 +55,7 @@ export class Reference<T extends ts.Node = ts.Node> {
    *
    * If `bestGuessOwningModule` is `null`, then it's likely the node came from the current program.
    *
-   * 如果 `bestGuessOwningModule` 为 `null` ，则该节点很可能来自当前程序。
+   * 如果 `bestGuessOwningModule` 为 `null`，则该节点很可能来自当前程序。
    *
    */
   readonly bestGuessOwningModule: OwningModule|null;
@@ -70,7 +70,7 @@ export class Reference<T extends ts.Node = ts.Node> {
    *
    * This is used to avoid misinterpreting the Reference in certain contexts.
    *
-   * 这用于避免在某些上下文中误解 Reference 。
+   * 这用于避免在某些上下文中误解 Reference。
    *
    */
   synthetic = false;
@@ -90,7 +90,7 @@ export class Reference<T extends ts.Node = ts.Node> {
    * The best guess at which module specifier owns this particular reference, or `null` if there
    * isn't one.
    *
-   * 哪个模块说明符拥有此特定引用的最佳猜测，如果不存在，则为 `null` 。
+   * 哪个模块说明符拥有此特定引用的最佳猜测，如果不存在，则为 `null`。
    *
    */
   get ownedByModuleGuess(): string|null {
@@ -108,7 +108,7 @@ export class Reference<T extends ts.Node = ts.Node> {
    *
    * See `bestGuessOwningModule`.
    *
-   * 请参阅 `bestGuessOwningModule` 。
+   * 请参阅 `bestGuessOwningModule`。
    *
    */
   get hasOwningModuleGuess(): boolean {
@@ -140,7 +140,7 @@ export class Reference<T extends ts.Node = ts.Node> {
    * Record a `ts.Identifier` by which it's valid to refer to this node, within the context of this
    * `Reference`.
    *
-   * 在此 `Reference` 的上下文中记录一个 `ts.Identifier` ，通过它可以有效地引用此节点。
+   * 在此 `Reference` 的上下文中记录一个 `ts.Identifier`，通过它可以有效地引用此节点。
    *
    */
   addIdentifier(identifier: ts.Identifier): void {
@@ -151,7 +151,7 @@ export class Reference<T extends ts.Node = ts.Node> {
    * Get a `ts.Identifier` within this `Reference` that can be used to refer within the context of a
    * given `ts.SourceFile`, if any.
    *
-   * 在此 `Reference` 中获取一个 `ts.Identifier` ，可用于在给定的 `ts.SourceFile`
+   * 在此 `Reference` 中获取一个 `ts.Identifier`，可用于在给定的 `ts.SourceFile`
    * 的上下文中引用（如果有）。
    *
    */
@@ -162,14 +162,14 @@ export class Reference<T extends ts.Node = ts.Node> {
   /**
    * Get a `ts.Identifier` for this `Reference` that exists within the given expression.
    *
-   * 获取给定表达式中存在的此 `Reference` 的 `ts.Identifier` 。
+   * 获取给定表达式中存在的此 `Reference` 的 `ts.Identifier`。
    *
    * This is very useful for producing `ts.Diagnostic`s that reference `Reference`s that were
    * extracted from some larger expression, as it can be used to pinpoint the `ts.Identifier` within
    * the expression from which the `Reference` originated.
    *
    * 这对于生成引用从某些较大表达式中提取的 `Reference` 的 `ts.Diagnostic`
-   * 非常有用，因为它可用于在源自 `Reference` 的表达式中查明 `ts.Identifier` 。
+   * 非常有用，因为它可用于在源自 `Reference` 的表达式中查明 `ts.Identifier`。
    *
    */
   getIdentityInExpression(expr: ts.Expression): ts.Identifier|null {
@@ -191,14 +191,14 @@ export class Reference<T extends ts.Node = ts.Node> {
    * expression that generated the `Reference`.
    *
    * 给定从中提取此 `Reference` 的“容器”表达式，生成一个要在诊断中使用的 `ts.Expression`
-   * ，它可以最好地表明生成 `Reference` 的容器表达式中的位置。
+   *，它可以最好地表明生成 `Reference` 的容器表达式中的位置。
    *
    * For example, given a `Reference` to the class 'Bar' and the containing expression:
    * `[Foo, Bar, Baz]`, this function would attempt to return the `ts.Identifier` for `Bar` within
    * the array. This could be used to produce a nice diagnostic context:
    *
-   * 例如，给定对类 'Bar' 的 `Reference` 和包含表达式： `[Foo, Bar, Baz]` ，此函数将尝试在数组中返回
-   * `Bar` 的 `ts.Identifier` 。这可用于生成一个很好的诊断上下文：
+   * 例如，给定对类 'Bar' 的 `Reference` 和包含表达式：`[Foo, Bar, Baz]`，此函数将尝试在数组中返回
+   * `Bar` 的 `ts.Identifier`。这可用于生成一个很好的诊断上下文：
    *
    * ```text
    * [Foo, Bar, Baz]

@@ -21,13 +21,13 @@ import {getOrCreateTNode} from './shared';
  * Checks a given node against matching projection slots and returns the
  * determined slot index. Returns "null" if no slot matched the given node.
  *
- * 根据匹配的投影槽检查给定节点并返回确定的槽索引。 如果没有槽与给定节点匹配，则返回“null”。
+ * 根据匹配的投影槽检查给定节点并返回确定的槽索引。如果没有槽与给定节点匹配，则返回“null”。
  *
  * This function takes into account the parsed ngProjectAs selector from the
  * node's attributes. If present, it will check whether the ngProjectAs selector
  * matches any of the projection slot selectors.
  *
- * 此函数考虑了从节点属性中解析的 ngProjectAs 选择器。 如果存在，它将检查 ngProjectAs 选择器是否与任何投影插槽选择器匹配。
+ * 此函数考虑了从节点属性中解析的 ngProjectAs 选择器。如果存在，它将检查 ngProjectAs 选择器是否与任何投影插槽选择器匹配。
  *
  */
 export function matchingProjectionSlotIndex(tNode: TNode, projectionSlots: ProjectionSlots): number|
@@ -69,7 +69,7 @@ export function matchingProjectionSlotIndex(tNode: TNode, projectionSlots: Proje
  * The parsed form is needed for efficient matching of a node against a given CSS selector.
  * The un-parsed, textual form is needed for support of the ngProjectAs attribute.
  *
- * 需要解析的形式来有效匹配节点与给定的 CSS 选择器。 需要未解析的文本形式来支持 ngProjectAs 属性。
+ * 需要解析的形式来有效匹配节点与给定的 CSS 选择器。需要未解析的文本形式来支持 ngProjectAs 属性。
  *
  * Having a CSS selector in 2 different formats is not ideal, but alternatives have even more
  * drawbacks:
@@ -127,7 +127,7 @@ export function ɵɵprojectionDef(projectionSlots?: ProjectionSlots): void {
  * Inserts previously re-distributed projected nodes. This instruction must be preceded by a call
  * to the projectionDef instruction.
  *
- * 插入先前重新分布的投影节点。 此指令之前必须调用 projectionDef 指令。
+ * 插入先前重新分布的投影节点。此指令之前必须调用 projectionDef 指令。
  *
  * @param nodeIndex
  * @param selectorIndex:

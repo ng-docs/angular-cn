@@ -126,7 +126,7 @@ export class RouterModule {
    * 一个 `ExtraOptions` 配置对象，该对象会控制如何执行导航。
    * @return The new `NgModule`.
    *
-   * 新的 `NgModule` 。
+   * 新的 `NgModule`。
    *
    */
   static forRoot(routes: Routes, config?: ExtraOptions): ModuleWithProviders<RouterModule> {
@@ -189,7 +189,7 @@ export class RouterModule {
  * For internal use by `RouterModule` only. Note that this differs from `withInMemoryRouterScroller`
  * because it reads from the `ExtraOptions` which should not be used in the standalone world.
  *
- * 仅供 `RouterModule` 内部使用。 请注意，这与 `withInMemoryRouterScroller` 不同，因为它从不应在独立世界中使用的 `ExtraOptions` 读取。
+ * 仅供 `RouterModule` 内部使用。请注意，这与 `withInMemoryRouterScroller` 不同，因为它从不应在独立世界中使用的 `ExtraOptions` 读取。
  *
  */
 export function provideRouterScroller(): Provider {

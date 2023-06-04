@@ -570,7 +570,7 @@ The following is a two-element array when specifying a route parameter:
 
 Provide optional route parameters in an object, as in `{ foo: 'foo' }`:
 
-可以在对象中提供可选的路由参数，比如 `{ foo: 'foo' }` ：
+可以在对象中提供可选的路由参数，比如 `{ foo: 'foo' }`：
 
 <code-example header="src/app/app.component.ts (cc-query-params)" path="router/src/app/app.component.3.ts" region="cc-query-params"></code-example>
 
@@ -694,9 +694,9 @@ The router supports both styles with two `LocationStrategy` providers:
 | :--------------------- | :----------------------------------- |
 | 提供者                 | 详情                                 |
 | `PathLocationStrategy` | The default "HTML5 pushState" style. |
-| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。     |
+| `PathLocationStrategy` | 默认的 “HTML 5 pushState” 风格。|
 | `HashLocationStrategy` | The "hash URL" style.                |
-| `HashLocationStrategy` | “hash URL”风格。                     |
+| `HashLocationStrategy` | “hash URL”风格。|
 
 The `RouterModule.forRoot()` function sets the `LocationStrategy` to the `PathLocationStrategy`, which makes it the default strategy.
 You also have the option of switching to the `HashLocationStrategy` with an override during the bootstrapping process.

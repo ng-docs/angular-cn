@@ -57,9 +57,9 @@ You always import the `Component` symbol from the Angular core library and annot
 | `selector` | The component's CSS element selector. |
 | `selector` | 组件的 CSS 元素选择器 |
 | `templateUrl` | The location of the component's template file. |
-| `templateUrl` | 组件模板文件的位置。 |
+| `templateUrl` | 组件模板文件的位置。|
 | `styleUrls` | The location of the component's private CSS styles. |
-| `styleUrls` | 组件私有 CSS 样式表文件的位置。 |
+| `styleUrls` | 组件私有 CSS 样式表文件的位置。|
 
 <a id="selector"></a>
 

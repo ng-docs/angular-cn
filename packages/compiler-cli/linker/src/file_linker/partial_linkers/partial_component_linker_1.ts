@@ -42,7 +42,7 @@ function makeDirectiveMetadata<TExpression>(
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareComponent()` call expressions.
  *
- * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareComponent()` 调用表达式。
+ * 一个 `PartialLinker`，旨在处理 `ɵɵngDeclareComponent()` 调用表达式。
  *
  */
 export class PartialComponentLinkerVersion1<TStatement, TExpression> implements
@@ -61,7 +61,7 @@ export class PartialComponentLinkerVersion1<TStatement, TExpression> implements
   /**
    * This function derives the `R3ComponentMetadata` from the provided AST object.
    *
-   * 此函数从提供的 AST 对象派生 `R3ComponentMetadata` 。
+   * 此函数从提供的 AST 对象派生 `R3ComponentMetadata`。
    *
    */
   private toR3ComponentMeta(metaObj: AstObject<R3DeclareComponentMetadata, TExpression>):
@@ -267,7 +267,7 @@ interface TemplateInfo {
 /**
  * Extract an `InterpolationConfig` from the component declaration.
  *
- * 从组件声明中提取 `InterpolationConfig` 。
+ * 从组件声明中提取 `InterpolationConfig`。
  *
  */
 function parseInterpolationConfig<TExpression>(
@@ -309,7 +309,7 @@ function parseEncapsulation<TExpression>(encapsulation: AstValue<ViewEncapsulati
 /**
  * Determines the `ChangeDetectionStrategy` from the AST value's symbol name.
  *
- * 根据 AST 值的符号名称确定 `ChangeDetectionStrategy` 。
+ * 根据 AST 值的符号名称确定 `ChangeDetectionStrategy`。
  *
  */
 function parseChangeDetectionStrategy<TExpression>(

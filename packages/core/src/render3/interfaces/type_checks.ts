@@ -16,7 +16,7 @@ import {FLAGS, LView, LViewFlags} from './view';
 /**
  * True if `value` is `LView`.
  *
- * 如果 `value` `LView` ，则为真。
+ * 如果 `value` `LView`，则为真。
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *
@@ -30,7 +30,7 @@ export function isLView(value: RNode|LView|LContainer|{}|null): value is LView {
 /**
  * True if `value` is `LContainer`.
  *
- * 如果 `value` `LContainer` ，则为真。
+ * 如果 `value` `LContainer`，则为真。
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *

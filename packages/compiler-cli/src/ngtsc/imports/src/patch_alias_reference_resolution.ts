@@ -13,7 +13,7 @@ import ts from 'typescript';
  * resolver exposed. There are requests upstream in TypeScript to expose
  * that as public API: https://github.com/microsoft/TypeScript/issues/17516.
  *
- * 描述带有公开的内部发射解析器的 TypeScript 转换上下文。 TypeScript 的上游请求将其公开为公共 API：https&#x3A; [//github.com/microsoft/TypeScript/issues/17516](https://github.com/microsoft/TypeScript/issues/17516) 。
+ * 描述带有公开的内部发射解析器的 TypeScript 转换上下文。TypeScript 的上游请求将其公开为公共 API：https&#x3A; [//github.com/microsoft/TypeScript/issues/17516](https://github.com/microsoft/TypeScript/issues/17516)。
  *
  */
 interface TransformationContextWithResolver extends ts.TransformationContext {
@@ -57,7 +57,7 @@ interface EmitResolver {
  * 输出中，因为它们将在运行时用作值。我们可以通过创建给定导入说明符/子句或命名空间的可变克隆来指示
  * TypeScript 保留此类标识符的导入，但这有一个缺点是在 JS 输出中保留完全导入。请参阅：
  * https://github.com/microsoft/TypeScript/blob/3eaa7c65f6f076a08a5f7f1946fd0df7c7430259/src/compiler/transformers/ts.ts#L242-L250
- * 。
+ *。
  *
  * This is a trick the CLI used in the past  for constructor parameter downleveling in JIT:
  * https://github.com/angular/angular-cli/blob/b3f84cc5184337666ce61c07b7b9df418030106f/packages/ngtools/webpack/src/transformers/ctor-parameters.ts#L323-L325
@@ -96,7 +96,7 @@ interface EmitResolver {
  * solves it conceptually the same way, but obviously doesn't need to access an internal API.
  *
  * 我们用来告诉 TypeScript 实际引用的别名（即导入的符号）的补丁，在概念上与启用
- * `emitDecoratorMetadata` 标志时在 TypeScript 内部运行的逻辑匹配。 TypeScript
+ * `emitDecoratorMetadata` 标志时在 TypeScript 内部运行的逻辑匹配。TypeScript
  * 基本上会出现相同的问题，并且在概念上以相同的方式解决它，但显然不需要访问 `@internal` API。
  *
  * The set that is returned by this function is meant to be filled with import declaration nodes

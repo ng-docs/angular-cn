@@ -25,9 +25,9 @@ import {LanguageServiceAdapter} from './adapters';
  * need to properly handle a change in the compiler options, either by having an API to update the
  * `CompilerFactory` to use new options, or by replacing it entirely.
  *
- * TODO\(alxhub\) ：当前用于编译器的选项是在 `CompilerFactory`
+ * TODO\(alxhub\)：当前用于编译器的选项是在 `CompilerFactory`
  * 构造时指定的，并且不可更改。在真实项目中，用户可以更新 `tsconfig.json`
- * 。我们需要正确处理编译器选项的更改，方法是让 API 更新 `CompilerFactory`
+ *。我们需要正确处理编译器选项的更改，方法是让 API 更新 `CompilerFactory`
  * 以使用新选项，或完全替换它。
  *
  */

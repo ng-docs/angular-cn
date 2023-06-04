@@ -150,7 +150,7 @@ export class ViewRef<T> implements EmbeddedViewRef<T>, InternalViewRef, ChangeDe
    * {@link ChangeDetectorRef#detectChanges detectChanges} to implement local change
    * detection checks.
    *
-   * 在重新连接之前，在变更检测运行期间不会检查分离的视图，即使它们是脏的。 `detach` 可以与 {@link
+   * 在重新连接之前，在变更检测运行期间不会检查分离的视图，即使它们是脏的。`detach` 可以与 {@link
    * ChangeDetectorRef#detectChangesdetectChanges} 结合使用来实现本地变更检测检查。
    *
    * <!-- TODO: Add a link to a chapter on detach/reattach/local digest -->
@@ -312,7 +312,7 @@ export class ViewRef<T> implements EmbeddedViewRef<T>, InternalViewRef, ChangeDe
    *
    * See {@link ChangeDetectorRef#detach detach} for more information.
    *
-   * 有关更多信息，请参阅 {@link ChangeDetectorRef#detach detach} 。
+   * 有关更多信息，请参阅 {@link ChangeDetectorRef#detach detach}。
    *
    */
   detectChanges(): void {

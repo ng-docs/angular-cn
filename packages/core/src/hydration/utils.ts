@@ -53,7 +53,7 @@ export const enum TextNodeMarker {
    * be replaced during hydration in the client to restore the lost empty text
    * node.
    *
-   * 添加到节点的文本注释的内容，否则这些节点在由服务器序列化并传递给客户端时将为空。 当浏览器以其他方式解析空节点时，空节点将丢失。 该注释节点将在客户端水合期间被替换以恢复丢失的空文本节点。
+   * 添加到节点的文本注释的内容，否则这些节点在由服务器序列化并传递给客户端时将为空。当浏览器以其他方式解析空节点时，空节点将丢失。该注释节点将在客户端水合期间被替换以恢复丢失的空文本节点。
    *
    */
   EmptyNode = 'ngetn',
@@ -65,7 +65,7 @@ export const enum TextNodeMarker {
    * just one text node. This separator is replaced during hydration to restore
    * the proper separation and amount of text nodes that should be present.
    *
-   * 在相邻文本节点的情况下添加的文本注释的内容。 当相邻的文本节点被服务器序列化并发送给客户端时，浏览器将失去对节点数量的参考并假定只有一个文本节点。 此分隔符在水合期间被替换，以恢复应存在的文本节点的适当分隔和数量。
+   * 在相邻文本节点的情况下添加的文本注释的内容。当相邻的文本节点被服务器序列化并发送给客户端时，浏览器将失去对节点数量的参考并假定只有一个文本节点。此分隔符在水合期间被替换，以恢复应存在的文本节点的适当分隔和数量。
    *
    */
   Separator = 'ngtns',
@@ -76,7 +76,7 @@ export const enum TextNodeMarker {
  * and retrieves hydration information from the TransferState using that value
  * as an index. Returns `null` by default, when hydration is not enabled.
  *
- * 引用从给定 RNode 读取 `ngh` 属性值并使用该值作为索引从 TransferState 检索水合信息的函数。 未启用水合时，默认返回 `null` 。
+ * 引用从给定 RNode 读取 `ngh` 属性值并使用该值作为索引从 TransferState 检索水合信息的函数。未启用水合时，默认返回 `null`。
  *
  * @param rNode Component's host element.
  *
@@ -156,7 +156,7 @@ export function retrieveHydrationInfo(rNode: RElement, injector: Injector): Dehy
  * Retrieves an instance of a component LView from a given ViewRef.
  * Returns an instance of a component LView or `null` in case of an embedded view.
  *
- * 从给定的 ViewRef 中检索组件 LView 的实例。 返回组件 LView 的实例，如果是嵌入式视图，则返回 `null` 。
+ * 从给定的 ViewRef 中检索组件 LView 的实例。返回组件 LView 的实例，如果是嵌入式视图，则返回 `null`。
  *
  */
 export function getComponentLViewForHydration(viewRef: ViewRef): LView|null {
@@ -194,7 +194,7 @@ function getTextNodeContent(node: Node): string|undefined {
  * that this method filters on to restore those missing nodes that the
  * hydration process is expecting to be present.
  *
- * 将 SSR 序列化期间丢失的文本节点和分隔符恢复到 DOM 中。 水合过程将空文本节点和与其他文本节点紧邻的文本节点替换为此方法过滤的注释节点，以恢复水合过程期望存在的那些缺失节点。
+ * 将 SSR 序列化期间丢失的文本节点和分隔符恢复到 DOM 中。水合过程将空文本节点和与其他文本节点紧邻的文本节点替换为此方法过滤的注释节点，以恢复水合过程期望存在的那些缺失节点。
  *
  * @param node The app's root HTML Element
  *
@@ -234,7 +234,7 @@ export function processTextNodeMarkersBeforeHydration(node: HTMLElement) {
  * Internal type that represents a claimed node.
  * Only used in dev mode.
  *
- * 表示已声明节点的内部类型。 仅在开发模式下使用。
+ * 表示已声明节点的内部类型。仅在开发模式下使用。
  *
  */
 type ClaimedNode = {
@@ -246,7 +246,7 @@ type ClaimedNode = {
  * This is needed to make assessments in tests whether
  * the hydration process handled all nodes.
  *
- * 通过水合过程将节点标记为“已声明”。 这需要在测试中评估水合过程是否处理了所有节点。
+ * 通过水合过程将节点标记为“已声明”。这需要在测试中评估水合过程是否处理了所有节点。
  *
  */
 export function markRNodeAsClaimedByHydration(node: RNode, checkIfAlreadyClaimed = true) {
@@ -325,7 +325,7 @@ export function calcSerializedContainerSize(hydrationInfo: DehydratedView, index
  * in the DOM at serialization time. We should not attempt hydration for
  * such nodes and instead, use a regular "creation mode".
  *
- * 检查节点是否被注释为“断开连接”，即在序列化时不存在于 DOM 中。 我们不应尝试对此类节点进行水合，而应使用常规的“创建模式”。
+ * 检查节点是否被注释为“断开连接”，即在序列化时不存在于 DOM 中。我们不应尝试对此类节点进行水合，而应使用常规的“创建模式”。
  *
  */
 export function isDisconnectedNode(hydrationInfo: DehydratedView, index: number): boolean {

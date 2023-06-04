@@ -83,7 +83,7 @@ export class ShimAdapter {
   /**
    * A `Set` of shim `ts.SourceFile`s which should not be emitted.
    *
-   * 不应该发出的一 `Set` shim `ts.SourceFile` 。
+   * 不应该发出的一 `Set` shim `ts.SourceFile`。
    *
    */
   readonly ignoreForEmit = new Set<ts.SourceFile>();
@@ -172,13 +172,13 @@ export class ShimAdapter {
    * Produce a shim `ts.SourceFile` if `fileName` refers to a shim file which should exist in the
    * program.
    *
-   * 如果 `fileName` 引用程序中应该存在的 shim 文件，则生成一个 shim `ts.SourceFile` 。
+   * 如果 `fileName` 引用程序中应该存在的 shim 文件，则生成一个 shim `ts.SourceFile`。
    *
    * If `fileName` does not refer to a potential shim file, `null` is returned. If a corresponding
    * base file could not be determined, `undefined` is returned instead.
    *
-   * 如果 `fileName` 不引用潜在的 shim 文件，则返回 `null` 。如果无法确定对应的基础文件，则会返回
-   * `undefined` 。
+   * 如果 `fileName` 不引用潜在的 shim 文件，则返回 `null`。如果无法确定对应的基础文件，则会返回
+   * `undefined`。
    *
    */
   maybeGenerate(fileName: AbsoluteFsPath): ts.SourceFile|null|undefined {

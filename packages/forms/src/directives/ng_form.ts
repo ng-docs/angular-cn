@@ -49,7 +49,7 @@ const resolvedPromise = (() => Promise.resolve())();
  * user interaction properties like `dirty` and `touched`.
  *
  * 你可以以 `ngForm` 作为 key 把该指令导出到一个局部模板变量（如
- * `#myForm="ngForm"`）。这是可选的，但很有用。 来自本指令背后的 `FormGroup`
+ * `#myForm="ngForm"`）。这是可选的，但很有用。来自本指令背后的 `FormGroup`
  * 实例的很多属性，都被复制到了指令自身，所以拿到一个对该指令的引用就可以让你访问此表单的聚合值和验证状态，
  * 还有那些用户交互类的属性，比如 `dirty` 和 `touched`。
  *
@@ -75,7 +75,7 @@ const resolvedPromise = (() => Promise.resolve())();
  *
  * 在模板驱动表单中，所有 `<form>` 标签都会自动应用上 `NgForm` 指令。
  * 如果你只想导入 `FormsModule` 而不想把它应用于某些表单中，比如，要想使用 HTML5 验证，你可以添加
- * `ngNoForm` 属性，这样标签就不会在 `<form>` 上创建 `NgForm` 指令了。 在响应式表单中，则不需要用
+ * `ngNoForm` 属性，这样标签就不会在 `<form>` 上创建 `NgForm` 指令了。在响应式表单中，则不需要用
  * `ngNoForm`，因为 `NgForm` 指令不会自动应用到 `<form>` 标签上，你只要别主动添加 `formGroup`
  * 指令就可以了。
  * @usageNotes
@@ -115,7 +115,7 @@ const resolvedPromise = (() => Promise.resolve())();
  * If you want to explicitly enable native DOM validation UI with Angular forms, you can add the
  * `ngNativeValidate` attribute to the `<form>` element:
  *
- * 为了防止原生 DOM 表单验证 UI 干扰 Angular 的表单验证，每当将 `FormModule` 或 `ReactiveFormModule` 导入应用程序时，Angular 都会自动在任何 `<form>` 上添加 `novalidate` 属性。 如果你想显式启用 Angular 表单的原生 DOM 验证 UI，你可以将 `ngNativeValidate` 属性添加到 `<form>` 元素：
+ * 为了防止原生 DOM 表单验证 UI 干扰 Angular 的表单验证，每当将 `FormModule` 或 `ReactiveFormModule` 导入应用程序时，Angular 都会自动在任何 `<form>` 上添加 `novalidate` 属性。如果你想显式启用 Angular 表单的原生 DOM 验证 UI，你可以将 `ngNativeValidate` 属性添加到 `<form>` 元素：
  *
  * ```html
  * <form ngNativeValidate>
@@ -175,7 +175,7 @@ export class NgForm extends ControlContainer implements Form, AfterViewInit {
    * Possible values: `'change'` \| `'blur'` \| `'submit'`
    *
    * **updateOn**：为所有子级的 `NgModel` 设置 `updateOn` 的默认值（除非子 `NgModel` 通过
-   * `ngModelOptions` 显式指定了这个值）。 可能的值有：`'change'` \| `'blur'` \| `'submit'`.
+   * `ngModelOptions` 显式指定了这个值）。可能的值有：`'change'` \| `'blur'` \| `'submit'`.
    *
    */
   // TODO(issue/24571): remove '!'.

@@ -50,7 +50,7 @@ export class FormsModule {
    * * `callSetDisabledState` Configures whether to `always` call `setDisabledState`, which is more
    *   correct, or to only call it `whenDisabled`, which is the legacy behavior.
    *
-   *   `callSetDisabledState` 配置是 `always` 调用 `setDisabledState` ，这更正确，还是仅调用它 `whenDisabled` ，这是旧版行为。
+   *   `callSetDisabledState` 配置是 `always` 调用 `setDisabledState`，这更正确，还是仅调用它 `whenDisabled`，这是旧版行为。
    *
    */
   static withConfig(opts: {
@@ -110,7 +110,7 @@ export class ReactiveFormsModule {
    * * `callSetDisabledState` Configures whether to `always` call `setDisabledState`, which is more
    *   correct, or to only call it `whenDisabled`, which is the legacy behavior.
    *
-   *   `callSetDisabledState` 配置是 `always` 调用 `setDisabledState` ，这更正确，还是仅调用它 `whenDisabled` ，这是旧版行为。
+   *   `callSetDisabledState` 配置是 `always` 调用 `setDisabledState`，这更正确，还是仅调用它 `whenDisabled`，这是旧版行为。
    *
    */
   static withConfig(opts: {

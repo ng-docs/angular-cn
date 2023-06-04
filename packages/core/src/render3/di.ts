@@ -38,14 +38,14 @@ import {stringifyForError} from './util/stringify_utils';
 /**
  * Defines if the call to `inject` should include `viewProviders` in its resolution.
  *
- * 定义对 `inject` 的调用是否应在其解析中包含 `viewProviders` 。
+ * 定义对 `inject` 的调用是否应在其解析中包含 `viewProviders`。
  *
  * This is set to true when we try to instantiate a component. This value is reset in
  * `getNodeInjectable` to a value which matches the declaration location of the token about to be
  * instantiated. This is done so that if we are injecting a token which was declared outside of
  * `viewProviders` we don't accidentally pull `viewProviders` in.
  *
- * 当我们尝试实例化组件时，这设置为 true 。此值在 `getNodeInjectable`
+ * 当我们尝试实例化组件时，这设置为 true。此值在 `getNodeInjectable`
  * 中被重置为与要实例化的标记的声明位置匹配的值。这样做是为了如果我们注入在 `viewProviders`
  * 之外声明的标记，我们不会意外地将 `viewProviders` 拉入。
  *
@@ -103,7 +103,7 @@ const BLOOM_MASK = BLOOM_SIZE - 1;
  * so each bucket represents 32 distinct tokens which accounts for log2\(32\) = 5 bits of a bloom hash
  * number.
  *
- * 单个布隆桶表示的位数。 JS 位操作是 32 位，因此每个存储桶表示 32 个不同的标记，它们占 log2\(32\) = 5
+ * 单个布隆桶表示的位数。JS 位操作是 32 位，因此每个存储桶表示 32 个不同的标记，它们占 log2\(32\) = 5
  * 位的 bloom 哈希值。
  *
  */
@@ -490,7 +490,7 @@ function lookupTokenUsingModuleInjector<T>(
  * This function patches `token` with `__NG_ELEMENT_ID__` which contains the id for the bloom
  * filter. `-1` is reserved for injecting `Injector` \(implemented by `NodeInjector`\)
  *
- * 此函数使用包含布隆过滤器的 id 的 `__NG_ELEMENT_ID__` 来修补 `token` 。 `-1` 保留用于注入
+ * 此函数使用包含布隆过滤器的 id 的 `__NG_ELEMENT_ID__` 来修补 `token`。`-1` 保留用于注入
  * `Injector`（由 `NodeInjector` 实现）
  *
  * @param tNode The Node where the search for the injector should start
@@ -512,7 +512,7 @@ function lookupTokenUsingModuleInjector<T>(
  *
  * the value from the injector, `null` when not found, or `notFoundValue` if provided
  *
- * 来自注入器的值，找不到时为 `null` ，如果提供了 `notFoundValue`
+ * 来自注入器的值，找不到时为 `null`，如果提供了 `notFoundValue`
  */
 export function getOrCreateInjectable<T>(
     tNode: TDirectiveHostNode|null, lView: LView, token: ProviderToken<T>,
@@ -571,7 +571,7 @@ export function getOrCreateInjectable<T>(
  *
  * the value from the injector, `null` when not found, or `notFoundValue` if provided
  *
- * 来自注入器的值，找不到时为 `null` ，如果提供了 `notFoundValue`
+ * 来自注入器的值，找不到时为 `null`，如果提供了 `notFoundValue`
  *
  */
 function lookupTokenUsingNodeInjector<T>(
@@ -709,7 +709,7 @@ function searchTokensOnInjector<T>(
  *
  * @param tNode TNode on which directives are present.
  *
- * 存在指令的 TNode 。
+ * 存在指令的 TNode。
  *
  * @param tView The tView we are currently processing
  *
@@ -731,7 +731,7 @@ function searchTokensOnInjector<T>(
  *
  * Index of a found directive or provider, or null when none found.
  *
- * 找到的指令或提供程序的索引，如果找不到，则为 null 。
+ * 找到的指令或提供程序的索引，如果找不到，则为 null。
  *
  */
 export function locateDirectiveOrProvider<T>(
@@ -775,7 +775,7 @@ export function locateDirectiveOrProvider<T>(
  * instantiates the `injectable` and caches the value.
  *
  * 此函数会检查值是否已被实例化，如果是则返回缓存的 `injectable`
- * 。否则，如果它检测到该值仍然是工厂，它会实例化 `injectable` 并缓存该值。
+ *。否则，如果它检测到该值仍然是工厂，它会实例化 `injectable` 并缓存该值。
  *
  */
 export function getNodeInjectable(
@@ -830,7 +830,7 @@ export function getNodeInjectable(
  * is returned as the node injector can not possibly provide that token.
  *
  * 当指令是 public 时，它会被添加到布隆过滤器中，并给定一个可以在 Type 上检索的唯一 ID。当指令不是
- * public 或标记不是指令时，会返回 `null` ，因为节点注入器无法提供该标记。
+ * public 或标记不是指令时，会返回 `null`，因为节点注入器无法提供该标记。
  *
  * @param token the injection token
  *
@@ -841,8 +841,8 @@ export function getNodeInjectable(
  * the matching bit to check in the bloom filter or `null` if the token is not known.
  *   When the returned value is negative then it represents special values such as `Injector`.
  *
- * 要在布隆过滤器中检查的匹配位，如果不知道标记，则为 `null` 。当返回值为负数时，它表示特殊值，例如
- * `Injector` 。
+ * 要在布隆过滤器中检查的匹配位，如果不知道标记，则为 `null`。当返回值为负数时，它表示特殊值，例如
+ * `Injector`。
  *
  */
 export function bloomHashBitOrFactory(token: ProviderToken<any>|string): number|Function|undefined {
@@ -907,7 +907,7 @@ export class NodeInjector implements Injector {
 /**
  * Creates a `NodeInjector` for the current node.
  *
- * 为当前节点创建 `NodeInjector` 。
+ * 为当前节点创建 `NodeInjector`。
  *
  */
 export function createNodeInjector(): Injector {
@@ -987,7 +987,7 @@ function getFactoryOf<T>(type: Type<any>): ((type?: Type<T>) => T | null)|null {
  *
  * the value from the injector, `null` when not found, or `notFoundValue` if provided
  *
- * 来自注入器的值，找不到时为 `null` ，如果提供了 `notFoundValue`
+ * 来自注入器的值，找不到时为 `null`，如果提供了 `notFoundValue`
  *
  */
 function lookupTokenUsingEmbeddedInjector<T>(

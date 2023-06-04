@@ -81,7 +81,7 @@ export class BrowserAnimationsModule {
  * to enable animations in an application. See [animations guide](guide/animations)
  * to learn more about animations in Angular.
  *
- * 返回一组[依赖注入提供程序](guide/glossary#provider)以在应用程序中启用动画。 请参阅[动画指南](guide/animations)以了解有关 Angular 中动画的更多信息。
+ * 返回一组[依赖注入提供程序](guide/glossary#provider)以在应用程序中启用动画。请参阅[动画指南](guide/animations)以了解有关 Angular 中动画的更多信息。
  *
  * @usageNotes
  *
@@ -90,7 +90,7 @@ export class BrowserAnimationsModule {
  * is no need to import the `BrowserAnimationsModule` NgModule at all, just add
  * providers returned by this function to the `providers` list as show below.
  *
- * 当你想要在使用 `bootstrapApplication` 函数引导的应用程序中启用动画时，该函数很有用。 在这种情况下，根本不需要导入 `BrowserAnimationsModule` NgModule，只需将此函数返回的提供者添加到 `providers` 列表中，如下所示。
+ * 当你想要在使用 `bootstrapApplication` 函数引导的应用程序中启用动画时，该函数很有用。在这种情况下，根本不需要导入 `BrowserAnimationsModule` NgModule，只需将此函数返回的提供者添加到 `providers` 列表中，如下所示。
  *
  * ```typescript
  * bootstrapApplication(RootComponent, {
@@ -127,7 +127,7 @@ export class NoopAnimationsModule {
  * to disable animations in an application. See [animations guide](guide/animations)
  * to learn more about animations in Angular.
  *
- * 返回一组[依赖注入提供程序](guide/glossary#provider)以禁用应用程序中的动画。 请参阅[动画指南](guide/animations)以了解有关 Angular 中动画的更多信息。
+ * 返回一组[依赖注入提供程序](guide/glossary#provider)以禁用应用程序中的动画。请参阅[动画指南](guide/animations)以了解有关 Angular 中动画的更多信息。
  *
  * @usageNotes
  *

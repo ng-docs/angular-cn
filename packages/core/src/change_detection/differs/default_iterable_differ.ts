@@ -336,7 +336,7 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
    *
    * Use case: `[a, a]` => `[b, a, a]`
    *
-   * 用例： `[a, a]` => `[b, a, a]`
+   * 用例：`[a, a]` => `[b, a, a]`
    *
    * If we did not have this check then the insertion of `b` would:
    *
@@ -356,7 +356,7 @@ export class DefaultIterableDiffer<V> implements IterableDiffer<V>, IterableChan
    *
    * 1. reinsert `a` at index 2. &lt;-- this is wrong!
    *
-   *    重新把 `a` 插入在 `2` 号索引处。 &lt;-- 这是错的！
+   *    重新把 `a` 插入在 `2` 号索引处。&lt;-- 这是错的！
    *
    * The correct behavior is:
    *
@@ -702,7 +702,7 @@ class _DuplicateItemRecordList<V> {
   /**
    * Remove one {@link IterableChangeRecord\_} from the list of duplicates.
    *
-   * 从重复项列表中删除一个 {@link IterableChangeRecord\_} 。
+   * 从重复项列表中删除一个 {@link IterableChangeRecord\_}。
    *
    * Returns whether the list of duplicates is empty.
    *
@@ -753,14 +753,14 @@ class _DuplicateMap<V> {
    * Retrieve the `value` using key. Because the IterableChangeRecord\_ value may be one which we
    * have already iterated over, we use the `atOrAfterIndex` to pretend it is not there.
    *
-   * 使用键检索 `value` 。因为 IterableChangeRecord\_ 的值可能是我们已经迭代过的值，所以我们用
+   * 使用键检索 `value`。因为 IterableChangeRecord\_ 的值可能是我们已经迭代过的值，所以我们用
    * `atOrAfterIndex` 来假装它不存在。
    *
    * Use case: `[a, b, c, a, a]` if we are at index `3` which is the second `a` then asking if we
    * have any more `a`s needs to return the second `a`.
    *
-   * 用例： `[a, b, c, a, a]` 如果我们在索引 `3` 处，这是第二个 `a` 那么询问我们是否还有 `a` s
-   * 需要返回第二个 `a` 。
+   * 用例：`[a, b, c, a, a]` 如果我们在索引 `3` 处，这是第二个 `a` 那么询问我们是否还有 `a` s
+   * 需要返回第二个 `a`。
    *
    */
   get(trackById: any, atOrAfterIndex: number|null): IterableChangeRecord_<V>|null {
@@ -772,7 +772,7 @@ class _DuplicateMap<V> {
   /**
    * Removes a {@link IterableChangeRecord\_} from the list of duplicates.
    *
-   * 从重复项列表中删除 {@link IterableChangeRecord\_} 。
+   * 从重复项列表中删除 {@link IterableChangeRecord\_}。
    *
    * The list of duplicates also is removed from the map if it gets empty.
    *

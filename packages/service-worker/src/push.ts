@@ -38,8 +38,8 @@ import {ERR_SW_NOT_SUPPORTED, NgswCommChannel, PushEvent} from './low_level';
  * instance.
  *
  * 要订阅，请调用 `SwPush.requestSubscription()`
- * ，它会请求用户许可。该调用会返回带有新的[`PushSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription)实例的
- * `Promise` 。
+ *，它会请求用户许可。该调用会返回带有新的[`PushSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription)实例的
+ * `Promise`。
  *
  * <code-example path="service-worker/push/module.ts" region="subscribe-to-push"
  * header="app.component.ts"></code-example>
@@ -81,7 +81,7 @@ import {ERR_SW_NOT_SUPPORTED, NgswCommChannel, PushEvent} from './low_level';
  * [instance
  * properties](https://developer.mozilla.org/en-US/docs/Web/API/Notification#Instance_properties).
  *
- * 只需要 `title` 。请参阅
+ * 只需要 `title`。请参阅
  * `Notification`[实例属性](https://developer.mozilla.org/en-US/docs/Web/API/Notification#Instance_properties)。
  *
  * While the subscription is active, Service Worker listens for
@@ -100,7 +100,7 @@ import {ERR_SW_NOT_SUPPORTED, NgswCommChannel, PushEvent} from './low_level';
  * An application can subscribe to `SwPush.notificationClicks` observable to be notified when a user
  * clicks on a notification. For example:
  *
- * 应用程序可以订阅 `SwPush.notificationClicks` observable ，以在用户点击通知时得到通知。例如：
+ * 应用程序可以订阅 `SwPush.notificationClicks` observable，以在用户点击通知时得到通知。例如：
  *
  * <code-example path="service-worker/push/module.ts" region="subscribe-to-notification-clicks"
  * header="app.component.ts"></code-example>
@@ -149,7 +149,7 @@ export class SwPush {
    * interacted with. If no action was used the `action` property contains an empty string `''`.
    *
    * 发出已接收到的推送通知消息的有效负载以及用户交互的操作。如果未使用任何操作，则 `action`
-   * 属性包含空字符串 `''` 。
+   * 属性包含空字符串 `''`。
    *
    * Note that the `notification` property does **not** contain a
    * [Notification][Mozilla Notification] object but rather a
@@ -158,7 +158,7 @@ export class SwPush {
    *
    * 请注意，`notification` 属性**不**包含[Notification][Mozilla
    * Notification]对象，而是包含一个[NotificationOptions](https://notifications.spec.whatwg.org/#dictdef-notificationoptions)对象，该对象还包含[Notification][Mozilla
-   * Notification]对象的 `title` 。
+   * Notification]对象的 `title`。
    *
    * [Mozilla Notification]: https://developer.mozilla.org/en-US/docs/Web/API/Notification
    *
@@ -177,7 +177,7 @@ export class SwPush {
    *
    * 发出与 Service Worker
    * 注册关联的当前活动的[PushSubscription](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription)
-   * ，如果没有订阅，则发出 `null` 。
+   *，如果没有订阅，则发出 `null`。
    *
    */
   readonly subscription: Observable<PushSubscription|null>;

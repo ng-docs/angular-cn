@@ -276,7 +276,7 @@ interface ParameterDecorationInfo {
   /**
    * The list of decorators found on the parameter, null if none.
    *
-   * 在参数上找到的装饰器列表，如果没有，则为 null 。
+   * 在参数上找到的装饰器列表，如果没有，则为 null。
    *
    */
   decorators: ts.Decorator[];
@@ -290,7 +290,7 @@ interface ParameterDecorationInfo {
  * Note that Angular class decorators are never processed as those rely on side effects that
  * would otherwise no longer be executed. i.e. the creation of a component definition.
  *
- * 请注意，Angular 类装饰器永远不会被处理，因为它们依赖于否则将不再执行的副作用。 即创建组件定义。
+ * 请注意，Angular 类装饰器永远不会被处理，因为它们依赖于否则将不再执行的副作用。即创建组件定义。
  *
  * @param typeChecker Reference to the program's type checker.
  *

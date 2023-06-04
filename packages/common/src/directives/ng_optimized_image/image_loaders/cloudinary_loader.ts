@@ -41,7 +41,7 @@ function isCloudinaryUrl(url: string): boolean {
  * https://mysite.cloudinary.com
  * https://subdomain.mysite.com
  *
- * Cloudinary 图像的基本 URL 此 URL 应匹配以下格式之一： https://res.cloudinary.com/mysite https://mysite.cloudinary.com https://subdomain.mysite.com
+ * Cloudinary 图像的基本 URL 此 URL 应匹配以下格式之一：https://res.cloudinary.com/mysite https://mysite.cloudinary.com https://subdomain.mysite.com
  *
  * @returns
  *

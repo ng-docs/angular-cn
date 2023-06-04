@@ -85,7 +85,7 @@ This schematic automatically adds the `@angular/localize/init` import for you if
 The import of `@angular/localize/init` may cause a tslint error for `no-import-side-effect` because it adds to the global context \(that is, a side effect\).
 To fix this error, add the following to your `tslint.config`:
 
-`@angular/localize/init` 的导入可能会导致 `no-import-side-effect` 的 tslint 错误，因为它会添加全局上下文（也就是副作用）。要修复此错误，请在 `tslint.config` 添加如下 `tslint.config` ：
+`@angular/localize/init` 的导入可能会导致 `no-import-side-effect` 的 tslint 错误，因为它会添加全局上下文（也就是副作用）。要修复此错误，请在 `tslint.config` 添加如下 `tslint.config`：
 
 <code-example format="json" language="json">
 

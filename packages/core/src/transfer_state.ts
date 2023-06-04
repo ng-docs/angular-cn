@@ -76,7 +76,7 @@ function initTransferState(): TransferState {
  * On the server it's already included if `renderApplication` function is used. Otherwise, import
  * the `ServerTransferStateModule` module to make the `TransferState` available.
  *
- * `TransferState` 可用作可注入令牌。 在客户端，只需使用 DI 注入此令牌并使用它，它将被延迟初始化。 如果使用 `renderApplication` 函数，它已经包含在服务器上。 否则，导入 `ServerTransferStateModule` 模块以使 `TransferState` 可用。
+ * `TransferState` 可用作可注入令牌。在客户端，只需使用 DI 注入此令牌并使用它，它将被延迟初始化。如果使用 `renderApplication` 函数，它已经包含在服务器上。否则，导入 `ServerTransferStateModule` 模块以使 `TransferState` 可用。
  *
  * The values in the store are serialized/deserialized using JSON.stringify/JSON.parse. So only
  * boolean, number, string, null and non-class objects will be serialized and deserialized in a

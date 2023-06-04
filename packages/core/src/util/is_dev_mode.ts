@@ -16,7 +16,7 @@ import {global} from './global';
  * By default, this is true, unless `enableProdMode` is invoked prior to calling this method or the
  * application is built using the Angular CLI with the `optimization` option.
  *
- * 默认情况下，这是 true，除非在调用此方法之前调用了 `enableProdMode` ，或者应用程序是使用带有
+ * 默认情况下，这是 true，除非在调用此方法之前调用了 `enableProdMode`，或者应用程序是使用带有
  * `optimization` 选项的 Angular CLI 构建的。
  *
  * @see {@link cli/build ng build}

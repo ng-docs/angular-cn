@@ -45,7 +45,7 @@
  *
  * 更复杂的是，ICU 可能会无限期地嵌套在彼此中。在这种情况下，嵌套 ICU
  * 表达式会以与占位符相同的方式出现在一组花括号中。嵌套 ICU 表达式可以与占位符区分，因为它们包含逗号
- * `,` ，它将 ICU 值与 ICU 类型分开。
+ * `,`，它将 ICU 值与 ICU 类型分开。
  *
  * Furthermore, nested ICUs can have placeholders of their own, which need to be extracted.
  *
@@ -281,7 +281,7 @@ type ParserState = 'icu'|'case'|'placeholder'|undefined;
  *
  * the placeholder name or `null` if it is not a placeholder.
  *
- * 占位符名称，如果不是占位符，则为 `null` 。
+ * 占位符名称，如果不是占位符，则为 `null`。
  *
  */
 function tryParsePlaceholder(text: string, start: number): string|null {

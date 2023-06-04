@@ -61,7 +61,7 @@ import {handleUnknownPropertyError, isPropertyValid, matchingSchemas} from './el
  * This methods executes `TView.hostBindingOpCodes`. It is used to execute the
  * `HostBindingsFunction`s associated with the current `LView`.
  *
- * 此方法执行 `TView.hostBindingOpCodes` 。 它用于执行与当前 `LView` 关联的 `HostBindingsFunction` 。
+ * 此方法执行 `TView.hostBindingOpCodes`。它用于执行与当前 `LView` 关联的 `HostBindingsFunction`。
  *
  * @param tView Current `TView`.
  *
@@ -140,7 +140,7 @@ export function createLView<T>(
  *
  * @param tView The current `TView`.
  *
- * 当前的 `TView` 。
+ * 当前的 `TView`。
  *
  * @param index The index at which the TNode should be saved \(null if view, since they are not
  * saved\).
@@ -566,7 +566,7 @@ export function locateHostElement(
  * Applies any root element transformations that are needed. If hydration is enabled,
  * this will process corrupted text nodes.
  *
- * 应用任何需要的根元素转换。 如果启用水合，这将处理损坏的文本节点。
+ * 应用任何需要的根元素转换。如果启用水合，这将处理损坏的文本节点。
  *
  * @param rootElement the app root HTML Element
  *
@@ -582,7 +582,7 @@ export function applyRootElementTransform(rootElement: HTMLElement) {
  * of an app. When hydration is enabled, this processes any corrupt text nodes
  * so they are properly hydratable on the client.
  *
- * 对将转换应用到应用程序的根 HTML 元素的函数的引用。 启用水合后，这会处理任何损坏的文本节点，以便它们在客户端上可以正确地水合。
+ * 对将转换应用到应用程序的根 HTML 元素的函数的引用。启用水合后，这会处理任何损坏的文本节点，以便它们在客户端上可以正确地水合。
  *
  * @param rootElement the app root HTML Element
  *
@@ -597,7 +597,7 @@ let _applyRootElementTransformImpl: typeof applyRootElementTransformImpl =
  * nodes that were added prior to serialization are swapped out to restore proper text
  * nodes before hydration.
  *
- * 在水合开始之前处理文本节点标记。 这将替换在序列化之前添加的任何特殊注释节点，这些节点在水合之前被换出以恢复正确的文本节点。
+ * 在水合开始之前处理文本节点标记。这将替换在序列化之前添加的任何特殊注释节点，这些节点在水合之前被换出以恢复正确的文本节点。
  *
  * @param rootElement the app root HTML Element
  *
@@ -799,7 +799,7 @@ export function createTNode(
  * If the mapping is provided, it'll act as an allowlist, as well as a mapping of what public
  * name inputs/outputs should be exposed under.
  *
- * 用于为宿主指令设置别名或过滤掉属性的对象。 如果提供了映射，它将充当白名单，以及应在其下公开哪些公共名称输入/输出的映射。
+ * 用于为宿主指令设置别名或过滤掉属性的对象。如果提供了映射，它将充当白名单，以及应在其下公开哪些公共名称输入/输出的映射。
  *
  */
 function generatePropertyAliases(
@@ -842,7 +842,7 @@ function addPropertyAlias(
  * Initializes data structures required to work with directive inputs and outputs.
  * Initialization is done for all directives matched on a given TNode.
  *
- * 初始化处理指令输入和输出所需的数据结构。 对在给定 TNode 上匹配的所有指令进行初始化。
+ * 初始化处理指令输入和输出所需的数据结构。对在给定 TNode 上匹配的所有指令进行初始化。
  *
  */
 function initializeInputAndOutputAliases(
@@ -903,7 +903,7 @@ function initializeInputAndOutputAliases(
  * object lookup\) for performance reasons - the series of `if` checks seems to be the fastest way of
  * mapping property names. Do NOT change without benchmarking.
  *
- * 性能说明：出于性能原因，此函数被编写为一系列 if 检查（而不是属性对象查找）—— `if` 检查系列似乎是映射属性名称的最快方式。 不要在没有基准测试的情况下进行更改。
+ * 性能说明：出于性能原因，此函数被编写为一系列 if 检查（而不是属性对象查找）—— `if` 检查系列似乎是映射属性名称的最快方式。不要在没有基准测试的情况下进行更改。
  *
  * Note: this mapping has to be kept in sync with the equally named mapping in the template
  * type-checking machinery of ngtsc.
@@ -1119,11 +1119,11 @@ export function initializeDirectives(
 /**
  * Add `hostBindings` to the `TView.hostBindingOpCodes`.
  *
- * 将 `hostBindings` 添加到 `TView.hostBindingOpCodes` 。
+ * 将 `hostBindings` 添加到 `TView.hostBindingOpCodes`。
  *
  * @param tView `TView` to which the `hostBindings` should be added.
  *
- * 应将 `hostBindings` 添加到的 `TView` 。
+ * 应将 `hostBindings` 添加到的 `TView`。
  *
  * @param tNode `TNode` the element which contains the directive
  *
@@ -1139,7 +1139,7 @@ export function initializeDirectives(
  *
  * @param def `ComponentDef`/`DirectiveDef`, which contains the `hostVars`/`hostBindings` to add.
  *
- * `ComponentDef` / `DirectiveDef` ，其中包含要添加的 `hostVars` / `hostBindings` 。
+ * `ComponentDef` / `DirectiveDef`，其中包含要添加的 `hostVars` / `hostBindings`。
  *
  */
 export function registerHostBindingOpCodes(
@@ -1172,7 +1172,7 @@ export function registerHostBindingOpCodes(
  * For perf reasons we don't need to update the selected element index in `HostBindingOpCodes` only
  * if it changes. This method returns the last index \(or '0' if not found.\)
  *
- * 出于性能原因，我们不需要仅在 `HostBindingOpCodes` 中更改的选定元素索引进行更新。 此方法返回最后一个索引（如果未找到，则返回“0”。）
+ * 出于性能原因，我们不需要仅在 `HostBindingOpCodes` 中更改的选定元素索引进行更新。此方法返回最后一个索引（如果未找到，则返回“0”。）
  *
  * Selected element index are only the ones which are negative.
  *
@@ -1262,7 +1262,7 @@ export function invokeDirectivesHostBindings(tView: TView, lView: LView, tNode: 
  *
  * @param def `DirectiveDef` which may contain the `hostBindings` function.
  *
- * 可能包含 `hostBindings` 函数的 `DirectiveDef` 。
+ * 可能包含 `hostBindings` 函数的 `DirectiveDef`。
  *
  * @param directive Instance of directive.
  *
@@ -1279,7 +1279,7 @@ export function invokeHostBindingsInCreationMode(def: DirectiveDef<any>, directi
  * Matches the current node against all available selectors.
  * If a component is matched \(at most one\), it is returned in first position in the array.
  *
- * 将当前节点与所有可用的选择器匹配。 如果一个组件匹配（最多一个），它将在数组的第一个位置返回。
+ * 将当前节点与所有可用的选择器匹配。如果一个组件匹配（最多一个），它将在数组的第一个位置返回。
  *
  */
 function findDirectiveDefMatches(
@@ -1351,7 +1351,7 @@ function findDirectiveDefMatches(
 /**
  * Marks a given TNode as a component's host. This consists of:
  *
- * 将给定的 TNode 标记为组件的宿主。 这包括：
+ * 将给定的 TNode 标记为组件的宿主。这包括：
  *
  * - setting the component offset on the TNode.
  *
@@ -1445,7 +1445,7 @@ export function initTNodeFlags(tNode: TNode, index: number, numberOfDirectives: 
  * We need to create a `NodeInjectorFactory` which is then inserted in both the `Blueprint` as well
  * as `LView`. `TView` gets the `DirectiveDef`.
  *
- * 我们需要创建一个 `NodeInjectorFactory` ，然后将其插入到 `Blueprint` 和 `LView` 中。 `TView` 获取 `DirectiveDef` 。
+ * 我们需要创建一个 `NodeInjectorFactory`，然后将其插入到 `Blueprint` 和 `LView` 中。`TView` 获取 `DirectiveDef`。
  *
  * @param tView `TView`
  * @param tNode `TNode`
@@ -1605,7 +1605,7 @@ function writeToDirectiveInput<T>(
  * the case where you set an @Input property of a directive using attribute-like syntax.
  * e.g. if you have a `name` @Input, you can set it once like this:
  *
- * initialInputData 是一个数组，其中包含需要设置为该节点上指令的输入属性的值，但仅在创建时设置一次。 我们需要这个数组来支持使用类属性语法设置指令的 @Input 属性的情况。 例如，如果你有一个 `name` @Input，你可以像这样设置一次：
+ * initialInputData 是一个数组，其中包含需要设置为该节点上指令的输入属性的值，但仅在创建时设置一次。我们需要这个数组来支持使用类属性语法设置指令的 @Input 属性的情况。例如，如果你有一个 `name` @Input，你可以像这样设置一次：
  *
  * <my-component name="Bess"></my-component>
  *
@@ -1812,7 +1812,7 @@ export function executeViewQueryFn<T>(
  *
  * In order to support TestBed's `DebugElement.properties` we need to save, for each binding:
  *
- * 为了支持 TestBed 的 `DebugElement.properties` ，我们需要为每个绑定保存：
+ * 为了支持 TestBed 的 `DebugElement.properties`，我们需要为每个绑定保存：
  *
  * - a bound property name;
  *
@@ -1827,7 +1827,7 @@ export function executeViewQueryFn<T>(
  * `LView`\). Metadata are represented as `INTERPOLATION_DELIMITER`-delimited string with the
  * following format:
  *
- * 给定的属性元数据保存在 `TView.data` 中绑定的索引处（换句话说，属性绑定元数据将存储在 `TView.data` 中与 `LView` 中的绑定值相同的索引处）。 元数据表示为 `INTERPOLATION_DELIMITER` 分隔的字符串，格式如下：
+ * 给定的属性元数据保存在 `TView.data` 中绑定的索引处（换句话说，属性绑定元数据将存储在 `TView.data` 中与 `LView` 中的绑定值相同的索引处）。元数据表示为 `INTERPOLATION_DELIMITER` 分隔的字符串，格式如下：
  *
  * - `propertyName` for bound properties;
  *
@@ -1931,7 +1931,7 @@ export function handleError(lView: LView, error: any): void {
  * 当前的 TView
  * @param lView the `LView` which contains the directives.
  *
- * 包含指令的 `LView` 。
+ * 包含指令的 `LView`。
  *
  * @param inputs mapping between the public "input" name and privately-known,
  *        possibly minified, property names to write to.

@@ -24,7 +24,7 @@ import {unwrapRNode} from './util/view_utils';
  * This method determines the `RNode` in front of which we should insert the `currentRNode`. This
  * takes `TNode.insertBeforeIndex` into account.
  *
- * 此方法确定我们应该在其前面插入 `currentRNode` 的 `RNode` 。这会考虑 `TNode.insertBeforeIndex` 。
+ * 此方法确定我们应该在其前面插入 `currentRNode` 的 `RNode`。这会考虑 `TNode.insertBeforeIndex`。
  *
  * @param parentTNode parent `TNode`
  *
@@ -54,7 +54,7 @@ export function getInsertInFrontOfRNodeWithI18n(
 /**
  * Process `TNode.insertBeforeIndex` by adding i18n text nodes.
  *
- * 通过添加 i18n 文本节点来处理 `TNode.insertBeforeIndex` 。
+ * 通过添加 i18n 文本节点来处理 `TNode.insertBeforeIndex`。
  *
  * See `TNode.insertBeforeIndex`
  *

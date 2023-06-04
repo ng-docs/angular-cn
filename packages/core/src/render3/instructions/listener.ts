@@ -77,12 +77,12 @@ export function ɵɵlistener(
  * to be evaluated with the sub component's renderer \(because that's where the
  * animation triggers are defined\).
  *
- * 此指令用于兼容性目的，旨在确保合成宿主侦听器（例如 `@HostListener('@foo.start')` ）在组件的渲染器中正确渲染。 通常所有宿主侦听器都使用父组件的渲染器进行评估，但是，在动画@triggers 的情况下，它们需要使用子组件的渲染器进行评估（因为这是定义动画触发器的地方）。
+ * 此指令用于兼容性目的，旨在确保合成宿主侦听器（例如 `@HostListener('@foo.start')` ）在组件的渲染器中正确渲染。通常所有宿主侦听器都使用父组件的渲染器进行评估，但是，在动画@triggers 的情况下，它们需要使用子组件的渲染器进行评估（因为这是定义动画触发器的地方）。
  *
  * Do not use this instruction as a replacement for `listener`. This instruction
  * only exists to ensure compatibility with the ViewEngine's host binding behavior.
  *
- * 不要将此指令用作 `listener` 的替代品。 此指令仅用于确保与 ViewEngine 的宿主绑定行为兼容。
+ * 不要将此指令用作 `listener` 的替代品。此指令仅用于确保与 ViewEngine 的宿主绑定行为兼容。
  *
  * @param eventName Name of the event
  *
@@ -119,7 +119,7 @@ export function ɵɵsyntheticHostListener(
  * event with a specified name. The TView.cleanup data structure is used to find out which events
  * are registered for a given element.
  *
- * 一个实用程序函数，用于检查给定元素是否已经为具有指定名称的事件注册了事件处理程序。 TView.cleanup 数据结构用于找出为给定元素注册了哪些事件。
+ * 一个实用程序函数，用于检查给定元素是否已经为具有指定名称的事件注册了事件处理程序。TView.cleanup 数据结构用于找出为给定元素注册了哪些事件。
  *
  */
 function findExistingListener(

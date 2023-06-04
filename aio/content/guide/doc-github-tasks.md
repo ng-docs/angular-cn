@@ -118,7 +118,7 @@ Sync your fork after you update your clone of the upstream repo and before you s
 This procedure updates your **fork** of the `angular/angular` repo on your local computer so it has the current code, as illustrated here.
 The circled numbers correspond to procedure steps.
 
-此过程会更新你本地计算机上 `angular/angular` 存储库的**fork** ，以便它具有当前代码，如此处所示。带圆圈的数字对应于过程步骤。
+此过程会更新你本地计算机上 `angular/angular` 存储库的**fork**，以便它具有当前代码，如此处所示。带圆圈的数字对应于过程步骤。
 
 <div class="lightbox">
 
@@ -268,7 +268,7 @@ You can confirm your current branch by running `git status` from your `working` 
    If you are improving error messages, you might name it, `error-message-improvements`.
    A branch name can have alphanumeric characters, hyphens, underscores, and slashes, but it can't have any spaces or other special characters.
 
-   将分支命名为与你的编辑任务相关的内容，例如，如果你要解决 `issue #12345` ，你可以将分支命名为 `issue-12345` 。如果你正在改进错误消息，你可以将其命名为 `error-message-improvements` 。分支名称可以有字母数字字符、连字符、下划线和斜线，但不能有任何空格或其他特殊字符。
+   将分支命名为与你的编辑任务相关的内容，例如，如果你要解决 `issue #12345`，你可以将分支命名为 `issue-12345`。如果你正在改进错误消息，你可以将其命名为 `error-message-improvements`。分支名称可以有字母数字字符、连字符、下划线和斜线，但不能有任何空格或其他特殊字符。
 
    <code-example format="shell" language="shell">
 
@@ -592,7 +592,7 @@ A commit is a list of all the things that changed in a repo since the last commi
 A `branch` is a list of commits.
 The `main` branch is the list of commits that reflects the current state of the project.
 
-`branch` 是提交的列表。 `main` 分支是反映项目当前状态的提交列表。
+`branch` 是提交的列表。`main` 分支是反映项目当前状态的提交列表。
 
 When a repo is created, the first commit is usually to the `main` branch and contains the files used in the creation of the repo.
 The change list in that commit contains the names and the contents of the files that were added to create the repo.
@@ -606,7 +606,7 @@ The next time files in the repo are added or changed, another commit is created 
 After a five commits, the `main` branch can be imagined as the following diagram.
 The diagram shows a series of changes that are recorded as commits, each represented as a circle and identified by a unique number.
 
-在五次提交之后， `main` 分支可以想象为下图。该图显示了记录为提交的一系列更改，每个更改都表示为一个圆圈并由一个唯一的数字标识。
+在五次提交之后，`main` 分支可以想象为下图。该图显示了记录为提交的一系列更改，每个更改都表示为一个圆圈并由一个唯一的数字标识。
 
 <div class="lightbox">
 
@@ -626,7 +626,7 @@ In this example, the result of all the changes in commits one through five is th
 In `angular/angular`, the `main` branch contains all the changes that have been made to the Angular project since it began to get it to where it is today.
 The list of commits in the `main` branch have all been reviewed and tested.
 
-在 `angular/angular` 中， `main` 分支包含自 Angular 项目开始到达今天的位置以来对它所做的所有更改。 `main` 分支中的提交列表都已经过审查和测试。
+在 `angular/angular` 中，`main` 分支包含自 Angular 项目开始到达今天的位置以来对它所做的所有更改。`main` 分支中的提交列表都已经过审查和测试。
 
 When you update the documentation, you might need to make several changes before have exactly what you want.
 You don't want to open a pull request to merge your changes into `main` until you have had a chance to test and review them.
@@ -672,7 +672,7 @@ You can open a pull request to merge those new changes into the `main` branch.
 If no changes have been made to the `main` branch since you created your branch, the merge is called `fast-forwarding`.
 In a `fast-forward` merge the two commits you added to the `working` branch are added to the `main` branch.
 
-如果自创建分支以来没有对 `main` 分支进行任何更改，则合并称为 `fast-forwarding` 。在 `fast-forward` 合并中，你添加到 `working` 分支的两个提交会添加到 `main` 分支。
+如果自创建分支以来没有对 `main` 分支进行任何更改，则合并称为 `fast-forwarding`。在 `fast-forward` 合并中，你添加到 `working` 分支的两个提交会添加到 `main` 分支。
 
 <div class="lightbox">
 
@@ -684,7 +684,7 @@ In a `fast-forward` merge the two commits you added to the `working` branch are 
 After the `working` branch has been merged with the `main` branch, the `main` branch now includes the two commits you made in the `working` branch.
 Because both branches include commits 1-7, they now have the same content.
 
-在 `working` 分支与 `main` 分支合并后， `main` 分支现在包含你在 `working` 分支中所做的两个提交。因为这两个分支都包含提交 1-7，所以它们现在具有相同的内容。
+在 `working` 分支与 `main` 分支合并后，`main` 分支现在包含你在 `working` 分支中所做的两个提交。因为这两个分支都包含提交 1-7，所以它们现在具有相同的内容。
 
 ### Merging your work into a changed main branch
 
@@ -712,7 +712,7 @@ Commit seven is the list of changes from your commit six plus the changes you ma
 In any case, the commits from your `working` branch can't be added to the commit nine in the main branch.
 The commits from the `working` branch don't include the changes from commits eight and nine, so they could be lost.
 
-提交 6 和 7 不能用于快进。请记住，提交是更改的列表。提交 6 是从提交 5 开始的更改列表加上你所做的第一个编辑。提交 7 是你的提交 6 中的更改列表以及你为响应审阅评论所做的更改。无论如何，来自 `working` 分支的提交都不能添加到主分支中的提交 9。 `working` 分支的提交不包括来自提交 8 和 9 的更改，因此它们可能会丢失。
+提交 6 和 7 不能用于快进。请记住，提交是更改的列表。提交 6 是从提交 5 开始的更改列表加上你所做的第一个编辑。提交 7 是你的提交 6 中的更改列表以及你为响应审阅评论所做的更改。无论如何，来自 `working` 分支的提交都不能添加到主分支中的提交 9。`working` 分支的提交不包括来自提交 8 和 9 的更改，因此它们可能会丢失。
 
 You cam choose to merge the changes in the two branches or to rebase the commits in your `working` branch.
 Merging creates a `merge` commit to reconcile the changes necessary to represent the net result of both branches.

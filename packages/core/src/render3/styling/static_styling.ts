@@ -22,10 +22,10 @@ import {getTView} from '../state';
  *
  * @param tNode The `TNode` into which the styling information should be loaded.
  *
- * 应该加载样式信息的 `TNode` 。
+ * 应该加载样式信息的 `TNode`。
  * @param attrs `TAttributes` containing the styling information.
  *
- * 包含样式信息的 `TAttributes` 。
+ * 包含样式信息的 `TAttributes`。
  * @param writeToHost Where should the resulting static styles be written?
  *
  * 生成的静态样式应该写在哪里？

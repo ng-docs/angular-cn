@@ -17,7 +17,7 @@ import {TranslationSerializer} from './translation_serializer';
  * The file is used by the `localize-migrate` script to migrate existing translation files from
  * the legacy message IDs to the canonical ones.
  *
- * 为旧版消息 ID 迁移生成映射文件的翻译序列化器。 `localize-migrate`
+ * 为旧版消息 ID 迁移生成映射文件的翻译序列化器。`localize-migrate`
  * 脚本使用该文件将现有的翻译文件从旧版消息 ID 迁移到规范消息 ID。
  *
  */

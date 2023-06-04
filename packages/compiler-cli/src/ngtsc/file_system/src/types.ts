@@ -9,12 +9,12 @@
 /**
  * A `string` representing a specific type of path, with a particular brand `B`.
  *
- * 表示特定类型的路径的 `string` ，具有特定的品牌 `B` 。
+ * 表示特定类型的路径的 `string`，具有特定的品牌 `B`。
  *
  * A `string` is not assignable to a `BrandedPath`, but a `BrandedPath` is assignable to a `string`.
  * Two `BrandedPath`s with different brands are not mutually assignable.
  *
- * `string` 不能分配给 `BrandedPath` ，但 `BrandedPath` 可以分配给 `string` 。具有不同品牌的两个
+ * `string` 不能分配给 `BrandedPath`，但 `BrandedPath` 可以分配给 `string`。具有不同品牌的两个
  * `BrandedPath` 不能相互分配。
  *
  */
@@ -65,7 +65,7 @@ export interface PathManipulation {
    * `relative('c:/a/b', 'd:/a/c')` would be \`d:/a/c'.
    *
    * 在可以有多个文件树的文件系统中，返回的路径实际上可能不是“相对的”（即 `PathSegment`
-   * ）。例如，Windows 可以有多个驱动器： `relative('c:/a/b', 'd:/a/c')` 将是 \`d:/a/c'。
+   * ）。例如，Windows 可以有多个驱动器：`relative('c:/a/b', 'd:/a/c')` 将是 \`d:/a/c'。
    *
    */
   relative<T extends PathString>(from: T, to: T): PathSegment|AbsoluteFsPath;

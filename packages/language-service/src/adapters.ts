@@ -34,7 +34,7 @@ export class LanguageServiceAdapter implements NgCompilerAdapter {
    *
    * Used to implement `getModifiedResourceFiles`.
    *
-   * 用于实现 `getModifiedResourceFiles` 。
+   * 用于实现 `getModifiedResourceFiles`。
    *
    */
   private readonly lastReadResourceVersion = new Map<string, string>();

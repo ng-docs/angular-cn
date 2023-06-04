@@ -24,7 +24,7 @@ const NG_TEMPLATE_SELECTOR = 'ng-template';
  *
  * @param attrs `TAttributes` to search through.
  *
- * 要搜索的 `TAttributes` 。
+ * 要搜索的 `TAttributes`。
  * @param cssClassToMatch class to match \(lowercase\)
  *
  * 要匹配的类（小写）
@@ -32,7 +32,7 @@ const NG_TEMPLATE_SELECTOR = 'ng-template';
  * @param isProjectionMode Whether or not class matching should look into the attribute `class` in
  *    addition to the `AttributeMarker.Classes`.
  *
- * 除了 `AttributeMarker.Classes` 之外，类匹配是否应该查看属性 `class` 。
+ * 除了 `AttributeMarker.Classes` 之外，类匹配是否应该查看属性 `class`。
  */
 function isCssClassMatching(
     attrs: TAttributes, cssClassToMatch: string, isProjectionMode: boolean): boolean {
@@ -134,13 +134,13 @@ function hasTagAndTypeMatch(
  * @param isProjectionMode if `true` we are matching for content projection, otherwise we are doing
  * directive matching.
  *
- * 如果为 `true` ，我们正在匹配内容投影，否则我们正在进行指令匹配。
+ * 如果为 `true`，我们正在匹配内容投影，否则我们正在进行指令匹配。
  *
  * @returns
  *
  * true if node matches the selector.
  *
- * 如果节点与选择器匹配，则为 true 。
+ * 如果节点与选择器匹配，则为 true。
  *
  */
 export function isNodeMatchingSelector(
@@ -249,7 +249,7 @@ function isPositive(mode: SelectorFlags): boolean {
  * Attribute matching depends upon `isInlineTemplate` and `isProjectionMode`.
  * The following table summarizes which types of attributes we attempt to match:
  *
- * 属性匹配取决于 `isInlineTemplate` 和 `isProjectionMode` 。下表总结了我们尝试匹配的属性类型：
+ * 属性匹配取决于 `isInlineTemplate` 和 `isProjectionMode`。下表总结了我们尝试匹配的属性类型：
  *
  * ===========================================================================================================
  * Modes                   | Normal Attributes | Bindings Attributes | Template Attributes | I18n
@@ -287,12 +287,12 @@ function isPositive(mode: SelectorFlags): boolean {
  * rather than a manually expanded template node \(e.g `<ng-template>`\).
  *
  * 如果要匹配的节点是内联模板（例如 `*ngFor`）而不是手动扩展的模板节点（例如 `<ng-template>`
- * ），则为 true 。
+ * ），则为 true。
  *
  * @param isProjectionMode true if we are matching against content projection otherwise we are
  * matching against directives.
  *
- * 如果我们要与内容投影匹配，则为 true ，否则我们正在匹配指令。
+ * 如果我们要与内容投影匹配，则为 true，否则我们正在匹配指令。
  */
 function findAttrIndexInNode(
     name: string, attrs: TAttributes|null, isInlineTemplate: boolean,

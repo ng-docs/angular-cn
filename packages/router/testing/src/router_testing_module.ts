@@ -34,7 +34,7 @@ function throwInvalidConfigError(parameter: string): never {
  *
  * Use `provideRouter` or `RouterModule` instead.
  *
- * 请改用 `provideRouter` 或 `RouterModule` 。
+ * 请改用 `provideRouter` 或 `RouterModule`。
  *
  */
 export function setupTestingRouter(

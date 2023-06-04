@@ -4,7 +4,7 @@
 
 When you develop a smaller part of your system, like a module or a class, you may need to use features from other classes. For example, you may need an HTTP service to make backend calls. Dependency Injection, or DI, is a design pattern and mechanism for creating and delivering some parts of an application to other parts of an application that require them. Angular supports this design pattern and you can use it in your applications to increase flexibility and modularity. 
 
-当你开发系统的某个较小部件时（例如模块或类），你可能需要使用来自其他类的特性。例如，你可能需要 HTTP 服务来进行后端调用。依赖注入或 DI 是一种设计模式和机制，用于创建应用程序的某些部分并将其传递到需要它们的应用程序的其他部分。 Angular 支持这种设计模式，你可以在应用程序中使用它来提高灵活性和模块化程度。
+当你开发系统的某个较小部件时（例如模块或类），你可能需要使用来自其他类的特性。例如，你可能需要 HTTP 服务来进行后端调用。依赖注入或 DI 是一种设计模式和机制，用于创建应用程序的某些部分并将其传递到需要它们的应用程序的其他部分。Angular 支持这种设计模式，你可以在应用程序中使用它来提高灵活性和模块化程度。
 
 In Angular, dependencies are typically services, but they also can be values, such as strings or functions. An injector for an application \(created automatically during bootstrap\) instantiates dependencies when needed, using a configured provider of the service or value. 
 

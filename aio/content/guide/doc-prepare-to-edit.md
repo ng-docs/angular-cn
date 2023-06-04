@@ -127,7 +127,7 @@ The Angular documentation is stored with the Angular framework code in a GitHub 
 https://github.com/angular/angular.
 To contribute documentation to Angular, you need:
 
-Angular 文档与 Angular 框架代码一起存储在 GitHub 源代码存储库（也称为*repo* ）中，位于： https://github.com/angular/angular 。要向 Angular 贡献文档，你需要：
+Angular 文档与 Angular 框架代码一起存储在 GitHub 源代码存储库（也称为*repo* ）中，位于：https://github.com/angular/angular。要向 Angular 贡献文档，你需要：
 
 * A GitHub account
 
@@ -135,7 +135,7 @@ Angular 文档与 Angular 框架代码一起存储在 GitHub 源代码存储库�
 
 * A *fork* of the Angular repo in your personal GitHub account.
 
-  你个人 GitHub 帐户中 Angular 存储库的*fork* 。
+  你个人 GitHub 帐户中 Angular 存储库的*fork*。
 
   This guide refers to your personal GitHub account as `personal`.
   You must replace `personal` in a GitHub reference with your GitHub username.
@@ -143,7 +143,7 @@ Angular 文档与 Angular 框架代码一起存储在 GitHub 源代码存储库�
   `https://github.com/personal` is not a valid GitHub account.
   For convenience, this documentation uses these shorthand references:
 
-  本指南将你的 `personal` GitHub 帐户称为 Personal 。你必须将 GitHub 引用中的 `personal` 替换为你的 GitHub 用户名。 URL： `https://github.com/personal` 不是有效的 GitHub 帐户。为方便起见，本文档使用这些速记引用：
+  本指南将你的 `personal` GitHub 帐户称为 Personal。你必须将 GitHub 引用中的 `personal` 替换为你的 GitHub 用户名。URL：`https://github.com/personal` 不是有效的 GitHub 帐户。为方便起见，本文档使用这些速记引用：
 
   * `angular/angular`
 
@@ -205,7 +205,7 @@ If you use a different configuration, the procedures in these topics might not w
 The code and documentation for the Angular framework are stored in a public repository, or repo, on [github.com](https://github.com) in the `angular` account.
 The path to the Angular repo is https://github.com/angular/angular, hence the abbreviated name, `angular/angular`.
 
-Angular 框架的代码和文档存储在[github.com](https://github.com)上的 `angular` 帐户的公共存储库或存储库中。 Angular 存储库的路径是 https://github.com/angular/angular ，因此是缩写名称 `angular/angular` 。
+Angular 框架的代码和文档存储在[github.com](https://github.com)上的 `angular` 帐户的公共存储库或存储库中。Angular 存储库的路径是 https://github.com/angular/angular，因此是缩写名称 `angular/angular`。
 
 [GitHub](https://github.com) is a cloud service that hosts many accounts and repositories.
 You can imagine the `angular/angular` repo in GitHub as shown in this image.
@@ -228,7 +228,7 @@ While only specific accounts have permission to make changes to `angular/angular
 Change requests to `angular/angular` are called *pull requests*.
 A pull request is created by one account to ask another account to pull in a change.
 
-作为公共存储库， `angular/angular` 可供任何人阅读和复制，但不能更改。虽然只有特定帐户有权对 `angular/angular` 进行更改，但拥有 GitHub 帐户的任何人都可以请求更改它。对 `angular/angular` 的更改请求称为*Pull Request* 。一个帐户创建 Pull Request 以请求另一个帐户提取更改。
+作为公共存储库，`angular/angular` 可供任何人阅读和复制，但不能更改。虽然只有特定帐户有权对 `angular/angular` 进行更改，但拥有 GitHub 帐户的任何人都可以请求更改它。对 `angular/angular` 的更改请求称为*Pull Request*。一个帐户创建 Pull Request 以请求另一个帐户提取更改。
 
 Before you can open a pull request, you need a forked copy of `angular/angular` in your personal GitHub account.
 
@@ -237,7 +237,7 @@ Before you can open a pull request, you need a forked copy of `angular/angular` 
 To get a forked copy of `angular/angular`, you fork the `angular/angular` repo into your personal GitHub account and end up with the repos shown in the following image.
 From the perspective of `personal/angular`, `angular/angular` is the upstream repo and `personal/angular` is the origin repo.
 
-要获取 `angular/angular` 的 fork 副本，你将 `angular/angular` 存储库 fork 到你的个人 GitHub 帐户中，并最终获得下图所示的存储库。从 `personal/angular` 的角度来看， `angular/angular` 是上游存储库， `personal/angular` 是原始存储库。
+要获取 `angular/angular` 的 fork 副本，你将 `angular/angular` 存储库 fork 到你的个人 GitHub 帐户中，并最终获得下图所示的存储库。从 `personal/angular` 的角度来看，`angular/angular` 是上游存储库，`personal/angular` 是原始存储库。
 
 <div class="lightbox">
 
@@ -261,7 +261,7 @@ Perform this procedure in a browser.
 
 1. Navigate to [`https://github.com/angular/angular`][GithubAngularAngular].
 
-   导航到[`https://github.com/angular/angular`][GithubAngularAngular] 。
+   导航到[`https://github.com/angular/angular`][GithubAngularAngular]。
 
 1. In [`https://github.com/angular/angular`][GithubAngularAngular], click the **Fork** button near the top-right corner of the page.
    This image is from the top of the [`https://github.com/angular/angular`][GithubAngularAngular] page and shows the **Fork** button.
@@ -289,7 +289,7 @@ Perform this procedure in a browser.
    1. Click **Create repository**.
       The forking process can take a few minutes.
 
-      单击**创建存储库**。 forking 过程可能需要几分钟。
+      单击**创建存储库**。forking 过程可能需要几分钟。
 
 1. You now have a copy of the `angular/angular` repo in your GitHub account.
 
@@ -312,7 +312,7 @@ From your account, `git` considers your `personal/angular` repo as the origin re
 You can think of this as: your changes originate in the *origin* repo and you send them *upstream* to the `angular/angular` repo.
 The message below the repo name in your account, `forked from angular/angular`, contains a link back to the upstream repo.
 
-作为分叉的存储库，你的新存储库会保持对 `angular/angular` 的引用。在你的帐户中， `git` 将你的 `personal/angular` 存储库视为原始存储库，将 `angular/angular` 视为上游存储库。你可以将其视为：你的更改源自*原始*存储库，并且你将它们发送到*上游*的 `angular/angular` 存储库。你帐户中存储库名称下方的消息（ `forked from angular/angular` ）包含一个返回上游存储库的链接。
+作为分叉的存储库，你的新存储库会保持对 `angular/angular` 的引用。在你的帐户中，`git` 将你的 `personal/angular` 存储库视为原始存储库，将 `angular/angular` 视为上游存储库。你可以将其视为：你的更改源自*原始*存储库，并且你将它们发送到*上游*的 `angular/angular` 存储库。你帐户中存储库名称下方的消息（ `forked from angular/angular` ）包含一个返回上游存储库的链接。
 
 This relationship comes into play later, such as when you update your `personal/angular` repo and when you open a pull request.
 
@@ -324,7 +324,7 @@ This relationship comes into play later, such as when you update your `personal/
 
 A `git` workspace on your local computer is where copies of GitHub repos in the cloud are stored on your local computer. To edit Angular documentation on your local computer, you need a clone of your origin repo, `personal/angular`.
 
-本地计算机上的 `git` 工作区是云中 GitHub 存储库的副本存储在本地计算机上的地方。要在本地计算机上编辑 Angular 文档，你需要原始存储库的克隆 `personal/angular` 。
+本地计算机上的 `git` 工作区是云中 GitHub 存储库的副本存储在本地计算机上的地方。要在本地计算机上编辑 Angular 文档，你需要原始存储库的克隆 `personal/angular`。
 
 Clone the `personal/angular` repo into the subdirectory for your account, as this illustration shows.
 Remember to replace `personal` with your GitHub username.
@@ -474,7 +474,7 @@ After you clone the origin repo on your local computer, run these commands from 
 
 1. Locate `angular/aio/tools/doc-linter/vale.ini` in your working directory to use in the next step as the path to the configuration file in the  **Vale:Config** setting.
 
-   在你的工作目录中定位 `angular/aio/tools/doc-linter/vale.ini` ，以在下一步中用作**Vale:Config**设置中配置文件的路径。
+   在你的工作目录中定位 `angular/aio/tools/doc-linter/vale.ini`，以在下一步中用作**Vale:Config**设置中配置文件的路径。
 
 1. [Install Vale][GithubAngularAngularTreeMainAioToolsDocLinterInstallValeOnYourDevelopmentSystemReadmeMd] to complete the software installation.
 
@@ -541,7 +541,7 @@ Perform these steps from a command-line tool on your local computer.
 The Angular documentation directory is the root of the Angular documentation files.
 These directories in the `angular/aio` directory are where you find the files that are edited the most.
 
-Angular 文档目录是 Angular 文档文件的根。 `angular/aio` 目录中的这些目录是你找到编辑最多的文件的地方。
+Angular 文档目录是 Angular 文档文件的根。`angular/aio` 目录中的这些目录是你找到编辑最多的文件的地方。
 
 | Directory                      | Files                                                    |
 | :----------------------------- | :------------------------------------------------------- |
@@ -635,7 +635,7 @@ Perform these steps from a command-line tool on your local computer.
    These are most, but not all, of the tests that are performed after you open your pull request.
    Some tests can only be run in the automated testing environment.
 
-   在文档目录中，运行这些命令以启动验证文档是否一致的自动化测试。 这些是大多数（但不是全部）在你打开拉取请求后执行的测试。 有些测试只能在自动化测试环境中运行。
+   在文档目录中，运行这些命令以启动验证文档是否一致的自动化测试。这些是大多数（但不是全部）在你打开拉取请求后执行的测试。有些测试只能在自动化测试环境中运行。
 
    <code-example format="shell" language="shell">
 

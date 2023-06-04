@@ -37,12 +37,12 @@ export const DATE_PIPE_DEFAULT_TIMEZONE = new InjectionToken<string>('DATE_PIPE_
  * - `dateFormat`: configures the default date format. If not provided, the `DatePipe`
  *   will use the 'mediumDate' as a value.
  *
- *   `dateFormat` ：配置默认日期格式。如果未提供， `DatePipe` 将使用 'mediumDate' 作为值。
+ *   `dateFormat`：配置默认日期格式。如果未提供，`DatePipe` 将使用 'mediumDate' 作为值。
  *
  * - `timezone`: configures the default timezone. If not provided, the `DatePipe` will
  *   use the end-user's local system timezone.
  *
- *   `timezone` ：配置默认时区。如果未提供， `DatePipe` 将使用最终用户的本地系统时区。
+ *   `timezone`：配置默认时区。如果未提供，`DatePipe` 将使用最终用户的本地系统时区。
  *
  * @see `DatePipeConfig`
  * @usageNotes
@@ -170,23 +170,23 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * | Year                | y            | Numeric: minimum digits                                        | 2, 20, 201, 2017, 20173                                    |
  * | 年份                | y            | 数字：最小位数                                                 | 2、20、201、2017、20173                                    |
  * |                     | yy           | Numeric: 2 digits + zero padded                                | 02, 20, 01, 17, 73                                         |
- * |                     | yy           | 数字： 2 位数字 + 填充零                                       | 02、20、01、17、73                                         |
+ * |                     | yy           | 数字：2 位数字 + 填充零                                       | 02、20、01、17、73                                         |
  * |                     | yyy          | Numeric: 3 digits + zero padded                                | 002, 020, 201, 2017, 20173                                 |
- * |                     | yyy          | 数字： 3 位数字 + 填充零                                       | 002、020、201、2017、20173                                 |
+ * |                     | yyy          | 数字：3 位数字 + 填充零                                       | 002、020、201、2017、20173                                 |
  * |                     | yyyy         | Numeric: 4 digits or more + zero padded                        | 0002, 0020, 0201, 2017, 20173                              |
- * |                     | yyyy         | 数字： 4 位或更多位 + 填充零                                   | 0002、0020、0201、2017、20173                              |
+ * |                     | yyyy         | 数字：4 位或更多位 + 填充零                                   | 0002、0020、0201、2017、20173                              |
  * | Week-numbering year | Y            | Numeric: minimum digits                                        | 2, 20, 201, 2017, 20173                                    |
  * | 周编号年份          | Y            | 数字：最小位数                                                 | 2、20、201、2017、20173                                    |
  * |                     | YY           | Numeric: 2 digits + zero padded                                | 02, 20, 01, 17, 73                                         |
- * |                     | YY           | 数字： 2 位数字 + 填充零                                       | 02、20、01、17、73                                         |
+ * |                     | YY           | 数字：2 位数字 + 填充零                                       | 02、20、01、17、73                                         |
  * |                     | YYY          | Numeric: 3 digits + zero padded                                | 002, 020, 201, 2017, 20173                                 |
- * |                     | YYY          | 数字： 3 位数字 + 填充零                                       | 002、020、201、2017、20173                                 |
+ * |                     | YYY          | 数字：3 位数字 + 填充零                                       | 002、020、201、2017、20173                                 |
  * |                     | YYYY         | Numeric: 4 digits or more + zero padded                        | 0002, 0020, 0201, 2017, 20173                              |
- * |                     | YYYY         | 数字： 4 位或更多位 + 填充零                                   | 0002、0020、0201、2017、20173                              |
+ * |                     | YYYY         | 数字：4 位或更多位 + 填充零                                   | 0002、0020、0201、2017、20173                              |
  * | Month               | M            | Numeric: 1 digit                                               | 9, 12                                                      |
- * | 月份                | M            | 数字： 1 位                                                    | 9、12                                                      |
+ * | 月份                | M            | 数字：1 位                                                    | 9、12                                                      |
  * |                     | MM           | Numeric: 2 digits + zero padded                                | 09, 12                                                     |
- * |                     | MM           | 数字： 2 位数字 + 填充零                                       | 09、12                                                     |
+ * |                     | MM           | 数字：2 位数字 + 填充零                                       | 09、12                                                     |
  * |                     | MMM          | Abbreviated                                                    | Sep                                                        |
  * |                     | MMM          | 缩写                                                           | Sep                                                        |
  * |                     | MMMM         | Wide                                                           | September                                                  |
@@ -194,9 +194,9 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | MMMMM        | Narrow                                                         | S                                                          |
  * |                     | MMMMM        | 窄                                                             | S                                                          |
  * | Month standalone    | L            | Numeric: 1 digit                                               | 9, 12                                                      |
- * | 独立月              | L            | 数字： 1 位                                                    | 9、12                                                      |
+ * | 独立月              | L            | 数字：1 位                                                    | 9、12                                                      |
  * |                     | LL           | Numeric: 2 digits + zero padded                                | 09, 12                                                     |
- * |                     | LL           | 数字： 2 位数字 + 填充零                                       | 09、12                                                     |
+ * |                     | LL           | 数字：2 位数字 + 填充零                                       | 09、12                                                     |
  * |                     | LLL          | Abbreviated                                                    | Sep                                                        |
  * |                     | LLL          | 缩写                                                           | Sep                                                        |
  * |                     | LLLL         | Wide                                                           | September                                                  |
@@ -206,13 +206,13 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * | Week of year        | w            | Numeric: minimum digits                                        | 1... 53                                                    |
  * | 一年中的一周        | w            | 数字：最小位数                                                 | 1… 53                                                      |
  * |                     | ww           | Numeric: 2 digits + zero padded                                | 01... 53                                                   |
- * |                     | ww           | 数字： 2 位数字 + 填充零                                       | 01... 53                                                   |
+ * |                     | ww           | 数字：2 位数字 + 填充零                                       | 01... 53                                                   |
  * | Week of month       | W            | Numeric: 1 digit                                               | 1... 5                                                     |
- * | 每月的一周          | W            | 数字： 1 位                                                    | 1... 5                                                     |
+ * | 每月的一周          | W            | 数字：1 位                                                    | 1... 5                                                     |
  * | Day of month        | d            | Numeric: minimum digits                                        | 1                                                          |
  * | 一个月中的哪一天    | d            | 数字：最小位数                                                 | 1                                                          |
  * |                     | dd           | Numeric: 2 digits + zero padded                                | 01                                                         |
- * |                     | dd           | 数字： 2 位数字 + 填充零                                       | 01                                                         |
+ * |                     | dd           | 数字：2 位数字 + 填充零                                       | 01                                                         |
  * | Week day            | E, EE & EEE  | Abbreviated                                                    | Tue                                                        |
  * | 工作日              | E、EE 和 EEE | 缩写                                                           | Tue                                                        |
  * |                     | EEEE         | Wide                                                           | Tuesday                                                    |
@@ -222,7 +222,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * |                     | EEEEEE       | Short                                                          | Tu                                                         |
  * |                     | EEEEEE       | 短                                                             | Tu                                                         |
  * | Week day standalone | c, cc        | Numeric: 1 digit                                               | 2                                                          |
- * | 单独工作日          | c, cc        | 数字： 1 位                                                    | 2                                                          |
+ * | 单独工作日          | c, cc        | 数字：1 位                                                    | 2                                                          |
  * |                     | ccc          | Abbreviated                                                    | Tue                                                        |
  * |                     | ccc          | 缩写                                                           | Tue                                                        |
  * |                     | cccc         | Wide                                                           | Tuesday                                                    |
@@ -252,25 +252,25 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * | Hour 1-12           | h            | Numeric: minimum digits                                        | 1, 12                                                      |
  * | 小时（1-12）        | h            | 数字：最小位数                                                 | 1、12                                                      |
  * |                     | hh           | Numeric: 2 digits + zero padded                                | 01, 12                                                     |
- * |                     | hh           | 数字： 2 位数字 + 填充零                                       | 01、12                                                     |
+ * |                     | hh           | 数字：2 位数字 + 填充零                                       | 01、12                                                     |
  * | Hour 0-23           | H            | Numeric: minimum digits                                        | 0, 23                                                      |
  * | 小时 0-23           | H            | 数字：最小位数                                                 | 0、23                                                      |
  * |                     | HH           | Numeric: 2 digits + zero padded                                | 00, 23                                                     |
- * |                     | HH           | 数字： 2 位数字 + 填充零                                       | 00、23                                                     |
+ * |                     | HH           | 数字：2 位数字 + 填充零                                       | 00、23                                                     |
  * | Minute              | m            | Numeric: minimum digits                                        | 8, 59                                                      |
  * | 分钟                | m            | 数字：最小位数                                                 | 8、59                                                      |
  * |                     | mm           | Numeric: 2 digits + zero padded                                | 08, 59                                                     |
- * |                     | mm           | 数字： 2 位数字 + 填充零                                       | 08、59                                                     |
+ * |                     | mm           | 数字：2 位数字 + 填充零                                       | 08、59                                                     |
  * | Second              | s            | Numeric: minimum digits                                        | 0... 59                                                    |
  * | 秒                  | s            | 数字：最小位数                                                 | 0... 59                                                    |
  * |                     | ss           | Numeric: 2 digits + zero padded                                | 00... 59                                                   |
- * |                     | ss           | 数字： 2 位数字 + 填充零                                       | 00... 59                                                   |
+ * |                     | ss           | 数字：2 位数字 + 填充零                                       | 00... 59                                                   |
  * | Fractional seconds  | S            | Numeric: 1 digit                                               | 0... 9                                                     |
- * | 小数秒              | S            | 数字： 1 位                                                    | 0... 9                                                     |
+ * | 小数秒              | S            | 数字：1 位                                                    | 0... 9                                                     |
  * |                     | SS           | Numeric: 2 digits + zero padded                                | 00... 99                                                   |
- * |                     | SS           | 数字： 2 位数字 + 填充零                                       | 00... 99                                                   |
+ * |                     | SS           | 数字：2 位数字 + 填充零                                       | 00... 99                                                   |
  * |                     | SSS          | Numeric: 3 digits + zero padded \(= milliseconds\)             | 000... 999                                                 |
- * |                     | SSS          | 数字： 3 位 + 填充零（= 毫秒）                                 | 000... 999                                                 |
+ * |                     | SSS          | 数字：3 位 + 填充零（= 毫秒）                                 | 000... 999                                                 |
  * | Zone                | z, zz & zzz  | Short specific non location format \(fallback to O\)           | GMT-8                                                      |
  * | 时区                | z、zz 和 zzz | 简短的特定非位置格式（回退到 O）                               | GMT-8                                                      |
  * |                     | zzzz         | Long specific non location format \(fallback to OOOO\)         | GMT-08:00                                                  |
@@ -296,7 +296,7 @@ export const DATE_PIPE_DEFAULT_OPTIONS =
  * given in the local time for the `en-US` locale.
  *
  * 下面这些例子会把日期转换成多种格式。
- * 这里假设 `dateObj` 是个 JavaScript 的 `Date` 对象： 2015 年 6 月 15 日 21 时 43 分 11 秒，
+ * 这里假设 `dateObj` 是个 JavaScript 的 `Date` 对象：2015 年 6 月 15 日 21 时 43 分 11 秒，
  * 使用的是 `en-US` 区域的当地时间。
  *
  * ```
@@ -356,7 +356,7 @@ export class DatePipe implements PipeTransform {
    * `DATE_PIPE_DEFAULT_OPTIONS` injection token \(and reads the `dateFormat` property\).
    * If the token is not configured, the `mediumDate` is used as a value.
    *
-   * 要包含的日期/时间组件，使用预定义的选项或自定义格式字符串。当未提供时， `DatePipe` 会使用
+   * 要包含的日期/时间组件，使用预定义的选项或自定义格式字符串。当未提供时，`DatePipe` 会使用
    * `DATE_PIPE_DEFAULT_OPTIONS` 注入令牌查找值（并读取 `dateFormat` 属性）。如果未配置令牌，则使用
    * `mediumDate` 作为值。
    * @param timezone A timezone offset \(such as `'+0430'`\), or a standard UTC/GMT, or continental US

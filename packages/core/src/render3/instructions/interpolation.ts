@@ -24,11 +24,11 @@ import {renderStringify} from '../util/stringify_utils';
  * Those are faster because there is no need to create an array of expressions and iterate over it.
  *
  * 如果有 1 到 8 个表达式，则应改用 `interpolation1()` 到 `interpolation8()`
- * 。那些更快，因为无需创建表达式数组并迭代它。
+ *。那些更快，因为无需创建表达式数组并迭代它。
  *
  * `values`:
  *
- * `values` ：
+ * `values`：
  *
  * - has static text at even indexes,
  *
@@ -40,7 +40,7 @@ import {renderStringify} from '../util/stringify_utils';
  *
  * Returns the concatenated string when any of the arguments changes, `NO_CHANGE` otherwise.
  *
- * 当任何参数更改时返回连接字符串，否则返回 `NO_CHANGE` 。
+ * 当任何参数更改时返回连接字符串，否则返回 `NO_CHANGE`。
  *
  */
 export function interpolationV(lView: LView, values: any[]): string|NO_CHANGE {

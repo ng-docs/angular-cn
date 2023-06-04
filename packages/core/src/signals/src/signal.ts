@@ -26,7 +26,7 @@ let postSignalSetFn: (() => void)|null = null;
 /**
  * A `Signal` with a value that can be mutated via a setter interface.
  *
- * 一个 `Signal` ，其值可以通过 setter 接口改变。
+ * 一个 `Signal`，其值可以通过 setter 接口改变。
  *
  * @developerPreview
  */
@@ -62,7 +62,7 @@ export interface WritableSignal<T> extends Signal<T> {
    * but can't be changed using set, update or mutate methods. The readonly signals do _not_ have
    * any built-in mechanism that would prevent deep-mutation of their value.
    *
-   * 返回此信号的只读版本。 可以访问只读信号以读取它们的值，但不能使用设置、更新或变异方法更改。 只读信号 _ 没有 _ 任何内置机制可以防止其值发生深度突变。
+   * 返回此信号的只读版本。可以访问只读信号以读取它们的值，但不能使用设置、更新或变异方法更改。只读信号 _ 没有 _ 任何内置机制可以防止其值发生深度突变。
    *
    */
   asReadonly(): Signal<T>;
@@ -94,7 +94,7 @@ class WritableSignalImpl<T> extends ReactiveNode {
    * In the event that `newValue` is semantically equal to the current value, `set` is
    * a no-op.
    *
-   * 如果 `newValue` 在语义上等于当前值， `set` 是空操作。
+   * 如果 `newValue` 在语义上等于当前值，`set` 是空操作。
    *
    */
   set(newValue: T): void {
@@ -118,7 +118,7 @@ class WritableSignalImpl<T> extends ReactiveNode {
    * This is equivalent to calling `set` on the result of running `updater` on the current
    * value.
    *
-   * 这相当于对当前值运行 `updater` 的结果调用 `set` 。
+   * 这相当于对当前值运行 `updater` 的结果调用 `set`。
    *
    */
   update(updater: (value: T) => T): void {
@@ -179,7 +179,7 @@ export interface CreateSignalOptions<T> {
 /**
  * Create a `Signal` that can be set or updated directly.
  *
- * 创建一个可以直接设置或更新的 `Signal` 。
+ * 创建一个可以直接设置或更新的 `Signal`。
  *
  * @developerPreview
  */

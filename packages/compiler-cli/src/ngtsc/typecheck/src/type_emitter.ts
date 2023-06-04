@@ -13,7 +13,7 @@ import ts from 'typescript';
  * cannot be translated to the desired source file, then null can be returned.
  *
  * 类型引用解析器函数负责将类型引用从源源文件转换为在所需源文件中有效的类型引用。如果类型无法转换为所需的源文件，则可以返回
- * null 。
+ * null。
  *
  */
 export type TypeReferenceTranslator = (type: ts.TypeReferenceNode) => ts.TypeReferenceNode|null;
@@ -41,8 +41,8 @@ const INELIGIBLE: INELIGIBLE = {} as INELIGIBLE;
  * function returns false, then using the `TypeEmitter` should not be attempted as it is known to
  * fail.
  *
- * 如果此函数返回 true，`TypeEmitter` 应该能够成功。反之亦然，如果此函数返回 false ，则不应尝试使用
- * `TypeEmitter` ，因为已知它会失败。
+ * 如果此函数返回 true，`TypeEmitter` 应该能够成功。反之亦然，如果此函数返回 false，则不应尝试使用
+ * `TypeEmitter`，因为已知它会失败。
  *
  */
 export function canEmitType(
@@ -91,7 +91,7 @@ export function canEmitType(
  * Given a `ts.TypeNode`, this class derives an equivalent `ts.TypeNode` that has been emitted into
  * a different context.
  *
- * 给定一个 `ts.TypeNode` ，此类会派生一个等效的 `ts.TypeNode` ，它已被发出到不同的上下文中。
+ * 给定一个 `ts.TypeNode`，此类会派生一个等效的 `ts.TypeNode`，它已被发出到不同的上下文中。
  *
  * For example, consider the following code:
  *

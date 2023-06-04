@@ -42,7 +42,7 @@ let isHydrationSupportEnabled = false;
  * Defines a period of time that Angular waits for the `ApplicationRef.isStable` to emit `true`.
  * If there was no event with the `true` value during this time, Angular reports a warning.
  *
- * 定义 Angular 等待 `ApplicationRef.isStable` 发出 `true` 时间段。 如果在这段时间内没有任何具有 `true` 值的事件，Angular 会报告一个警告。
+ * 定义 Angular 等待 `ApplicationRef.isStable` 发出 `true` 时间段。如果在这段时间内没有任何具有 `true` 值的事件，Angular 会报告一个警告。
  *
  */
 const APPLICATION_IS_STABLE_TIMEOUT = 10_000;
@@ -53,14 +53,14 @@ const APPLICATION_IS_STABLE_TIMEOUT = 10_000;
  * invoked. Otherwise, this code is tree-shaken away during the
  * build optimization step.
  *
- * 以 tree-shakable 的方式带来必要的水合代码。 该代码仅在调用 `provideClientHydration` 时出现。 否则，这段代码会在构建优化步骤中被摇树掉。
+ * 以 tree-shakable 的方式带来必要的水合代码。该代码仅在调用 `provideClientHydration` 时出现。否则，这段代码会在构建优化步骤中被摇树掉。
  *
  * This technique allows us to swap implementations of methods so
  * tree shaking works appropriately when hydration is disabled or
  * enabled. It brings in the appropriate version of the method that
  * supports hydration only when enabled.
  *
- * 这种技术允许我们交换方法的实现，以便在禁用或启用水合时 tree shaking 适当地工作。 它引入了仅在启用时才支持水合的方法的适当版本。
+ * 这种技术允许我们交换方法的实现，以便在禁用或启用水合时 tree shaking 适当地工作。它引入了仅在启用时才支持水合的方法的适当版本。
  *
  */
 function enableHydrationRuntimeSupport() {
@@ -82,7 +82,7 @@ function enableHydrationRuntimeSupport() {
  * Later on, this check should be replaced with a tree-shakable
  * flag \(e.g. `!isServer`\).
  *
- * 检测代码是否在浏览器中被调用。 稍后，此检查应替换为 tree-shakable 标志（例如 `!isServer` ）。
+ * 检测代码是否在浏览器中被调用。稍后，此检查应替换为 tree-shakable 标志（例如 `!isServer` ）。
  *
  */
 function isBrowser(): boolean {
@@ -139,7 +139,7 @@ function whenStable(appRef: ApplicationRef, injector: Injector): Promise<void> {
  * included into the `provideClientHydration` public API function from
  * the `platform-browser` package.
  *
- * 返回为服务端渲染的应用程序设置水合支持所需的一组提供程序。 该函数包含在 `platform-browser` 包中的 `provideClientHydration` 公共 API 函数中。
+ * 返回为服务端渲染的应用程序设置水合支持所需的一组提供程序。该函数包含在 `platform-browser` 包中的 `provideClientHydration` 公共 API 函数中。
  *
  * The function sets up an internal flag that would be recognized during
  * the server side rendering time as well, so there is no need to

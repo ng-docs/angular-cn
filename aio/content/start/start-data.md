@@ -423,7 +423,7 @@ Now that you've configured your application to retrieve shipping data, you can c
    There's no link to the new shipping component yet, but you can see its template in the preview pane by entering the URL its route specifies.
    The URL has the pattern: `https://angular-ynqttp--4200.local.webcontainer.io/shipping` where the `angular-ynqttp--4200.local.webcontainer.io` part may be different for your StackBlitz project.
 
-   新的配送组件尚未链接到任何其它组件，但你可以通过输入其路由指定的 URL 在预览窗格中看到它的模板。该 URL 具有以下模式：`https://angular-ynqttp--4200.local.webcontainer.io/shipping` ，其 `angular-ynqttp--4200.local.webcontainer.io` 部分可能与你的 StackBlitz 项目有所不同。
+   新的配送组件尚未链接到任何其它组件，但你可以通过输入其路由指定的 URL 在预览窗格中看到它的模板。该 URL 具有以下模式：`https://angular-ynqttp--4200.local.webcontainer.io/shipping`，其 `angular-ynqttp--4200.local.webcontainer.io` 部分可能与你的 StackBlitz 项目有所不同。
 
 ### Configuring the `ShippingComponent` to use `CartService`
 

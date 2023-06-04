@@ -101,7 +101,7 @@ export function assertFirstUpdatePass(tView: TView, errMessage?: string) {
  * This is a basic sanity check that an object is probably a directive def. DirectiveDef is
  * an interface, so we can't do a direct instanceof check.
  *
- * 这是一个基本的健全性检查，一个对象可能是一个指令 def。 DirectiveDef
+ * 这是一个基本的健全性检查，一个对象可能是一个指令 def。DirectiveDef
  * 是一个接口，因此我们不能直接进行 instanceof 检查。
  *
  */
@@ -151,7 +151,7 @@ export function assertParentView(lView: LView|null, errMessage?: string) {
  *
  * @param lView `LView` which should be checked.
  *
- * 应该检查的 `LView` 。
+ * 应该检查的 `LView`。
  *
  * @param injectorIndex index into the `LView` where the `NodeInjector` is expected.
  *

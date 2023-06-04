@@ -18,7 +18,7 @@ export class FatalLinkerError extends Error {
   /**
    * Create a new FatalLinkerError.
    *
-   * 创建一个新的 FatalLinkerError 。
+   * 创建一个新的 FatalLinkerError。
    *
    * @param node The AST node where the error occurred.
    *

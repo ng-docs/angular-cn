@@ -36,7 +36,7 @@ export interface ClassRecord {
   /**
    * The `ClassDeclaration` of the class which has Angular traits applied.
    *
-   * 应用了 Angular 特性的类的 `ClassDeclaration` 。
+   * 应用了 Angular 特性的类的 `ClassDeclaration`。
    *
    */
   node: ClassDeclaration;
@@ -95,7 +95,7 @@ export interface ClassRecord {
  * class \(like adding fields or type declarations\).
  *
  * `TraitCompiler` 通过编译的各个阶段转换每个特性，最终会生成 `CompileResult`
- * ，以指示编译器对类应用各种突变（例如添加字段或类型声明）。
+ *，以指示编译器对类应用各种突变（例如添加字段或类型声明）。
  *
  */
 export class TraitCompiler implements ProgramTypeCheckAdapter {
@@ -103,7 +103,7 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
    * Maps class declarations to their `ClassRecord`, which tracks the Ivy traits being applied to
    * those classes.
    *
-   * 将类声明映射到它们的 `ClassRecord` ，后者会跟踪应用于这些类的 Ivy 特性。
+   * 将类声明映射到它们的 `ClassRecord`，后者会跟踪应用于这些类的 Ivy 特性。
    *
    */
   private classes = new Map<ClassDeclaration, ClassRecord>();
@@ -235,7 +235,7 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
   /**
    * Import a `ClassRecord` from a previous compilation.
    *
-   * 从以前的编译中导入 `ClassRecord` 。
+   * 从以前的编译中导入 `ClassRecord`。
    *
    * Traits from the `ClassRecord` have accurate metadata, but the `handler` is from the old program
    * and needs to be updated (matching is done by name). A new pending trait is created and then
@@ -244,7 +244,7 @@ export class TraitCompiler implements ProgramTypeCheckAdapter {
    *
    * `ClassRecord` 中的特性具有准确的元数据，但 `handler`
    * 来自旧程序，需要更新（匹配是按名称完成的）。创建了一个新的待处理特性，然后使用以前的分析转换为
-   * analyzer 。如果特性处于错误状态，则会复制错误。
+   * analyzer。如果特性处于错误状态，则会复制错误。
    *
    */
   private adopt(priorRecord: ClassRecord): void {

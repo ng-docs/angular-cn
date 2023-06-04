@@ -15,7 +15,7 @@ import {newWeakRef, WeakRef} from './weak_ref';
 /**
  * Counter tracking the next `ProducerId` or `ConsumerId`.
  *
- * 计数器跟踪下一个 `ProducerId` 或 `ConsumerId` 。
+ * 计数器跟踪下一个 `ProducerId` 或 `ConsumerId`。
  *
  */
 let _nextReactiveId: number = 0;
@@ -81,7 +81,7 @@ interface ReactiveEdge {
   /**
    * `valueVersion` of the producer at the time this dependency was last accessed.
    *
-   * 上次访问此依赖项时生产者的 `valueVersion` 。
+   * 上次访问此依赖项时生产者的 `valueVersion`。
    *
    */
   seenValueVersion: number;
@@ -107,7 +107,7 @@ interface ReactiveEdge {
  * implemented by producers, which should perform whatever calculations are necessary to ensure
  * `valueVersion` is up to date.
  *
- * 生产者公开一个单调的 `valueVersion` 计数器，并负责在其值语义发生变化时增加此版本。 一些生产者可能会懒惰地产生他们的价值，因此有时需要轮询他们的价值的潜在更新（以及他们的 `valueVersion` ）。 这是通过生产者实现的 `onProducerUpdateValueVersion` 方法完成的，生产者应该执行任何必要的计算以确保 `valueVersion` 是最新的。
+ * 生产者公开一个单调的 `valueVersion` 计数器，并负责在其值语义发生变化时增加此版本。一些生产者可能会懒惰地产生他们的价值，因此有时需要轮询他们的价值的潜在更新（以及他们的 `valueVersion` ）。这是通过生产者实现的 `onProducerUpdateValueVersion` 方法完成的，生产者应该执行任何必要的计算以确保 `valueVersion` 是最新的。
  *
  * Consumers are nodes that depend on the values of producers and are notified when those values
  * might have changed.
@@ -118,20 +118,20 @@ interface ReactiveEdge {
  * reader via `setActiveConsumer`. Reads of producers that happen while a consumer is active will
  * result in those producers being added as dependencies of that consumer node.
  *
- * 消费者不会包装他们自己消费的读取，而是可以通过 `setActiveConsumer` 将其设置为活动读取器。 在消费者处于活动状态时发生的生产者读取将导致这些生产者被添加为该消费者节点的依赖项。
+ * 消费者不会包装他们自己消费的读取，而是可以通过 `setActiveConsumer` 将其设置为活动读取器。在消费者处于活动状态时发生的生产者读取将导致这些生产者被添加为该消费者节点的依赖项。
  *
  * The set of dependencies of a consumer is dynamic. Implementers expose a monotonically increasing
  * `trackingVersion` counter, which increments whenever the consumer is about to re-run any reactive
  * reads it needs and establish a new set of dependencies as a result.
  *
- * 消费者的依赖集是动态的。 实现者公开了一个单调递增的 `trackingVersion` 计数器，每当消费者要重新运行它需要的任何反应式读取并因此建立一组新的依赖关系时，它就会递增。
+ * 消费者的依赖集是动态的。实现者公开了一个单调递增的 `trackingVersion` 计数器，每当消费者要重新运行它需要的任何反应式读取并因此建立一组新的依赖关系时，它就会递增。
  *
  * Producers store the last `trackingVersion` they've seen from `Consumer`s which have read them.
  * This allows a producer to identify whether its record of the dependency is current or stale, by
  * comparing the consumer's `trackingVersion` to the version at which the dependency was
  * last observed.
  *
- * 生产者存储他们从读过它们的 `Consumer` 那里看到的最后一个 `trackingVersion` 。 这允许生产者通过将消费者的 `trackingVersion` 与上次观察到的依赖项的版本进行比较来识别其依赖项记录是最新的还是过时的。
+ * 生产者存储他们从读过它们的 `Consumer` 那里看到的最后一个 `trackingVersion`。这允许生产者通过将消费者的 `trackingVersion` 与上次观察到的依赖项的版本进行比较来识别其依赖项记录是最新的还是过时的。
  *
  */
 export abstract class ReactiveNode {
@@ -205,7 +205,7 @@ export abstract class ReactiveNode {
    * change, the values of its dependencies have not actually changed and the consumer should not
    * rerun any reactions.
    *
-   * 如果这返回 `false` ，那么即使消费者之前可能已收到更改通知，其依赖项的值实际上并未更改，并且消费者不应重新运行任何反应。
+   * 如果这返回 `false`，那么即使消费者之前可能已收到更改通知，其依赖项的值实际上并未更改，并且消费者不应重新运行任何反应。
    *
    */
   protected consumerPollProducersForChange(): boolean {

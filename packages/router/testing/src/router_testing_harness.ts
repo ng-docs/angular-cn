@@ -64,7 +64,7 @@ export class RouterTestingHarness {
    * Throws an error if an instance has already been created.
    * Use of this harness also requires `destroyAfterEach: true` in the `ModuleTeardownOptions`
    *
-   * 如果实例已创建，则抛出错误。 使用此工具还需要在 `ModuleTeardownOptions` 中设置 `destroyAfterEach: true`
+   * 如果实例已创建，则抛出错误。使用此工具还需要在 `ModuleTeardownOptions` 中设置 `destroyAfterEach: true`
    *
    * @param initialUrl The target of navigation to trigger before returning the harness.
    *
@@ -94,7 +94,7 @@ export class RouterTestingHarness {
   /**
    * The `DebugElement` of the `RouterOutlet` component. `null` if the outlet is not activated.
    *
-   * `RouterOutlet` 组件的 `DebugElement` 。 如果插座未激活，则为 `null` 。
+   * `RouterOutlet` 组件的 `DebugElement`。如果插座未激活，则为 `null`。
    *
    */
   get routeDebugElement(): DebugElement|null {
@@ -107,7 +107,7 @@ export class RouterTestingHarness {
   /**
    * The native element of the `RouterOutlet` component. `null` if the outlet is not activated.
    *
-   * `RouterOutlet` 组件的原生元素。 如果插座未激活，则为 `null` 。
+   * `RouterOutlet` 组件的原生元素。如果插座未激活，则为 `null`。
    *
    */
   get routeNativeElement(): HTMLElement|null {
@@ -123,18 +123,18 @@ export class RouterTestingHarness {
    * components. The root component is reused within the same test in subsequent calls to
    * `navigateForTest`.
    *
-   * 具有为线束创建的 `RouterOutlet` 的根组件用于渲染 `Route` 组件。 在对 `navigateForTest` 后续调用中，根组件在同一测试中重复使用。
+   * 具有为线束创建的 `RouterOutlet` 的根组件用于渲染 `Route` 组件。在对 `navigateForTest` 后续调用中，根组件在同一测试中重复使用。
    *
    * When testing `Routes` with a guards that reject the navigation, the `RouterOutlet` might not be
    * activated and the `activatedComponent` may be `null`.
    *
-   * 当使用拒绝导航的守卫测试 `Routes` 时， `RouterOutlet` 可能未激活并且 `activatedComponent` 可能为 `null` 。
+   * 当使用拒绝导航的守卫测试 `Routes` 时，`RouterOutlet` 可能未激活并且 `activatedComponent` 可能为 `null`。
    *
    * {@example router/testing/test/router_testing_harness_examples.spec.ts region='Guard'}
    *
    * @param url The target of the navigation. Passed to `Router.navigateByUrl`.
    *
-   * 导航的目标。 传递给 `Router.navigateByUrl` 。
+   * 导航的目标。传递给 `Router.navigateByUrl`。
    *
    * @returns
    *
@@ -169,13 +169,13 @@ export class RouterTestingHarness {
    *
    * @param url The target of the navigation. Passed to `Router.navigateByUrl`.
    *
-   * 导航的目标。 传递给 `Router.navigateByUrl` 。
+   * 导航的目标。传递给 `Router.navigateByUrl`。
    *
    * @param requiredRoutedComponentType After navigation completes, the required type for the
    *     activated component of the `RouterOutlet`. If the outlet is not activated or a different
    *     component is activated, this function will throw an error.
    *
-   * 导航完成后， `RouterOutlet` 的激活组件所需的类型。 如果插座未激活或激活了不同的组件，则此函数将引发错误。
+   * 导航完成后，`RouterOutlet` 的激活组件所需的类型。如果插座未激活或激活了不同的组件，则此函数将引发错误。
    *
    * @returns
    *

@@ -1260,13 +1260,13 @@ It provides methods to handle parameter access for both route parameters \(`para
 | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 成员           | 详情                                                                                                                                                                                               |
 | `has(name)`    | Returns `true` if the parameter name is in the map of parameters.                                                                                                                                  |
-| `has(name)`    | 如果参数名位于参数列表中，就返回 `true`。                                                                                                                                                          |
+| `has(name)`    | 如果参数名位于参数列表中，就返回 `true`。|
 | `get(name)`    | Returns the parameter name value \(a `string`\) if present, or `null` if the parameter name is not in the map. Returns the *first* element if the parameter value is actually an array of values.  |
-| `get(name)`    | 如果这个 map 中有参数名对应的参数值（字符串），就返回它，否则返回 `null`。如果参数值实际上是一个数组，就返回它的*第一个*元素。                                                                     |
+| `get(name)`    | 如果这个 map 中有参数名对应的参数值（字符串），就返回它，否则返回 `null`。如果参数值实际上是一个数组，就返回它的*第一个*元素。|
 | `getAll(name)` | Returns a `string array` of the parameter name value if found, or an empty `array` if the parameter name value is not in the map. Use `getAll` when a single parameter could have multiple values. |
-| `getAll(name)` | 如果这个 map 中有参数名对应的值，就返回一个字符串数组，否则返回空数组。当一个参数名可能对应多个值的时候，请使用 `getAll`。                                                                         |
+| `getAll(name)` | 如果这个 map 中有参数名对应的值，就返回一个字符串数组，否则返回空数组。当一个参数名可能对应多个值的时候，请使用 `getAll`。|
 | `keys`         | Returns a `string array` of all parameter names in the map.                                                                                                                                        |
-| `keys`         | 返回这个 map 中的所有参数名组成的字符串数组。                                                                                                                                                      |
+| `keys`         | 返回这个 map 中的所有参数名组成的字符串数组。|
 
 <a id="reuse"></a>
 
@@ -2140,9 +2140,9 @@ The router supports directory-like syntax in a *link parameters list* to help gu
 | :-------------------- | :------ |
 | 目录式语法 | 详情 |
 | `./` <br /> `no leading slash` | Relative to the current level. |
-| `./` <br /> ` 无前导斜线 ` | 形式是相对于当前级别的。 |
+| `./` <br /> ` 无前导斜线 ` | 形式是相对于当前级别的。|
 | `../` | Up one level in the route path. |
-| `../` | 回到当前路由路径的上一级。 |
+| `../` | 回到当前路由路径的上一级。|
 
 You can combine relative navigation syntax with an ancestor path.
 If you must navigate to a sibling route, you could use the `../<sibling>` convention to go up
@@ -2508,7 +2508,7 @@ A guard's return value controls the router's behavior:
 | `true`             | The navigation process continues                                                           |
 | `true`             | 导航过程会继续                                                                             |
 | `false`            | The navigation process stops and the user stays put                                        |
-| `false`            | 导航过程就会终止，且用户留在原地。                                                         |
+| `false`            | 导航过程就会终止，且用户留在原地。|
 | `UrlTree`          | The current navigation cancels and a new navigation is initiated to the `UrlTree` returned |
 | `UrlTree`          | 取消当前导航，并开始导航到所返回的 `UrlTree`                                               |
 
@@ -2558,7 +2558,7 @@ The router supports multiple guard methods:
 | [`resolve`](api/router/ResolveFn)                   | To perform route data retrieval *before* route activation                                       |
 | [`resolve`](api/router/ResolveFn)                   | 在某路由激活*之前*获取路由数据                                                                  |
 | [`canMatch`](api/router/CanMatchFn)                 | To control whether a `Route` should be used at all, even if the `path` matches the URL segment. |
-| [`canMatch`](api/router/CanMatchFn)                 | 控制是否应该使用 `Route` ，即使 `path` 与 URL 段匹配。                                          |
+| [`canMatch`](api/router/CanMatchFn)                 | 控制是否应该使用 `Route`，即使 `path` 与 URL 段匹配。|
 
 You can have multiple guards at every level of a routing hierarchy.
 The router checks the `canDeactivate` guards first, from the deepest child route to the top.
@@ -2581,7 +2581,7 @@ There are several examples over the next few sections.
 
 ### `canActivate`: requiring authentication
 
-### `canActivate` ：需要身份验证
+### `canActivate`：需要身份验证
 
 Applications often restrict access to a feature area based on who the user is.
 You could permit access only to authenticated users or to users with a specific role.
@@ -2787,7 +2787,7 @@ Write a `canActivate()` guard method to redirect anonymous users to the login pa
 
 Create a new file named `auth.guard.ts` in the `auth` folder. The `auth.guard.ts` file will contain the `authGuard` function.
 
-在 `auth` 文件夹中创建一个名为 `auth.guard.ts` 的新文件。 `auth.guard.ts` 文件将包含 `authGuard` 函数。
+在 `auth` 文件夹中创建一个名为 `auth.guard.ts` 的新文件。`auth.guard.ts` 文件将包含 `authGuard` 函数。
 
 <code-example format="shell" language="shell">
 
@@ -2864,7 +2864,7 @@ If the user is logged in, it returns `true` and the navigation continues.
 Otherwise, it redirects to a login page; a page you haven't created yet.
 Returning a `UrlTree` tells the `Router` to cancel the current navigation and schedule a new one to redirect the user.
 
-这个守卫会返回一个同步布尔结果或一个 `UrlTree` 。 如果用户已登录，则返回 `true` 并继续导航。 否则，它会重定向到登录页面 —— 你尚未创建它。 返回一个 `UrlTree` 会告诉 `Router` 取消当前导航并安排一个新的导航来重定向用户。
+这个守卫会返回一个同步布尔结果或一个 `UrlTree`。如果用户已登录，则返回 `true` 并继续导航。否则，它会重定向到登录页面 —— 你尚未创建它。返回一个 `UrlTree` 会告诉 `Router` 取消当前导航并安排一个新的导航来重定向用户。
 
 <a id="add-login-component"></a>
 
@@ -3390,7 +3390,7 @@ A `canMatch` guard controls whether the `Router` attempts to match a `Route`. Th
 multiple `Route` configurations that share the same `path` but are matched based on different conditions. This approach
 allows the `Router` to match the wildcard `Route` instead.
 
-`canMatch` 守卫控制着 `Router` 是否会尝试匹配 `Route`。 这能让你拥有多个 `Route` 配置，这些配置共享相同的 `path` 但根据不同的条件进行匹配。 这种方法能让 `Router` 转而匹配通配符 `Route` 。
+`canMatch` 守卫控制着 `Router` 是否会尝试匹配 `Route`。这能让你拥有多个 `Route` 配置，这些配置共享相同的 `path` 但根据不同的条件进行匹配。这种方法能让 `Router` 转而匹配通配符 `Route`。
 
 The existing `authGuard` contains the logic to support the `canMatch` guard.
 
@@ -3452,9 +3452,9 @@ The `Router` offers two preloading strategies:
 | :------------ | :----------------------------------------------------------------- |
 | 策略          | 详情                                                               |
 | No preloading | The default. Lazy loaded feature areas are still loaded on-demand. |
-| 不预加载      | 这是默认值。惰性加载的特性区仍然会按需加载。                       |
+| 不预加载      | 这是默认值。惰性加载的特性区仍然会按需加载。|
 | Preloading    | All lazy loaded feature areas are preloaded.                       |
-| 预加载        | 预加载所有惰性加载的特性区。                                       |
+| 预加载        | 预加载所有惰性加载的特性区。|
 
 The router either never preloads, or preloads every lazy loaded module.
 The `Router` also supports [custom preloading strategies](#custom-preloading) for fine control over which modules to preload and when.

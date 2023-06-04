@@ -117,7 +117,7 @@ In the **Terminal** pane of your IDE:
 
 1. Run `ng serve` to build the app and serve it to `http://localhost:4200`.
 
-   运行 `ng serve` 来构建应用程序并将其提供给 `http://localhost:4200` 。
+   运行 `ng serve` 来构建应用程序并将其提供给 `http://localhost:4200`。
 
 1. Confirm that the app builds without error.
    Correct any errors before you continue to the next step.
@@ -203,7 +203,7 @@ In the **Edit** pane of your IDE, in `src/app/home/home.component.ts`:
 
 1. In `HomeComponent`, add this code to inject the new service and initialize the data for the app. The `constructor` is the first function that runs when this component is created. The code in the `constructor` will assign the `housingLocationList` the value returned from the call to `getAllHousingLocations`.
 
-   在 `HomeComponent` 中，添加此代码以注入新服务并初始化应用程序的数据。 `constructor` 是创建此组件时运行的第一个函数。 `constructor` 中的代码将把调用 `getAllHousingLocations` 返回的值赋值给 `housingLocationList`。
+   在 `HomeComponent` 中，添加此代码以注入新服务并初始化应用程序的数据。`constructor` 是创建此组件时运行的第一个函数。`constructor` 中的代码将把调用 `getAllHousingLocations` 返回的值赋值给 `housingLocationList`。
 
    <code-example header="Initialize data from service in src/app/home/home.component.ts" path="first-app-lesson-09/src/app/home/home.component.ts" region="use-new-service"></code-example>
 

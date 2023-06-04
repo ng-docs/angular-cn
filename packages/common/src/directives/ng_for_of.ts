@@ -95,7 +95,7 @@ export class NgForOfContext<T, U extends NgIterable<T> = NgIterable<T>> {
  * 在[一个元素上只允许有一个结构型指令](guide/structural-directives#one-per-element)。比如，如果要根据条件进行迭代，请将
  * `*ngIf` 放在 `*ngFor`
  * 元素的容器元素上。欲知详情，请参见[《结构型指令》](guide/structural-directives#one-per-element)
- * 。
+ *。
  *
  * @usageNotes
  *
@@ -239,7 +239,7 @@ export class NgForOf<T, U extends NgIterable<T> = NgIterable<T>> implements DoCh
    * identity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
    * as the key.
    *
-   * 如果未提供自定义 `TrackByFunction` ，`NgForOf`
+   * 如果未提供自定义 `TrackByFunction`，`NgForOf`
    * 将使用条目的[对象标识](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)作为键。
    *
    * `NgForOf` uses the computed key to associate items in an iterable with DOM elements

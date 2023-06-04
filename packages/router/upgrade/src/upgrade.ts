@@ -139,7 +139,7 @@ export function setUpLocationSync(ngUpgrade: UpgradeModule, urlType: 'path'|'has
  * and assigning it again. This correctly populates all properties.
  *
  * 虽然这种方法具有广泛的兼容性，但它在 IE 上无法按预期工作。在 IE
- * 上，规范化与其他浏览器类似，但不会设置解析后的组件。（例如，如果你分配 `a.href = 'foo'` ，那么
+ * 上，规范化与其他浏览器类似，但不会设置解析后的组件。（例如，如果你分配 `a.href = 'foo'`，那么
  * `a.protocol`、`a.host` 等将不会被正确更新。）我们通过在第二步中通过获取以前规范化的 URL
  * 来执行解析来解决这个问题，并且再次分配它。这会正确填充所有属性。
  *
@@ -148,7 +148,7 @@ export function setUpLocationSync(ngUpgrade: UpgradeModule, urlType: 'path'|'has
  * for more info.
  *
  * 有关更多信息，请参阅 https://github.com/angular/angular.js/blob/2c7400e7d07b0f6cec1817dab40b9250ce8ebce6/src/ng/urlUtils.js#L26-L33
- * 。
+ *。
  *
  */
 let anchor: HTMLAnchorElement|undefined;

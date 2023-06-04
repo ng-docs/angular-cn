@@ -53,7 +53,7 @@ directives at runtime.
 
 **Angular ignores the `selector` of directives applied in the `hostDirectives` property.**
 
-**Angular 会忽略 `hostDirectives` 属性中所应用的那些指令的 `selector` 。**
+**Angular 会忽略 `hostDirectives` 属性中所应用的那些指令的 `selector`。**
 
 ## Including inputs and outputs
 

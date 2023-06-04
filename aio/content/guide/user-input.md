@@ -332,11 +332,11 @@ Below is the "Little Tour of Heroes" component.
 | :------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 小结                                        | 详情                                                                                                                                                                                                 |
 | Use template variables to refer to elements | The `newHero` template variable refers to the `<input>` element. You can reference `newHero` from any sibling or child of the `<input>` element.                                                     |
-| 使用模板变量来引用元素                      | `newHero` 模板变量引用了 `<input>` 元素。你可以在 `<input>` 的任何兄弟或子级元素中引用 `newHero`。                                                                                                   |
+| 使用模板变量来引用元素                      | `newHero` 模板变量引用了 `<input>` 元素。你可以在 `<input>` 的任何兄弟或子级元素中引用 `newHero`。|
 | Pass values, not elements                   | Instead of passing the `newHero` into the component's `addHero` method, get the input box value and pass *that* to `addHero`.                                                                        |
-| 传递数值，而非元素                          | 获取输入框的值并将*它*传给组件的 `addHero`，而不要传递 `newHero`。                                                                                                                                   |
+| 传递数值，而非元素                          | 获取输入框的值并将*它*传给组件的 `addHero`，而不要传递 `newHero`。|
 | Keep template statements simple             | The `(blur)` event is bound to two JavaScript statements. The first statement calls `addHero`. The second statement, `newHero.value=''`, clears the input box after a new hero is added to the list. |
-| 保持模板语句简单                            | `(blur)` 事件被绑定到两个 JavaScript 语句。第一句调用 `addHero`。第二句 `newHero.value=''` 在添加新英雄到列表中后清除输入框。                                                                        |
+| 保持模板语句简单                            | `(blur)` 事件被绑定到两个 JavaScript 语句。第一句调用 `addHero`。第二句 `newHero.value=''` 在添加新英雄到列表中后清除输入框。|
 
 ## Source code
 
@@ -360,7 +360,7 @@ Angular 还支持被动事件监听器。比如，你可以使用以下步骤使
 
 1. Create a file `zone-flags.ts` under `src` directory.
 
-   在 `src` 目录下创建一个文件 `zone-flags.ts` 。
+   在 `src` 目录下创建一个文件 `zone-flags.ts`。
 
 1. Add the following line into this file.
 
@@ -374,7 +374,7 @@ Angular 还支持被动事件监听器。比如，你可以使用以下步骤使
 
 1. In the `src/polyfills.ts` file, before importing zone.js, import the newly created `zone-flags`.
 
-   在 `src/polyfills.ts` 文件中，在导入 zone.js 之前，先导入新创建的 `zone-flags` 。
+   在 `src/polyfills.ts` 文件中，在导入 zone.js 之前，先导入新创建的 `zone-flags`。
 
    <code-example format="typescript" language="typescript">
 

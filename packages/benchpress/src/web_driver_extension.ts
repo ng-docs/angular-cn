@@ -33,7 +33,7 @@ export type PerfLogEvent = {
  * Needs one implementation for every supported Browser.
  *
  * WebDriverExtension 为给定的浏览器实现 Webdriver 协议的扩展命令，独立于 WebDriverAdapter
- * 。每个受支持的浏览器都需要一个实现。
+ *。每个受支持的浏览器都需要一个实现。
  *
  */
 export abstract class WebDriverExtension {

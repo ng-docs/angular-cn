@@ -24,7 +24,7 @@ let shouldThrowErrorOnUnknownElement = false;
  * instead of just logging the error.
  * \(for AOT-compiled ones this check happens at build time\).
  *
- * 为 JIT 编译的组件设置严格模式以在未知元素上抛出错误，而不仅仅是记录错误。 （对于 AOT 编译的，此检查发生在构建时）。
+ * 为 JIT 编译的组件设置严格模式以在未知元素上抛出错误，而不仅仅是记录错误。（对于 AOT 编译的，此检查发生在构建时）。
  *
  */
 export function ɵsetUnknownElementStrictMode(shouldThrow: boolean) {
@@ -48,7 +48,7 @@ let shouldThrowErrorOnUnknownProperty = false;
  * instead of just logging the error.
  * \(for AOT-compiled ones this check happens at build time\).
  *
- * 为 JIT 编译的组件设置严格模式以在未知属性上抛出错误，而不仅仅是记录错误。 （对于 AOT 编译的，此检查发生在构建时）。
+ * 为 JIT 编译的组件设置严格模式以在未知属性上抛出错误，而不仅仅是记录错误。（对于 AOT 编译的，此检查发生在构建时）。
  *
  */
 export function ɵsetUnknownPropertyStrictMode(shouldThrow: boolean) {
@@ -71,7 +71,7 @@ export function ɵgetUnknownPropertyStrictMode() {
  * This check is relevant for JIT-compiled components \(for AOT-compiled
  * ones this check happens at build time\).
  *
- * 验证该元素在运行时是否已知，如果不是，则产生错误。 此检查与 JIT 编译的组件相关（对于 AOT 编译的组件，此检查发生在构建时）。
+ * 验证该元素在运行时是否已知，如果不是，则产生错误。此检查与 JIT 编译的组件相关（对于 AOT 编译的组件，此检查发生在构建时）。
  *
  * The element is considered known if either:
  *
@@ -168,7 +168,7 @@ export function validateElementIsKnown(
  * This check is relevant for JIT-compiled components \(for AOT-compiled
  * ones this check happens at build time\).
  *
- * 验证元素的属性在运行时是否已知，如果不是，则返回 false。 此检查与 JIT 编译的组件相关（对于 AOT 编译的组件，此检查发生在构建时）。
+ * 验证元素的属性在运行时是否已知，如果不是，则返回 false。此检查与 JIT 编译的组件相关（对于 AOT 编译的组件，此检查发生在构建时）。
  *
  * The property is considered known if either:
  *
@@ -306,7 +306,7 @@ export function reportUnknownPropertyError(message: string) {
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode and also it relies on the constructor function being available.
  *
- * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。 该函数进行超态读取，这对于生产模式来说可能太慢，而且它依赖于可用的构造函数。
+ * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。该函数进行超态读取，这对于生产模式来说可能太慢，而且它依赖于可用的构造函数。
  *
  * Gets a reference to the host component def \(where a current component is declared\).
  *
@@ -314,7 +314,7 @@ export function reportUnknownPropertyError(message: string) {
  *
  * @param lView An `LView` that represents a current component that is being rendered.
  *
- * 表示正在渲染的当前组件的 `LView` 。
+ * 表示正在渲染的当前组件的 `LView`。
  *
  */
 export function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|null {
@@ -334,7 +334,7 @@ export function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode.
  *
- * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。 该函数进行巨态读取，这对于生产模式来说可能太慢了。
+ * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。该函数进行巨态读取，这对于生产模式来说可能太慢了。
  *
  * Checks if the current component is declared inside of a standalone component template.
  *
@@ -342,7 +342,7 @@ export function getDeclarationComponentDef(lView: LView): ComponentDef<unknown>|
  *
  * @param lView An `LView` that represents a current component that is being rendered.
  *
- * 表示正在渲染的当前组件的 `LView` 。
+ * 表示正在渲染的当前组件的 `LView`。
  *
  */
 export function isHostComponentStandalone(lView: LView): boolean {
@@ -358,16 +358,16 @@ export function isHostComponentStandalone(lView: LView): boolean {
  * and must **not** be used in production bundles. The function makes megamorphic reads, which might
  * be too slow for production mode.
  *
- * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。 该函数进行巨态读取，这对于生产模式来说可能太慢了。
+ * 警告：这是一个**仅限开发模式的**函数（因此应始终由 `ngDevMode` 保护）并且**不得**在生产包中使用。该函数进行巨态读取，这对于生产模式来说可能太慢了。
  *
  * Constructs a string describing the location of the host component template. The function is used
  * in dev mode to produce error messages.
  *
- * 构造一个描述宿主组件模板位置的字符串。 该函数在开发模式下用于生成错误消息。
+ * 构造一个描述宿主组件模板位置的字符串。该函数在开发模式下用于生成错误消息。
  *
  * @param lView An `LView` that represents a current component that is being rendered.
  *
- * 表示正在渲染的当前组件的 `LView` 。
+ * 表示正在渲染的当前组件的 `LView`。
  *
  */
 export function getTemplateLocationDetails(lView: LView): string {
@@ -383,7 +383,7 @@ export function getTemplateLocationDetails(lView: LView): string {
  * We use this set to produce a more precises error message with a note
  * that the `CommonModule` should also be included.
  *
- * 一组已知的控制流指令及其相应的导入。 我们使用此集合来生成更精确的错误消息，并附注还应包括 `CommonModule` 。
+ * 一组已知的控制流指令及其相应的导入。我们使用此集合来生成更精确的错误消息，并附注还应包括 `CommonModule`。
  *
  */
 export const KNOWN_CONTROL_FLOW_DIRECTIVES = new Map([

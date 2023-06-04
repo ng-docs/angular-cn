@@ -60,7 +60,7 @@ If you have any trouble during this lesson, you can review the completed code fo
 
 In lesson 6, you added data binding to the template to enable developers to pass data from the `HomeComponent` to the `HousingLocationComponent`. The next step is to display values \(properties and `Input` values\) in a template. In order to accomplish this task you have to use interpolation.
 
-在第 6 课中，你向模板添加了数据绑定，使开发者能够将数据从 `HomeComponent` 传给 `HousingLocationComponent` 。下一步就是在模板中显示值（包括属性和 `Input` 值）。为了完成此任务，你必须使用插值。
+在第 6 课中，你向模板添加了数据绑定，使开发者能够将数据从 `HomeComponent` 传给 `HousingLocationComponent`。下一步就是在模板中显示值（包括属性和 `Input` 值）。为了完成此任务，你必须使用插值。
 
 The [Angular template syntax](guide/template-syntax) supports mixing static template content with dynamic values and expressions.
 
@@ -68,7 +68,7 @@ The [Angular template syntax](guide/template-syntax) supports mixing static temp
 
 Using the `{{ expression }}` in Angular templates, you can render values from properties, `Inputs` and valid JavaScript expressions.
 
-在 Angular 模板中使用 `{{ expression }}` ，可以从属性、`Input` 和有效的 JavaScript 表达式中渲染出值。
+在 Angular 模板中使用 `{{ expression }}`，可以从属性、`Input` 和有效的 JavaScript 表达式中渲染出值。
 
 For a more in depth explanation, please refer to the [Displaying values with interpolation](guide/interpolation) guide.
 

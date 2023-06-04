@@ -47,7 +47,7 @@ export class AngularTestingModule {
  * The `Ng2AppModule` is the Angular part of our hybrid application and the `ng1AppModule` is the
  * AngularJS part.
  *
- * 在以下代码片段中，我们使用两个导入配置 TestBed。 `Ng2AppModule` 是我们混合应用程序的 Angular
+ * 在以下代码片段中，我们使用两个导入配置 TestBed。`Ng2AppModule` 是我们混合应用程序的 Angular
  * 部分，而 `ng1AppModule` 是 AngularJS 部分。
  *
  * <code-example path="upgrade/static/ts/full/module.spec.ts" region="angular-setup"></code-example>
@@ -73,7 +73,7 @@ export class AngularTestingModule {
  * `downgradeModule` for more information.
  *
  * 此帮助器用于测试服务而不是组件。对于组件测试，你仍然必须引导混合应用程序。有关更多信息，请参阅
- * `UpgradeModule` 或 `downgradeModule` 。
+ * `UpgradeModule` 或 `downgradeModule`。
  *
  * </div>
  *
@@ -84,7 +84,7 @@ export class AngularTestingModule {
  * AngularJS handlers of async events from Angular.
  *
  * 生成的配置不会将 AngularJS 摘要连接到 Zone 钩子。测试作者有责任根据需要调用 `$rootScope.$apply`
- * ，以触发来自 Angular 的异步事件的 AngularJS 处理程序。
+ *，以触发来自 Angular 的异步事件的 AngularJS 处理程序。
  *
  * </div>
  *
@@ -121,7 +121,7 @@ export class AngularTestingModule {
  * 要包含在配置中的 AngularJS 模块名称的集合。
  * @param [strictDi] whether the AngularJS injector should have `strictDI` enabled.
  *
- * AngularJS 注入器是否应该启用 `strictDI` 。
+ * AngularJS 注入器是否应该启用 `strictDI`。
  * @publicApi
  */
 export function createAngularTestingModule(

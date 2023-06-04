@@ -469,7 +469,7 @@ function computeCombinedExports(type: Type<any>): Type<any>[] {
  * the `ngSelectorScope` property of the declared type.
  *
  * 某些声明的组件可能会被异步编译，因此可能尚未设置它们的 ɵcmp
- * 。如果是这种情况，则会将对模块的引用写入声明类型的 `ngSelectorScope` 属性。
+ *。如果是这种情况，则会将对模块的引用写入声明类型的 `ngSelectorScope` 属性。
  *
  */
 function setScopeOnDeclaredComponents(moduleType: Type<any>, ngModule: NgModule) {

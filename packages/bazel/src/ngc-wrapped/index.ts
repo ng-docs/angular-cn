@@ -464,7 +464,7 @@ function gatherDiagnosticsForInputsOnly(
  *
  * Kept here just for compatibility with 1P tools. To be removed soon after 1P update.
  *
- * 保留在这里只是为了与 1P 工具兼容。 将在 1P 更新后尽快删除。
+ * 保留在这里只是为了与 1P 工具兼容。将在 1P 更新后尽快删除。
  *
  */
 export function patchNgHostWithFileNameToModuleName(

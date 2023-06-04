@@ -13,7 +13,7 @@ import {AbsoluteFsPath} from '../../file_system';
 /**
  * A `Symbol` which is used to patch extension data onto `ts.SourceFile`s.
  *
- * 一个 `Symbol` ，用于将扩展名数据修补到 `ts.SourceFile` s。
+ * 一个 `Symbol`，用于将扩展名数据修补到 `ts.SourceFile` s。
  *
  */
 export const NgExtension = Symbol('NgExtension');
@@ -21,7 +21,7 @@ export const NgExtension = Symbol('NgExtension');
 /**
  * Contents of the `NgExtension` property of a `ts.SourceFile`.
  *
- * ts.SourceFile 的 `NgExtension` 属性的 `ts.SourceFile` 。
+ * ts.SourceFile 的 `NgExtension` 属性的 `ts.SourceFile`。
  *
  */
 export interface NgExtensionData {
@@ -48,7 +48,7 @@ export interface NgExtensionData {
 /**
  * A `ts.SourceFile` which may or may not have `NgExtension` data.
  *
- * 一个 `ts.SourceFile` ，可能有也可能没有 `NgExtension` 数据。
+ * 一个 `ts.SourceFile`，可能有也可能没有 `NgExtension` 数据。
  *
  */
 interface MaybeNgExtendedSourceFile extends ts.SourceFile {
@@ -58,7 +58,7 @@ interface MaybeNgExtendedSourceFile extends ts.SourceFile {
 /**
  * A `ts.SourceFile` which has `NgExtension` data.
  *
- * 具有 `ts.SourceFile` 数据的 `NgExtension` 。
+ * 具有 `ts.SourceFile` 数据的 `NgExtension`。
  *
  */
 export interface NgExtendedSourceFile extends ts.SourceFile {
@@ -76,7 +76,7 @@ export interface NgExtendedSourceFile extends ts.SourceFile {
 /**
  * Narrows a `ts.SourceFile` if it has an `NgExtension` property.
  *
- * 如果 `NgExtension` `ts.SourceFile` ，则缩小它。
+ * 如果 `NgExtension` `ts.SourceFile`，则缩小它。
  *
  */
 export function isExtended(sf: ts.SourceFile): sf is NgExtendedSourceFile {
@@ -86,7 +86,7 @@ export function isExtended(sf: ts.SourceFile): sf is NgExtendedSourceFile {
 /**
  * Returns the `NgExtensionData` for a given `ts.SourceFile`, adding it if none exists.
  *
- * 返回给定 `NgExtensionData` 的 `ts.SourceFile` ，如果不存在，则添加它。
+ * 返回给定 `NgExtensionData` 的 `ts.SourceFile`，如果不存在，则添加它。
  *
  */
 export function sfExtensionData(sf: ts.SourceFile): NgExtensionData {
@@ -121,7 +121,7 @@ export interface NgFileShimData {
 /**
  * An `NgExtendedSourceFile` that is a per-file shim and has `NgFileShimData`.
  *
- * 一个 `NgExtendedSourceFile` ，它是每个文件的 shim 并具有 `NgFileShimData` 。
+ * 一个 `NgExtendedSourceFile`，它是每个文件的 shim 并具有 `NgFileShimData`。
  *
  */
 export interface NgFileShimSourceFile extends NgExtendedSourceFile {
@@ -133,7 +133,7 @@ export interface NgFileShimSourceFile extends NgExtendedSourceFile {
 /**
  * Check whether `sf` is a per-file shim `ts.SourceFile`.
  *
- * 检查 `sf` 是否是每个文件的 shim `ts.SourceFile` 。
+ * 检查 `sf` 是否是每个文件的 shim `ts.SourceFile`。
  *
  */
 export function isFileShimSourceFile(sf: ts.SourceFile): sf is NgFileShimSourceFile {
@@ -195,7 +195,7 @@ export function retagAllTsFiles(program: ts.Program): void {
 /**
  * Restore the original `referencedFiles` for the given `ts.SourceFile`.
  *
- * 恢复给定 `ts.SourceFile` 的原始 `referencedFiles` 。
+ * 恢复给定 `ts.SourceFile` 的原始 `referencedFiles`。
  *
  */
 export function untagTsFile(sf: ts.SourceFile): void {

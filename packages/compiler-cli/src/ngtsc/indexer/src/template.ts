@@ -41,7 +41,7 @@ type TargetIdentifierMap = Map<TmplTarget, TargetIdentifier>;
  * Visiting `text {{prop}}` will return
  * `[TopLevelIdentifier {name: 'prop', span: {start: 7, end: 11}}]`.
  *
- * 访问 `text {{prop}}` 将返回 `[TopLevelIdentifier {name: 'prop', span: {start: 7, end: 11}}]` 。
+ * 访问 `text {{prop}}` 将返回 `[TopLevelIdentifier {name: 'prop', span: {start: 7, end: 11}}]`。
  *
  */
 class ExpressionVisitor extends RecursiveAstVisitor {
@@ -168,7 +168,7 @@ class ExpressionVisitor extends RecursiveAstVisitor {
  * Visits the AST of a parsed Angular template. Discovers and stores
  * identifiers of interest, deferring to an `ExpressionVisitor` as needed.
  *
- * 访问已解析的 Angular 模板的 AST。发现并存储感兴趣的标识符，根据需要推迟到 `ExpressionVisitor` 。
+ * 访问已解析的 Angular 模板的 AST。发现并存储感兴趣的标识符，根据需要推迟到 `ExpressionVisitor`。
  *
  */
 class TemplateVisitor extends TmplAstRecursiveVisitor {

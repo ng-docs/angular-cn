@@ -22,7 +22,7 @@ export function setFileSystem(fileSystem: FileSystem) {
 /**
  * Convert the path `path` to an `AbsoluteFsPath`, throwing an error if it's not an absolute path.
  *
- * 将路径 `path` 转换为 `AbsoluteFsPath` ，如果不是绝对路径，则会抛出错误。
+ * 将路径 `path` 转换为 `AbsoluteFsPath`，如果不是绝对路径，则会抛出错误。
  *
  */
 export function absoluteFrom(path: string): AbsoluteFsPath {
@@ -37,7 +37,7 @@ const ABSOLUTE_PATH = Symbol('AbsolutePath');
 /**
  * Extract an `AbsoluteFsPath` from a `ts.SourceFile`-like object.
  *
- * 从 `ts.SourceFile` 类对象中提取 `AbsoluteFsPath` 。
+ * 从 `ts.SourceFile` 类对象中提取 `AbsoluteFsPath`。
  *
  */
 export function absoluteFromSourceFile(sf: {fileName: string}): AbsoluteFsPath {
@@ -55,7 +55,7 @@ export function absoluteFromSourceFile(sf: {fileName: string}): AbsoluteFsPath {
 /**
  * Convert the path `path` to a `PathSegment`, throwing an error if it's not a relative path.
  *
- * 将路径 `path` 转换为 `PathSegment` ，如果不是相对路径，则抛出错误。
+ * 将路径 `path` 转换为 `PathSegment`，如果不是相对路径，则抛出错误。
  *
  */
 export function relativeFrom(path: string): PathSegment {
@@ -139,7 +139,7 @@ export function basename(filePath: PathString, extension?: string): PathSegment 
 /**
  * Returns true if the given path is locally relative.
  *
- * 如果给定的路径是本地相对的，则返回 true 。
+ * 如果给定的路径是本地相对的，则返回 true。
  *
  * This is used to work out if the given path is relative \(i.e. not absolute\) but also is not
  * escaping the current directory.

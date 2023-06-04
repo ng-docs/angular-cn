@@ -150,7 +150,7 @@ export interface DirectiveDef<T> {
    * Note: the private names are used for the keys, rather than the public ones, because public
    * names can be re-aliased in host directives which would invalidate the lookup.
    *
-   * 将输入的私有名称映射到它们的转换函数的字典。 注意：私有名称用于密钥，而不是公共名称，因为公共名称可以在宿主指令中重新命名，这会使查找无效。
+   * 将输入的私有名称映射到它们的转换函数的字典。注意：私有名称用于密钥，而不是公共名称，因为公共名称可以在宿主指令中重新命名，这会使查找无效。
    *
    */
   readonly inputTransforms: {[classPropertyName: string]: InputTransformFunction}|null;
@@ -159,7 +159,7 @@ export interface DirectiveDef<T> {
    * Contains the raw input information produced by the compiler. Can be
    * used to do further processing after the `inputs` have been inverted.
    *
-   * 包含编译器生成的原始输入信息。 可用于在 `inputs` 反转后进行进一步处理。
+   * 包含编译器生成的原始输入信息。可用于在 `inputs` 反转后进行进一步处理。
    *
    */
   readonly inputConfig:
@@ -331,7 +331,7 @@ export interface DirectiveDef<T> {
    * Factory function used to create a new directive instance. Will be null initially.
    * Populated when the factory is first requested by directive instantiation logic.
    *
-   * 用于创建新指令实例的工厂函数。最初将为 null 。在指令实例化逻辑首次请求工厂时填充。
+   * 用于创建新指令实例的工厂函数。最初将为 null。在指令实例化逻辑首次请求工厂时填充。
    *
    */
   readonly factory: FactoryFn<T>|null;
@@ -348,7 +348,7 @@ export interface DirectiveDef<T> {
    * Function that will add the host directives to the list of matches during directive matching.
    * Patched onto the definition by the `HostDirectivesFeature`.
    *
-   * 在指令匹配期间将宿主指令添加到匹配列表的函数。 由 `HostDirectivesFeature` 修补到定义上。
+   * 在指令匹配期间将宿主指令添加到匹配列表的函数。由 `HostDirectivesFeature` 修补到定义上。
    *
    * @param currentDef Definition that has been matched.
    *
@@ -357,12 +357,12 @@ export interface DirectiveDef<T> {
    * @param matchedDefs List of all matches for a specified node. Will be mutated to include the
    * host directives.
    *
-   * 指定节点的所有匹配列表。 将被变异以包含宿主指令。
+   * 指定节点的所有匹配列表。将被变异以包含宿主指令。
    *
    * @param hostDirectiveDefs Mapping of directive definitions to their host directive
    * configuration. Host directives will be added to the map as they're being matched to the node.
    *
-   * 将指令定义映射到它们的宿主指令配置。 宿主指令将在与节点匹配时添加到地图中。
+   * 将指令定义映射到它们的宿主指令配置。宿主指令将在与节点匹配时添加到地图中。
    *
    */
   findHostDirectiveDefs:
@@ -494,18 +494,18 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
    *
    * - `Native`: Use the native encapsulation mechanism of the renderer.
    *
-   *   `Native` ：使用渲染器的原生封装机制。
+   *   `Native`：使用渲染器的原生封装机制。
    *
    * - `ShadowDom`: Use modern [ShadowDOM](https://w3c.github.io/webcomponents/spec/shadow/) and
    *     create a ShadowRoot for component's host element.
    *
    *   `ShadowDom`
-   *   ：使用现代[ShadowDOM](https://w3c.github.io/webcomponents/spec/shadow/)并为组件的宿主元素创建一个
+   *：使用现代[ShadowDOM](https://w3c.github.io/webcomponents/spec/shadow/)并为组件的宿主元素创建一个
    *   ShadowRoot。
    *
    * - `None`: Do not provide any template or style encapsulation.
    *
-   *   `None` ：不提供任何模板或样式封装。
+   *   `None`：不提供任何模板或样式封装。
    *
    */
   readonly encapsulation: ViewEncapsulation;
@@ -565,7 +565,7 @@ export interface ComponentDef<T> extends DirectiveDef<T> {
   /**
    * Unfiltered list of all dependencies of a component, or `null` if none.
    *
-   * 组件所有依赖项的未过滤列表，如果没有，则为 `null` 。
+   * 组件所有依赖项的未过滤列表，如果没有，则为 `null`。
    *
    */
   dependencies: TypeOrFactory<DependencyTypeList>|null;
@@ -653,7 +653,7 @@ export interface PipeDef<T> {
    * Factory function used to create a new pipe instance. Will be null initially.
    * Populated when the factory is first requested by pipe instantiation logic.
    *
-   * 用于创建新管道实例的工厂函数。最初将为 null 。在管道实例化逻辑首次请求工厂时填充。
+   * 用于创建新管道实例的工厂函数。最初将为 null。在管道实例化逻辑首次请求工厂时填充。
    *
    */
   factory: FactoryFn<T>|null;
@@ -739,7 +739,7 @@ export interface HostDirectiveDef<T = unknown> {
  * they represent. Also serves as an allowlist of the inputs/outputs from the host directive that
  * the author has decided to expose.
  *
- * 指令绑定的公共别名与其表示的基础输入/输出之间的映射。 还用作作者决定公开的宿主指令的输入/输出的白名单。
+ * 指令绑定的公共别名与其表示的基础输入/输出之间的映射。还用作作者决定公开的宿主指令的输入/输出的白名单。
  *
  */
 export type HostDirectiveBindingMap = {

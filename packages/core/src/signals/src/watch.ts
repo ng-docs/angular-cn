@@ -12,7 +12,7 @@ import {ReactiveNode, setActiveConsumer} from './graph';
  * A cleanup function that can be optionally registered from the watch logic. If registered, the
  * cleanup logic runs before the next watch execution.
  *
- * 可以从监视逻辑中选择性地注册的清理功能。 如果已注册，清理逻辑将在下一次监视执行之前运行。
+ * 可以从监视逻辑中选择性地注册的清理功能。如果已注册，清理逻辑将在下一次监视执行之前运行。
  *
  */
 export type WatchCleanupFn = () => void;
@@ -36,7 +36,7 @@ const NOOP_CLEANUP_FN: WatchCleanupFn = () => {};
  * `Watch` doesn't run reactive expressions itself, but relies on a consumer-
  * provided scheduling operation to coordinate calling `Watch.run()`.
  *
- * `Watch` 本身不运行反应式表达式，而是依赖于消费者提供的调度操作来协调调用 `Watch.run()` 。
+ * `Watch` 本身不运行反应式表达式，而是依赖于消费者提供的调度操作来协调调用 `Watch.run()`。
  *
  */
 export class Watch extends ReactiveNode {

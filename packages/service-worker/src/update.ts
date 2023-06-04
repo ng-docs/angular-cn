@@ -52,7 +52,7 @@ export class SwUpdate {
    *
    * Use {@link versionUpdates} instead.
    *
-   * 改用 {@link versionUpdates} 。
+   * 改用 {@link versionUpdates}。
    *
    * The behavior of `available` can be replicated by using `versionUpdates` by filtering for the
    * `VersionReadyEvent`:
@@ -141,7 +141,7 @@ export class SwUpdate {
    *
    * - resolves to `true` if a new version was found and is ready to be activated.
    *
-   *   如果找到了新版本并准备好激活，则解析为 `true` 。
+   *   如果找到了新版本并准备好激活，则解析为 `true`。
    *
    * - resolves to `false` if no new version was found
    *
@@ -195,7 +195,7 @@ export class SwUpdate {
    * - resolves to `false` if no update was available \(for example, the client was already on the
    *   latest version\).
    *
-   *   如果没有可用的更新（例如，客户端已经在最新版本上），则解析为 `false` 。
+   *   如果没有可用的更新（例如，客户端已经在最新版本上），则解析为 `false`。
    *
    * - rejects if any error occurs
    *

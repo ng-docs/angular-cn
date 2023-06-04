@@ -185,7 +185,7 @@ export abstract class Expression {
   /**
    * Return true if the expression is constant.
    *
-   * 如果表达式是常量，则返回 true 。
+   * 如果表达式是常量，则返回 true。
    *
    */
   abstract isConstant(): boolean;
@@ -537,7 +537,7 @@ export class PlaceholderPiece {
    * The `associatedMessage` is mainly used to provide a relationship to an ICU message that has
    * been extracted out from the message containing the placeholder.
    *
-   * 对此占位符关联的另一条消息的引用。 `associatedMessage` 主要用于提供与 ICU
+   * 对此占位符关联的另一条消息的引用。`associatedMessage` 主要用于提供与 ICU
    * 消息的关系，该消息已从包含占位符的消息中提取出来。
    */
   constructor(
@@ -624,7 +624,7 @@ export class LocalizedString extends Expression {
    *
    * The format is `:<placeholder-name>[@@<associated-id>]:`.
    *
-   * 格式是 `:<placeholder-name>[@@<associated-id>]:` 。
+   * 格式是 `:<placeholder-name>[@@<associated-id>]:`。
    *
    * The `associated-id` is the message id of the \(usually an ICU\) message to which this placeholder
    * refers.

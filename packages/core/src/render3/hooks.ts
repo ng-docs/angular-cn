@@ -23,7 +23,7 @@ import {isInCheckNoChangesMode} from './state';
 /**
  * Adds all directive lifecycle hooks from the given `DirectiveDef` to the given `TView`.
  *
- * 将给定 `DirectiveDef` 中的所有指令生命周期钩子添加到给定的 `TView` 。
+ * 将给定 `DirectiveDef` 中的所有指令生命周期钩子添加到给定的 `TView`。
  *
  * Must be run *only* on the first template pass.
  *
@@ -32,7 +32,7 @@ import {isInCheckNoChangesMode} from './state';
  * Sets up the pre-order hooks on the provided `tView`,
  * see {@link HookData} for details about the data structure.
  *
- * 在提供的 `tView` 上设置预购钩子，有关数据结构的详细信息，请参阅{@link HookData} 。
+ * 在提供的 `tView` 上设置预购钩子，有关数据结构的详细信息，请参阅{@link HookData}。
  *
  * @param directiveIndex The index of the directive in LView
  *
@@ -82,12 +82,12 @@ export function registerPreOrderHooks(
  * Sets up the content, view, and destroy hooks on the provided `tView`,
  * see {@link HookData} for details about the data structure.
  *
- * 在提供的 `tView` 上设置内容、视图和销毁钩子，有关数据结构的详细信息，请参阅{@link HookData} 。
+ * 在提供的 `tView` 上设置内容、视图和销毁钩子，有关数据结构的详细信息，请参阅{@link HookData}。
  *
  * NOTE: This does not set up `onChanges`, `onInit` or `doCheck`, those are set up
  * separately at `elementStart`.
  *
- * 注意：这不会设置 `onChanges`、`onInit` 或 `doCheck` ，它们是在 `elementStart` 处单独设置的。
+ * 注意：这不会设置 `onChanges`、`onInit` 或 `doCheck`，它们是在 `elementStart` 处单独设置的。
  *
  * @param tView The current TView
  *
@@ -152,7 +152,7 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
  *    `[[onInit1, onInit2], [afterContentInit1], [afterViewInit1, afterViewInit2, afterViewInit3]]`
  *    They are are stored as flags in LView[FLAGS].
  *
- *    初始化钩子（ngOnInit、ngAfterContentInit、ngAfterViewInit）都必须在许多变更检测周期中执行一次，并且只能执行一次。即使某些钩子抛出，或者某些递归触发变更检测周期，也必须是真的。为了解决这个问题，需要跟踪这些初始化钩子的执行状态。这是通过在视图中存储和维护标志来完成的： {@link
+ *    初始化钩子（ngOnInit、ngAfterContentInit、ngAfterViewInit）都必须在许多变更检测周期中执行一次，并且只能执行一次。即使某些钩子抛出，或者某些递归触发变更检测周期，也必须是真的。为了解决这个问题，需要跟踪这些初始化钩子的执行状态。这是通过在视图中存储和维护标志来完成的：{@link
  *     InitPhaseState} 和该阶段中的索引。它们可以被视为以下结构中的游标：
  *     `[[onInit1, onInit2], [afterContentInit1], [afterViewInit1, afterViewInit2, afterViewInit3]]` 它们作为标志存储在 LView
  *     [FLAGS][FLAGS]中。
@@ -201,12 +201,12 @@ export function registerPostOrderHooks(tView: TView, tNode: TNode): void {
  * - null: execute hooks only from the saved index until the end of the array \(pre-order case, when
  *   flushing the remaining hooks\)
  *
- *   null ：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
+ *   null：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
  *
  * - number: execute hooks only from the saved index until that node index exclusive \(pre-order
  *   case, when executing select\(number\)\)
  *
- *   number ：仅从保存的索引执行钩子，直到该节点索引排他（预购情况，执行 select\(number\) 时）
+ *   number：仅从保存的索引执行钩子，直到该节点索引排他（预购情况，执行 select\(number\) 时）
  *
  */
 export function executeCheckHooks(lView: LView, hooks: HookData, nodeIndex?: number|null) {
@@ -240,12 +240,12 @@ export function executeCheckHooks(lView: LView, hooks: HookData, nodeIndex?: num
  * - null: execute hooks only from the saved index until the end of the array \(pre-order case, when
  *   flushing the remaining hooks\)
  *
- *   null ：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
+ *   null：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
  *
  * - number: execute hooks only from the saved index until that node index exclusive \(pre-order
  *   case, when executing select\(number\)\)
  *
- *   number ：仅从保存的索引执行钩子，直到该节点索引排他（预购情况，执行 select\(number\) 时）
+ *   number：仅从保存的索引执行钩子，直到该节点索引排他（预购情况，执行 select\(number\) 时）
  *
  */
 export function executeInitAndCheckHooks(
@@ -298,12 +298,12 @@ export function incrementInitPhaseFlags(lView: LView, initPhase: InitPhaseState)
  * - null: execute hooks only from the saved index until the end of the array \(pre-order case, when
  *   flushing the remaining hooks\)
  *
- *   null ：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
+ *   null：仅从保存的索引到数组末尾执行钩子（预购情况，刷新其余钩子时）
  *
  * - number: execute hooks only from the saved index until that node index exclusive \(pre-order
  *   case, when executing select\(number\)\)
  *
- *   number ：仅从保存的索引执行钩子，直到该节点索引不包括在内（预购情况，执行 select\(number\) 时）
+ *   number：仅从保存的索引执行钩子，直到该节点索引不包括在内（预购情况，执行 select\(number\) 时）
  *
  */
 function callHooks(

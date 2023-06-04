@@ -320,9 +320,9 @@ There are two possible degraded states:
 | :---------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 降级状态                | 详情                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `EXISTING_CLIENTS_ONLY` | The service worker does not have a clean copy of the latest known version of the application. Older cached versions are safe to use, so existing tabs continue to run from cache, but new loads of the application will be served from the network. The service worker will try to recover from this state when a new version of the application is detected and installed. This happens when a new `ngsw.json` is available. |
-| `EXISTING_CLIENTS_ONLY` | Service Worker 没有应用的最新已知版本的干净副本。较旧的缓存版本可以安全使用，因此现有的选项卡会继续从缓存中运行，但应用中的新加载将由网络提供。当检测到并安装好新版本的应用程序时，Service Worker 将尝试从此状态恢复。当有新的 `ngsw.json` 可用时，会发生这种情况。                                                                                                                                                           |
+| `EXISTING_CLIENTS_ONLY` | Service Worker 没有应用的最新已知版本的干净副本。较旧的缓存版本可以安全使用，因此现有的选项卡会继续从缓存中运行，但应用中的新加载将由网络提供。当检测到并安装好新版本的应用程序时，Service Worker 将尝试从此状态恢复。当有新的 `ngsw.json` 可用时，会发生这种情况。|
 | `SAFE_MODE`             | The service worker cannot guarantee the safety of using cached data. Either an unexpected error occurred or all cached versions are invalid. All traffic will be served from the network, running as little service worker code as possible.                                                                                                                                                                                  |
-| `SAFE_MODE`             | Service Worker 不能保证使用缓存数据的安全性。发生了意外错误或所有缓存版本都无效。这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。                                                                                                                                                                                                                                                                           |
+| `SAFE_MODE`             | Service Worker 不能保证使用缓存数据的安全性。发生了意外错误或所有缓存版本都无效。这时所有的流量都将从网络提供，尽量少运行 Service Worker 中的代码。|
 
 In both cases, the parenthetical annotation provides the
 error that caused the service worker to enter the degraded state.
@@ -333,7 +333,7 @@ Both states are temporary; they are saved only for the lifetime of the [ServiceW
 The browser sometimes terminates an idle service worker to conserve memory and processor power, and creates a new service worker instance in response to network events.
 The new instance starts in the `NORMAL` mode, regardless of the state of the previous instance.
 
-这两种状态都是暂时的；它们仅在 [ServiceWorker 实例](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope) 的生命周期内保存。 浏览器有时会终止空闲的 Service Worker，以节省内存和处理能力，并创建一个新的 Service Worker 实例来响应网络事件。 无论先前实例的状态如何，新实例均以 `NORMAL` 模式启动。
+这两种状态都是暂时的；它们仅在 [ServiceWorker 实例](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope) 的生命周期内保存。浏览器有时会终止空闲的 Service Worker，以节省内存和处理能力，并创建一个新的 Service Worker 实例来响应网络事件。无论先前实例的状态如何，新实例均以 `NORMAL` 模式启动。
 
 #### Latest manifest hash
 

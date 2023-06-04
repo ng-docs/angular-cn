@@ -33,7 +33,7 @@ export interface ValueSansProvider {
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  * @usageNotes
  *
  * ### Example
@@ -105,7 +105,7 @@ export interface StaticClassSansProvider {
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='StaticClassProvider'}
@@ -151,7 +151,7 @@ export interface StaticClassProvider extends StaticClassSansProvider {
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  * @usageNotes
  *
  * ```ts
@@ -178,7 +178,7 @@ export interface ConstructorSansProvider {
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='ConstructorProvider'}
@@ -219,7 +219,7 @@ export interface ConstructorProvider extends ConstructorSansProvider {
  * @see `ExistingProvider`
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  *
  * @publicApi
  */
@@ -240,7 +240,7 @@ export interface ExistingSansProvider {
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='ExistingProvider'}
@@ -281,7 +281,7 @@ export interface ExistingProvider extends ExistingSansProvider {
  * @see `FactoryProvider`
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  *
  * @publicApi
  */
@@ -313,7 +313,7 @@ export interface FactorySansProvider {
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='FactoryProvider'}
@@ -361,10 +361,10 @@ export interface FactoryProvider extends FactorySansProvider {
  *
  * @see `Injector.create()`.
  *
- * `Injector.create()` 。
+ * `Injector.create()`。
  * @see ["Dependency Injection Guide"](guide/dependency-injection-providers).
  *
- * [“依赖注入指南”](guide/dependency-injection-providers) 。
+ * [“依赖注入指南”](guide/dependency-injection-providers)。
  * @publicApi
  */
 export type StaticProvider =
@@ -383,7 +383,7 @@ export type StaticProvider =
  *
  * For more details, see the ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * 欲知详情，请参见[“依赖项注入指南”](guide/dependency-injection) 。
+ * 欲知详情，请参见[“依赖项注入指南”](guide/dependency-injection)。
  *
  * @usageNotes
  *
@@ -401,7 +401,7 @@ export interface TypeProvider extends Type<any> {}
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  *
  * @publicApi
  */
@@ -422,7 +422,7 @@ export interface ClassSansProvider {
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  * @usageNotes
  *
  * {@example core/di/ts/provider_spec.ts region='ClassProvider'}
@@ -468,7 +468,7 @@ export interface ClassProvider extends ClassSansProvider {
  *
  * @see ["Dependency Injection Guide"](guide/dependency-injection).
  *
- * [“依赖注入指南”](guide/dependency-injection) 。
+ * [“依赖注入指南”](guide/dependency-injection)。
  *
  * @see `StaticProvider`
  *
@@ -491,7 +491,7 @@ export type Provider = TypeProvider|ValueProvider|ClassProvider|ConstructorProvi
  *
  * This wrapper type prevents access to the `Provider`s inside.
  *
- * 这种包装器类型阻止访问内部的 `Provider` 。
+ * 这种包装器类型阻止访问内部的 `Provider`。
  *
  * @see `makeEnvironmentProviders`
  * @see `importProvidersFrom`

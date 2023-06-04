@@ -30,7 +30,7 @@ import {getComponentLViewForHydration, NGH_ATTR_NAME, NGH_DATA_KEY, TextNodeMark
  * collection returning the index of the previously collected serialized view.
  * This reduces the number of annotations needed for a given page.
  *
- * 跟踪所有序列化视图（ `ngh` DOM 注释）以避免重复的集合。 尝试添加重复视图会导致集合返回先前收集的序列化视图的索引。 这减少了给定页面所需的注释数量。
+ * 跟踪所有序列化视图（ `ngh` DOM 注释）以避免重复的集合。尝试添加重复视图会导致集合返回先前收集的序列化视图的索引。这减少了给定页面所需的注释数量。
  *
  */
 class SerializedViewCollection {
@@ -67,7 +67,7 @@ let tViewSsrId = 0;
  * The id is also stored on this instance of a TView and reused in
  * subsequent calls.
  *
- * 为给定的 TView 生成一个唯一的 id 并返回这个 id。 id 也存储在 TView 的这个实例上，并在后续调用中重复使用。
+ * 为给定的 TView 生成一个唯一的 id 并返回这个 id。id 也存储在 TView 的这个实例上，并在后续调用中重复使用。
  *
  * This id is needed to uniquely identify and pick up dehydrated views
  * at runtime.
@@ -87,7 +87,7 @@ function getSsrId(tView: TView): string {
  * process. The context is used to share and collect information
  * during the serialization.
  *
- * 描述序列化过程中可用的上下文。 上下文用于在序列化期间共享和收集信息。
+ * 描述序列化过程中可用的上下文。上下文用于在序列化期间共享和收集信息。
  *
  */
 interface HydrationContext {
@@ -247,7 +247,7 @@ function appendSerializedNodePath(ngh: SerializedView, tNode: TNode, lView: LVie
  * This info is needed at runtime to avoid DOM lookups for this element
  * and instead, the element would be created from scratch.
  *
- * 用于附加有关断开连接的节点的信息的辅助函数。 在运行时需要此信息以避免为此元素进行 DOM 查找，相反，该元素将从头开始创建。
+ * 用于附加有关断开连接的节点的信息的辅助函数。在运行时需要此信息以避免为此元素进行 DOM 查找，相反，该元素将从头开始创建。
  *
  */
 function appendDisconnectedNodeIndex(ngh: SerializedView, tNode: TNode) {
@@ -448,7 +448,7 @@ function serializeLView(lView: LView, context: HydrationContext): SerializedView
  * Determines whether a component instance that is represented
  * by a given LView uses `ViewEncapsulation.ShadowDom`.
  *
- * 确定由给定 LView 表示的组件实例是否使用 `ViewEncapsulation.ShadowDom` 。
+ * 确定由给定 LView 表示的组件实例是否使用 `ViewEncapsulation.ShadowDom`。
  *
  */
 function componentUsesShadowDomEncapsulation(lView: LView): boolean {
@@ -510,7 +510,7 @@ function annotateHostElementForHydration(
  * These get swapped back for empty text nodes or separators once hydration happens
  * on the client.
  *
- * 物理插入注释节点以确保空文本节点和相邻的文本节点分隔符在 DOM 的服务器序列化后得到保留。 一旦在客户端发生水合，这些就会换回空文本节点或分隔符。
+ * 物理插入注释节点以确保空文本节点和相邻的文本节点分隔符在 DOM 的服务器序列化后得到保留。一旦在客户端发生水合，这些就会换回空文本节点或分隔符。
  *
  * @param corruptedTextNodes The Map of text nodes to be replaced with comments
  *
@@ -557,7 +557,7 @@ function isContentProjectedNode(tNode: TNode): boolean {
  * layer \(in Domino\) for now. Longer-term solution should not rely on the DOM emulation and
  * only use internal data structures and state to compute this information.
  *
- * 注意：我们利用了目前在 DOM 仿真层（在 Domino 中）中提供此信息这一事实。 长期解决方案不应依赖 DOM 模拟，而应仅使用内部数据结构和状态来计算此信息。
+ * 注意：我们利用了目前在 DOM 仿真层（在 Domino 中）中提供此信息这一事实。长期解决方案不应依赖 DOM 模拟，而应仅使用内部数据结构和状态来计算此信息。
  *
  */
 function isDisconnectedNode(tNode: TNode, lView: LView) {

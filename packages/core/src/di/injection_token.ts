@@ -52,9 +52,9 @@ import {ɵɵdefineInjectable} from './interface/defs';
  * this option is now deprecated\). As mentioned above, `'root'` is the default value for
  * `providedIn`.
  *
- * 此外，如果指定了 `factory` ，你还可以指定 `providedIn`
+ * 此外，如果指定了 `factory`，你还可以指定 `providedIn`
  * 选项，它会覆盖上述行为并将标记标记为属于特定的 `@NgModule`
- * （注意：此选项现在已被弃用）。正如上面提到的， `'root'` 是 `providedIn` 的默认值。
+ * （注意：此选项现在已被弃用）。正如上面提到的，`'root'` 是 `providedIn` 的默认值。
  *
  * The `providedIn: NgModule` and `providedIn: 'any'` options are deprecated.
  *

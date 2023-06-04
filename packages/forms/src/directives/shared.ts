@@ -41,7 +41,7 @@ export const CALL_SET_DISABLED_STATE = new InjectionToken(
  * `setDisabledState` when attached, which is the most correct behavior. Otherwise, it will only be
  * called when disabled, which is the legacy behavior for compatibility.
  *
- * CALL_SET_DISABLED_STATE 的类型。如果 `always` ，则 ControlValueAccessor 将在附加时始终调用 `setDisabledState` ，这是最正确的行为。否则，它只会在禁用时被调用，这是为了兼容的传统行为。
+ * CALL_SET_DISABLED_STATE 的类型。如果 `always`，则 ControlValueAccessor 将在附加时始终调用 `setDisabledState`，这是最正确的行为。否则，它只会在禁用时被调用，这是为了兼容的传统行为。
  *
  * @publicApi
  * @see `FormsModule.withConfig`
@@ -255,7 +255,7 @@ export function setUpValidators(control: AbstractControl, dir: AbstractControlDi
  *
  * true if a control was updated as a result of this action.
  *
- * 如果控件由于此操作而更新，则为 true 。
+ * 如果控件由于此操作而更新，则为 true。
  *
  */
 export function cleanUpValidators(
@@ -378,7 +378,7 @@ export function setUpFormContainer(
  *
  * true if a control was updated as a result of this action.
  *
- * 如果控件由于此操作而更新，则为 true 。
+ * 如果控件由于此操作而更新，则为 true。
  *
  */
 export function cleanUpFormContainer(

@@ -29,7 +29,7 @@ import {assertStandalone, standardizeConfig, validateConfig} from './utils/confi
  * `provideRouter`, or `Router.resetConfig()`.
  *
  * 我们建议在几乎所有情况下使用更高级的 API，例如 `RouterModule.forRoot()` 、
- * `RouterModule.forChild()`、`provideRoutes` 或 `Router.resetConfig()` 。
+ * `RouterModule.forChild()`、`provideRoutes` 或 `Router.resetConfig()`。
  *
  * @publicApi
  */

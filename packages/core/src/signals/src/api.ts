@@ -28,11 +28,11 @@ const SIGNAL = Symbol('SIGNAL');
  * Signals are functions which returns their current value. To access the current value of a signal,
  * call it.
  *
- * 信号是返回其当前值的函数。 要访问信号的当前值，请调用它。
+ * 信号是返回其当前值的函数。要访问信号的当前值，请调用它。
  *
  * Ordinary values can be turned into `Signal`s with the `signal` function.
  *
- * 可以使用 `signal` 函数将普通值转换为 `Signal` 。
+ * 可以使用 `signal` 函数将普通值转换为 `Signal`。
  *
  * @developerPreview
  */
@@ -43,7 +43,7 @@ export type Signal<T> = (() => T)&{
 /**
  * Checks if the given `value` is a reactive `Signal`.
  *
- * 检查给定 `value` 是否为反应 `Signal` 。
+ * 检查给定 `value` 是否为反应 `Signal`。
  *
  * @developerPreview
  */

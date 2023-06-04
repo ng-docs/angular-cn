@@ -59,7 +59,7 @@ class Bindings {
  * We must create a `Directive` that will make this AngularJS component
  * available inside Angular templates.
  *
- * 我们必须创建一个 `Directive` ，使这个 AngularJS 组件在 Angular 模板中可用。
+ * 我们必须创建一个 `Directive`，使这个 AngularJS 组件在 Angular 模板中可用。
  *
  * {@example upgrade/static/ts/full/module.ts region="ng1-hero-wrapper"}
  *
@@ -68,7 +68,7 @@ class Bindings {
  * because the AOT compiler requires that this information is statically available at
  * compile time.
  *
- * 在此示例中，你可以看到我们必须从 `UpgradeComponent` 基类派生，但也提供了一个 {@link Directive `@Directive` } 装饰器。 这是因为 AOT 编译器要求此信息在编译时静态可用。
+ * 在此示例中，你可以看到我们必须从 `UpgradeComponent` 基类派生，但也提供了一个 {@link Directive `@Directive` } 装饰器。这是因为 AOT 编译器要求此信息在编译时静态可用。
  *
  * Note that we must do the following:
  *

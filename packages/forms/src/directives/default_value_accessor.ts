@@ -45,7 +45,7 @@ export const COMPOSITION_BUFFER_MODE = new InjectionToken<boolean>('CompositionE
  * elements. The accessor is used by the `FormControlDirective`, `FormControlName`, and
  * `NgModel` directives.
  *
- * 默认的 `ControlValueAccessor` ，用于写入值并监听输入元素的更改。该访问器供 `FormControlDirective`
+ * 默认的 `ControlValueAccessor`，用于写入值并监听输入元素的更改。该访问器供 `FormControlDirective`
  * 、`FormControlName` 和 `NgModel` 指令使用。
  *
  * {@searchKeywords ngDefaultControl}

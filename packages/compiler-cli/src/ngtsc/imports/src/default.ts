@@ -35,7 +35,7 @@ export function attachDefaultImportDeclaration(
  * Obtains the default import declaration that `expr` depends on, or `null` if there is no such
  * dependency.
  *
- * 获取 `expr` 依赖的默认导入声明，如果不存在这样的依赖项，则获取 `null` 。
+ * 获取 `expr` 依赖的默认导入声明，如果不存在这样的依赖项，则获取 `null`。
  *
  */
 export function getDefaultImportDeclaration(expr: WrappedNodeExpr<unknown>): ts.ImportDeclaration|
@@ -85,7 +85,7 @@ export function getDefaultImportDeclaration(expr: WrappedNodeExpr<unknown>): ts.
  * required.
  *
  * 为避免这种情况，编译器必须使用 `ts.getMutableClone`
- * “接触”导入，并且应该仅对实际使用的导入执行此操作。 `DefaultImportTracker`
+ * “接触”导入，并且应该仅对实际使用的导入执行此操作。`DefaultImportTracker`
  * 会在遇到和发出这些导入时跟踪它们，并实现可以根据需要正确标记导入的转换。
  *
  * This problem does not exist for non-default imports as the compiler can easily insert
@@ -100,7 +100,7 @@ export class DefaultImportTracker {
    * A `Map` which tracks the `Set` of `ts.ImportClause`s for default imports that were used in
    * a given file name.
    *
-   * 一个 `Map` ，它跟踪 `ts.ImportDeclaration` 的 `Set` 以进行默认导入，这些导入在给定的
+   * 一个 `Map`，它跟踪 `ts.ImportDeclaration` 的 `Set` 以进行默认导入，这些导入在给定的
    * `ts.SourceFile` 中使用并需要保留。
    *
    */
@@ -122,7 +122,7 @@ export class DefaultImportTracker {
    * Get a `ts.TransformerFactory` which will preserve default imports that were previously marked
    * as used.
    *
-   * 获取一个 `ts.TransformerFactory` ，它将保留以前标记为已使用的默认导入。
+   * 获取一个 `ts.TransformerFactory`，它将保留以前标记为已使用的默认导入。
    *
    * This transformer must run after any other transformers which call `recordUsedImport`.
    *

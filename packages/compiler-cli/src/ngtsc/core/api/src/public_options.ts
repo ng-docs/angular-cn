@@ -41,11 +41,11 @@ export interface LegacyNgcOptions {
    *
    * For maximum type-checking, set this to `true`, and set `strictTemplates` to `true`.
    *
-   * 对于最大程度的类型检查，请将其设置为 `true` ，并将 `strictTemplates` 设置为 `true` 。
+   * 对于最大程度的类型检查，请将其设置为 `true`，并将 `strictTemplates` 设置为 `true`。
    *
    * It is an error for this flag to be `false`, while `strictTemplates` is set to `true`.
    *
-   * 此标志为 `false` 是错误的，而 `strictTemplates` 设置为 `true` 。
+   * 此标志为 `false` 是错误的，而 `strictTemplates` 设置为 `true`。
    *
    * @deprecated
    *
@@ -54,7 +54,7 @@ export interface LegacyNgcOptions {
    * deprecated, `strictTemplates` and its related options should be used instead.
    *
    * `fullTemplateTypeCheck` 选项已被更细化的 `strictTemplates` 系列编译器选项取代。因此，不推荐使用
-   * `fullTemplateTypeCheck` ，应改为使用 `strictTemplates` 及其相关选项。
+   * `fullTemplateTypeCheck`，应改为使用 `strictTemplates` 及其相关选项。
    *
    */
   fullTemplateTypeCheck?: boolean;
@@ -90,12 +90,12 @@ export interface LegacyNgcOptions {
    * 文件中，平面模块索引用于导入符号，包括库索引中的公共 API 以及隐藏的内部符号。默认情况下，
    * `files` 字段中提供的 .ts 文件被假定为库索引。如果指定了多个，则使用 `libraryIndex`
    * 来选择要使用的文件。如果提供了多个 .ts 文件，并且没有提供 `libraryIndex`
-   * ，则会产生错误。将使用给定的 `flatModuleOutFile` 名称在发出库索引 .d.ts
+   *，则会产生错误。将使用给定的 `flatModuleOutFile` 名称在发出库索引 .d.ts
    * 文件的位置创建一个平面模块索引 .d.ts 和 .js。例如，如果一个库使用 `public_api.ts`
-   * 文件作为模块的库索引，则 `tsconfig.json` `files` 字段将是 `["public_api.ts"]` 。然后可以将
-   * `flatModuleOutFile` 选项设置为例如 `"index.js"` ，它会生成 `index.d.ts` 和
-   * `index.metadata.json` 文件。库的 `package.json` 的 `module` 字段将是 `"index.js"` ，`typings`
-   * 字段将是 `"index.d.ts"` 。
+   * 文件作为模块的库索引，则 `tsconfig.json` `files` 字段将是 `["public_api.ts"]`。然后可以将
+   * `flatModuleOutFile` 选项设置为例如 `"index.js"`，它会生成 `index.d.ts` 和
+   * `index.metadata.json` 文件。库的 `package.json` 的 `module` 字段将是 `"index.js"`，`typings`
+   * 字段将是 `"index.d.ts"`。
    *
    */
   flatModuleOutFile?: string;
@@ -120,7 +120,7 @@ export interface LegacyNgcOptions {
    *
    * 始终报告错误，提供了无法确定注入类型的参数。当未提供此值选项或为 `false` 时，无法解析类型的带有
    * `@Injectable` 标记的类的构造函数参数将产生警告。使用此选项 `true`
-   * ，它们会产生错误。当未提供此选项时，被视为 `false` 。
+   *，它们会产生错误。当未提供此选项时，被视为 `false`。
    *
    */
   strictInjectionParameters?: boolean;
@@ -129,7 +129,7 @@ export interface LegacyNgcOptions {
    * Whether to remove blank text nodes from compiled templates. It is `false` by default starting
    * from Angular 6.
    *
-   * 是否从已编译的模板中删除空白文本节点。从 Angular 6 开始，默认情况下为 `false` 。
+   * 是否从已编译的模板中删除空白文本节点。从 Angular 6 开始，默认情况下为 `false`。
    *
    */
   preserveWhitespaces?: boolean;
@@ -146,7 +146,7 @@ export interface StrictTemplateOptions {
   /**
    * If `true`, implies all template strictness flags below \(unless individually disabled\).
    *
-   * 如果为 `true` ，则意味着下面的所有模板严格性标志（除非单独禁用）。
+   * 如果为 `true`，则意味着下面的所有模板严格性标志（除非单独禁用）。
    *
    * This flag is a superset of the deprecated `fullTemplateTypeCheck` option.
    *
@@ -154,7 +154,7 @@ export interface StrictTemplateOptions {
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is `true`.
    *
-   * 默认为 `false` ，即使 "fullTemplateTypeCheck" 是 `true` 。
+   * 默认为 `false`，即使 "fullTemplateTypeCheck" 是 `true`。
    *
    */
   strictTemplates?: boolean;
@@ -171,13 +171,13 @@ export interface StrictTemplateOptions {
    * directive or component is receiving the binding. If set to `true`, both sides of the assignment
    * are checked.
    *
-   * 例如，如果 this 为 `false` ，则表达式 `[input]="expr"` 将进行 `expr`
+   * 例如，如果 this 为 `false`，则表达式 `[input]="expr"` 将进行 `expr`
    * 类型检查，但不会将结果类型分配给正在接收绑定的任何指令或组件的 `input` 属性。如果设置为 `true`
-   * ，则会检查赋值的两边。
+   *，则会检查赋值的两边。
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is set.
    *
-   * 默认为 `false` ，即使设置了 "fullTemplateTypeCheck" 。
+   * 默认为 `false`，即使设置了 "fullTemplateTypeCheck"。
    *
    */
   strictInputTypes?: boolean;
@@ -193,12 +193,12 @@ export interface StrictTemplateOptions {
    * flag has no effect.
    *
    * 默认为 `false`
-   * ，即使设置了“fullTemplateTypeCheck”、“strictTemplates”和/或“strictInputTypes”。请注意，如果未设置
-   * `strictInputTypes` 或设置为 `false` ，则此标志无效。
+   *，即使设置了“fullTemplateTypeCheck”、“strictTemplates”和/或“strictInputTypes”。请注意，如果未设置
+   * `strictInputTypes` 或设置为 `false`，则此标志无效。
    *
    * Tracking issue for enabling this by default: https://github.com/angular/angular/issues/38400
    *
-   * 默认启用此功能的跟踪问题： https://github.com/angular/angular/issues/38400
+   * 默认启用此功能的跟踪问题：https://github.com/angular/angular/issues/38400
    *
    */
   strictInputAccessModifiers?: boolean;
@@ -214,16 +214,16 @@ export interface StrictTemplateOptions {
    * binding expressions are wrapped in a non-null assertion operator to effectively disable strict
    * null checks.
    *
-   * 如果为 `true` ，在启用 TypeScript 的 `strictNullChecks`
+   * 如果为 `true`，在启用 TypeScript 的 `strictNullChecks`
    * 的情况下编译的应用程序将产生绑定类型错误，如果输入的类型不包含 `undefined` 或 `null`
-   * ，则可以估算为 `undefined` 或 `null` 。如果设置为 `false` ，则所有绑定表达式都包含在非 null
+   *，则可以估算为 `undefined` 或 `null`。如果设置为 `false`，则所有绑定表达式都包含在非 null
    * 断言运算符中，以有效禁用严格的 null 检查。
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is set. Note that if `strictInputTypes` is
    * not set, or set to `false`, this flag has no effect.
    *
-   * 默认为 `false` ，即使设置了 "fullTemplateTypeCheck" 。请注意，如果未设置 `strictInputTypes`
-   * 或设置为 `false` ，则此标志无效。
+   * 默认为 `false`，即使设置了 "fullTemplateTypeCheck"。请注意，如果未设置 `strictInputTypes`
+   * 或设置为 `false`，则此标志无效。
    *
    */
   strictNullInputTypes?: boolean;
@@ -242,13 +242,13 @@ export interface StrictTemplateOptions {
    * 例如，在包含 `<input matInput disabled>` 的模板中，`disabled` 属性最终会被 `matInput` 指令作为
    * `boolean`
    * 类型的输入使用。在运行时，输入将设置为属性的字符串值，对于没有值的属性，这是一个空字符串，因此在此标志设置为
-   * `true` 的情况下，将报告错误。如果设置为 `false` ，则文本属性将永远不会报告错误。
+   * `true` 的情况下，将报告错误。如果设置为 `false`，则文本属性将永远不会报告错误。
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is set. Note that if `strictInputTypes` is
    * not set, or set to `false`, this flag has no effect.
    *
-   * 默认为 `false` ，即使设置了 "fullTemplateTypeCheck" 。请注意，如果未设置 `strictInputTypes`
-   * 或设置为 `false` ，则此标志无效。
+   * 默认为 `false`，即使设置了 "fullTemplateTypeCheck"。请注意，如果未设置 `strictInputTypes`
+   * 或设置为 `false`，则此标志无效。
    *
    */
   strictAttributeTypes?: boolean;
@@ -262,12 +262,12 @@ export interface StrictTemplateOptions {
    * then the return type of `a?.b` for example will be the same as the type of the ternary
    * expression `a != null ? a.b : a`.
    *
-   * 如果这是 `false` ，则 `a?.b` 或 `a?()` 的返回类型将是 `any` 。如果设置为 `true` ，则 `a?.b`
-   * 的返回类型将与三元表达式 `a != null ? ab : a` 的类型相同 `a != null ? ab : a` 。
+   * 如果这是 `false`，则 `a?.b` 或 `a?()` 的返回类型将是 `any`。如果设置为 `true`，则 `a?.b`
+   * 的返回类型将与三元表达式 `a != null ? ab : a` 的类型相同 `a != null ? ab : a`。
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is set.
    *
-   * 默认为 `false` ，即使设置了 "fullTemplateTypeCheck" 。
+   * 默认为 `false`，即使设置了 "fullTemplateTypeCheck"。
    *
    */
   strictSafeNavigationTypes?: boolean;
@@ -281,12 +281,12 @@ export interface StrictTemplateOptions {
    * determined by the type of `document.createElement` for the given DOM node. If set to `false`,
    * the type of `ref` for DOM nodes will be `any`.
    *
-   * 如果为 `true` ，则模板中 DOM 节点上的 `#ref` 变量的类型将由给定 DOM 节点的
-   * `document.createElement` 类型确定。如果设置为 `false` ，则 DOM 节点的 `ref` 类型将是 `any` 。
+   * 如果为 `true`，则模板中 DOM 节点上的 `#ref` 变量的类型将由给定 DOM 节点的
+   * `document.createElement` 类型确定。如果设置为 `false`，则 DOM 节点的 `ref` 类型将是 `any`。
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is set.
    *
-   * 默认为 `false` ，即使设置了 "fullTemplateTypeCheck" 。
+   * 默认为 `false`，即使设置了 "fullTemplateTypeCheck"。
    *
    */
   strictDomLocalRefTypes?: boolean;
@@ -301,12 +301,12 @@ export interface StrictTemplateOptions {
    * `EventEmitter`/`Subject` of the output. If set to `false`, the `$event` variable will be of
    * type `any`.
    *
-   * 如果为 `true` ，则 `$event` 的类型将根据输出的 `EventEmitter` / `Subject`
-   * 的泛型类型来推断。如果设置为 `false` ，则 `$event` 变量将是 `any` 类型。
+   * 如果为 `true`，则 `$event` 的类型将根据输出的 `EventEmitter` / `Subject`
+   * 的泛型类型来推断。如果设置为 `false`，则 `$event` 变量将是 `any` 类型。
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is set.
    *
-   * 默认为 `false` ，即使设置了 "fullTemplateTypeCheck" 。
+   * 默认为 `false`，即使设置了 "fullTemplateTypeCheck"。
    *
    */
   strictOutputEventTypes?: boolean;
@@ -320,12 +320,12 @@ export interface StrictTemplateOptions {
    * `HTMLElementEventMap`, with a fallback to the native `Event` type. If set to `false`, the
    * `$event` variable will be of type `any`.
    *
-   * 如果为 `true` ，则 `$event` 的类型将根据 TypeScript 的 `HTMLElementEventMap` 推断，并回退到原生
-   * `Event` 类型。如果设置为 `false` ，则 `$event` 变量将是 `any` 类型。
+   * 如果为 `true`，则 `$event` 的类型将根据 TypeScript 的 `HTMLElementEventMap` 推断，并回退到原生
+   * `Event` 类型。如果设置为 `false`，则 `$event` 变量将是 `any` 类型。
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is set.
    *
-   * 默认为 `false` ，即使设置了 "fullTemplateTypeCheck" 。
+   * 默认为 `false`，即使设置了 "fullTemplateTypeCheck"。
    *
    */
   strictDomEventTypes?: boolean;
@@ -343,12 +343,12 @@ export interface StrictTemplateOptions {
    * will be included in the context type for the template. If `false`, any generic parameters will
    * be set to `any` in the template context type.
    *
-   * 如果组件具有泛型类型参数并且此设置为 `true` ，则这些泛型参数将包含在模板的上下文类型中。如果
-   * `false` ，则任何泛型参数在模板上下文类型中都将设置为 `any` 。
+   * 如果组件具有泛型类型参数并且此设置为 `true`，则这些泛型参数将包含在模板的上下文类型中。如果
+   * `false`，则任何泛型参数在模板上下文类型中都将设置为 `any`。
    *
    * Defaults to `false`, even if "fullTemplateTypeCheck" is set.
    *
-   * 默认为 `false` ，即使设置了 "fullTemplateTypeCheck" 。
+   * 默认为 `false`，即使设置了 "fullTemplateTypeCheck"。
    *
    */
   strictContextGenerics?: boolean;
@@ -357,11 +357,11 @@ export interface StrictTemplateOptions {
    * Whether object or array literals defined in templates use their inferred type, or are
    * interpreted as `any`.
    *
-   * 模板中定义的对象或数组文字是使用它们的推断类型，还是被解释为 `any` 。
+   * 模板中定义的对象或数组文字是使用它们的推断类型，还是被解释为 `any`。
    *
    * Defaults to `false` unless `fullTemplateTypeCheck` or `strictTemplates` are set.
    *
-   * 默认为 `false` ，除非设置了 `fullTemplateTypeCheck` 或 `strictTemplates` 。
+   * 默认为 `false`，除非设置了 `fullTemplateTypeCheck` 或 `strictTemplates`。
    *
    */
   strictLiteralTypes?: boolean;
@@ -420,7 +420,7 @@ export interface DiagnosticOptions {
      * The category to use for configurable diagnostics which are not overridden by `checks`. Uses
      * `warning` by default.
      *
-     * 用于不会被 `checks` 覆盖的可配置诊断的类别。默认使用 `warning` 。
+     * 用于不会被 `checks` 覆盖的可配置诊断的类别。默认使用 `warning`。
      *
      */
     defaultCategory?: DiagnosticCategoryLabel;
@@ -502,7 +502,7 @@ export interface BazelAndG3Options {
    *
    * NgModules 的 `.d.ts`
    * 文件包含指向它们的声明、导入和导出的类型指针。如果没有此标志，生成的类型定义将包括
-   * components/directives/pipes/NgModules ，它们在 NgModule
+   * components/directives/pipes/NgModules，它们在 NgModule
    * 中本地声明或导入，不一定要导出给消费者。
    *
    * With this flag set, the type definition generated in the `.d.ts` for an NgModule will be
@@ -571,7 +571,7 @@ export interface I18nOptions {
    *
    * The default value for now is `true`.
    *
-   * 现在的默认值为 `true` 。
+   * 现在的默认值为 `true`。
    *
    * Use this option when use are using the `$localize` based localization messages but
    * have not migrated the translation files to use the new `$localize` message id format.
@@ -608,8 +608,8 @@ export interface I18nOptions {
    * If `true` then we will normalize ICU expression line endings.
    * The default is `false`, but this will be switched in a future major release.
    *
-   * 如果 `true` ，那么我们将规范化 ICU 表达式行结尾。默认值为 `false`
-   * ，但这将在未来的主要版本中切换。
+   * 如果 `true`，那么我们将规范化 ICU 表达式行结尾。默认值为 `false`
+   *，但这将在未来的主要版本中切换。
    *
    */
   i18nNormalizeLineEndingsInICUs?: boolean;
@@ -663,7 +663,7 @@ export interface MiscOptions {
    * Defaults to `true`.
    *
    * 编译器是否应该避免为尚未导出的类生成代码。这仅在使用 `enableIvy: true`
-   * 构建时才处于活动状态。默认为 `true` 。
+   * 构建时才处于活动状态。默认为 `true`。
    *
    */
   compileNonExportedClasses?: boolean;

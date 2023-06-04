@@ -30,7 +30,7 @@ export interface CreateComputedOptions<T> {
 /**
  * Create a computed `Signal` which derives a reactive value from an expression.
  *
- * 创建一个计算 `Signal` ，它从表达式中导出反应值。
+ * 创建一个计算 `Signal`，它从表达式中导出反应值。
  *
  * @developerPreview
  */
@@ -46,7 +46,7 @@ export function computed<T>(computation: () => T, options?: CreateComputedOption
  * A dedicated symbol used before a computed value has been calculated for the first time.
  * Explicitly typed as `any` so we can use it as signal's value.
  *
- * 在第一次计算计算值之前使用的专用符号。 显式键入 `any` 以便我们可以将其用作信号的值。
+ * 在第一次计算计算值之前使用的专用符号。显式键入 `any` 以便我们可以将其用作信号的值。
  *
  */
 const UNSET: any = Symbol('UNSET');
@@ -56,7 +56,7 @@ const UNSET: any = Symbol('UNSET');
  * is in progress. Used to detect cycles in computation chains.
  * Explicitly typed as `any` so we can use it as signal's value.
  *
- * 用于代替计算信号值的专用符号，用于指示给定计算正在进行中。 用于检测计算链中的循环。 显式键入 `any` 以便我们可以将其用作信号的值。
+ * 用于代替计算信号值的专用符号，用于指示给定计算正在进行中。用于检测计算链中的循环。显式键入 `any` 以便我们可以将其用作信号的值。
  *
  */
 const COMPUTING: any = Symbol('COMPUTING');
@@ -66,7 +66,7 @@ const COMPUTING: any = Symbol('COMPUTING');
  * failed. The thrown error is cached until the computation gets dirty again.
  * Explicitly typed as `any` so we can use it as signal's value.
  *
- * 用于代替计算信号值的专用符号，用于指示给定计算失败。 抛出的错误会被缓存，直到计算再次变脏。 显式键入 `any` 以便我们可以将其用作信号的值。
+ * 用于代替计算信号值的专用符号，用于指示给定计算失败。抛出的错误会被缓存，直到计算再次变脏。显式键入 `any` 以便我们可以将其用作信号的值。
  *
  */
 const ERRORED: any = Symbol('ERRORED');

@@ -13,7 +13,7 @@
  * and attribute have the same identifier.
  *
  * `PropertyBinding` 表示属性名称和属性名称之间的映射。它是从 `"prop: attr"`
- * 格式的字符串解析的；或者只是 \`"propAndAttr" ，其中的属性和属性具有相同的标识符。
+ * 格式的字符串解析的；或者只是 \`"propAndAttr"，其中的属性和属性具有相同的标识符。
  *
  */
 export class PropertyBinding {

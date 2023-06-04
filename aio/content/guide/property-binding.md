@@ -60,7 +60,7 @@ To bind to an element's property, enclose it in square brackets, `[]`, which ide
 
 A target property is the DOM property to which you want to assign a value.
 
-要绑定到元素的属性 ，请将其括在方括号 `[]` 内，这会将此属性标为目标属性。目标属性就是你要对其进行赋值的 DOM 属性 。
+要绑定到元素的属性，请将其括在方括号 `[]` 内，这会将此属性标为目标属性。目标属性就是你要对其进行赋值的 DOM 属性。
 
 To assign a value to a target property for the image element's `src` property, type the following code:
 

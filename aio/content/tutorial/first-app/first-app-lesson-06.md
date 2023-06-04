@@ -52,7 +52,7 @@ If you have any trouble during this lesson, you can review the completed code fo
 
 * Your app sends data from the `HomeComponent` to the `HousingLocationComponent`.
 
-  应用程序将数据从 `HomeComponent` 发送到 `HousingLocationComponent` 。
+  应用程序将数据从 `HomeComponent` 发送到 `HousingLocationComponent`。
 
 ## Conceptual preview of Inputs
 
@@ -60,11 +60,11 @@ If you have any trouble during this lesson, you can review the completed code fo
 
 In lesson 5, you added `@Input` decorators to properties in the `HousingLocationComponent` allow the component to receive data. In this lesson, you'll continue the process of sharing data from the parent component to the child component by binding data to those properties in the template. There are several forms of data binding in Angular, in this lesson you'll use property binding.
 
-在第 5 课中，你将 `@Input` 装饰器添加到 `HousingLocationComponent` 中的属性上，以允许组件接收数据。在这节课中，你将通过将数据绑定到模板中的那些属性来从父组件向子组件共享数据。 Angular 中有多种形式的数据绑定，在这节课中，你将使用属性绑定。
+在第 5 课中，你将 `@Input` 装饰器添加到 `HousingLocationComponent` 中的属性上，以允许组件接收数据。在这节课中，你将通过将数据绑定到模板中的那些属性来从父组件向子组件共享数据。Angular 中有多种形式的数据绑定，在这节课中，你将使用属性绑定。
 
 Property binding enables you to connect a variable to an `Input` in an Angular template. The data is then dynamically bound to the `Input`.
 
-属性绑定能让你将变量连接到 Angular 模板中的 `Input` 属性。然后把数据动态绑定到此 `Input` 。
+属性绑定能让你将变量连接到 Angular 模板中的 `Input` 属性。然后把数据动态绑定到此 `Input`。
 
 For a more in depth explanation, please refer to the [Property binding](guide/property-binding) guide.
 

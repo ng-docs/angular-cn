@@ -1371,7 +1371,7 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - `:enter`/`:leave`, which indicates that the transition's animations should occur when the
  *   element enters or exists the DOM
  *
- *   `:enter` / `:leave` ，这表明转换的动画应该在元素进入或存在 DOM 时发生
+ *   `:enter` / `:leave`，这表明转换的动画应该在元素进入或存在 DOM 时发生
  *
  *   _Example:_
  *
@@ -1388,7 +1388,7 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  *     the numerical expression bound to the trigger's element has increased in value or decreased
  *
  *   `:increment` / `:decrement`
- *   ，表示当绑定到触发器元素的数值表达式的值增加或减少时，应该发生转换的动画
+ *，表示当绑定到触发器元素的数值表达式的值增加或减少时，应该发生转换的动画
  *
  *   _Example:_
  *
@@ -1430,7 +1430,7 @@ export function keyframes(steps: AnimationStyleMetadata[]): AnimationKeyframesSe
  * - \(as a consequence of the above, `void => *` is equivalent to `:enter` and `* => void` is
  *   equivalent to `:leave`\)
  *
- *   （由于上述原因， `void => *` 等效于 `:enter` ，并且 `* => void` 等效于 `:leave` ）
+ *   （由于上述原因，`void => *` 等效于 `:enter`，并且 `* => void` 等效于 `:leave` ）
  *
  * - `true` and `false` also match expression values of `1` and `0` respectively \(but do not match
  *   _truthy_ and _falsy_ values\)
@@ -1676,7 +1676,7 @@ export function useAnimation(
  *      [Entering and Leaving Elements](#entering-and-leaving-elements)\)
  *
  *   `query(":enter")` 或 `query(":leave")`
- *   ：查询新插入/删除的元素（并非所有元素都可以通过这些标记查询，请参阅[进入和离开元素](#entering-and-leaving-elements)）
+ *：查询新插入/删除的元素（并非所有元素都可以通过这些标记查询，请参阅[进入和离开元素](#entering-and-leaving-elements)）
  *
  * - `query(":animating")` : Query all currently animating elements.
  *

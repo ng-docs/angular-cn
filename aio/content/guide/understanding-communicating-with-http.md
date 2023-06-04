@@ -29,7 +29,7 @@ Before working with the `HttpClientModule`, you should have a basic understandin
 * Observable techniques and operators.
   See the [Observables guide](guide/observables).
 
-  Observable 的技术和运算符。 请参阅 [Observables 指南](guide/observables)。
+  Observable 的技术和运算符。请参阅 [Observables 指南](guide/observables)。
 
 ## HTTP client service features
 

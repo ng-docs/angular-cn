@@ -24,7 +24,7 @@ import {LinkerPluginOptions} from './linker_plugin_options';
  * The plugin delegates most of its work to a generic `FileLinker` for each file \(`t.Program` in
  * Babel\) that is visited.
  *
- * 该插件将其大部分工作委托给每个访问的文件（Babel 中的 `t.Program`）的通用 `FileLinker` 。
+ * 该插件将其大部分工作委托给每个访问的文件（Babel 中的 `t.Program`）的通用 `FileLinker`。
  *
  */
 export function createEs2015LinkerPlugin({fileSystem, logger, ...options}: LinkerPluginOptions):
@@ -38,7 +38,7 @@ export function createEs2015LinkerPlugin({fileSystem, logger, ...options}: Linke
         /**
          * Create a new `FileLinker` as we enter each file \(`t.Program` in Babel\).
          *
-         * 当我们输入每个文件（Babel 中的 `t.Program`）时，创建一个新的 `FileLinker` 。
+         * 当我们输入每个文件（Babel 中的 `t.Program`）时，创建一个新的 `FileLinker`。
          *
          */
         enter(path: NodePath<t.Program>): void {
@@ -115,7 +115,7 @@ export function createEs2015LinkerPlugin({fileSystem, logger, ...options}: Linke
 /**
  * Insert the `statements` at the location defined by `path`.
  *
- * 在 `path` 定义的位置插入 `statements` 。
+ * 在 `path` 定义的位置插入 `statements`。
  *
  * The actual insertion strategy depends upon the type of the `path`.
  *
@@ -133,7 +133,7 @@ function insertStatements(path: ConstantScopePath, statements: t.Statement[]): v
 /**
  * Insert the `statements` at the top of the body of the `fn` function.
  *
- * 在 `fn` 函数体的顶部插入 `statements` 。
+ * 在 `fn` 函数体的顶部插入 `statements`。
  *
  */
 function insertIntoFunction(
@@ -145,7 +145,7 @@ function insertIntoFunction(
 /**
  * Insert the `statements` at the top of the `program`, below any import statements.
  *
- * 在 `program` 顶部，任何 import 语句下方插入 `statements` 。
+ * 在 `program` 顶部，任何 import 语句下方插入 `statements`。
  *
  */
 function insertIntoProgram(program: NodePath<t.Program>, statements: t.Statement[]): void {
@@ -174,7 +174,7 @@ function getCalleeName(call: NodePath<t.CallExpression>): string|null {
 /**
  * Return true if all the `nodes` are Babel expressions.
  *
- * 如果所有 `nodes` 都是 Babel 表达式，则返回 true 。
+ * 如果所有 `nodes` 都是 Babel 表达式，则返回 true。
  *
  */
 function isExpressionArray(nodes: t.Node[]): nodes is t.Expression[] {
@@ -184,7 +184,7 @@ function isExpressionArray(nodes: t.Node[]): nodes is t.Expression[] {
 /**
  * Assert that the given `obj` is `null`.
  *
- * 断言给定的 `obj` 是 `null` 。
+ * 断言给定的 `obj` 是 `null`。
  *
  */
 function assertNull<T>(obj: T|null): asserts obj is null {
@@ -196,7 +196,7 @@ function assertNull<T>(obj: T|null): asserts obj is null {
 /**
  * Assert that the given `obj` is not `null`.
  *
- * 断言给定的 `obj` 不为 `null` 。
+ * 断言给定的 `obj` 不为 `null`。
  *
  */
 function assertNotNull<T>(obj: T|null): asserts obj is T {

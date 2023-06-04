@@ -22,7 +22,7 @@ const REMOVE_XHTML_REGEX = /^:xhtml:/;
  * Checks every non-Angular element/property processed in a template and potentially produces
  * `ts.Diagnostic`s related to improper usage.
  *
- * 检查模板中处理的每个非 Angular 元素/属性，并可能生成与使用不当相关的 `ts.Diagnostic` 。
+ * 检查模板中处理的每个非 Angular 元素/属性，并可能生成与使用不当相关的 `ts.Diagnostic`。
  *
  * A `DomSchemaChecker`'s job is to check DOM nodes and their attributes written used in templates
  * and produce `ts.Diagnostic`s if the nodes don't conform to the DOM specification. It acts as a
@@ -31,7 +31,7 @@ const REMOVE_XHTML_REGEX = /^:xhtml:/;
  *
  * `DomSchemaChecker` 的工作是检查模板中使用的 DOM 节点及其编写的属性，如果节点不符合 DOM
  * 规范，则生成 `ts.Diagnostic`
- * 。它充当这些诊断的收集器，并且可以在以后查询以检索已生成的任何诊断的列表。
+ *。它充当这些诊断的收集器，并且可以在以后查询以检索已生成的任何诊断的列表。
  *
  */
 export interface DomSchemaChecker {
@@ -39,7 +39,7 @@ export interface DomSchemaChecker {
    * Get the `ts.Diagnostic`s that have been generated via `checkElement` and `checkProperty` calls
    * thus far.
    *
-   * 获取 `ts.Diagnostic` 已通过 `checkElement` 和 `checkProperty` 调用生成的 ts.Diagnostic 。
+   * 获取 `ts.Diagnostic` 已通过 `checkElement` 和 `checkProperty` 调用生成的 ts.Diagnostic。
    *
    */
   readonly diagnostics: ReadonlyArray<TemplateDiagnostic>;
@@ -51,7 +51,7 @@ export interface DomSchemaChecker {
    *
    * @param id the template ID, suitable for resolution with a `TcbSourceResolver`.
    *
-   * 模板 ID，适合使用 `TcbSourceResolver` 。
+   * 模板 ID，适合使用 `TcbSourceResolver`。
    *
    * @param element the element node in question.
    *
@@ -79,7 +79,7 @@ export interface DomSchemaChecker {
    *
    * @param id the template ID, suitable for resolution with a `TcbSourceResolver`.
    *
-   * 模板 ID，适合使用 `TcbSourceResolver` 。
+   * 模板 ID，适合使用 `TcbSourceResolver`。
    *
    * @param element the element node in question.
    *

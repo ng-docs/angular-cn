@@ -16,7 +16,7 @@ export enum UpdateCacheStatus {
  * A `string` representing a URL that has been normalized relative to an origin \(usually that of the
  * ServiceWorker\).
  *
- * 一个 `string` ，表示已相对于源（通常是 ServiceWorker 的）规范化的 URL。
+ * 一个 `string`，表示已相对于源（通常是 ServiceWorker 的）规范化的 URL。
  *
  * If the URL is relative to the origin, then it is represented by the path part only. Otherwise,
  * the full URL is used.
@@ -26,7 +26,7 @@ export enum UpdateCacheStatus {
  * NOTE: A `string` is not assignable to a `NormalizedUrl`, but a `NormalizedUrl` is assignable to a
  *       `string`.
  *
- * 注意： `string` 不能分配给 `NormalizedUrl` ，但 `NormalizedUrl` 可以分配给 `string` 。
+ * 注意：`string` 不能分配给 `NormalizedUrl`，但 `NormalizedUrl` 可以分配给 `string`。
  *
  */
 export type NormalizedUrl = string&{_brand: 'normalizedUrl'};
@@ -54,7 +54,7 @@ export interface UpdateSource {
    * If an old version of the resource doesn't exist, or exists but does
    * not match the hash given, this returns null.
    *
-   * 如果资源的旧版本不存在，或者存在但与给定的哈希不匹配，则返回 null 。
+   * 如果资源的旧版本不存在，或者存在但与给定的哈希不匹配，则返回 null。
    *
    */
   lookupResourceWithHash(url: NormalizedUrl, hash: string): Promise<Response|null>;
@@ -70,7 +70,7 @@ export interface UpdateSource {
    * a newer `AppVersion`.
    *
    * 这将返回资源的最新版本（如果存在）。它返回一个 `CacheState` 对象，该对象不仅编码 `Response`
-   * ，还编码在较新的 `AppVersion` 中重新缓存资源所需的缓存元数据。
+   *，还编码在较新的 `AppVersion` 中重新缓存资源所需的缓存元数据。
    *
    */
   lookupResourceWithoutHash(url: NormalizedUrl): Promise<CacheState|null>;

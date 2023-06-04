@@ -152,7 +152,7 @@ class ParamsAsMap implements ParamMap {
 /**
  * Converts a `Params` instance to a `ParamMap`.
  *
- * 将 `Params` 实例转换为 `ParamMap` 。
+ * 将 `Params` 实例转换为 `ParamMap`。
  *
  * @param params The instance to convert.
  *
@@ -185,7 +185,7 @@ export function convertToParamMap(params: Params): ParamMap {
  * 正在匹配的当前段组
  * @param route The `Route` to match against.
  *
- * 要匹配的 `Route` 。
+ * 要匹配的 `Route`。
  * @see UrlMatchResult
  * @see Route
  *
@@ -194,7 +194,7 @@ export function convertToParamMap(params: Params): ParamMap {
  *
  * The resulting match information or `null` if the `route` should not match.
  *
- * 结果的匹配信息，如果 `route` 不应该匹配，则为 `null` 。
+ * 结果的匹配信息，如果 `route` 不应该匹配，则为 `null`。
  * @publicApi
  */
 export function defaultUrlMatcher(

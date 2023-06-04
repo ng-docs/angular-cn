@@ -183,7 +183,7 @@ This is an example of an `@reviewed` tag at the end of the topic's source code a
 
 The date is formatted as `YYYY-MM-DD` where:
 
-日期格式为 `YYYY-MM-DD` ，其中：
+日期格式为 `YYYY-MM-DD`，其中：
 
 * `YYYY` is the current year
 
@@ -195,7 +195,7 @@ The date is formatted as `YYYY-MM-DD` where:
 
 * `DD` is the two-digit number of the current day of the month with a leading zero if the day is 01-09.
 
-  `DD` 是当月当前天的两位数，如果当天是 01-09 ，则以零为前导。
+  `DD` 是当月当前天的两位数，如果当天是 01-09，则以零为前导。
 
 For example:
 
@@ -243,7 +243,7 @@ If the topic requires major changes, you can [make a major change](guide/contrib
 
 Whether you make the changes the topic needs or open a docs issue, you should still [update the **Last reviewed** date](#update-the-last-reviewed-date). You can use the GitHub user interface in the browser if you only want to update the **Last reviewed** date.
 
-无论你是进行主题需要的更改还是打开文档问题，你仍然应该[更新**Last reviewed** date](#update-the-last-reviewed-date) 。 如果你只想更新**上次审核**日期，你可以在浏览器中使用 GitHub 用户界面。
+无论你是进行主题需要的更改还是打开文档问题，你仍然应该[更新**Last reviewed** date](#update-the-last-reviewed-date)。如果你只想更新**上次审核**日期，你可以在浏览器中使用 GitHub 用户界面。
 
 <!-- links -->
 

@@ -124,7 +124,7 @@ export interface ControlValueAccessor {
    * blurred or "touched".
    *
    * 在你自己的值访问器中实现 `registerOnTouched`
-   * ，请保存给定函数，以便你的类在应将控件视为失焦或“已接触过”时调用它。
+   *，请保存给定函数，以便你的类在应将控件视为失焦或“已接触过”时调用它。
    * @usageNotes
    *
    * ### Store the callback function

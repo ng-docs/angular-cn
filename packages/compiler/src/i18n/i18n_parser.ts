@@ -241,13 +241,13 @@ class _I18nVisitor implements html.Visitor {
 /**
  * Re-use the source-spans from `previousI18n` metadata for the `nodes`.
  *
- * 为 `nodes` 重用 `previousI18n` 元数据中的 source-spans 。
+ * 为 `nodes` 重用 `previousI18n` 元数据中的 source-spans。
  *
  * Whitespace removal can invalidate the source-spans of interpolation nodes, so we
  * reuse the source-span stored from a previous pass before the whitespace was removed.
  *
  * 删除空格可能会导致插值节点的 source-span 无效，因此我们重用了在删除空格之前从上一次传递中存储的
- * source-span 。
+ * source-span。
  *
  * @param nodes The `Text` and `Placeholder` nodes to be processed.
  *

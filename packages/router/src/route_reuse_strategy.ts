@@ -112,7 +112,7 @@ export abstract class RouteReuseStrategy {
  * It can be used as a base class for custom route reuse strategies, i.e. you can create your own
  * class that extends the `BaseRouteReuseStrategy` one.
  *
- * 它可以用作自定义路由复用策略的基类，即，你可以创建自己的类来扩展 `BaseRouteReuseStrategy` 。
+ * 它可以用作自定义路由复用策略的基类，即，你可以创建自己的类来扩展 `BaseRouteReuseStrategy`。
  *
  * @publicApi
  */
@@ -139,7 +139,7 @@ export abstract class BaseRouteReuseStrategy implements RouteReuseStrategy {
   /**
    * Returns `false`, meaning the route \(and its subtree\) is never reattached
    *
-   * 返回 `false` ，表示路由（及其子树）从不重新连接
+   * 返回 `false`，表示路由（及其子树）从不重新连接
    *
    */
   shouldAttach(route: ActivatedRouteSnapshot): boolean {

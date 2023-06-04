@@ -37,7 +37,7 @@ export enum PerfPhase {
    * Time spent in `ts.createProgram`, including reading and parsing `ts.SourceFile`s in the
    * `ts.CompilerHost`.
    *
-   * 在 `ts.createProgram` 中花费的时间，包括读取和解析 `ts.SourceFile` 中的 `ts.CompilerHost` 。
+   * 在 `ts.createProgram` 中花费的时间，包括读取和解析 `ts.SourceFile` 中的 `ts.CompilerHost`。
    *
    * This might be an incremental program creation operation.
    *
@@ -415,7 +415,7 @@ export enum PerfEvent {
   /**
    * A `ts.SourceFile` was emitted.
    *
-   * 发出了 `ts.SourceFile` 。
+   * 发出了 `ts.SourceFile`。
    *
    */
   EmitSourceFile,
@@ -554,7 +554,7 @@ export interface PerfRecorder {
    * cannot be cleanly applied to a particular operation.
    *
    * 一般来说，更喜欢使用 `inPhase()` 来检测一段代码，因为它会自动处理进入和退出阶段。只有当前一个
-   * API 无法完全应用于特定操作时，才应该使用 `phase()` 。
+   * API 无法完全应用于特定操作时，才应该使用 `phase()`。
    *
    * @returns
    *
@@ -573,8 +573,8 @@ export interface PerfRecorder {
    * Enters `phase` before executing the given `fn`, then exits the phase and returns the result.
    * Prefer this API to `phase()` where possible.
    *
-   * 在执行给定的 `fn` 之前进入 `phase` ，然后退出 Phase 并返回结果。在可能的情况下，首选此 API 而
-   * `phase()` 。
+   * 在执行给定的 `fn` 之前进入 `phase`，然后退出 Phase 并返回结果。在可能的情况下，首选此 API 而
+   * `phase()`。
    *
    */
   inPhase<T>(phase: PerfPhase, fn: () => T): T;

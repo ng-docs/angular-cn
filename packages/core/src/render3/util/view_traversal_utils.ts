@@ -77,7 +77,7 @@ export function getRootContext<T>(viewOrComponent: LView<T>|{}): T {
 /**
  * Gets the first `LContainer` in the LView or `null` if none exists.
  *
- * 获取 `LContainer` 中的第一个 LContainer，如果不存在，则获取 `null` 。
+ * 获取 `LContainer` 中的第一个 LContainer，如果不存在，则获取 `null`。
  *
  */
 export function getFirstLContainer(lView: LView): LContainer|null {
@@ -87,7 +87,7 @@ export function getFirstLContainer(lView: LView): LContainer|null {
 /**
  * Gets the next `LContainer` that is a sibling of the given container.
  *
- * 获取作为给定容器的同级的下一个 `LContainer` 。
+ * 获取作为给定容器的同级的下一个 `LContainer`。
  *
  */
 export function getNextLContainer(container: LContainer): LContainer|null {

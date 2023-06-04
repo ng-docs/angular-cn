@@ -28,7 +28,7 @@ export class BabelDeclarationScope implements DeclarationScope<ConstantScopePath
   /**
    * Construct a new `BabelDeclarationScope`.
    *
-   * 构造一个新的 `BabelDeclarationScope` 。
+   * 构造一个新的 `BabelDeclarationScope`。
    *
    * @param declarationScope the Babel scope containing the declaration call expression.
    *
@@ -41,7 +41,7 @@ export class BabelDeclarationScope implements DeclarationScope<ConstantScopePath
    * Compute the Babel `NodePath` that can be used to reference the lexical scope where any
    * shared constant statements would be inserted.
    *
-   * 计算可用于引用将插入任何共享常量语句的词法范围的 Babel `NodePath` 。
+   * 计算可用于引用将插入任何共享常量语句的词法范围的 Babel `NodePath`。
    *
    * There will only be a shared constant scope if the expression is in an ECMAScript module, or a
    * UMD module. Otherwise `null` is returned to indicate that constant statements must be emitted

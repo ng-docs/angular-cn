@@ -25,7 +25,7 @@ export interface TestOnlyOptions {
    * behavior between Bazel and Blaze.
    *
    * 是否使用 CompilerHost 的 fileNameToModuleName
-   * 实用程序（如果可用）来生成导入模块说明符。默认情况下，这是 false ，并且存在以支持在 Google
+   * 实用程序（如果可用）来生成导入模块说明符。默认情况下，这是 false，并且存在以支持在 Google
    * 中运行 ngtsc。此选项是内部的，由 ng_module.bzl 规则用于在 Bazel 和 Blaze 之间切换行为。
    *
    * @internal

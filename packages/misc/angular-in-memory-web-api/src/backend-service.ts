@@ -63,7 +63,7 @@ export abstract class BackendService {
    *   GET api/customers?name=^j  // 'j' is a regex; returns customers whose name starts with 'j' or
    * 'J' GET api/customers.json/42  // ignores the ".json"
    *
-   * 期望 :base/:collectionName/:id 格式的 URI 模式？示例： // 对于具有 'customers' 集合的商店 GET
+   * 期望 :base/:collectionName/:id 格式的 URI 模式？示例：// 对于具有 'customers' 集合的商店 GET
    * api/customers // 所有客户 GET api/customers/42 // id=42 的字符 GET api/customers?name=^j // 'j'
    * 是正则表达式；返回名称以 'j' 或 'J' 开头的客户 GET api/customers.json/42 // 忽略“.json”
    *
@@ -71,7 +71,7 @@ export abstract class BackendService {
    * word "commands" Examples: POST commands/resetDb, GET/POST commands/config - get or \(re\)set the
    * config
    *
-   * 还接受对服务的直接命令，其中 apiBase 的最后一段是单词“commands” 示例： POST
+   * 还接受对服务的直接命令，其中 apiBase 的最后一段是单词“commands” 示例：POST
    * 命令/resetDb、GET/POST 命令/config - 获取或（重新）设置配置
    *
    *   HTTP overrides:
@@ -153,7 +153,7 @@ export abstract class BackendService {
   /**
    * Add configured delay to response observable unless delay === 0
    *
-   * 将配置的延迟添加到响应 observable ，除非 delay === 0
+   * 将配置的延迟添加到响应 observable，除非 delay === 0
    *
    */
   protected addDelay(response: Observable<any>): Observable<any> {
@@ -257,7 +257,7 @@ export abstract class BackendService {
    *   commands/config \(GET\)   // Return this service's config object
    *   commands/config \(POST\)  // Update the config \(e.g. the delay\)
    *
-   * 示例 URL： commands/resetdb \(POST\) // 将“数据库”重置为其原始状态 commands/config \(GET\) //
+   * 示例 URL：commands/resetdb \(POST\) // 将“数据库”重置为其原始状态 commands/config \(GET\) //
    * 返回此服务的配置对象 commands/config \(POST\) // 更新配置（例如延迟）
    *
    * Usage:
@@ -265,7 +265,7 @@ export abstract class BackendService {
    *   http.get\('commands/config'\);
    *   http.post\('commands/config', '{"delay":1000}'\);
    *
-   * 用法： http.post\('commands/resetdb', undefined\); http.get\('commands/config'\);
+   * 用法：http.post\('commands/resetdb', undefined\); http.get\('commands/config'\);
    * http.post\('commands/config', '{"delay":1000}'\);
    *
    */
@@ -434,7 +434,7 @@ export abstract class BackendService {
    * else delegates to `genIdDefault`.
    *
    * 为此集合中的条目生成下一个可用的 id，如果存在，则使用 `inMemDbService`
-   * 中的方法并返回值，否则委托给 `genIdDefault` 。
+   * 中的方法并返回值，否则委托给 `genIdDefault`。
    *
    * @param collection - collection of items with `id` key property
    *
@@ -605,8 +605,8 @@ export abstract class BackendService {
    * Parses the request URL into a `ParsedRequestUrl` object.
    * Parsing depends upon certain values of `config`: `apiBase`, `host`, and `urlRoot`.
    *
-   * 将请求 URL 解析为 `ParsedRequestUrl` 对象。解析取决于 `config` 的某些值： `apiBase`、`host`
-   * 和 `urlRoot` 。
+   * 将请求 URL 解析为 `ParsedRequestUrl` 对象。解析取决于 `config` 的某些值：`apiBase`、`host`
+   * 和 `urlRoot`。
    *
    * Configuring the `apiBase` yields the most interesting changes to `parseRequestUrl` behavior:
    *   When apiBase=undefined and url='http://localhost/api/collection/42'
@@ -625,7 +625,7 @@ export abstract class BackendService {
    * The actual api base segment values are ignored. Only the number of segments matters.
    * The following api base strings are considered identical: 'a/b' ~ 'some/api/' ~ \`two/segments'
    *
-   * 实际的 api 基本段值被忽略。只有段的数量很重要。以下 api 基本字符串被认为是相同的： 'a/b' ~
+   * 实际的 api 基本段值被忽略。只有段的数量很重要。以下 api 基本字符串被认为是相同的：'a/b' ~
    * 'some/api/' ~ \`two/segments'
    *
    * To replace this default method, assign your alternative to your
@@ -773,7 +773,7 @@ export abstract class BackendService {
    * Tell your in-mem "database" to reset.
    * returns Observable of the database because resetting it could be async
    *
-   * 告诉你的内存“数据库”重置。返回数据库的 Observable ，因为重置它可能是异步的
+   * 告诉你的内存“数据库”重置。返回数据库的 Observable，因为重置它可能是异步的
    *
    */
   protected resetDb(reqInfo?: RequestInfo): Observable<boolean> {

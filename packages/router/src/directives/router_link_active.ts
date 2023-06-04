@@ -148,7 +148,7 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
    * Possible values: `'page'` \| `'step'` \| `'location'` \| `'date'` \| `'time'` \| `true` \|
    * `false`.
    *
-   * 可能的值： `'page'` \| `'step'` \| `'location'` \| `'date'` \| `'time'` \| `true` `false` 的。
+   * 可能的值：`'page'` \| `'step'` \| `'location'` \| `'date'` \| `'time'` \| `true` `false` 的。
    *
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
    */
@@ -164,7 +164,7 @@ export class RouterLinkActive implements OnChanges, OnDestroy, AfterContentInit 
    * true  -> Route is active
    * false -> Route is inactive
    *
-   * 发出： true -> 路由处于活动状态 false -> 路由处于非活动状态
+   * 发出：true -> 路由处于活动状态 false -> 路由处于非活动状态
    *
    * ```
    * <a

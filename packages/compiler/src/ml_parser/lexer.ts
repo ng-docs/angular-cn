@@ -77,7 +77,7 @@ export interface TokenizeOptions {
    *
    * - The `\"` must be converted to `"`.
    *
-   *   `\"` 必须转换为 `"` 。
+   *   `\"` 必须转换为 `"`。
    *
    * - The `\n` must be converted to a new line character in a token,
    *   but it should not increment the current line for source mapping.
@@ -111,8 +111,8 @@ export interface TokenizeOptions {
    * If `true` then we will normalize ICU expression line endings.
    * The default is `false`, but this will be switched in a future major release.
    *
-   * 如果 `true` ，那么我们将规范化 ICU 表达式行结尾。默认值为 `false`
-   * ，但这将在未来的主要版本中切换。
+   * 如果 `true`，那么我们将规范化 ICU 表达式行结尾。默认值为 `false`
+   *，但这将在未来的主要版本中切换。
    *
    */
   i18nNormalizeLineEndingsInICUs?: boolean;
@@ -747,7 +747,7 @@ class _Tokenizer {
    * The first token consumed will be of `tokenType` and then there will be alternating
    * `interpolationTokenType` and `tokenType` tokens until the `endPredicate()` returns true.
    *
-   * 使用的第一个标记将是 `tokenType` ，然后将交替使用 `tokenType` `interpolationTokenType` ，直到
+   * 使用的第一个标记将是 `tokenType`，然后将交替使用 `tokenType` `interpolationTokenType`，直到
    * `endPredicate()` 返回 true。
    *
    * If an interpolation token ends prematurely it will have no end marker in its `parts` array.
@@ -818,7 +818,7 @@ class _Tokenizer {
    * @param prematureEndPredicate a function that should return true if the next characters indicate
    *     an end to the interpolation before its normal closing marker.
    *
-   * 一个函数，如果下一个字符表明插值在其正常关闭标记之前结束，则应该返回 true 。
+   * 一个函数，如果下一个字符表明插值在其正常关闭标记之前结束，则应该返回 true。
    *
    */
   private _consumeInterpolation(
@@ -906,7 +906,7 @@ class _Tokenizer {
    * Returns true if the current cursor is pointing to the start of a tag
    * (opening/closing/comments/cdata/etc).
    *
-   * 如果当前光标指向标签的开头 ( opening/close/comments/cdata/etc )，则返回 true 。
+   * 如果当前光标指向标签的开头 ( opening/close/comments/cdata/etc )，则返回 true。
    *
    */
   private _isTagStart(): boolean {

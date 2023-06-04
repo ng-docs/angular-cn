@@ -36,12 +36,12 @@ interface EventTarget {
    * If the `eventName` is not provided, will remove all event listeners associated with
    * `EventTarget`.
    *
-   * 如果提供了 `eventName` ，将删除该名称的事件侦听器。如果未提供 `eventName` ，将删除与
+   * 如果提供了 `eventName`，将删除该名称的事件侦听器。如果未提供 `eventName`，将删除与
    * `EventTarget` 关联的所有事件侦听器。
    *
    * @param eventName the name of the event, such as `click`. This parameter is optional.
    *
-   * 事件的名称，例如 `click` 。此参数是可选的。
+   * 事件的名称，例如 `click`。此参数是可选的。
    *
    */
   removeAllListeners?(eventName?: string): void;
@@ -60,12 +60,12 @@ interface EventTarget {
    * objects of the given event.
    * If the `eventName` is not provided, will return all listeners.
    *
-   * 如果提供了 `eventName` ，将返回给定事件的事件处理程序或事件侦听器对象的数组。如果未提供
-   * `eventName` ，将返回所有侦听器。
+   * 如果提供了 `eventName`，将返回给定事件的事件处理程序或事件侦听器对象的数组。如果未提供
+   * `eventName`，将返回所有侦听器。
    *
    * @param eventName the name of the event, such as click. This parameter is optional.
    *
-   * 事件的名称，例如 click 。此参数是可选的。
+   * 事件的名称，例如 click。此参数是可选的。
    *
    */
   eventListeners?(eventName?: string): EventListenerOrEventListenerObject[];

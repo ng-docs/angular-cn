@@ -334,7 +334,7 @@ For a use case in which `TestBed.inject()` does not work, see the [*Override com
 
 Here's the complete `beforeEach()`, using `TestBed.inject()`:
 
-这里是完成的 `beforeEach()`，它使用了 `TestBed.inject()` ：
+这里是完成的 `beforeEach()`，它使用了 `TestBed.inject()`：
 
 <code-example header="app/welcome/welcome.component.spec.ts" path="testing/src/app/welcome/welcome.component.spec.ts" region="setup"></code-example>
 
@@ -542,7 +542,7 @@ It's a companion to `fakeAsync()` and you can only call it within a `fakeAsync()
 
 In this example, you have a new macro task, the nested `setTimeout` function. By default, when the `tick` is setTimeout, `outside` and `nested` will both be triggered.
 
-在此示例中，你有一个新的宏任务，即嵌套的 `setTimeout` 函数。默认情况下，当 `tick` 为 setTimeout 时， `outside` 和 `nested` 都将被触发。
+在此示例中，你有一个新的宏任务，即嵌套的 `setTimeout` 函数。默认情况下，当 `tick` 为 setTimeout 时，`outside` 和 `nested` 都将被触发。
 
 <code-example path="testing/src/app/demo/async-helper.spec.ts" region="fake-async-test-tick-new-macro-task-sync"></code-example>
 
@@ -1146,7 +1146,7 @@ The first parameter is the *element-to-click*.
 If you want, pass a custom event object as the second parameter.
 The default is a partial [left-button mouse event object](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) accepted by many handlers including the `RouterLink` directive.
 
-第一个参数是**用来点击的元素**。如果你愿意，可以将自定义的事件对象传给第二个参数。 默认的是（局部的）[鼠标左键事件对象](https://developer.mozilla.org/docs/Web/API/MouseEvent/button)，它被许多事件处理器接受，包括 `RouterLink` 指令。
+第一个参数是**用来点击的元素**。如果你愿意，可以将自定义的事件对象传给第二个参数。默认的是（局部的）[鼠标左键事件对象](https://developer.mozilla.org/docs/Web/API/MouseEvent/button)，它被许多事件处理器接受，包括 `RouterLink` 指令。
 
 <div class="alert is-important">
 
@@ -1772,7 +1772,7 @@ You can consolidate the two `beforeEach()` functions into a single, async `befor
 
 The `compileComponents()` method returns a promise so you can perform the synchronous setup tasks *after* compilation by moving the synchronous code after the `await` keyword, where the promise has been resolved.
 
-`compileComponents()` 方法返回一个 Promise ，所以你可以通过把同步代码移到 `await` 关键字后面，在那里，这个 Promise 已经解析了。
+`compileComponents()` 方法返回一个 Promise，所以你可以通过把同步代码移到 `await` 关键字后面，在那里，这个 Promise 已经解析了。
 
 <code-example header="app/banner/banner-external.component.spec.ts (one beforeEach)" path="testing/src/app/banner/banner-external.component.spec.ts" region="one-before-each"></code-example>
 

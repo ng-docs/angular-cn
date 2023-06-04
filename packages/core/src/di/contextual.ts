@@ -21,7 +21,7 @@ import {R3Injector} from './r3_injector';
  * `Injector`. Note that `inject` is only usable synchronously, and cannot be used in any
  * asynchronous callbacks or after any `await` points.
  *
- * 在函数的堆栈框架内， `inject` 可用于从给定的 `Injector` 注入依赖项。 请注意， `inject` 只能同步使用，不能在任何异步回调中或在任何 `await` 点之后使用。
+ * 在函数的堆栈框架内，`inject` 可用于从给定的 `Injector` 注入依赖项。请注意，`inject` 只能同步使用，不能在任何异步回调中或在任何 `await` 点之后使用。
  *
  * @param injector the injector which will satisfy calls to `inject` while `fn` is executing
  *
@@ -57,7 +57,7 @@ export function runInInjectionContext<ReturnT>(injector: Injector, fn: () => Ret
 /**
  * Asserts that the current stack frame is within an injection context and has access to `inject`.
  *
- * 断言当前堆栈帧在注入上下文中并且可以访问 `inject` 。
+ * 断言当前堆栈帧在注入上下文中并且可以访问 `inject`。
  *
  * @param debugFn a reference to the function making the assertion \(used for the error message\).
  *

@@ -77,14 +77,14 @@ export interface SafeResourceUrl extends SafeValue {}
  * sanitized so that an attacker cannot inject e.g. a `javascript:` URL that would execute code on
  * the website.
  *
- * 如果该值本身是安全的，则不需要绕过安全性检查，比如那些没有使用可疑协议的 URL 或者不包含危险代码的 HTML 片段。 净化器会确保值的安全性。
+ * 如果该值本身是安全的，则不需要绕过安全性检查，比如那些没有使用可疑协议的 URL 或者不包含危险代码的 HTML 片段。净化器会确保值的安全性。
  *
  * In specific situations, it might be necessary to disable sanitization, for example if the
  * application genuinely needs to produce a `javascript:` style link with a dynamic value in it.
  * Users can bypass security by constructing a value with one of the `bypassSecurityTrust...`
  * methods, and then binding to that value from the template.
  *
- * 在特定场景下，可能要禁用净化机制，比如，如果应用程序真的需要生成具有动态值的 `javascript:` 链接。 用户可以通过使用 `bypassSecurityTrust...` 方法来构建出一个值，以绕过安全性检查，并在模板中绑定它。
+ * 在特定场景下，可能要禁用净化机制，比如，如果应用程序真的需要生成具有动态值的 `javascript:` 链接。用户可以通过使用 `bypassSecurityTrust...` 方法来构建出一个值，以绕过安全性检查，并在模板中绑定它。
  *
  * These situations should be very rare, and extraordinary care must be taken to avoid creating a
  * Cross Site Scripting \(XSS\) security bug!
@@ -101,7 +101,7 @@ export interface SafeResourceUrl extends SafeValue {}
  * does not start with a suspicious protocol, or an HTML snippet that does not contain dangerous
  * code. The sanitizer leaves safe values intact.
  *
- * 如果该值本身是安全的，则不需要绕过安全性检查，比如那些没有使用可疑协议的 URL 或者不包含危险代码的 HTML 片段。 净化器会确保值的安全性。
+ * 如果该值本身是安全的，则不需要绕过安全性检查，比如那些没有使用可疑协议的 URL 或者不包含危险代码的 HTML 片段。净化器会确保值的安全性。
  *
  * @security Calling any of the `bypassSecurityTrust...` APIs disables Angular's built-in
  * sanitization for the value passed in. Carefully check and audit all values and code paths going
@@ -122,7 +122,7 @@ export abstract class DomSanitizer implements Sanitizer {
    * For any other security context, this method throws an error if provided
    * with a plain string.
    *
-   * 如果给定值已经是 `SafeValue` ，则此方法返回未包装的值。 如果安全上下文是 HTML 且给定值是纯字符串，则此方法会清理字符串，删除任何可能不安全的内容。 对于任何其他安全上下文，如果提供纯字符串，此方法将引发错误。
+   * 如果给定值已经是 `SafeValue`，则此方法返回未包装的值。如果安全上下文是 HTML 且给定值是纯字符串，则此方法会清理字符串，删除任何可能不安全的内容。对于任何其他安全上下文，如果提供纯字符串，此方法将引发错误。
    *
    */
   abstract sanitize(context: SecurityContext, value: SafeValue|string|null): string|null;
@@ -132,7 +132,7 @@ export abstract class DomSanitizer implements Sanitizer {
    * is unsafe \(e.g. contains `<script>` tags\) and the code should be executed. The sanitizer will
    * leave safe HTML intact, so in most situations this method should not be used.
    *
-   * 绕过安全检查，并信任给定的值是一个安全的 HTML。只有当要绑定的 HTML 是不安全内容（比如包含 `<script>`）而且你确实希望运行这些代码时，才需要使用它。 净化器会确保安全 HTML 的完整性，因此在大多数场景下都不需要使用该方法。
+   * 绕过安全检查，并信任给定的值是一个安全的 HTML。只有当要绑定的 HTML 是不安全内容（比如包含 `<script>`）而且你确实希望运行这些代码时，才需要使用它。净化器会确保安全 HTML 的完整性，因此在大多数场景下都不需要使用该方法。
    *
    * **WARNING:** calling this method with untrusted user data exposes your application to XSS
    * security risks!

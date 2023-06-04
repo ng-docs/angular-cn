@@ -42,7 +42,7 @@ export class CycleAnalyzer {
    * a `Cycle` object if an import between `from` and `to` would create a cycle; `null`
    *     otherwise.
    *
-   * 如果 `from` 和 `to` 之间的导入将创建一个循环，则为 `Cycle` 对象；否则 `null` 。
+   * 如果 `from` 和 `to` 之间的导入将创建一个循环，则为 `Cycle` 对象；否则 `null`。
    *
    */
   wouldCreateCycle(from: ts.SourceFile, to: ts.SourceFile): Cycle|null {
@@ -125,7 +125,7 @@ class CycleResults {
    * Returns whether the source file is already known to be cyclic, or `null` if the result is not
    * yet known.
    *
-   * 返回源文件是否已知是循环的，如果结果未知，则返回 `null` 。
+   * 返回源文件是否已知是循环的，如果结果未知，则返回 `null`。
    *
    */
   private getCachedResult(sf: CyclicSourceFile): boolean|null {
@@ -173,8 +173,8 @@ export class Cycle {
    * Note that a `Cycle` will not be created unless a path is available between `to` and `from`,
    * so `findPath()` will never return `null`.
    *
-   * 请注意，除非 `to` 和 `from` 之间有路径，否则不会创建 `Cycle` ，因此 `findPath()` 将永远不会返回
-   * `null` 。
+   * 请注意，除非 `to` 和 `from` 之间有路径，否则不会创建 `Cycle`，因此 `findPath()` 将永远不会返回
+   * `null`。
    *
    */
   getPath(): ts.SourceFile[] {

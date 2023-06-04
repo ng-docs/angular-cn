@@ -14,7 +14,7 @@ import {InjectionToken} from '@angular/core';
  * so we warn developers \(by throwing an error\) if the number of preloaded images
  * is above a certain threshold. This const specifies this threshold.
  *
- * 在 SSR 场景下，会为优先级图片生成一个 preload `<link>` 元素。 拥有大量预加载标签可能会对性能产生负面影响，因此如果预加载图像的数量超过特定阈值，我们会警告开发人员（通过抛出错误）。 此 const 指定此阈值。
+ * 在 SSR 场景下，会为优先级图片生成一个 preload `<link>` 元素。拥有大量预加载标签可能会对性能产生负面影响，因此如果预加载图像的数量超过特定阈值，我们会警告开发人员（通过抛出错误）。此 const 指定此阈值。
  *
  */
 export const DEFAULT_PRELOADED_IMAGES_LIMIT = 5;

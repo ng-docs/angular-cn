@@ -90,7 +90,7 @@ function getNamespace(elementName: string): string|null {
  * Injector that looks up a value using a specific injector, before falling back to the module
  * injector. Used primarily when creating components or embedded views dynamically.
  *
- * 在回退到模块注入器之前，使用特定注入器查找值的注入器。 主要在动态创建组件或嵌入式视图时使用。
+ * 在回退到模块注入器之前，使用特定注入器查找值的注入器。主要在动态创建组件或嵌入式视图时使用。
  *
  */
 class ChainedInjector implements Injector {
@@ -544,7 +544,7 @@ function setRootNodeAttributes(
 /**
  * Projects the `projectableNodes` that were specified when creating a root component.
  *
- * 投影创建根组件时指定的 `projectableNodes` 。
+ * 投影创建根组件时指定的 `projectableNodes`。
  *
  */
 function projectNodes(
@@ -570,7 +570,7 @@ function projectNodes(
  * you are rendering has lifecycle hooks defined. Otherwise, the hooks won't
  * be called properly.
  *
- * 如果你正在渲染的根组件定义了生命周期挂钩，则在调用 `renderComponent` 时包括此功能。 否则，钩子将不会被正确调用。
+ * 如果你正在渲染的根组件定义了生命周期挂钩，则在调用 `renderComponent` 时包括此功能。否则，钩子将不会被正确调用。
  *
  * Example:
  *

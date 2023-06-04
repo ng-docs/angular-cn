@@ -130,7 +130,7 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    * later internal use. It ensures the string is all lowercase, converts special
    * characters to a standard spelling, and orders all the values consistently.
    *
-   * 解析用户提供的完整键盘事件定义并将其规范化以供以后内部使用。 它确保字符串全部为小写，将特殊字符转换为标准拼写，并对所有值进行一致排序。
+   * 解析用户提供的完整键盘事件定义并将其规范化以供以后内部使用。它确保字符串全部为小写，将特殊字符转换为标准拼写，并对所有值进行一致排序。
    *
    * @param eventName The name of the key event to listen for.
    *
@@ -188,7 +188,7 @@ export class KeyEventsPlugin extends EventManagerPlugin {
    * event is attached to the DOM during the `addEventListener` call. This is unseen
    * by the end user and is normalized for internal consistency and parsing.
    *
-   * 确定实际按下的键是否与配置的键代码字符串匹配。 当在 `addEventListener` 调用期间将事件附加到 DOM 时， `fullKeyCode` 事件在 `parseEventName` 方法中被规范化。 这是最终用户看不到的，并且针对内部一致性和解析进行了规范化。
+   * 确定实际按下的键是否与配置的键代码字符串匹配。当在 `addEventListener` 调用期间将事件附加到 DOM 时，`fullKeyCode` 事件在 `parseEventName` 方法中被规范化。这是最终用户看不到的，并且针对内部一致性和解析进行了规范化。
    *
    * @param event The keyboard event.
    *

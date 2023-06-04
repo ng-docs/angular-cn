@@ -45,7 +45,7 @@ export class TranslationLoader {
    * 中都有一个元素。每个元素都是该区域设置的翻译文件的绝对路径数组。如果数组包含多个翻译文件，则会合并这些翻译。如果
    * `duplicateTranslation` 属性允许，当多个翻译具有相同的消息 id
    * 时，会使用数组中靠前的翻译文件中的消息。例如，如果文件是 `[app.xlf, lib-1.xlf, lib-2.xlif]`
-   * ，则出现在 `app.xlf` 中的消息将覆盖 `lib-1.xlf` 或 `lib-2.xlf` 中的同一消息.
+   *，则出现在 `app.xlf` 中的消息将覆盖 `lib-1.xlf` 或 `lib-2.xlf` 中的同一消息.
    *
    * @param translationFileLocales An array of locales for each of the translation files.
    *
@@ -130,7 +130,7 @@ export class TranslationLoader {
    * There is more than one `filePath` for this locale, so load each as a bundle and then merge
    * them all together.
    *
-   * 此区域设置有多个 `filePath` ，因此将每个都作为包加载，然后将它们合并在一起。
+   * 此区域设置有多个 `filePath`，因此将每个都作为包加载，然后将它们合并在一起。
    *
    */
   private mergeBundles(filePaths: AbsoluteFsPath[], providedLocale: string|undefined):

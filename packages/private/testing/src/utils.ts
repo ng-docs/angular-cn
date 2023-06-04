@@ -15,12 +15,12 @@ import {ɵresetJitOptions as resetJitOptions} from '@angular/core';
  * This function wraps an existing testing function. The wrapper adds HTML to the `body` element of
  * the `document` and subsequently tears it down.
  *
- * 这个函数包装了一个现有的测试函数。 包装器将 HTML 添加到 `document` 的 `body` 元素，然后将其拆解。
+ * 这个函数包装了一个现有的测试函数。包装器将 HTML 添加到 `document` 的 `body` 元素，然后将其拆解。
  *
  * This function can be used with `async await` and `Promise`s. If the wrapped function returns a
  * promise \(or is `async`\) then the teardown is delayed until that `Promise` is resolved.
  *
- * 此函数可以与 `async await` 和 `Promise` 一起使用。 如果包装的函数返回一个 promise（或者是 `async` ），那么拆解将被延迟，直到该 `Promise` 被解决。
+ * 此函数可以与 `async await` 和 `Promise` 一起使用。如果包装的函数返回一个 promise（或者是 `async` ），那么拆解将被延迟，直到该 `Promise` 被解决。
  *
  * In the NodeJS environment this function detects if `document` is present and if not, it creates
  * one by loading `domino` and installing it.
@@ -47,7 +47,7 @@ import {ɵresetJitOptions as resetJitOptions} from '@angular/core';
  *
  * @param blockFn function to wrap. The function can return promise or be `async`.
  *
- * 包装功能。 该函数可以返回 promise 或 `async` 。
+ * 包装功能。该函数可以返回 promise 或 `async`。
  *
  */
 export function withBody<T extends Function>(html: string, blockFn: T): T {
@@ -62,12 +62,12 @@ export function withBody<T extends Function>(html: string, blockFn: T): T {
  * This function wraps an existing testing function. The wrapper adds HTML to the `head` element of
  * the `document` and subsequently tears it down.
  *
- * 这个函数包装了一个现有的测试函数。 包装器将 HTML 添加到 `document` 的 `head` 元素，然后将其拆解。
+ * 这个函数包装了一个现有的测试函数。包装器将 HTML 添加到 `document` 的 `head` 元素，然后将其拆解。
  *
  * This function can be used with `async await` and `Promise`s. If the wrapped function returns a
  * promise \(or is `async`\) then the teardown is delayed until that `Promise` is resolved.
  *
- * 此函数可以与 `async await` 和 `Promise` 一起使用。 如果包装的函数返回一个 promise（或者是 `async` ），那么拆解将被延迟，直到该 `Promise` 被解决。
+ * 此函数可以与 `async await` 和 `Promise` 一起使用。如果包装的函数返回一个 promise（或者是 `async` ），那么拆解将被延迟，直到该 `Promise` 被解决。
  *
  * In the NodeJS environment this function detects if `document` is present and if not, it creates
  * one by loading `domino` and installing it.
@@ -92,7 +92,7 @@ export function withBody<T extends Function>(html: string, blockFn: T): T {
  *
  * @param blockFn function to wrap. The function can return promise or be `async`.
  *
- * 包装功能。 该函数可以返回 promise 或 `async` 。
+ * 包装功能。该函数可以返回 promise 或 `async`。
  *
  */
 export function withHead<T extends Function>(html: string, blockFn: T): T {

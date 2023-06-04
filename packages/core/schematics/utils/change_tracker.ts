@@ -44,7 +44,7 @@ export interface PendingChange {
    * Amount of text that should be removed after the `start`.
    * No text will be removed if omitted.
    *
-   * `start` 后应删除的文本量。 如果省略，则不会删除任何文本。
+   * `start` 后应删除的文本量。如果省略，则不会删除任何文本。
    *
    */
   removeLength?: number;
@@ -146,7 +146,7 @@ export class ChangeTracker {
    * when copying nodes from one file to another, because TypeScript might not output literal nodes
    * without it.
    *
-   * 打印出新节点时要使用的文件。 这在将节点从一个文件复制到另一个文件时很重要，因为没有它，TypeScript 可能不会输出文字节点。
+   * 打印出新节点时要使用的文件。这在将节点从一个文件复制到另一个文件时很重要，因为没有它，TypeScript 可能不会输出文字节点。
    *
    */
   replaceNode(
@@ -210,7 +210,7 @@ export class ChangeTracker {
    * Gets the changes that should be applied to all the files in the migration.
    * The changes are sorted in the order in which they should be applied.
    *
-   * 获取应应用于迁移中所有文件的更改。 更改按应应用的顺序排序。
+   * 获取应应用于迁移中所有文件的更改。更改按应应用的顺序排序。
    *
    */
   recordChanges(): ChangesByFile {

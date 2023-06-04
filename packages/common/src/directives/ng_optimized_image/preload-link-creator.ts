@@ -20,7 +20,7 @@ import {DEFAULT_PRELOADED_IMAGES_LIMIT, PRELOADED_IMAGES} from './tokens';
  * will also track what images have already had preload link tags added so as to not duplicate link
  * tags.
  *
- * 包含跟踪预加载链接标签并将其添加到 `<head>` 标签所需的逻辑。 它还将跟踪哪些图像已经添加了预加载链接标签，以免重复链接标签。
+ * 包含跟踪预加载链接标签并将其添加到 `<head>` 标签所需的逻辑。它还将跟踪哪些图像已经添加了预加载链接标签，以免重复链接标签。
  *
  * In dev mode this service will validate that the number of preloaded images does not exceed the
  * configured default preloaded images limit: {@link DEFAULT_PRELOADED_IMAGES_LIMIT}.
@@ -46,7 +46,7 @@ export class PreloadLinkCreator {
    * respectively, on the preload `<link>` tag so that the correctly sized image is preloaded from
    * the CDN.
    *
-   * `sizes` （从用户传入）和 `srcset` （从 `ngSrcset` 解析和格式化）属性分别用于在 preload `<link>` 标签上设置相应的属性 `imagesizes` 和 `imagesrcset` ，以便从 CDN 预加载正确大小的图像。
+   * `sizes` （从用户传入）和 `srcset` （从 `ngSrcset` 解析和格式化）属性分别用于在 preload `<link>` 标签上设置相应的属性 `imagesizes` 和 `imagesrcset`，以便从 CDN 预加载正确大小的图像。
    *
    * {@link https://web.dev/preload-responsive-images/#imagesrcset-and-imagesizes}
    *

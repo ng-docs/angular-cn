@@ -49,15 +49,15 @@ export function isMissingTranslationError(e: any): e is MissingTranslationError 
  * `ParsedTranslation`. If this doesn't match and there are legacy ids then try matching a
  * translation using those.
  *
- * tagged-string 被解析以提取其 `messageId` ，该 messageId 用于查找适当的 `ParsedTranslation`
- * 。如果这不匹配并且有旧版 id，请尝试使用它们来匹配翻译。
+ * tagged-string 被解析以提取其 `messageId`，该 messageId 用于查找适当的 `ParsedTranslation`
+ *。如果这不匹配并且有旧版 id，请尝试使用它们来匹配翻译。
  *
  * If one is found then it is used to translate the message into a new set of `messageParts` and
  * `substitutions`.
  * The translation may reorder \(or remove\) substitutions as appropriate.
  *
  * 如果找到了一个，则用它来将消息转换为一组新的 `messageParts` 和 `substitutions`
- * 。翻译可能会酌情重新排序（或删除）替换。
+ *。翻译可能会酌情重新排序（或删除）替换。
  *
  * If there is no translation with a matching message id then an error is thrown.
  * If a translation contains a placeholder that is not found in the message being translated then an
@@ -100,7 +100,7 @@ export function translate(
 /**
  * Parse the `messageParts` and `placeholderNames` out of a target `message`.
  *
- * 从目标 `message` 中解析 `messageParts` 和 `placeholderNames` 。
+ * 从目标 `message` 中解析 `messageParts` 和 `placeholderNames`。
  *
  * Used by `loadTranslations()` to convert target message strings into a structure that is more
  * appropriate for doing translation.
@@ -132,7 +132,7 @@ export function parseTranslation(messageString: TargetMessage): ParsedTranslatio
 /**
  * Create a `ParsedTranslation` from a set of `messageParts` and `placeholderNames`.
  *
- * 从一组 `messageParts` 和 `placeholderNames` 创建 `ParsedTranslation` 。
+ * 从一组 `messageParts` 和 `placeholderNames` 创建 `ParsedTranslation`。
  *
  * @param messageParts The message parts to appear in the ParsedTranslation.
  *

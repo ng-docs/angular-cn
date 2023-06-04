@@ -68,8 +68,8 @@ export interface ResourceHost {
    * `loadNgStructureAsync()`. Returning  `Promise<string>` outside `loadNgStructureAsync()` will
    * cause a diagnostics error or an exception to be thrown.
    *
-   * 静态或异步加载引用的资源。如果宿主返回 `Promise<string>` ，则假定相应 `Program` 的用户将调用
-   * `loadNgStructureAsync()` 。在 `loadNgStructureAsync()` 之外返回 `Promise<string>`
+   * 静态或异步加载引用的资源。如果宿主返回 `Promise<string>`，则假定相应 `Program` 的用户将调用
+   * `loadNgStructureAsync()`。在 `loadNgStructureAsync()` 之外返回 `Promise<string>`
    * 将导致诊断错误或抛出异常。
    *
    */
@@ -79,7 +79,7 @@ export interface ResourceHost {
    * Get the absolute paths to the changed files that triggered the current compilation
    * or `undefined` if this is not an incremental build.
    *
-   * 获取触发当前编译的已更改文件的绝对路径，如果这不是增量构建，则获取 `undefined` 。
+   * 获取触发当前编译的已更改文件的绝对路径，如果这不是增量构建，则获取 `undefined`。
    *
    */
   getModifiedResourceFiles?(): Set<string>|undefined;
@@ -91,7 +91,7 @@ export interface ResourceHost {
    * cause a diagnostics error or an exception to be thrown.
    * Only style resources are currently supported.
    *
-   * 异步转换内联或外部资源。假定相应 `Program` 的使用者将调用 `loadNgStructureAsync()` 。使用外部
+   * 异步转换内联或外部资源。假定相应 `Program` 的使用者将调用 `loadNgStructureAsync()`。使用外部
    * `loadNgStructureAsync()` 将导致诊断错误或抛出异常。当前仅支持样式资源。
    *
    * @param data The resource data to transform.
@@ -106,7 +106,7 @@ export interface ResourceHost {
    *
    * A promise of either the transformed resource data or null if no transformation occurs.
    *
-   * 转换后的资源数据的 Promise ，如果不发生转换，则为 null 。
+   * 转换后的资源数据的 Promise，如果不发生转换，则为 null。
    *
    */
   transformResource?

@@ -10,7 +10,7 @@
  * Transforms a value \(typically a string\) to a boolean.
  * Intended to be used as a transform function of an input.
  *
- * 将值（通常是字符串）转换为布尔值。 旨在用作输入的转换函数。
+ * 将值（通常是字符串）转换为布尔值。旨在用作输入的转换函数。
  *
  * @param value Value to be transformed.
  *
@@ -26,7 +26,7 @@ export function booleanAttribute(value: unknown): boolean {
  * Transforms a value \(typically a string\) to a number.
  * Intended to be used as a transform function of an input.
  *
- * 将值（通常是字符串）转换为数字。 旨在用作输入的转换函数。
+ * 将值（通常是字符串）转换为数字。旨在用作输入的转换函数。
  *
  * @param value Value to be transformed.
  *

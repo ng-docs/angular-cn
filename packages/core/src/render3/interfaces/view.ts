@@ -57,13 +57,13 @@ export const REACTIVE_HOST_BINDING_CONSUMER = 24;
 /**
  * Size of LView's header. Necessary to adjust for it when setting slots.
  *
- * LView 标题的大小。 设置插槽时需要对其进行调整。
+ * LView 标题的大小。设置插槽时需要对其进行调整。
  *
  * IMPORTANT: `HEADER_OFFSET` should only be referred to the in the `ɵɵ*` instructions to translate
  * instruction index into `LView` index. All other indexes should be in the `LView` index space and
  * there should be no need to refer to `HEADER_OFFSET` anywhere else.
  *
- * 重要提示： `HEADER_OFFSET` 只能在 `ɵɵ*` 指令中引用，以将指令索引转换为 `LView` 索引。 所有其他索引都应该在 `LView` 索引空间中，并且不需要在其他任何地方引用 `HEADER_OFFSET` 。
+ * 重要提示：`HEADER_OFFSET` 只能在 `ɵɵ*` 指令中引用，以将指令索引转换为 `LView` 索引。所有其他索引都应该在 `LView` 索引空间中，并且不需要在其他任何地方引用 `HEADER_OFFSET`。
  *
  */
 export const HEADER_OFFSET = 25;
@@ -84,7 +84,7 @@ export interface OpaqueViewState {
  * `LView`. When that view is done processing, the `viewData` is set back to
  * whatever the original `viewData` was before \(the parent `LView`\).
  *
- * `LView` 存储处理指令所需的所有信息，因为它们是从模板调用的。 每个嵌入式视图和组件视图都有自己的 `LView` 。 在处理特定视图时，我们将 `viewData` 设置为该 `LView` 。 当该视图完成处理后， `viewData` 将设置回原来的 `viewData` 之前的状态（父 `LView` ）。
+ * `LView` 存储处理指令所需的所有信息，因为它们是从模板调用的。每个嵌入式视图和组件视图都有自己的 `LView`。在处理特定视图时，我们将 `viewData` 设置为该 `LView`。当该视图完成处理后，`viewData` 将设置回原来的 `viewData` 之前的状态（父 `LView` ）。
  *
  * Keeping separate state for each view facilities view insertion / deletion, so we
  * don't have to edit the data array based on which views are present.
@@ -106,7 +106,7 @@ export interface LView<T = unknown> extends Array<any> {
    * node tree in DI and get the TView.data array associated with a node \(where the
    * directive defs are stored\).
    *
-   * 此视图的静态数据。 我们需要对此的引用，以便我们可以轻松地遍历 DI 中的节点树并获取与节点关联的 TView.data 数组（存储指令定义的位置）。
+   * 此视图的静态数据。我们需要对此的引用，以便我们可以轻松地遍历 DI 中的节点树并获取与节点关联的 TView.data 数组（存储指令定义的位置）。
    *
    */
   readonly[TVIEW]: TView;
@@ -114,7 +114,7 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * Flags for this view. See LViewFlags for more info.
    *
-   * 此视图的标志。 有关详细信息，请参阅 LViewFlags。
+   * 此视图的标志。有关详细信息，请参阅 LViewFlags。
    *
    */
   [FLAGS]: LViewFlags;
@@ -128,7 +128,7 @@ export interface LView<T = unknown> extends Array<any> {
    * LView. Without this, the render method would have to keep a stack of
    * views as it is recursively rendering templates.
    *
-   * `LView` - 父视图。 当我们退出视图并且必须恢复之前的 LView 时需要这个。 如果没有这个，渲染方法在递归渲染模板时必须保留一堆视图。
+   * `LView` - 父视图。当我们退出视图并且必须恢复之前的 LView 时需要这个。如果没有这个，渲染方法在递归渲染模板时必须保留一堆视图。
    *
    * `LContainer` - The current view is part of a container, and is an embedded view.
    *
@@ -147,7 +147,7 @@ export interface LView<T = unknown> extends Array<any> {
    * views in the same container. We need a way to link component views and views
    * across containers as well.
    *
-   * 允许我们在不在同一个容器中的兄弟视图状态之间传播。 嵌入式视图已经有一个 node.next，但它只是为同一容器中的视图设置的。 我们还需要一种方法来链接组件视图和跨容器的视图。
+   * 允许我们在不在同一个容器中的兄弟视图状态之间传播。嵌入式视图已经有一个 node.next，但它只是为同一容器中的视图设置的。我们还需要一种方法来链接组件视图和跨容器的视图。
    *
    */
   [NEXT]: LView|LContainer|null;
@@ -163,7 +163,7 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * Store the `TNode` of the location where the current `LView` is inserted into.
    *
-   * 存放当前 `LView` 插入位置的 `TNode` 。
+   * 存放当前 `LView` 插入位置的 `TNode`。
    *
    * Given:
    *
@@ -177,7 +177,7 @@ export interface LView<T = unknown> extends Array<any> {
    *
    * We end up with two `TView`s.
    *
-   * 我们最终得到两个 `TView` 。
+   * 我们最终得到两个 `TView`。
    *
    * - `parent` `TView` which contains `<div><!-- anchor --></div>`
    *
@@ -191,7 +191,7 @@ export interface LView<T = unknown> extends Array<any> {
    * inserted anywhere. Because it can be inserted anywhere it is not possible to store the
    * insertion information in the `TView` and instead we must store it in the `LView[T_HOST]`.
    *
-   * 通常 `child` 被插入到 `parent` 的声明位置，但它可以插入到任何地方。 因为它可以插入到任何地方，所以不可能将插入信息存储在 `TView` 中，而我们必须将其存储在 `LView[T_HOST]` 中。
+   * 通常 `child` 被插入到 `parent` 的声明位置，但它可以插入到任何地方。因为它可以插入到任何地方，所以不可能将插入信息存储在 `TView` 中，而我们必须将其存储在 `LView[T_HOST]` 中。
    *
    * So to determine where is our insertion parent we would execute:
    *
@@ -206,7 +206,7 @@ export interface LView<T = unknown> extends Array<any> {
    * If `null`, this is the root view of an application \(root component is in this view\) and it has
    * no parents.
    *
-   * 如果为 `null` ，则这是应用程序的根视图（根组件在此视图中）并且它没有父级。
+   * 如果为 `null`，则这是应用程序的根视图（根组件在此视图中）并且它没有父级。
    *
    */
   [T_HOST]: TNode|null;
@@ -216,12 +216,12 @@ export interface LView<T = unknown> extends Array<any> {
    * unsubscribed. This context array stores both listener functions wrapped with
    * their context and output subscription instances for a particular view.
    *
-   * 当视图被销毁时，需要释放监听器并取消订阅输出。 此上下文数组存储与其上下文一起包装的侦听器函数和特定视图的输出订阅实例。
+   * 当视图被销毁时，需要释放监听器并取消订阅输出。此上下文数组存储与其上下文一起包装的侦听器函数和特定视图的输出订阅实例。
    *
    * These change per LView instance, so they cannot be stored on TView. Instead,
    * TView.cleanup saves an index to the necessary context in this array.
    *
-   * 这些每个 LView 实例都会发生变化，因此它们不能存储在 TView 上。 相反，TView.cleanup 将索引保存到此数组中的必要上下文。
+   * 这些每个 LView 实例都会发生变化，因此它们不能存储在 TView 上。相反，TView.cleanup 将索引保存到此数组中的必要上下文。
    *
    * After `LView` is created it is possible to attach additional instance specific functions at the
    * end of the `lView[CLEANUP]` because we know that no more `T` level cleanup functions will be
@@ -236,7 +236,7 @@ export interface LView<T = unknown> extends Array<any> {
    * - For dynamic views, this is the context with which to render the template \(e.g.
    *   `NgForContext`\), or `{}` if not defined explicitly.
    *
-   *   对于动态视图，这是用于渲染模板的上下文（例如 `NgForContext` ），如果未明确定义，则为 `{}` 。
+   *   对于动态视图，这是用于渲染模板的上下文（例如 `NgForContext` ），如果未明确定义，则为 `{}`。
    *
    * - For root view of the root component it's a reference to the component instance itself.
    *
@@ -316,7 +316,7 @@ export interface LView<T = unknown> extends Array<any> {
    * view's template function with the proper contexts. Context should be inherited from
    * the declaration view tree, not the insertion view tree.
    *
-   * 动态创建视图的模板可以在与插入时不同的视图中声明。 我们已经在 LView [PARENT][PARENT]中跟踪“插入视图”（模板插入的视图），但我们还需要访问“声明视图”（模板声明的视图）。 否则，我们将无法使用适当的上下文调用视图的模板函数。 上下文应该继承自声明视图树，而不是插入视图树。
+   * 动态创建视图的模板可以在与插入时不同的视图中声明。我们已经在 LView [PARENT][PARENT]中跟踪“插入视图”（模板插入的视图），但我们还需要访问“声明视图”（模板声明的视图）。否则，我们将无法使用适当的上下文调用视图的模板函数。上下文应该继承自声明视图树，而不是插入视图树。
    *
    * Example \(AppComponent template\):
    *
@@ -343,13 +343,13 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * Points to the declaration component view, used to track transplanted `LView`s.
    *
-   * 指向声明组件视图，用于跟踪移植的 `LView` 。
+   * 指向声明组件视图，用于跟踪移植的 `LView`。
    *
    * See: `DECLARATION_VIEW` which points to the actual `LView` where it was declared, whereas
    * `DECLARATION_COMPONENT_VIEW` points to the component which may not be same as
    * `DECLARATION_VIEW`.
    *
-   * 请参阅： `DECLARATION_VIEW` 指向声明它的实际 `LView` ，而 `DECLARATION_COMPONENT_VIEW` 指向可能与 `DECLARATION_VIEW` 不同的组件。
+   * 请参阅：`DECLARATION_VIEW` 指向声明它的实际 `LView`，而 `DECLARATION_COMPONENT_VIEW` 指向可能与 `DECLARATION_VIEW` 不同的组件。
    *
    * Example:
    *
@@ -366,7 +366,7 @@ export interface LView<T = unknown> extends Array<any> {
    * In the above case `DECLARATION_VIEW` for `myTmpl` points to the `LView` of `ngIf` whereas
    * `DECLARATION_COMPONENT_VIEW` points to `LView` of the `myComp` which owns the template.
    *
-   * 在上面的例子中， `myTmpl` 的 `DECLARATION_VIEW` 指向 `ngIf` 的 `LView` ，而 `DECLARATION_COMPONENT_VIEW` 指向拥有模板的 `myComp` 的 `LView` 。
+   * 在上面的例子中，`myTmpl` 的 `DECLARATION_VIEW` 指向 `ngIf` 的 `LView`，而 `DECLARATION_COMPONENT_VIEW` 指向拥有模板的 `myComp` 的 `LView`。
    *
    * The reason for this is that all embedded views are always check-always whereas the component
    * view can be check-always or on-push. When we have a transplanted view it is important to
@@ -377,14 +377,14 @@ export interface LView<T = unknown> extends Array<any> {
    * strategy of declaration and insertion will always be the same, because it is the same
    * component.\)
    *
-   * 这样做的原因是所有嵌入式视图总是检查始终，而组件视图可以始终检查或推送。 当我们有一个移植的视图时，重要的是要确定我们是否已经将一个视图从 check-always 声明移植到 on-push 插入点。 在这种情况下，需要在声明的视图 CD 期间（除了插入点的 CD 之外）将移植的视图添加到声明的 `LView` 和 CD 中的 `LContainer` 。声明和插入的 CD 策略将始终相同，因为它是相同的组件。）
+   * 这样做的原因是所有嵌入式视图总是检查始终，而组件视图可以始终检查或推送。当我们有一个移植的视图时，重要的是要确定我们是否已经将一个视图从 check-always 声明移植到 on-push 插入点。在这种情况下，需要在声明的视图 CD 期间（除了插入点的 CD 之外）将移植的视图添加到声明的 `LView` 和 CD 中的 `LContainer`。声明和插入的 CD 策略将始终相同，因为它是相同的组件。）
    *
    * Queries already track moved views in `LView[DECLARATION_LCONTAINER]` and
    * `LContainer[MOVED_VIEWS]`. However the queries also track `LView`s which moved within the same
    * component `LView`. Transplanted views are a subset of moved views, and we use
    * `DECLARATION_COMPONENT_VIEW` to differentiate them. As in this example.
    *
-   * 查询已经在 `LView[DECLARATION_LCONTAINER]` 和 `LContainer[MOVED_VIEWS]` 中跟踪移动的视图。 但是，查询还会跟踪在同一组件 `LView` 中移动的 `LView` 。 移植视图是移动视图的子集，我们使用 `DECLARATION_COMPONENT_VIEW` 来区分它们。 如本例所示。
+   * 查询已经在 `LView[DECLARATION_LCONTAINER]` 和 `LContainer[MOVED_VIEWS]` 中跟踪移动的视图。但是，查询还会跟踪在同一组件 `LView` 中移动的 `LView`。移植视图是移动视图的子集，我们使用 `DECLARATION_COMPONENT_VIEW` 来区分它们。如本例所示。
    *
    * Example showing intra component `LView` movement.
    *
@@ -418,13 +418,13 @@ export interface LView<T = unknown> extends Array<any> {
    * marked as containing transplanted views and those views need to be CD as part of the
    * declaration CD.
    *
-   * 在上面的示例中， `myTmpl` 被传递到不同的组件中。 如果 `insertion-component` 实例化 `myTmpl` 并且 `insertion-component` 是 on-push 那么 `LContainer` 需要被标记为包含移植的视图，并且这些视图需要被 CD 作为声明 CD 的一部分。
+   * 在上面的示例中，`myTmpl` 被传递到不同的组件中。如果 `insertion-component` 实例化 `myTmpl` 并且 `insertion-component` 是 on-push 那么 `LContainer` 需要被标记为包含移植的视图，并且这些视图需要被 CD 作为声明 CD 的一部分。
    *
    * When change detection runs, it iterates over `[MOVED_VIEWS]` and CDs any child `LView`s where
    * the `DECLARATION_COMPONENT_VIEW` of the current component and the child `LView` does not match
    * \(it has been transplanted across components.\)
    *
-   * 当变更检测运行时，它会遍历 `[MOVED_VIEWS]` 并 CD 任何子 `LView` ，其中当前组件的 `DECLARATION_COMPONENT_VIEW` 与子 `LView` 不匹配（它已被跨组件移植。）
+   * 当变更检测运行时，它会遍历 `[MOVED_VIEWS]` 并 CD 任何子 `LView`，其中当前组件的 `DECLARATION_COMPONENT_VIEW` 与子 `LView` 不匹配（它已被跨组件移植。）
    *
    * Note: `[DECLARATION_COMPONENT_VIEW]` points to itself if the LView is a component view \(the
    *       simplest / most common case\).
@@ -476,7 +476,7 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * More flags for this view. See PreOrderHookFlags for more info.
    *
-   * 此视图的更多标志。 有关详细信息，请参阅 PreOrderHookFlags。
+   * 此视图的更多标志。有关详细信息，请参阅 PreOrderHookFlags。
    *
    */
   [PREORDER_HOOK_FLAGS]: PreOrderHookFlags;
@@ -487,7 +487,7 @@ export interface LView<T = unknown> extends Array<any> {
    * change detection we should still descend to find those children to refresh, even if the parents
    * are not `Dirty`/`CheckAlways`.
    *
-   * 需要刷新的直接移植视图的数量，或者自身具有需要刷新但未将其祖先标记为脏的后代的数量。 这告诉我们，在变化检测期间，我们仍然应该下降以找到那些要刷新的子节点，即使父节点不是 `Dirty` / `CheckAlways` 。
+   * 需要刷新的直接移植视图的数量，或者自身具有需要刷新但未将其祖先标记为脏的后代的数量。这告诉我们，在变化检测期间，我们仍然应该下降以找到那些要刷新的子节点，即使父节点不是 `Dirty` / `CheckAlways`。
    *
    */
   [DESCENDANT_VIEWS_TO_REFRESH]: number;
@@ -495,7 +495,7 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * Unique ID of the view. Used for `__ngContext__` lookups in the `LView` registry.
    *
-   * 视图的唯一 ID。 用于 `LView` 注册表中的 `__ngContext__` 查找。
+   * 视图的唯一 ID。用于 `LView` 注册表中的 `__ngContext__` 查找。
    *
    */
   [ID]: number;
@@ -522,7 +522,7 @@ export interface LView<T = unknown> extends Array<any> {
    * are user defined, LView-specific destroy callbacks that don't have any corresponding TView
    * entries.
    *
-   * 销毁给定 LView 时执行的回调函数的集合。 这些是用户定义的、特定于 LView 的销毁回调，没有任何对应的 TView 条目。
+   * 销毁给定 LView 时执行的回调函数的集合。这些是用户定义的、特定于 LView 的销毁回调，没有任何对应的 TView 条目。
    *
    */
   [ON_DESTROY_HOOKS]: Array<() => void>|null;
@@ -530,12 +530,12 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * The `Consumer` for this `LView`'s template so that signal reads can be tracked.
    *
-   * 此 `LView` 模板的 `Consumer` ，以便可以跟踪信号读取。
+   * 此 `LView` 模板的 `Consumer`，以便可以跟踪信号读取。
    *
    * This is initially `null` and gets assigned a consumer after template execution
    * if any signals were read.
    *
-   * 这最初为 `null` ，如果读取了任何信号，则会在模板执行后分配给消费者。
+   * 这最初为 `null`，如果读取了任何信号，则会在模板执行后分配给消费者。
    *
    */
   [REACTIVE_TEMPLATE_CONSUMER]: ReactiveLViewConsumer|null;
@@ -607,7 +607,7 @@ export const enum LViewFlags {
    * back into the parent view, `data` will be defined and `creationMode` will be
    * improperly reported as false.
    *
-   * 这必须存储在视图中而不是使用 `data` 作为标记，这样我们才能正确支持嵌入式视图。 否则，当退出子视图回到父视图时， `data` 将被定义并且 `creationMode` 将被错误地报告为 false。
+   * 这必须存储在视图中而不是使用 `data` 作为标记，这样我们才能正确支持嵌入式视图。否则，当退出子视图回到父视图时，`data` 将被定义并且 `creationMode` 将被错误地报告为 false。
    *
    */
   CreationMode = 1 << 2,
@@ -621,7 +621,7 @@ export const enum LViewFlags {
    * has completed one creation mode run and one update mode run. At this
    * time, the flag is turned off.
    *
-   * LView 实例在完成一次创建模式运行和一次更新模式运行之前被认为处于“第一阶段”。 此时，flag 被关闭。
+   * LView 实例在完成一次创建模式运行和一次更新模式运行之前被认为处于“第一阶段”。此时，flag 被关闭。
    *
    */
   FirstLViewPass = 1 << 3,
@@ -680,7 +680,7 @@ export const enum LViewFlags {
    * i.e. "Refresh just this view". Used in conjunction with the DESCENDANT_VIEWS_TO_REFRESH
    * counter.
    *
-   * 这个移动的 LView 是否需要刷新。 类似于 Dirty 标志，但用于父/祖先视图也未标记为脏的移植视图和信号视图。 即“仅刷新此视图”。 与 DESCENDANT_VIEWS_TO_REFRESH 计数器结合使用。
+   * 这个移动的 LView 是否需要刷新。类似于 Dirty 标志，但用于父/祖先视图也未标记为脏的移植视图和信号视图。即“仅刷新此视图”。与 DESCENDANT_VIEWS_TO_REFRESH 计数器结合使用。
    *
    */
   RefreshView = 1 << 10,
@@ -780,7 +780,7 @@ export const enum PreOrderHookFlags {
 /**
  * Stores a set of OpCodes to process `HostBindingsFunction` associated with a current view.
  *
- * 存储一组 OpCodes 以处理与当前视图关联的 `HostBindingsFunction` 。
+ * 存储一组 OpCodes 以处理与当前视图关联的 `HostBindingsFunction`。
  *
  * In order to invoke `HostBindingsFunction` we need:
  *
@@ -788,22 +788,22 @@ export const enum PreOrderHookFlags {
  *
  * 1. `elementIdx`: Index to the element associated with the`HostBindingsFunction`.
  *
- *    `elementIdx` ：与 `HostBindingsFunction` 关联的元素的索引。
+ *    `elementIdx`：与 `HostBindingsFunction` 关联的元素的索引。
  *
  * 2. `directiveIdx`: Index to the directive associated with the`HostBindingsFunction`. \(This will
  *    become the context for the`HostBindingsFunction` invocation.\)
  *
- *    `directiveIdx` ：与 `HostBindingsFunction` 关联的指令的索引。 （这将成为 `HostBindingsFunction` 调用的上下文。）
+ *    `directiveIdx`：与 `HostBindingsFunction` 关联的指令的索引。（这将成为 `HostBindingsFunction` 调用的上下文。）
  *
  * 3. `bindingRootIdx`: Location where the bindings for the `HostBindingsFunction` start. Internally
  *    `HostBindingsFunction` binding indexes start from `0` so we need to add `bindingRootIdx` to
  *    it.
  *
- *    `bindingRootIdx` ： `HostBindingsFunction` 的绑定开始的位置。 在内部 `HostBindingsFunction` 绑定索引从 `0` 开始，因此我们需要向其添加 `bindingRootIdx` 。
+ *    `bindingRootIdx`：`HostBindingsFunction` 的绑定开始的位置。在内部 `HostBindingsFunction` 绑定索引从 `0` 开始，因此我们需要向其添加 `bindingRootIdx`。
  *
  * 4. `HostBindingsFunction`: A host binding function to execute.
  *
- *    `HostBindingsFunction` ：要执行的宿主绑定函数。
+ *    `HostBindingsFunction`：要执行的宿主绑定函数。
  *
  * The above information needs to be encoded into the `HostBindingOpCodes` in an efficient manner.
  *
@@ -906,7 +906,7 @@ export const enum TViewType {
    * `LView` which takes an existing DOM node not owned by Angular and wraps it in `TView`/`LView`
    * so that other components can be loaded into it.
    *
-   * Root `TView` 用于引导组件进入。 它与 `LView` 结合使用，后者采用不属于 Angular 的现有 DOM 节点并将其包装在 `TView` / `LView` 中，以便可以将其他组件加载到其中。
+   * Root `TView` 用于引导组件进入。它与 `LView` 结合使用，后者采用不属于 Angular 的现有 DOM 节点并将其包装在 `TView` / `LView` 中，以便可以将其他组件加载到其中。
    *
    */
   Root = 0,
@@ -915,7 +915,7 @@ export const enum TViewType {
    * `TView` associated with a Component. This would be the `TView` directly associated with the
    * component view \(as opposed an `Embedded` `TView` which would be a child of `Component` `TView`\)
    *
-   * 与组件关联的 `TView` 。 这将是与组件视图直接关联的 `TView` （与作为 `Component` `TView` 的子项的 `Embedded` `TView` 相反）
+   * 与组件关联的 `TView`。这将是与组件视图直接关联的 `TView` （与作为 `Component` `TView` 的子项的 `Embedded` `TView` 相反）
    *
    */
   Component = 1,
@@ -924,7 +924,7 @@ export const enum TViewType {
    * `TView` associated with a template. Such as `*ngIf`, `<ng-template>` etc... A `Component`
    * can have zero or more `Embedded` `TView`s.
    *
-   * 与模板关联的 `TView` 。 例如 `*ngIf` ， `<ng-template>` 等......一个 `Component` 可以有零个或多个 `Embedded` `TView` s。
+   * 与模板关联的 `TView`。例如 `*ngIf`，`<ng-template>` 等......一个 `Component` 可以有零个或多个 `Embedded` `TView` s。
    *
    */
   Embedded = 2,
@@ -954,7 +954,7 @@ export interface TView {
    * This is a blueprint used to generate LView instances for this TView. Copying this
    * blueprint is faster than creating a new LView from scratch.
    *
-   * 这是用于为该 TView 生成 LView 实例的蓝图。 复制这个蓝图比从头开始创建一个新的 LView 更快。
+   * 这是用于为该 TView 生成 LView 实例的蓝图。复制这个蓝图比从头开始创建一个新的 LView 更快。
    *
    */
   blueprint: LView;
@@ -963,7 +963,7 @@ export interface TView {
    * The template function used to refresh the view of dynamically created views
    * and components. Will be null for inline views.
    *
-   * 用于刷新动态创建的视图和组件的视图的模板函数。 对于内联视图将为 null。
+   * 用于刷新动态创建的视图和组件的视图的模板函数。对于内联视图将为 null。
    *
    */
   template: ComponentTemplate<{}>|null;
@@ -979,7 +979,7 @@ export interface TView {
   /**
    * A `TNode` representing the declaration location of this `TView` \(not part of this TView\).
    *
-   * 表示此 `TView` （不是此 TView 的一部分）的声明位置的 `TNode` 。
+   * 表示此 `TView` （不是此 TView 的一部分）的声明位置的 `TNode`。
    *
    */
   declTNode: TNode|null;
@@ -1002,14 +1002,14 @@ export interface TView {
    * `firstUpdatePass` is used by styling to set up `TData` to contain metadata about the styling
    * instructions. \(Mainly to build up a linked list of styling priority order.\)
    *
-   * 样式使用 `firstUpdatePass` 来设置 `TData` 以包含有关样式指令的元数据。 （主要是建立一个样式优先顺序的链表。）
+   * 样式使用 `firstUpdatePass` 来设置 `TData` 以包含有关样式指令的元数据。（主要是建立一个样式优先顺序的链表。）
    *
    * Typically this function gets cleared after first execution. If exception is thrown then this
    * flag can remain turned un until there is first successful \(no exception\) pass. This means that
    * individual styling instructions keep track of if they have already been added to the linked
    * list to prevent double adding.
    *
-   * 通常这个函数在第一次执行后被清除。 如果抛出异常，那么这个标志可以保持打开状态，直到第一次成功（无异常）通过。 这意味着单独的样式指令会跟踪它们是否已经被添加到链表中以防止重复添加。
+   * 通常这个函数在第一次执行后被清除。如果抛出异常，那么这个标志可以保持打开状态，直到第一次成功（无异常）通过。这意味着单独的样式指令会跟踪它们是否已经被添加到链表中以防止重复添加。
    *
    */
   firstUpdatePass: boolean;
@@ -1017,7 +1017,7 @@ export interface TView {
   /**
    * Static data equivalent of LView.data\[\]. Contains TNodes, PipeDefInternal or TI18n.
    *
-   * 相当于 LView.data\[\] 的静态数据。 包含 TNodes、PipeDefInternal 或 TI18n。
+   * 相当于 LView.data\[\] 的静态数据。包含 TNodes、PipeDefInternal 或 TI18n。
    *
    */
   data: TData;
@@ -1028,7 +1028,7 @@ export interface TView {
    * will begin reading bindings at the correct point in the array when
    * we are in update mode.
    *
-   * 绑定开始索引是数据数组开始仅存储绑定的索引。 保存此值可确保我们在更新模式下从数组中的正确位置开始读取绑定。
+   * 绑定开始索引是数据数组开始仅存储绑定的索引。保存此值可确保我们在更新模式下从数组中的正确位置开始读取绑定。
    *
    * \-1 means that it has not been initialized.
    *
@@ -1044,7 +1044,7 @@ export interface TView {
    * section cannot be calculated at compile-time because directives are matched
    * at runtime to preserve locality.
    *
-   * `LView` 的“expando”部分开始的索引。 expando 部分包含注入器、指令实例和宿主绑定值。 与 `LView` 的“decls”和“vars”部分不同，此部分的长度无法在编译时计算，因为指令在运行时匹配以保留局部性。
+   * `LView` 的“expando”部分开始的索引。expando 部分包含注入器、指令实例和宿主绑定值。与 `LView` 的“decls”和“vars”部分不同，此部分的长度无法在编译时计算，因为指令在运行时匹配以保留局部性。
    *
    * We store this start index so we know where to start checking host bindings
    * in `setHostBindings`.
@@ -1095,7 +1095,7 @@ export interface TView {
    *
    * See `HostBindingOpCodes` for encoding details.
    *
-   * 有关编码详细信息，请参阅 `HostBindingOpCodes` 。
+   * 有关编码详细信息，请参阅 `HostBindingOpCodes`。
    *
    */
   hostBindingOpCodes: HostBindingOpCodes|null;
@@ -1144,7 +1144,7 @@ export interface TView {
    * function. This is done so that at runtime the system can efficiently iterate over all of the
    * functions to invoke without having to make any decisions/lookups.
    *
-   * 这个数组有一个平面结构，包含 TNode 索引、指令索引（其中一个实例可以在 `LView` 中找到）和挂钩函数。 TNode 索引后面是指令索引和一个挂钩函数。 如果给定的 TNode 有多个钩子，则 TNode 索引不会重复，并且下一个生命周期钩子信息将存储在前一个钩子函数之后。 这样做是为了在运行时系统可以有效地迭代所有要调用的函数，而无需做出任何决定/查找。
+   * 这个数组有一个平面结构，包含 TNode 索引、指令索引（其中一个实例可以在 `LView` 中找到）和挂钩函数。TNode 索引后面是指令索引和一个挂钩函数。如果给定的 TNode 有多个钩子，则 TNode 索引不会重复，并且下一个生命周期钩子信息将存储在前一个钩子函数之后。这样做是为了在运行时系统可以有效地迭代所有要调用的函数，而无需做出任何决定/查找。
    *
    */
   preOrderHooks: HookData|null;
@@ -1237,7 +1237,7 @@ export interface TView {
    * saves on memory \(70 bytes per array\) and on a few bytes of code size \(for two
    * separate for loops\).
    *
-   * 当视图被销毁时，需要释放监听器并取消订阅输出。 此清理数组存储特定视图的侦听器数据（以 4 个为一组）和输出数据（以 2 个为一组）。 组合数组可以节省内存（每个数组 70 字节）和几个字节的代码大小（对于两个单独的 for 循环）。
+   * 当视图被销毁时，需要释放监听器并取消订阅输出。此清理数组存储特定视图的侦听器数据（以 4 个为一组）和输出数据（以 2 个为一组）。组合数组可以节省内存（每个数组 70 字节）和几个字节的代码大小（对于两个单独的 for 循环）。
    *
    * If it's a native DOM listener or output subscription being stored:
    * 1st index is: event name  `name = tView.cleanup[i+0]`
@@ -1246,7 +1246,7 @@ export interface TView {
    *    `typeof idxOrTargetGetter === 'function'`: global target getter function
    *    `typeof idxOrTargetGetter === 'number'`: index of native element
    *
-   * 如果它是本地 DOM 侦听器或正在存储的输出订阅：第一个索引是：事件名称 `name = tView.cleanup[i+0]` 第二个索引是：本地元素的索引或检索全局目标（窗口、文档或正文）的函数基于原生元素的引用： `typeof idxOrTargetGetter === 'function'` : global target getter function `typeof idxOrTargetGetter === 'number'` : index of native element
+   * 如果它是本地 DOM 侦听器或正在存储的输出订阅：第一个索引是：事件名称 `name = tView.cleanup[i+0]` 第二个索引是：本地元素的索引或检索全局目标（窗口、文档或正文）的函数基于原生元素的引用：`typeof idxOrTargetGetter === 'function'` : global target getter function `typeof idxOrTargetGetter === 'number'` : index of native element
    *
    * 3rd index is: index of listener function `listener = lView[CLEANUP][tView.cleanup[i+2]]`
    * 4th index is: `useCaptureOrIndx = tView.cleanup[i+3]`
@@ -1254,14 +1254,14 @@ export interface TView {
    *         `useCaptureOrIndx >= 0` `removeListener = LView[CLEANUP][useCaptureOrIndx]`
    *         `useCaptureOrIndx <  0` `subscription = LView[CLEANUP][-useCaptureOrIndx]`
    *
-   * 第三个索引是：监听器函数的索引 `listener = lView[CLEANUP][tView.cleanup[i+2]]` 第四个索引是： `useCaptureOrIndx = tView.cleanup[i+3]` `typeof useCaptureOrIndx == 'boolean' : useCapture boolean` typeof useCaptureOrIndx == 'number': `useCaptureOrIndx >= 0` `removeListener = LView[CLEANUP][useCaptureOrIndx]` `useCaptureOrIndx < 0` `subscription = LView[CLEANUP][-useCaptureOrIndx]`
+   * 第三个索引是：监听器函数的索引 `listener = lView[CLEANUP][tView.cleanup[i+2]]` 第四个索引是：`useCaptureOrIndx = tView.cleanup[i+3]` `typeof useCaptureOrIndx == 'boolean' : useCapture boolean` typeof useCaptureOrIndx == 'number': `useCaptureOrIndx >= 0` `removeListener = LView[CLEANUP][useCaptureOrIndx]` `useCaptureOrIndx < 0` `subscription = LView[CLEANUP][-useCaptureOrIndx]`
    *
    * If it's an output subscription or query list destroy hook:
    * 1st index is: output unsubscribe function / query list destroy function
    * 2nd index is: index of function context in LView.cleanupInstances\[\]
    *               `tView.cleanup[i+0].call(lView[CLEANUP][tView.cleanup[i+1]])`
    *
-   * 如果是输出订阅或查询列表销毁钩子： 第一个索引是：输出取消订阅函数/查询列表销毁函数 第二个索引是：LView.cleanupInstances\[\] `tView.cleanup[i+0].call(lView[CLEANUP][tView.cleanup[i+1]])`
+   * 如果是输出订阅或查询列表销毁钩子：第一个索引是：输出取消订阅函数/查询列表销毁函数 第二个索引是：LView.cleanupInstances\[\] `tView.cleanup[i+0].call(lView[CLEANUP][tView.cleanup[i+1]])`
    *
    */
   cleanup: any[]|null;
@@ -1271,7 +1271,7 @@ export interface TView {
    * refreshed when the current view has finished its check. These indices have
    * already been adjusted for the HEADER_OFFSET.
    *
-   * 当前视图完成检查后需要刷新的子组件的元素索引列表。 这些索引已经针对 HEADER_OFFSET 进行了调整。
+   * 当前视图完成检查后需要刷新的子组件的元素索引列表。这些索引已经针对 HEADER_OFFSET 进行了调整。
    *
    */
   components: number[]|null;
@@ -1288,7 +1288,7 @@ export interface TView {
    * An array of indices pointing to directives with content queries alongside with the
    * corresponding query index. Each entry in this array is a tuple of:
    *
-   * 指向指令的索引数组，其中包含内容查询以及相应的查询索引。 此数组中的每个条目都是一个元组：
+   * 指向指令的索引数组，其中包含内容查询以及相应的查询索引。此数组中的每个条目都是一个元组：
    *
    * - index of the first content query index declared by a given directive;
    *
@@ -1318,7 +1318,7 @@ export interface TView {
    * Array of constants for the view. Includes attribute arrays, local definition arrays etc.
    * Used for directive matching, attribute bindings, local definitions and more.
    *
-   * 视图的常量数组。 包括属性数组、局部定义数组等。用于指令匹配、属性绑定、局部定义等。
+   * 视图的常量数组。包括属性数组、局部定义数组等。用于指令匹配、属性绑定、局部定义等。
    *
    */
   consts: TConstants|null;
@@ -1327,7 +1327,7 @@ export interface TView {
    * Indicates that there was an error before we managed to complete the first create pass of the
    * view. This means that the view is likely corrupted and we should try to recover it.
    *
-   * 表示在我们设法完成视图的第一个创建过程之前出现错误。 这意味着视图可能已损坏，我们应该尝试恢复它。
+   * 表示在我们设法完成视图的第一个创建过程之前出现错误。这意味着视图可能已损坏，我们应该尝试恢复它。
    *
    */
   incompleteFirstPass: boolean;
@@ -1362,7 +1362,7 @@ export type HookFn = () => void;
  * Information necessary to call a hook. E.g. the callback that
  * needs to invoked and the index at which to find its context.
  *
- * 调用挂钩所需的信息。 例如，需要调用的回调和查找其上下文的索引。
+ * 调用挂钩所需的信息。例如，需要调用的回调和查找其上下文的索引。
  *
  */
 export type HookEntry = number|HookFn;
@@ -1413,7 +1413,7 @@ export type HookData = HookEntry[];
  * - Odd indices are the hook functions themselves. If a value at an odd index is an array,
  *   it represents the destroy hooks of a `multi` provider where:
  *
- *   奇数索引是钩子函数本身。 如果奇数索引处的值是数组，则它表示 `multi` 提供程序的销毁挂钩，其中：
+ *   奇数索引是钩子函数本身。如果奇数索引处的值是数组，则它表示 `multi` 提供程序的销毁挂钩，其中：
  *
  *   - Even indices represent the index of the provider for which we've registered a destroy hook,
  *       inside of the `multi` provider array.
@@ -1425,13 +1425,13 @@ export type HookData = HookEntry[];
  *     LView: `[0, 1, 2, AService, 4, [BService, CService, DService]]`
  *     destroyHooks: `[3, AService.ngOnDestroy, 5, [0, BService.ngOnDestroy, 2, DService.ngOnDestroy]]`
  *
- *     奇数索引是 destroy 钩子函数。 例如： LView: `[0, 1, 2, AService, 4, [BService, CService, DService]]` destroyHooks: `[3, AService.ngOnDestroy, 5, [0, BService.ngOnDestroy, 2, DService.ngOnDestroy]]`
+ *     奇数索引是 destroy 钩子函数。例如：LView: `[0, 1, 2, AService, 4, [BService, CService, DService]]` destroyHooks: `[3, AService.ngOnDestroy, 5, [0, BService.ngOnDestroy, 2, DService.ngOnDestroy]]`
  *
  * In the example above `AService` is a type provider with an `ngOnDestroy`, whereas `BService`,
  * `CService` and `DService` are part of a `multi` provider where only `BService` and `DService`
  * have an `ngOnDestroy` hook.
  *
- * 在上面的示例中， `AService` 是具有 `ngOnDestroy` 的类型提供程序，而 `BService` 、 `CService` 和 `DService` 是 `multi` 提供程序的一部分，其中只有 `BService` 和 `DService` 具有 `ngOnDestroy` 挂钩。
+ * 在上面的示例中，`AService` 是具有 `ngOnDestroy` 的类型提供程序，而 `BService` 、 `CService` 和 `DService` 是 `multi` 提供程序的一部分，其中只有 `BService` 和 `DService` 具有 `ngOnDestroy` 挂钩。
  *
  */
 export type DestroyHookData = (HookEntry|HookData)[];
@@ -1445,7 +1445,7 @@ export type DestroyHookData = (HookEntry|HookData)[];
  * in the data array.  Any nodes that do not have static data store a null value in
  * tData to avoid a sparse array.
  *
- * 每个节点的静态数据都存储在 tData 中，其索引与存储在数据数组中的索引相同。 任何没有静态数据的节点都会在 tData 中存储一个空值以避免稀疏数组。
+ * 每个节点的静态数据都存储在 tData 中，其索引与存储在数据数组中的索引相同。任何没有静态数据的节点都会在 tData 中存储一个空值以避免稀疏数组。
  *
  * Each pipe's definition is stored here at the same index as its pipe instance in
  * the data array.
@@ -1461,7 +1461,7 @@ export type DestroyHookData = (HookEntry|HookData)[];
  * the data array. If the binding is an interpolation, the static string values
  * are stored parallel to the dynamic values. Example:
  *
- * 每个属性绑定名称都存储在此处与其在数据数组中的值相同的索引处。 如果绑定是插值，则静态字符串值与动态值并行存储。 例子：
+ * 每个属性绑定名称都存储在此处与其在数据数组中的值相同的索引处。如果绑定是插值，则静态字符串值与动态值并行存储。例子：
  *
  * `id="prefix {{ v0 }} a {{ v1 }} b {{ v2 }} suffix"`
  *

@@ -13,7 +13,7 @@ The same service that performs your server transactions should also perform erro
 When an error occurs, you can obtain details of what failed to inform your user.
 In some cases, you might also automatically [retry the request](#retry).
 
-发生错误时，你可以获得关于通知用户失败的详细信息。 在某些情况下，你可能还会自动[重试请求](#retry)。
+发生错误时，你可以获得关于通知用户失败的详细信息。在某些情况下，你可能还会自动[重试请求](#retry)。
 
 <a id="error-details"></a>
 

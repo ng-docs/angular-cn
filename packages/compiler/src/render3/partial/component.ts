@@ -61,7 +61,7 @@ export interface DeclareComponentTemplateInfo {
    * expression. Otherwise `null`, if the template was not defined inline or was not a literal.
    *
    * 如果模板是由直接字符串文字内联定义的，那么这就是该文字表达式。否则 `null`
-   * ，如果模板不是内联定义或不是文字。
+   *，如果模板不是内联定义或不是文字。
    *
    */
   inlineTemplateLiteralExpression: o.Expression|null;

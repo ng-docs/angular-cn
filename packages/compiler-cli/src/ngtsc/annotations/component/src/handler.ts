@@ -41,7 +41,7 @@ const EMPTY_ARRAY: any[] = [];
 /**
  * `DecoratorHandler` which handles the `@Component` annotation.
  *
- * 处理 `@Component` 注解的 `DecoratorHandler` 。
+ * 处理 `@Component` 注解的 `DecoratorHandler`。
  *
  */
 export class ComponentDecoratorHandler implements
@@ -988,7 +988,7 @@ export class ComponentDecoratorHandler implements
    *
    * a `Cycle` object if a cycle would be created, otherwise `null`.
    *
-   * 如果要创建循环，则为 `Cycle` 对象，否则为 `null` 。
+   * 如果要创建循环，则为 `Cycle` 对象，否则为 `null`。
    *
    */
   private _checkForCyclicImport(

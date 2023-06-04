@@ -31,7 +31,7 @@ export interface AttributeDecorator {
    *
    * Suppose we have an `<input>` element and want to know its `type`.
    *
-   * 假设我们有一个 `<input>` 元素，并且想知道它的 `type` 。
+   * 假设我们有一个 `<input>` 元素，并且想知道它的 `type`。
    *
    * ```html
    * <input type="text">
@@ -39,7 +39,7 @@ export interface AttributeDecorator {
    *
    * A decorator can inject string literal `text` as in the following example.
    *
-   * 装饰器可以注入字符串文字 `text` ，如下例所示。
+   * 装饰器可以注入字符串文字 `text`，如下例所示。
    *
    * {@example core/ts/metadata/metadata.ts region='attributeMetadata'}
    *
@@ -311,7 +311,7 @@ export interface ContentChildDecorator {
    * * **descendants** - If `true` \(default\) include all descendants of the element. If `false` then
    *   only query direct children of the element.
    *
-   *   **后代**- 如果为 `true` （默认），则包括元素的所有后代。如果为 `false` ，则仅查询元素的直接子项。
+   *   **后代**- 如果为 `true` （默认），则包括元素的所有后代。如果为 `false`，则仅查询元素的直接子项。
    *
    * * **read** - Used to read a different token from the queried element.
    *
@@ -573,7 +573,7 @@ export interface ViewChildDecorator {
    * in the view DOM. If the view DOM changes, and a new child matches the selector,
    * the property is updated.
    *
-   * 属性装饰器，用于配置一个视图查询。 变更检测器会在视图的 DOM 中查找能匹配上该选择器的第一个元素或指令。 如果视图的 DOM 发生了变化，出现了匹配该选择器的新的子节点，该属性就会被更新。
+   * 属性装饰器，用于配置一个视图查询。变更检测器会在视图的 DOM 中查找能匹配上该选择器的第一个元素或指令。如果视图的 DOM 发生了变化，出现了匹配该选择器的新的子节点，该属性就会被更新。
    *
    * View queries are set before the `ngAfterViewInit` callback is called.
    *

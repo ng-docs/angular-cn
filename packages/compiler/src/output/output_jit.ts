@@ -41,7 +41,7 @@ export class JitEvaluator {
    * @param createSourceMaps If true then create a source-map for the generated code and include it
    * inline as a source-map comment.
    *
-   * 如果为 true，则为生成的代码创建一个 source-map ，并将其作为 source-map 注释内联包含。
+   * 如果为 true，则为生成的代码创建一个 source-map，并将其作为 source-map 注释内联包含。
    *
    * @returns
    *
@@ -88,7 +88,7 @@ export class JitEvaluator {
    * @param createSourceMap If true then create a source-map for the generated code and include it
    * inline as a source-map comment.
    *
-   * 如果为 true，则为生成的代码创建一个 source-map ，并将其作为 source-map 注释内联包含。
+   * 如果为 true，则为生成的代码创建一个 source-map，并将其作为 source-map 注释内联包含。
    *
    * @returns
    *

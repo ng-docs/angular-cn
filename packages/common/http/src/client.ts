@@ -31,7 +31,7 @@ import {HttpEvent, HttpResponse} from './response';
  * The value of `responseType` cannot be a union, as the combined signature could imply.
  *
  * 请注意，`responseType`*选项*的值是一个
- * String，用于标识响应的单个数据类型。该方法的单个重载版本会处理每种响应类型。 `responseType`
+ * String，用于标识响应的单个数据类型。该方法的单个重载版本会处理每种响应类型。`responseType`
  * 的值不能是联合，因为组合签名可能暗示。
  *
  */
@@ -147,7 +147,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as a stream of `HttpEvent`s.
    *
-   * 响应对象的 `Observable` ，其响应体为 `HTTPEvents` 流。
+   * 响应对象的 `Observable`，其响应体为 `HTTPEvents` 流。
    *
    */
   request<R>(req: HttpRequest<any>): Observable<HttpEvent<R>>;
@@ -729,10 +729,10 @@ export class HttpClient {
    * - If `responseType` is the default `json`, you can pass a type interface for the resulting
    *   object as a type parameter to the call.
    *
-   *   如果 `responseType` 是默认的 `json` ，你可以将结果对象的类型接口作为类型参数传递给调用。
+   *   如果 `responseType` 是默认的 `json`，你可以将结果对象的类型接口作为类型参数传递给调用。
    *
    *   ```
-   *   如果 `responseType` 是默认的 `json` ，则可以将结果对象的类型接口作为类型参数传递给调用。
+   *   如果 `responseType` 是默认的 `json`，则可以将结果对象的类型接口作为类型参数传递给调用。
    *   ```
    *
    * The `observe` value determines the return type, according to what you are interested in
@@ -1415,7 +1415,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as a `Blob`.
    *
-   * 响应对象的 `Observable` ，其响应体为 `Blob` 类型。
+   * 响应对象的 `Observable`，其响应体为 `Blob` 类型。
    *
    */
   get(url: string, options: {
@@ -1502,7 +1502,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as a `Blob`.
    *
-   * 响应对象的 `Observable` ，其响应体为 `Blob` 类型。
+   * 响应对象的 `Observable`，其响应体为 `Blob` 类型。
    *
    */
   get(url: string, options: {
@@ -1587,7 +1587,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with a response body in the requested type.
    *
-   * 响应对象的 `Observable` ，其响应体为所请求的类型。
+   * 响应对象的 `Observable`，其响应体为所请求的类型。
    *
    */
   get<T>(url: string, options: {
@@ -1875,7 +1875,7 @@ export class HttpClient {
    *
    * @return  An `Observable` of the response, with the response body as a `Blob`.
    *
-   * 响应对象的 `Observable` ，其响应体为 `Blob` 类型。
+   * 响应对象的 `Observable`，其响应体为 `Blob` 类型。
    *
    */
 
@@ -2229,7 +2229,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as an object parsed from JSON.
    *
-   * 响应对象的 `Observable` ，其响应体为 JSON 对象。
+   * 响应对象的 `Observable`，其响应体为 JSON 对象。
    *
    */
   head(url: string, options?: {
@@ -2313,7 +2313,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response object, with response body as an object.
    *
-   * 响应对象的 `Observable` ，其响应体为对象类型。
+   * 响应对象的 `Observable`，其响应体为对象类型。
    *
    */
   jsonp(url: string, callbackParam: string): Observable<Object>;
@@ -2340,7 +2340,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response object, with response body in the requested type.
    *
-   * 响应对象的 `Observable` ，其响应体为所请求的类型。
+   * 响应对象的 `Observable`，其响应体为所请求的类型。
    *
    */
   jsonp<T>(url: string, callbackParam: string): Observable<T>;
@@ -2359,7 +2359,7 @@ export class HttpClient {
    * You can pass the callback function name as one of the query parameters.
    * Note that JSONP requests can only be used with `GET` requests.
    *
-   * 构造一个 `Observable` ，当订阅该 Observable 时，将通过拦截器管道分派特殊的 `JSONP` 方法。[JSONP
+   * 构造一个 `Observable`，当订阅该 Observable 时，将通过拦截器管道分派特殊的 `JSONP` 方法。[JSONP
    * 模式](https://en.wikipedia.org/wiki/JSONP) 可绕过某些 API
    * 端点的局限性，这些端点不支持新的方式。更推荐使用
    * [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 协议。JSONP 将端点 API 视为
@@ -2428,7 +2428,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as a `Blob`.
    *
-   * 响应对象的 `Observable` ，其响应体为 `Blob` 类型。
+   * 响应对象的 `Observable`，其响应体为 `Blob` 类型。
    *
    */
   options(url: string, options: {
@@ -2781,7 +2781,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as an object parsed from JSON.
    *
-   * 响应对象的 `Observable` ，其响应体为 JSON 对象。
+   * 响应对象的 `Observable`，其响应体为 JSON 对象。
    *
    */
   options(url: string, options?: {
@@ -2903,7 +2903,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as a `Blob`.
    *
-   * 响应对象的 `Observable` ，其响应体为 `Blob` 类型。
+   * 响应对象的 `Observable`，其响应体为 `Blob` 类型。
    *
    */
   patch(url: string, body: any|null, options: {
@@ -3305,7 +3305,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as an object parsed from JSON.
    *
-   * 响应对象的 `Observable` ，其响应体为 JSON 对象。
+   * 响应对象的 `Observable`，其响应体为 JSON 对象。
    *
    */
   patch(url: string, body: any|null, options?: {
@@ -3429,7 +3429,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as a `Blob`.
    *
-   * 响应对象的 `Observable` ，其响应体为 `Blob` 类型。
+   * 响应对象的 `Observable`，其响应体为 `Blob` 类型。
    *
    */
   post(url: string, body: any|null, options: {
@@ -3645,7 +3645,7 @@ export class HttpClient {
    * Constructs a POST request that interprets the body as an `ArrayBuffer`
    *  and returns the full `HttpResponse`.
    *
-   * 构造一个 POST 请求，它将请求体解释为 `ArrayBuffer` 类型，并返回完整的 `HTTPresponse` 。
+   * 构造一个 POST 请求，它将请求体解释为 `ArrayBuffer` 类型，并返回完整的 `HTTPresponse`。
    *
    * @param url The endpoint URL.
    *
@@ -3828,7 +3828,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as an object parsed from JSON.
    *
-   * 响应对象的 `Observable` ，其响应体为 JSON 对象。
+   * 响应对象的 `Observable`，其响应体为 JSON 对象。
    *
    */
   post(url: string, body: any|null, options?: {
@@ -3953,7 +3953,7 @@ export class HttpClient {
    *
    * @return An `Observable` of the response, with the response body as a `Blob`.
    *
-   * 响应对象的 `Observable` ，其响应体为 `Blob` 类型。
+   * 响应对象的 `Observable`，其响应体为 `Blob` 类型。
    *
    */
   put(url: string, body: any|null, options: {

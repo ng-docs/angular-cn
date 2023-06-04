@@ -214,7 +214,7 @@ function getAttributes(node: t.Template|
 /**
  * Given two `Set`s, returns all items in the `left` which do not appear in the `right`.
  *
- * 给定两个 `Set` ，返回 `left` 没有出现在 `right` 的所有条目。
+ * 给定两个 `Set`，返回 `left` 没有出现在 `right` 的所有条目。
  *
  */
 function difference<T>(left: Set<T>, right: Set<T>): Set<T> {
@@ -235,7 +235,7 @@ function difference<T>(left: Set<T>, right: Set<T>): Set<T> {
  * without it. The difference would be the directives which match because the tag is present.
  *
  * 给定一个元素或模板，确定哪些指令匹配，因为标签存在。例如，如果指令选择器是 `div[myAttr]`
- * ，这将匹配 div 元素，但如果选择器只是 `[myAttr]`
+ *，这将匹配 div 元素，但如果选择器只是 `[myAttr]`
  * 则不会。我们通过消除来找到由于此标签而应用了哪些指令：将带有此标签的指令匹配项与没有它的指令匹配项进行比较。区别将是因为存在标签而匹配的指令。
  *
  * @param element The element or template node that the attribute/tag is part of.
@@ -346,7 +346,7 @@ function getDirectiveMatchesForSelector<T extends {selector: string | null}>(
  * Returns a new `ts.SymbolDisplayPart` array which has the alias imports from the tcb filtered
  * out, i.e. `i0.NgForOf`.
  *
- * 返回一个新的 `ts.SymbolDisplayPart` 数组，该数组具有从 tcb 过滤掉的别名导入，即 `i0.NgForOf` 。
+ * 返回一个新的 `ts.SymbolDisplayPart` 数组，该数组具有从 tcb 过滤掉的别名导入，即 `i0.NgForOf`。
  *
  */
 export function filterAliasImports(displayParts: ts.SymbolDisplayPart[]): ts.SymbolDisplayPart[] {

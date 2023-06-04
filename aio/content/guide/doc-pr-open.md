@@ -14,7 +14,7 @@ These steps are performed in your web browser.
    In this example, `test-1` is the name of the `working` branch.
    Choose one of these options to open a pull request.
 
-   定位要用于 Pull Request 的 `working` 分支。在此示例中， `test-1` 是 `working` 分支的名称。选择这些选项之一以打开 Pull Request。
+   定位要用于 Pull Request 的 `working` 分支。在此示例中，`test-1` 是 `working` 分支的名称。选择这些选项之一以打开 Pull Request。
 
    1. If you recently pushed the branch that you want to use to the `origin` repo, you might see it listed on the code page of the `angular` repo in your GitHub account.
       This image shows an example of a repo that has had several recent updates.
@@ -80,7 +80,7 @@ These steps are performed in your web browser.
    Remember that the commit messages and the pull request title are different.
    For more information about commit message formatting, see [Preparing a documentation update for a pull request](guide/doc-pr-prep) and [Commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit).
 
-   当你确定提交消息的格式正确时，请标记此评论。 请记住，提交消息和拉取请求标题是不同的。 有关提交消息格式的更多信息，请参阅[为拉取请求准备文档更新](guide/doc-pr-prep)和[提交消息格式](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit)。
+   当你确定提交消息的格式正确时，请标记此评论。请记住，提交消息和拉取请求标题是不同的。有关提交消息格式的更多信息，请参阅[为拉取请求准备文档更新](guide/doc-pr-prep)和[提交消息格式](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit)。
 
 1. **Docs have been added / updated \(for bug fixes / features\)**
 
@@ -97,7 +97,7 @@ These steps are performed in your web browser.
    Mark this comment to identify this is a documentation pull request.
    If you also updated other types of content, you can mark those as well.
 
-   标记此评论以标识这是文档拉取请求。 如果你还更新了其他类型的内容，你也可以标记这些内容。
+   标记此评论以标识这是文档拉取请求。如果你还更新了其他类型的内容，你也可以标记这些内容。
 
 1. **What is the current behavior?**
 
@@ -106,7 +106,7 @@ These steps are performed in your web browser.
    Briefly describe what wasn't working or what was incorrect in the documentation before you made the changes in this pull request.
    Add the issue number here, if the problem is described in an issue.
 
-   在你在此拉取请求中进行更改之前，简要描述文档中的哪些内容不起作用或不正确。 如果问题在问题中有所描述，请在此处添加问题编号。
+   在你在此拉取请求中进行更改之前，简要描述文档中的哪些内容不起作用或不正确。如果问题在问题中有所描述，请在此处添加问题编号。
 
 1. **What is the new behavior?**
 
@@ -122,7 +122,7 @@ These steps are performed in your web browser.
 
    For most documentation updates, the answer to this should be `No`.
 
-   对于大多数文档更新，答案应该是 `No` 。
+   对于大多数文档更新，答案应该是 `No`。
 
 1. **Other information**
 
@@ -176,7 +176,7 @@ In most cases, documentation pull requests that pass the automated tests are app
 Sometimes, reviewers suggest changes for you to make to improve your pull request.
 In those case, review the suggestions and [update the pull request](guide/doc-pr-update) with a comment or an updated file.
 
-有时，审阅者会建议你进行更改以改进你的 Pull Request。在这种情况下，请查看建议并使用注释或更新的文件[更新 Pull Request](guide/doc-pr-update) 。
+有时，审阅者会建议你进行更改以改进你的 Pull Request。在这种情况下，请查看建议并使用注释或更新的文件[更新 Pull Request](guide/doc-pr-update)。
 
 ### What happens to abandoned pull requests
 

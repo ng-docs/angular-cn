@@ -42,11 +42,11 @@ Angular 为典型的数据转换提供了内置的管道，包括国际化的转
 
 * [`LowerCasePipe`](api/common/LowerCasePipe): Transforms text to all lower case.
 
-  [`LowerCasePipe`](api/common/LowerCasePipe) ：把文本全部转换成小写。
+  [`LowerCasePipe`](api/common/LowerCasePipe)：把文本全部转换成小写。
 
 * [`CurrencyPipe`](api/common/CurrencyPipe): Transforms a number to a currency string, formatted according to locale rules.
 
-  [`CurrencyPipe`](api/common/CurrencyPipe) ：把数字转换成货币字符串，根据本地环境中的规则进行格式化。
+  [`CurrencyPipe`](api/common/CurrencyPipe)：把数字转换成货币字符串，根据本地环境中的规则进行格式化。
 
 * [`DecimalPipe`](api/common/DecimalPipe): Transforms a number into a string with a decimal point, formatted according to locale rules.
 
@@ -54,7 +54,7 @@ Angular 为典型的数据转换提供了内置的管道，包括国际化的转
 
 * [`PercentPipe`](api/common/PercentPipe): Transforms a number to a percentage string, formatted according to locale rules.
 
-  [`PercentPipe`](api/common/PercentPipe) ：把数字转换成百分比字符串，根据本地环境中的规则进行格式化。
+  [`PercentPipe`](api/common/PercentPipe)：把数字转换成百分比字符串，根据本地环境中的规则进行格式化。
 
 <div class="alert is-helpful">
 

@@ -317,7 +317,7 @@ export type Inherited = {
  * Returns the inherited params, data, and resolve for a given route.
  * By default, this only inherits values up to the nearest path-less or component-less route.
  *
- * 返回给定路由的继承参数、数据和解析。 默认情况下，这只会继承最近的无路径或无组件路由的值。
+ * 返回给定路由的继承参数、数据和解析。默认情况下，这只会继承最近的无路径或无组件路由的值。
  *
  * @internal
  */
@@ -368,7 +368,7 @@ function flattenInherited(pathFromRoot: ActivatedRouteSnapshot[]): Inherited {
  * outlet at a particular moment in time. ActivatedRouteSnapshot can also be used to
  * traverse the router state tree.
  *
- * 包含与当前组件相关的路由的当前瞬间信息。`ActivatedRoute` 也可用于遍历路由器的状态树。 `ActivatedRouteSnapshot` 也能用于遍历路由器状态树。
+ * 包含与当前组件相关的路由的当前瞬间信息。`ActivatedRoute` 也可用于遍历路由器的状态树。`ActivatedRouteSnapshot` 也能用于遍历路由器状态树。
  *
  * The following example initializes a component with route information extracted
  * from the snapshot of the root node at the time of creation.
@@ -590,7 +590,7 @@ function serializeNode(node: TreeNode<ActivatedRouteSnapshot>): string {
  * So we push new values into the observables only when they are not the initial values.
  * And we detect that by checking if the snapshot field is set.
  *
- * 期望是使用正确的参数集创建激活路由。 因此，只有当新值不是初始值时，我们才会将新值推送到可观察对象中。 我们通过检查是否设置了快照字段来检测到这一点。
+ * 期望是使用正确的参数集创建激活路由。因此，只有当新值不是初始值时，我们才会将新值推送到可观察对象中。我们通过检查是否设置了快照字段来检测到这一点。
  *
  */
 export function advanceActivatedRoute(route: ActivatedRoute): void {

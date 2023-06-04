@@ -101,7 +101,7 @@ export interface CompilerOptions extends NgCompilerOptions, ts.CompilerOptions {
    *
    * NGC 是否应该为 Angular
    * 元数据中引用的外部符号（例如 @Component、@Inject、@ViewChild）生成重新导出。可以启用此功能以避免动态生成的模块依赖项，这可能会破坏严格的依赖强制执行。默认情况下，此未启用。在这里读更多关于这个的内容：
-   * https://github.com/angular/angular/issues/25644 。
+   * https://github.com/angular/angular/issues/25644。
    *
    */
   createExternalSymbolFactoryReexports?: boolean;
@@ -113,7 +113,7 @@ export interface CompilerHost extends ts.CompilerHost, ExtendedTsCompilerHost {
    * I.e. `path/to/containingFile.ts` containing `import {...} from 'module-name'`.
    *
    * 将 `import` 中使用的模块名称转换为文件路径。即包含 `import {...} from 'module-name'`
-   * `path/to/containingFile.ts` 。
+   * `path/to/containingFile.ts`。
    *
    */
   moduleNameToFileName?(moduleName: string, containingFile: string): string|null;
@@ -276,7 +276,7 @@ export interface Program {
    * `getTsProgram().getSemanticDiagnostics()` directly and is included for completeness.
    *
    * 从 TypeScript 检索语义诊断。这等效于直接调用 `getTsProgram().getSemanticDiagnostics()`
-   * ，并且为了完整起见被包含在内。
+   *，并且为了完整起见被包含在内。
    *
    */
   getTsSemanticDiagnostics(sourceFile?: ts.SourceFile, cancellationToken?: ts.CancellationToken):

@@ -144,7 +144,7 @@ export abstract class AssetGroup {
   /**
    * Process a request for a given resource and return it, or return null if it's not available.
    *
-   * 处理对给定资源的请求并返回它，如果不可用，则返回 null 。
+   * 处理对给定资源的请求并返回它，如果不可用，则返回 null。
    *
    */
   async handleFetch(req: Request, _event: ExtendableEvent): Promise<Response|null> {
@@ -279,7 +279,7 @@ export abstract class AssetGroup {
   /**
    * Fetch the complete state of a cached resource, or return null if it's not found.
    *
-   * 获取缓存资源的完整状态，如果找不到，则返回 null 。
+   * 获取缓存资源的完整状态，如果找不到，则返回 null。
    *
    */
   async fetchFromCacheOnly(url: string): Promise<CacheState|null> {
@@ -570,7 +570,7 @@ export abstract class AssetGroup {
 /**
  * An `AssetGroup` that prefetches all of its resources during initialization.
  *
- * 在初始化期间预取其所有资源的 `AssetGroup` 。
+ * 在初始化期间预取其所有资源的 `AssetGroup`。
  *
  */
 export class PrefetchAssetGroup extends AssetGroup {

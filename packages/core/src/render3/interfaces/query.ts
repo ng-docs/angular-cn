@@ -100,7 +100,7 @@ export interface TQuery {
    * to clone for an embedded view \(when an embedded view is created\).
    *
    * 在查询传播到嵌入式视图的情况下，声明视图中查询的索引，对于给定视图中声明的查询，为 -1
-   * 。我们正在存储此索引，因此我们可以找到要为嵌入式视图克隆的父查询（创建嵌入式视图时）。
+   *。我们正在存储此索引，因此我们可以找到要为嵌入式视图克隆的父查询（创建嵌入式视图时）。
    *
    */
   indexInDeclarationView: number;
@@ -144,7 +144,7 @@ export interface TQuery {
    * - \-1 - indicates that we need to read a default value based on the node type \(TemplateRef for
    *     ng-template and ElementRef for other elements\);
    *
-   *   \-1 - 表明我们需要根据节点类型读取默认值（ng-template 为 TemplateRef ，其他元素为 ElementRef
+   *   \-1 - 表明我们需要根据节点类型读取默认值（ng-template 为 TemplateRef，其他元素为 ElementRef
    *   ）；
    *
    * - a positive number - index of an injectable to be read from the element injector.
@@ -251,7 +251,7 @@ export interface TQueries {
    * A proxy method that iterates over all the TQueries in a given TView and calls the corresponding
    * `elementStart` on each and every TQuery.
    *
-   * 一种代理方法，它迭代给定 TView 中的所有 TQueries 并在每个 TQuery 上调用相应的 `elementStart` 。
+   * 一种代理方法，它迭代给定 TView 中的所有 TQueries 并在每个 TQuery 上调用相应的 `elementStart`。
    *
    * @param tView
    * @param tNode
@@ -262,7 +262,7 @@ export interface TQueries {
    * A proxy method that iterates over all the TQueries in a given TView and calls the corresponding
    * `elementEnd` on each and every TQuery.
    *
-   * 一种代理方法，它迭代给定 TView 中的所有 TQueries 并在每个 TQuery 上调用相应的 `elementEnd` 。
+   * 一种代理方法，它迭代给定 TView 中的所有 TQueries 并在每个 TQuery 上调用相应的 `elementEnd`。
    *
    * @param tNode
    */
@@ -272,7 +272,7 @@ export interface TQueries {
    * A proxy method that iterates over all the TQueries in a given TView and calls the corresponding
    * `template` on each and every TQuery.
    *
-   * 一种代理方法，它迭代给定 TView 中的所有 TQueries 并在每个 TQuery 上调用相应的 `template` 。
+   * 一种代理方法，它迭代给定 TView 中的所有 TQueries 并在每个 TQuery 上调用相应的 `template`。
    *
    * @param tView
    * @param tNode
@@ -284,7 +284,7 @@ export interface TQueries {
    * `embeddedTView` on each and every TQuery.
    *
    * 一种代理方法，它迭代给定 TView 中的所有 TQueries 并在每个 TQuery 上调用相应的 `embeddedTView`
-   * 。
+   *。
    *
    * @param tNode
    */
@@ -311,7 +311,7 @@ export interface LQuery<T> {
    * Materialized query matches for a given view only \(!\). Results are initialized lazily so the
    * array of matches is set to `null` initially.
    *
-   * 仅针对给定视图的物化查询匹配 \(!\)。结果被延迟初始化，因此匹配数组最初设置为 `null` 。
+   * 仅针对给定视图的物化查询匹配 \(!\)。结果被延迟初始化，因此匹配数组最初设置为 `null`。
    *
    */
   matches: (T|null)[]|null;
@@ -328,7 +328,7 @@ export interface LQuery<T> {
    * Clones an LQuery for an embedded view. A cloned query shares the same `QueryList` but has a
    * separate collection of materialized matches.
    *
-   * 为嵌入式视图克隆 LQuery。克隆的查询共享同一个 `QueryList` ，但有一个单独的具体化匹配项集合。
+   * 为嵌入式视图克隆 LQuery。克隆的查询共享同一个 `QueryList`，但有一个单独的具体化匹配项集合。
    *
    */
   clone(): LQuery<T>;

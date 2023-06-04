@@ -69,9 +69,9 @@ ng generate module app-routing --flat --module=app
 | :-------- | :------ |
 | 参数 | 详情 |
 | `--flat` | Puts the file in `src/app` instead of its own directory. |
-| `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。 |
+| `--flat` | 把这个文件放进了 `src/app` 中，而不是单独的目录中。|
 | `--module=app` | Tells `ng generate` to register it in the `imports` array of the `AppModule`. |
-| `--module=app` | 告诉 `ng generate` 把它注册到 `AppModule` 的 `imports` 数组中。 |
+| `--module=app` | 告诉 `ng generate` 把它注册到 `AppModule` 的 `imports` 数组中。|
 
 </div>
 
@@ -120,9 +120,9 @@ A typical Angular `Route` has two properties:
 | :--------- | :------ |
 | 属性 | 详情 |
 | `path` | A string that matches the URL in the browser address bar. |
-| `path` | 用来匹配浏览器地址栏中 URL 的字符串。 |
+| `path` | 用来匹配浏览器地址栏中 URL 的字符串。|
 | `component` | The component that the router should create when navigating to this route. |
-| `component` | 导航到该路由时，路由器应该创建的组件。 |
+| `component` | 导航到该路由时，路由器应该创建的组件。|
 
 This tells the router to match that URL to `path: 'heroes'` and display the `HeroesComponent` when the URL is something like `localhost:4200/heroes`.
 
@@ -651,7 +651,7 @@ It returns a *mock hero* as an `Observable`, using the RxJS `of()` function.
 
 You can rewrite `getHero()` as a real `Http` request without having to change the `HeroDetailComponent` that calls it.
 
-你可以将 `getHero()` 重写为真实的 `Http` 请求，而无需更改调用它的 `HeroDetailComponent` 。
+你可以将 `getHero()` 重写为真实的 `Http` 请求，而无需更改调用它的 `HeroDetailComponent`。
 
 <!-- markdownlint-disable MD024 -->
 
@@ -668,7 +668,7 @@ You can click a hero in the dashboard or in the heroes list and navigate to that
 
 If you paste `localhost:4200/detail/12` in the browser address bar, the router navigates to the detail view for the hero with `id: 12`, **Dr Nice**.
 
-如果你在浏览器地址栏中粘贴 `localhost:4200/detail/12` ，路由器会导航到 `id: 12` 的英雄, **Dr Nice**的详细视图。
+如果你在浏览器地址栏中粘贴 `localhost:4200/detail/12`，路由器会导航到 `id: 12` 的英雄, **Dr Nice**的详细视图。
 
 <!-- markdownlint-enable MD024 -->
 

@@ -104,7 +104,7 @@ export function generateTypeCtorDeclarationFn(
  * @param node the `ClassDeclaration<ts.ClassDeclaration>` for which a type constructor will be
  * generated.
  *
- * 将为其生成类型构造函数的 `ClassDeclaration<ts.ClassDeclaration>` 。
+ * 将为其生成类型构造函数的 `ClassDeclaration<ts.ClassDeclaration>`。
  * @param meta additional metadata required to generate the type constructor.
  *
  * 生成类型构造函数所需的额外元数据。
@@ -112,7 +112,7 @@ export function generateTypeCtorDeclarationFn(
  *
  * a `ts.MethodDeclaration` for the type constructor.
  *
- * 类型构造函数的 `ts.MethodDeclaration` 。
+ * 类型构造函数的 `ts.MethodDeclaration`。
  */
 export function generateInlineTypeCtor(
     node: ClassDeclaration<ts.ClassDeclaration>, meta: TypeCtorMetadata): ts.MethodDeclaration {
@@ -253,8 +253,8 @@ export function requiresInlineTypeCtor(
  * This correctly infers the type `NgFor<number>` for `_t1`, since `T` is inferred from the
  * assignment of type `number[]` to `ngForOf`'s type `T[]`. However, if `any` is passed instead:
  *
- * 这正确地推断了 \_t1 的类型 `_t1` `NgFor<number>` ，因为 `T` 是从 `number[]` 类型的赋值给
- * `ngForOf` 的 `T[]` 类型的赋值中推断出来的。但是，如果而是通过了 `any` ：
+ * 这正确地推断了 \_t1 的类型 `_t1` `NgFor<number>`，因为 `T` 是从 `number[]` 类型的赋值给
+ * `ngForOf` 的 `T[]` 类型的赋值中推断出来的。但是，如果而是通过了 `any`：
  *
  * ```
  * var _t2 = ctor({ngForOf: [1, 2] as any, ngForTrackBy: null as any, ngForTemplate: null as any});
@@ -264,7 +264,7 @@ export function requiresInlineTypeCtor(
  * the type `{}`, and so `_t2` is inferred as `NgFor<{}>`. This is obviously wrong.
  *
  * 然后对 `T` 的推断失败（不能从 `T[] = any` 推断）。在这种情况下，`T` 采用 `{}` 类型，因此 `_t2`
- * 被推断为 `NgFor<{}>` 。这显然是错误的。
+ * 被推断为 `NgFor<{}>`。这显然是错误的。
  *
  * Adding a default type to the generic declaration in the constructor solves this problem, as the
  * default type will be used in the event that inference fails.
@@ -279,7 +279,7 @@ export function requiresInlineTypeCtor(
  *
  * This correctly infers `T` as `any`, and therefore `_t3` as `NgFor<any>`.
  *
- * 这正确地将 `T` 推断为 `any` ，因此 `_t3` 推断为 `NgFor<any>` 。
+ * 这正确地将 `T` 推断为 `any`，因此 `_t3` 推断为 `NgFor<any>`。
  *
  */
 function typeParametersWithDefaultTypes(params: ReadonlyArray<ts.TypeParameterDeclaration>|

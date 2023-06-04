@@ -39,7 +39,7 @@ export class EmitScope<TStatement, TExpression> {
   /**
    * Translate the given Output AST definition expression into a generic `TExpression`.
    *
-   * 将给定的输出 AST 定义表达式转换为通用 `TExpression` 。
+   * 将给定的输出 AST 定义表达式转换为通用 `TExpression`。
    *
    * Use a `LinkerImportGenerator` to handle any imports in the definition.
    *

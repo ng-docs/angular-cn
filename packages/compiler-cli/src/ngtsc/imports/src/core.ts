@@ -23,7 +23,7 @@ export interface ImportRewriter {
    * If `true`, the symbol should be imported from the given specifier. If `false`, the symbol
    * should be referenced directly, without an import.
    *
-   * 如果为 `true` ，则应从给定的说明符导入符号。如果 `false` ，则应直接引用该符号，而不需要导入。
+   * 如果为 `true`，则应从给定的说明符导入符号。如果 `false`，则应直接引用该符号，而不需要导入。
    *
    */
   shouldImportSymbol(symbol: string, specifier: string): boolean;
@@ -49,7 +49,7 @@ export interface ImportRewriter {
 /**
  * `ImportRewriter` that does no rewriting.
  *
- * 不重写的 `ImportRewriter` 。
+ * 不重写的 `ImportRewriter`。
  *
  */
 export class NoopImportRewriter implements ImportRewriter {
@@ -94,7 +94,7 @@ const CORE_MODULE = '@angular/core';
  * `ImportRewriter` that rewrites imports from '@angular/core' to be imported from the r3_symbols.ts
  * file instead.
  *
- * `ImportRewriter` ，它将从 '@angular/core' 的导入重写为从 r3_symbols.ts 文件导入。
+ * `ImportRewriter`，它将从 '@angular/core' 的导入重写为从 r3_symbols.ts 文件导入。
  *
  */
 export class R3SymbolsImportRewriter implements ImportRewriter {

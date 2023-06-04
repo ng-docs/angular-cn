@@ -38,7 +38,7 @@ export interface ApplicationConfig {
  *
  * A merged [ApplicationConfig](api/core/ApplicationConfig).
  *
- * 合并的[ApplicationConfig](api/core/ApplicationConfig) 。
+ * 合并的[ApplicationConfig](api/core/ApplicationConfig)。
  *
  * @publicApi
  */

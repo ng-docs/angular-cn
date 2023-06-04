@@ -16,7 +16,7 @@ import {R3DeclareDependencyMetadata} from './api';
  * using the provided mapping function. If the array is empty or null, then null is returned.
  *
  * 从给定数组创建一个数组文字表达式，使用提供的映射函数将所有值映射到一个表达式。如果数组为空或 null
- * ，则返回 null 。
+ *，则返回 null。
  *
  * @param values The array to transfer into literal array expression.
  *
@@ -31,7 +31,7 @@ import {R3DeclareDependencyMetadata} from './api';
  * An array literal expression representing `values`, or null if `values` is empty or
  * is itself null.
  *
- * 表示 `values` 的数组文字表达式，如果 `values` 为空或本身为 null ，则为 null 。
+ * 表示 `values` 的数组文字表达式，如果 `values` 为空或本身为 null，则为 null。
  *
  */
 export function toOptionalLiteralArray<T>(
@@ -47,7 +47,7 @@ export function toOptionalLiteralArray<T>(
  * using the provided mapping function. If the object has no keys, then null is returned.
  *
  * 从给定对象创建一个对象文字表达式，使用提供的映射函数将所有值映射到一个表达式。如果对象没有键，则返回
- * null 。
+ * null。
  *
  * @param object The object to transfer into an object literal expression.
  *
@@ -62,7 +62,7 @@ export function toOptionalLiteralArray<T>(
  * An object literal expression representing `object`, or null if `object` does not have
  * any keys.
  *
- * 表示 `object` 的对象文字表达式，如果 `object` 没有任何键，则为 null 。
+ * 表示 `object` 的对象文字表达式，如果 `object` 没有任何键，则为 null。
  *
  */
 export function toOptionalLiteralMap<T>(

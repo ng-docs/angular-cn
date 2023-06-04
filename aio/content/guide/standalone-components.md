@@ -22,7 +22,7 @@ Components, directives, and pipes can now be marked as `standalone: true`. Angul
 
 Standalone components specify their dependencies directly instead of getting them through `NgModule`s. For example, if `PhotoGalleryComponent` is a standalone component, it can directly import another standalone component `ImageGridComponent`:
 
-独立组件直接指定它们的依赖项，而不是通过 `NgModule` 获取它们。例如，如果 `PhotoGalleryComponent` 是独立组件，它可以直接导入另一个独立组件 `ImageGridComponent` ：
+独立组件直接指定它们的依赖项，而不是通过 `NgModule` 获取它们。例如，如果 `PhotoGalleryComponent` 是独立组件，它可以直接导入另一个独立组件 `ImageGridComponent`：
 
 ```ts
 @Component({
@@ -80,7 +80,7 @@ Standalone components can also be imported into existing NgModules-based context
 
 You can import a standalone component \(or directive, or pipe\) just like you would an `NgModule` - using `NgModule.imports`:
 
-你可以像导入 `NgModule` 一样导入独立组件（或指令或管道）- 使用 `NgModule.imports` ：
+你可以像导入 `NgModule` 一样导入独立组件（或指令或管道）- 使用 `NgModule.imports`：
 
 ```ts
 @NgModule({
@@ -113,7 +113,7 @@ bootstrapApplication(PhotoAppComponent);
 
 When bootstrapping an application, often you want to configure Angular’s dependency injection and provide configuration values or services for use throughout the application. You can pass these as providers to `bootstrapApplication`:
 
-引导应用程序时，你通常希望配置 Angular 的依赖注入并提供配置值或服务以在整个应用程序中使用。你可以将这些作为提供者传递给 `bootstrapApplication` ：
+引导应用程序时，你通常希望配置 Angular 的依赖注入并提供配置值或服务以在整个应用程序中使用。你可以将这些作为提供者传递给 `bootstrapApplication`：
 
 ```ts
 bootstrapApplication(PhotoAppComponent, {
@@ -476,7 +476,7 @@ The order of class declaration matters in TypeScript. You can't refer directly t
 
 This isn't usually a problem but sometimes circular references are unavoidable. For example, when class 'A' refers to class 'B' and 'B' refers to 'A'. One of them has to be defined first.
 
-这通常不是问题，但有时循环引用是不可避免的。 例如，当类“A”引用类“B”而“B”也引用“A”时。 其中之一必须首先定义。
+这通常不是问题，但有时循环引用是不可避免的。例如，当类“A”引用类“B”而“B”也引用“A”时。其中之一必须首先定义。
 
 The Angular `forwardRef()` function creates an indirect reference that Angular can resolve later. 
 
@@ -484,7 +484,7 @@ Angular 的 `forwardRef()` 函数创建了一个 Angular 稍后可以解析的�
 
 For example, this situation happens when a standalone parent component imports a standalone child component and vice-versa. You can resolve this circular dependency issue by using the `forwardRef` function.
 
-例如，当独立父组件导入独立子组件时会发生这种情况，反之亦然。 你可以使用 `forwardRef` 函数解决此循环依赖问题。
+例如，当独立父组件导入独立子组件时会发生这种情况，反之亦然。你可以使用 `forwardRef` 函数解决此循环依赖问题。
 
 ```ts
 @Component({

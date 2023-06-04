@@ -135,7 +135,7 @@ export type CompilationTicket = FreshCompilationTicket|IncrementalTypeScriptComp
 /**
  * Create a `CompilationTicket` for a brand new compilation, using no prior state.
  *
- * 为全新的编译创建一个 `CompilationTicket` ，不使用先前的状态。
+ * 为全新的编译创建一个 `CompilationTicket`，不使用先前的状态。
  *
  */
 export function freshCompilationTicket(
@@ -159,7 +159,7 @@ export function freshCompilationTicket(
  * Create a `CompilationTicket` as efficiently as possible, based on a previous `NgCompiler`
  * instance and a new `ts.Program`.
  *
- * 根据以前的 `NgCompiler` 实例和新的 `ts.Program` ，尽可能高效地创建一个 `CompilationTicket` 。
+ * 根据以前的 `NgCompiler` 实例和新的 `ts.Program`，尽可能高效地创建一个 `CompilationTicket`。
  *
  */
 export function incrementalFromCompilerTicket(
@@ -250,7 +250,7 @@ export function resourceChangeTicket(compiler: NgCompiler, modifiedResourceFiles
  * compiler. Each instance of `NgCompiler` supports a single compilation, which might be
  * incremental.
  *
- * `NgCompiler` 提供了一个 API，用于在自定义 TypeScript 编译器中执行 Angular 编译。 `NgCompiler`
+ * `NgCompiler` 提供了一个 API，用于在自定义 TypeScript 编译器中执行 Angular 编译。`NgCompiler`
  * 的每个实例都支持单次编译，这可能是增量的。
  *
  * `NgCompiler` is lazy, and does not perform any of the work of the compilation until one of its
@@ -260,7 +260,7 @@ export function resourceChangeTicket(compiler: NgCompiler, modifiedResourceFiles
  *
  * See the README.md for more information.
  *
- * 有关更多信息，请参阅 README.md 。
+ * 有关更多信息，请参阅 README.md。
  *
  */
 export class NgCompiler {
@@ -318,7 +318,7 @@ export class NgCompiler {
    * with each fresh compilation.
    *
    * `NgCompiler` 可以用于多次编译（用于仅资源更改），并且每个新的编译都使用一个新的 `PerfRecorder`
-   * 。因此，使用 `NgCompiler` 的生命周期创建的类会使用 `DelegatingPerfRecorder` ，因此它们写入的
+   *。因此，使用 `NgCompiler` 的生命周期创建的类会使用 `DelegatingPerfRecorder`，因此它们写入的
    * `PerfRecorder` 可以在每次新编译时更新。
    *
    */
@@ -504,7 +504,7 @@ export class NgCompiler {
    *
    * If a `ts.SourceFile` is passed, only diagnostics related to that file are returned.
    *
-   * 如果传递了 `ts.SourceFile` ，则仅返回与该文件相关的诊断信息。
+   * 如果传递了 `ts.SourceFile`，则仅返回与该文件相关的诊断信息。
    *
    */
   getDiagnosticsForFile(file: ts.SourceFile, optimizeFor: OptimizeFor): ts.Diagnostic[] {
@@ -521,7 +521,7 @@ export class NgCompiler {
   /**
    * Get all `ts.Diagnostic`s currently available that pertain to the given component.
    *
-   * 获取当前可用的与给定组件有关的所有 `ts.Diagnostic` 。
+   * 获取当前可用的与给定组件有关的所有 `ts.Diagnostic`。
    *
    */
   getDiagnosticsForComponent(component: ts.ClassDeclaration): ts.Diagnostic[] {
@@ -576,14 +576,14 @@ export class NgCompiler {
   /**
    * Get the current `ts.Program` known to this `NgCompiler`.
    *
-   * 获取此 `ts.Program` 已知的当前 `NgCompiler` 。
+   * 获取此 `ts.Program` 已知的当前 `NgCompiler`。
    *
    * Compilation begins with an input `ts.Program`, and during template type-checking operations new
    * `ts.Program`s may be produced using the `ProgramDriver`. The most recent such `ts.Program` to
    * be produced is available here.
    *
    * 编译从输入 `ts.Program` 开始，在模板类型检查操作期间，可以用 `ProgramDriver` 生成新的
-   * `ts.Program` 。要生成的最新的此类 `ts.Program` 可在此获得。
+   * `ts.Program`。要生成的最新的此类 `ts.Program` 可在此获得。
    *
    * This `ts.Program` serves two key purposes:
    *
@@ -616,7 +616,7 @@ export class NgCompiler {
   /**
    * Retrieves the `ts.Declaration`s for any component\(s\) which use the given template file.
    *
-   * 检索使用给定模板文件的任何组件的 `ts.Declaration` 。
+   * 检索使用给定模板文件的任何组件的 `ts.Declaration`。
    *
    */
   getComponentsWithTemplateFile(templateFilePath: string): ReadonlySet<DeclarationNode> {
@@ -627,7 +627,7 @@ export class NgCompiler {
   /**
    * Retrieves the `ts.Declaration`s for any component\(s\) which use the given template file.
    *
-   * 检索使用给定模板文件的任何组件的 `ts.Declaration` 。
+   * 检索使用给定模板文件的任何组件的 `ts.Declaration`。
    *
    */
   getComponentsWithStyleFile(styleFilePath: string): ReadonlySet<DeclarationNode> {
@@ -681,8 +681,8 @@ export class NgCompiler {
    *
    * 通常，每当 `getDiagnostics` 或 `prepareEmit`
    * 时，此操作都会延迟发生。但是，某些消费者可能希望允许分析的异步阶段，其中的资源（例如
-   * `styleUrls`）会被异步解析。在这些情况下，必须首先调用 `analyzeAsync` ，并在调用 `NgCompiler`
-   * 的任何其他 API 之前等待其 `Promise` 。
+   * `styleUrls`）会被异步解析。在这些情况下，必须首先调用 `analyzeAsync`，并在调用 `NgCompiler`
+   * 的任何其他 API 之前等待其 `Promise`。
    *
    */
   async analyzeAsync(): Promise<void> {
@@ -760,7 +760,7 @@ export class NgCompiler {
   /**
    * Run the indexing process and return a `Map` of all indexed components.
    *
-   * 运行索引过程并返回所有索引组件的 `Map` 。
+   * 运行索引过程并返回所有索引组件的 `Map`。
    *
    * See the `indexing` package for more details.
    *
@@ -1259,7 +1259,7 @@ export class NgCompiler {
 /**
  * Determine if the given `Program` is @angular/core.
  *
- * 确定给定的 `Program` 是否为 @angular/core 。
+ * 确定给定的 `Program` 是否为 @angular/core。
  *
  */
 export function isAngularCorePackage(program: ts.Program): boolean {
@@ -1300,7 +1300,7 @@ export function isAngularCorePackage(program: ts.Program): boolean {
 /**
  * Find the 'r3_symbols.ts' file in the given `Program`, or return `null` if it wasn't there.
  *
- * 在给定的 `Program` 中查找 “r3_symbols.ts” 文件，如果不存在，则返回 `null` 。
+ * 在给定的 `Program` 中查找 “r3_symbols.ts” 文件，如果不存在，则返回 `null`。
  *
  */
 function getR3SymbolsFile(program: ts.Program): ts.SourceFile|null {

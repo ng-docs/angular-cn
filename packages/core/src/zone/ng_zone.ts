@@ -224,7 +224,7 @@ export class NgZone {
    * Running functions via `run` allows you to reenter Angular zone from a task that was executed
    * outside of the Angular zone \(typically started via {@link #runOutsideAngular}\).
    *
-   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -249,7 +249,7 @@ export class NgZone {
    * Running functions via `run` allows you to reenter Angular zone from a task that was executed
    * outside of the Angular zone \(typically started via {@link #runOutsideAngular}\).
    *
-   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone 。
+   * 通过 `run` 运行的函数可让你从在 Angular Zone 之外执行的任务（通常通过 {@link #runOutsideAngular} 启动）重新进入 Angular Zone。
    *
    * Any future tasks or microtasks scheduled from within this function will continue executing from
    * within the Angular zone.
@@ -365,7 +365,7 @@ interface NgZonePrivate extends NgZone {
    * the change detection will only be trigged once.
    *
    * 默认情况下，此选项将是 false
-   * 。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为
+   *。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为
    * true，则变更检测将通过在动画帧中调度来异步触发。因此在上面的情况下，变更检测将只会被触发一次。
    *
    */
@@ -604,7 +604,7 @@ export class NoopNgZone implements NgZone {
  * for `NoopNgZone` which is always just an `Observable` of `true`. Additionally, we should consider
  * whether the property on `NgZone` should be `Observable` or `Signal`.
  *
- * TODO：这应该完全移至 NgZone（作为重大更改），以便它可以对 `NoopNgZone` 进行树摇动，而 NoopNgZone 始终只是一个 `Observable` of `true` 。 此外，我们应该考虑 `NgZone` 上的属性应该是 `Observable` 还是 `Signal` 。
+ * TODO：这应该完全移至 NgZone（作为重大更改），以便它可以对 `NoopNgZone` 进行树摇动，而 NoopNgZone 始终只是一个 `Observable` of `true`。此外，我们应该考虑 `NgZone` 上的属性应该是 `Observable` 还是 `Signal`。
  *
  */
 export const ZONE_IS_STABLE_OBSERVABLE =

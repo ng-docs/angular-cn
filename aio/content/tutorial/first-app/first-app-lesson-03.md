@@ -48,7 +48,7 @@ If you have any trouble during this lesson, you can review the completed code fo
 
 * Your app has a new component: `HousingLocationComponent` and it displays a message confirming that the component was added to your application.
 
-  应用程序有一个新组件：`HousingLocationComponent` ，它会显示一条消息，以确认该组件成功添加到了应用程序中。
+  应用程序有一个新组件：`HousingLocationComponent`，它会显示一条消息，以确认该组件成功添加到了应用程序中。
 
 ## Lesson steps
 
@@ -118,11 +118,11 @@ In the **Edit** pane of your IDE:
 
 1. Open `home.component.ts` in the editor.
 
-   在编辑器中打开 `home.component.ts` 。
+   在编辑器中打开 `home.component.ts`。
 
 1. In `home.component.ts`, import `HousingLocationComponent` by adding this line to the file level imports.
 
-   在 `home.component.ts` 中，通过将此行添加到文件顶部来导入 `HousingLocationComponent` 。
+   在 `home.component.ts` 中，通过将此行添加到文件顶部来导入 `HousingLocationComponent`。
 
    <code-example header="Import HousingLocationComponent in src/app/home/home.component.ts" path="first-app-lesson-03/src/app/home/home.component.ts" region="import-housingLocation"></code-example>
 

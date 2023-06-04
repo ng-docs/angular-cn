@@ -21,7 +21,7 @@ import {RouterOutlet} from '../directives/router_outlet';
  * In order to render, there needs to be a component on this config, which will default
  * to this `EmptyOutletComponent`.
  *
- * 为了渲染，此配置中需要有一个组件，默认为此 `EmptyOutletComponent` 。
+ * 为了渲染，此配置中需要有一个组件，默认为此 `EmptyOutletComponent`。
  *
  */
 @Component({

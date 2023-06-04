@@ -37,7 +37,7 @@ declare const $localize: LocalizeFn&{TRANSLATIONS: Record<MessageId, ParsedTrans
  *
  * Loading a new translation will overwrite a previous translation if it has the same `MessageId`.
  *
- * 如果具有相同的 `MessageId` ，加载新翻译将覆盖以前的翻译。
+ * 如果具有相同的 `MessageId`，加载新翻译将覆盖以前的翻译。
  *
  * Note that `$localize` messages are only processed once, when the tagged string is first
  * encountered, and does not provide dynamic language changing without refreshing the browser.

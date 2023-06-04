@@ -82,7 +82,7 @@ export interface ParsedComponentTemplate extends ParsedTemplate {
   /**
    * The `ParseSourceFile` for the template.
    *
-   * 模板的 `ParseSourceFile` 。
+   * 模板的 `ParseSourceFile`。
    *
    */
   file: ParseSourceFile;
@@ -460,7 +460,7 @@ export function makeResourceNotFoundError(
  * resolves to `@Component`, the `templateUrl` and `styleUrls` metadata fields will be
  * transformed to their semantically-equivalent inline variants.
  *
- * 将给定的装饰器转换为内联外部资源。即，如果装饰器解析为 `@Component` ，则 `templateUrl` 和
+ * 将给定的装饰器转换为内联外部资源。即，如果装饰器解析为 `@Component`，则 `templateUrl` 和
  * `styleUrls` 元数据字段将被转换为它们在语义上等效的内联变体。
  *
  * This method is used for serializing decorators into the class metadata. The emitted

@@ -16,7 +16,7 @@ import {makeElementSelector} from './utils';
 /**
  * Differentiates different kinds of `AttributeCompletion`s.
  *
- * 区分不同种类的 `AttributeCompletion` 。
+ * 区分不同种类的 `AttributeCompletion`。
  *
  */
 export enum AttributeCompletionKind {
@@ -111,7 +111,7 @@ export interface DomAttributeCompletion {
    * we only want to provide DOM attributes when there is an Angular syntax associated with them
    * \(`[propertyName]=""`\).
    *
-   * 此属性是否也是 DOM 属性。 请注意，这必须是 `true` ，因为我们只想在存在与之关联的 Angular 语法（ `[propertyName]=""` ）时提供 DOM 属性。
+   * 此属性是否也是 DOM 属性。请注意，这必须是 `true`，因为我们只想在存在与之关联的 Angular 语法（ `[propertyName]=""` ）时提供 DOM 属性。
    *
    */
   isAlsoProperty: true;
@@ -209,7 +209,7 @@ export interface DirectiveInputCompletion {
    * Currently, in the case where a single property name corresponds to multiple input fields, only
    * the first such field is represented here. In the future multiple results may be warranted.
    *
-   * 目前，在单个属性名称对应多个输入字段的情况下，这里只表示第一个这样的字段。 将来可能需要多个结果。
+   * 目前，在单个属性名称对应多个输入字段的情况下，这里只表示第一个这样的字段。将来可能需要多个结果。
    *
    */
   classPropertyName: string;
@@ -270,7 +270,7 @@ export type AttributeCompletion =
 /**
  * Given an element and its context, produce a `Map` of all possible attribute completions.
  *
- * 给定一个元素及其上下文，生成一个包含所有可能的属性补全的 `Map` 。
+ * 给定一个元素及其上下文，生成一个包含所有可能的属性补全的 `Map`。
  *
  * 3 kinds of attributes are considered for completion, from highest to lowest priority:
  *
@@ -293,7 +293,7 @@ export type AttributeCompletion =
  * input shares the same name as a DOM attribute, the `Map` will reflect the directive input
  * completion, not the DOM completion for that name.
  *
- * 这些选项的优先级决定了将哪些补全添加到 `Map` 中。 如果指令输入与 DOM 属性共享相同的名称，则 `Map` 将反映指令输入完成，而不是该名称的 DOM 完成。
+ * 这些选项的优先级决定了将哪些补全添加到 `Map` 中。如果指令输入与 DOM 属性共享相同的名称，则 `Map` 将反映指令输入完成，而不是该名称的 DOM 完成。
  *
  */
 export function buildAttributeCompletionTable(
@@ -503,12 +503,12 @@ function buildSnippet(insertSnippet: true|undefined, text: string): string|undef
  * prioritized first while attributes which would match an additional directive are prioritized
  * second.
  *
- * 用于确保 Angular 完成出现在 DOM 完成之前。 输入和输出优先级最高，而匹配附加指令的属性优先级次之。
+ * 用于确保 Angular 完成出现在 DOM 完成之前。输入和输出优先级最高，而匹配附加指令的属性优先级次之。
  *
  * This sort priority is based on the ASCII table. Other than `space`, the `!` is the first
  * printable character in the ASCII ordering.
  *
- * 此排序优先级基于 ASCII 表。 除了 `space` ， `!` 是 ASCII 排序中的第一个可打印字符。
+ * 此排序优先级基于 ASCII 表。除了 `space`，`!` 是 ASCII 排序中的第一个可打印字符。
  *
  */
 enum AsciiSortPriority {
@@ -520,7 +520,7 @@ enum AsciiSortPriority {
  * Given an `AttributeCompletion`, add any available completions to a `ts.CompletionEntry` array of
  * results.
  *
- * 给定一个 `AttributeCompletion` ，将任何可用的完成添加到结果的 `ts.CompletionEntry` 数组中。
+ * 给定一个 `AttributeCompletion`，将任何可用的完成添加到结果的 `ts.CompletionEntry` 数组中。
  *
  * The kind of completions generated depends on whether the current context is an attribute context
  * or not. For example, completing on `<element attr|>` will generate two results: `attribute` and
@@ -530,13 +530,13 @@ enum AsciiSortPriority {
  * implicitly present in a property binding context \(we're already completing within an `[attr|]`
  * expression\).
  *
- * 生成的完成类型取决于当前上下文是否是属性上下文。 例如，完成 `<element attr|>` 将生成两个结果： `attribute` 和 `[attribute]` - 可以生成静态属性或属性绑定。 但是， `<element [attr|]>` 不是属性上下文，因此只生成属性完成 `attribute` 。 请注意，此完成没有 `[]` 属性绑定糖，因为它隐式存在于属性绑定上下文中（我们已经在 `[attr|]` 表达式中完成）。
+ * 生成的完成类型取决于当前上下文是否是属性上下文。例如，完成 `<element attr|>` 将生成两个结果：`attribute` 和 `[attribute]` - 可以生成静态属性或属性绑定。但是，`<element [attr|]>` 不是属性上下文，因此只生成属性完成 `attribute`。请注意，此完成没有 `[]` 属性绑定糖，因为它隐式存在于属性绑定上下文中（我们已经在 `[attr|]` 表达式中完成）。
  *
  * If the `insertSnippet` is `true`, the completion entries should includes the property or event
  * binding sugar in some case. For Example `<div (my¦) />`, the `replacementSpan` is `(my)`, and the
  * `insertText` is `(myOutput)="$0"`.
  *
- * 如果 `insertSnippet` 为 `true` ，则在某些情况下，完成条目应包括属性或事件绑定糖。 例如 `<div (my¦) />` ， `replacementSpan` 是 `(my)` ， `insertText` 是 `(myOutput)="$0"` 。
+ * 如果 `insertSnippet` 为 `true`，则在某些情况下，完成条目应包括属性或事件绑定糖。例如 `<div (my¦) />`，`replacementSpan` 是 `(my)`，`insertText` 是 `(myOutput)="$0"`。
  *
  */
 export function addAttributeCompletionEntries(

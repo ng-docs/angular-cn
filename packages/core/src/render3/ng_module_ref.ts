@@ -31,12 +31,12 @@ import {maybeUnwrapFn} from './util/misc_utils';
  * @param parentInjector Optional injector instance to use as a parent for the module injector. If
  *     not provided, `NullInjector` will be used instead.
  *
- * 用作模块注入器的父级的可选注入器实例。如果未提供，将改为使用 `NullInjector` 。
+ * 用作模块注入器的父级的可选注入器实例。如果未提供，将改为使用 `NullInjector`。
  * @returns
  *
  * NgModuleRef that represents an NgModule instance.
  *
- * NgModuleRef ，表示 NgModule 实例。
+ * NgModuleRef，表示 NgModule 实例。
  *
  * @publicApi
  */
@@ -49,13 +49,13 @@ export function createNgModule<T>(
  * The `createNgModule` function alias for backwards-compatibility.
  * Please avoid using it directly and use `createNgModule` instead.
  *
- * 向后兼容的 `createNgModule` 函数别名。请避免直接使用它，而改用 `createNgModule` 。
+ * 向后兼容的 `createNgModule` 函数别名。请避免直接使用它，而改用 `createNgModule`。
  *
  * @deprecated
  *
  * Use `createNgModule` instead.
  *
- * 改用 `createNgModule` 。
+ * 改用 `createNgModule`。
  *
  */
 export const createNgModuleRef = createNgModule;

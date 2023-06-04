@@ -103,7 +103,7 @@ export class SourceFileLoader {
    *
    * a SourceFile object if its contents could be loaded from disk, or null otherwise.
    *
-   * 如果可以从磁盘加载其内容，则为 SourceFile 对象，否则为 null 。
+   * 如果可以从磁盘加载其内容，则为 SourceFile 对象，否则为 null。
    *
    */
   loadSourceFile(sourcePath: AbsoluteFsPath): SourceFile|null;
@@ -132,7 +132,7 @@ export class SourceFileLoader {
    * @param contents The contents of the source file to load, if provided inline. If `null`,
    *     the contents will be read from the file at the `sourcePath`.
    *
-   * 要加载的源文件的内容（如果内联提供）。如果为 `null` ，则将从 `sourcePath` 处的文件中读取内容。
+   * 要加载的源文件的内容（如果内联提供）。如果为 `null`，则将从 `sourcePath` 处的文件中读取内容。
    *
    * @param sourceOrigin Describes where the source content came from.
    *
@@ -142,7 +142,7 @@ export class SourceFileLoader {
    *     source-map will be computed from the contents of the source file, either inline or loaded
    *     from the file-system.
    *
-   * source-map 文件的原始内容和路径。如果为 `null` ，则 source-map
+   * source-map 文件的原始内容和路径。如果为 `null`，则 source-map
    * 将根据源文件的内容计算，可以是内联的，也可以是从文件系统加载的。
    *
    * @returns
@@ -150,7 +150,7 @@ export class SourceFileLoader {
    * a SourceFile if the content for one was provided or was able to be loaded from disk,
    * `null` otherwise.
    *
-   * 如果提供了某个内容的内容或可以从磁盘加载，则为 SourceFile ，否则为 `null` 。
+   * 如果提供了某个内容的内容或可以从磁盘加载，则为 SourceFile，否则为 `null`。
    *
    */
   private loadSourceFileInternal(
@@ -216,7 +216,7 @@ export class SourceFileLoader {
    * the parsed contents and path of the source-map, if loading was successful, null
    *     otherwise.
    *
-   * source-map 的解析内容和路径，如果加载成功，则为 null 。
+   * source-map 的解析内容和路径，如果加载成功，则为 null。
    *
    */
   private loadSourceMap(
@@ -369,7 +369,7 @@ export class SourceFileLoader {
    * But the end result is better than prefixing the sourceRoot in front of the scheme.
    *
    * 某些构建工具将真实文件路径替换为以 scheme 为前缀的路径——例如 `webpack://`
-   * 。我们使用传递给此类的 `schemeMap`
+   *。我们使用传递给此类的 `schemeMap`
    * 将此类路径转换为“真实”文件路径。在某些情况下，这是不可能的，因为该文件实际上是由构建工具合成的。但最终结果比在方案前面添加
    * sourceRoot 前缀要好。
    *

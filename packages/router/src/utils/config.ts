@@ -20,7 +20,7 @@ import {PRIMARY_OUTLET} from '../shared';
  * `currentInjector`.
  *
  * 如果 `Route` 有提供者并且不存在，则创建一个 `EnvironmentInjector` 并返回注入器。否则，如果
- * `Route` 没有 `providers` ，则返回 `currentInjector` 。
+ * `Route` 没有 `providers`，则返回 `currentInjector`。
  *
  * @param route The route that might have providers
  *
@@ -252,7 +252,7 @@ export function sortByMatchingOutlets(routes: Routes, outletName: string): Route
  *
  * Returns `null` if there is neither this nor any parents have a stored injector.
  *
- * 如果不存在 this 或任何父级都没有存储的注入器，则返回 `null` 。
+ * 如果不存在 this 或任何父级都没有存储的注入器，则返回 `null`。
  *
  * Generally used for retrieving the injector to use for getting tokens for guards/resolvers and
  * also used for getting the correct injector to use for creating components.

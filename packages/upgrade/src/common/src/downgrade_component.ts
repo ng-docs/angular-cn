@@ -49,7 +49,7 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  * The `downgradeComponent()` function returns a factory function that we
  * can use to define the AngularJS directive that wraps the "downgraded" component.
  *
- * 我们必须创建一个 AngularJS[指令](https://docs.angularjs.org/guide/directive)，使这个 Angular 组件在 AngularJS 模板中可用。 `downgradeComponent()` 函数返回一个工厂函数，我们可以使用它来定义包装“降级”组件的 AngularJS 指令。
+ * 我们必须创建一个 AngularJS[指令](https://docs.angularjs.org/guide/directive)，使这个 Angular 组件在 AngularJS 模板中可用。`downgradeComponent()` 函数返回一个工厂函数，我们可以使用它来定义包装“降级”组件的 AngularJS 指令。
  *
  * {@example upgrade/static/ts/full/module.ts region="ng2-heroes-wrapper"}
  *
@@ -64,7 +64,7 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  *
  * - `component: Type<any>`: The type of the Component that will be downgraded
  *
- *   `component: Type<any>` ：将被降级的组件的类型
+ *   `component: Type<any>`：将被降级的组件的类型
  *
  * - `downgradedModule?: string`: The name of the downgraded module \(if any\) that the component
  *     "belongs to", as returned by a call to `downgradeModule()`. It is the module, whose
@@ -73,7 +73,7 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  *     \(This option is only necessary when using `downgradeModule()` to downgrade more than one
  *     Angular module.\)
  *
- *   `downgradedModule?: string` ：组件“属于”的降级模块（如果有）的名称，由对 `downgradeModule()`
+ *   `downgradedModule?: string`：组件“属于”的降级模块（如果有）的名称，由对 `downgradeModule()`
  *   的调用返回。当需要实例化组件时，正是此模块，其对应的 Angular 模块将被引导。<br />（仅在使用
  *   `downgradeModule()` 降级多个 Angular 模块时才需要此选项。）
  *
@@ -86,7 +86,7 @@ import {controllerKey, getDowngradedModuleCount, getTypeName, getUpgradeAppType,
  *   `propagateDigest?: boolean` :
  *   是否在每个[$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest)上对组件执行 {@link
  *   ChangeDetectorRef#detectChanges 变更检测}。如果设置为 `false`
- *   ，当任何组件的输入更改时，仍将执行变更检测。（默认：true）
+ *，当任何组件的输入更改时，仍将执行变更检测。（默认：true）
  *
  * @returns
  *

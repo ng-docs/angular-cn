@@ -37,7 +37,7 @@ export function ɵɵresolveBody(element: RElement&{ownerDocument: Document}) {
  * The special delimiter we use to separate property names, prefixes, and suffixes
  * in property binding metadata. See `storeBindingMetadata()`.
  *
- * 我们用来分隔属性绑定元数据中的属性名称、前缀和后缀的特殊分隔符。请参阅 `storeBindingMetadata()` 。
+ * 我们用来分隔属性绑定元数据中的属性名称、前缀和后缀的特殊分隔符。请参阅 `storeBindingMetadata()`。
  *
  * We intentionally use the Unicode "REPLACEMENT CHARACTER" \(U+FFFD\) as a delimiter
  * because it is a very uncommon character that is unlikely to be part of a user's

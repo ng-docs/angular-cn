@@ -22,7 +22,7 @@ import {DESCENDANT_VIEWS_TO_REFRESH, FLAGS, HEADER_OFFSET, HOST, LView, LViewFla
  * in same location in `LView`. This is because we don't want to pre-allocate space for it
  * because the storage is sparse. This file contains utilities for dealing with such data types.
  *
- * 出于效率原因，我们经常将几种不同的数据类型（ `RNode` 、 `LView` 、 `LContainer` ）放在 `LView` 的同一位置。 这是因为我们不想为它预分配空间，因为存储是稀疏的。 该文件包含用于处理此类数据类型的实用程序。
+ * 出于效率原因，我们经常将几种不同的数据类型（ `RNode` 、 `LView` 、 `LContainer` ）放在 `LView` 的同一位置。这是因为我们不想为它预分配空间，因为存储是稀疏的。该文件包含用于处理此类数据类型的实用程序。
  *
  * How do we know what is stored at a given location in `LView`.
  *
@@ -54,7 +54,7 @@ import {DESCENDANT_VIEWS_TO_REFRESH, FLAGS, HEADER_OFFSET, HOST, LView, LViewFla
 /**
  * Returns `RNode`.
  *
- * 返回 `RNode` 。
+ * 返回 `RNode`。
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *
@@ -70,7 +70,7 @@ export function unwrapRNode(value: RNode|LView|LContainer): RNode {
 /**
  * Returns `LView` or `null` if not found.
  *
- * 如果未找到，则返回 `LView` 或 `null` 。
+ * 如果未找到，则返回 `LView` 或 `null`。
  *
  * @param value wrapped value of `RNode`, `LView`, `LContainer`
  *
@@ -102,11 +102,11 @@ export function getNativeByIndex(index: number, lView: LView): RNode {
 /**
  * Retrieve an `RNode` for a given `TNode` and `LView`.
  *
- * 检索给定 `TNode` 和 `LView` 的 `RNode` 。
+ * 检索给定 `TNode` 和 `LView` 的 `RNode`。
  *
  * This function guarantees in dev mode to retrieve a non-null `RNode`.
  *
- * 此函数保证在开发模式下检索非空 `RNode` 。
+ * 此函数保证在开发模式下检索非空 `RNode`。
  *
  * @param tNode
  * @param lView
@@ -121,11 +121,11 @@ export function getNativeByTNode(tNode: TNode, lView: LView): RNode {
 /**
  * Retrieve an `RNode` or `null` for a given `TNode` and `LView`.
  *
- * 检索给定 `TNode` 和 `LView` 的 `RNode` 或 `null` 。
+ * 检索给定 `TNode` 和 `LView` 的 `RNode` 或 `null`。
  *
  * Some `TNode`s don't have associated `RNode`s. For example `Projection`
  *
- * 一些 `TNode` 没有关联的 `RNode` 。 例如 `Projection`
+ * 一些 `TNode` 没有关联的 `RNode`。例如 `Projection`
  *
  * @param tNode
  * @param lView
@@ -187,7 +187,7 @@ export function isCreationMode(view: LView): boolean {
  * Note: This determines whether a view should be checked, not whether it's inserted
  * into a container. For that, you'll want `viewAttachedToContainer` below.
  *
- * 注意：这决定了一个视图是否应该被检查，而不是它是否被插入到一个容器中。 为此，你需要下面的 `viewAttachedToContainer` 。
+ * 注意：这决定了一个视图是否应该被检查，而不是它是否被插入到一个容器中。为此，你需要下面的 `viewAttachedToContainer`。
  *
  */
 export function viewAttachedToChangeDetector(view: LView): boolean {

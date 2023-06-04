@@ -66,7 +66,7 @@ export function resetFakeAsyncZone(): void {
  * Any arguments passed when calling this returned function will be passed through to the `fn`
  * function in the parameters when it is called.
  *
- * 包装在 `fakeAsync` 区域中执行的函数。 调用此返回函数时传递的任何参数都将在调用时传递给参数中的 `fn` 函数。
+ * 包装在 `fakeAsync` 区域中执行的函数。调用此返回函数时传递的任何参数都将在调用时传递给参数中的 `fn` 函数。
  *
  * @publicApi
  */
@@ -109,7 +109,7 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  * If you omit the `tickOptions` parameter \(`tick(100))`\), then
  * `tickOptions` defaults to `{processNewMacroTasksSynchronously: true}`.
  *
- * 如果你省略了 `tickOptions` 参数 \( `tick(100))` \) ，则 `tickOptions` 默认为 `{processNewMacroTasksSynchronously: true}` 。
+ * 如果你省略了 `tickOptions` 参数 \( `tick(100))` \)，则 `tickOptions` 默认为 `{processNewMacroTasksSynchronously: true}`。
  *
  * ### Example
  *
@@ -122,7 +122,7 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  * `processNewMacroTasksSynchronously` defaults to true, and the nested
  * function is executed on each tick.
  *
- * 下面的示例包含一个嵌套超时（新的 macroTask），并且 `tickOptions` 参数允许默认。 在这种情况下， `processNewMacroTasksSynchronously` 默认为 true，嵌套函数在每个 tick 上执行。
+ * 下面的示例包含一个嵌套超时（新的 macroTask），并且 `tickOptions` 参数允许默认。在这种情况下，`processNewMacroTasksSynchronously` 默认为 true，嵌套函数在每个 tick 上执行。
  *
  * ```
  * it ('test with nested setTimeout', fakeAsync(() => {
@@ -141,7 +141,7 @@ export function fakeAsync(fn: Function): (...args: any[]) => any {
  * In the following case, `processNewMacroTasksSynchronously` is explicitly
  * set to false, so the nested timeout function is not invoked.
  *
- * 在以下情况下， `processNewMacroTasksSynchronously` 显式设置为 false，因此不会调用嵌套超时函数。
+ * 在以下情况下，`processNewMacroTasksSynchronously` 显式设置为 false，因此不会调用嵌套超时函数。
  *
  * ```
  * it ('test with nested setTimeout', fakeAsync(() => {

@@ -180,8 +180,8 @@ export class I18nMetaVisitor implements html.Visitor {
    * 2) a `Message` from a previous processing pass: reuse the metadata values in the message.
    * 4) other: ignore this and just process the message metadata as normal
    *
-   * `meta` 变量有三种可能性： 1）来自 `i18n` 模板属性的字符串：解析它以提取元数据值。
-   * 2）来自前一个处理过程的 `Message` ：重用消息中的元数据值。
+   * `meta` 变量有三种可能性：1）来自 `i18n` 模板属性的字符串：解析它以提取元数据值。
+   * 2）来自前一个处理过程的 `Message`：重用消息中的元数据值。
    * 4）其他：忽略它，并照常处理消息元数据
    *
    * @param meta the bucket that holds information about the message
@@ -216,7 +216,7 @@ export class I18nMetaVisitor implements html.Visitor {
   /**
    * Update the `message` with a `legacyId` if necessary.
    *
-   * 如有必要，使用 `legacyId` 更新 `message` 。
+   * 如有必要，使用 `legacyId` 更新 `message`。
    *
    * @param message the message whose legacy id should be set
    *

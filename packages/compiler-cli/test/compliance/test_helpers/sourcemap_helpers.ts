@@ -13,7 +13,7 @@ import {SourceFileLoader} from '../../../src/ngtsc/sourcemaps';
  * Check the source-mappings of the generated source file against mappings stored in the expected
  * source file.
  *
- * 根据存储在预期源文件中的映射检查生成的源文件的 source-mappings 。
+ * 根据存储在预期源文件中的映射检查生成的源文件的 source-mappings。
  *
  * The source-mappings are encoded into the expected source file in the form of an end-of-line
  * comment that has the following syntax:
@@ -30,7 +30,7 @@ import {SourceFileLoader} from '../../../src/ngtsc/sourcemaps';
  * space before the original source.
  *
  * `path/to/original` 路径在模拟文件系统中将是绝对路径，其中的根是包含 `TEST_CASES.json`
- * 文件的目录。 `generated code` 和 `original source` 不会删除空格 -
+ * 文件的目录。`generated code` 和 `original source` 不会删除空格 -
  * 但生成的代码和原始源代码之前有一个空格。
  *
  * @param fs The test file-system where the source, generated and expected files are stored.
@@ -228,7 +228,7 @@ function getMappedSegments(
  *
  * An error message if a matching segment cannot be found, or null if it can.
  *
- * 如果找不到匹配的段，则显示错误消息，如果可以，则为 null 。
+ * 如果找不到匹配的段，则显示错误消息，如果可以，则为 null。
  *
  */
 function checkMapping(mappings: SegmentMapping[], expected: SegmentMapping): string|null {

@@ -20,7 +20,7 @@ import {TView} from '@angular/core/src/render3/interfaces/view';
  * This is later used by `isShapeOf` method to ensure that a particular object has a particular
  * shape.
  *
- * 这种类型的目的是确保对象必须匹配一种类型的所有属性。 `isShapeOf`
+ * 这种类型的目的是确保对象必须匹配一种类型的所有属性。`isShapeOf`
  * 方法后来用它来确保特定对象具有特定的形状。
  *
  * ```
@@ -53,7 +53,7 @@ import {TView} from '@angular/core/src/render3/interfaces/view';
  *
  * See: `isShapeOf`
  *
- * 请参阅： `isShapeOf`
+ * 请参阅：`isShapeOf`
  *
  */
 export type ShapeOf<T> = {
@@ -219,7 +219,7 @@ const ShapeOfTNode: ShapeOf<TNode> = {
 /**
  * Determines if `obj` is DOM `Node`.
  *
- * 确定 `obj` 是否为 DOM `Node` 。
+ * 确定 `obj` 是否为 DOM `Node`。
  *
  */
 export function isDOMNode(obj: any): obj is Node {
@@ -229,7 +229,7 @@ export function isDOMNode(obj: any): obj is Node {
 /**
  * Determines if `obj` is DOM `Text`.
  *
- * 确定 `obj` 是否为 DOM `Text` 。
+ * 确定 `obj` 是否为 DOM `Text`。
  *
  */
 export function isDOMElement(obj: any): obj is Element {
@@ -239,7 +239,7 @@ export function isDOMElement(obj: any): obj is Element {
 /**
  * Determines if `obj` is DOM `Text`.
  *
- * 确定 `obj` 是否为 DOM `Text` 。
+ * 确定 `obj` 是否为 DOM `Text`。
  *
  */
 export function isDOMText(obj: any): obj is Text {

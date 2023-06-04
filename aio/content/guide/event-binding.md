@@ -125,7 +125,7 @@ You can bind to keyboard events using Angular's binding syntax. You can specify 
 
 Combinations of keys can be separated by a `.` \(period\). For example, `keydown.enter` will allow you to bind events to the `enter` key. You can also use modifier keys, such as `shift`, `alt`, `control`, and the `command` keys from Mac. The following example shows how to bind a keyboard event to `keydown.shift.t`.
 
-键的组合可以用点（`.`）分隔。例如， `keydown.enter` 将允许你将事件绑定到 `enter` 键。你还可以用修饰键，例如 `shift` 、 `alt` 、 `control` 和 Mac 中的 `command` 键。以下示例展示了如何将键盘事件绑定到 `keydown.shift.t` 。
+键的组合可以用点（`.`）分隔。例如，`keydown.enter` 将允许你将事件绑定到 `enter` 键。你还可以用修饰键，例如 `shift` 、 `alt` 、 `control` 和 Mac 中的 `command` 键。以下示例展示了如何将键盘事件绑定到 `keydown.shift.t`。
 
 ```typescript
 <input (keydown.shift.t)="onKeydown($event)" />
@@ -133,7 +133,7 @@ Combinations of keys can be separated by a `.` \(period\). For example, `keydown
 
 Depending on the operating system, some key combinations might create special characters instead of the key combination that you expect. MacOS, for example, creates special characters when you use the option and shift keys together. If you bind to `keydown.shift.alt.t`, on macOS, that combination produces a `ˇ` character instead of a `t`, which doesn't match the binding and won't trigger your event handler. To bind to `keydown.shift.alt.t` on macOS, use the `code` keyboard event field to get the correct behavior, such as `keydown.code.shiftleft.altleft.keyt` shown in this example.
 
-根据操作系统的不同，某些组合键可能会创建特殊字符，而不是你期望的组合键。例如，当你同时使用 option 和 shift 键时，MacOS 会创建特殊字符。如果你绑定到 `keydown.shift.alt.t` ，在 macOS 上，该组合会生成 `ˇ` 而不是 `t` ，它与绑定不匹配，也不会触发你的事件处理程序。要绑定到 macOS 上的 `keydown.shift.alt.t` ，请使用 `code` 键盘事件字段来获取正确的行为，例如此示例中显示的 `keydown.code.shiftleft.altleft.keyt` 。
+根据操作系统的不同，某些组合键可能会创建特殊字符，而不是你期望的组合键。例如，当你同时使用 option 和 shift 键时，MacOS 会创建特殊字符。如果你绑定到 `keydown.shift.alt.t`，在 macOS 上，该组合会生成 `ˇ` 而不是 `t`，它与绑定不匹配，也不会触发你的事件处理程序。要绑定到 macOS 上的 `keydown.shift.alt.t`，请使用 `code` 键盘事件字段来获取正确的行为，例如此示例中显示的 `keydown.code.shiftleft.altleft.keyt`。
 
 ```typescript
 <input (keydown.code.shiftleft.altleft.keyt)="onKeydown($event)" />
@@ -141,7 +141,7 @@ Depending on the operating system, some key combinations might create special ch
 
 The `code` field is more specific than the `key` field. The `key` field always reports `shift`, whereas the `code` field will specify `leftshift` or `rightshift`. When using the `code` field, you might need to add separate bindings to catch all the behaviors you want. Using the `code` field avoids the need to handle OS specific behaviors such as the `shift + option` behavior on macOS.
 
-`code` 字段比 `key` 字段更具体。 `key` 字段总是会报告 `shift` ，而 `code` 字段将指明 `leftshift` 或 `rightshift` 。使用 `code` 字段时，你可能需要添加单独的绑定以捕获你想要的所有行为。使用 `code` 字段时无需处理操作系统特有的行为，例如 macOS 上的 `shift + option` 行为。
+`code` 字段比 `key` 字段更具体。`key` 字段总是会报告 `shift`，而 `code` 字段将指明 `leftshift` 或 `rightshift`。使用 `code` 字段时，你可能需要添加单独的绑定以捕获你想要的所有行为。使用 `code` 字段时无需处理操作系统特有的行为，例如 macOS 上的 `shift + option` 行为。
 
 For more information, visit the full reference for [key](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values) and [code](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values) to help build out your event strings.
 

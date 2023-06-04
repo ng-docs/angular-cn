@@ -16,7 +16,7 @@ export interface ComponentMeta extends DirectiveMeta {
   /**
    * Unparsed selector of the directive, or null if the directive does not have a selector.
    *
-   * 指令的未解析的选择器，如果指令没有选择器，则为 null 。
+   * 指令的未解析的选择器，如果指令没有选择器，则为 null。
    *
    */
   selector: string|null;

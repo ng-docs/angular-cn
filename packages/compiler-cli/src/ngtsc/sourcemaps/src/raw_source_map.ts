@@ -37,7 +37,7 @@ export interface MapAndPath {
   /**
    * The path to the source map if it was external or `null` if it was inline.
    *
-   * 源映射的路径，如果是外部的，如果是内联的，则为 `null` 。
+   * 源映射的路径，如果是外部的，如果是内联的，则为 `null`。
    *
    */
   mapPath: AbsoluteFsPath|null;

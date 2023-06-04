@@ -34,7 +34,7 @@ export const scheduler = {
    * \(If `window.requestAnimationFrame()` is not available, use `scheduler.schedule()` instead.\)
    *
    * 安排要在下一次渲染之前调用的回调。（如果 `window.requestAnimationFrame()` 不可用，请改用
-   * `scheduler.schedule()` 。）
+   * `scheduler.schedule()`。）
    *
    * Returns a function that when executed will cancel the scheduled function.
    *
@@ -72,7 +72,7 @@ export function camelToDashCase(input: string): string {
 /**
  * Check whether the input is an `Element`.
  *
- * 检查输入是否是 `Element` 。
+ * 检查输入是否是 `Element`。
  *
  */
 export function isElement(node: Node|null): node is Element {

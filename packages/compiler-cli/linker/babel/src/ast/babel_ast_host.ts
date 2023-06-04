@@ -171,7 +171,7 @@ function isNotSpreadElement(e: t.Expression|t.SpreadElement): e is t.Expression 
  * Return true if the node can be considered a text based property name for an
  * object expression.
  *
- * 如果节点可以被认为是对象表达式的基于文本的属性名称，则返回 true 。
+ * 如果节点可以被认为是对象表达式的基于文本的属性名称，则返回 true。
  *
  * Notably in the Babel AST, object patterns \(for destructuring\) could be of type
  * `t.PrivateName` so we need a distinction between object expressions and patterns.
@@ -196,7 +196,7 @@ type ArgumentType = t.CallExpression['arguments'][number];
 /**
  * Return true if the argument is not a spread element.
  *
- * 如果参数不是展开元素，则返回 true 。
+ * 如果参数不是展开元素，则返回 true。
  *
  */
 function isNotSpreadArgument(arg: ArgumentType): arg is Exclude<ArgumentType, t.SpreadElement> {
@@ -208,7 +208,7 @@ type MinifiedBooleanLiteral = t.Expression&t.UnaryExpression&{argument: t.Numeri
 /**
  * Return true if the node is either `!0` or `!1`.
  *
- * 如果节点是 `!0` 或 `!1` ，则返回 true 。
+ * 如果节点是 `!0` 或 `!1`，则返回 true。
  *
  */
 function isMinifiedBooleanLiteral(node: t.Expression): node is MinifiedBooleanLiteral {

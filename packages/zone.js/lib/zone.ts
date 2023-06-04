@@ -23,7 +23,7 @@
  * A Zone is a global object which is configured with rules about how to intercept and keep track
  * of the asynchronous callbacks. Zone has these responsibilities:
  *
- * Zone 是一个全局对象，它配置了有关如何拦截和跟踪异步回调的规则。 Zone 有这些责任：
+ * Zone 是一个全局对象，它配置了有关如何拦截和跟踪异步回调的规则。Zone 有这些责任：
  *
  * 1. Intercept asynchronous task scheduling
  *
@@ -79,8 +79,8 @@
  * 调度未来的工作时，有必要捕获并随后恢复当前区域。例如，如果代码在区域 `b` 中运行，并且它调用
  * `setTimeout` 来 scheduleTask 稍后工作，则 `setTimeout` 方法需要 1）捕获当前区域，2）将
  * `wrapCallback` 包装在代码中，一旦 wrapCallback 执行，它将恢复当前区域 `b`
- * 。通过这种方式，管理当前代码的规则会在未来的所有异步任务中保留。可能有一个不同的区域 `c`
- * ，它具有不同的规则并与不同的异步任务相关联。在处理这些任务时，每个异步 wrapCallback
+ *。通过这种方式，管理当前代码的规则会在未来的所有异步任务中保留。可能有一个不同的区域 `c`
+ *，它具有不同的规则并与不同的异步任务相关联。在处理这些任务时，每个异步 wrapCallback
  * 都会正确恢复正确的区域，并保留该区域以供将来的异步回调使用。
  *
  * Example: Suppose a browser page consist of application code as well as third-party
@@ -124,8 +124,8 @@
  *
  * 除了包装回调以恢复区域之外，所有导致稍后安排工作的操作都被路由通过当前区域，该区域可以通过在
  * wrapCallback 之前或之后添加工作以及使用不同的方式来拦截它们请求。
- * （可用于单元测试或跟踪请求）。在某些情况下，例如 `setTimeout` ，wrapCallback
- * 的包装和调度是在同一个 wrapCallback 中完成的，但还有其他示例，例如 `Promises` ，其中的 `then`
+ * （可用于单元测试或跟踪请求）。在某些情况下，例如 `setTimeout`，wrapCallback
+ * 的包装和调度是在同一个 wrapCallback 中完成的，但还有其他示例，例如 `Promises`，其中的 `then`
  * wrapCallback 被包装，但 `then` 的执行是由 `Promise` 调度 `resolve` 工作触发的。
  *
  * Fundamentally there are three kinds of tasks which can be scheduled:
@@ -141,7 +141,7 @@
  *       which is guaranteed to execute at least once after some well understood delay.
  *
  *    `[MacroTask]` 用于以后做工作。例如 `setTimeout`
- *    。这通常是可取消的，它可以保证在一些众所周知的延迟之后至少执行一次。
+ *。这通常是可取消的，它可以保证在一些众所周知的延迟之后至少执行一次。
  *
  * 3. `[EventTask]` used for listening on some future event. This may execute zero or more times, with
  *    an unknown delay.
@@ -167,7 +167,7 @@
  * variants.
  *
  * `[MacroTask]` s 表示将在一段时间后完成的工作。
- * （有时延迟是近似值，例如下一个可用的动画帧）。通常，这些方法包括： `setTimeout`、`setImmediate`
+ * （有时延迟是近似值，例如下一个可用的动画帧）。通常，这些方法包括：`setTimeout`、`setImmediate`
  * 、`setInterval`、`requestAnimationFrame` 以及所有浏览器特定的变体。
  *
  * ### `[EventTask]`
@@ -254,14 +254,14 @@ interface Zone {
    *
    * {any} The value for the key, or `undefined` if not found.
    *
-   * 键的值，如果找不到，则为 `undefined` 。
+   * 键的值，如果找不到，则为 `undefined`。
    */
   get(key: string): any;
 
   /**
    * Returns a Zone which defines a `key`.
    *
-   * 返回一个定义了 `key` 的 Zone 。
+   * 返回一个定义了 `key` 的 Zone。
    *
    * Recursively search the parent Zone until a Zone which has a property `key` is found.
    *
@@ -275,7 +275,7 @@ interface Zone {
    *
    * {Zone} The Zone which defines the `key`, `null` if not found.
    *
-   * 定义 `key` 的 Zone ，如果找不到，则为 `null` 。
+   * 定义 `key` 的 Zone，如果找不到，则为 `null`。
    *
    */
   getZoneWith(key: string): Zone|null;
@@ -306,13 +306,13 @@ interface Zone {
    *
    * The wrapped function will properly forward `this` as well as `arguments` to the `callback`.
    *
-   * 包装的函数会正确地将 `this` 以及 `arguments` 转发给 `callback` 。
+   * 包装的函数会正确地将 `this` 以及 `arguments` 转发给 `callback`。
    *
    * Before the function is wrapped the zone can intercept the `callback` by declaring
    * `[ZoneSpec.onIntercept]`.
    *
    * 在包装函数之前，区域可以通过声明 `[ZoneSpec.onIntercept]` 来截获 `callback`
-   * 。
+   *。
    *
    * @param callback the function which will be wrapped in the zone.
    *
@@ -361,7 +361,7 @@ interface Zone {
    *
    * Any exceptions thrown will be forwarded to `[Zone.HandleError]`.
    *
-   * 抛出的任何异常都将被转发到 `[Zone.HandleError]` 。
+   * 抛出的任何异常都将被转发到 `[Zone.HandleError]`。
    *
    * The invocation of `callback` can be intercepted by declaring `[ZoneSpec.onInvoke]`. The
    * handling of exceptions can be intercepted by declaring `[ZoneSpec.handleError]`.
@@ -406,7 +406,7 @@ interface Zone {
   /**
    * Schedule a MicroTask.
    *
-   * 调度 MicroTask 。
+   * 调度 MicroTask。
    *
    * @param source
    * @param callback
@@ -469,7 +469,7 @@ interface Zone {
    * the `[Task.cancelFn]`.
    *
    * 拦截是使用 `[ZoneSpec.onCancelTask]`
-   * 配置的。默认取消器调用 `[Task.cancelFn]` 。
+   * 配置的。默认取消器调用 `[Task.cancelFn]`。
    *
    * @param task
    * @returns {any}
@@ -485,7 +485,7 @@ interface ZoneType {
    * the current zone is by invoking a `run()` method, which will update the current zone for the
    * duration of the `run` method callback.
    *
-   * 返回当前的 `[Zone]` 。更改当前区域的唯一方法是调用 `run()` 方法，该方法将在 `run`
+   * 返回当前的 `[Zone]`。更改当前区域的唯一方法是调用 `run()` 方法，该方法将在 `run`
    * 方法回调期间更新当前区域。
    *
    */
@@ -652,11 +652,11 @@ interface ZoneSpec {
    *
    * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前 `[Zone]` 。
+   * 已声明当前拦截器的当前 `[Zone]`。
    *
    * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的 `[Zone]` 。
+   * 最初收到请求的 `[Zone]`。
    *
    * @param zoneSpec The argument passed into the `fork` method.
    *
@@ -677,11 +677,11 @@ interface ZoneSpec {
    *
    * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前 `[Zone]` 。
+   * 已声明当前拦截器的当前 `[Zone]`。
    *
    * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的 `[Zone]` 。
+   * 最初收到请求的 `[Zone]`。
    *
    * @param delegate The argument passed into the `wrap` method.
    *
@@ -705,11 +705,11 @@ interface ZoneSpec {
    *
    * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前 `[Zone]` 。
+   * 已声明当前拦截器的当前 `[Zone]`。
    *
    * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的 `[Zone]` 。
+   * 最初收到请求的 `[Zone]`。
    *
    * @param delegate The argument passed into the `run` method.
    *
@@ -739,11 +739,11 @@ interface ZoneSpec {
    *
    * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前 `[Zone]` 。
+   * 已声明当前拦截器的当前 `[Zone]`。
    *
    * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的 `[Zone]` 。
+   * 最初收到请求的 `[Zone]`。
    *
    * @param error The argument passed into the `handleError` method.
    *
@@ -764,11 +764,11 @@ interface ZoneSpec {
    *
    * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前 `[Zone]` 。
+   * 已声明当前拦截器的当前 `[Zone]`。
    *
    * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的 `[Zone]` 。
+   * 最初收到请求的 `[Zone]`。
    *
    * @param task The argument passed into the `scheduleTask` method.
    *
@@ -792,11 +792,11 @@ interface ZoneSpec {
    *
    * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前 `[Zone]` 。
+   * 已声明当前拦截器的当前 `[Zone]`。
    *
    * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的 `[Zone]` 。
+   * 最初收到请求的 `[Zone]`。
    *
    * @param task The argument passed into the `cancelTask` method.
    *
@@ -816,11 +816,11 @@ interface ZoneSpec {
    *
    * @param currentZone The current `[Zone]` where the current interceptor has been declared.
    *
-   * 已声明当前拦截器的当前 `[Zone]` 。
+   * 已声明当前拦截器的当前 `[Zone]`。
    *
    * @param targetZone The `[Zone]` which originally received the request.
    *
-   * 最初收到请求的 `[Zone]` 。
+   * 最初收到请求的 `[Zone]`。
    *
    * @param hasTaskState
    */
@@ -842,7 +842,7 @@ interface ZoneSpec {
  *  the original request\) to the delegate.
  *
  * 需要 ZoneDelegate
- * ，因为子区域不能简单地调用父区域上的方法。例如，子区域换行不能只调用父区域换行。这样做将创建一个绑定到父区域的回调。我们感兴趣的是在回调绑定到任何区域之前拦截回调。此外，我们还需要将
+ *，因为子区域不能简单地调用父区域上的方法。例如，子区域换行不能只调用父区域换行。这样做将创建一个绑定到父区域的回调。我们感兴趣的是在回调绑定到任何区域之前拦截回调。此外，我们还需要将
  * targetZone（接收到原始请求的区域）传递给委托。
  *
  *  The ZoneDelegate methods mirror those of Zone with an addition of extra targetZone argument in
@@ -857,7 +857,7 @@ interface ZoneSpec {
  *      so that additional code can be run before and after, but does not associate the callback
  *      with the zone.
  *
- *   `wrap` => `intercept` ： `wrap` 方法委托给 `intercept` 。 `wrap`
+ *   `wrap` => `intercept`：`wrap` 方法委托给 `intercept`。`wrap`
  *   方法返回一个将在给定区域中运行的回调，其中的 intercept
  *   允许包装回调，以便可以在前后运行其他代码，但不会将回调与区域关联起来。
  *
@@ -866,7 +866,7 @@ interface ZoneSpec {
  *        and optionally performs error handling. The invoke is not responsible for error handling,
  *        or zone management.
  *
- *   `run` => `invoke` ： `run` 方法委托给 `invoke` 以执行回调的实际执行。 `run`
+ *   `run` => `invoke`：`run` 方法委托给 `invoke` 以执行回调的实际执行。`run`
  *   方法会切换到新区域；保存并恢复 `Zone.current`
  *   ;并可选地执行错误处理。调用不负责错误处理或区域管理。
  *
@@ -884,7 +884,7 @@ interface ZoneSpec {
  *   Note: The ZoneDelegate treats ZoneSpec as class. This allows the ZoneSpec to use its `this` to
  *     store internal state.
  *
- *   注意： ZoneDelegate 将 ZoneSpec 视为类。这允许 ZoneSpec 使用其 `this` 来存储内部状态。
+ *   注意：ZoneDelegate 将 ZoneSpec 视为类。这允许 ZoneSpec 使用其 `this` 来存储内部状态。
  *
  */
 interface ZoneDelegate {
@@ -907,7 +907,7 @@ type HasTaskState = {
 /**
  * Task type: `microTask`, `macroTask`, `eventTask`.
  *
- * 任务类型： `microTask`、`macroTask`、`eventTask` 。
+ * 任务类型：`microTask`、`macroTask`、`eventTask`。
  *
  */
 type TaskType = 'microTask'|'macroTask'|'eventTask';
@@ -915,7 +915,7 @@ type TaskType = 'microTask'|'macroTask'|'eventTask';
 /**
  * Task type: `notScheduled`, `scheduling`, `scheduled`, `running`, `canceling`, 'unknown'.
  *
- * 任务类型： `notScheduled`、`scheduling`、`scheduled`、`running`、`canceling` 、
+ * 任务类型：`notScheduled`、`scheduling`、`scheduled`、`running`、`canceling` 、
  * 'unknown'。
  *
  */
@@ -958,8 +958,8 @@ interface TaskData {
  * Tasks are used in Zones to mark work which is performed on clean stack frame. There are three
  * kinds of task. `[MicroTask]`, `[MacroTask]`, and `[EventTask]`.
  *
- * Zones 中使用任务来标记在干净的堆栈帧上执行的工作。有三种任务。 `[MicroTask]` 、
- * `[MacroTask]` 和 `[EventTask]` 。
+ * Zones 中使用任务来标记在干净的堆栈帧上执行的工作。有三种任务。`[MicroTask]` 、
+ * `[MacroTask]` 和 `[EventTask]`。
  *
  * A JS VM can be modeled as a `[MicroTask]` queue, `[MacroTask]` queue, and `[EventTask]` set.
  *
@@ -972,7 +972,7 @@ interface TaskData {
  *
  *   `[MicroTask]` 队列表示一组任务，这些任务正在当前堆栈帧变得干净之后、VM
  *   屈服之前执行。所有 `[MicroTask]` 都会按在 VM yield
- *   之前的插入顺序执行，并执行下一个 `[MacroTask]` 。
+ *   之前的插入顺序执行，并执行下一个 `[MacroTask]`。
  *
  * - `[MacroTask]` queue represents a set of tasks which are executed one at a time after each VM
  *     yield. The queue is ordered by time, and insertions can happen in any location.
@@ -990,7 +990,7 @@ interface Task {
   /**
    * Task type: `microTask`, `macroTask`, `eventTask`.
    *
-   * 任务类型： `microTask`、`macroTask`、`eventTask` 。
+   * 任务类型：`microTask`、`macroTask`、`eventTask`。
    *
    */
   type: TaskType;
@@ -998,8 +998,8 @@ interface Task {
   /**
    * Task state: `notScheduled`, `scheduling`, `scheduled`, `running`, `canceling`, `unknown`.
    *
-   * 任务状态： `notScheduled`、`scheduling` 、已 `scheduled`、`running` 、正在 `canceling` 、
-   * `unknown` 。
+   * 任务状态：`notScheduled`、`scheduling` 、已 `scheduled`、`running` 、正在 `canceling` 、
+   * `unknown`。
    *
    */
   state: TaskState;
@@ -1016,8 +1016,8 @@ interface Task {
    * The Function to be used by the VM upon entering the `[Task]`. This function will delegate to
    * `[Zone.runTask]` and delegate to `callback`.
    *
-   * VM 进入 `[Task]` 时要使用的 Function 。此函数将委托给 `[Zone.runTask]` 并委托给
-   * `callback` 。
+   * VM 进入 `[Task]` 时要使用的 Function。此函数将委托给 `[Zone.runTask]` 并委托给
+   * `callback`。
    *
    */
   invoke: Function;
@@ -1034,7 +1034,7 @@ interface Task {
   /**
    * Task specific options associated with the current task. This is passed to the `scheduleFn`.
    *
-   * 与当前任务关联的任务特定选项。这会传递给 `scheduleFn` 。
+   * 与当前任务关联的任务特定选项。这会传递给 `scheduleFn`。
    *
    */
   data?: TaskData;

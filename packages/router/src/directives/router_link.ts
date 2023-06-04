@@ -33,7 +33,7 @@ import {UrlTree} from '../url_tree';
  * `<a routerLink="/user/bob">link to user component</a>`
  *
  * 给定路由配置 `[{ path: 'user/:name', component: UserCmp }]`
- * ，以下内容将创建一个到该路由的静态链接：`<a routerLink="/user/bob">link to user component</a>`
+ *，以下内容将创建一个到该路由的静态链接：`<a routerLink="/user/bob">link to user component</a>`
  *
  * You can use dynamic values to generate the link.
  * For a dynamic link, pass an array of path segments,
@@ -42,7 +42,7 @@ import {UrlTree} from '../url_tree';
  * generates a link to `/team/11/user/bob;details=true`.
  *
  * 你也可以使用动态值来生成链接。对于动态链接，请传递路径段数组，然后传递每个段的参数。比如，
- * `['/team', teamId, 'user', userName, {details: true}]` 生成到 `/team/11/user/bob;details=true` 。
+ * `['/team', teamId, 'user', userName, {details: true}]` 生成到 `/team/11/user/bob;details=true`。
  *
  * Multiple static segments can be merged into one term and combined with dynamic segments.
  * For example, `['/team/11/user', userName, {details: true}]`
@@ -57,7 +57,7 @@ import {UrlTree} from '../url_tree';
  *
  * 你提供给链接的输入将被视为当前 URL 的增量。比如，假设当前 URL 是 `/user/(box//aux:team)`。则链接
  * `<a [routerLink]="['/user/jim']">Jim</a>` 会创建 URL `/user/(jim//aux:team)`
- * 。欲知详情，请参见 {@link Router#createUrlTree createUrlTree}。
+ *。欲知详情，请参见 {@link Router#createUrlTree createUrlTree}。
  *
  * @usageNotes
  *
@@ -117,11 +117,11 @@ import {UrlTree} from '../url_tree';
  *
  * - `'merge'`: Merge the given `queryParams` into the current query params.
  *
- *   `'merge'` ：将给定的 `queryParams` 合并到当前查询参数中。
+ *   `'merge'`：将给定的 `queryParams` 合并到当前查询参数中。
  *
  * - `'preserve'`: Preserve the current query params.
  *
- *   `'preserve'` ：保留当前的查询参数。
+ *   `'preserve'`：保留当前的查询参数。
  *
  * For example:
  *
@@ -185,7 +185,7 @@ export class RouterLink implements OnChanges, OnDestroy {
    * Represents an `href` attribute value applied to a host element,
    * when a host element is `<a>`. For other tags, the value is `null`.
    *
-   * 当宿主元素为 `<a>` 时，表示应用于宿主元素的 `href` 属性值。 对于其他标签，值为 `null` 。
+   * 当宿主元素为 `<a>` 时，表示应用于宿主元素的 `href` 属性值。对于其他标签，值为 `null`。
    *
    */
   href: string|null = null;
@@ -194,7 +194,7 @@ export class RouterLink implements OnChanges, OnDestroy {
    * Represents the `target` attribute on a host element.
    * This is only used when the host element is an `<a>` tag.
    *
-   * 表示宿主元素上的 `target` 属性。 这仅在宿主元素是 `<a>` 标记时使用。
+   * 表示宿主元素上的 `target` 属性。这仅在宿主元素是 `<a>` 标记时使用。
    *
    */
   @HostBinding('attr.target') @Input() target?: string;
@@ -248,7 +248,7 @@ export class RouterLink implements OnChanges, OnDestroy {
    * Note that a value of `undefined` here will use the `routerLink` default.
    *
    * 作为 UrlCreationOptions 的一部分传递给 {@link Router#createUrlTree Router# `UrlCreationOptions`
-   * } 。当你不想使用 `routerLink` 的默认值（当前激活的路由）时，在此指定一个值。请注意，此处的
+   * }。当你不想使用 `routerLink` 的默认值（当前激活的路由）时，在此指定一个值。请注意，此处的
    * `undefined` 值将使用 `routerLink` 默认值。
    *
    * @see {@link UrlCreationOptions#relativeTo UrlCreationOptions#relativeTo}
@@ -369,7 +369,7 @@ export class RouterLink implements OnChanges, OnDestroy {
    *
    * - **array**: commands to pass to {@link Router#createUrlTree Router#createUrlTree}.
    *
-   *   **array** ：传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
+   *   **array**：传递给 {@link Router#createUrlTree Router#createUrlTree} 的命令。
    *
    * - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
    *
@@ -377,7 +377,7 @@ export class RouterLink implements OnChanges, OnDestroy {
    *
    * - **null|undefined**: effectively disables the `routerLink`
    *
-   *   **null | undefined** ：空命令数组的简写，即 `[]`
+   *   **null | undefined**：空命令数组的简写，即 `[]`
    *
    * @see {@link Router#createUrlTree Router#createUrlTree}
    */

@@ -81,7 +81,7 @@ export enum ImportFlags {
    * never emitted to JS code.
    *
    * 生成的导入通常应使用可在生产代码中使用的模块说明符，其中不允许任意相对导入到例如 node_modules
-   * 。但是，对于模板类型检查代码，可以接受使用相对导入，因为这样的文件永远不会发送到 JS 代码。
+   *。但是，对于模板类型检查代码，可以接受使用相对导入，因为这样的文件永远不会发送到 JS 代码。
    *
    * Non-declaration files have to be contained within a configured `rootDir` so using relative
    * paths may not be possible for those, hence this flag only applies when importing from a
@@ -104,8 +104,8 @@ export enum ImportFlags {
  * an import then `null` should be used.
  *
  * 发射器策略有能力通过它生成的表达式来表明正在导入哪个 `ts.SourceFile`
- * 。此信息对于发出的引用的消费者很有用，否则他们将不得不执行相对昂贵的模块解析步骤，例如循环导入分析。如果发射器无法明确确定导入的源文件，或者需要进行计算来实际确定导入的源文件，则应返回
- * `'unknown'` 。如果生成的表达式不表示导入，则应使用 `null` 。
+ *。此信息对于发出的引用的消费者很有用，否则他们将不得不执行相对昂贵的模块解析步骤，例如循环导入分析。如果发射器无法明确确定导入的源文件，或者需要进行计算来实际确定导入的源文件，则应返回
+ * `'unknown'`。如果生成的表达式不表示导入，则应使用 `null`。
  *
  */
 export type ImportedFile = ts.SourceFile|'unknown'|null;
@@ -139,9 +139,9 @@ export interface EmittedReference {
    * alias export. It could also be `null` if `expression` is a local identifier, or `'unknown'` if
    * the exact source file that is being imported is not known to the emitter.
    *
-   * `expression` 导入的 `ts.SourceFile` 。这不一定是 `Reference`
+   * `expression` 导入的 `ts.SourceFile`。这不一定是 `Reference`
    * 的声明节点的源文件，因为引用可能已通过别名导出被重写。如果 `expression` 是本地标识符，也可以是
-   * `null` ，如果发射器不 `'unknown'` 要导入的确切源文件，它也可以是 null 。
+   * `null`，如果发射器不 `'unknown'` 要导入的确切源文件，它也可以是 null。
    *
    */
   importedFile: ImportedFile;
@@ -186,7 +186,7 @@ export type ReferenceEmitResult = EmittedReference|FailedEmitResult;
 /**
  * Verifies that a reference was emitted successfully, or raises a `FatalDiagnosticError` otherwise.
  *
- * 验证引用是否已成功发出，否则引发 `FatalDiagnosticError` 。
+ * 验证引用是否已成功发出，否则引发 `FatalDiagnosticError`。
  *
  * @param result The emit result that should have been successful.
  *
@@ -227,7 +227,7 @@ export function assertSuccessfulReferenceEmit(
  * import within the project, or an absolute import into `node_modules` might be necessary.
  *
  * 在给定文件的上下文中，可以用许多潜在方式引用给定 `Reference`
- * 。可以是本地声明，可以通过项目中的相对导入来导入 `Reference` ，或者可能需要绝对导入到
+ *。可以是本地声明，可以通过项目中的相对导入来导入 `Reference`，或者可能需要绝对导入到
  * `node_modules` 中。
  *
  * Different `ReferenceEmitStrategy` implementations implement specific logic for generating such
@@ -237,7 +237,7 @@ export function assertSuccessfulReferenceEmit(
  *
  * 不同的 `ReferenceEmitStrategy` 实现实现了用于生成此类引用的特定逻辑。单个策略（例如使用 local
  * 声明）可能并不总是能够为每个 `Reference`
- * 生成一个表达式（例如，如果没有本地标识符可用），并且在这种情况下可能会返回 `null` 。
+ * 生成一个表达式（例如，如果没有本地标识符可用），并且在这种情况下可能会返回 `null`。
  *
  */
 export interface ReferenceEmitStrategy {
@@ -245,7 +245,7 @@ export interface ReferenceEmitStrategy {
    * Emit an `Expression` which refers to the given `Reference` in the context of a particular
    * source file, if possible.
    *
-   * 如果可能，发出一个在特定源文件的上下文中引用给定 `Reference` 的 `Expression` 。
+   * 如果可能，发出一个在特定源文件的上下文中引用给定 `Reference` 的 `Expression`。
    *
    * @param ref the `Reference` for which to generate an expression
    *
@@ -264,7 +264,7 @@ export interface ReferenceEmitStrategy {
    * an `EmittedReference` which refers to the `Reference`, or `null` if none can be
    *   generated
    *
-   * `Reference` 的 `EmittedReference` ，如果无法生成，则为 `null`
+   * `Reference` 的 `EmittedReference`，如果无法生成，则为 `null`
    *
    */
   emit(ref: Reference, context: ts.SourceFile, importFlags: ImportFlags): ReferenceEmitResult|null;
@@ -273,13 +273,13 @@ export interface ReferenceEmitStrategy {
 /**
  * Generates `Expression`s which refer to `Reference`s in a given context.
  *
- * 生成在给定上下文中 `Reference` 的 `Expression` 。
+ * 生成在给定上下文中 `Reference` 的 `Expression`。
  *
  * A `ReferenceEmitter` uses one or more `ReferenceEmitStrategy` implementations to produce an
  * `Expression` which refers to a `Reference` in the context of a particular file.
  *
  * `ReferenceEmitter` 使用一个或多个 `ReferenceEmitStrategy` 实现来生成一个 `Expression`
- * ，它在特定文件的上下文中 `Reference` 。
+ *，它在特定文件的上下文中 `Reference`。
  *
  */
 export class ReferenceEmitter {
@@ -307,7 +307,7 @@ export class ReferenceEmitter {
  * A `ReferenceEmitStrategy` which will refer to declarations by any local `ts.Identifier`s, if
  * such identifiers are available.
  *
- * 一个 `ReferenceEmitStrategy` ，如果这样的标识符可用，它将引用任何本地 `ts.Identifier` 的声明。
+ * 一个 `ReferenceEmitStrategy`，如果这样的标识符可用，它将引用任何本地 `ts.Identifier` 的声明。
  *
  */
 export class LocalIdentifierStrategy implements ReferenceEmitStrategy {
@@ -376,7 +376,7 @@ interface ModuleExports {
  * A `ReferenceEmitStrategy` which will refer to declarations that come from `node_modules` using
  * an absolute import.
  *
- * 一个 `ReferenceEmitStrategy` ，它将使用绝对导入来引用来自 `node_modules` 的声明。
+ * 一个 `ReferenceEmitStrategy`，它将使用绝对导入来引用来自 `node_modules` 的声明。
  *
  * Part of this strategy involves looking at the target entry point and identifying the exported
  * name of the targeted declaration, as it might be different from the declared name \(e.g. a
@@ -384,7 +384,7 @@ interface ModuleExports {
  * which maps back to the original directive, an error is thrown.
  *
  * 该策略的一部分就是查看目标入口点并识别目标声明的导出名称，因为它可能与声明的名称不同（例如，指令可能被声明为
- * FooDirImpl ，但导出为 FooDir）。如果找不到映射回原始指令的导出，则会抛出错误。
+ * FooDirImpl，但导出为 FooDir）。如果找不到映射回原始指令的导出，则会抛出错误。
  *
  */
 export class AbsoluteModuleStrategy implements ReferenceEmitStrategy {
@@ -484,14 +484,14 @@ export class AbsoluteModuleStrategy implements ReferenceEmitStrategy {
  * A `ReferenceEmitStrategy` which will refer to declarations via relative paths, provided they're
  * both in the logical project "space" of paths.
  *
- * 一个 `ReferenceEmitStrategy` ，它将通过相对路径引用声明，前提是它们都在路径的逻辑项目“空间”中。
+ * 一个 `ReferenceEmitStrategy`，它将通过相对路径引用声明，前提是它们都在路径的逻辑项目“空间”中。
  *
  * This is trickier than it sounds, as the two files may be in different root directories in the
  * project. Simply calculating a file system relative path between the two is not sufficient.
  * Instead, `LogicalProjectPath`s are used.
  *
  * 这比听起来更棘手，因为这两个文件可能在项目的不同根目录中。简单地计算两者之间的文件系统相对路径是不够的。相反，使用
- * `LogicalProjectPath` 。
+ * `LogicalProjectPath`。
  *
  */
 export class LogicalProjectStrategy implements ReferenceEmitStrategy {
@@ -561,7 +561,7 @@ export class LogicalProjectStrategy implements ReferenceEmitStrategy {
 /**
  * A `ReferenceEmitStrategy` which constructs relatives paths between `ts.SourceFile`s.
  *
- * 一个 `ReferenceEmitStrategy` ，它构造 `ts.SourceFile` 之间的相对路径。
+ * 一个 `ReferenceEmitStrategy`，它构造 `ts.SourceFile` 之间的相对路径。
  *
  * This strategy can be used if there is no `rootDir`/`rootDirs` structure for the project which
  * necessitates the stronger logic of `LogicalProjectStrategy`.
@@ -600,7 +600,7 @@ export class RelativePathStrategy implements ReferenceEmitStrategy {
  * A `ReferenceEmitStrategy` which uses a `UnifiedModulesHost` to generate absolute import
  * references.
  *
- * 使用 `UnifiedModulesHost` 生成绝对导入引用的 `ReferenceEmitStrategy` 。
+ * 使用 `UnifiedModulesHost` 生成绝对导入引用的 `ReferenceEmitStrategy`。
  *
  */
 export class UnifiedModulesStrategy implements ReferenceEmitStrategy {

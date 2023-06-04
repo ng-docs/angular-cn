@@ -20,7 +20,7 @@ A component can delegate certain tasks to services, such as fetching data from t
 
 Angular does not enforce these principles. Angular helps you follow these principles by making it easy to factor your application logic into services and make those services available to components through DI.
 
-Angular 不会强制执行这些原则。 Angular 只是让你可以轻松地将应用逻辑分解为服务，并通过 DI 让这些服务可用在组件中，从而帮助你遵循这些原则。
+Angular 不会强制执行这些原则。Angular 只是让你可以轻松地将应用逻辑分解为服务，并通过 DI 让这些服务可用在组件中，从而帮助你遵循这些原则。
 
 ## Service examples
 
@@ -106,7 +106,7 @@ In the following example `HeroService` depends on a `Logger` service to report i
 
 First, import the `Logger` service. Next, inject the `Logger` service in the `HeroService` `constructor()` by specifying `private logger: Logger`.
 
-首先，导入 `Logger` 服务。接下来，通过指定 `private logger: Logger` ，在 `HeroService` 的 `constructor()` 中注入 `Logger` 服务。
+首先，导入 `Logger` 服务。接下来，通过指定 `private logger: Logger`，在 `HeroService` 的 `constructor()` 中注入 `Logger` 服务。
 
 Here, the `constructor()` specifies a type of `Logger` and stores the instance of `Logger` in a private field called `logger`.
 

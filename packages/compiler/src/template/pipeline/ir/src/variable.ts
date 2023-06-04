@@ -23,7 +23,7 @@ export interface SemanticVariableBase {
   /**
    * Name assigned to this variable in generated code, or `null` if not yet assigned.
    *
-   * 在生成的代码中分配给此变量的名称，如果尚未分配则为 `null` 。
+   * 在生成的代码中分配给此变量的名称，如果尚未分配则为 `null`。
    *
    */
   name: string|null;
@@ -41,7 +41,7 @@ export interface ContextVariable extends SemanticVariableBase {
   /**
    * `XrefId` of the view that this variable represents.
    *
-   * 此变量表示的视图的 `XrefId` 。
+   * 此变量表示的视图的 `XrefId`。
    *
    */
   view: XrefId;

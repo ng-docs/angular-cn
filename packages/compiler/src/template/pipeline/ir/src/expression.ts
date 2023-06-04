@@ -344,7 +344,7 @@ export class PureFunctionExpr extends ExpressionBase implements ConsumesVarsTrai
    * Once extracted to the `ConstantPool`, a reference to the function which defines the computation
    * of `body`.
    *
-   * 一旦提取到 `ConstantPool` ，对定义 `body` 计算的函数的引用。
+   * 一旦提取到 `ConstantPool`，对定义 `body` 计算的函数的引用。
    *
    */
   fn: o.Expression|null = null;
@@ -486,7 +486,7 @@ export class PipeBindingVariadicExpr extends ExpressionBase implements UsesSlotI
 /**
  * Visits all `Expression`s in the AST of `op` with the `visitor` function.
  *
- * 使用 `visitor` 函数访问 `op` 的 AST 中的所有 `Expression` 。
+ * 使用 `visitor` 函数访问 `op` 的 AST 中的所有 `Expression`。
  *
  */
 export function visitExpressionsInOp(
@@ -505,7 +505,7 @@ export enum VisitorContextFlag {
 /**
  * Transform all `Expression`s in the AST of `op` with the `transform` function.
  *
- * 使用 `transform` 函数转换 `op` 的 AST 中的所有 `Expression` 。
+ * 使用 `transform` 函数转换 `op` 的 AST 中的所有 `Expression`。
  *
  * All such operations will be replaced with the result of applying `transform`, which may be an
  * identity transformation.
@@ -560,7 +560,7 @@ export function transformExpressionsInOp(
 /**
  * Transform all `Expression`s in the AST of `expr` with the `transform` function.
  *
- * 使用 `transform` 函数转换 `expr` 的 AST 中的所有 `Expression` 。
+ * 使用 `transform` 函数转换 `expr` 的 AST 中的所有 `Expression`。
  *
  * All such operations will be replaced with the result of applying `transform`, which may be an
  * identity transformation.
@@ -620,7 +620,7 @@ export function transformExpressionsInExpression(
 /**
  * Transform all `Expression`s in the AST of `stmt` with the `transform` function.
  *
- * 使用 `transform` 函数转换 `stmt` 的 AST 中的所有 `Expression` 。
+ * 使用 `transform` 函数转换 `stmt` 的 AST 中的所有 `Expression`。
  *
  * All such operations will be replaced with the result of applying `transform`, which may be an
  * identity transformation.

@@ -75,7 +75,7 @@ import {assertComponentDef} from './errors';
  * - `environmentInjector`: An `EnvironmentInjector` instance to be used for the component, see
  *   additional info about it [here](/guide/standalone-components#environment-injectors).
  *
- *   `environmentInjector` ：要用于组件的 `EnvironmentInjector` 实例，请在 https://angular.io/guide/standalone-components#environment-injectors 中查看有关它的其他信息。
+ *   `environmentInjector`：要用于组件的 `EnvironmentInjector` 实例，请在 https://angular.io/guide/standalone-components#environment-injectors 中查看有关它的其他信息。
  *
  * - `hostElement` \(optional\): A DOM node that should act as a host node for the component. If not
  *   provided, Angular creates one based on the tag name used in the component selector \(and falls

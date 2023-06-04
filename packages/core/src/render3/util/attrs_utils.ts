@@ -127,7 +127,7 @@ export function setUpAttributes(renderer: Renderer, native: RElement, attrs: TAt
  *
  * true if the marker is a "name-only" marker \(e.g. `Bindings`, `Template` or `I18n`\).
  *
- * 如果标记是“仅名称”标记（例如 `Bindings`、`Template` 或 `I18n`），则为 true 。
+ * 如果标记是“仅名称”标记（例如 `Bindings`、`Template` 或 `I18n`），则为 true。
  *
  */
 export function isNameOnlyAttributeMarker(marker: string|AttributeMarker|CssSelector) {
@@ -193,11 +193,11 @@ export function mergeHostAttrs(dst: TAttributes|null, src: TAttributes|null): TA
 /**
  * Append `key`/`value` to existing `TAttributes` taking region marker and duplicates into account.
  *
- * 将 `key` / `value` 附加到现有的 `TAttributes` ，同时考虑区域标记和重复项。
+ * 将 `key` / `value` 附加到现有的 `TAttributes`，同时考虑区域标记和重复项。
  *
  * @param dst `TAttributes` to append to.
  *
- * 要附加到的 `TAttributes` 。
+ * 要附加到的 `TAttributes`。
  * @param marker Region where the `key`/`value` should be added.
  *
  * 应该添加 `key` / `value` 的区域。

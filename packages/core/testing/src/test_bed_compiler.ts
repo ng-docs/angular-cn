@@ -678,7 +678,7 @@ export class TestBedCompiler {
    * an NgModule). If there is a def in a set already, don't override it, since
    * an original one should be restored at the end of a test.
    *
-   * 在应用覆盖之前保留原始的 def（例如 ɵmod、ɵinj 等）。注意：一个类可能有多个定义（例如： NgModule
+   * 在应用覆盖之前保留原始的 def（例如 ɵmod、ɵinj 等）。注意：一个类可能有多个定义（例如：NgModule
    * 的情况下的 ɵmod 和 ɵinj）。如果集中已经有了
    * def，请不要覆盖它，因为应该在测试结束时恢复原始的。
    *

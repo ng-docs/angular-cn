@@ -111,7 +111,7 @@ export class TestRequest {
    *
    * Http requests never emit an `ErrorEvent`. Please specify a `ProgressEvent`.
    *
-   * Http 请求永远不会发出 `ErrorEvent` 。请指定 `ProgressEvent` 。
+   * Http 请求永远不会发出 `ErrorEvent`。请指定 `ProgressEvent`。
    */
   error(error: ErrorEvent, opts?: TestRequestErrorOptions): void;
   /**

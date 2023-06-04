@@ -17,7 +17,7 @@ import {declarationFunctions} from './partial_linkers/partial_linker_selector';
  *
  * 确定所提供的源文件是否需要由链接器处理，即它是否可能包含任何声明。如果返回
  * true，则源文件应该由链接器处理，因为它可能包含需要完全编译的声明。如果返回 false
- * ，则可以安全地跳过源文件的解析和处理以提高性能。
+ *，则可以安全地跳过源文件的解析和处理以提高性能。
  *
  * This function may return true even for source files that don't actually contain any declarations
  * that need to be compiled.

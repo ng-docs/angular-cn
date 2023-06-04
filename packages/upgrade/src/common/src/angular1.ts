@@ -263,7 +263,7 @@ try {
  *
  * Use `setAngularJSGlobal` instead.
  *
- * 改用 `setAngularJSGlobal` 。
+ * 改用 `setAngularJSGlobal`。
  *
  * @publicApi
  */
@@ -276,7 +276,7 @@ export function setAngularLib(ng: any): void {
  *
  * Use `getAngularJSGlobal` instead.
  *
- * 改用 `getAngularJSGlobal` 。
+ * 改用 `getAngularJSGlobal`。
  *
  * @publicApi
  */

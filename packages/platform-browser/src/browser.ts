@@ -30,7 +30,7 @@ import {RuntimeErrorCode} from './errors';
  *
  * `ApplicationConfig` has moved, please import `ApplicationConfig` from `@angular/core` instead.
  *
- * `ApplicationConfig` 已移动，请改为从 `@angular/core` 导入 `ApplicationConfig` 。
+ * `ApplicationConfig` 已移动，请改为从 `@angular/core` 导入 `ApplicationConfig`。
  *
  */
 // The below is a workaround to add a deprecated message.
@@ -92,7 +92,7 @@ export {ApplicationConfig};
    * providers using `provideProtractorTestingSupport()` function and adding them into the `providers`
    * array, for example:
    *
-   * 注意：默认情况下， `bootstrapApplication` 方法不包含[Testability](api/core/Testability) 。你可以通过使用 `provideProtractorTestingSupport()` 函数获取必要的提供程序列表并将它们添加到 `providers` 数组中来添加[Testability](api/core/Testability) ，例如：
+   * 注意：默认情况下，`bootstrapApplication` 方法不包含[Testability](api/core/Testability)。你可以通过使用 `provideProtractorTestingSupport()` 函数获取必要的提供程序列表并将它们添加到 `providers` 数组中来添加[Testability](api/core/Testability)，例如：
    *
    * ```typescript
    * import {provideProtractorTestingSupport} from '@angular/platform-browser';
@@ -214,7 +214,7 @@ export const platformBrowser: (extraProviders?: StaticProvider[]) => PlatformRef
  * `BrowserModule` presence itself, since the standalone-based bootstrap just imports
  * `BrowserModule` providers without referencing the module itself.
  *
- * 用于指示来自 `BrowserModule` 的提供程序是否已存在于 DI 中的内部标记。 这是为了避免两次加载 `BrowserModule` 提供程序所必需的。 我们不能依赖 `BrowserModule` 存在本身，因为基于独立的引导程序只是导入 `BrowserModule` 提供者而不引用模块本身。
+ * 用于指示来自 `BrowserModule` 的提供程序是否已存在于 DI 中的内部标记。这是为了避免两次加载 `BrowserModule` 提供程序所必需的。我们不能依赖 `BrowserModule` 存在本身，因为基于独立的引导程序只是导入 `BrowserModule` 提供者而不引用模块本身。
  *
  */
 const BROWSER_MODULE_PROVIDERS_MARKER = new InjectionToken(
@@ -262,7 +262,7 @@ const BROWSER_MODULE_PROVIDERS: Provider[] = [
  * Re-exports `CommonModule` and `ApplicationModule`, making their
  * exports and providers available to all apps.
  *
- * 导出所有 Angular 应用都需要的基础设施。默认包含在用 CLI 的 `new` 命令创建的所有 Angular 应用中。 它二次导出了 `CommonModule` 和 `ApplicationModule`，以便它们的导出物和提供者能用于所有应用中。
+ * 导出所有 Angular 应用都需要的基础设施。默认包含在用 CLI 的 `new` 命令创建的所有 Angular 应用中。它二次导出了 `CommonModule` 和 `ApplicationModule`，以便它们的导出物和提供者能用于所有应用中。
  *
  * @publicApi
  */
@@ -285,7 +285,7 @@ export class BrowserModule {
    * Configures a browser-based app to transition from a server-rendered app, if
    * one is present on the page.
    *
-   * 配置基于浏览器的应用，使其可以从当前页面上的服务端渲染（SSR）应用过渡而来。 指定的参数必须包含一个应用 id，在客户端应用和服务端应用之间它必须一致。
+   * 配置基于浏览器的应用，使其可以从当前页面上的服务端渲染（SSR）应用过渡而来。指定的参数必须包含一个应用 id，在客户端应用和服务端应用之间它必须一致。
    *
    * @param params An object containing an identifier for the app to transition.
    * The ID must match between the client and server versions of the app.

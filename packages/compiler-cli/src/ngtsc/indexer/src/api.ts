@@ -51,7 +51,7 @@ interface ExpressionIdentifier extends TemplateIdentifier {
    * any. If the target is `null`, it points to a declaration on the component class.
    *
    * 此标识符所针对的模板中的 ReferenceIdentifier 或 VariableIdentifier（如果有）。如果目标是
-   * `null` ，则指向组件类上的声明。
+   * `null`，则指向组件类上的声明。
    *
    */
   target: ReferenceIdentifier|VariableIdentifier|null;
@@ -131,7 +131,7 @@ interface BaseElementOrTemplateIdentifier extends TemplateIdentifier {
  * element tag, which can be parsed by an indexer to determine where used directives should be
  * referenced.
  *
- * 描述模板中的索引元素。 `ElementIdentifier` 的名称是整个元素标记，可以由索引器解析以确定应该引用
+ * 描述模板中的索引元素。`ElementIdentifier` 的名称是整个元素标记，可以由索引器解析以确定应该引用
  * used 指令的位置。
  *
  */
@@ -152,7 +152,7 @@ export interface TemplateNodeIdentifier extends BaseElementOrTemplateIdentifier 
 /**
  * Describes a reference in a template like "foo" in `<div #foo></div>`.
  *
- * 描述模板中的引用，例如 `<div #foo></div>` 中的 "foo" 。
+ * 描述模板中的引用，例如 `<div #foo></div>` 中的 "foo"。
  *
  */
 export interface ReferenceIdentifier extends TemplateIdentifier {
@@ -161,7 +161,7 @@ export interface ReferenceIdentifier extends TemplateIdentifier {
   /**
    * The target of this reference. If the target is not known, this is `null`.
    *
-   * 此引用的目标。如果目标未知，则为 `null` 。
+   * 此引用的目标。如果目标未知，则为 `null`。
    *
    */
   target: {
@@ -177,7 +177,7 @@ export interface ReferenceIdentifier extends TemplateIdentifier {
      * The directive on `node` that the reference targets. If no directive is targeted, this is
      * `null`.
      *
-     * 引用所针对的 `node` 上的指令。如果没有目标指令，则这是 `null` 。
+     * 引用所针对的 `node` 上的指令。如果没有目标指令，则这是 `null`。
      *
      */
     directive: ClassDeclaration | null;

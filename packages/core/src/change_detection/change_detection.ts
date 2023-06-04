@@ -34,7 +34,7 @@ const keyValDiff: KeyValueDifferFactory[] = [new DefaultKeyValueDifferFactory()]
 /**
  * Structural diffing for `Iterable` types such as `Array`s.
  *
- * `Iterable` 类型的结构差异，例如 `Array` 。
+ * `Iterable` 类型的结构差异，例如 `Array`。
  *
  */
 const iterableDiff: IterableDifferFactory[] = [new DefaultIterableDifferFactory()];

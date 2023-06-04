@@ -13,7 +13,7 @@ import {ComponentCompilation} from '../compilation';
  * Counts the number of variable slots used within each view, and stores that on the view itself, as
  * well as propagates it to the `ir.TemplateOp` for embedded views.
  *
- * 计算每个视图中使用的变量插槽的数量，并将其存储在视图本身中，并将其传播到嵌入式视图的 `ir.TemplateOp` 。
+ * 计算每个视图中使用的变量插槽的数量，并将其存储在视图本身中，并将其传播到嵌入式视图的 `ir.TemplateOp`。
  *
  */
 export function phaseVarCounting(cpl: ComponentCompilation): void {

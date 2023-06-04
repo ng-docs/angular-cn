@@ -11,7 +11,7 @@
  * for late binding of `@angular/compiler` for JIT purposes.
  *
  * 在 `@angular/core` 和 `@angular/compiler` 之间共享的一组接口，以允许出于 JIT 目的后期绑定
- * `@angular/compiler` 。
+ * `@angular/compiler`。
  *
  * This file has two copies. Please ensure that they are in sync:
  *

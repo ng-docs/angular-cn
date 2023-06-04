@@ -43,7 +43,7 @@ export function closestNode<T extends ts.Node>(node: ts.Node, predicate: (n: ts.
  * Checks whether a particular node is part of a null check. E.g. given:
  * `foo.bar ? foo.bar.value : null` the null check would be `foo.bar`.
  *
- * 检查特定节点是否是空检查的一部分。 例如给出： `foo.bar ? foo.bar.value : null` `foo.bar ? foo.bar.value : null` 空检查将是 `foo.bar` 。
+ * 检查特定节点是否是空检查的一部分。例如给出：`foo.bar ? foo.bar.value : null` `foo.bar ? foo.bar.value : null` 空检查将是 `foo.bar`。
  *
  */
 export function isNullCheck(node: ts.Node): boolean {

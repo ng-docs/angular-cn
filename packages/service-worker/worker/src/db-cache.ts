@@ -54,7 +54,7 @@ export class CacheDatabase implements Database {
 /**
  * A `Table` backed by a `Cache`.
  *
- * 由 `Cache` 支持的 `Table` 。
+ * 由 `Cache` 支持的 `Table`。
  *
  */
 export class CacheTable implements Table {

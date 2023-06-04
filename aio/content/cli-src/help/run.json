@@ -22,5 +22,5 @@
     }
   ],
   "shortDescriptionCn": "在你的项目中运行一个带有自定义构建器配置的建筑师目标（Architect target）。",
-  "longDescriptionCn": "Architect 是 CLI 根据提供的配置用于执行复杂任务（例如编译）的工具。 CLI 命令会运行 Architect 目标，例如`build`、`serve`、`test` 和 `lint` 。每个命名目标都有一个默认配置，由`options` 对象指定，以及 `configurations` 对象中的一组可选的命名备用配置。\n\n例如，新生成的应用程序的 `serve` 目标有一个名为 `production` 的预定义替代配置。\n\n你可以在 `angular.json` `文件的 architect` 部分中定义新目标及其配置选项。你可以用 `ng run` 命令从命令行运行它们。"
+  "longDescriptionCn": "Architect 是 CLI 根据提供的配置用于执行复杂任务（例如编译）的工具。CLI 命令会运行 Architect 目标，例如`build`、`serve`、`test` 和 `lint`。每个命名目标都有一个默认配置，由`options` 对象指定，以及 `configurations` 对象中的一组可选的命名备用配置。\n\n例如，新生成的应用程序的 `serve` 目标有一个名为 `production` 的预定义替代配置。\n\n你可以在 `angular.json` `文件的 architect` 部分中定义新目标及其配置选项。你可以用 `ng run` 命令从命令行运行它们。"
 }

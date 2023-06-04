@@ -161,7 +161,7 @@ export interface KeyValueDifferFactory {
   /**
    * Create a `KeyValueDiffer`.
    *
-   * 创建一个 `KeyValueDiffer` 。
+   * 创建一个 `KeyValueDiffer`。
    *
    */
   create<K, V>(): KeyValueDiffer<K, V>;

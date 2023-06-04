@@ -57,7 +57,7 @@ export type Mutable<T extends {[x: string]: any}, K extends string> = {
  * USAGE:
  * Given:
  *
- * 用法： 给定：
+ * 用法：给定：
  *
  * ```
  * interface Person {readonly name: string}

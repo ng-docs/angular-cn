@@ -307,7 +307,7 @@ function _stripIndexHtml(url: string): string {
  *
  * the decoded URI if it can be decoded or else `undefined`.
  *
- * 解码的 URI（如果可以解码），否则为 `undefined` 。
+ * 解码的 URI（如果可以解码），否则为 `undefined`。
  *
  */
 function tryDecodeURIComponent(value: string): string|undefined {
@@ -395,7 +395,7 @@ function toKeyValue(obj: {[k: string]: unknown}) {
  *
  * 我们需要我们的自定义方法，因为 encodeURIComponent
  * 过于激进，并且在路径段中允许的字符集（pchar）方面不遵循 https://tools.ietf.org/html/rfc3986
- * ：segment = *pchar pchar = unreserved / pct -encoded / sub-delims / “:” / “@” pct-encoded = “%”
+ *：segment = *pchar pchar = unreserved / pct -encoded / sub-delims / “:” / “@” pct-encoded = “%”
  * HEXDIG HEXDIG unreserved = ALPHA / DIGIT /“-”/“。” /"\_" /"~" sub-delims = "!"
  * /“$”/“&”/“'”/“\(”/“\)”/“* ”/“+”/“,”/“;” / "="
  *
@@ -421,7 +421,7 @@ function encodeUriSegment(val: string) {
  *                     / "*" / "+" / "," / ";" / "="
  *
  * 此方法旨在编码查询组件的*键*或*值*部分。我们需要一个自定义方法，因为 encodeURIComponent
- * 太激进了，并且会编码不必按 https://tools.ietf.org/html/rfc3986 编码的东西： query = *\( pchar /
+ * 太激进了，并且会编码不必按 https://tools.ietf.org/html/rfc3986 编码的东西：query = *\( pchar /
  * "/" / "?" \) pchar = 未保留/pct 编码/子 delims/“:”/“@”未保留=ALPHA/DIGIT/“-”/“.” /“\_”/“~”
  * pct-encoded = “%” HEXDIG HEXDIG sub-delims = “!” /“$”/“&”/“'”/“\(”/“\)”/“* ”/“+”/“,”/“;” / "="
  *

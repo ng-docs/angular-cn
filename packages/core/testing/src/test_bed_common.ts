@@ -70,7 +70,7 @@ export interface TestModuleMetadata {
    * thrown.
    *
    * 当组件的模板中存在未知元素时，是否应抛出 NG0304 运行时错误。默认为 `false`
-   * ，仅记录错误。如果设置为 `true` ，则抛出错误。
+   *，仅记录错误。如果设置为 `true`，则抛出错误。
    *
    * @see [NG8001](/errors/NG8001) for the description of the problem and how to fix it
    *
@@ -83,8 +83,8 @@ export interface TestModuleMetadata {
    * Defaults to `false`, where the error is simply logged.
    * If set to `true`, the error is thrown.
    *
-   * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
-   * ，则抛出错误。
+   * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false`，仅记录错误。如果设置为 `true`
+   *，则抛出错误。
    *
    * @see [NG8002](/errors/NG8002) for the description of the error and how to fix it
    *
@@ -110,8 +110,8 @@ export interface TestEnvironmentOptions {
    * Defaults to `false`, where the error is simply logged.
    * If set to `true`, the error is thrown.
    *
-   * 当组件的模板中存在未知元素时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
-   * ，则抛出错误。
+   * 当组件的模板中存在未知元素时是否应抛出错误。默认为 `false`，仅记录错误。如果设置为 `true`
+   *，则抛出错误。
    *
    * @see [NG8001](/errors/NG8001) for the description of the error and how to fix it
    *
@@ -124,8 +124,8 @@ export interface TestEnvironmentOptions {
    * Defaults to `false`, where the error is simply logged.
    * If set to `true`, the error is thrown.
    *
-   * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false` ，仅记录错误。如果设置为 `true`
-   * ，则抛出错误。
+   * 当组件的模板中存在未知属性时是否应抛出错误。默认为 `false`，仅记录错误。如果设置为 `true`
+   *，则抛出错误。
    *
    * @see [NG8002](/errors/NG8002) for the description of the error and how to fix it
    *
@@ -153,7 +153,7 @@ export interface ModuleTeardownOptions {
   /**
    * Whether errors during test module destruction should be re-thrown. Defaults to `true`.
    *
-   * 是否应该重新抛出测试模块销毁期间的错误。默认为 `true` 。
+   * 是否应该重新抛出测试模块销毁期间的错误。默认为 `true`。
    *
    */
   rethrowErrors?: boolean;

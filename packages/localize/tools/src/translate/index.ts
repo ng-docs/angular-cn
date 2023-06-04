@@ -62,7 +62,7 @@ export interface TranslateFilesOptions {
    * For example, if the files are `[app.xlf, lib-1.xlf, lib-2.xlif]` then a message that appears in
    * `app.xlf` will override the same message in `lib-1.xlf` or `lib-2.xlf`.
    *
-   * 例如，如果文件是 `[app.xlf, lib-1.xlf, lib-2.xlif]` ，则出现在 `app.xlf` 中的消息将覆盖
+   * 例如，如果文件是 `[app.xlf, lib-1.xlf, lib-2.xlif]`，则出现在 `app.xlf` 中的消息将覆盖
    * `lib-1.xlf` 或 `lib-2.xlf` 中的同一消息.
    *
    */
@@ -90,7 +90,7 @@ export interface TranslateFilesOptions {
    * `dist/{{LOCALE}}`.
    *
    * 计算将要写入已翻译文件的输出路径的函数。标记 `{{LOCALE}}` 将被替换为目标区域设置。例如
-   * `dist/{{LOCALE}}` 。
+   * `dist/{{LOCALE}}`。
    *
    */
   outputPathFn: OutputPathFn;

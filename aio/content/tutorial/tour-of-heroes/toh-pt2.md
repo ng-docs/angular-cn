@@ -72,7 +72,7 @@ Open the `HeroesComponent` template file and make the following changes:
 
 3. In the `<ul>` element, insert an `<li>`.
 
-   在 `<ul>` 元素中，插入 `<li>` 。
+   在 `<ul>` 元素中，插入 `<li>`。
 
 4. Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
 
@@ -108,11 +108,11 @@ The syntax in this example is as follows:
 | :----- | :------ |
 | 语法 | 详情 |
 | `<li>` | The host element. |
-| `<li>` | 宿主元素。 |
+| `<li>` | 宿主元素。|
 | `heroes` | Holds the mock heroes list from the `HeroesComponent` class, the mock heroes list. |
-| `heroes` | 来自 `HeroesComponent` 类的存放模拟（mock）英雄的列表。 |
+| `heroes` | 来自 `HeroesComponent` 类的存放模拟（mock）英雄的列表。|
 | `hero` | Holds the current hero object for each iteration through the list. |
-| `hero` | 保存列表每次迭代的当前 hero 对象。 |
+| `hero` | 保存列表每次迭代的当前 hero 对象。|
 
 <div class="alert is-important">
 

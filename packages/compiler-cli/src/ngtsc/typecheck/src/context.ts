@@ -41,7 +41,7 @@ export interface ShimTypeCheckingData {
   /**
    * Any `ts.Diagnostic`s which were produced during the generation of this shim.
    *
-   * 在此 shim 生成期间生成的任何 `ts.Diagnostic` 。
+   * 在此 shim 生成期间生成的任何 `ts.Diagnostic`。
    *
    * Some diagnostics are produced during creation time and are tracked here.
    *
@@ -87,7 +87,7 @@ export interface TemplateData {
    * `BoundTarget` which was used to generate the TCB, and contains bindings for the associated
    * template nodes.
    *
-   * `BoundTarget` ，用于生成 TCB，并包含对关联模板节点的绑定。
+   * `BoundTarget`，用于生成 TCB，并包含对关联模板节点的绑定。
    *
    */
   boundTarget: BoundTarget<TypeCheckableDirectiveMeta>;
@@ -146,7 +146,7 @@ export interface PendingShimData {
   /**
    * The `DomSchemaChecker` in use for this template, which records any schema-related diagnostics.
    *
-   * 用于此模板的 `DomSchemaChecker` ，它记录任何与模式相关的诊断。
+   * 用于此模板的 `DomSchemaChecker`，它记录任何与模式相关的诊断。
    *
    */
   domSchemaChecker: DomSchemaChecker;
@@ -186,7 +186,7 @@ export interface TypeCheckingHost {
   /**
    * Retrieve the `TemplateSourceManager` responsible for components in the given input file path.
    *
-   * 检索负责给定输入文件路径中组件的 `TemplateSourceManager` 。
+   * 检索负责给定输入文件路径中组件的 `TemplateSourceManager`。
    *
    */
   getSourceManager(sfPath: AbsoluteFsPath): TemplateSourceManager;
@@ -278,7 +278,7 @@ export class TypeCheckContextImpl implements TypeCheckContext {
    * or type-check blocks) that need to be eventually performed on that file.
    *
    * 上下文已经看到的 `ts.SourceFile` 到最终需要在该文件上执行的操作（添加方法或类型检查块）的 `Map`
-   * 。
+   *。
    *
    */
   private opMap = new Map<ts.SourceFile, Op[]>();
@@ -299,7 +299,7 @@ export class TypeCheckContextImpl implements TypeCheckContext {
    *
    * Implements `TypeCheckContext.addTemplate`.
    *
-   * 实现 `TypeCheckContext.addTemplate` 。
+   * 实现 `TypeCheckContext.addTemplate`。
    *
    */
   addTemplate(

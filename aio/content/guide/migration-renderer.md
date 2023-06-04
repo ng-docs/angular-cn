@@ -37,7 +37,7 @@ The schematic should handle most cases with the exception of `Renderer.animate()
 Some methods either don't have exact equivalents in `Renderer2`, or they correspond to more than one expression.
 For example, both renderers have a `createElement()` method, but they're not equal because a call such as `renderer.createElement(parentNode, namespaceAndName)` in the `Renderer` corresponds to the following block of code in `Renderer2`:
 
-有些方法在 `Renderer2` 没有完全等价的东西，或者对应于多个表达式。比如，这两种渲染器都有 `createElement()` 的方法，但它们是不相等的，比如在 `Renderer` 中调用 `renderer.createElement(parentNode, namespaceAndName)` 时对应 `Renderer2` 中的如下代码块 ：
+有些方法在 `Renderer2` 没有完全等价的东西，或者对应于多个表达式。比如，这两种渲染器都有 `createElement()` 的方法，但它们是不相等的，比如在 `Renderer` 中调用 `renderer.createElement(parentNode, namespaceAndName)` 时对应 `Renderer2` 中的如下代码块：
 
 <code-example format="typescript" language="typescript">
 
@@ -137,7 +137,7 @@ The following table shows all methods that the migration maps from `Renderer` to
 | `detachView(viewRootNodes)`                                                              | `for (let i = 0; i < viewRootNodes.length; i++) {const node = viewRootNodes[i]; const parentElement = parentNode(node); removeChild(parentElement, node);}`                                    |
 | `destroyView(hostElement, viewAllNodes)`                                                 | `for (let i = 0; i < viewAllNodes.length; i++) { destroyNode(viewAllNodes[i]); }`                                                                                                              |
 | `setBindingDebugInfo()`                                                                  | This function is a noop in `Renderer2`.                                                                                                                                                        |
-| `setBindingDebugInfo()`                                                                  | 该函数在 `Renderer2` 中无用。                                                                                                                                                                  |
+| `setBindingDebugInfo()`                                                                  | 该函数在 `Renderer2` 中无用。|
 | `createViewRoot(hostElement)`                                                            | Should be replaced with a reference to `hostElement`                                                                                                                                           |
 | `createViewRoot(hostElement)`                                                            | 应该替换成到 `hostElement` 的引用                                                                                                                                                              |
 | `invokeElementMethod(renderElement, methodName, args?)`                                  | `(renderElement as any)[methodName].apply(renderElement, args);`                                                                                                                               |

@@ -100,7 +100,7 @@ In the code editor:
 
 2. Update the file imports to include `Input` and `HousingLocation`:
 
-   更新文件的导入代码以包含 `Input` 和 `HousingLocation` ：
+   更新文件的导入代码以包含 `Input` 和 `HousingLocation`：
 
    <code-example header="Import HousingLocationComponent and Input in src/app/housing-location/housing-location.component.ts" path="first-app-lesson-05/src/app/housing-location/housing-location.component.ts" region="add-imports"></code-example>
 
@@ -132,7 +132,7 @@ In the code editor:
 
 In this lesson, you created a new property decorated with the `@Input()` decorator. You also used the non-null assertion operator to notify the compiler that the value of the new property won't be `null` or `undefined`.
 
-在这节课中，你创建了一个用 `@Input()` 装饰器装饰的新属性。还使用了非空断言运算符来通知编译器新属性的值不能是 `null` 或 `undefined` 。
+在这节课中，你创建了一个用 `@Input()` 装饰器装饰的新属性。还使用了非空断言运算符来通知编译器新属性的值不能是 `null` 或 `undefined`。
 
 If you are having any trouble with this lesson, you can review the completed code for it in the <live-example></live-example>.
 

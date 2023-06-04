@@ -38,12 +38,12 @@ import {NO_CHANGE} from './tokens';
  * any directive instances + any hostVars in directives evaluated before it.
  *
  * 纯函数指令会被赋予从绑定根的偏移量。将偏移量添加到绑定根会给出存储绑定的第一个索引。在组件视图中，绑定根是
- * bindStartIndex 。在宿主绑定中，绑定根是 expandoStartIndex + 任何指令实例 +
- * 在它之前估算的指令中的任何 hostVars 。
+ * bindStartIndex。在宿主绑定中，绑定根是 expandoStartIndex + 任何指令实例 +
+ * 在它之前估算的指令中的任何 hostVars。
  *
  * See VIEW_DATA.md for more information about host binding resolution.
  *
- * 有关宿主绑定解析的更多信息，请参阅 VIEW_DATA.md 。
+ * 有关宿主绑定解析的更多信息，请参阅 VIEW_DATA.md。
  *
  */
 
@@ -449,8 +449,8 @@ export function ɵɵpureFunctionV(
  *
  * 纯函数调用的结果存储在 LView 中初始化为 NO_CHANGE
  * 的专用槽中。在极少数情况下，纯管道可能会在第一次调用时抛出异常并且不会产生任何有效结果。在这种情况下，LView
- * 将继续保留 NO_CHANGE 值。 NO_CHANGE 不是我们可以在表达式/绑定中使用的东西，因此我们将其转换为
- * `undefined` 。
+ * 将继续保留 NO_CHANGE 值。NO_CHANGE 不是我们可以在表达式/绑定中使用的东西，因此我们将其转换为
+ * `undefined`。
  *
  */
 function getPureFunctionReturnValue(lView: LView, returnValueIndex: number) {

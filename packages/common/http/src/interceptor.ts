@@ -31,7 +31,7 @@ import {HttpEvent} from './response';
  * and compose a new event stream instead of invoking `next.handle()`. This is an
  * acceptable behavior, but keep in mind that further interceptors will be skipped entirely.
  *
- * 极少数情况下，拦截器也可以自己完全处理一个请求，并且组合出新的事件流来而不必调用 `next.handle()`。 这也是允许的，不过要时刻记住，这将会完全跳过所有后继拦截器。
+ * 极少数情况下，拦截器也可以自己完全处理一个请求，并且组合出新的事件流来而不必调用 `next.handle()`。这也是允许的，不过要时刻记住，这将会完全跳过所有后继拦截器。
  *
  * It is also rare but valid for an interceptor to return multiple responses on the
  * event stream for a single request.
@@ -50,7 +50,7 @@ import {HttpEvent} from './response';
  * loading modules\), each import creates a new copy of the `HttpClientModule`, which overwrites the
  * interceptors provided in the root module.
  *
- * 要想在整个应用中使用 `HttpInterceptors` 的同一个实例，就只能在 `AppModule` 模块中导入 `HttpClientModule`，并且把拦截器都添加到应用的根注入器中。 如果你在不同的模块中多次导入 `HttpClientModule`，则每次导入都会创建 `HttpClientModule` 的一个新复本，它将会覆盖根模块上提供的那些拦截器。
+ * 要想在整个应用中使用 `HttpInterceptors` 的同一个实例，就只能在 `AppModule` 模块中导入 `HttpClientModule`，并且把拦截器都添加到应用的根注入器中。如果你在不同的模块中多次导入 `HttpClientModule`，则每次导入都会创建 `HttpClientModule` 的一个新复本，它将会覆盖根模块上提供的那些拦截器。
  *
  */
 export interface HttpInterceptor {
@@ -120,12 +120,12 @@ export type HttpHandlerFn = (req: HttpRequest<unknown>) => Observable<HttpEvent<
  * request\) is provided. Most interceptors will delegate to this function, but that is not required
  * \(see `HttpHandlerFn` for more details\).
  *
- * 提供了一个表示下一个拦截器（或将发出真实 HTTP 请求的后端）的 `HttpHandlerFn` 。大多数拦截器会委托给此函数，但这不是必需的（有关详细信息，请参阅 `HttpHandlerFn` ）。
+ * 提供了一个表示下一个拦截器（或将发出真实 HTTP 请求的后端）的 `HttpHandlerFn`。大多数拦截器会委托给此函数，但这不是必需的（有关详细信息，请参阅 `HttpHandlerFn` ）。
  *
  * `HttpInterceptorFn`s have access to `inject()` via the `EnvironmentInjector` from which they were
  * configured.
  *
- * `HttpInterceptorFn` 可以通过配置它们的 `EnvironmentInjector` 访问 injection `inject()` 。
+ * `HttpInterceptorFn` 可以通过配置它们的 `EnvironmentInjector` 访问 injection `inject()`。
  *
  */
 export type HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) =>
@@ -141,7 +141,7 @@ export type HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn)
  * function in the chain will instead delegate to the `finalHandlerFn`, which is passed down when
  * the chain is invoked.
  *
- * 拦截器链中的每个拦截器都变成一个 `ChainedInterceptorFn` ，它关闭链的其余部分（由另一个 `ChainedInterceptorFn` 表示）。 链中的最后一个此类函数将委托给 `finalHandlerFn` ，它在链被调用时向下传递。
+ * 拦截器链中的每个拦截器都变成一个 `ChainedInterceptorFn`，它关闭链的其余部分（由另一个 `ChainedInterceptorFn` 表示）。链中的最后一个此类函数将委托给 `finalHandlerFn`，它在链被调用时向下传递。
  *
  * This pattern allows for a chain of many interceptors to be composed and wrapped in a single
  * `HttpInterceptorFn`, which is a useful abstraction for including different kinds of interceptors
@@ -162,7 +162,7 @@ function interceptorChainEndFn(
  * Constructs a `ChainedInterceptorFn` which adapts a legacy `HttpInterceptor` to the
  * `ChainedInterceptorFn` interface.
  *
- * 构造一个 `ChainedInterceptorFn` ，它使旧版 `HttpInterceptor` 适应 `ChainedInterceptorFn` 接口。
+ * 构造一个 `ChainedInterceptorFn`，它使旧版 `HttpInterceptor` 适应 `ChainedInterceptorFn` 接口。
  *
  */
 function adaptLegacyInterceptorToChain(
@@ -177,7 +177,7 @@ function adaptLegacyInterceptorToChain(
  * Constructs a `ChainedInterceptorFn` which wraps and invokes a functional interceptor in the given
  * injector.
  *
- * 构造一个 `ChainedInterceptorFn` ，它包装并调用给定注入器中的功能拦截器。
+ * 构造一个 `ChainedInterceptorFn`，它包装并调用给定注入器中的功能拦截器。
  *
  */
 function chainedInterceptorFn(
@@ -226,7 +226,7 @@ export const HTTP_ROOT_INTERCEPTOR_FNS =
  * Creates an `HttpInterceptorFn` which lazily initializes an interceptor chain from the legacy
  * class-based interceptors and runs the request through it.
  *
- * 创建一个 `HttpInterceptorFn` ，它从遗留的基于类的拦截器延迟初始化拦截器链，并通过它运行请求。
+ * 创建一个 `HttpInterceptorFn`，它从遗留的基于类的拦截器延迟初始化拦截器链，并通过它运行请求。
  *
  */
 export function legacyInterceptorFnFactory(): HttpInterceptorFn {

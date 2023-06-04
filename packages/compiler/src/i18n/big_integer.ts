@@ -50,7 +50,7 @@ export class BigInteger {
    * `this` but instead returns a new instance, unlike `addToSelf`.
    *
    * 返回一个以 `this` 和 `other` 之和作为值的新大整数。与 `addToSelf` 不同，这不会改变 `this`
-   * ，而是返回一个新实例。
+   *，而是返回一个新实例。
    *
    */
   add(other: BigInteger): BigInteger {
@@ -113,14 +113,14 @@ export class BigInteger {
  * are memoized. See `multiplyBy()` for details on the multiplication algorithm.
  *
  * 表示一个针对乘法运算优化的大整数，因为它的二次幂是被记忆的。有关乘法算法的详细信息，请参阅
- * `multiplyBy()` 。
+ * `multiplyBy()`。
  *
  */
 export class BigIntForMultiplication {
   /**
    * Stores all memoized power-of-twos, where each index represents `this.number * 2^index`.
    *
-   * 存储所有记忆的二次幂，其中每个索引都表示 `this.number * 2^index` 。
+   * 存储所有记忆的二次幂，其中每个索引都表示 `this.number * 2^index`。
    *
    */
   private readonly powerOfTwos: BigInteger[];
@@ -143,7 +143,7 @@ export class BigIntForMultiplication {
    * Computes the value for `num * b`, where `num` is a JS number and `b` is a big integer. The
    * value for `b` is represented by a storage model that is optimized for this computation.
    *
-   * 计算 `num * b` 的值，其中 `num` 是 JS 数字，`b` 是一个大整数。 `b`
+   * 计算 `num * b` 的值，其中 `num` 是 JS 数字，`b` 是一个大整数。`b`
    * 的值由为此计算优化的存储模型表示。
    *
    * This operation is implemented in `N(log2(num))` by continuous halving of the number, where the
@@ -156,7 +156,7 @@ export class BigIntForMultiplication {
    * As an example, consider the multiplication num=42, b=1337. In binary 42 is 0b00101010 and the
    * algorithm unrolls into the following iterations:
    *
-   * 例如，考虑乘法 num=42, b=1337 。在二进制 42 中是 0b00101010 ，算法会展开为以下迭代：
+   * 例如，考虑乘法 num=42, b=1337。在二进制 42 中是 0b00101010，算法会展开为以下迭代：
    *
    * | Iteration | num        | LSB        | b \* 2^iter | Add?   | product |
    * | --------- | ---------- | ---------- | ----------- | ------ | ------- |
@@ -196,7 +196,7 @@ export class BigIntForMultiplication {
    * See `multiplyBy()` for details. This function allows for the computed product to be added
    * directly to the provided result big integer.
    *
-   * 有关详细信息，请参阅 `multiplyBy()` 。此函数允许将计算出的积直接添加到提供的结果大整数。
+   * 有关详细信息，请参阅 `multiplyBy()`。此函数允许将计算出的积直接添加到提供的结果大整数。
    *
    */
   multiplyByAndAddTo(num: number, result: BigInteger): void {

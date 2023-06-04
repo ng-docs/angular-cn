@@ -160,7 +160,7 @@ export class NgtscTestEnvironment {
    * This results in the `changedResources` set being `null`.
    *
    * 较旧版本的 CLI 不提供 `CompilerHost.getModifiedResourceFiles()` 方法。这导致 `changedResources`
-   * 设置为 `null` 。
+   * 设置为 `null`。
    *
    */
   simulateLegacyCLICompilerHost() {

@@ -79,7 +79,7 @@ export class AstObject<T extends object, TExpression> {
   /**
    * Create a new `AstObject` from the given `expression` and `host`.
    *
-   * 从给定的 `expression` 和 `host` 创建一个新的 `AstObject` 。
+   * 从给定的 `expression` 和 `host` 创建一个新的 `AstObject`。
    *
    */
   static parse<T extends object, TExpression>(expression: TExpression, host: AstHost<TExpression>):
@@ -95,7 +95,7 @@ export class AstObject<T extends object, TExpression> {
   /**
    * Returns true if the object has a property called `propertyName`.
    *
-   * 如果对象有一个名为 `propertyName` 的属性，则返回 true 。
+   * 如果对象有一个名为 `propertyName` 的属性，则返回 true。
    *
    */
   has(propertyName: PropertyKey<T>): boolean {
@@ -150,7 +150,7 @@ export class AstObject<T extends object, TExpression> {
   /**
    * Returns the nested `AstObject` parsed from the property called `propertyName`.
    *
-   * 返回从名为 `propertyName` 的属性解析的嵌套 `AstObject` 。
+   * 返回从名为 `propertyName` 的属性解析的嵌套 `AstObject`。
    *
    * Throws an error if there is no such property or the property is not an object.
    *
@@ -212,7 +212,7 @@ export class AstObject<T extends object, TExpression> {
   /**
    * Returns an `AstValue` that wraps the value of the property called `propertyName`.
    *
-   * 返回一个 `AstValue` ，它包含名为 `propertyName` 的属性的值。
+   * 返回一个 `AstValue`，它包含名为 `propertyName` 的属性的值。
    *
    * Throws an error if there is no such property.
    *
@@ -270,7 +270,7 @@ export class AstObject<T extends object, TExpression> {
  * This helper class wraps an `expression`, exposing methods that use the `host` to give
  * access to the underlying value of the wrapped expression.
  *
- * 此帮助器类包装了一个 `expression` ，公开了使用 `host` 来提供对包装表达式的基础值的访问的方法。
+ * 此帮助器类包装了一个 `expression`，公开了使用 `host` 来提供对包装表达式的基础值的访问的方法。
  *
  * The generic `T` is used as reference type of the expected type that is represented by this value.
  * It does not achieve full type-safety for the provided operations in correspondence with `T`; its
@@ -287,7 +287,7 @@ export class AstValue<T, TExpression> {
    * Get the name of the symbol represented by the given expression node, or `null` if it is not a
    * symbol.
    *
-   * 获取给定表达式节点表示的符号的名称，如果不是符号，则为 `null` 。
+   * 获取给定表达式节点表示的符号的名称，如果不是符号，则为 `null`。
    *
    */
   getSymbolName(): string|null {
@@ -367,7 +367,7 @@ export class AstValue<T, TExpression> {
   /**
    * Parse this value into an `AstObject`, or error if it is not an object literal.
    *
-   * 将此值解析为 `AstObject` ，如果它不是对象文字，则解析为错误。
+   * 将此值解析为 `AstObject`，如果它不是对象文字，则解析为错误。
    *
    */
   getObject(this: ConformsTo<this, T, object>): AstObject<ObjectType<T>, TExpression> {
@@ -432,7 +432,7 @@ export class AstValue<T, TExpression> {
   /**
    * Return the `TExpression` of this value wrapped in a `WrappedNodeExpr`.
    *
-   * 返回包装在 `TExpression` 中的此值的 `WrappedNodeExpr` 。
+   * 返回包装在 `TExpression` 中的此值的 `WrappedNodeExpr`。
    *
    */
   getOpaque(): o.WrappedNodeExpr<TExpression> {

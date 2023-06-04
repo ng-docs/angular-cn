@@ -6,7 +6,7 @@ A *component* controls a patch of screen called a [*view*](guide/glossary#view "
 of a TypeScript class, an HTML template, and a CSS style sheet. The TypeScript class defines the interaction 
 of the HTML template and the rendered DOM structure, while the style sheet describes its appearance.
 
-一个*组件*控制着一块被称为[*视图*](guide/glossary#view "视图的定义")的屏幕区域。它由一个 TypeScript 类、一个 HTML 模板和一个 CSS 样式表组成。 TypeScript 类定义了 HTML 模板和渲染的 DOM 结构的交互，而样式表描述了它的外观。
+一个*组件*控制着一块被称为[*视图*](guide/glossary#view "视图的定义")的屏幕区域。它由一个 TypeScript 类、一个 HTML 模板和一个 CSS 样式表组成。TypeScript 类定义了 HTML 模板和渲染的 DOM 结构的交互，而样式表描述了它的外观。
 
 An Angular application uses individual components to define and control different aspects of the application.
 For example, an application could include components to describe:
@@ -94,11 +94,11 @@ This example shows some of the most useful `@Component` configuration options:
 | :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 配置选项              | 详情                                                                                                                                                                                                                                                                                                                  |
 | `selector`            | A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an application's HTML contains `<app-hero-list></app-hero-list>`, then Angular inserts an instance of the `HeroListComponent` view between those tags. |
-| `selector`            | 一个 CSS 选择器，它会告诉 Angular，一旦在模板 HTML 中找到了这个选择器对应的标签，就创建并插入该组件的一个实例。比如，如果应用的 HTML 中包含 `<app-hero-list></app-hero-list>`，Angular 就会在这些标签中插入一个 `HeroListComponent` 实例的视图。                                                                      |
+| `selector`            | 一个 CSS 选择器，它会告诉 Angular，一旦在模板 HTML 中找到了这个选择器对应的标签，就创建并插入该组件的一个实例。比如，如果应用的 HTML 中包含 `<app-hero-list></app-hero-list>`，Angular 就会在这些标签中插入一个 `HeroListComponent` 实例的视图。|
 | `templateUrl`         | The module-relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the `template` property. This template defines the component's *host view*.                                                                                                   |
-| `templateUrl`         | 该组件的 HTML 模板文件相对于这个组件文件的地址。另外，你还可以用 `template` 属性的值来提供内联的 HTML 模板。这个模板定义了该组件的*宿主视图*。                                                                                                                                                                        |
+| `templateUrl`         | 该组件的 HTML 模板文件相对于这个组件文件的地址。另外，你还可以用 `template` 属性的值来提供内联的 HTML 模板。这个模板定义了该组件的*宿主视图*。|
 | `providers`           | An array of [providers](guide/glossary#provider) for services that the component requires. In the example, this tells Angular how to provide the `HeroService` instance that the component's constructor uses to get the list of heroes to display.                                                                   |
-| `providers`           | 当前组件所需的服务[提供者](guide/glossary#provider)的一个数组。在这个例子中，它告诉 Angular 该如何提供一个 `HeroService` 实例，以获取要显示的英雄列表。                                                                                                                                                               |
+| `providers`           | 当前组件所需的服务[提供者](guide/glossary#provider)的一个数组。在这个例子中，它告诉 Angular 该如何提供一个 `HeroService` 实例，以获取要显示的英雄列表。|
 
 ## Templates and views
 
@@ -204,11 +204,11 @@ This example from the `HeroListComponent` template uses three of these forms.
 | :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
 | 数据绑定                                                                 | 详情                                                                                                                              |
 | `[hero]` [property binding](guide/property-binding)                      | Passes the value of `selectedHero` from the parent `HeroListComponent` to the `hero` property of the child `HeroDetailComponent`. |
-| `[hero]`[属性绑定](guide/property-binding)                               | 把父组件 `HeroListComponent` 的 `selectedHero` 的值传到子组件 `HeroDetailComponent` 的 `hero` 属性中。                            |
+| `[hero]`[属性绑定](guide/property-binding)                               | 把父组件 `HeroListComponent` 的 `selectedHero` 的值传到子组件 `HeroDetailComponent` 的 `hero` 属性中。|
 | `(click)` [event binding](guide/user-input#binding-to-user-input-events) | Calls the component's `selectHero` method when the user clicks a hero's name.                                                     |
-| `(click)`[事件绑定](guide/user-input#binding-to-user-input-events)       | 当用户单击英雄的名字时，调用组件的 `selectHero` 方法。                                                                            |
+| `(click)`[事件绑定](guide/user-input#binding-to-user-input-events)       | 当用户单击英雄的名字时，调用组件的 `selectHero` 方法。|
 | `{{hero.name}}` [interpolation](guide/interpolation)                     | Displays the component's `hero.name` property value within the `<button>` element.                                                |
-| `{{hero.name}}`[插值](guide/interpolation)                               | 在 `<button>` 元素中显示组件的 `hero.name` 属性值。                                                                               |
+| `{{hero.name}}`[插值](guide/interpolation)                               | 在 `<button>` 元素中显示组件的 `hero.name` 属性值。|
 
 Two-way data binding \(used mainly in [template-driven forms](guide/forms)\) combines property and event binding in a single notation.
 Here's an example from the `HeroDetailComponent` template that uses two-way data binding with the `ngModel` directive.
@@ -332,9 +332,9 @@ The example template uses two built-in structural directives to add application 
 | :------------------------------------------ | :----------------------------------------------------------------------------------------- |
 | 指令                                        | 详情                                                                                       |
 | [`*ngFor`](guide/built-in-directives#ngFor) | An *iterative*, which tells Angular to create one `<li>` per hero in the `heroes` list.    |
-| [`*ngFor`](guide/built-in-directives#ngFor) | 一个迭代器，它要求 Angular 为 `heroes` 列表中的每个英雄创建出一个 `<li>`。                 |
+| [`*ngFor`](guide/built-in-directives#ngFor) | 一个迭代器，它要求 Angular 为 `heroes` 列表中的每个英雄创建出一个 `<li>`。|
 | [`*ngIf`](guide/built-in-directives#ngIf)   | A *conditional*, which includes the `HeroDetail` component only if a selected hero exists. |
-| [`*ngIf`](guide/built-in-directives#ngIf)   | 是个条件语句，只有当选中的英雄存在时，它才会包含 `HeroDetail` 组件。                       |
+| [`*ngIf`](guide/built-in-directives#ngIf)   | 是个条件语句，只有当选中的英雄存在时，它才会包含 `HeroDetail` 组件。|
 
 #### Attribute directives
 

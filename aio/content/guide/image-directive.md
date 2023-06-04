@@ -74,7 +74,7 @@ The directive is defined as a [standalone directive](/guide/standalone-component
 
 An image loader is not **required** in order to use NgOptimizedImage, but using one with an image CDN enables powerful performance features, including automatic `srcset`s for your images.
 
-使用 NgOptimizedImage **不一定需要**图片加载器，但使用带有图片 CDN 的加载器可以实现强大的性能特性，包括为图片自动设置 `srcset` 。
+使用 NgOptimizedImage **不一定需要**图片加载器，但使用带有图片 CDN 的加载器可以实现强大的性能特性，包括为图片自动设置 `srcset`。
 
 A brief guide for setting up a loader can be found in the [Configuring an Image Loader](#configuring-an-image-loader-for-ngoptimizedimage) section at the end of this page.
 
@@ -86,7 +86,7 @@ A brief guide for setting up a loader can be found in the [Configuring an Image 
 
 To activate the `NgOptimizedImage` directive, replace your image's `src` attribute with `ngSrc`.
 
-要激活 `NgOptimizedImage` 指令，请将图片的 `src` 属性替换为 `ngSrc` 。
+要激活 `NgOptimizedImage` 指令，请将图片的 `src` 属性替换为 `ngSrc`。
 
 <code-example format="typescript" language="typescript">
 
@@ -130,7 +130,7 @@ Marking an image as `priority` applies the following optimizations:
 
 Angular displays a warning during development if the LCP element is an image that does not have the `priority` attribute. A page’s LCP element can vary based on a number of factors - such as the dimensions of a user's screen, so a page may have multiple images that should be marked `priority`. See [CSS for Web Vitals](https://web.dev/css-web-vitals/#images-and-largest-contentful-paint-lcp) for more details.
 
-如果 LCP 元素是不具有 `priority` 属性的图片，则 Angular 会在开发过程中显示警告。页面的 LCP 元素可能会因许多因素而异 - 例如用户屏幕的尺寸，因此一个页面可能有多个应该标记为 `priority` 的图片。有关更多详细信息，请参阅 [CSS for Web Vitals](https://web.dev/css-web-vitals/#images-and-largest-contentful-paint-lcp) 。
+如果 LCP 元素是不具有 `priority` 属性的图片，则 Angular 会在开发过程中显示警告。页面的 LCP 元素可能会因许多因素而异 - 例如用户屏幕的尺寸，因此一个页面可能有多个应该标记为 `priority` 的图片。有关更多详细信息，请参阅 [CSS for Web Vitals](https://web.dev/css-web-vitals/#images-and-largest-contentful-paint-lcp)。
 
 #### Step 5: Include Height and Width
 
@@ -168,7 +168,7 @@ In cases where you want to have an image fill a containing element, you can use 
 
 When you add the `fill` attribute to your image, you do not need and should not include a `width` and `height`, as in this example:
 
-当你将 `fill` 属性添加到图片时，不需要也不应该包含 `width` 和 `height` ，如下例所示：
+当你将 `fill` 属性添加到图片时，不需要也不应该包含 `width` 和 `height`，如下例所示：
 
 <code-example format="typescript" language="typescript">
 
@@ -178,7 +178,7 @@ When you add the `fill` attribute to your image, you do not need and should not 
 
 You can use the [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) CSS property to change how the image will fill its container. If you style your image with `object-fit: "contain"`, the image will maintain its aspect ratio and be "letterboxed" to fit the element. If you set `object-fit: "cover"`, the element will retain its aspect ratio, fully fill the element, and some content may be "cropped" off. 
 
-你可以用 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) 这个 CSS 属性来更改图片填充其容器的方式。如果你使用 `object-fit: "contain"` 来设置图片的样式，则图片将保持其纵横比并被黑边化（译注：类似于电影在不同分辨率播放时加黑边）以适配此元素。如果你设置了 `object-fit: "cover"` ，则元素将保留其长宽比，完全填充元素，并且某些内容可能会被“裁剪”。
+你可以用 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) 这个 CSS 属性来更改图片填充其容器的方式。如果你使用 `object-fit: "contain"` 来设置图片的样式，则图片将保持其纵横比并被黑边化（译注：类似于电影在不同分辨率播放时加黑边）以适配此元素。如果你设置了 `object-fit: "cover"`，则元素将保留其长宽比，完全填充元素，并且某些内容可能会被“裁剪”。
 
 See visual examples of the above at the [MDN object-fit documentation.](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
 
@@ -198,7 +198,7 @@ You can also style your image with the [object-position property](https://develo
 
 Depending on the image's styling, adding `width` and `height` attributes may cause the image to render differently. `NgOptimizedImage` warns you if your image styling renders the image at a distorted aspect ratio.
 
-根据图片的样式，添加 `width` 和 `height` 属性可能会导致图片的渲染方式不同。如果你的图片样式正在以扭曲的纵横比渲染图片， `NgOptimizedImage` 会发出警告。
+根据图片的样式，添加 `width` 和 `height` 属性可能会导致图片的渲染方式不同。如果你的图片样式正在以扭曲的纵横比渲染图片，`NgOptimizedImage` 会发出警告。
 
 You can typically fix this by adding `height: auto` or `width: auto` to your image styles. For more information, see the [web.dev article on the `<img>` tag](https://web.dev/patterns/web-vitals-patterns/images/img-tag).
 
@@ -252,7 +252,7 @@ providers: [
 
 Defining a [`srcset` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset) ensures that the browser requests an image at the right size for your user's viewport, so it doesn't waste time downloading an image that's too large. `NgOptimizedImage` generates an appropriate `srcset` for the image, based on the presence and value of the [`sizes` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) on the image tag.
 
-定义 [`srcset` 属性](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)可确保浏览器为用户的视口请求正确大小的图片，因此不会浪费时间下载太大的图片。 `NgOptimizedImage` 会根据 img 标签上 [`sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) 属性的存在与否和值来为图片生成适当的 `srcset`。
+定义 [`srcset` 属性](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)可确保浏览器为用户的视口请求正确大小的图片，因此不会浪费时间下载太大的图片。`NgOptimizedImage` 会根据 img 标签上 [`sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) 属性的存在与否和值来为图片生成适当的 `srcset`。
 
 #### Fixed-size images
 
@@ -264,7 +264,7 @@ If your image should be "fixed" in size  \(i.e. the same size across devices, ex
 
 Example srcset generated: `<img ... srcset="image-400w.jpg 1x, image-800w.jpg 2x">`
 
-生成的示例 srcset： `<img ... srcset="image-400w.jpg 1x, image-800w.jpg 2x">`
+生成的示例 srcset：`<img ... srcset="image-400w.jpg 1x, image-800w.jpg 2x">`
 
 #### Responsive images
 
@@ -272,11 +272,11 @@ Example srcset generated: `<img ... srcset="image-400w.jpg 1x, image-800w.jpg 2x
 
 If your image should be responsive \(i.e. grow and shrink according to viewport size\), then you will need to define a [`sizes` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) to generate the `srcset`.
 
-如果你的图片应该是响应式的（即会根据视口大小放大和缩小），那么你需要定义一个 [`sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) 属性来生成 `srcset` 。
+如果你的图片应该是响应式的（即会根据视口大小放大和缩小），那么你需要定义一个 [`sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) 属性来生成 `srcset`。
 
 If you haven't used `sizes` before, a good place to start is to set it based on viewport width. For example, if your CSS causes the image to fill 100% of viewport width, set `sizes` to `100vw` and the browser will select the image in the `srcset` that is closest to the viewport width \(after accounting for pixel density\). If your image is only likely to take up half the screen \(ex: in a sidebar\), set `sizes` to `50vw` to ensure the browser selects a smaller image. And so on.
 
-如果你以前没有使用过 `sizes` ，一个很好的起点是根据视口宽度来设置它。例如，如果你的 CSS 要让图片填充视口宽度的 100% ，则将 `sizes` 设置为 `100vw` ，浏览器将选择 `srcset` 中最接近视口宽度的图片（在考虑像素密度之后）。如果你的图片只可能占屏幕的一半（例如：在侧边栏中），请将 `sizes` 设置为 `50vw` 以确保浏览器选择较小的图片。以此类推。
+如果你以前没有使用过 `sizes`，一个很好的起点是根据视口宽度来设置它。例如，如果你的 CSS 要让图片填充视口宽度的 100%，则将 `sizes` 设置为 `100vw`，浏览器将选择 `srcset` 中最接近视口宽度的图片（在考虑像素密度之后）。如果你的图片只可能占屏幕的一半（例如：在侧边栏中），请将 `sizes` 设置为 `50vw` 以确保浏览器选择较小的图片。以此类推。
 
 If you find that the above does not cover your desired image behavior, see the documentation on [advanced sizes values](#advanced-sizes-values).
 
@@ -315,7 +315,7 @@ If you would like to manually define a `srcset` attribute, you can provide your 
 
 If the `ngSrcset` attribute is present, `NgOptimizedImage` generates and sets the `srcset` based on the sizes included. Do not include image file names in `ngSrcset` - the directive infers this information from `ngSrc`. The directive supports both width descriptors \(e.g. `100w`\) and density descriptors \(e.g. `1x`\).
 
-如果存在 `ngSrcset` 属性，则 `NgOptimizedImage` 会根据包含的大小生成并设置 `srcset` 。不要在 `ngSrcset` 中包含图片文件名 - 该指令会从 `ngSrc` 推断此信息。该指令支持宽度描述符（例如 `100w` ）和密度描述符（例如 `1x` ）。
+如果存在 `ngSrcset` 属性，则 `NgOptimizedImage` 会根据包含的大小生成并设置 `srcset`。不要在 `ngSrcset` 中包含图片文件名 - 该指令会从 `ngSrc` 推断此信息。该指令支持宽度描述符（例如 `100w` ）和密度描述符（例如 `1x` ）。
 
 <code-example format="html" language="html">
 
@@ -343,7 +343,7 @@ To disable srcset generation for a single image, you can add the `disableOptimiz
 
 By default, `NgOptimizedImage` sets `loading=lazy` for all images that are not marked `priority`. You can disable this behavior for non-priority images by setting the `loading` attribute. This attribute accepts values: `eager`, `auto`, and `lazy`. [See the documentation for the standard image `loading` attribute for details](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading#value).
 
-默认情况下， `NgOptimizedImage` 为所有未标记 `priority` 的图片设置 `loading=lazy` 。你可以通过设置 `loading` 属性来为非优先图片禁用此行为。此属性会接受值： `eager` 、 `auto` 和 `lazy` 。[有关详细信息，请参阅标准图片 `loading` 属性的文档](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading#value)。
+默认情况下，`NgOptimizedImage` 为所有未标记 `priority` 的图片设置 `loading=lazy`。你可以通过设置 `loading` 属性来为非优先图片禁用此行为。此属性会接受值：`eager` 、 `auto` 和 `lazy`。[有关详细信息，请参阅标准图片 `loading` 属性的文档](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading#value)。
 
 <code-example format="html" language="html">
 
@@ -367,11 +367,11 @@ You may want to have images displayed at varying widths on differently-sized scr
 
 The `sizes` attribute in the above example says "I expect this image to be 100 percent of the screen width on devices under 768px wide. Otherwise, I expect it to be 50 percent of the screen width.
 
-上面的示例中的 `sizes` 属性表示“我希望此图片在 768px 宽的设备上是屏幕宽度的 100% 。否则，我希望它是屏幕宽度的 50% 。
+上面的示例中的 `sizes` 属性表示“我希望此图片在 768px 宽的设备上是屏幕宽度的 100%。否则，我希望它是屏幕宽度的 50%。
 
 For additional information about the `sizes` attribute, see [web.dev](https://web.dev/learn/design/responsive-images/#sizes) or [mdn](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes).
 
-有关 [size 属性的其它信息，请参阅 web.dev](https://web.dev/learn/design/responsive-images/#sizes) `sizes` [mdn](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes) 。
+有关 [size 属性的其它信息，请参阅 web.dev](https://web.dev/learn/design/responsive-images/#sizes) `sizes` [mdn](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes)。
 
 ## Configuring an image loader for `NgOptimizedImage`
 
@@ -389,11 +389,11 @@ A "loader" is a function that generates an [image transformation URL](https://we
 | :------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 加载器类型                             | 行为                                                                                                                                                                                                                           |
 | Generic loader                         | The URL returned by the generic loader will always match the value of `src`. In other words, this loader applies no transformations. Sites that use Angular to serve images are the primary intended use case for this loader. |
-| 通用加载器                             | 通用加载器返回的 URL 将始终与 `src` 的值匹配。换句话说，此加载器不应用任何转换。使用 Angular 来提供图片的站点是此加载器的主要预期用例。                                                                                        |
+| 通用加载器                             | 通用加载器返回的 URL 将始终与 `src` 的值匹配。换句话说，此加载器不应用任何转换。使用 Angular 来提供图片的站点是此加载器的主要预期用例。|
 | Loaders for third-party image services | The URL returned by the loaders for third-party image services will follow API conventions used by that particular image service.                                                                                              |
-| 第三方图片服务的加载器                 | 此加载器为第三方图片服务返回的 URL 将遵循该特定图片服务使用的 API 约定。                                                                                                                                                       |
+| 第三方图片服务的加载器                 | 此加载器为第三方图片服务返回的 URL 将遵循该特定图片服务使用的 API 约定。|
 | Custom loaders                         | A custom loader's behavior is defined by its developer. You should use a custom loader if your image service isn't supported by the loaders that come preconfigured with `NgOptimizedImage`.                                   |
-| 自定义加载器                           | 自定义加载器的行为由其开发人员定义。如果使用 `NgOptimizedImage` 预配置的加载器不支持你想要的图片服务，就应该使用自定义加载器。                                                                                                 |
+| 自定义加载器                           | 自定义加载器的行为由其开发人员定义。如果使用 `NgOptimizedImage` 预配置的加载器不支持你想要的图片服务，就应该使用自定义加载器。|
 
 Based on the image services commonly used with Angular applications, `NgOptimizedImage` provides loaders preconfigured to work with the following image services:
 
@@ -462,7 +462,7 @@ providers: [
 
 A loader function for the `NgOptimizedImage` directive takes an object with the `ImageLoaderConfig` type \(from `@angular/common`\) as its argument and returns the absolute URL of the image asset. The `ImageLoaderConfig` object contains the `src` property, and optional `width` and `loaderParams` properties.
 
-`NgOptimizedImage` 指令的加载器函数将 `ImageLoaderConfig` 类型的对象（来自 `@angular/common` ）作为其参数，并返回图像资产（assets）的绝对 URL。 `ImageLoaderConfig` 对象包含 `src` 属性，以及可选的 `width` 和 `loaderParams` 属性。
+`NgOptimizedImage` 指令的加载器函数将 `ImageLoaderConfig` 类型的对象（来自 `@angular/common` ）作为其参数，并返回图像资产（assets）的绝对 URL。`ImageLoaderConfig` 对象包含 `src` 属性，以及可选的 `width` 和 `loaderParams` 属性。
 
 Note: even though the `width` property may not always be present, a custom loader must use it to support requesting images at various widths in order for `ngSrcset` to work properly.
 
@@ -474,7 +474,7 @@ Note: even though the `width` property may not always be present, a custom loade
 
 There is an additional attribute supported by the `NgOptimizedImage` directive, called `loaderParams`, which is specifically designed to support the use of custom loaders. The `loaderParams` attribute take an object with any properties as a value, and does not do anything on its own. The data in `loaderParams` is added to the `ImageLoaderConfig` object passed to your custom loader, and can be used to control the behavior of the loader.
 
-`NgOptimizedImage` 指令支持一个额外的属性，称为 `loaderParams` ，它是专门为了支持自定义加载器的使用而设计的。 `loaderParams` 属性将以具有任何属性的对象作为值，它自己不做任何事情。 `loaderParams` 中的数据会被添加到传递给自定义加载器的 `ImageLoaderConfig` 对象中，可用于控制加载器的行为。
+`NgOptimizedImage` 指令支持一个额外的属性，称为 `loaderParams`，它是专门为了支持自定义加载器的使用而设计的。`loaderParams` 属性将以具有任何属性的对象作为值，它自己不做任何事情。`loaderParams` 中的数据会被添加到传递给自定义加载器的 `ImageLoaderConfig` 对象中，可用于控制加载器的行为。
 
 A common use for `loaderParams` is controlling advanced image CDN features.
 
@@ -486,7 +486,7 @@ A common use for `loaderParams` is controlling advanced image CDN features.
 
 The following shows an example of a custom loader function. This example function concatenates `src` and `width`, and uses `loaderParams` to control a custom CDN feature for rounded corners:
 
-下面显示了自定义加载器函数的示例。 此示例函数连接 `src` 和 `width` ，并使用 `loaderParams` 控制圆角的自定义 CDN 功能：
+下面显示了自定义加载器函数的示例。此示例函数连接 `src` 和 `width`，并使用 `loaderParams` 控制圆角的自定义 CDN 功能：
 
 <code-example format="typescript" language="typescript">
 const myCustomLoader = (config: ImageLoaderConfig) => {
@@ -504,7 +504,7 @@ const myCustomLoader = (config: ImageLoaderConfig) => {
 
 Note that in the above example, we've invented the 'roundedCorners' property name to control a feature of our custom loader. We could then use this feature when creating an image, as follows:
 
-请注意，在上面的示例中，我们发明了“roundedCorners”属性名称来控制自定义加载器的特性。 然后我们可以在创建图像时使用此特性，如下所示：
+请注意，在上面的示例中，我们发明了“roundedCorners”属性名称来控制自定义加载器的特性。然后我们可以在创建图像时使用此特性，如下所示：
 
 <code-example format="html" language="html">
 

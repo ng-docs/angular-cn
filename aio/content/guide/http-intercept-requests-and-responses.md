@@ -69,7 +69,7 @@ The final `next` in the chain is the `HttpClient` backend handler that sends the
 Most interceptors call `next.handle()` so that the request flows through to the next interceptor and, eventually, the backend handler.
 An interceptor *could* skip calling `next.handle()`, short-circuit the chain, and [return its own `Observable`](guide/http-interceptor-use-cases#caching) with an artificial server response.
 
-大多数拦截器都会调用 `next.handle()` 以便请求流经下一个拦截器，并最终流向后端处理程序。 拦截器*可以*跳过对 `next.handle()` 的调用，使调用链短路，并[返回带有人工响应体的自定义 `Observable`](guide/http-interceptor-use-cases#caching) 。
+大多数拦截器都会调用 `next.handle()` 以便请求流经下一个拦截器，并最终流向后端处理程序。拦截器*可以*跳过对 `next.handle()` 的调用，使调用链短路，并[返回带有人工响应体的自定义 `Observable`](guide/http-interceptor-use-cases#caching)。
 
 This is a common middleware pattern found in frameworks such as Express.js.
 
@@ -103,7 +103,7 @@ After importing the `HTTP_INTERCEPTORS` injection token from `@angular/common/ht
 Notice the `multi: true` option.
 This required setting tells Angular that `HTTP_INTERCEPTORS` is a token for a *multiprovider* that injects an array of values, rather than a single value.
 
-注意 `multi: true` 选项。 这个必须的选项会告诉 Angular `HTTP_INTERCEPTORS` 是一个*多重提供者*的令牌，表示它会注入一个多值的数组，而不是单一的值。
+注意 `multi: true` 选项。这个必须的选项会告诉 Angular `HTTP_INTERCEPTORS` 是一个*多重提供者*的令牌，表示它会注入一个多值的数组，而不是单一的值。
 
 You *could* add this provider directly to the providers array of the `AppModule`.
 However, it's rather verbose and there's a good chance that you'll create more interceptors and provide them in the same way.

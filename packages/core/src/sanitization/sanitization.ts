@@ -41,7 +41,7 @@ import {_sanitizeUrl as _sanitizeUrl} from './url_sanitizer';
  *
  * @param unsafeHtml untrusted `html`, typically from the user.
  *
- * 不受信任的 `html` ，通常来自用户。
+ * 不受信任的 `html`，通常来自用户。
  * @returns
  *
  * `html` string which is safe to display to user, because all of the dangerous javascript
@@ -73,7 +73,7 @@ export function ɵɵsanitizeHtml(unsafeHtml: any): TrustedHTML|string {
  *
  * @param unsafeStyle untrusted `style`, typically from the user.
  *
- * 不受信任的 `style` ，通常来自用户。
+ * 不受信任的 `style`，通常来自用户。
  * @returns
  *
  * `style` string which is safe to bind to the `style` properties.
@@ -110,13 +110,13 @@ export function ɵɵsanitizeStyle(unsafeStyle: any): string {
  *
  * @param unsafeUrl untrusted `url`, typically from the user.
  *
- * 不受信任的 `url` ，通常来自用户。
+ * 不受信任的 `url`，通常来自用户。
  * @returns
  *
  * `url` string which is safe to bind to the `src` properties such as `<img src>`, because
  * all of the dangerous javascript has been removed.
  *
- * 可以安全绑定到 `src` 属性的 `url` 字符串，例如 `<img src>` ，因为所有危险的 javascript 都已删除。
+ * 可以安全绑定到 `src` 属性的 `url` 字符串，例如 `<img src>`，因为所有危险的 javascript 都已删除。
  * @codeGenApi
  */
 export function ɵɵsanitizeUrl(unsafeUrl: any): string {
@@ -137,17 +137,17 @@ export function ɵɵsanitizeUrl(unsafeUrl: any): string {
  *
  * This passes only `url`s marked trusted by calling {@link bypassSanitizationTrustResourceUrl}.
  *
- * 这仅通过调用 {@link bypassSanitizationTrustResourceUrl} 来传递标记为受信任的 `url` 。
+ * 这仅通过调用 {@link bypassSanitizationTrustResourceUrl} 来传递标记为受信任的 `url`。
  *
  * @param unsafeResourceUrl untrusted `url`, typically from the user.
  *
- * 不受信任的 `url` ，通常来自用户。
+ * 不受信任的 `url`，通常来自用户。
  * @returns
  *
  * `url` string which is safe to bind to the `src` properties such as `<img src>`, because
  * only trusted `url`s have been allowed to pass.
  *
- * 可以安全地绑定到 `src` 属性的 `url` 字符串，例如 `<img src>` ，因为只有受信任的 `url`
+ * 可以安全地绑定到 `src` 属性的 `url` 字符串，例如 `<img src>`，因为只有受信任的 `url`
  * 被允许通过。
  * @codeGenApi
  */
@@ -172,17 +172,17 @@ export function ɵɵsanitizeResourceUrl(unsafeResourceUrl: any): TrustedScriptUR
  *
  * This passes only `script`s marked trusted by calling {@link bypassSanitizationTrustScript}.
  *
- * 这只会通过调用 {@link bypassSanitizationTrustScript} 来传递标记为受信任的 `script` 。
+ * 这只会通过调用 {@link bypassSanitizationTrustScript} 来传递标记为受信任的 `script`。
  *
  * @param unsafeScript untrusted `script`, typically from the user.
  *
- * 不受信任的 `script` ，通常来自用户。
+ * 不受信任的 `script`，通常来自用户。
  * @returns
  *
  * `url` string which is safe to bind to the `<script>` element such as `<img src>`,
  * because only trusted `scripts` have been allowed to pass.
  *
- * 可以安全绑定到 `<script>` 元素的 `url` 字符串，例如 `<img src>` ，因为只有受信任的 `scripts`
+ * 可以安全绑定到 `<script>` 元素的 `url` 字符串，例如 `<img src>`，因为只有受信任的 `scripts`
  * 被允许通过。
  * @codeGenApi
  */
@@ -214,7 +214,7 @@ export function ɵɵsanitizeScript(unsafeScript: any): TrustedScript|string {
  *
  * TrustedHTML wrapping `html`.
  *
- * TrustedHTML 包装 `html` 。
+ * TrustedHTML 包装 `html`。
  *
  * @security This is a security-sensitive function and should only be used to
  * convert constant values of attributes and properties found in
@@ -248,7 +248,7 @@ export function ɵɵtrustConstantHtml(html: TemplateStringsArray): TrustedHTML|s
  *
  * TrustedScriptURL wrapping `url`.
  *
- * TrustedScriptURL 包装 `url` 。
+ * TrustedScriptURL 包装 `url`。
  *
  * @security This is a security-sensitive function and should only be used to
  * convert constant values of attributes and properties found in
@@ -306,7 +306,7 @@ export function getUrlSanitizer(tag: string, prop: string) {
  *
  * @param unsafeUrl untrusted `url`, typically from the user.
  *
- * 不受信任的 `url` ，通常来自用户。
+ * 不受信任的 `url`，通常来自用户。
  *
  * @param tag target element tag name.
  *

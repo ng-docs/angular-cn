@@ -20,7 +20,7 @@ import {getDocument} from './render3/interfaces/document';
  * \(for example, using `bootstrapApplication` calls\). In this case, ensure that those applications
  * have different `APP_ID` value setup. For example:
  *
- * 在页面上引导多个应用程序（例如，使用 `bootstrapApplication` 调用）时需要令牌。 在这种情况下，请确保这些应用程序具有不同的 `APP_ID` 值设置。 例如：
+ * 在页面上引导多个应用程序（例如，使用 `bootstrapApplication` 调用）时需要令牌。在这种情况下，请确保这些应用程序具有不同的 `APP_ID` 值设置。例如：
  *
  * ```
  * bootstrapApplication(ComponentA, {
@@ -110,7 +110,7 @@ export const ANIMATION_MODULE_TYPE =
  * Angular will apply when inserting inline styles. If not provided, Angular will look up its value
  * from the `ngCspNonce` attribute of the application root node.
  *
- * Token 用于配置 Angular 在插入内联样式时应用的[内容安全策略](https://web.dev/strict-csp/)随机数。 如果未提供，Angular 将从应用程序根节点的 `ngCspNonce` 属性中查找它的值。
+ * Token 用于配置 Angular 在插入内联样式时应用的[内容安全策略](https://web.dev/strict-csp/)随机数。如果未提供，Angular 将从应用程序根节点的 `ngCspNonce` 属性中查找它的值。
  *
  * @publicApi
  */

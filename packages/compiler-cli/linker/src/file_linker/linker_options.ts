@@ -17,7 +17,7 @@ export interface LinkerOptions {
    * Whether to use source-mapping to compute the original source for external templates.
    * The default is `true`.
    *
-   * 是否使用 source-mapping 来计算外部模板的原始源。默认值为 `true` 。
+   * 是否使用 source-mapping 来计算外部模板的原始源。默认值为 `true`。
    *
    */
   sourceMapping: boolean;
@@ -58,7 +58,7 @@ export interface LinkerOptions {
    *
    * The default is `error`.
    *
-   * 默认值为 `error` 。
+   * 默认值为 `error`。
    *
    */
   unknownDeclarationVersionHandling: 'ignore'|'warn'|'error';

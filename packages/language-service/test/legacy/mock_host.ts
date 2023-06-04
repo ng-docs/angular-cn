@@ -184,7 +184,7 @@ interface OverwriteResult {
   /**
    * Position of the cursor, -1 if there isn't one.
    *
-   * 光标的位置，如果没有，则为 -1 。
+   * 光标的位置，如果没有，则为 -1。
    *
    */
   position: number;

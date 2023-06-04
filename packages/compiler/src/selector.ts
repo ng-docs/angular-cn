@@ -62,7 +62,7 @@ export class CssSelector {
    * Example:
    * Selector: `[key1=value1][key2]` would parse to:
    *
-   * 示例： Selector: `[key1=value1][key2]` 将解析为：
+   * 示例：Selector: `[key1=value1][key2]` 将解析为：
    *
    * ```
    * ['key1', 'value1', 'key2', '']
@@ -141,7 +141,7 @@ export class CssSelector {
    * [MDN web link for more
    * info](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors).
    *
-   * 这是需要的，因为 `$` 在 CSS 选择器中可以有特殊的含义，但我们可能想要匹配包含 `$` 的属性。 [MDN
+   * 这是需要的，因为 `$` 在 CSS 选择器中可以有特殊的含义，但我们可能想要匹配包含 `$` 的属性。[MDN
    * Web 链接以获取更多信息](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)。
    *
    * @param attr the attribute to unescape.
@@ -186,7 +186,7 @@ export class CssSelector {
    * info](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors).
    *
    * 这是需要的，因为 `$` 在 CSS 选择器中可以有特殊的含义，使用这种方法，我们可以用 \`\\$' 对 `$`
-   * 进行转译。 [MDN Web
+   * 进行转译。[MDN Web
    * 链接以获取更多信息](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)。
    *
    * @param attr the attribute to escape.
@@ -254,7 +254,7 @@ export class CssSelector {
  * Reads a list of CssSelectors and allows to calculate which ones
  * are contained in a given CssSelector.
  *
- * 读取 CssSelector 列表，并允许计算给定 CssSelector 中包含的 CssSelector 。
+ * 读取 CssSelector 列表，并允许计算给定 CssSelector 中包含的 CssSelector。
  *
  */
 export class SelectorMatcher<T = any> {

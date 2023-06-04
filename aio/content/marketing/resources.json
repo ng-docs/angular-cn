@@ -79,7 +79,7 @@
             "desc": "Inclusive Angular publication free from conflict of interest. This publication is all about sharing Angular knowledge for free and not at all about money or KPIs. Cross-posts are welcome. Part of This is Learning.",
             "url": "https://dev.to/this-is-angular",
             "title": "This is Angular",
-            "descCn": "无利益冲突的包容性 Angular 出版物。 本出版物完全是关于免费分享 Angular 知识，而不是关于金钱或 KPI。 欢迎交叉帖子。 这是学习的一部分。",
+            "descCn": "无利益冲突的包容性 Angular 出版物。本出版物完全是关于免费分享 Angular 知识，而不是关于金钱或 KPI。欢迎交叉帖子。这是学习的一部分。",
             "titleCn": "这里是 Angular"
           }
         }
@@ -232,7 +232,7 @@
           },
           "ngxs": {
             "desc": "NGXS is a state management pattern + library for Angular. NGXS is modeled after the CQRS pattern popularly implemented in libraries like Redux and NgRx but reduces boilerplate by using modern TypeScript features such as classes and decorators.",
-            "descCn": "NGXS 是 Angular 的状态管理模式+库。 NGXS 是根据 Redux 和 NgRx 等库中普遍实现的 CQRS 模式进行建模的，但是通过使用现代 TypeScript 功能（如类和装饰器）减少了样板代码。",
+            "descCn": "NGXS 是 Angular 的状态管理模式+库。NGXS 是根据 Redux 和 NgRx 等库中普遍实现的 CQRS 模式进行建模的，但是通过使用现代 TypeScript 功能（如类和装饰器）减少了样板代码。",
             "title": "NGXS",
             "url": "https://ngxs.io/"
           },
@@ -518,7 +518,7 @@
           },
           "a5b": {
             "desc": "High-performance UI controls with the most complete Angular support available. Wijmo’s controls are all written in TypeScript and have zero dependencies. FlexGrid control includes full declarative markup, including cell templates.",
-            "descCn": "具有最完整的 Angular 支持的高性能 UI 控件。 Wijmo 的控件全部用 TypeScript 编写，并且具有零依赖性。 FlexGrid 控件包括完整的声明性标记语言，包括单元格模板。",
+            "descCn": "具有最完整的 Angular 支持的高性能 UI 控件。Wijmo 的控件全部用 TypeScript 编写，并且具有零依赖性。FlexGrid 控件包括完整的声明性标记语言，包括单元格模板。",
             "logo": "",
             "title": "Wijmo",
             "url": "https://www.grapecity.com/wijmo",
@@ -627,7 +627,7 @@
           },
           "amexio": {
             "desc": "Amexio is a rich set of Angular components powered by HTML5 & CSS3 for Responsive Web Design and 80+ built-in Material Design Themes. Amexio has 3 Editions, Standard, Enterprise and Creative. Std Edition consists of basic UI Components which include Grid, Tabs, Form Inputs and so on. While Enterprise Edition consists of components like Calendar, Tree Tabs, Social Media Logins (Facebook, GitHub, Twitter and so on) and Creative Edition is focused building elegant and beautiful websites. With more than 200+ components/features. All the editions are open-sourced and free, based on Apache 2 License.",
-            "descCn": "Amexio 是一套由 HTML5 和 CSS3 支持的丰富的 Angular 组件，用于响应式 Web 设计和 80 多种内置的 Material Design 主题。 Amexio 有 3 个版本，标准版、企业版和创意版。标准版由基本的 UI 组件组成，其中包括网格、选项卡、表单输入等。企业版由日历、树形选项卡、社交媒体登录（Facebook，GitHub，Twitter 等）组成，而创意版则专注于构建美观的网站。具有 200 多个组件/功能。所有版本都是基于 Apache 2 许可证的开源和免费版本。",
+            "descCn": "Amexio 是一套由 HTML5 和 CSS3 支持的丰富的 Angular 组件，用于响应式 Web 设计和 80 多种内置的 Material Design 主题。Amexio 有 3 个版本，标准版、企业版和创意版。标准版由基本的 UI 组件组成，其中包括网格、选项卡、表单输入等。企业版由日历、树形选项卡、社交媒体登录（Facebook，GitHub，Twitter 等）组成，而创意版则专注于构建美观的网站。具有 200 多个组件/功能。所有版本都是基于 Apache 2 许可证的开源和免费版本。",
             "title": "Amexio - Angular Extensions",
             "titleCn": "Amexio - Angular 扩展",
             "url": "https://amexio.tech/",
@@ -1080,7 +1080,7 @@
             "desc": "An online education platform with a complete path in Angular and TypeScript from zero to advanced. Platzi helps students from all over the world acquire new, in-demand skills.",
             "title": "Platzi (Español)",
             "url": "https://platzi.com/angular-io",
-            "descCn": "一个在线教育平台，在 Angular 和 TypeScript 中提供从零到高级的完整路径。 Platzi 帮助来自世界各地的学生获得新的、急需的技能。",
+            "descCn": "一个在线教育平台，在 Angular 和 TypeScript 中提供从零到高级的完整路径。Platzi 帮助来自世界各地的学生获得新的、急需的技能。",
             "titleCn": "普拉齐（西班牙语）"
           },
           "angular-gettin-started": {

@@ -18,7 +18,7 @@ import {InjectorScope} from './scope';
 /**
  * Create a new `Injector` which is configured using a `defType` of `InjectorType<any>`s.
  *
- * 创建一个新的 `Injector` ，它使用 `InjectorType<any>` s 的 `defType` 配置。
+ * 创建一个新的 `Injector`，它使用 `InjectorType<any>` s 的 `defType` 配置。
  *
  * @publicApi
  */

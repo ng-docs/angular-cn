@@ -26,8 +26,8 @@ export interface NgModuleType<T = any> extends Type<T> {
  * set of directives and pipes exported by a module \(that is, module B's exported scope gets added
  * to module A's compilation scope when module A imports B\).
  *
- * 范围是在特定上下文中可见的一组指令和管道。每个 `NgModule` 都有两个范围。 `compilation`
- * 范围是将在模块声明的组件模板中识别的指令和管道集。 `exported`
+ * 范围是在特定上下文中可见的一组指令和管道。每个 `NgModule` 都有两个范围。`compilation`
+ * 范围是将在模块声明的组件模板中识别的指令和管道集。`exported`
  * 的范围是模块导出的指令和管道集（即，当模块 A 导入 B 时，模块 B 的导出范围会添加到模块 A
  * 的编译范围）。
  *

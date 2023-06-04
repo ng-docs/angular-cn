@@ -31,7 +31,7 @@ export interface FilePosition {
 /**
  * Converts a `TcbLocation` to a more genericly named `FilePosition`.
  *
- * 将 `TcbLocation` 转换为更通用的 `FilePosition` 。
+ * 将 `TcbLocation` 转换为更通用的 `FilePosition`。
  *
  */
 function toFilePosition(tcbLocation: TcbLocation): FilePosition {
@@ -192,7 +192,7 @@ export function getTargetDetailsAtTemplatePosition(
 /**
  * Given a set of `DirectiveSymbol`s, finds the equivalent `FilePosition` of the class declaration.
  *
- * 给定一组 `DirectiveSymbol` ，查找类声明的等效 `FilePosition` 。
+ * 给定一组 `DirectiveSymbol`，查找类声明的等效 `FilePosition`。
  *
  */
 function getPositionsForDirectives(directives: Set<DirectiveSymbol>): FilePosition[] {
@@ -228,13 +228,13 @@ export function createLocationKey(ds: ts.DocumentSpan) {
  * Converts a given `ts.DocumentSpan` in a shim file to its equivalent `ts.DocumentSpan` in the
  * template.
  *
- * 将 shim 文件中的给定 `ts.DocumentSpan` 转换为模板中的等效 `ts.DocumentSpan` 。
+ * 将 shim 文件中的给定 `ts.DocumentSpan` 转换为模板中的等效 `ts.DocumentSpan`。
  *
  * You can optionally provide a `requiredNodeText` that ensures the equivalent template node's text
  * matches. If it does not, this function will return `null`.
  *
- * 你可以选择提供 `requiredNodeText` ，以确保等效模板节点的文本匹配。如果不是，此函数将返回 `null`
- * 。
+ * 你可以选择提供 `requiredNodeText`，以确保等效模板节点的文本匹配。如果不是，此函数将返回 `null`
+ *。
  *
  */
 export function convertToTemplateDocumentSpan<T extends ts.DocumentSpan>(
@@ -282,7 +282,7 @@ export function convertToTemplateDocumentSpan<T extends ts.DocumentSpan>(
 /**
  * Finds the text and `ts.TextSpan` for the node at a position in a template.
  *
- * 在模板中的某个位置查找节点的文本和 `ts.TextSpan` 。
+ * 在模板中的某个位置查找节点的文本和 `ts.TextSpan`。
  *
  */
 export function getRenameTextAndSpanAtPosition(
@@ -321,11 +321,11 @@ export function getRenameTextAndSpanAtPosition(
 /**
  * Retrieves the `PipeMeta` or `DirectiveMeta` of the given `ts.Node`'s parent class.
  *
- * 检索给定 `ts.Node` 父类的 `PipeMeta` 或 `DirectiveMeta` 。
+ * 检索给定 `ts.Node` 父类的 `PipeMeta` 或 `DirectiveMeta`。
  *
  * Returns `null` if the node has no parent class or there is no meta associated with the class.
  *
- * 如果节点没有父类或没有与类关联的元，则返回 `null` 。
+ * 如果节点没有父类或没有与类关联的元，则返回 `null`。
  *
  */
 export function getParentClassMeta(requestNode: ts.Node, compiler: NgCompiler): PipeMeta|

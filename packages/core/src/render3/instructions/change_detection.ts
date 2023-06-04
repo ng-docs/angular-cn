@@ -106,7 +106,7 @@ const enum ChangeDetectionMode {
    * refreshes views without taking into account their LView flags, i.e. non-dirty OnPush components
    * will be refreshed in this mode.
    *
-   * 在刷新视图以强制刷新其嵌入视图时使用。 此模式刷新视图时不考虑它们的 LView 标志，即非脏 OnPush 组件将在此模式下刷新。
+   * 在刷新视图以强制刷新其嵌入视图时使用。此模式刷新视图时不考虑它们的 LView 标志，即非脏 OnPush 组件将在此模式下刷新。
    *
    * TODO: we should work to remove this mode. It's used in `refreshView` because that's how the
    * code worked before introducing ChangeDetectionMode. Instead, it should pass `Global` to the
@@ -114,7 +114,7 @@ const enum ChangeDetectionMode {
    * this flag from affecting signal views not specifically marked for refresh \(currently, this flag
    * would _also_ force signal views to be refreshed\).
    *
-   * TODO：我们应该努力移除这个模式。 它在 `refreshView` 中使用，因为在引入 ChangeDetectionMode 之前代码就是这样工作的。 相反，它应该将 `Global` 传递给 `detectChangesInEmbeddedViews` 。 我们的目标应该是在 v17 之前解决这个问题，或者至少，防止这个标志影响没有特别标记为刷新的信号视图（目前，这个标志 _ 也会 _ 强制刷新信号视图）。
+   * TODO：我们应该努力移除这个模式。它在 `refreshView` 中使用，因为在引入 ChangeDetectionMode 之前代码就是这样工作的。相反，它应该将 `Global` 传递给 `detectChangesInEmbeddedViews`。我们的目标应该是在 v17 之前解决这个问题，或者至少，防止这个标志影响没有特别标记为刷新的信号视图（目前，这个标志 _ 也会 _ 强制刷新信号视图）。
    *
    */
   BugToForceRefreshAndIgnoreViewFlags
@@ -123,7 +123,7 @@ const enum ChangeDetectionMode {
 /**
  * Processes a view in update mode. This includes a number of steps in a specific order:
  *
- * 在更新模式下处理视图。 这包括按特定顺序执行的多个步骤：
+ * 在更新模式下处理视图。这包括按特定顺序执行的多个步骤：
  *
  * - executing a template function in update mode;
  *
@@ -298,7 +298,7 @@ function detectChangesInEmbeddedViews(lView: LView, mode: ChangeDetectionMode) {
  *
  * @param lView The `LView` that may have transplanted views.
  *
- * 可能有移植视图的 `LView` 。
+ * 可能有移植视图的 `LView`。
  *
  */
 function markTransplantedViewsForRefresh(lView: LView) {

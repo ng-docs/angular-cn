@@ -38,7 +38,7 @@ import {PlatformReflectionCapabilities} from './platform_reflection_capabilities
  *
  * downleveled to ES5 with `downlevelIteration` for TypeScript &lt; 4.2:
  *
- * 对于 TypeScript &lt; 4.2 ，使用 `downlevelIteration` 降级到 ES5：
+ * 对于 TypeScript &lt; 4.2，使用 `downlevelIteration` 降级到 ES5：
  *
  * ```
  *   function MyClass() {
@@ -56,7 +56,7 @@ import {PlatformReflectionCapabilities} from './platform_reflection_capabilities
  *
  * More details can be found in: https://github.com/angular/angular/issues/38453.
  *
- * 更多详细信息，请参阅： https://github.com/angular/angular/issues/38453 。
+ * 更多详细信息，请参阅：https://github.com/angular/angular/issues/38453。
  *
  */
 export const ES5_DELEGATE_CTOR =

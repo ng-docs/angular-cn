@@ -26,7 +26,7 @@ import {UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
  *   application state and initially rejects navigation to a route. After fixing the state, you want
  *   to re-navigate to the same URL so the route with the `canMatch` guard can activate.
  *
- *   `'reload'` ：路由器处理 URL，即使它与当前状态没有区别。 你可能需要此选项的一个示例是，如果 `canMatch` 守卫取决于应用程序状态并且最初拒绝导航到路由。 修复状态后，你想要重新导航到相同的 URL，以便可以激活带有 `canMatch` 守卫的路由。
+ *   `'reload'`：路由器处理 URL，即使它与当前状态没有区别。你可能需要此选项的一个示例是，如果 `canMatch` 守卫取决于应用程序状态并且最初拒绝导航到路由。修复状态后，你想要重新导航到相同的 URL，以便可以激活带有 `canMatch` 守卫的路由。
  *
  * Note that this only configures whether the Route reprocesses the URL and triggers related
  * action and events like redirects, guards, and resolvers. By default, the router re-uses a
@@ -37,7 +37,7 @@ import {UrlSegment, UrlSegmentGroup, UrlTree} from './url_tree';
  * resolvers and most guards for routes do not run unless the path or path params changed
  * \(configured by `runGuardsAndResolvers`\).
  *
- * 请注意，这仅配置 Route 是否重新处理 URL 并触发相关操作和事件，如重定向、守卫和解析器。 默认情况下，当路由器重新导航到相同的组件类型而不首先访问不同的组件时，它会重新使用组件实例。 此行为由 `RouteReuseStrategy` 配置。 为了在相同的 url 导航上重新加载路由组件，你需要将 `onSameUrlNavigation` 设置为 `'reload'`_ 并 _ 提供一个 `RouteReuseStrategy` ，它为 `shouldReuseRoute` 返回 `false` 。 此外，除非路径或路径参数更改（由 `runGuardsAndResolvers` 配置），否则解析器和大多数路由守卫不会运行。
+ * 请注意，这仅配置 Route 是否重新处理 URL 并触发相关操作和事件，如重定向、守卫和解析器。默认情况下，当路由器重新导航到相同的组件类型而不首先访问不同的组件时，它会重新使用组件实例。此行为由 `RouteReuseStrategy` 配置。为了在相同的 url 导航上重新加载路由组件，你需要将 `onSameUrlNavigation` 设置为 `'reload'`_ 并 _ 提供一个 `RouteReuseStrategy`，它为 `shouldReuseRoute` 返回 `false`。此外，除非路径或路径参数更改（由 `runGuardsAndResolvers` 配置），否则解析器和大多数路由守卫不会运行。
  *
  * @publicApi
  * @see `RouteReuseStrategy`
@@ -53,7 +53,7 @@ export type OnSameUrlNavigation = 'reload' | 'ignore';
  * `inject` function from `@angular/core` and an injectable class can be used as a functional guard
  * using `inject`: `canActivate: [() => inject(myGuard).canActivate()]`.
  *
- * 守卫和解析器的 `InjectionToken` 和 `@Injectable` 类已弃用，取而代之的是普通的 JavaScript 函数。依赖注入仍然可以使用来自 `@angular/core` `inject` 函数来实现，并且可注入类可以用作使用 `inject` 的功能守卫： `canActivate: [() => inject(myGuard).canActivate()]` 。
+ * 守卫和解析器的 `InjectionToken` 和 `@Injectable` 类已弃用，取而代之的是普通的 JavaScript 函数。依赖注入仍然可以使用来自 `@angular/core` `inject` 函数来实现，并且可注入类可以用作使用 `inject` 的功能守卫：`canActivate: [() => inject(myGuard).canActivate()]`。
  *
  * @deprecated
  * @see `CanMatchFn`
@@ -72,7 +72,7 @@ export type DeprecatedGuard = ProviderToken<any> | any;
  * An array of `Route` objects, used in `Router.config` and for nested route configurations
  * in `Route.children`.
  *
- * 表示 Router 服务的路由配置。 `Route` 对象的数组，在 `Route.children` 中使用以及在 `Router.config` 中用于嵌套路由配置。
+ * 表示 Router 服务的路由配置。`Route` 对象的数组，在 `Route.children` 中使用以及在 `Router.config` 中用于嵌套路由配置。
  *
  * @see `Route`
  * @see `Router`
@@ -117,15 +117,15 @@ export type UrlMatchResult = {
  *
  * * *segments* : An array of URL segments.
  *
- *   *segment* ：URL 段的数组。
+ *   *segment*：URL 段的数组。
  *
  * * *group* : A segment group.
  *
- *   *group* ：段组。
+ *   *group*：段组。
  *
  * * *route* : The route to match against.
  *
- *   *route* ：要匹配的路由。
+ *   *route*：要匹配的路由。
  *
  * The following example implementation matches HTML files.
  *
@@ -182,7 +182,7 @@ export interface DefaultExport<T> {
    * Default exports are bound under the name `"default"`, per the ES Module spec:
    * https://tc39.es/ecma262/#table-export-forms-mapping-to-exportentry-records
    *
-   * 根据 ES 模块规范，默认导出绑定在名称 `"default"` ： https://tc39.es/ecma262/#table-export-forms-mapping-to-exportentry-records
+   * 根据 ES 模块规范，默认导出绑定在名称 `"default"`：https://tc39.es/ecma262/#table-export-forms-mapping-to-exportentry-records
    *
    */
   default: T;
@@ -195,7 +195,7 @@ export interface DefaultExport<T> {
  * or
  * `() => import('...').then(mod => mod.ROUTES)`
  *
- * 为解析惰性加载的路由集合而调用的函数。必须是以下形式的箭头函数： `() => import('...').then(mod => mod.MODULE)` 或 `() => import('...').then(mod => mod.ROUTES)`
+ * 为解析惰性加载的路由集合而调用的函数。必须是以下形式的箭头函数：`() => import('...').then(mod => mod.MODULE)` 或 `() => import('...').then(mod => mod.ROUTES)`
  *
  * For example:
  *
@@ -258,15 +258,15 @@ export type LoadChildren = LoadChildrenCallback;
  *
  * - `"merge"` : Merge new parameters with current parameters.
  *
- *   `merge` ：将新参数与当前参数合并。
+ *   `merge`：将新参数与当前参数合并。
  *
  * - `"preserve"` : Preserve current parameters.
  *
- *   `preserve` ：保留当前参数。
+ *   `preserve`：保留当前参数。
  *
  * - `""` : Replace current parameters with new parameters. This is the default behavior.
  *
- *   `preserve` ：保留当前参数。
+ *   `preserve`：保留当前参数。
  *
  * @see `UrlCreationOptions#queryParamsHandling`
  * @see `RouterLink`
@@ -287,25 +287,25 @@ export type QueryParamsHandling = 'merge' | 'preserve' | '';
  * `paramsChange` : Rerun the guards and resolvers when path or
  * path param changes. This does not include query parameters. This option is the default.
  *
- * `paramsChange` ：当路径或路径参数更改时重新运行警卫和解析器。这不包括查询参数。此选项是默认值。
+ * `paramsChange`：当路径或路径参数更改时重新运行警卫和解析器。这不包括查询参数。此选项是默认值。
  *
  * - `always` : Run on every execution.
  *
- *   `always` ：在每次执行时运行。
+ *   `always`：在每次执行时运行。
  *
  * - `pathParamsChange` : Rerun guards and resolvers when the path params
  *   change. This does not compare matrix or query parameters.
  *
- *   `pathParamsChange` ：路径参数更改时重新运行保护器和解析器。这不会比较矩阵或查询参数。
+ *   `pathParamsChange`：路径参数更改时重新运行保护器和解析器。这不会比较矩阵或查询参数。
  *
  * - `paramsOrQueryParamsChange` : Run when path, matrix, or query parameters change.
  *
- *   `paramsOrQueryParamsChange` ：在路径、矩阵或查询参数更改时运行。
+ *   `paramsOrQueryParamsChange`：在路径、矩阵或查询参数更改时运行。
  *
  * - `pathParamsOrQueryParamsChange` : Rerun guards and resolvers when the path params
  *   change or query params have changed. This does not include matrix parameters.
  *
- *   `pathParamsOrQueryParamsChange` ：当路径参数更改或查询参数更改时，重新运行保护器和解析器。这不包括矩阵参数。
+ *   `pathParamsOrQueryParamsChange`：当路径参数更改或查询参数更改时，重新运行保护器和解析器。这不包括矩阵参数。
  *
  * @see [Route.runGuardsAndResolvers](api/router/Route#runGuardsAndResolvers)
  * @publicApi
@@ -325,7 +325,7 @@ export type RunGuardsAndResolvers =
  * Supports static, parameterized, redirect, and wildcard routes, as well as
  * custom route data and resolve methods.
  *
- * 欲知详情，请参阅[《路由指南》](guide/router) 。
+ * 欲知详情，请参阅[《路由指南》](guide/router)。
  *
  * For detailed usage information, see the [Routing Guide](guide/router).
  *
@@ -362,7 +362,7 @@ export type RunGuardsAndResolvers =
  * When navigating to `/team/11(aux:chat/jim)`, the router creates the 'Team' component next to
  * the 'Chat' component. The 'Chat' component is placed into the 'aux' outlet.
  *
- * 以下路由创建具有多个出口的兄弟组件。当导航到 `/team/11(aux:chat/jim)` 时，路由器会在 'Chat' 组件旁边创建 'Team' 组件。 'Chat' 组件放置在 'aux' 出口中。
+ * 以下路由创建具有多个出口的兄弟组件。当导航到 `/team/11(aux:chat/jim)` 时，路由器会在 'Chat' 组件旁边创建 'Team' 组件。'Chat' 组件放置在 'aux' 出口中。
  *
  * ```
  * [{
@@ -424,7 +424,7 @@ export type RunGuardsAndResolvers =
  * If we change the `redirectTo` value in the example to the absolute URL segment '/user/:name',
  * the result URL is also absolute, '/user/jim'.
  *
- * 重定向路径可以是相对的（如本示例所示），也可以是绝对的。 `redirectTo` 值更改为绝对 URL 段 '/user/:name'，则结果 URL 也是绝对 URL，'/user/jim'。
+ * 重定向路径可以是相对的（如本示例所示），也可以是绝对的。`redirectTo` 值更改为绝对 URL 段 '/user/:name'，则结果 URL 也是绝对 URL，'/user/jim'。
  *
  * ### Empty Path
  *
@@ -604,7 +604,7 @@ export interface Route {
    * Used to define a page title for the route. This can be a static string or an `Injectable` that
    * implements `Resolve`.
    *
-   * 用于定义路由的页面标题。这可以是静态字符串或实现 `Resolve` 的 `Injectable` 。
+   * 用于定义路由的页面标题。这可以是静态字符串或实现 `Resolve` 的 `Injectable`。
    *
    * @see `PageTitleStrategy`
    */
@@ -634,7 +634,7 @@ export interface Route {
    * `{path: 'team/:id', children: [{path: ':user', component: User}]}`
    * but does not match when there are no children as in `{path: 'team/:id', component: Team}`.
    *
-   * 默认情况下，路由器会从左侧检查 URL 元素以查看 URL 是否与给定路径匹配，并在匹配上某个配置时停止。重要的是，URL 的每个段仍然必须与某个配置匹配。例如，如果路由的子项（children）之一与段“user”匹配，则认为“/team/11/user”与前缀“team/:id”匹配。也就是说，URL '/team/11/user' 可以匹配 `{path: 'team/:id', children: [{path: ':user', component: User}]}` 配置项， 但当 `{path: 'team/:id', component: Team}` 中没有子项（children 属性）时则不匹配。
+   * 默认情况下，路由器会从左侧检查 URL 元素以查看 URL 是否与给定路径匹配，并在匹配上某个配置时停止。重要的是，URL 的每个段仍然必须与某个配置匹配。例如，如果路由的子项（children）之一与段“user”匹配，则认为“/team/11/user”与前缀“team/:id”匹配。也就是说，URL '/team/11/user' 可以匹配 `{path: 'team/:id', children: [{path: ':user', component: User}]}` 配置项，但当 `{path: 'team/:id', component: Team}` 中没有子项（children 属性）时则不匹配。
    *
    * The path-match strategy 'full' matches against the entire URL.
    * It is important to do this when redirecting empty-path routes.
@@ -722,7 +722,7 @@ export interface Route {
    * handlers, in order to determine if the current user is allowed to
    * match the `Route`. By default, any route can match.
    *
-   * 用于查找 `CanMatch()` 处理程序的 `CanMatchFn` 或 DI 标记的数组，以确定是否允许当前用户匹配 `Route` 。默认情况下，任何路由都可以匹配。
+   * 用于查找 `CanMatch()` 处理程序的 `CanMatchFn` 或 DI 标记的数组，以确定是否允许当前用户匹配 `Route`。默认情况下，任何路由都可以匹配。
    *
    * When using a function rather than DI tokens, the function can call `inject` to get any required
    * dependencies. This `inject` call must be done in a synchronous context.
@@ -790,7 +790,7 @@ export interface Route {
   /**
    * A map of DI tokens used to look up data resolvers. See `Resolve`.
    *
-   * DI 令牌的映射，用于查找数据解析器。请参阅 `Resolve` 。
+   * DI 令牌的映射，用于查找数据解析器。请参阅 `Resolve`。
    *
    */
   resolve?: ResolveData;
@@ -823,25 +823,25 @@ export interface Route {
    * `paramsChange` : Rerun the guards and resolvers when path or
    * path param changes. This does not include query parameters. This option is the default.
    *
-   * `paramsChange` ：当路径或路径参数更改时重新运行警卫和解析器。这不包括查询参数。此选项是默认值。
+   * `paramsChange`：当路径或路径参数更改时重新运行警卫和解析器。这不包括查询参数。此选项是默认值。
    *
    * - `always` : Run on every execution.
    *
-   *   `always` ：在每次执行时运行。
+   *   `always`：在每次执行时运行。
    *
    * - `pathParamsChange` : Rerun guards and resolvers when the path params
    *   change. This does not compare matrix or query parameters.
    *
-   *   `pathParamsChange` ：路径参数更改时重新运行保护器和解析器。这不会比较矩阵或查询参数。
+   *   `pathParamsChange`：路径参数更改时重新运行保护器和解析器。这不会比较矩阵或查询参数。
    *
    * - `paramsOrQueryParamsChange` : Run when path, matrix, or query parameters change.
    *
-   *   `paramsOrQueryParamsChange` ：在路径、矩阵或查询参数更改时运行。
+   *   `paramsOrQueryParamsChange`：在路径、矩阵或查询参数更改时运行。
    *
    * - `pathParamsOrQueryParamsChange` : Rerun guards and resolvers when the path params
    *   change or query params have changed. This does not include matrix parameters.
    *
-   *   `pathParamsOrQueryParamsChange` ：当路径参数更改或查询参数更改时，重新运行保护器和解析器。这不包括矩阵参数。
+   *   `pathParamsOrQueryParamsChange`：当路径参数更改或查询参数更改时，重新运行保护器和解析器。这不包括矩阵参数。
    *
    * @see `RunGuardsAndResolvers`
    */
@@ -857,7 +857,7 @@ export interface Route {
    * route also has a `loadChildren` function which returns an `NgModuleRef`, this injector will be
    * used as the parent of the lazy loaded module.
    *
-   * `Router` 将为此 `Route` 创建一个新的 `EnvironmentInjector` ，并将其用于此 `Route` 及其 `children` 。如果此路由还有一个返回 `NgModuleRef` 的 `loadChildren` 函数，则此注入器将被用作惰性加载模块的父级。
+   * `Router` 将为此 `Route` 创建一个新的 `EnvironmentInjector`，并将其用于此 `Route` 及其 `children`。如果此路由还有一个返回 `NgModuleRef` 的 `loadChildren` 函数，则此注入器将被用作惰性加载模块的父级。
    *
    */
   providers?: Array<Provider | EnvironmentProviders>;
@@ -903,12 +903,12 @@ export interface LoadedRouterConfig {
  * navigation is cancelled. If any guard returns a `UrlTree`, the current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
- * 类可以实现的接口，作为决定是否可以激活路由的守卫。如果所有警卫都返回 `true` ，则导航继续。如果任何警卫返回 `false` ，则导航被取消。如果任何警卫返回 `UrlTree` ，则当前导航被取消，并开始对从警卫返回的 `UrlTree` 进行新的导航。
+ * 类可以实现的接口，作为决定是否可以激活路由的守卫。如果所有警卫都返回 `true`，则导航继续。如果任何警卫返回 `false`，则导航被取消。如果任何警卫返回 `UrlTree`，则当前导航被取消，并开始对从警卫返回的 `UrlTree` 进行新的导航。
  *
  * The following example implements a `CanActivate` function that checks whether the
  * current user has permission to activate the requested route.
  *
- * 一个接口，某些类可以实现它以扮演一个守卫，来决定该路由能否激活。 如果所有守卫都返回 `true`，就会继续导航。如果任何一个守卫返回了 `false`，就会取消导航。 如果任何一个守卫返回了 `UrlTree`，就会取消当前导航，并开始导航到这个守卫所返回的 `UrlTree`。
+ * 一个接口，某些类可以实现它以扮演一个守卫，来决定该路由能否激活。如果所有守卫都返回 `true`，就会继续导航。如果任何一个守卫返回了 `false`，就会取消导航。如果任何一个守卫返回了 `UrlTree`，就会取消当前导航，并开始导航到这个守卫所返回的 `UrlTree`。
  *
  * ```
  * class UserToken {}
@@ -958,7 +958,7 @@ export interface LoadedRouterConfig {
  *     injectable class can be used as a functional guard using the `inject` function:
  *     `canActivate: [() => inject(myGuard).canActivate()]`.
  *
- * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。 可注入类可以使用 `inject` 函数用作功能保护： `canActivate: [() => inject(myGuard).canActivate()]` 。
+ * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。可注入类可以使用 `inject` 函数用作功能保护：`canActivate: [() => inject(myGuard).canActivate()]`。
  *
  * @see `CanActivateFn`
  */
@@ -976,7 +976,7 @@ export interface CanActivate {
  * navigation is cancelled. If any guard returns a `UrlTree`, the current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
- * 如果所有守卫都返回 `true` ，则导航继续。 如果任何守卫返回 `false` ，导航将被取消。 如果任何守卫返回 `UrlTree` ，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree` 。
+ * 如果所有守卫都返回 `true`，则导航继续。如果任何守卫返回 `false`，导航将被取消。如果任何守卫返回 `UrlTree`，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree`。
  *
  * The following example implements and uses a `CanActivateChildFn` that checks whether the
  * current user has permission to activate the requested route.
@@ -1006,12 +1006,12 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  * navigation is cancelled. If any guard returns a `UrlTree`, current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
- * 类可以实现的接口，作为决定是否可以激活子路由的守卫。如果所有警卫都返回 `true` ，则导航继续。如果任何警卫返回 `false` ，则导航被取消。如果任何警卫返回 `UrlTree` ，则当前导航被取消，并开始对从警卫返回的 `UrlTree` 进行新的导航。
+ * 类可以实现的接口，作为决定是否可以激活子路由的守卫。如果所有警卫都返回 `true`，则导航继续。如果任何警卫返回 `false`，则导航被取消。如果任何警卫返回 `UrlTree`，则当前导航被取消，并开始对从警卫返回的 `UrlTree` 进行新的导航。
  *
  * The following example implements a `CanActivateChild` function that checks whether the
  * current user has permission to activate the requested child route.
  *
- * 一个接口，某些类可以实现它以扮演一个守卫，来决定该路由的子路由能否激活。 如果所有守卫都返回 `true`，就会继续导航。如果任何一个守卫返回了 `false`，就会取消导航。 如果任何一个守卫返回了 `UrlTree`，就会取消当前导航，并开始导航到这个守卫所返回的 `UrlTree`。
+ * 一个接口，某些类可以实现它以扮演一个守卫，来决定该路由的子路由能否激活。如果所有守卫都返回 `true`，就会继续导航。如果任何一个守卫返回了 `false`，就会取消导航。如果任何一个守卫返回了 `UrlTree`，就会取消当前导航，并开始导航到这个守卫所返回的 `UrlTree`。
  *
  * ```
  * class UserToken {}
@@ -1066,7 +1066,7 @@ export type CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSn
  *     injectable class can be used as a functional guard using the `inject` function:
  *     `canActivateChild: [() => inject(myGuard).canActivateChild()]`.
  *
- * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。 可注入类可以使用 `inject` 函数用作功能保护： `canActivateChild: [() => inject(myGuard).canActivateChild()]` 。
+ * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。可注入类可以使用 `inject` 函数用作功能保护：`canActivateChild: [() => inject(myGuard).canActivateChild()]`。
  *
  * @see `CanActivateChildFn`
  */
@@ -1084,12 +1084,12 @@ export interface CanActivateChild {
  * navigation is cancelled. If any guard returns a `UrlTree`, the current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
- * 如果所有守卫都返回 `true` ，则导航继续。 如果任何守卫返回 `false` ，导航将被取消。 如果任何守卫返回 `UrlTree` ，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree` 。
+ * 如果所有守卫都返回 `true`，则导航继续。如果任何守卫返回 `false`，导航将被取消。如果任何守卫返回 `UrlTree`，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree`。
  *
  * The following example implements a `canActivate` function that checks whether the
  * current user has permission to activate the requested route.
  *
- * 一个接口，某些类可以实现它以扮演一个守卫，来决定该路由能否激活。 如果所有守卫都返回 `true`，就会继续导航。如果任何一个守卫返回了 `false`，就会取消导航。 如果任何一个守卫返回了 `UrlTree`，就会取消当前导航，并开始导航到这个守卫所返回的 `UrlTree`。
+ * 一个接口，某些类可以实现它以扮演一个守卫，来决定该路由能否激活。如果所有守卫都返回 `true`，就会继续导航。如果任何一个守卫返回了 `false`，就会取消导航。如果任何一个守卫返回了 `UrlTree`，就会取消当前导航，并开始导航到这个守卫所返回的 `UrlTree`。
  *
  * {@example router/route_functional_guards.ts region="CanActivateChildFn"}
  *
@@ -1107,12 +1107,12 @@ export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: Rou
  * navigation is cancelled. If any guard returns a `UrlTree`, current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
- * 类可以实现的接口，作为决定是否可以停用路由的警卫。如果所有警卫都返回 `true` ，则导航继续。如果任何警卫返回 `false` ，则导航被取消。如果任何警卫返回 `UrlTree` ，则当前导航被取消，并开始对从警卫返回的 `UrlTree` 进行新的导航。
+ * 类可以实现的接口，作为决定是否可以停用路由的警卫。如果所有警卫都返回 `true`，则导航继续。如果任何警卫返回 `false`，则导航被取消。如果任何警卫返回 `UrlTree`，则当前导航被取消，并开始对从警卫返回的 `UrlTree` 进行新的导航。
  *
  * The following example implements a `CanDeactivate` function that checks whether the
  * current user has permission to deactivate the requested route.
  *
- * 一个接口，某些类可以实现它以扮演一个守卫，来决定该路由能否停用。 如果所有守卫都返回 `true`，就会继续导航。如果任何一个守卫返回了 `false`，就会取消导航。 如果任何一个守卫返回了 `UrlTree`，就会取消当前导航，并开始导航到这个守卫所返回的 `UrlTree`。
+ * 一个接口，某些类可以实现它以扮演一个守卫，来决定该路由能否停用。如果所有守卫都返回 `true`，就会继续导航。如果任何一个守卫返回了 `false`，就会取消导航。如果任何一个守卫返回了 `UrlTree`，就会取消当前导航，并开始导航到这个守卫所返回的 `UrlTree`。
  *
  * ```
  * class UserToken {}
@@ -1164,7 +1164,7 @@ export type CanActivateChildFn = (childRoute: ActivatedRouteSnapshot, state: Rou
  *     injectable class can be used as a functional guard using the `inject` function:
  *     `canDeactivate: [() => inject(myGuard).canDeactivate()]`.
  *
- * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。 可注入类可以使用 `inject` 函数用作功能保护： `canDeactivate: [() => inject(myGuard).canDeactivate()]` 。
+ * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。可注入类可以使用 `inject` 函数用作功能保护：`canDeactivate: [() => inject(myGuard).canDeactivate()]`。
  *
  * @see `CanDeactivateFn`
  */
@@ -1184,12 +1184,12 @@ export interface CanDeactivate<T> {
  * navigation is cancelled. If any guard returns a `UrlTree`, the current navigation
  * is cancelled and a new navigation begins to the `UrlTree` returned from the guard.
  *
- * 如果所有守卫都返回 `true` ，则导航继续。 如果任何守卫返回 `false` ，导航将被取消。 如果任何守卫返回 `UrlTree` ，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree` 。
+ * 如果所有守卫都返回 `true`，则导航继续。如果任何守卫返回 `false`，导航将被取消。如果任何守卫返回 `UrlTree`，则当前导航被取消，新导航开始到从守卫返回的 `UrlTree`。
  *
  * The following example implements and uses a `CanDeactivateFn` that checks whether the
  * user component has unsaved changes before navigating away from the route.
  *
- * 以下示例实现并使用 `CanDeactivateFn` ，它在离开路由之前检查用户组件是否有未保存的更改。
+ * 以下示例实现并使用 `CanDeactivateFn`，它在离开路由之前检查用户组件是否有未保存的更改。
  *
  * {@example router/route_functional_guards.ts region="CanDeactivateFn"}
  *
@@ -1209,7 +1209,7 @@ export type CanDeactivateFn<T> =
  * activation. If any guard returns `false`, the `Route` is skipped for matching and other `Route`
  * configurations are processed instead.
  *
- * 类可以实现的接口作为决定是否可以匹配 `Route` 的守卫。如果所有警卫都返回 `true` ，则导航继续，并且 `Router` 将在激活期间使用 `Route` 。如果任何警卫返回 `false` ，则会跳过 `Route` 进行匹配，并改为处理其他 `Route` 配置。
+ * 类可以实现的接口作为决定是否可以匹配 `Route` 的守卫。如果所有警卫都返回 `true`，则导航继续，并且 `Router` 将在激活期间使用 `Route`。如果任何警卫返回 `false`，则会跳过 `Route` 进行匹配，并改为处理其他 `Route` 配置。
  *
  * The following example implements a `CanMatch` function that decides whether the
  * current user has permission to access the users page.
@@ -1264,7 +1264,7 @@ export type CanDeactivateFn<T> =
  * `team/:id` URL, but would load the `NotFoundComponent` because the `Route` for `'team/:id'`
  * could not be used for a URL match but the catch-all `**` `Route` did instead.
  *
- * 如果 `CanMatchTeamSection` 返回 `false` ，路由器将继续导航到 `team/:id` URL，但会加载 `NotFoundComponent` ，因为 `'team/:id'` 的 `Route` 不能用于 URL 匹配，但包罗万象 `**` `Route` 代替了。
+ * 如果 `CanMatchTeamSection` 返回 `false`，路由器将继续导航到 `team/:id` URL，但会加载 `NotFoundComponent`，因为 `'team/:id'` 的 `Route` 不能用于 URL 匹配，但包罗万象 `**` `Route` 代替了。
  *
  * @publicApi
  * @deprecated
@@ -1273,7 +1273,7 @@ export type CanDeactivateFn<T> =
  *     injectable class can be used as a functional guard using the `inject` function:
  *     `canMatch: [() => inject(myGuard).canMatch()]`.
  *
- * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。 可注入类可以使用 `inject` 函数用作功能保护： `canMatch: [() => inject(myGuard).canMatch()]` 。
+ * 基于类的 `Route` 守卫已被弃用，取而代之的是功能性守卫。可注入类可以使用 `inject` 函数用作功能保护：`canMatch: [() => inject(myGuard).canMatch()]`。
  *
  * @see `CanMatchFn`
  */
@@ -1291,7 +1291,7 @@ export interface CanMatch {
  * activation. If any guard returns `false`, the `Route` is skipped for matching and other `Route`
  * configurations are processed instead.
  *
- * 如果所有守卫都返回 `true` ，导航将继续， `Router` 将在激活期间使用该 `Route` 。 如果任何 guard 返回 `false` ，则跳过 `Route` 进行匹配，而是处理其他 `Route` 配置。
+ * 如果所有守卫都返回 `true`，导航将继续，`Router` 将在激活期间使用该 `Route`。如果任何 guard 返回 `false`，则跳过 `Route` 进行匹配，而是处理其他 `Route` 配置。
  *
  * The following example implements and uses a `CanMatchFn` that checks whether the
  * current user has permission to access the team page.
@@ -1414,7 +1414,7 @@ export type CanMatchFn = (route: Route, segments: UrlSegment[]) =>
  * injectable class can be used as a functional guard using the `inject` function: `resolve:
  * {'user': () => inject(UserResolver).resolve()}`.
  *
- * 基于类的 `Route` 解析器已弃用，取而代之的是函数式解析器。 可注入类可以用作使用 `inject` 函数的功能保护： `resolve: {'user': () => inject(UserResolver).resolve()}` 。
+ * 基于类的 `Route` 解析器已弃用，取而代之的是函数式解析器。可注入类可以用作使用 `inject` 函数的功能保护：`resolve: {'user': () => inject(UserResolver).resolve()}`。
  *
  * @see `ResolveFn`
  */
@@ -1430,7 +1430,7 @@ export interface Resolve<T> {
  * A data provider can be used with the router to resolve data during navigation.
  * The router waits for the data to be resolved before the route is finally activated.
  *
- * 数据提供者可以与路由器一起使用以在导航期间解析数据。 路由器在最终激活路由之前等待数据被解析。
+ * 数据提供者可以与路由器一起使用以在导航期间解析数据。路由器在最终激活路由之前等待数据被解析。
  *
  * The following example implements a function that retrieves the data
  * needed to activate the requested route.
@@ -1486,7 +1486,7 @@ export type ResolveFn<T> = (route: ActivatedRouteSnapshot, state: RouterStateSna
  * navigation is cancelled. If any guard returns a `UrlTree`, current navigation
  * is cancelled and a new navigation starts to the `UrlTree` returned from the guard.
  *
- * 类可以实现的接口，用于确定是否可以加载子路由。如果所有守卫都返回了 `true`，那么导航将继续。如果任何守卫返回 `false`，则导航将被取消。如果任何守卫返回 `UrlTree` ，当前导航被取消，新的导航开始到守卫所返回的 `UrlTree`。
+ * 类可以实现的接口，用于确定是否可以加载子路由。如果所有守卫都返回了 `true`，那么导航将继续。如果任何守卫返回 `false`，则导航将被取消。如果任何守卫返回 `UrlTree`，当前导航被取消，新的导航开始到守卫所返回的 `UrlTree`。
  *
  * The following example implements a `CanLoad` function that decides whether the
  * current user has permission to load requested child routes.
@@ -1646,7 +1646,7 @@ export interface NavigationBehaviorOptions {
    * Note that `history.state` does not pass an object equality test because
    * the router adds the `navigationId` on each navigation.
    *
-   * 请注意， `history.state` 不会通过对象相等测试，因为路由器会在每个 `navigationId` 上添加 NavigationId。
+   * 请注意，`history.state` 不会通过对象相等测试，因为路由器会在每个 `navigationId` 上添加 NavigationId。
    *
    */
   state?: { [k: string]: any };

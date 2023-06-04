@@ -21,14 +21,14 @@ import {UrlSerializer, UrlTree} from './url_tree';
  * If the handler throws an exception, the navigation Promise is rejected with
  * the exception.
  *
- * 如果处理程序返回一个值，则使用该值解析导航 Promise。 如果处理程序抛出异常，则导航 Promise 会因异常而被拒绝。
+ * 如果处理程序返回一个值，则使用该值解析导航 Promise。如果处理程序抛出异常，则导航 Promise 会因异常而被拒绝。
  *
  * @publicApi
  * @deprecated
  *
  * Subscribe to the `Router` events and watch for `NavigationError` instead.
  *
- * 订阅 `Router` 事件并观察 `NavigationError` 。
+ * 订阅 `Router` 事件并观察 `NavigationError`。
  *
  */
 export type ErrorHandler = (error: any) => any;
@@ -83,7 +83,7 @@ export interface RouterConfigOptions {
    * frequently with `urlUpdateStrategy: 'eager'` and navigations with the browser back/forward
    * buttons.
    *
-   * 'replace' - 始终使用 `location.replaceState` 将浏览器状态设置为导航开始前的路由器状态。 这意味着如果浏览器的 URL 在取消导航 _ 之前 _ 更新，则路由器将简单地替换历史记录中的项目，而不是尝试恢复到会话历史记录中的先前位置。 这种情况最常发生在 `urlUpdateStrategy: 'eager'` 和使用浏览器后退/前进按钮的导航中。
+   * 'replace' - 始终使用 `location.replaceState` 将浏览器状态设置为导航开始前的路由器状态。这意味着如果浏览器的 URL 在取消导航 _ 之前 _ 更新，则路由器将简单地替换历史记录中的项目，而不是尝试恢复到会话历史记录中的先前位置。这种情况最常发生在 `urlUpdateStrategy: 'eager'` 和使用浏览器后退/前进按钮的导航中。
    *
    * 'computed' - Will attempt to return to the same index in the session history that corresponds
    * to the Angular route when the navigation gets cancelled. For example, if the browser back
@@ -96,11 +96,11 @@ export interface RouterConfigOptions {
    * handles a portion of the URL because the history restoration navigates to the previous place in
    * the browser history rather than simply resetting a portion of the URL.
    *
-   * 注意： ' `UrlHandlingStrategy` ' 选项与任何仅处理一部分 URL 的 UrlHandlingStrategy 不兼容，因为历史恢复会导航到浏览器历史记录中的上一个位置，而不是简单地重置 URL 的一部分。
+   * 注意：' `UrlHandlingStrategy` ' 选项与任何仅处理一部分 URL 的 UrlHandlingStrategy 不兼容，因为历史恢复会导航到浏览器历史记录中的上一个位置，而不是简单地重置 URL 的一部分。
    *
    * The default value is `replace` when not set.
    *
-   * 默认值是未设置时的 `replace` 。
+   * 默认值是未设置时的 `replace`。
    *
    */
   canceledNavigationResolution?: 'replace'|'computed';
@@ -112,7 +112,7 @@ export interface RouterConfigOptions {
    *
    * If unset, the `Router` will use `'ignore'`.
    *
-   * 如果未设置， `Router` 将使用 `'ignore'` 。
+   * 如果未设置，`Router` 将使用 `'ignore'`。
    *
    * @see `OnSameUrlNavigation`
    */
@@ -135,7 +135,7 @@ export interface RouterConfigOptions {
    * matrix parameters for `{path: 'a/b', component: MyComp}` should appear as `a/b;foo=bar` and not
    * `a;foo=bar/b`.
    *
-   * 请注意，在处理矩阵参数时，“parent”是指父 `Route` 配置，并不一定意味着“左侧的 URL 段”。当 `Route` `path` 包含多个段时，矩阵参数必须出现在最后一个段上。例如， `{path: 'a/b', component: MyComp}` 矩阵参数应该显示为 `a/b;foo=bar` 而不是 `a;foo=bar/b` 。
+   * 请注意，在处理矩阵参数时，“parent”是指父 `Route` 配置，并不一定意味着“左侧的 URL 段”。当 `Route` `path` 包含多个段时，矩阵参数必须出现在最后一个段上。例如，`{path: 'a/b', component: MyComp}` 矩阵参数应该显示为 `a/b;foo=bar` 而不是 `a;foo=bar/b`。
    *
    */
   paramsInheritanceStrategy?: 'emptyOnly'|'always';
@@ -147,7 +147,7 @@ export interface RouterConfigOptions {
    * Updating the URL early allows you to handle a failure of navigation by
    * showing an error message with the URL that failed.
    *
-   * 定义路由器要何时更新浏览器 URL。默认情况下（“deferred”），在成功导航后进行更新。如果希望在导航开始时更新 URL，则设置为 “eager” 。 以便早期更新 URL，这样可以通过显示带有失败 URL 的错误消息来处理导航失败。
+   * 定义路由器要何时更新浏览器 URL。默认情况下（“deferred”），在成功导航后进行更新。如果希望在导航开始时更新 URL，则设置为 “eager”。以便早期更新 URL，这样可以通过显示带有失败 URL 的错误消息来处理导航失败。
    *
    */
   urlUpdateStrategy?: 'deferred'|'eager';
@@ -193,7 +193,7 @@ export interface InMemoryScrollingOptions {
    *   position to the anchor if one is provided, or sets the scroll position to [0, 0] \\\(forward
    *   navigation\). This option will be the default in the future.
    *
-   *   'enabled'- 在向后导航时恢复先前的滚动位置，否则将位置设置为锚点（如果提供），或将滚动位置设置为[0、0][0, 0] \\（向前导航）。 此选项将成为未来的默认选项。
+   *   'enabled'- 在向后导航时恢复先前的滚动位置，否则将位置设置为锚点（如果提供），或将滚动位置设置为[0、0][0, 0] \\（向前导航）。此选项将成为未来的默认选项。
    *
    * You can implement custom scroll restoration behavior by adapting the enabled behavior as
    * in the following example.
@@ -265,7 +265,7 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
    * root component gets created. Use if there is a reason to have more control over when the router
    * starts its initial navigation due to some complex initialization logic.
    *
-   * `enabled`、`enabledBlocking`、`enabledNonBlocking` 或 `disabled` 之一。 设置为 `enabled` 或 `enabledBlocking` ，则初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。 该值是让[服务端渲染](guide/universal)正常工作所必需的。 设置为 `enabledNonBlocking`，则初始导航在创建根组件之后开始。初始导航完成后，引导程序不会被阻止。 设置为 `disabled`，不执行初始导航。位置监听器是在创建根组件之前设置的。 如果由于某些复杂的初始化逻辑，而有理由对路由器何时开始其初始导航有更多的控制权，请使用它。
+   * `enabled`、`enabledBlocking`、`enabledNonBlocking` 或 `disabled` 之一。设置为 `enabled` 或 `enabledBlocking`，则初始导航在创建根组件之前开始。引导程序将被阻止，直到完成初始导航为止。该值是让[服务端渲染](guide/universal)正常工作所必需的。设置为 `enabledNonBlocking`，则初始导航在创建根组件之后开始。初始导航完成后，引导程序不会被阻止。设置为 `disabled`，不执行初始导航。位置监听器是在创建根组件之前设置的。如果由于某些复杂的初始化逻辑，而有理由对路由器何时开始其初始导航有更多的控制权，请使用它。
    *
    */
   initialNavigation?: InitialNavigation;
@@ -290,7 +290,7 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
    *
    * Subscribe to the `Router` events and watch for `NavigationError` instead.
    *
-   * 订阅 `Router` 事件并观察 `NavigationError` 。
+   * 订阅 `Router` 事件并观察 `NavigationError`。
    *
    */
   errorHandler?: (error: any) => any;
@@ -314,7 +314,7 @@ export interface ExtraOptions extends InMemoryScrollingOptions, RouterConfigOpti
    * When given a function, the router invokes the function every time
    * it restores scroll position.
    *
-   * 当给出两个数字时，路由器总会使用它们。 当给出一个函数时，路由器每当要恢复滚动位置时，都会调用该函数。
+   * 当给出两个数字时，路由器总会使用它们。当给出一个函数时，路由器每当要恢复滚动位置时，都会调用该函数。
    *
    */
   scrollOffset?: [number, number]|(() => [number, number]);

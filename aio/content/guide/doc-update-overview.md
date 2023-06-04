@@ -138,7 +138,7 @@ To be processed correctly, pull requests for `angular/angular` must be formatted
 
 For information about how to format a pull request for your documentation update, see [Opening a documentation pull request](guide/doc-pr-open).
 
-有关如何为文档更新格式化 Pull Request 的信息，请参阅[打开文档 Pull Request](guide/doc-pr-open) 。
+有关如何为文档更新格式化 Pull Request 的信息，请参阅[打开文档 Pull Request](guide/doc-pr-open)。
 
 ### Update your pull request
 
@@ -151,7 +151,7 @@ Because the pull-request process is designed for all Angular code, as well as th
 
 For information about how to update your topics and respond to feedback on your changes, see [Updating a documentation pull request in progress](guide/doc-pr-update).
 
-有关如何更新主题和响应对更改的反馈的信息，请参阅[更新正在进行的文档 Pull Request](guide/doc-pr-update) 。
+有关如何更新主题和响应对更改的反馈的信息，请参阅[更新正在进行的文档 Pull Request](guide/doc-pr-update)。
 
 ## Clean up after merge
 
@@ -170,7 +170,7 @@ This prevents your personal fork from collecting lots of branches that could be 
 
 For information about how to clean up safely after your pull request is merged, see [Finishing up a documentation pull request](guide/doc-edit-finish).
 
-有关如何在 Pull Request 合并后安全清理的信息，请参阅[完成文档 Pull Request](guide/doc-edit-finish) 。
+有关如何在 Pull Request 合并后安全清理的信息，请参阅[完成文档 Pull Request](guide/doc-edit-finish)。
 
 <!-- links -->
 

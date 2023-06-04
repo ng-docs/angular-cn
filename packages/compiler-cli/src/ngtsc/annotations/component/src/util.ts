@@ -135,7 +135,7 @@ export function validateAndFlattenComponentImports(imports: ResolvedValue, expr:
  *
  * 检查 `value` 以确定它是否类似于 `ModuleWithProviders`
  * 值。这是一个仅适用于错误报告的近似值，因为任何带有 `ngModule` 键的解析对象都被认为是
- * `ModuleWithProviders` 。
+ * `ModuleWithProviders`。
  *
  */
 function isLikelyModuleWithProviders(value: ResolvedValue):

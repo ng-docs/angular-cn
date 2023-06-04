@@ -23,7 +23,7 @@ import {NgAdapterInjector} from './util';
  * An `NgModule`, which you import to provide AngularJS core services,
  * and has an instance method used to bootstrap the hybrid upgrade application.
  *
- * 一个 `NgModule` ，你导入它以提供 AngularJS 核心服务，并有一个用于引导混合升级应用程序的实例方法。
+ * 一个 `NgModule`，你导入它以提供 AngularJS 核心服务，并有一个用于引导混合升级应用程序的实例方法。
  *
  * *Part of the [upgrade/static](api?query=upgrade/static)
  * library for hybrid upgrade apps that support AOT compilation*
@@ -44,13 +44,13 @@ import {NgAdapterInjector} from './util';
  *       that it can be used in an Angular template. See `UpgradeComponent`.
  *
  *    创建一个包装并公开 AngularJS 组件的 Angular 指令，以便可以在 Angular 模板中使用它。请参阅
- *    `UpgradeComponent` 。
+ *    `UpgradeComponent`。
  *
  * 2. Creation of an AngularJS directive that wraps and exposes an Angular component so
  *       that it can be used in an AngularJS template. See `downgradeComponent`.
  *
  *    创建一个包装并公开 Angular 组件的 AngularJS 指令，以便它可以在 AngularJS 模板中使用。请参阅
- *    `downgradeComponent` 。
+ *    `downgradeComponent`。
  *
  * 3. Creation of an Angular root injector provider that wraps and exposes an AngularJS
  *    service so that it can be injected into an Angular context. See
@@ -63,7 +63,7 @@ import {NgAdapterInjector} from './util';
  *    so that it can be injected into an AngularJS context. See `downgradeInjectable`.
  *
  *    创建一个包装并公开 Angular 可注入物的 AngularJS 服务，以便可以将其注入 AngularJS
- *    上下文。请参阅 `downgradeInjectable` 。
+ *    上下文。请参阅 `downgradeInjectable`。
  *
  * 3. Bootstrapping of a hybrid Angular application which contains both of the frameworks
  *    coexisting in a single application.
@@ -114,19 +114,19 @@ import {NgAdapterInjector} from './util';
  *    defining an Angular directive, which bootstraps the AngularJS component at its location
  *    in the DOM. See `UpgradeComponent`.
  *
- *    AngularJS 组件可以“升级”为 Angular 组件。这是通过定义 Angular 指令来实现的，该指令在 DOM 中的位置引导 AngularJS 组件。请参阅 `UpgradeComponent` 。
+ *    AngularJS 组件可以“升级”为 Angular 组件。这是通过定义 Angular 指令来实现的，该指令在 DOM 中的位置引导 AngularJS 组件。请参阅 `UpgradeComponent`。
  *
  * 6. An Angular component can be "downgraded" to an AngularJS component. This is achieved by
  *    defining an AngularJS directive, which bootstraps the Angular component at its location
  *    in the DOM. See `downgradeComponent`.
  *
- *    Angular 组件可以“降级”为 AngularJS 组件。 这是通过定义一个 AngularJS 指令来实现的，该指令在 DOM 中的位置引导 Angular 组件。 请参阅 `downgradeComponent` 。
+ *    Angular 组件可以“降级”为 AngularJS 组件。这是通过定义一个 AngularJS 指令来实现的，该指令在 DOM 中的位置引导 Angular 组件。请参阅 `downgradeComponent`。
  *
  * 7. Whenever an "upgraded"/"downgraded" component is instantiated the host element is owned by
  *    the framework doing the instantiation. The other framework then instantiates and owns the
  *    view for that component.
  *
- *    每当实例化“升级”/“降级”组件时，宿主元素就由进行实例化的框架拥有。 然后另一个框架实例化并拥有该组件的视图。
+ *    每当实例化“升级”/“降级”组件时，宿主元素就由进行实例化的框架拥有。然后另一个框架实例化并拥有该组件的视图。
  *
  *    1. This implies that the component bindings will always follow the semantics of the
  *       instantiation framework.
@@ -137,7 +137,7 @@ import {NgAdapterInjector} from './util';
  *       attributes in AngularJS templates must use kebab-case, while AngularJS templates must use
  *       camelCase.
  *
- *       DOM 属性由拥有当前模板的框架解析。 所以 AngularJS 模板中的属性必须使用 kebab-case，而 AngularJS 模板必须使用 camelCase。
+ *       DOM 属性由拥有当前模板的框架解析。所以 AngularJS 模板中的属性必须使用 kebab-case，而 AngularJS 模板必须使用 camelCase。
  *
  *    3. However the template binding syntax will always use the Angular style, e.g. square
  *       brackets \(`[...]`\) for property binding.
@@ -147,12 +147,12 @@ import {NgAdapterInjector} from './util';
  * 8. Angular is bootstrapped first; AngularJS is bootstrapped second. AngularJS always owns the
  *    root component of the application.
  *
- *    Angular 首先被引导； AngularJS 是第二个引导程序。 AngularJS 始终拥有应用程序的根组件。
+ *    Angular 首先被引导； AngularJS 是第二个引导程序。AngularJS 始终拥有应用程序的根组件。
  *
  * 9. The new application is running in an Angular zone, and therefore it no longer needs calls to
  *    `$apply()`.
  *
- *    新应用程序在 Angular 区域中运行，因此它不再需要调用 `$apply()` 。
+ *    新应用程序在 Angular 区域中运行，因此它不再需要调用 `$apply()`。
  *
  * ### The `UpgradeModule` class
  *
@@ -161,7 +161,7 @@ import {NgAdapterInjector} from './util';
  * This class is an `NgModule`, which you import to provide AngularJS core services,
  * and has an instance method used to bootstrap the hybrid upgrade application.
  *
- * 这个类是一个 `NgModule` ，你导入它来提供 AngularJS 核心服务，并且有一个用于引导混合升级应用程序的实例方法。
+ * 这个类是一个 `NgModule`，你导入它来提供 AngularJS 核心服务，并且有一个用于引导混合升级应用程序的实例方法。
  *
  * * Core AngularJS services<br />
  *   Importing this `NgModule` will add providers for the core
@@ -215,7 +215,7 @@ import {NgAdapterInjector} from './util';
  * There is no specific API for upgrading an AngularJS service. Instead you should just follow the
  * following recipe:
  *
- * 没有用于升级 AngularJS 服务的特定 API。 相反，你应该遵循以下食谱：
+ * 没有用于升级 AngularJS 服务的特定 API。相反，你应该遵循以下食谱：
  *
  * Let's say you have an AngularJS service:
  *
@@ -244,7 +244,7 @@ export class UpgradeModule {
   /**
    * The AngularJS `$injector` for the upgrade application.
    *
-   * 升级应用程序的 AngularJS `$injector` 。
+   * 升级应用程序的 AngularJS `$injector`。
    *
    */
   public $injector: any /*angular.IInjectorService*/;

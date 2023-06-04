@@ -39,7 +39,7 @@ export abstract class UrlHandlingStrategy {
    * Extracts the part of the URL that should be handled by the router.
    * The rest of the URL will remain untouched.
    *
-   * 提取应由路由器处理的 URL 部分。 URL 的其余部分将保持不变。
+   * 提取应由路由器处理的 URL 部分。URL 的其余部分将保持不变。
    *
    */
   abstract extract(url: UrlTree): UrlTree;

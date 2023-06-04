@@ -130,7 +130,7 @@ export enum HandlerFlags {
  * responsible for extracting the information required to perform compilation from the decorators
  * and Typescript source, invoking the decorator compiler, and returning the result.
  *
- * @angular/compiler 中的装饰器编译器不依赖于 Typescript。 处理程序负责从装饰器和 Typescript 源中提取执行编译所需的信息，调用装饰器编译器，并返回结果。
+ * @angular/compiler 中的装饰器编译器不依赖于 Typescript。处理程序负责从装饰器和 Typescript 源中提取执行编译所需的信息，调用装饰器编译器，并返回结果。
  *
  * @param `D` The type of decorator metadata produced by `detect`.
  * @param `A` The type of analysis metadata produced by `analyze`.
@@ -215,13 +215,13 @@ export interface DecoratorHandler<D, A, S extends SemanticSymbol|null, R> {
    * details on how this works.
    *
    * 生成一个表示类的 `SemanticSymbol`
-   * ，该类已注册到语义依赖图中。该符号用于增量编译，以让编译器确定对类的更改如何影响之前的发出结果。有关其工作原理的详细信息，请参阅
+   *，该类已注册到语义依赖图中。该符号用于增量编译，以让编译器确定对类的更改如何影响之前的发出结果。有关其工作原理的详细信息，请参阅
    * `incremental` 目标的 README。
    *
    * The symbol is passed in to `resolve`, where it can be extended with references into other parts
    * of the compilation as needed.
    *
-   * 该符号会传入到 `resolve` ，在那里可以根据需要使用对编译的其他部分的引用来扩展它。
+   * 该符号会传入到 `resolve`，在那里可以根据需要使用对编译的其他部分的引用来扩展它。
    *
    * Only primary handlers are allowed to have symbols; handlers with `precedence` other than
    * `HandlerPrecedence.PRIMARY` must return a `null` symbol.
@@ -268,7 +268,7 @@ export interface DecoratorHandler<D, A, S extends SemanticSymbol|null, R> {
    * the `analysis` before the emit phase.
    *
    * 解析阶段发生在整个 `ts.Program` 被分析之后，并让 `DecoratorHandler`
-   * 有机会利用整个编译单元中的信息来增强发出阶段之前的 `analysis` 。
+   * 有机会利用整个编译单元中的信息来增强发出阶段之前的 `analysis`。
    *
    */
   resolve?(node: ClassDeclaration, analysis: Readonly<A>, symbol: S): ResolveResult<R>;
@@ -317,7 +317,7 @@ export interface DecoratorHandler<D, A, S extends SemanticSymbol|null, R> {
    * If present, this method is used if the compilation mode is configured as partial, otherwise
    * `compileFull` is.
    *
-   * 如果存在，如果编译模式配置为部分，则使用此方法，否则 `compileFull` 。
+   * 如果存在，如果编译模式配置为部分，则使用此方法，否则 `compileFull`。
    *
    */
   compilePartial?

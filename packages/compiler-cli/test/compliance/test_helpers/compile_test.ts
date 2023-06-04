@@ -53,7 +53,7 @@ export interface CompileResult {
 /**
  * Compile the input source `files` stored in `fs`, writing the generated files to `fs`.
  *
- * 编译存储在 `fs` 中的输入源 `files` ，将生成的文件写入 `fs` 。
+ * 编译存储在 `fs` 中的输入源 `files`，将生成的文件写入 `fs`。
  *
  * @param fs The mock file-system where the input and generated files live.
  *
@@ -181,7 +181,7 @@ function getOptions(
  * \(See `test_cases/r3_view_compiler_i18n/line_ending_normalization/template.html`.\)
  *
  * 这允许我们更可靠地模拟具有 `\r\n` 行结尾的文件。（请参阅
- * `test_cases/r3_view_compiler_i18n/line_ending_normalization/template.html` 。）
+ * `test_cases/r3_view_compiler_i18n/line_ending_normalization/template.html`。）
  *
  */
 function monkeyPatchReadFile(fs: ReadonlyFileSystem): void {

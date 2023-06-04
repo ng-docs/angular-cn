@@ -13,7 +13,7 @@ import ts from 'typescript';
  * A `Set` of `ts.SyntaxKind`s of `ts.Expression` which are safe to wrap in a `ts.AsExpression`
  * without needing to be wrapped in parentheses.
  *
- * `ts.SyntaxKind` 的 `ts.Expression` 的 `Set` ，可以安全地包装在 `ts.AsExpression`
+ * `ts.SyntaxKind` 的 `ts.Expression` 的 `Set`，可以安全地包装在 `ts.AsExpression`
  * 中，无需用括号括起来。
  *
  * For example, `foo.bar()` is a `ts.CallExpression`, and can be safely cast to `any` with
@@ -22,9 +22,9 @@ import ts from 'typescript';
  * equivalent to `foo !== (bar as any)`, which is not what was intended. Thus,
  * `ts.BinaryExpression`s need to be wrapped in parentheses before casting.
  *
- * 例如，`foo.bar()` 是 `ts.CallExpression` ，并且可以用 `foo.bar() as any` `any` 但是，`foo !==
- * bar` 是 `ts.BinaryExpression` ，并尝试在不带括号的情况下进行转换，会将表达式 `foo !== bar as any`
- * 。这在语义上等效于 `foo !== (bar as any)` ，这不是预期的。因此，`ts.BinaryExpression`
+ * 例如，`foo.bar()` 是 `ts.CallExpression`，并且可以用 `foo.bar() as any` `any` 但是，`foo !==
+ * bar` 是 `ts.BinaryExpression`，并尝试在不带括号的情况下进行转换，会将表达式 `foo !== bar as any`
+ *。这在语义上等效于 `foo !== (bar as any)`，这不是预期的。因此，`ts.BinaryExpression`
  * 需要在强制转换之前用括号括起来。
  *
  */
@@ -87,7 +87,7 @@ export function tsCreateElement(tagName: string): ts.Expression {
 /**
  * Create a `ts.VariableStatement` which declares a variable without explicit initialization.
  *
- * 创建一个 `ts.VariableStatement` ，它在没有显式初始化的情况下声明变量。
+ * 创建一个 `ts.VariableStatement`，它在没有显式初始化的情况下声明变量。
  *
  * The initializer `null!` is used to bypass strict variable initialization checks.
  *
@@ -112,17 +112,17 @@ export function tsDeclareVariable(id: ts.Identifier, type: ts.TypeNode): ts.Vari
 /**
  * Creates a `ts.TypeQueryNode` for a coerced input.
  *
- * 为强制输入创建 `ts.TypeQueryNode` 。
+ * 为强制输入创建 `ts.TypeQueryNode`。
  *
  * For example: `typeof MatInput.ngAcceptInputType_value`, where MatInput is `typeName` and `value`
  * is the `coercedInputName`.
  *
- * 例如： `typeof MatInput.ngAcceptInputType_value` ，其中 MatInput 是 `typeName` ，`value` 是
- * `coercedInputName` 。
+ * 例如：`typeof MatInput.ngAcceptInputType_value`，其中 MatInput 是 `typeName`，`value` 是
+ * `coercedInputName`。
  *
  * @param typeName The `EntityName` of the Directive where the static coerced input is defined.
  *
- * 定义静态强制输入的指令的 `EntityName` 。
+ * 定义静态强制输入的指令的 `EntityName`。
  *
  * @param coercedInputName The field name of the coerced input.
  *
@@ -138,7 +138,7 @@ export function tsCreateTypeQueryForCoercedInput(
 /**
  * Create a `ts.VariableStatement` that initializes a variable with a given expression.
  *
- * 创建一个使用给定表达式初始化变量的 `ts.VariableStatement` 。
+ * 创建一个使用给定表达式初始化变量的 `ts.VariableStatement`。
  *
  * Unlike with `tsDeclareVariable`, the type of the variable is inferred from the initializer
  * expression.
@@ -161,7 +161,7 @@ export function tsCreateVariable(
 /**
  * Construct a `ts.CallExpression` that calls a method on a receiver.
  *
- * 构造一个调用接收器上的方法的 `ts.CallExpression` 。
+ * 构造一个调用接收器上的方法的 `ts.CallExpression`。
  *
  */
 export function tsCallMethod(

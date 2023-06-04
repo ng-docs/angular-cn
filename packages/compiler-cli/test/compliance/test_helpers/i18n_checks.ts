@@ -51,7 +51,7 @@ export function verifyUniqueConsts(output: string): boolean {
 /**
  * Extract pairs of `[msg, placeholders]`, in calls to `goog.getMsg()`, from the `source`.
  *
- * 在对 `goog.getMsg()` 的调用中，从 `source` 提取成对的 `[msg, placeholders]` 。
+ * 在对 `goog.getMsg()` 的调用中，从 `source` 提取成对的 `[msg, placeholders]`。
  *
  * @param source The source code to parse.
  *

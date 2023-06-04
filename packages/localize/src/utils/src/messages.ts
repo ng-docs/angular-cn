@@ -66,7 +66,7 @@ export type MessageId = string;
  * type-checks when `allowSyntheticDefaultImports` is enabled.
  *
  * 在 `@angular/compiler-cli` 中声明 `AbsoluteFsPath` 品牌类型的副本，以避免导入到
- * `@angular/compiler-cli` 。 compiler-cli 的声明文件不一定与使用 `@angular/localize`
+ * `@angular/compiler-cli`。compiler-cli 的声明文件不一定与使用 `@angular/localize`
  * `@angular/localize` `typescript` Web 环境兼容，并且会使用默认导入，仅在启用
  * `allowSyntheticDefaultImports` 时才进行类型检查。
  *
@@ -138,7 +138,7 @@ export interface MessageMetadata {
   /**
    * The meaning of the `message`, used to distinguish identical `messageString`s.
    *
-   * `message` 的含义，用于区分相同的 `messageString` 。
+   * `message` 的含义，用于区分相同的 `messageString`。
    *
    */
   meaning?: string;
@@ -248,7 +248,7 @@ export interface ParsedMessage extends MessageMetadata {
  *
  * See `ParsedMessage` for an example.
  *
- * 有关示例，请参阅 `ParsedMessage` 。
+ * 有关示例，请参阅 `ParsedMessage`。
  *
  */
 export function parseMessage(
@@ -305,11 +305,11 @@ export function parseMessage(
  * are serialized in the string delimited by `|`, `@@` and `␟` respectively.
  *
  * 如果消息部分有一个元数据块，此函数将从块中提取 `meaning`、`description`、`customId` 和
- * `legacyId`（如果提供）。这些元数据属性在由 `|` 分隔的字符串中序列化、 `@@` 和 `␟` 。
+ * `legacyId`（如果提供）。这些元数据属性在由 `|` 分隔的字符串中序列化、 `@@` 和 `␟`。
  *
  * \(Note that `␟` is the `LEGACY_ID_INDICATOR` - see `constants.ts`.\)
  *
- * （请注意，`␟` 是 `LEGACY_ID_INDICATOR` - 请参阅 `constants.ts` 。）
+ * （请注意，`␟` 是 `LEGACY_ID_INDICATOR` - 请参阅 `constants.ts`。）
  *
  * For example:
  *
@@ -427,7 +427,7 @@ export function parsePlaceholder(cooked: string, raw: string):
  * Since blocks are optional, it is possible that the content of a message block actually starts
  * with a block marker. In this case the marker must be escaped `\:`.
  *
- * 由于块是可选的，因此消息块的内容可能实际上以块标记开头。在这种情况下，标记必须进行转译 `\:` 。
+ * 由于块是可选的，因此消息块的内容可能实际上以块标记开头。在这种情况下，标记必须进行转译 `\:`。
  *
  * @param cooked The cooked version of the message part to parse.
  *

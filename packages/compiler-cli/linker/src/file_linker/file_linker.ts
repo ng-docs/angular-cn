@@ -39,7 +39,7 @@ export class FileLinker<TConstantScope, TStatement, TExpression> {
   /**
    * Return true if the given callee name matches a partial declaration that can be linked.
    *
-   * 如果给定的被调用者名称与可以链接的部分声明匹配，则返回 true 。
+   * 如果给定的被调用者名称与可以链接的部分声明匹配，则返回 true。
    *
    */
   isPartialDeclaration(calleeName: string): boolean {
@@ -59,7 +59,7 @@ export class FileLinker<TConstantScope, TStatement, TExpression> {
    * @param declarationFn the name of the function used to declare the partial declaration - e.g.
    *     `ɵɵngDeclareDirective`.
    *
-   * 用于声明部分声明的函数名 - 例如 `ɵɵngDeclareDirective` 。
+   * 用于声明部分声明的函数名 - 例如 `ɵɵngDeclareDirective`。
    *
    * @param args the arguments passed to the declaration function, should be a single object that
    *     corresponds to the `R3DeclareDirectiveMetadata` or `R3DeclareComponentMetadata` interfaces.

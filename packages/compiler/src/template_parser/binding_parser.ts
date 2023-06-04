@@ -122,7 +122,7 @@ export class BindingParser {
    * element that would normally appear within the interpolation prefix and suffix \(`{{` and `}}`\).
    * This is used for parsing the switch expression in ICUs.
    *
-   * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（`{{` 和 `}}`）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
+   * 类似于 `parseInterpolation`，但将提供的字符串视为通常出现在插值前缀和后缀（`{{` 和 `}}`）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
    *
    */
   parseInterpolationExpression(expression: string, sourceSpan: ParseSourceSpan): ASTWithSource {
@@ -144,7 +144,7 @@ export class BindingParser {
    * Parses the bindings in a microsyntax expression, and converts them to
    * `ParsedProperty` or `ParsedVariable`.
    *
-   * 解析微语法表达式中的绑定，并将它们转换为 `ParsedProperty` 或 `ParsedVariable` 。
+   * 解析微语法表达式中的绑定，并将它们转换为 `ParsedProperty` 或 `ParsedVariable`。
    *
    * @param tplKey template binding name
    *
@@ -608,7 +608,7 @@ export function calcPossibleSecurityContexts(
  * Compute a new ParseSourceSpan based off an original `sourceSpan` by using
  * absolute offsets from the specified `absoluteSpan`.
  *
- * 使用与指定 `absoluteSpan` 的绝对偏移量，根据原始 `sourceSpan` 计算新的 ParseSourceSpan 。
+ * 使用与指定 `absoluteSpan` 的绝对偏移量，根据原始 `sourceSpan` 计算新的 ParseSourceSpan。
  *
  * @param sourceSpan original source span
  *

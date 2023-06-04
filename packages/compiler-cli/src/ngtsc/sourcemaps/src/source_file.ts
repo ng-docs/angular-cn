@@ -248,7 +248,7 @@ export class SourceFile {
  * given `marker`.
  *
  * 如果是互斥的，那么我们必须找到一个带有 segment-marker 的映射，并且比给定的 `marker`
- * 早。如果不是排他的，那么我们可以将使用等效的 Segment-marker 的最高映射返回到给定的 `marker` 。
+ * 早。如果不是排他的，那么我们可以将使用等效的 Segment-marker 的最高映射返回到给定的 `marker`。
  *
  * @param lowerIndex If provided, this is used as a hint that the marker we are searching for has an
  * index that is no lower than this.
@@ -373,7 +373,7 @@ export function mergeMappings(generatedSource: SourceFile, ab: Mapping, bc: Mapp
  * Parse the `rawMappings` into an array of parsed mappings, which reference source-files provided
  * in the `sources` parameter.
  *
- * 将 `rawMappings` 解析为解析后的映射数组，该数组会引用 `sources` 参数中提供的 source-files 。
+ * 将 `rawMappings` 解析为解析后的映射数组，该数组会引用 `sources` 参数中提供的 source-files。
  *
  */
 export function parseMappings(

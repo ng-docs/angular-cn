@@ -18,14 +18,14 @@ import {CompileResult} from '../../../transform';
 /**
  * Convert a `TypeValueReference` to an `Expression` which refers to the type as a value.
  *
- * 将 `TypeValueReference` 转换为将类型作为值引用的 `Expression` 。
+ * 将 `TypeValueReference` 转换为将类型作为值引用的 `Expression`。
  *
  * Local references are converted to a `WrappedNodeExpr` of the TypeScript expression, and non-local
  * references are converted to an `ExternalExpr`. Note that this is only valid in the context of the
  * file in which the `TypeValueReference` originated.
  *
- * 本地引用会转换为 TypeScript 表达式的 `WrappedNodeExpr` ，非本地引用会转换为 `ExternalExpr`
- * 。请注意，这仅在 `TypeValueReference` 源自的文件的上下文中有效。
+ * 本地引用会转换为 TypeScript 表达式的 `WrappedNodeExpr`，非本地引用会转换为 `ExternalExpr`
+ *。请注意，这仅在 `TypeValueReference` 源自的文件的上下文中有效。
  *
  */
 export function valueReferenceToExpression(valueRef: LocalTypeValueReference|
@@ -94,7 +94,7 @@ export function isAngularDecorator(decorator: Decorator, name: string, isCore: b
  * Unwrap a `ts.Expression`, removing outer type-casts or parentheses until the expression is in its
  * lowest level form.
  *
- * 展开 `ts.Expression` ，删除外部类型转换或括号，直到表达式处于最低级别形式。
+ * 展开 `ts.Expression`，删除外部类型转换或括号，直到表达式处于最低级别形式。
  *
  * For example, the expression `(foo as Type)` unwraps to `foo`.
  *
@@ -137,7 +137,7 @@ function expandForwardRef(arg: ts.Expression): ts.Expression|null {
  * If the given `node` is a `forwardRef()` expression then resolve its inner value, otherwise return
  * `null`.
  *
- * 如果给定 `node` 是 `forwardRef()` 表达式，则解析其内部值，否则返回 `null` 。
+ * 如果给定 `node` 是 `forwardRef()` 表达式，则解析其内部值，否则返回 `null`。
  *
  * @param node the `forwardRef()` expression to resolve
  *
@@ -151,7 +151,7 @@ function expandForwardRef(arg: ts.Expression): ts.Expression|null {
  * the resolved expression, if the original expression was a `forwardRef()`, or `null`
  *     otherwise.
  *
- * 解析的表达式（如果原始表达式是 `forwardRef()`），否则为 `null` 。
+ * 解析的表达式（如果原始表达式是 `forwardRef()`），否则为 `null`。
  *
  */
 export function tryUnwrapForwardRef(node: ts.Expression, reflector: ReflectionHost): ts.Expression|
@@ -196,7 +196,7 @@ export function tryUnwrapForwardRef(node: ts.Expression, reflector: ReflectionHo
  *
  * an unwrapped argument if `ref` pointed to forwardRef, or null otherwise
  *
- * 如果 `ref` 指向 forwardRef ，则为未包装的参数，否则为 null
+ * 如果 `ref` 指向 forwardRef，则为未包装的参数，否则为 null
  */
 export const forwardRefResolver: ForeignFunctionResolver =
     (fn, callExpr, resolve, unresolvable) => {
@@ -373,7 +373,7 @@ export function wrapTypeReference(reflector: ReflectionHost, clazz: ClassDeclara
 /**
  * Creates a ParseSourceSpan for a TypeScript node.
  *
- * 为 TypeScript 节点创建 ParseSourceSpan 。
+ * 为 TypeScript 节点创建 ParseSourceSpan。
  *
  */
 export function createSourceSpan(node: ts.Node): ParseSourceSpan {
@@ -457,7 +457,7 @@ export function resolveImportedFile(
  * contained within `container` then `expr` is used as origin node, otherwise `container` itself is
  * used.
  *
- * 确定用于诊断报告的最合适的表达式。如果 `expr` 包含在 `container` ，则使用 `expr`
+ * 确定用于诊断报告的最合适的表达式。如果 `expr` 包含在 `container`，则使用 `expr`
  * 作为源节点，否则使用 `container` 本身。
  *
  */

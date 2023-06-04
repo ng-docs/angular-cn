@@ -195,7 +195,7 @@ export class ComponentFixture<T> {
   /**
    * Get a promise that resolves when the fixture is stable.
    *
-   * 当夹具稳定时解析的 Promise 。
+   * 当夹具稳定时解析的 Promise。
    *
    * This can be used to resume testing after events have triggered asynchronous activity or
    * asynchronous change detection.
@@ -227,7 +227,7 @@ export class ComponentFixture<T> {
   /**
    * Get a promise that resolves when the ui state is stable following animations.
    *
-   * 获得一个 Promise ，可以解决以下动画中 ui 状态何时稳定的问题。
+   * 获得一个 Promise，可以解决以下动画中 ui 状态何时稳定的问题。
    *
    */
   whenRenderingDone(): Promise<any> {

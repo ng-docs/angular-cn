@@ -45,7 +45,7 @@ const REMOVE_STYLES_ON_COMPONENT_DESTROY_DEFAULT = false;
  *
  * By default, the value is set to `false`. This will be changed in the next major version.
  *
- * 默认情况下，该值设置为 `false` 。 这将在下一个主要版本中更改。
+ * 默认情况下，该值设置为 `false`。这将在下一个主要版本中更改。
  *
  * @publicApi
  */

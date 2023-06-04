@@ -43,19 +43,19 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  *   The minimum number of integer digits before the decimal point.
  *   Default is 1.
  *
- *   `minIntegerDigits` ：小数点前的最小整数位数。默认值为 1。
+ *   `minIntegerDigits`：小数点前的最小整数位数。默认值为 1。
  *
  * - `minFractionDigits`:
  *   The minimum number of digits after the decimal point.
  *   Default is 0.
  *
- *   `minFractionDigits` ：小数点后的最小位数。默认值为 0。
+ *   `minFractionDigits`：小数点后的最小位数。默认值为 0。
  *
  * - `maxFractionDigits`:
  *   The maximum number of digits after the decimal point.
  *   Default is 3.
  *
- *   `maxFractionDigits` ：小数点后的最大位数。默认值为 3。
+ *   `maxFractionDigits`：小数点后的最大位数。默认值为 3。
  *
  * If the formatted value is truncated it will be rounded using the "to-nearest" method:
  *
@@ -81,7 +81,7 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  *
  * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
  *
- * 未提供时，使用 `LOCALE_ID` 的值，默认为 `en-US` 。
+ * 未提供时，使用 `LOCALE_ID` 的值，默认为 `en-US`。
  *
  * See [Setting your app locale](guide/i18n-common-locale-id).
  *
@@ -95,7 +95,7 @@ import {invalidPipeArgumentError} from './invalid_pipe_argument_error';
  * according to various format specifications,
  * where the caller's default locale is `en-US`.
  *
- * 以下代码显示了管道如何根据各种格式规范转换值，其中调用者的默认区域设置是 `en-US` 。
+ * 以下代码显示了管道如何根据各种格式规范转换值，其中调用者的默认区域设置是 `en-US`。
  *
  * <code-example path="common/pipes/ts/number_pipe.ts" region='NumberPipe'></code-example>
  *
@@ -118,12 +118,12 @@ export class DecimalPipe implements PipeTransform {
    * @param digitsInfo Sets digit and decimal representation.
    * [See more](#digitsinfo).
    *
-   * 设置数字和十进制表示。 [查看更多](#digitsinfo)。
+   * 设置数字和十进制表示。[查看更多](#digitsinfo)。
    *
    * @param locale Specifies what locale format rules to use.
    * [See more](#locale).
    *
-   * 指定要使用的语言环境格式规则。 [查看更多](#locale)。
+   * 指定要使用的语言环境格式规则。[查看更多](#locale)。
    *
    */
   transform(value: number|string|null|undefined, digitsInfo?: string, locale?: string): string
@@ -159,7 +159,7 @@ export class DecimalPipe implements PipeTransform {
  * into text strings, according to various format specifications,
  * where the caller's default locale is `en-US`.
  *
- * 以下代码显示了管道如何根据各种格式规范将数字转换为文本字符串，其中调用者的默认区域设置是 `en-US` 。
+ * 以下代码显示了管道如何根据各种格式规范将数字转换为文本字符串，其中调用者的默认区域设置是 `en-US`。
  *
  * <code-example path="common/pipes/ts/percent_pipe.ts" region='PercentPipe'></code-example>
  *
@@ -189,17 +189,17 @@ export class PercentPipe implements PipeTransform {
    * - `minIntegerDigits`: The minimum number of integer digits before the decimal point.
    *   Default is `1`.
    *
-   *   `minIntegerDigits` ：小数点前的最小整数位数。默认为 `1` 。
+   *   `minIntegerDigits`：小数点前的最小整数位数。默认为 `1`。
    *
    * - `minFractionDigits`: The minimum number of digits after the decimal point.
    *   Default is `0`.
    *
-   *   `minFractionDigits` ：小数点后的最小位数。默认值为 `0` 。
+   *   `minFractionDigits`：小数点后的最小位数。默认值为 `0`。
    *
    * - `maxFractionDigits`: The maximum number of digits after the decimal point.
    *   Default is `0`.
    *
-   *   `maxFractionDigits` ：小数点后的最大位数。默认值为 `0` 。
+   *   `maxFractionDigits`：小数点后的最大位数。默认值为 `0`。
    *
    * @param locale A locale code for the locale format rules to use.
    * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
@@ -238,7 +238,7 @@ export class PercentPipe implements PipeTransform {
  * into text strings, according to various format specifications,
  * where the caller's default locale is `en-US`.
  *
- * 以下代码显示了管道如何根据各种格式规范将数字转换为文本字符串，其中调用者的默认区域设置是 `en-US` 。
+ * 以下代码显示了管道如何根据各种格式规范将数字转换为文本字符串，其中调用者的默认区域设置是 `en-US`。
  *
  * <code-example path="common/pipes/ts/currency_pipe.ts" region='CurrencyPipe'></code-example>
  *
@@ -281,7 +281,7 @@ export class CurrencyPipe implements PipeTransform {
    *
    * - `code`: Show the code \(such as `USD`\).
    *
-   *   `code` ：显示代码（例如 `USD`）。
+   *   `code`：显示代码（例如 `USD`）。
    *
    * - `symbol`\(default\): Show the symbol \(such as `$`\).
    *
@@ -292,7 +292,7 @@ export class CurrencyPipe implements PipeTransform {
    *   For example, the Canadian dollar CAD has the symbol `CA$` and the symbol-narrow `$`. If the
    *   locale has no narrow symbol, uses the standard symbol for the locale.
    *
-   *   `symbol-narrow` ：对有两个货币符号的区域设置使用窄符号。例如，加元 CAD 的符号是 `CA$` 和符号-narrow `$` 。如果此区域设置没有窄符号，则使用此区域设置的标准符号。
+   *   `symbol-narrow`：对有两个货币符号的区域设置使用窄符号。例如，加元 CAD 的符号是 `CA$` 和符号-narrow `$`。如果此区域设置没有窄符号，则使用此区域设置的标准符号。
    *
    * - String: Use the given string value instead of a code or a symbol.
    *   For example, an empty string will suppress the currency & symbol.
@@ -301,7 +301,7 @@ export class CurrencyPipe implements PipeTransform {
    *
    * - Boolean \(marked deprecated in v5\): `true` for symbol and false for `code`.
    *
-   *   布尔值（在 v5 中标记为已弃用）： symbol 为 `true` ，`code` 为 false 。
+   *   布尔值（在 v5 中标记为已弃用）：symbol 为 `true`，`code` 为 false。
    * @param digitsInfo Decimal representation options, specified by a string
    * in the following format:<br>
    * <code>{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}</code>.
@@ -311,12 +311,12 @@ export class CurrencyPipe implements PipeTransform {
    * - `minIntegerDigits`: The minimum number of integer digits before the decimal point.
    *   Default is `1`.
    *
-   *   `minIntegerDigits` ：小数点前的最小整数位数。默认为 `1` 。
+   *   `minIntegerDigits`：小数点前的最小整数位数。默认为 `1`。
    *
    * - `minFractionDigits`: The minimum number of digits after the decimal point.
    *   Default is `2`.
    *
-   *   `minFractionDigits` ：小数点后的最小位数。默认为 `2` 。
+   *   `minFractionDigits`：小数点后的最小位数。默认为 `2`。
    *
    * - `maxFractionDigits`: The maximum number of digits after the decimal point.
    *   Default is `2`.
@@ -324,7 +324,7 @@ export class CurrencyPipe implements PipeTransform {
    *   depending on what the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) specifies.
    *   For example, the Canadian dollar has 2 digits, whereas the Chilean peso has none.
    *
-   *   `maxFractionDigits` ：小数点后的最大位数。默认为 `2` 。如果未提供，则该数字将根据[ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)指定的内容使用适当的位数格式化。例如，加元有 2 位，而智利比索没有。
+   *   `maxFractionDigits`：小数点后的最大位数。默认为 `2`。如果未提供，则该数字将根据[ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)指定的内容使用适当的位数格式化。例如，加元有 2 位，而智利比索没有。
    *
    * @param locale A locale code for the locale format rules to use.
    * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.

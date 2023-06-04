@@ -32,7 +32,7 @@ export class R3TargetBinder<DirectiveT extends DirectiveMeta> implements TargetB
    * metadata about the types referenced in the template.
    *
    * 对给定的 `Target` 执行绑定操作，并返回一个 `BoundTarget`
-   * ，其中包含有关模板中引用的类型的元数据。
+   *，其中包含有关模板中引用的类型的元数据。
    *
    */
   bind(target: Target): BoundTarget<DirectiveT> {
@@ -83,7 +83,7 @@ class Scope implements Visitor {
   /**
    * Named members of the `Scope`, such as `Reference`s or `Variable`s.
    *
-   * `Scope` 的命名成员，例如 `Reference` 或 `Variable` 。
+   * `Scope` 的命名成员，例如 `Reference` 或 `Variable`。
    *
    */
   readonly namedEntities = new Map<string, Reference|Variable>();
@@ -91,7 +91,7 @@ class Scope implements Visitor {
   /**
    * Child `Scope`s for immediately nested `Template`s.
    *
-   * 立即嵌套的 `Template` 的子 `Scope` 。
+   * 立即嵌套的 `Template` 的子 `Scope`。
    *
    */
   readonly childScopes = new Map<Template, Scope>();
@@ -106,7 +106,7 @@ class Scope implements Visitor {
    * Process a template \(either as a `Template` sub-template with variables, or a plain array of
    * template `Node`s\) and construct its `Scope`.
    *
-   * 处理模板（作为带有变量的 `Template` 子模板，或模板 `Node` 的普通数组）并构造其 `Scope` 。
+   * 处理模板（作为带有变量的 `Template` 子模板，或模板 `Node` 的普通数组）并构造其 `Scope`。
    *
    */
   static apply(template: Node[]): Scope {
@@ -186,7 +186,7 @@ class Scope implements Visitor {
    *
    * This can recurse into a parent `Scope` if it's available.
    *
-   * 如果可用，这可以递归到父 `Scope` 。
+   * 如果可用，这可以递归到父 `Scope`。
    *
    */
   lookup(name: string): Reference|Variable|null {
@@ -251,7 +251,7 @@ class DirectiveBinder<DirectiveT extends DirectiveMeta> implements Visitor {
    * @param selectorMatcher a `SelectorMatcher` containing the directives that are in scope for
    * this template.
    *
-   * 包含此模板范围内的指令的 `SelectorMatcher` 。
+   * 包含此模板范围内的指令的 `SelectorMatcher`。
    * @returns
    *
    * three maps which contain information about directives in the template: the
@@ -425,7 +425,7 @@ class TemplateBinder extends RecursiveAstVisitor implements Visitor {
    * 要处理的模板的节点
    * @param scope the `Scope` of the template being processed.
    *
-   * 正在处理的模板的 `Scope` 。
+   * 正在处理的模板的 `Scope`。
    * @returns
    *
    * three maps which contain metadata about the template: `expressions` which interprets
@@ -435,7 +435,7 @@ class TemplateBinder extends RecursiveAstVisitor implements Visitor {
    * nesting level \(how many levels deep within the template structure the `Template` is\), starting
    * at 1.
    *
-   * 三个包含有关模板的 `symbols` 数据的映射： `expressions` ，将表达式中的特殊 `AST`
+   * 三个包含有关模板的 `symbols` 数据的映射：`expressions`，将表达式中的特殊 `AST`
    * 节点解释为指向模板中声明的引用或变量，将这些变量和引用映射到声明它们的嵌套 `Template`
    * （如果有）和 `nestingLevel` 每个 `Template` 都有一个整数嵌套级别（模板在 `Template`
    * 结构中的深度是多少），从 1 开始。
@@ -582,7 +582,7 @@ class TemplateBinder extends RecursiveAstVisitor implements Visitor {
  *
  * See `BoundTarget` for documentation on the individual methods.
  *
- * 有关各个方法的文档，请参阅 `BoundTarget` 。
+ * 有关各个方法的文档，请参阅 `BoundTarget`。
  *
  */
 export class R3BoundTarget<DirectiveT extends DirectiveMeta> implements BoundTarget<DirectiveT> {

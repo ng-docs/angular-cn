@@ -62,7 +62,7 @@ export interface ConsumesSlotOpTrait {
    * Assigned data slot \(the starting index, if more than one slot is needed\) for this operation, or
    * `null` if slots have not yet been assigned.
    *
-   * 为此操作分配的数据槽（起始索引，如果需要多个槽），如果槽尚未分配，则为 `null` 。
+   * 为此操作分配的数据槽（起始索引，如果需要多个槽），如果槽尚未分配，则为 `null`。
    *
    */
   slot: number|null;
@@ -71,7 +71,7 @@ export interface ConsumesSlotOpTrait {
    * The number of slots which will be used by this operation. By default 1, but can be increased if
    * necessary.
    *
-   * 此操作将使用的插槽数。 默认为 1，但可以根据需要增加。
+   * 此操作将使用的插槽数。默认为 1，但可以根据需要增加。
    *
    */
   numSlotsUsed: number;
@@ -82,7 +82,7 @@ export interface ConsumesSlotOpTrait {
    * `UsesSlotIndexExprTrait` implementors and ensure that the assigned slot is propagated through
    * the IR to all consumers.
    *
-   * 此操作的 `XrefId` （例如，存储在分配槽中的元素）。 此 `XrefId` 用于将此 `ConsumesSlotOpTrait` 操作与 `DependsOnSlotContextTrait` 或 `UsesSlotIndexExprTrait` 实现程序链接起来，并确保分配的插槽通过 IR 传播到所有消费者。
+   * 此操作的 `XrefId` （例如，存储在分配槽中的元素）。此 `XrefId` 用于将此 `ConsumesSlotOpTrait` 操作与 `DependsOnSlotContextTrait` 或 `UsesSlotIndexExprTrait` 实现程序链接起来，并确保分配的插槽通过 IR 传播到所有消费者。
    *
    */
   xref: XrefId;
@@ -99,7 +99,7 @@ export interface ConsumesSlotOpTrait {
  * during the execution of template update functions. This trait marks an operation as requiring
  * this implicit context to be `advance()`'d to point at a particular slot prior to execution.
  *
- * 运行时有一个隐式槽上下文，它在执行模板更新函数期间使用 `advance()` 指令进行调整。 此特征将操作标记为要求此隐式上下文在执行前被 `advance()` 指向特定插槽。
+ * 运行时有一个隐式槽上下文，它在执行模板更新函数期间使用 `advance()` 指令进行调整。此特征将操作标记为要求此隐式上下文在执行前被 `advance()` 指向特定插槽。
  *
  */
 export interface DependsOnSlotContextOpTrait {
@@ -109,7 +109,7 @@ export interface DependsOnSlotContextOpTrait {
    * `XrefId` of the `ConsumesSlotOpTrait` which the implicit slot context must reference before
    * this operation can be executed.
    *
-   * `ConsumesSlotOpTrait` 的 `XrefId` ，隐式插槽上下文必须在执行此操作之前引用它。
+   * `ConsumesSlotOpTrait` 的 `XrefId`，隐式插槽上下文必须在执行此操作之前引用它。
    *
    */
   target: XrefId;
@@ -125,7 +125,7 @@ export interface DependsOnSlotContextOpTrait {
  * During IR processing, assigned slots of `ConsumesSlotOpTrait` implementors will be propagated to
  * `UsesSlotIndexTrait` implementors by matching their `XrefId`s.
  *
- * 在 IR 处理期间， `ConsumesSlotOpTrait` 实现者的分配槽将通过匹配它们的 `XrefId` 传播到 `UsesSlotIndexTrait` 实现者。
+ * 在 IR 处理期间，`ConsumesSlotOpTrait` 实现者的分配槽将通过匹配它们的 `XrefId` 传播到 `UsesSlotIndexTrait` 实现者。
  *
  */
 export interface UsesSlotIndexTrait {
@@ -135,7 +135,7 @@ export interface UsesSlotIndexTrait {
    * `XrefId` of the `ConsumesSlotOpTrait` which this expression needs to reference by its assigned
    * slot index.
    *
-   * 此表达式需要通过其分配的插槽索引引用的 `ConsumesSlotOpTrait` 的 `XrefId` 。
+   * 此表达式需要通过其分配的插槽索引引用的 `ConsumesSlotOpTrait` 的 `XrefId`。
    *
    */
   target: XrefId;
@@ -143,7 +143,7 @@ export interface UsesSlotIndexTrait {
   /**
    * The slot index of `target`, or `null` if slots have not yet been assigned.
    *
-   * `target` 的插槽索引，如果尚未分配插槽，则为 `null` 。
+   * `target` 的插槽索引，如果尚未分配插槽，则为 `null`。
    *
    */
   slot: number|null;
@@ -233,7 +233,7 @@ export const TRAIT_USES_VAR_OFFSET: UsesVarOffsetTrait = {
 /**
  * Test whether an operation implements `ConsumesSlotOpTrait`.
  *
- * 测试操作是否实现了 `ConsumesSlotOpTrait` 。
+ * 测试操作是否实现了 `ConsumesSlotOpTrait`。
  *
  */
 export function hasConsumesSlotTrait<OpT extends Op<OpT>>(op: OpT): op is OpT&ConsumesSlotOpTrait {
@@ -243,7 +243,7 @@ export function hasConsumesSlotTrait<OpT extends Op<OpT>>(op: OpT): op is OpT&Co
 /**
  * Test whether an operation implements `DependsOnSlotContextOpTrait`.
  *
- * 测试操作是否实现 `DependsOnSlotContextOpTrait` 。
+ * 测试操作是否实现 `DependsOnSlotContextOpTrait`。
  *
  */
 export function hasDependsOnSlotContextTrait<OpT extends Op<OpT>>(op: OpT): op is OpT&
@@ -254,7 +254,7 @@ export function hasDependsOnSlotContextTrait<OpT extends Op<OpT>>(op: OpT): op i
 /**
  * Test whether an operation implements `ConsumesVarsTrait`.
  *
- * 测试操作是否实现了 `ConsumesVarsTrait` 。
+ * 测试操作是否实现了 `ConsumesVarsTrait`。
  *
  */
 export function hasConsumesVarsTrait<ExprT extends Expression>(expr: ExprT): expr is ExprT&
@@ -267,7 +267,7 @@ export function hasConsumesVarsTrait(value: any): boolean {
 /**
  * Test whether an expression implements `UsesVarOffsetTrait`.
  *
- * 测试表达式是否实现 `UsesVarOffsetTrait` 。
+ * 测试表达式是否实现 `UsesVarOffsetTrait`。
  *
  */
 export function hasUsesVarOffsetTrait<ExprT extends Expression>(expr: ExprT): expr is ExprT&
@@ -278,7 +278,7 @@ export function hasUsesVarOffsetTrait<ExprT extends Expression>(expr: ExprT): ex
 /**
  * Test whether an operation or expression implements `UsesSlotIndexTrait`.
  *
- * 测试操作或表达式是否实现 `UsesSlotIndexTrait` 。
+ * 测试操作或表达式是否实现 `UsesSlotIndexTrait`。
  *
  */
 export function hasUsesSlotIndexTrait<ExprT extends Expression>(expr: ExprT): expr is ExprT&

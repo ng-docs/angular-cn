@@ -29,7 +29,7 @@ export interface NgMatchers<T = any> extends jasmine.Matchers<T> {
   /**
    * Expect the value to be a `Promise`.
    *
-   * 期望值是 `Promise` 。
+   * 期望值是 `Promise`。
    *
    * @usageNotes
    *

@@ -13,7 +13,7 @@ import {GenericBrowserDomAdapter} from './generic_browser_adapter';
 /**
  * A `DomAdapter` powered by full browser DOM APIs.
  *
- * 由完整的浏览器 DOM API 提供支持的 `DomAdapter` 。
+ * 由完整的浏览器 DOM API 提供支持的 `DomAdapter`。
  *
  * @security Tread carefully! Interacting with the DOM directly is dangerous and
  * can introduce XSS risks.

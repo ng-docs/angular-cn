@@ -196,7 +196,7 @@ export class HttpRequest<T> {
    * the `HttpParamsOptions`' `fromString` may be used. For example:
    *
    * 要以 URL-query-string 格式传递 HTTP 参数的字符串表示，可以用 `HttpParamsOptions` ' `fromString`
-   * 。例如：
+   *。例如：
    *
    * ```
    * new HttpParams({fromString: 'angular=awesome'})

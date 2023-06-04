@@ -139,7 +139,7 @@ export function siblingAfter<T extends RNode>(skip: number, from: RNode): T|null
  * \(in terms of `nextSibling` and `firstChild` navigations\). Used in error
  * messages in dev mode.
  *
- * 生成导航步骤的字符串表示形式的辅助函数（根据 `nextSibling` 和 `firstChild` 导航）。 在开发模式下用于错误消息。
+ * 生成导航步骤的字符串表示形式的辅助函数（根据 `nextSibling` 和 `firstChild` 导航）。在开发模式下用于错误消息。
  *
  */
 function stringifyNavigationInstructions(instructions: (number|NodeNavigationStep)[]): string {
@@ -217,7 +217,7 @@ function locateRNodeByPath(path: string, lView: LView): RNode {
  * tree. That is, we should be able to get from `start` to `finish` purely by using `.firstChild`
  * and `.nextSibling` operations.
  *
- * 注意：假设在 DOM 树的有序遍历中节点 `start` 发生在节点 `finish` 之前。 也就是说，我们应该能够完全通过使用 `.firstChild` 和 `.nextSibling` 操作 `start` `finish` 。
+ * 注意：假设在 DOM 树的有序遍历中节点 `start` 发生在节点 `finish` 之前。也就是说，我们应该能够完全通过使用 `.firstChild` 和 `.nextSibling` 操作 `start` `finish`。
  *
  */
 export function navigateBetween(start: Node, finish: Node): NodeNavigationStep[]|null {
@@ -250,7 +250,7 @@ export function navigateBetween(start: Node, finish: Node): NodeNavigationStep[]
  * Calculates a path between 2 sibling nodes \(generates a number of `NextSibling` navigations\).
  * Returns `null` if no such path exists between the given nodes.
  *
- * 计算 2 个兄弟节点之间的路径（生成多个 `NextSibling` 导航）。 如果给定节点之间不存在这样的路径，则返回 `null` 。
+ * 计算 2 个兄弟节点之间的路径（生成多个 `NextSibling` 导航）。如果给定节点之间不存在这样的路径，则返回 `null`。
  *
  */
 function navigateBetweenSiblings(start: Node, finish: Node): NodeNavigationStep[]|null {

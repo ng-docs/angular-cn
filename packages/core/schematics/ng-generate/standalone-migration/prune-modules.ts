@@ -260,15 +260,15 @@ function removeExportReferences(
 /**
  * Determines whether an `@NgModule` class is safe to remove. A module is safe to remove if:
  *
- * 确定 `@NgModule` 类是否可以安全删除。 在以下情况下可以安全删除模块：
+ * 确定 `@NgModule` 类是否可以安全删除。在以下情况下可以安全删除模块：
  *
  * 1. It has no `declarations`.
  *
- *    它没有 `declarations` 。
+ *    它没有 `declarations`。
  *
  * 2. It has no `providers`.
  *
- *    它没有 `providers` 。
+ *    它没有 `providers`。
  *
  * 3. It has no `bootstrap` components.
  *
@@ -276,11 +276,11 @@ function removeExportReferences(
  *
  * 4. It has no `ModuleWithProviders` in its `imports`.
  *
- *    它的 `imports` 中没有 `ModuleWithProviders` 。
+ *    它的 `imports` 中没有 `ModuleWithProviders`。
  *
  * 5. It has no class members. Empty construstors are ignored.
  *
- *    它没有类成员。 空的构造器被忽略。
+ *    它没有类成员。空的构造器被忽略。
  *
  * @param node Class that is being checked.
  *
@@ -356,7 +356,7 @@ function canRemoveClass(node: ts.ClassDeclaration, typeChecker: ts.TypeChecker):
  * property assignment with a static name, initialized to an array literal with more than one
  * element.
  *
- * 从 NgModule 的元数据中检查节点是否为非空属性。 这被定义为具有静态名称的属性分配，初始化为具有多个元素的数组文字。
+ * 从 NgModule 的元数据中检查节点是否为非空属性。这被定义为具有静态名称的属性分配，初始化为具有多个元素的数组文字。
  *
  * @param node Node to be checked.
  *
@@ -373,7 +373,7 @@ function isNonEmptyNgModuleProperty(node: ts.Node): node is ts.PropertyAssignmen
  * Determines if a file is safe to delete. A file is safe to delete if all it contains are
  * import statements, class declarations that are about to be deleted and non-exported code.
  *
- * 确定文件是否可以安全删除。 如果一个文件只包含导入语句、将要删除的类声明和非导出代码，则可以安全删除该文件。
+ * 确定文件是否可以安全删除。如果一个文件只包含导入语句、将要删除的类声明和非导出代码，则可以安全删除该文件。
  *
  * @param sourceFile File that is being checked.
  *

@@ -16,7 +16,7 @@ import {extractForwardRef, getDependency, wrapReference} from './util';
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareInjectable()` call expressions.
  *
- * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareInjectable()` 调用表达式。
+ * 一个 `PartialLinker`，旨在处理 `ɵɵngDeclareInjectable()` 调用表达式。
  *
  */
 export class PartialInjectableLinkerVersion1<TExpression> implements PartialLinker<TExpression> {

@@ -15,7 +15,7 @@ import {SemanticVariable} from '../variable';
  * A special `Op` which is used internally in the `OpList` linked list to represent the head and
  * tail nodes of the list.
  *
- * `OpList` 链表内部使用的特殊 `Op` ，表示链表的头节点和尾节点。
+ * `OpList` 链表内部使用的特殊 `Op`，表示链表的头节点和尾节点。
  *
  * `ListEndOp` is created internally in the `OpList` and should not be instantiated directly.
  *
@@ -29,7 +29,7 @@ export interface ListEndOp<OpT extends Op<OpT>> extends Op<OpT> {
 /**
  * An `Op` which directly wraps an output `Statement`.
  *
- * 直接包装输出 `Statement` `Op` 。
+ * 直接包装输出 `Statement` `Op`。
  *
  * Often `StatementOp`s are the final result of IR processing.
  *
@@ -51,7 +51,7 @@ export interface StatementOp<OpT extends Op<OpT>> extends Op<OpT> {
 /**
  * Create a `StatementOp`.
  *
- * 创建一个 `StatementOp` 。
+ * 创建一个 `StatementOp`。
  *
  */
 export function createStatementOp<OpT extends Op<OpT>>(statement: o.Statement): StatementOp<OpT> {
@@ -84,7 +84,7 @@ export interface VariableOp<OpT extends Op<OpT>> extends Op<OpT> {
   /**
    * The `SemanticVariable` which describes the meaning behind this variable.
    *
-   * 描述此变量背后含义的 `SemanticVariable` 。
+   * 描述此变量背后含义的 `SemanticVariable`。
    *
    */
   variable: SemanticVariable;
@@ -101,7 +101,7 @@ export interface VariableOp<OpT extends Op<OpT>> extends Op<OpT> {
 /**
  * Create a `VariableOp`.
  *
- * 创建一个 `VariableOp` 。
+ * 创建一个 `VariableOp`。
  *
  */
 export function createVariableOp<OpT extends Op<OpT>>(

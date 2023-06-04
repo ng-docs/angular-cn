@@ -473,7 +473,7 @@ export abstract class Renderer2 {
 /**
  * Injects a Renderer2 for the current component.
  *
- * 为当前组件注入 Renderer2 。
+ * 为当前组件注入 Renderer2。
  *
  */
 export function injectRenderer2(): Renderer2 {

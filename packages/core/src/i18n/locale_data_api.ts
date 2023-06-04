@@ -223,7 +223,7 @@ export const enum CurrencyIndex {
 /**
  * Returns the canonical form of a locale name - lowercase with `_` replaced with `-`.
  *
- * 返回区域设置名称的规范形式 - 小写，其中 `_` 替换为 `-` 。
+ * 返回区域设置名称的规范形式 - 小写，其中 `_` 替换为 `-`。
  *
  */
 function normalizeLocale(locale: string): string {

@@ -16,7 +16,7 @@ import {assertNumber, assertNumberInRange} from '../../util/assert';
  *
  * See: `TStylingKeyPrimitive` and `TStylingStatic`
  *
- * 请参阅： `TStylingKeyPrimitive` 和 `TStylingStatic`
+ * 请参阅：`TStylingKeyPrimitive` 和 `TStylingStatic`
  *
  */
 export type TStylingKey = TStylingKeyPrimitive|TStylingStatic;
@@ -30,17 +30,17 @@ export type TStylingKey = TStylingKeyPrimitive|TStylingStatic;
  *
  * - `string`: Stores the property name. Used with `ɵɵstyleProp`/`ɵɵclassProp` instruction.
  *
- *   `string` ：存储属性名称。与 `ɵɵstyleProp` / `ɵɵclassProp` 指令一起使用。
+ *   `string`：存储属性名称。与 `ɵɵstyleProp` / `ɵɵclassProp` 指令一起使用。
  *
  * - `null`: Represents map, so there is no name. Used with `ɵɵstyleMap`/`ɵɵclassMap`.
  *
- *   `null` ：表示映射，因此没有名称。与 `ɵɵstyleMap` / `ɵɵclassMap` 使用。
+ *   `null`：表示映射，因此没有名称。与 `ɵɵstyleMap` / `ɵɵclassMap` 使用。
  *
  * - `false`: Represents an ignore case. This happens when `ɵɵstyleProp`/`ɵɵclassProp` instruction
  *     is combined with directive which shadows its input `@Input('class')`. That way the binding
  *     should not participate in the styling resolution.
  *
- *   `false` ：表示忽略大小写。当 `ɵɵstyleProp` / `ɵɵclassProp` 指令与隐藏其输入 `@Input('class')`
+ *   `false`：表示忽略大小写。当 `ɵɵstyleProp` / `ɵɵclassProp` 指令与隐藏其输入 `@Input('class')`
  *   指令结合使用时，会发生这种情况。这样，绑定不应该参与样式解析。
  *
  */
@@ -55,8 +55,8 @@ export type TStylingKeyPrimitive = string|null|false;
  * `TStylingKey` \(stored at location 1\). In other words this wraps the `TStylingKey` such that the
  * `""` contains the wrapped value.
  *
- * `TStylingStatic` 只是 `KeyValueArray` ，其中的键 `""`（存储在位置 0）包含 `TStylingKey`
- * （存储在位置 1）。换句话说，这会包装 `TStylingKey` ，以便 `""` 包含包装后的值。
+ * `TStylingStatic` 只是 `KeyValueArray`，其中的键 `""`（存储在位置 0）包含 `TStylingKey`
+ * （存储在位置 1）。换句话说，这会包装 `TStylingKey`，以便 `""` 包含包装后的值。
  *
  * When instructions are resolving styling they may need to look forward or backwards in the linked
  * list to resolve the value. For this reason we have to make sure that he linked list also contains
@@ -106,7 +106,7 @@ export type TStylingKeyPrimitive = string|null|false;
  * \(there is none\) and than into the static `TStylingStatic` too see if there is a default value for
  * `dynamic` \(there is not\). Therefore it is safe to remove it.
  *
- * 因此，当函数解析样式值时，它首先需要查看链表（没有），然后查看静态 `TStylingStatic` 是否有 `dynamic` 默认值（没有）。 因此将其移除是安全的。
+ * 因此，当函数解析样式值时，它首先需要查看链表（没有），然后查看静态 `TStylingStatic` 是否有 `dynamic` 默认值（没有）。因此将其移除是安全的。
  *
  * If setting `true` case:
  *
@@ -144,7 +144,7 @@ export interface TStylingStatic extends KeyValueArray<any> {}
  * order so that we can re-concatenate the styling value in the desired priority.
  *
  * 当我们遇到样式说明时，我们需要按正确的顺序存储 `TStylingKey`
- * ，以便我们可以按所需的优先级重新连接样式值。
+ *，以便我们可以按所需的优先级重新连接样式值。
  *
  * The insertion can happen either at the:
  *
@@ -190,11 +190,11 @@ export interface TStylingStatic extends KeyValueArray<any> {}
  * NODE: *duplicate* false 意味着静态已知此绑定不会与其他绑定冲突，因此无需检查其他绑定。例如，
  * `<div [style.color]="exp" [style.width]="exp">`
  * 中的绑定将永远不会冲突，并且它们的位会相应设置。上一个重复意味着我们可能需要检查当前绑定是否为
- * `null` 。下一个重复意味着如果当前绑定不为 `null` ，我们可能需要检查下一个绑定。
+ * `null`。下一个重复意味着如果当前绑定不为 `null`，我们可能需要检查下一个绑定。
  *
  * NOTE: `0` has special significance and represents `null` as in no additional pointer.
  *
- * 注意： `0` 具有特殊意义，并且表示 `null` ，因为没有额外的指针。
+ * 注意：`0` 具有特殊意义，并且表示 `null`，因为没有额外的指针。
  *
  */
 export interface TStylingRange {
@@ -227,9 +227,9 @@ export const enum StylingRange {
    * have previous duplicate set. The implication is that if `width` binding becomes `null`, it is
    * necessary to defer the value to `map.width`. \(Because `width` overwrites `map.width`.\)
    *
-   * 如果以前的绑定包含可能导致重复的绑定，则设置此位。例如： `<div [style]="map"
-   * [style.width]="width">` ，`width` 绑定将有以前的重复集。这意味着，如果 `width` 绑定变为 `null`
-   * ，则有必要将值延迟为 `map.width` 。（因为 `width` 会覆盖 `map.width` 。）
+   * 如果以前的绑定包含可能导致重复的绑定，则设置此位。例如：`<div [style]="map"
+   * [style.width]="width">`，`width` 绑定将有以前的重复集。这意味着，如果 `width` 绑定变为 `null`
+   *，则有必要将值延迟为 `map.width`。（因为 `width` 会覆盖 `map.width`。）
    *
    */
   PREV_DUPLICATE = 0x02,
@@ -240,9 +240,9 @@ export const enum StylingRange {
    * have next duplicate set. The implication is that if `map.width` binding becomes not `null`, it
    * is necessary to defer the value to `width`. \(Because `width` overwrites `map.width`.\)
    *
-   * 如果下一个绑定包含可能导致重复的绑定，则此位设置为。例如： `<div [style]="map"
-   * [style.width]="width">` ，`map` 绑定将有下一个重复集。这意味着，如果 `map.width` 绑定变得不为
-   * `null` ，则有必要将值延迟为 `width` 。（因为 `width` 会覆盖 `map.width` 。）
+   * 如果下一个绑定包含可能导致重复的绑定，则此位设置为。例如：`<div [style]="map"
+   * [style.width]="width">`，`map` 绑定将有下一个重复集。这意味着，如果 `map.width` 绑定变得不为
+   * `null`，则有必要将值延迟为 `width`。（因为 `width` 会覆盖 `map.width`。）
    *
    */
   NEXT_DUPLICATE = 0x01,

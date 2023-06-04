@@ -119,7 +119,7 @@ export class HttpClientModule {
  * Without this module, Jsonp requests reach the backend
  * with method JSONP, where they are rejected.
  *
- * 为支持 JSONP 的 `HttpClient` 配置[依赖注入器](guide/glossary#injector)。 如果没有该模块，Jsonp 请求就会被发送到后端，然后被后端拒绝。
+ * 为支持 JSONP 的 `HttpClient` 配置[依赖注入器](guide/glossary#injector)。如果没有该模块，Jsonp 请求就会被发送到后端，然后被后端拒绝。
  *
  * @publicApi
  */

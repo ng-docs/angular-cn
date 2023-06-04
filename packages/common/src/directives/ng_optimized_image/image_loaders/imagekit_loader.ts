@@ -40,7 +40,7 @@ function isImageKitUrl(url: string): boolean {
  * https://ik.imagekit.io/myaccount
  * https://subdomain.mysite.com
  *
- * ImageKit 图像的基本 URL 此 URL 应匹配以下格式之一： https://ik.imagekit.io/myaccount https://subdomain.mysite.com
+ * ImageKit 图像的基本 URL 此 URL 应匹配以下格式之一：https://ik.imagekit.io/myaccount https://subdomain.mysite.com
  *
  * @returns
  *

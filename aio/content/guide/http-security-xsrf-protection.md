@@ -10,7 +10,7 @@
 When performing HTTP requests, an interceptor reads a token from a cookie, by default `XSRF-TOKEN`, and sets it as an HTTP header, `X-XSRF-TOKEN`.
 Because only code that runs on your domain could read the cookie, the backend can be certain that the HTTP request came from your client application and not an attacker.
 
-`HttpClient` 支持用于防止 XSRF 攻击的[通用机制](https://en.wikipedia.org/wiki/Cross-site_request_forgery#Cookie-to-header_token)。 当执行 HTTP 请求时，拦截器从 cookie 中读取令牌，默认为 `XSRF-TOKEN` ，并将其设置为 HTTP 标头 `X-XSRF-TOKEN`。 因为只有在你的域上运行的代码才能读取 cookie，这样后端就可以确定 HTTP 请求来自你的客户端程序而不是攻击者。
+`HttpClient` 支持用于防止 XSRF 攻击的[通用机制](https://en.wikipedia.org/wiki/Cross-site_request_forgery#Cookie-to-header_token)。当执行 HTTP 请求时，拦截器从 cookie 中读取令牌，默认为 `XSRF-TOKEN`，并将其设置为 HTTP 标头 `X-XSRF-TOKEN`。因为只有在你的域上运行的代码才能读取 cookie，这样后端就可以确定 HTTP 请求来自你的客户端程序而不是攻击者。
 
 By default, an interceptor sends this header on all mutating requests \(such as POST\)
 to relative URLs, but not on GET/HEAD requests or on requests with an absolute URL.

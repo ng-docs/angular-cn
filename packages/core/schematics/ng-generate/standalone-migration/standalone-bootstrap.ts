@@ -178,7 +178,7 @@ function analyzeBootstrapCall(
 /**
  * Converts a `bootstrapModule` call to `bootstrapApplication`.
  *
- * 将 `bootstrapModule` 调用转换为 `bootstrapApplication` 。
+ * 将 `bootstrapModule` 调用转换为 `bootstrapApplication`。
  *
  * @param analysis Analysis result of the call.
  *
@@ -331,7 +331,7 @@ function replaceBootstrapCallExpression(
  * Processes the `imports` of an NgModule so that they can be used in the `bootstrapApplication`
  * call inside of a different file.
  *
- * 处理 NgModule 的 `imports` ，以便它们可以在不同文件内的 `bootstrapApplication` 调用中使用。
+ * 处理 NgModule 的 `imports`，以便它们可以在不同文件内的 `bootstrapApplication` 调用中使用。
  *
  * @param sourceFile File to which the imports will be moved.
  *
@@ -767,7 +767,7 @@ function referencesToNodeWithinSameFile(
  * as if they were specified in a different file. If no transformations have occurred, the original
  * node will be returned.
  *
- * 转换一个节点，以便它包含的任何具有相对文件路径的动态导入都被重新映射，就好像它们是在不同的文件中指定的一样。 如果没有发生任何转换，将返回原始节点。
+ * 转换一个节点，以便它包含的任何具有相对文件路径的动态导入都被重新映射，就好像它们是在不同的文件中指定的一样。如果没有发生任何转换，将返回原始节点。
  *
  * @param targetFileName File name to which to remap the imports.
  *
@@ -818,7 +818,7 @@ function isTopLevelStatement(node: ts.Node): node is ts.Node {
  * Asserts that a node is an identifier that might be referring to a symbol. This excludes
  * identifiers of named nodes like property assignments.
  *
- * 断言节点是可能引用符号的标识符。 这不包括命名节点的标识符，如属性分配。
+ * 断言节点是可能引用符号的标识符。这不包括命名节点的标识符，如属性分配。
  *
  * @param node Node to be checked.
  *
@@ -914,7 +914,7 @@ function isExportableDeclaration(node: ts.Node): node is ts.EnumDeclaration|ts.C
 /**
  * Gets the index after the last import in a file. Can be used to insert new code into the file.
  *
- * 获取文件中最后一次导入后的索引。 可用于将新代码插入文件。
+ * 获取文件中最后一次导入后的索引。可用于将新代码插入文件。
  *
  * @param sourceFile File in which to search for imports.
  *

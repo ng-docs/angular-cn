@@ -349,7 +349,7 @@ Rewrite the text to replace the jargon or offensive language with more inclusive
 Some words, such as *so* and *there is/are*, aren't necessary at the beginning of a sentence.
 Sentences that start with the words identified by this message can usually be made shorter, simpler, and clearer by rewriting them without those openings.
 
-某些单词，例如*so*和*there is/are* ，在句首不是必须的。以此消息标识的单词开头的句子通常可以通过在没有这些开头的情况下重写它们来变得更短、更简单和更清晰。
+某些单词，例如*so*和*there is/are*，在句首不是必须的。以此消息标识的单词开头的句子通常可以通过在没有这些开头的情况下重写它们来变得更短、更简单和更清晰。
 
 ### Cliches
 
@@ -451,7 +451,7 @@ When necessary, you can apply these exceptions to your content.
    The `Style.Rule` for this message is the text inside the parentheses: `Angular.Angular_Spelling` in this case.
    To turn off that style test, use the comments shown in this example.
 
-   此消息的 `Style.Rule` 是括号内的文本：在本例中为 `Angular.Angular_Spelling` 。要关闭该风格测试，请使用此示例中显示的注释。
+   此消息的 `Style.Rule` 是括号内的文本：在本例中为 `Angular.Angular_Spelling`。要关闭该风格测试，请使用此示例中显示的注释。
 
    <code-example format="html" language="html">
 

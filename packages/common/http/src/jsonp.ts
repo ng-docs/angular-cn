@@ -274,7 +274,7 @@ export class JsonpClientBackend implements HttpBackend {
 /**
  * Identifies requests with the method JSONP and shifts them to the `JsonpClientBackend`.
  *
- * 使用 JSONP 方法识别请求并将它们转移到 `JsonpClientBackend` 。
+ * 使用 JSONP 方法识别请求并将它们转移到 `JsonpClientBackend`。
  *
  */
 export function jsonpInterceptorFn(
@@ -291,7 +291,7 @@ export function jsonpInterceptorFn(
  * Identifies requests with the method JSONP and
  * shifts them to the `JsonpClientBackend`.
  *
- * 使用 JSONP 方法标识这些请求，并将其转移到 `JsonpClientBackend` 。
+ * 使用 JSONP 方法标识这些请求，并将其转移到 `JsonpClientBackend`。
  *
  * @see {@link HttpInterceptor}
  *

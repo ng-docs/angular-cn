@@ -73,7 +73,7 @@ export class ComponentCompilation {
   /**
    * Generate a new unique `ir.XrefId`.
    *
-   * 生成一个新的唯一 `ir.XrefId` 。
+   * 生成一个新的唯一 `ir.XrefId`。
    *
    */
   allocateXrefId(): ir.XrefId {
@@ -116,7 +116,7 @@ export class ViewCompilation {
    *
    * May be `null` if not yet determined.
    *
-   * 如果尚未确定，则可能为 `null` 。
+   * 如果尚未确定，则可能为 `null`。
    *
    */
   fnName: string|null = null;
@@ -154,7 +154,7 @@ export class ViewCompilation {
    * Number of declaration slots used within this view, or `null` if slots have not yet been
    * allocated.
    *
-   * 此视图中使用的声明插槽数，如果尚未分配插槽，则为 `null` 。
+   * 此视图中使用的声明插槽数，如果尚未分配插槽，则为 `null`。
    *
    */
   decls: number|null = null;
@@ -163,7 +163,7 @@ export class ViewCompilation {
    * Number of variable slots used within this view, or `null` if variables have not yet been
    * counted.
    *
-   * 此视图中使用的变量槽数，如果尚未计算变量，则为 `null` 。
+   * 此视图中使用的变量槽数，如果尚未计算变量，则为 `null`。
    *
    */
   vars: number|null = null;

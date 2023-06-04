@@ -20,7 +20,7 @@ export interface ExtendedTemplateChecker {
   /**
    * Run `TemplateCheck`s for a component and return the generated `ts.Diagnostic`s.
    *
-   * 为组件运行 `TemplateCheck` 并返回生成的 `ts.Diagnostic` 。
+   * 为组件运行 `TemplateCheck` 并返回生成的 `ts.Diagnostic`。
    *
    */
   getDiagnosticsForComponent(component: ts.ClassDeclaration): TemplateDiagnostic[];

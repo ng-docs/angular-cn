@@ -73,7 +73,7 @@ Adding `NgOptimizedImage` directive to your component or NgModule can help reduc
 
 The directive composition API makes it possible to add directives to host elements, addressing [feature request #8785](https://github.com/angular/angular/issues/8785). Directives let you add behaviors to your components behaviors without using inheritance.
 
-指令组合 API 可以将指令添加到宿主元素，以解决[特性请求 #8785](https://github.com/angular/angular/issues/8785) 。指令允许你在不使用继承的情况下将行为添加到组件行为中。
+指令组合 API 可以将指令添加到宿主元素，以解决[特性请求 #8785](https://github.com/angular/angular/issues/8785)。指令允许你在不使用继承的情况下将行为添加到组件行为中。
 
 #### Stack traces are more helpful
 
@@ -82,7 +82,7 @@ The directive composition API makes it possible to add directives to host elemen
 Angular v15 makes debugging Angular applications easier with cleaner stack traces.
 Angular worked with Google Chrome developers to present stack traces that show more of your application's code and less from the libraries it calls.
 
-Angular v15 使用更干净的堆栈跟踪，使调试 Angular 应用程序更轻松。 Angular 与 Google Chrome 开发人员合作提供了堆栈跟踪，这些堆栈跟踪显示了更多应用程序代码，而不是它调用的库中的。
+Angular v15 使用更干净的堆栈跟踪，使调试 Angular 应用程序更轻松。Angular 与 Google Chrome 开发人员合作提供了堆栈跟踪，这些堆栈跟踪显示了更多应用程序代码，而不是它调用的库中的。
 
 For more information about the Chrome DevTools and Angular's support for the cleaner stack traces, see [Modern web debugging in Chrome DevTools](https://developer.chrome.com/blog/devtools-modern-web-debugging/).
 
@@ -119,7 +119,7 @@ These are the aspects of Angular that behave differently in v15 and that might r
 
 #### Angular v15 supports node.js versions: 14.20.x, 16.13.x and 18.10.x
 
-#### Angular v15 支持 node.js 版本： 14.20.x、16.13.x 和 18.10.x
+#### Angular v15 支持 node.js 版本：14.20.x、16.13.x 和 18.10.x
 
 In v15, Angular no longer supports node.js versions 14.\[15-19\].x or 16.\[10-12\].x. [PR #47730](https://github.com/angular/angular/pull/47730)
 
@@ -143,11 +143,11 @@ In v15, Angular no longer supports TypeScript versions older than 4.8. [PR #4769
 
 In v15, `@keyframes` names are prefixed with the component's *scope name*. [PR #42608](https://github.com/angular/angular/pull/42608)
 
-在 v15 中， `@keyframes` 名称以组件的*范围名*为前缀。[PR #42608](https://github.com/angular/angular/pull/42608)
+在 v15 中，`@keyframes` 名称以组件的*范围名*为前缀。[PR #42608](https://github.com/angular/angular/pull/42608)
 
 For example, in a component definition whose *scope name* is `host-my-cmp`, a  `@keyframes` rule with a name in v14 of:
 
-例如，在*范围名称*为 `host-my-cmp` 的组件定义中， `@keyframes` 规则在 v14 中的名称为：
+例如，在*范围名称*为 `host-my-cmp` 的组件定义中，`@keyframes` 规则在 v14 中的名称为：
 
 <code-example language="ts" hideCopy>
 
@@ -175,11 +175,11 @@ To accommodate this breaking change, you can:
 
 * Change the component's view encapsulation to `None` or `ShadowDom`.
 
-  将组件的视图封装更改为 `None` 或 `ShadowDom` 。
+  将组件的视图封装更改为 `None` 或 `ShadowDom`。
 
 * Define `@keyframes` rules in global stylesheets, such as `styles.css`.
 
-  在全局样式表中定义 `@keyframes` 规则，例如 `styles.css` 。
+  在全局样式表中定义 `@keyframes` 规则，例如 `styles.css`。
 
 * Define `@keyframes` rules in your own code.
 
@@ -232,7 +232,7 @@ New errors reported because of this change can be resolved by either:
 
 In v15, `setDisabledState` is always called when a `ControlValueAccessor` is attached. [PR #47576](https://github.com/angular/angular/pull/47576)
 
-在 v15 中，附加 `ControlValueAccessor` 时总是会调用 `setDisabledState` 。[PR #47576](https://github.com/angular/angular/pull/47576)
+在 v15 中，附加 `ControlValueAccessor` 时总是会调用 `setDisabledState`。[PR #47576](https://github.com/angular/angular/pull/47576)
 
 You can opt out of this behavior with `FormsModule.withConfig` or `ReactiveFormsModule.withConfig`.
 
@@ -260,7 +260,7 @@ In v15, use `analyze` should instead and the `hint` parameter in the parse metho
 
 In v15, the `title` property is required on [`ActivatedRouteSnapshot`](api/router/ActivatedRouteSnapshot). [PR #47481](https://github.com/angular/angular/pull/47481)
 
-在 v15 中， [`ActivatedRouteSnapshot`](api/router/ActivatedRouteSnapshot)上的 `title` 属性是必需的。[PR #47481](https://github.com/angular/angular/pull/47481)
+在 v15 中，[`ActivatedRouteSnapshot`](api/router/ActivatedRouteSnapshot)上的 `title` 属性是必需的。[PR #47481](https://github.com/angular/angular/pull/47481)
 
 <a id="v15-bc-09"></a>
 
@@ -270,14 +270,14 @@ In v15, the `title` property is required on [`ActivatedRouteSnapshot`](api/route
 
 Before v15, during navigation, `RouterOutlet` instantiated the component being activated immediately. [PR #46554](https://github.com/angular/angular/pull/46554)
 
-在 v15 之前，在导航期间， `RouterOutlet` 会立即实例化被激活的组件。[PR #46554](https://github.com/angular/angular/pull/46554)
+在 v15 之前，在导航期间，`RouterOutlet` 会立即实例化被激活的组件。[PR #46554](https://github.com/angular/angular/pull/46554)
 
 In v15, the component is not instantiated until after change detection runs.
 This change could affect tests that do not trigger change detection after a router navigation.
 This can also affect production code that relies on the exact timing of component availability,
 for example, if your component's constructor calls `router.getCurrentNavigation()`.
 
-在 v15 中，组件直到变更检测运行后才被实例化。 此更改可能会影响在路由器导航后不触发变更检测的测试。 这也会影响依赖于组件可用性确切时间的生产代码，例如，如果组件的构造函数中调用了 `router.getCurrentNavigation()`。
+在 v15 中，组件直到变更检测运行后才被实例化。此更改可能会影响在路由器导航后不触发变更检测的测试。这也会影响依赖于组件可用性确切时间的生产代码，例如，如果组件的构造函数中调用了 `router.getCurrentNavigation()`。
 
 <a id="v15-bc-10"></a>
 
@@ -287,7 +287,7 @@ for example, if your component's constructor calls `router.getCurrentNavigation(
 
 In v15, `relativeLinkResolution` is not configurable in the Router. [PR #47623](https://github.com/angular/angular/pull/47623)
 
-在 v15 中， `relativeLinkResolution` 在路由器中是不可配置的。[PR #47623](https://github.com/angular/angular/pull/47623)
+在 v15 中，`relativeLinkResolution` 在路由器中是不可配置的。[PR #47623](https://github.com/angular/angular/pull/47623)
 
 In previous versions, this option was used to opt out of a bug fix.
 
@@ -312,7 +312,7 @@ Angular 编译器选项 `enableIvy` 已删除，因为现在 Ivy 是 Angular 的
 In Angular Material v15, many components have been refactored to be based on the official Material Design Components for Web \(MDC\).
 For information about breaking changes in Material components v15, see [Migrating to MDC-based Angular Material Components](https://material.angular.io/guide/mdc-migration).
 
-在 Angular Material v15 中，许多组件已被重构为基于官方的 Web Material Design 组件 （MDC） 。有关 Material 组件 v15 中的重大更改的信息，请参阅[迁移到基于 MDC 的 Angular Material 组件](https://material.angular.io/guide/mdc-migration)。
+在 Angular Material v15 中，许多组件已被重构为基于官方的 Web Material Design 组件 （MDC）。有关 Material 组件 v15 中的重大更改的信息，请参阅[迁移到基于 MDC 的 Angular Material 组件](https://material.angular.io/guide/mdc-migration)。
 
 <a id="v15-bc-11"></a>
 
@@ -350,11 +350,11 @@ To maintain the reliability of your Angular application, review these notes and 
 | <a id="v15-dp-02"></a>[`Injector.get()`](api/core/Injector#get) with the `InjectFlags` parameter                                                                                                                                                 | [`Injector.get()`](api/core/Injector#get) with the `InjectOptions` object              | [PR #41592](https://github.com/angular/angular/pull/41592)                                                                                                                                                                                                                                                                                                                               |
 | <a id="v15-dp-02"></a>带有 `InjectFlags` 参数的 [`Injector.get()`](api/core/Injector#get)                                                                                                                                                        | [`Injector.get()`](api/core/Injector#get) 与 `InjectOptions` 对象                      | [PR #41592](https://github.com/angular/angular/pull/41592)                                                                                                                                                                                                                                                                                                                               |
 | <a id="v15-dp-03"></a>[`TestBed.inject()`](api/core/testing/TestBed#inject) with the `InjectFlags` parameter                                                                                                                                     | [`TestBed.inject()`](api/core/testing/TestBed#inject) with the `InjectOptions` object. | [PR #46761](https://github.com/angular/angular/pull/46761)                                                                                                                                                                                                                                                                                                                               |
-| <a id="v15-dp-03"></a>[`TestBed.inject()`](api/core/testing/TestBed#inject) 与 `InjectFlags` 参数                                                                                                                                                | [`TestBed.inject()`](api/core/testing/TestBed#inject) 与 `InjectOptions` 对象。        | [PR #46761](https://github.com/angular/angular/pull/46761)                                                                                                                                                                                                                                                                                                                               |
+| <a id="v15-dp-03"></a>[`TestBed.inject()`](api/core/testing/TestBed#inject) 与 `InjectFlags` 参数                                                                                                                                                | [`TestBed.inject()`](api/core/testing/TestBed#inject) 与 `InjectOptions` 对象。| [PR #46761](https://github.com/angular/angular/pull/46761)                                                                                                                                                                                                                                                                                                                               |
 | <a id="v15-dp-04"></a>`providedIn: NgModule` for [`@Injectable`](api/core/Injectable) and [`InjectionToken`](api/core/InjectionToken)<br><a id="v15-dp-05"></a>`providedIn: 'any'` for an `@Injectable` or `InjectionToken`                      | See Details                                                                            | `providedIn: NgModule` was intended to be a tree-shakable alternative to `NgModule` providers. It does not have wide usage and is often used incorrectly in cases where `providedIn: 'root'` would be preferred. If providers must be scoped to a specific [`NgModule`](api/core/NgModule), use `NgModule.providers` instead. [PR #47616](https://github.com/angular/angular/pull/47616) |
-| <a id="v15-dp-04"></a>`providedIn: NgModule` 用于 [`@Injectable`](api/core/Injectable) 和 [`InjectionToken`](api/core/InjectionToken) 的 NgModule<br><a id="v15-dp-05"></a>providerIn `providedIn: 'any'` 对于 `@Injectable` 或 `InjectionToken` | 查看详细信息                                                                           | `providedIn: NgModule` 旨在成为 `NgModule` 提供者的可树形抖动替代方案。它没有广泛的用途，并且在首选 `providedIn: 'root'` 的情况下经常被错误地使用。如果提供者必须限定为特定的[`NgModule`](api/core/NgModule) ，请改用 `NgModule.providers` 。[PR #47616](https://github.com/angular/angular/pull/47616)                                                                                  |
+| <a id="v15-dp-04"></a>`providedIn: NgModule` 用于 [`@Injectable`](api/core/Injectable) 和 [`InjectionToken`](api/core/InjectionToken) 的 NgModule<br><a id="v15-dp-05"></a>providerIn `providedIn: 'any'` 对于 `@Injectable` 或 `InjectionToken` | 查看详细信息                                                                           | `providedIn: NgModule` 旨在成为 `NgModule` 提供者的可树形抖动替代方案。它没有广泛的用途，并且在首选 `providedIn: 'root'` 的情况下经常被错误地使用。如果提供者必须限定为特定的[`NgModule`](api/core/NgModule)，请改用 `NgModule.providers`。[PR #47616](https://github.com/angular/angular/pull/47616)                                                                                  |
 | <a id="v15-dp-06"></a>[`RouterLinkWithHref`](api/router/RouterLinkWithHref) directive                                                                                                                                                            | [`RouterLink`](api/router/RouterLink) directive                                        | The `RouterLink` directive contains the code from the `RouterLinkWithHref` directive to handle elements with `href` attributes. [PR #47630](https://github.com/angular/angular/pull/47630), [PR #47599](https://github.com/angular/angular/pull/47599)                                                                                                                                   |
-| <a id="v15-dp-06"></a>[`RouterLinkWithHref`](api/router/RouterLinkWithHref) 指令                                                                                                                                                                 | [`RouterLink`](api/router/RouterLink) 指令                                             | `RouterLink` 指令包含 `RouterLinkWithHref` 指令中的代码，用于处理具有 `href` 属性的元素。[PR #47630](https://github.com/angular/angular/pull/47630) ，[PR #47599](https://github.com/angular/angular/pull/47599)                                                                                                                                                                         |
+| <a id="v15-dp-06"></a>[`RouterLinkWithHref`](api/router/RouterLinkWithHref) 指令                                                                                                                                                                 | [`RouterLink`](api/router/RouterLink) 指令                                             | `RouterLink` 指令包含 `RouterLinkWithHref` 指令中的代码，用于处理具有 `href` 属性的元素。[PR #47630](https://github.com/angular/angular/pull/47630)，[PR #47599](https://github.com/angular/angular/pull/47599)                                                                                                                                                                         |
 
 For information about deprecations in Material components v15, see [Migrating to MDC-based Angular Material Components](https://material.angular.io/guide/mdc-migration).
 

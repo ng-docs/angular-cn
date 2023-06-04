@@ -36,7 +36,7 @@ export function toNumbers(value: string): number[] {
  * However - unlike lexicographical order - for arrays of different length we consider:
  * `[1, 2, 3] = [1, 2, 3, 0]` instead of `[1, 2, 3] &lt; [1, 2, 3, 0]`
  *
- * 但是 - 与字典顺序不同 - 对于不同长度的数组，我们考虑： `[1, 2, 3] = [1, 2, 3, 0]` 而不是 `[1, 2, 3] &lt; [1, 2, 3, 0]`
+ * 但是 - 与字典顺序不同 - 对于不同长度的数组，我们考虑：`[1, 2, 3] = [1, 2, 3, 0]` 而不是 `[1, 2, 3] &lt; [1, 2, 3, 0]`
  *
  * @param a The 'left hand' array in the comparison test
  *
@@ -49,7 +49,7 @@ export function toNumbers(value: string): number[] {
  * {-1|0|1} The comparison result: 1 if a is greater, -1 if b is greater, 0 is the two
  * arrays are equals
  *
- * 比较结果：如果 a 更大，则为 1 ，如果 b 更大，则为 -1 ，0 是两个数组相等
+ * 比较结果：如果 a 更大，则为 1，如果 b 更大，则为 -1，0 是两个数组相等
  */
 export function compareNumbers(a: number[], b: number[]): -1|0|1 {
   const max = Math.max(a.length, b.length);
@@ -132,7 +132,7 @@ export function isVersionBetween(version: string, low: string, high?: string): b
  * {-1|0|1} The comparison result: 1 if v1 is greater, -1 if v2 is greater, 0 is the two
  * versions are equals
  *
- * 比较结果：如果 v1 更大，则为 1 ，如果 v2 更大，则为 -1 ，0 是两个版本相等
+ * 比较结果：如果 v1 更大，则为 1，如果 v2 更大，则为 -1，0 是两个版本相等
  *
  */
 export function compareVersions(v1: string, v2: string): -1|0|1 {

@@ -61,7 +61,7 @@ export interface ElementOrContainerOpBase extends Op<CreateOp>, ConsumesSlotOpTr
   /**
    * `XrefId` allocated for this element.
    *
-   * 为该元素分配的 `XrefId` 。
+   * 为该元素分配的 `XrefId`。
    *
    * This ID is used to reference this element from other IR structures.
    *
@@ -131,7 +131,7 @@ export interface ElementStartOp extends ElementOpBase {
 /**
  * Create an `ElementStartOp`.
  *
- * 创建一个 `ElementStartOp` 。
+ * 创建一个 `ElementStartOp`。
  *
  */
 export function createElementStartOp(tag: string, xref: XrefId): ElementStartOp {
@@ -169,7 +169,7 @@ export interface TemplateOp extends ElementOpBase {
    * The number of declaration slots used by this template, or `null` if slots have not yet been
    * assigned.
    *
-   * 此模板使用的声明槽数，如果尚未分配槽，则为 `null` 。
+   * 此模板使用的声明槽数，如果尚未分配槽，则为 `null`。
    *
    */
   decls: number|null;
@@ -178,7 +178,7 @@ export interface TemplateOp extends ElementOpBase {
    * The number of binding variable slots used by this template, or `null` if binding variables have
    * not yet been counted.
    *
-   * 此模板使用的绑定变量槽的数量，如果尚未计算绑定变量，则为 `null` 。
+   * 此模板使用的绑定变量槽的数量，如果尚未计算绑定变量，则为 `null`。
    *
    */
   vars: number|null;
@@ -187,7 +187,7 @@ export interface TemplateOp extends ElementOpBase {
 /**
  * Create a `TemplateOp`.
  *
- * 创建一个 `TemplateOp` 。
+ * 创建一个 `TemplateOp`。
  *
  */
 export function createTemplateOp(xref: XrefId, tag: string): TemplateOp {
@@ -220,7 +220,7 @@ export interface ElementEndOp extends Op<CreateOp> {
   /**
    * The `XrefId` of the element declared via `ElementStart`.
    *
-   * 通过 `ElementStart` 声明的元素的 `XrefId` 。
+   * 通过 `ElementStart` 声明的元素的 `XrefId`。
    *
    */
   xref: XrefId;
@@ -229,7 +229,7 @@ export interface ElementEndOp extends Op<CreateOp> {
 /**
  * Create an `ElementEndOp`.
  *
- * 创建一个 `ElementEndOp` 。
+ * 创建一个 `ElementEndOp`。
  *
  */
 export function createElementEndOp(xref: XrefId): ElementEndOp {
@@ -276,7 +276,7 @@ export interface ContainerEndOp extends Op<CreateOp> {
   /**
    * The `XrefId` of the element declared via `ContainerStart`.
    *
-   * 通过 `ContainerStart` 声明的元素的 `XrefId` 。
+   * 通过 `ContainerStart` 声明的元素的 `XrefId`。
    *
    */
   xref: XrefId;
@@ -311,7 +311,7 @@ export interface TextOp extends Op<CreateOp>, ConsumesSlotOpTrait {
 /**
  * Create a `TextOp`.
  *
- * 创建一个 `TextOp` 。
+ * 创建一个 `TextOp`。
  *
  */
 export function createTextOp(xref: XrefId, initialValue: string): TextOp {
@@ -369,7 +369,7 @@ export interface ListenerOp extends Op<CreateOp>, UsesSlotIndexTrait {
 /**
  * Create a `ListenerOp`.
  *
- * 创建一个 `ListenerOp` 。
+ * 创建一个 `ListenerOp`。
  *
  */
 export function createListenerOp(target: XrefId, name: string, tag: string): ListenerOp {

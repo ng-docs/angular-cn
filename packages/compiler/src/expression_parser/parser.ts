@@ -158,7 +158,7 @@ export class Parser {
    *
    * @param templateKey name of directive, without the \* prefix. For example: ngIf, ngFor
    *
-   * 指令的名称，不带 \* 前缀。例如： ngIf、ngFor
+   * 指令的名称，不带 \* 前缀。例如：ngIf、ngFor
    * @param templateValue RHS of the microsyntax attribute
    *
    * 微语法属性的 RHS
@@ -215,7 +215,7 @@ export class Parser {
    * element that would normally appear within the interpolation prefix and suffix \(`{{` and `}}`\).
    * This is used for parsing the switch expression in ICUs.
    *
-   * 类似于 `parseInterpolation` ，但将提供的字符串视为通常出现在插值前缀和后缀（`{{` 和 `}}`
+   * 类似于 `parseInterpolation`，但将提供的字符串视为通常出现在插值前缀和后缀（`{{` 和 `}}`
    * ）中的单个表达式元素。这用于解析 ICU 中的 switch 表达式。
    *
    */
@@ -246,8 +246,8 @@ export class Parser {
    * `SplitInterpolation` with splits that look like
    *   <raw text> <expression> <raw text> ... <raw text> <expression> <raw text>
    *
-   * 将文本字符串拆分为“原始”文本段和字符串中的插值表达式。如果没有插值，则返回 `null` ，否则返回
-   * `SplitInterpolation` ，其拆分看起来像<raw text><expression><raw text>...<raw
+   * 将文本字符串拆分为“原始”文本段和字符串中的插值表达式。如果没有插值，则返回 `null`，否则返回
+   * `SplitInterpolation`，其拆分看起来像<raw text><expression><raw text>...<raw
    * text><expression><raw text>
    *
    */
@@ -444,7 +444,7 @@ enum ParseContextFlags {
    *        ^ possible "=" after
    *
    * 可写上下文是可以将值写入左值的上下文。例如，在我们看到属性访问之后，我们可能会期望通过“="
-   * 运算符对属性进行写入。 prop ^ 可能的 "=" 之后
+   * 运算符对属性进行写入。prop ^ 可能的 "=" 之后
    *
    */
   Writable = 1,
@@ -615,7 +615,7 @@ export class _ParseAST {
    *
    * See `this.error` and `this.skip` for more details.
    *
-   * 有关更多详细信息，请参阅 `this.error` 和 `this.skip` 。
+   * 有关更多详细信息，请参阅 `this.error` 和 `this.skip`。
    *
    */
   expectCharacter(code: number) {
@@ -1204,7 +1204,7 @@ export class _ParseAST {
    * @param templateKey name of the microsyntax directive, like ngIf, ngFor,
    * without the \*, along with its absolute span.
    *
-   * 微语法指令的名称，例如 ngIf、ngFor ，不带 \* ，以及其绝对跨度。
+   * 微语法指令的名称，例如 ngIf、ngFor，不带 \*，以及其绝对跨度。
    */
   parseTemplateBindings(templateKey: TemplateBindingIdentifier): TemplateBindingParseResult {
     const bindings: TemplateBinding[] = [];
@@ -1276,7 +1276,7 @@ export class _ParseAST {
    * There could be an optional "as" binding that follows the expression.
    * For example,
    *
-   * 解析指令关键字，后跟强制性表达式。例如，“条目的”、“trackBy: func”。绑定是： ngForOf ->
+   * 解析指令关键字，后跟强制性表达式。例如，“条目的”、“trackBy: func”。绑定是：ngForOf ->
    * items、ngForTrackBy -> func 表达式后面可以有一个可选的“as”绑定。例如，
    *
    * ```
@@ -1379,8 +1379,8 @@ export class _ParseAST {
    * In the first binding, `item` is bound to `NgForOfContext.$implicit`.
    * In the second binding, `i` is bound to `NgForOfContext.index`.
    *
-   * 在第一个绑定中，`item` 绑定到 `NgForOfContext.$implicit` 。在第二个绑定中，`i` 绑定到
-   * `NgForOfContext.index` 。
+   * 在第一个绑定中，`item` 绑定到 `NgForOfContext.$implicit`。在第二个绑定中，`i` 绑定到
+   * `NgForOfContext.index`。
    *
    */
   private parseLetBinding(): TemplateBinding|null {
@@ -1413,7 +1413,7 @@ export class _ParseAST {
    * Records an error and skips over the token stream until reaching a recoverable point. See
    * `this.skip` for more details on token skipping.
    *
-   * 记录错误并跳过标记流，直到达到可恢复点。有关标记跳过的更多详细信息，请参阅 `this.skip` 。
+   * 记录错误并跳过标记流，直到达到可恢复点。有关标记跳过的更多详细信息，请参阅 `this.skip`。
    *
    */
   error(message: string, index: number|null = null) {

@@ -36,12 +36,12 @@ export interface TypeCheckContext {
    *
    * @param ref a `Reference` to the component class which yielded this template.
    *
-   * a 对产生此模板的组件类的 `Reference` 。
+   * a 对产生此模板的组件类的 `Reference`。
    *
    * @param binder an `R3TargetBinder` which encapsulates the scope of this template, including all
    * available directives.
    *
-   * 一个 `R3TargetBinder` ，它封装了此模板的范围，包括所有可用的指令。
+   * 一个 `R3TargetBinder`，它封装了此模板的范围，包括所有可用的指令。
    *
    * @param template the original template AST of this component.
    *
@@ -62,11 +62,11 @@ export interface TypeCheckContext {
    *
    * @param file the `ParseSourceFile` associated with the template.
    *
-   * 与模板关联的 `ParseSourceFile` 。
+   * 与模板关联的 `ParseSourceFile`。
    *
    * @param parseErrors the `ParseError`'s associated with the template.
    *
-   * 与模板关联的 `ParseError` 。
+   * 与模板关联的 `ParseError`。
    *
    * @param isStandalone a boolean indicating whether the component is standalone.
    *

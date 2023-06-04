@@ -4,7 +4,7 @@
 
 Dependency injection, or DI, is one of the fundamental concepts in Angular. DI is wired into the Angular framework and allows classes with Angular decorators, such as Components, Directives, Pipes, and Injectables, to configure dependencies that they need. 
 
-依赖注入（DI）是 Angular 中的基本概念之一。 DI 被装配进 Angular 框架，并允许带有 Angular 装饰器的类（例如组件、指令、管道和可注入对象）配置它们所需的依赖项。
+依赖注入（DI）是 Angular 中的基本概念之一。DI 被装配进 Angular 框架，并允许带有 Angular 装饰器的类（例如组件、指令、管道和可注入对象）配置它们所需的依赖项。
 
 Two main roles exist in the DI system: dependency consumer and dependency provider. 
 
@@ -59,7 +59,7 @@ When you register a provider at the component level, you get a new instance of t
 * At the NgModule level, using the `providers` field of the `@NgModule` decorator. In this scenario, the `HeroService` is available to all components, directives, and pipes declared in this NgModule or other NgModule which is within the same ModuleInjector applicable for this NgModule. When you register a provider with a specific NgModule, the same instance of a service is available to all applicable components, directives and pipes.
   To understand all edge-cases, see [Hierarchical injectors](guide/hierarchical-dependency-injection). For example:
 
-  在 NgModule 级别，要使用 `@NgModule` 装饰器的 `providers` 字段。在这种情况下， `HeroService` 可用于此 NgModule 或与本模块位于同一个 ModuleInjector 的其它模块中声明的所有组件、指令和管道。当你向特定的 NgModule 注册提供者时，同一个服务实例可用于该 NgModule 中的所有组件、指令和管道。要理解所有边缘情况，参见[多级注入器](guide/hierarchical-dependency-injection)。例如：
+  在 NgModule 级别，要使用 `@NgModule` 装饰器的 `providers` 字段。在这种情况下，`HeroService` 可用于此 NgModule 或与本模块位于同一个 ModuleInjector 的其它模块中声明的所有组件、指令和管道。当你向特定的 NgModule 注册提供者时，同一个服务实例可用于该 NgModule 中的所有组件、指令和管道。要理解所有边缘情况，参见[多级注入器](guide/hierarchical-dependency-injection)。例如：
 
 <code-example language="typescript">
 @NgModule({
@@ -90,7 +90,7 @@ When you provide the service at the root level, Angular creates a single, shared
 
 The most common way to inject a dependency is to declare it in a class constructor. When Angular creates a new instance of a component, directive, or pipe class, it determines which services or other dependencies that class needs by looking at the constructor parameter types. For example, if the `HeroListComponent` needs the `HeroService`, the constructor can look like this:
 
-注入依赖项的最常见方法是在类的构造函数中声明它。当 Angular 创建组件、指令或管道类的新实例时，它会通过查看构造函数的参数类型来确定该类需要哪些服务或其他依赖项。例如，如果 `HeroListComponent` 要用 `HeroService` ，则构造函数可以如下所示：
+注入依赖项的最常见方法是在类的构造函数中声明它。当 Angular 创建组件、指令或管道类的新实例时，它会通过查看构造函数的参数类型来确定该类需要哪些服务或其他依赖项。例如，如果 `HeroListComponent` 要用 `HeroService`，则构造函数可以如下所示：
 
 <code-example language="typescript">
 @Component({ … })

@@ -581,9 +581,9 @@ The method takes a resource URL and two additional parameters:
 | :-------- | :---------------------------------------------------------------------------------------------------- |
 | 参数      | 详情                                                                                                  |
 | body      | The data to POST in the body of the request.                                                          |
-| body      | 要在请求正文中 POST 的数据。                                                                          |
+| body      | 要在请求正文中 POST 的数据。|
 | options   | An object containing method options which, in this case, [specify required headers](#adding-headers). |
-| options   | 一个包含方法选项的对象，在这里，它用来[指定必要的请求头](#adding-headers)。                           |
+| options   | 一个包含方法选项的对象，在这里，它用来[指定必要的请求头](#adding-headers)。|
 
 The example catches errors as [described above](#error-details).
 
@@ -836,7 +836,7 @@ After importing the `HTTP_INTERCEPTORS` injection token from `@angular/common/ht
 Notice the `multi: true` option.
 This required setting tells Angular that `HTTP_INTERCEPTORS` is a token for a *multiprovider* that injects an array of values, rather than a single value.
 
-注意 `multi: true` 选项。 这个必须的选项会告诉 Angular `HTTP_INTERCEPTORS` 是一个*多重提供者*的令牌，表示它会注入一个多值的数组，而不是单一的值。
+注意 `multi: true` 选项。这个必须的选项会告诉 Angular `HTTP_INTERCEPTORS` 是一个*多重提供者*的令牌，表示它会注入一个多值的数组，而不是单一的值。
 
 You *could* add this provider directly to the providers array of the `AppModule`.
 However, it's rather verbose and there's a good chance that you'll create more interceptors and provide them in the same way.
@@ -930,7 +930,7 @@ Immutability ensures that interceptors see the same request for each try.
 虽然拦截器有能力改变请求和响应，但 `HttpRequest` 和 `HttpResponse` 实例的属性却是只读（`readonly`）的，
 因此让它们基本上是不可变的。
 
-有充足的理由把它们做成不可变对象：应用可能会重试发送很多次请求之后才能成功，这就意味着这个拦截器链表可能会多次重复处理同一个请求。 如果拦截器可以修改原始的请求对象，那么重试阶段的操作就会从修改过的请求开始，而不是原始请求。 而这种不可变性，可以确保这些拦截器在每次重试时看到的都是同样的原始请求。
+有充足的理由把它们做成不可变对象：应用可能会重试发送很多次请求之后才能成功，这就意味着这个拦截器链表可能会多次重复处理同一个请求。如果拦截器可以修改原始的请求对象，那么重试阶段的操作就会从修改过的请求开始，而不是原始请求。而这种不可变性，可以确保这些拦截器在每次重试时看到的都是同样的原始请求。
 
 <div class="alert is-helpful">
 
@@ -1339,11 +1339,11 @@ Rather than forward every `searchText` value directly to the injected `PackageSe
 | :----------------------- | :------------------------------------------------------------------ |
 | RxJS 操作符              | 详情                                                                |
 | `debounceTime(500)`⁠     | Wait for the user to stop typing, which is 1/2 second in this case. |
-| `debounceTime(500)`⁠     | 等待用户停止输入，本例中为 1/2 秒。                                 |
+| `debounceTime(500)`⁠     | 等待用户停止输入，本例中为 1/2 秒。|
 | `distinctUntilChanged()` | Wait until the search text changes.                                 |
-| `distinctUntilChanged()` | 等待搜索文本发生变化。                                              |
+| `distinctUntilChanged()` | 等待搜索文本发生变化。|
 | `switchMap()`⁠           | Send the search request to the service.                             |
-| `switchMap()`⁠           | 将搜索请求发送到服务。                                              |
+| `switchMap()`⁠           | 将搜索请求发送到服务。|
 
 The code sets `packages$` to this re-composed `Observable` of search results.
 The template subscribes to `packages$` with the [AsyncPipe](api/common/AsyncPipe) and displays search results as they arrive.

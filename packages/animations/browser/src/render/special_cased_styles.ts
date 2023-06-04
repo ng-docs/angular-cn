@@ -56,7 +56,7 @@ export function packageNonAnimatableStyles(
  * `endStyles` will be applied as well any any starting styles. Finally when
  * `destroy()` is called then all styles will be removed.
  *
- * 当启动时（运行 `start()` 方法时），将应用提供的 `startStyles` 。完成后（调用 final `finish()`
+ * 当启动时（运行 `start()` 方法时），将应用提供的 `startStyles`。完成后（调用 final `finish()`
  * 方法时），`endStyles` 以及任何任何起始样式都将被应用。最后，当调用 `destroy()`
  * 时，所有样式都将被删除。
  *

@@ -247,7 +247,7 @@ export enum ErrorCode {
    * Raised when a `ModuleWithProviders` with a missing
    * generic type argument is passed into an `NgModule`.
    *
-   * 在将缺少泛型类型参数的 ModuleWithProviders 传递给 `ModuleWithProviders` `NgModule` 。
+   * 在将缺少泛型类型参数的 ModuleWithProviders 传递给 `ModuleWithProviders` `NgModule`。
    *
    */
   NGMODULE_MODULE_WITH_PROVIDERS_MISSING_GENERIC = 6005,
@@ -420,7 +420,7 @@ export enum ErrorCode {
    * A known control flow directive \(e.g. `*ngIf`\) is used in a template,
    * but the `CommonModule` is not imported.
    *
-   * 模板中使用了已知的控制流指令（例如 `*ngIf` ），但未导入 `CommonModule` 。
+   * 模板中使用了已知的控制流指令（例如 `*ngIf` ），但未导入 `CommonModule`。
    *
    */
   MISSING_CONTROL_FLOW_DIRECTIVE = 8103,
@@ -454,7 +454,7 @@ export enum ErrorCode {
    * NgForOf is used in a template, but the user forgot to include let
    * in their statement.
    *
-   * NgForOf 在模板中使用，但用户忘记在他们的声明中包含 let 。
+   * NgForOf 在模板中使用，但用户忘记在他们的声明中包含 let。
    *
    * For example:
    *
@@ -474,13 +474,13 @@ export enum ErrorCode {
    * Style bindings support suffixes like `style.width.px`, `.em`, and `.%`.
    * These suffixes are _not_ supported for attribute bindings.
    *
-   * 样式绑定支持后缀，如 `style.width.px` 、 `.em` 和 `.%` 。 属性绑定 _ 不 _ 支持这些后缀。
+   * 样式绑定支持后缀，如 `style.width.px` 、 `.em` 和 `.%`。属性绑定 _ 不 _ 支持这些后缀。
    *
    * For example `[attr.width.px]="5"` becomes `width.px="5"` when bound.
    * This is almost certainly unintentional and this error is meant to
    * surface this mistake to the developer.
    *
-   * 例如 `[attr.width.px]="5"` 在绑定时变为 `width.px="5"` 。 这几乎可以肯定是无意的，这个错误是为了向开发人员展示这个错误。
+   * 例如 `[attr.width.px]="5"` 在绑定时变为 `width.px="5"`。这几乎可以肯定是无意的，这个错误是为了向开发人员展示这个错误。
    *
    */
   SUFFIX_NOT_SUPPORTED = 8106,

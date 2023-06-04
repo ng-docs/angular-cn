@@ -194,11 +194,11 @@ There are three supported input types.
 | :----------- | :------------------------------------------------- |
 | 输入类型     | 详情                                               |
 | confirmation | A yes or no question; ideal for Boolean options.   |
-| 确认         | 是或否的问题；布尔选项的理想选择。                 |
+| 确认         | 是或否的问题；布尔选项的理想选择。|
 | input        | Textual input; ideal for string or number options. |
-| 输入         | 文字输入；字符串或数字选项的理想选择。             |
+| 输入         | 文字输入；字符串或数字选项的理想选择。|
 | list         | A predefined set of allowed values.                |
-| 清单         | 预定义的一组允许值。                               |
+| 清单         | 预定义的一组允许值。|
 
 In the short form, the type is inferred from the property's type and constraints.
 
@@ -533,13 +533,13 @@ Each named schematic in the collection has the following main parts.
 | :------------ | :---------------------------------------------------------------- |
 | 部分          | 详情                                                              |
 | `index.ts`    | Code that defines the transformation logic for a named schematic. |
-| `index.ts`    | 定义命名原理图中转换逻辑的代码。                                  |
+| `index.ts`    | 定义命名原理图中转换逻辑的代码。|
 | `schema.json` | Schematic variable definition.                                    |
-| `schema.json` | 原理图变量定义。                                                  |
+| `schema.json` | 原理图变量定义。|
 | `schema.d.ts` | Schematic variables.                                              |
-| `schema.d.ts` | 原理图变量。                                                      |
+| `schema.d.ts` | 原理图变量。|
 | `files/`      | Optional component/template files to replicate.                   |
-| `files/`      | 要复制的可选组件/模板文件。                                       |
+| `files/`      | 要复制的可选组件/模板文件。|
 
 It is possible for a schematic to provide all of its logic in the `index.ts` file, without additional templates.
 You can create dynamic schematics for Angular, however, by providing components and templates in the `files` folder, like those in standalone Angular projects.

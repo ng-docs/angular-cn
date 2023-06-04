@@ -98,7 +98,7 @@ export type CtorDependency = {
   /**
    * If `@Optional()` is used, this key is set to true.
    *
-   * 如果使用 `@Optional()` ，则此键设置为 true。
+   * 如果使用 `@Optional()`，则此键设置为 true。
    *
    */
   optional?: true;
@@ -106,7 +106,7 @@ export type CtorDependency = {
   /**
    * If `@Host` is used, this key is set to true.
    *
-   * 如果使用 `@Host` ，则此键设置为 true。
+   * 如果使用 `@Host`，则此键设置为 true。
    *
    */
   host?: true;
@@ -114,7 +114,7 @@ export type CtorDependency = {
   /**
    * If `@Self` is used, this key is set to true.
    *
-   * 如果使用 `@Self` ，则此键设置为 true。
+   * 如果使用 `@Self`，则此键设置为 true。
    *
    */
   self?: true;
@@ -122,7 +122,7 @@ export type CtorDependency = {
   /**
    * If `@SkipSelf` is used, this key is set to true.
    *
-   * 如果使用 `@SkipSelf` ，则此键设置为 true。
+   * 如果使用 `@SkipSelf`，则此键设置为 true。
    *
    */
   skipSelf?: true;

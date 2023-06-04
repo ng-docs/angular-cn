@@ -63,13 +63,13 @@ export function NgOnChangesFeatureImpl<T>(definition: DirectiveDef<T>) {
  * This is a synthetic lifecycle hook which gets inserted into `TView.preOrderHooks` to simulate
  * `ngOnChanges`.
  *
- * 这是一个合成的生命周期钩子，它被插入 `TView.preOrderHooks` 以模拟 `ngOnChanges` 。
+ * 这是一个合成的生命周期钩子，它被插入 `TView.preOrderHooks` 以模拟 `ngOnChanges`。
  *
  * The hook reads the `NgSimpleChangesStore` data from the component instance and if changes are
  * found it invokes `ngOnChanges` on the component instance.
  *
  * 该钩子从组件实例中读取 `NgSimpleChangesStore` 数据，如果发现更改，它会调用组件实例上的
- * `ngOnChanges` 。
+ * `ngOnChanges`。
  *
  * @param this Component instance. Because this function gets inserted into `TView.preOrderHooks`,
  *     it is guaranteed to be called with component instance.

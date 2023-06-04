@@ -27,7 +27,7 @@ export interface TopLevelShimGenerator {
   /**
    * Create a `ts.SourceFile` representing the shim, with the correct filename.
    *
-   * 使用正确的文件名创建一个表示 shim 的 `ts.SourceFile` 。
+   * 使用正确的文件名创建一个表示 shim 的 `ts.SourceFile`。
    *
    */
   makeTopLevelShim(): ts.SourceFile;

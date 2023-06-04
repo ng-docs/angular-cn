@@ -35,7 +35,7 @@ function createValidationPromise(
  * - or null, otherwise
  *   The delay is either:
  *
- *   或 null ，否则延迟是：
+ *   或 null，否则延迟是：
  *
  * - defined in `timeouts` parameter, as the association to the control value
  *

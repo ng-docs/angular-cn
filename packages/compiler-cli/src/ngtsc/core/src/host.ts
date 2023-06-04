@@ -28,12 +28,12 @@ import {ExtendedTsCompilerHost, NgCompilerAdapter, NgCompilerOptions, UnifiedMod
  * `getSourceFile` and `fileExists` which are implemented in `NgCompilerHost`.
  *
  * 将 `ExtendedTsCompilerHost` 的所有方法委托给委托，但在 NgCompilerHost 中实现的 `getSourceFile` 和
- * `fileExists` `NgCompilerHost` 。
+ * `fileExists` `NgCompilerHost`。
  *
  * If a new method is added to `ts.CompilerHost` which is not delegated, a type error will be
  * generated for this class.
  *
- * 如果将新方法添加到未委托的 `ts.CompilerHost` ，则会为此类生成类型错误。
+ * 如果将新方法添加到未委托的 `ts.CompilerHost`，则会为此类生成类型错误。
  *
  */
 export class DelegatingCompilerHost implements
@@ -126,7 +126,7 @@ export class DelegatingCompilerHost implements
  * host implementation which supports this.
  *
  * 为了让消费者在他们的 TypeScript 编译器中包含 Angular 编译，必须使用将 Angular
- * 特定文件（例如工厂、摘要、模板类型检查文件等）添加到编译中的宿主来创建 `ts.Program` 。
+ * 特定文件（例如工厂、摘要、模板类型检查文件等）添加到编译中的宿主来创建 `ts.Program`。
  * `NgCompilerHost` 是支持此操作的宿主实现。
  *
  * The interface implementations here ensure that `NgCompilerHost` fully delegates to
@@ -166,7 +166,7 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
   /**
    * Retrieves a set of `ts.SourceFile`s which should not be emitted as JS files.
    *
-   * 检索一组不应该作为 JS 文件发出的 `ts.SourceFile` 。
+   * 检索一组不应该作为 JS 文件发出的 `ts.SourceFile`。
    *
    * Available after this host is used to create a `ts.Program` \(which causes all the files in the
    * program to be enumerated\).
@@ -204,7 +204,7 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
    * of TypeScript and Angular compiler options.
    *
    * 从委托宿主、输入文件名数组以及完整的 TypeScript 和 Angular 编译器选项集创建一个
-   * `NgCompilerHost` 。
+   * `NgCompilerHost`。
    *
    */
   static wrap(
@@ -273,7 +273,7 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
    *
    * If this returns false, the file is user-provided.
    *
-   * 如果返回 false ，则文件是用户提供的。
+   * 如果返回 false，则文件是用户提供的。
    *
    */
   isShim(sf: ts.SourceFile): boolean {
@@ -288,7 +288,7 @@ export class NgCompilerHost extends DelegatingCompilerHost implements
    * This simply returns `false` for the compiler-cli since resource files are not added as root
    * files to the project.
    *
-   * 这只是为 compiler-cli 返回 `false` ，因为资源文件不会作为根文件添加到项目中。
+   * 这只是为 compiler-cli 返回 `false`，因为资源文件不会作为根文件添加到项目中。
    *
    */
   isResource(sf: ts.SourceFile): boolean {

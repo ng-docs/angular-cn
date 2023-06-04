@@ -53,7 +53,7 @@ export function isNamedIdentifier(
 /**
  * Is the given `identifier` declared globally.
  *
- * 是全局声明的给定 `identifier` 。
+ * 是全局声明的给定 `identifier`。
  *
  * @param identifier The identifier to check.
  *

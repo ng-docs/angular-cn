@@ -126,7 +126,7 @@ export interface LocationChangeListener {
  * This class should not be used directly by an application developer. Instead, use
  * {@link Location}.
  *
- * `PlatformLocation` 封装了所有对平台 API 的直接调用。 此类不应由应用程序开发人员直接使用。 相反，请使用 {@link Location}。
+ * `PlatformLocation` 封装了所有对平台 API 的直接调用。此类不应由应用程序开发人员直接使用。相反，请使用 {@link Location}。
  *
  * @publicApi
  */

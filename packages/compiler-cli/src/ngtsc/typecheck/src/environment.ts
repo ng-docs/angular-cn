@@ -126,7 +126,7 @@ export class Environment implements ReferenceEmitEnvironment {
   /**
    * Generate a `ts.Expression` that references the given node.
    *
-   * 生成一个引用给定节点的 `ts.Expression` 。
+   * 生成一个引用给定节点的 `ts.Expression`。
    *
    * This may involve importing the node into the file if it's not declared there already.
    *
@@ -156,7 +156,7 @@ export class Environment implements ReferenceEmitEnvironment {
   /**
    * Generate a `ts.TypeNode` that references the given node as a type.
    *
-   * 生成一个将给定节点作为类型引用的 `ts.TypeNode` 。
+   * 生成一个将给定节点作为类型引用的 `ts.TypeNode`。
    *
    * This may involve importing the node into the file if it's not declared there already.
    *
@@ -186,7 +186,7 @@ export class Environment implements ReferenceEmitEnvironment {
   /**
    * Generate a `ts.TypeNode` that references a given type from the provided module.
    *
-   * 生成一个从提供的模块引用给定类型的 `ts.TypeNode` 。
+   * 生成一个从提供的模块引用给定类型的 `ts.TypeNode`。
    *
    * This will involve importing the type into the file, and will also add type parameters if
    * provided.
@@ -206,7 +206,7 @@ export class Environment implements ReferenceEmitEnvironment {
    * in the program. Any type references inside the transplanted type will be rewritten so that
    * they can be imported in the context fiel.
    *
-   * 生成一个 `ts.TypeNode` 表示从程序中不同位置引用的类型。 移植类型中的任何类型引用都将被重写，以便它们可以在上下文字段中导入。
+   * 生成一个 `ts.TypeNode` 表示从程序中不同位置引用的类型。移植类型中的任何类型引用都将被重写，以便它们可以在上下文字段中导入。
    *
    */
   referenceTransplantedType(type: TransplantedType<ts.TypeNode>): ts.TypeNode {

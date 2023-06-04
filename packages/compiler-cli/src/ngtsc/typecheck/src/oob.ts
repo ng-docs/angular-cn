@@ -22,7 +22,7 @@ import {TemplateSourceResolver} from './tcb_util';
  * Collects `ts.Diagnostic`s on problems which occur in the template which aren't directly sourced
  * from Type Check Blocks.
  *
- * 收集有关模板中发生的并非直接来自类型检查块的问题的 `ts.Diagnostic` 。
+ * 收集有关模板中发生的并非直接来自类型检查块的问题的 `ts.Diagnostic`。
  *
  * During the creation of a Type Check Block, the template is traversed and the
  * `OutOfBandDiagnosticRecorder` is called to record cases when a correct interpretation for the
@@ -30,7 +30,7 @@ import {TemplateSourceResolver} from './tcb_util';
  * recorder for later display.
  *
  * 在创建类型检查块期间，会遍历模板并调用 `OutOfBandDiagnosticRecorder`
- * 以记录无法找到对模板的正确解释的情况。这些操作会创建 `ts.Diagnostic` ，由记录器存储以供以后显示。
+ * 以记录无法找到对模板的正确解释的情况。这些操作会创建 `ts.Diagnostic`，由记录器存储以供以后显示。
  *
  */
 export interface OutOfBandDiagnosticRecorder {
@@ -49,7 +49,7 @@ export interface OutOfBandDiagnosticRecorder {
    *
    * @param ref the `TmplAstReference` which could not be matched to a directive.
    *
-   * 无法与指令匹配的 `TmplAstReference` 。
+   * 无法与指令匹配的 `TmplAstReference`。
    *
    */
   missingReferenceTarget(templateId: TemplateId, ref: TmplAstReference): void;
@@ -87,7 +87,7 @@ export interface OutOfBandDiagnosticRecorder {
    *
    * @param variable the `TmplAstVariable` which duplicates a previously declared variable.
    *
-   * 复制以前声明的变量的 `TmplAstVariable` 。
+   * 复制以前声明的变量的 `TmplAstVariable`。
    *
    * @param firstDecl the first variable declaration which uses the same name as `variable`.
    *

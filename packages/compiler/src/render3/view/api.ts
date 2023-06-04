@@ -65,7 +65,7 @@ export interface R3DirectiveMetadata {
   /**
    * Unparsed selector of the directive, or `null` if there was no selector.
    *
-   * 指令的未解析的选择器，如果没有选择器，则为 `null` 。
+   * 指令的未解析的选择器，如果没有选择器，则为 `null`。
    *
    */
   selector: string|null;
@@ -227,7 +227,7 @@ export const enum DeclarationListEmitMode {
    * the declaration list using a mapping transform through `resolveForwardRef` to ensure that
    * any forward references within the list are resolved when the outer closure is invoked.
    *
-   * 类似于 `Closure` ，只是声明列表可以包含本身是前向引用的单个条目。这与 JIT
+   * 类似于 `Closure`，只是声明列表可以包含本身是前向引用的单个条目。这与 JIT
    * 编译有关，因为无法静态完成 forwardRef 的解包，因此必须延迟。此模式使用通过 `resolveForwardRef`
    * 的映射转换来发出声明列表，以确保在调用外闭包时解析列表中的任何前向引用。
    *
@@ -279,7 +279,7 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
      * Any ng-content selectors extracted from the template. Contains `*` when an ng-content
      * element without selector is present.
      *
-     * 从模板中提取的任何 ng-content 选择器。当存在不带选择器的 ng-content 元素时包含 `*` 。
+     * 从模板中提取的任何 ng-content 选择器。当存在不带选择器的 ng-content 元素时包含 `*`。
      *
      */
     ngContentSelectors: string[];
@@ -312,15 +312,15 @@ export interface R3ComponentMetadata<DeclarationT extends R3TemplateDependency> 
    * - `ViewEncapsulation.Emulated`: Apply modified component styles in order to emulate
    *                                 a native Shadow DOM CSS encapsulation behavior.
    *
-   *   `ViewEncapsulation.Emulated` ：应用修改后的组件样式以模拟原生 Shadow DOM CSS 封装行为。
+   *   `ViewEncapsulation.Emulated`：应用修改后的组件样式以模拟原生 Shadow DOM CSS 封装行为。
    *
    * - `ViewEncapsulation.None`: Apply component styles globally without any sort of encapsulation.
    *
-   *   `ViewEncapsulation.None` ：全局应用组件样式，无需任何类型的封装。
+   *   `ViewEncapsulation.None`：全局应用组件样式，无需任何类型的封装。
    *
    * - `ViewEncapsulation.ShadowDom`: Use the browser's native Shadow DOM API to encapsulate styles.
    *
-   *   `ViewEncapsulation.ShadowDom` ：使用浏览器的原生 Shadow DOM API 来封装样式。
+   *   `ViewEncapsulation.ShadowDom`：使用浏览器的原生 Shadow DOM API 来封装样式。
    *
    */
   encapsulation: ViewEncapsulation;
@@ -540,7 +540,7 @@ export interface R3QueryMetadata {
    * An expression representing a type to read from each matched node, or null if the default value
    * for a given node is to be returned.
    *
-   * 表示要从每个匹配的节点读取的类型的表达式，如果要返回给定节点的默认值，则为 null 。
+   * 表示要从每个匹配的节点读取的类型的表达式，如果要返回给定节点的默认值，则为 null。
    *
    */
   read: o.Expression|null;

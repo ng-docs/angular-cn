@@ -37,7 +37,7 @@ export {noSideEffects as ɵnoSideEffects} from './util/closure';
  * current program is actually @angular/core, which needs to be compiled specially.
  *
  * 这个常量（在这个特定文件中）的存在告诉 Angular 编译器当前程序实际上是 @angular/core
- * ，需要特殊编译。
+ *，需要特殊编译。
  *
  */
 export const ITS_JUST_ANGULAR = true;

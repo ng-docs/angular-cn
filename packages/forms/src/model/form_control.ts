@@ -44,7 +44,7 @@ export interface FormControlOptions extends AbstractControlOptions {
    * When a FormControl is reset without an explicit value, its value reverts to
    * its default value.
    *
-   * 是否也使用用于构造 `FormControl` 的初始值作为其默认值。如果此选项为 false 或未提供，则 FormControl 的默认值为 `null` 。当没有显式值的情况下重置 FormControl 时，其值将恢复为默认值。
+   * 是否也使用用于构造 `FormControl` 的初始值作为其默认值。如果此选项为 false 或未提供，则 FormControl 的默认值为 `null`。当没有显式值的情况下重置 FormControl 时，其值将恢复为默认值。
    *
    */
   nonNullable?: boolean;
@@ -54,7 +54,7 @@ export interface FormControlOptions extends AbstractControlOptions {
    *
    * Use `nonNullable` instead.
    *
-   * 请改用 `nonNullable` 。
+   * 请改用 `nonNullable`。
    *
    */
   initialValueIsDefault?: boolean;
@@ -70,13 +70,13 @@ export interface FormControlOptions extends AbstractControlOptions {
  * implements most of the base functionality for accessing the value, validation status,
  * user interactions and events.
  *
- * 这是 Angular 表单的四个基本构建块之一，与 `FormGroup`、`FormArray` 和 `FormRecord` 。它扩展了 `AbstractControl` 类，该类实现了用于访问值、验证状态、用户交互和事件的大多数基础特性。
+ * 这是 Angular 表单的四个基本构建块之一，与 `FormGroup`、`FormArray` 和 `FormRecord`。它扩展了 `AbstractControl` 类，该类实现了用于访问值、验证状态、用户交互和事件的大多数基础特性。
  *
  * `FormControl` takes a single generic argument, which describes the type of its value. This
  * argument always implicitly includes `null` because the control can be reset. To change this
  * behavior, set `nonNullable` or see the usage notes below.
  *
- * `FormControl` 接受一个通用参数，该参数描述其值的类型。此参数始终隐式包含 `null` ，因为控件可以重置。要更改此行为，请设置 `nonNullable` 或查看下面的使用说明。
+ * `FormControl` 接受一个通用参数，该参数描述其值的类型。此参数始终隐式包含 `null`，因为控件可以重置。要更改此行为，请设置 `nonNullable` 或查看下面的使用说明。
  *
  * See [usage examples below](#usage-notes).
  *
@@ -151,7 +151,7 @@ export interface FormControlOptions extends AbstractControlOptions {
  * If you are initializing the control to `null`, or you otherwise wish to provide a
  * wider type, you may specify the argument explicitly:
  *
- * 如果你将控件初始化为 `null` ，或者你希望提供更广泛的类型，你可以显式指定参数：
+ * 如果你将控件初始化为 `null`，或者你希望提供更广泛的类型，你可以显式指定参数：
  *
  * ```
  * let fc = new FormControl<string|null>(null);
@@ -162,7 +162,7 @@ export interface FormControlOptions extends AbstractControlOptions {
  * This is because the control will become `null` if you call `reset`. You can change
  * this behavior by setting `{nonNullable: true}`.
  *
- * 你可能会注意到 `null` 始终添加到控件的类型。这是因为如果你调用 `reset` ，控件将变为 `null` 。你可以通过设置 `{nonNullable: true}` 来更改此行为。
+ * 你可能会注意到 `null` 始终添加到控件的类型。这是因为如果你调用 `reset`，控件将变为 `null`。你可以通过设置 `{nonNullable: true}` 来更改此行为。
  *
  * ### Configure the control to update on a blur event
  *
@@ -249,7 +249,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * value. See {@link FormControlOptions#nonNullable} for more information on configuring
    * a default value.
    *
-   * 此 FormControl 的默认值，在没有显式值的情况下重置控件时使用。 有关配置默认值的更多信息，请参阅 {@link FormControlOptions#nonNullable}。
+   * 此 FormControl 的默认值，在没有显式值的情况下重置控件时使用。有关配置默认值的更多信息，请参阅 {@link FormControlOptions#nonNullable}。
    *
    */
   readonly defaultValue: TValue;
@@ -282,7 +282,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} method.
    *
-   * 确定控件如何传播更改并在值更改时发出事件的配置选项。 配置选项被传递给 {@link AbstractControl#updateValueAndValidity updateValueAndValidity} 方法。
+   * 确定控件如何传播更改并在值更改时发出事件的配置选项。配置选项被传递给 {@link AbstractControl#updateValueAndValidity updateValueAndValidity} 方法。
    *
    * * `onlySelf`: When true, each change only affects this control, and not its parent. Default is
    *   false.
@@ -294,7 +294,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    *   observables emit events with the latest status and value when the control value is updated.
    *   When false, no events are emitted.
    *
-   *   `emitEvent`：如果为 `true` 或未提供（默认），则当控件值变化时， `statusChanges` 和 `valueChanges` 这两个 Observable 都会以最近的状态和值发出事件。 如果为 `false`，则不会发出事件。
+   *   `emitEvent`：如果为 `true` 或未提供（默认），则当控件值变化时，`statusChanges` 和 `valueChanges` 这两个 Observable 都会以最近的状态和值发出事件。如果为 `false`，则不会发出事件。
    *
    * * `emitModelToViewChange`: When true or not supplied  \(the default\), each change triggers an
    *   `onChange` event to
@@ -325,7 +325,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * It exists for symmetry with {@link FormGroup#patchValue patchValue} on `FormGroups` and
    * `FormArrays`, where it does behave differently.
    *
-   * 此功能在功能上与此级别的 {@link FormControl#setValue setValue} 相同。 它的存在是为了与 `FormGroups` 和 `FormArrays` 上的 {@link FormGroup#patchValue patchValue} 对称，但它的行为确实不同。
+   * 此功能在功能上与此级别的 {@link FormControl#setValue setValue} 相同。它的存在是为了与 `FormGroups` 和 `FormArrays` 上的 {@link FormGroup#patchValue patchValue} 对称，但它的行为确实不同。
    *
    * @see `setValue` for options
    *
@@ -343,7 +343,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    * the value. The new value will be the provided value \(if passed\), `null`, or the initial value
    * if `nonNullable` was set in the constructor via {@link FormControlOptions}.
    *
-   * 重置表单控件，将其标记为 `pristine` 和 `untouched` ，并重置值。 如果通过 {@link FormControlOptions} 在构造函数中设置了 `nonNullable` 则新值将是提供的值（如果已传递）、 `null` 或初始值。
+   * 重置表单控件，将其标记为 `pristine` 和 `untouched`，并重置值。如果通过 {@link FormControlOptions} 在构造函数中设置了 `nonNullable` 则新值将是提供的值（如果已传递）、 `null` 或初始值。
    *
    * ```ts
    * // By default, the control will reset to null.
@@ -378,7 +378,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
    *   observables emit events with the latest status and value when the control is reset.
    *   When false, no events are emitted.
    *
-   *   `emitEvent`：如果为 `true` 或未提供（默认），则当控件被重置时， `statusChanges` 和 `valueChanges` 这两个 Observable 都会以最近的状态和值发出事件。 如果为 `false`，则不会发出事件。
+   *   `emitEvent`：如果为 `true` 或未提供（默认），则当控件被重置时，`statusChanges` 和 `valueChanges` 这两个 Observable 都会以最近的状态和值发出事件。如果为 `false`，则不会发出事件。
    */
   reset(formState?: TValue|FormControlState<TValue>, options?: {
     onlySelf?: boolean,
@@ -388,7 +388,7 @@ export interface FormControl<TValue = any> extends AbstractControl<TValue> {
   /**
    * For a simple FormControl, the raw value is equivalent to the value.
    *
-   * 对于简单的 FormControl ，原始值等于 值。
+   * 对于简单的 FormControl，原始值等于 值。
    *
    */
   getRawValue(): TValue;
@@ -469,7 +469,7 @@ type FormControlInterface<TValue = any> = FormControl<TValue>;
  * Various available constructors for `FormControl`.
  * Do not use this interface directly. Instead, use `FormControl`:
  *
- * `FormControl` 的各种可用构造函数。 不要直接使用这个接口。 相反，使用 `FormControl` ：
+ * `FormControl` 的各种可用构造函数。不要直接使用这个接口。相反，使用 `FormControl`：
  *
  * ```
  * const fc = new FormControl('foo');
@@ -484,7 +484,7 @@ export interface ɵFormControlCtor {
   /**
    * Construct a FormControl with no initial value or validators.
    *
-   * 构造一个没有初始值或验证器的 FormControl 。
+   * 构造一个没有初始值或验证器的 FormControl。
    *
    */
   new(): FormControl<any>;
@@ -516,7 +516,7 @@ export interface ɵFormControlCtor {
    *
    * Use `nonNullable` instead.
    *
-   * 请改用 `nonNullable` 。
+   * 请改用 `nonNullable`。
    *
    */
   new<T = any>(value: FormControlState<T>|T, opts: FormControlOptions&{
@@ -528,7 +528,7 @@ export interface ɵFormControlCtor {
    *
    * When passing an `options` argument, the `asyncValidator` argument has no effect.
    *
-   * 传递 `options` 参数时， `asyncValidator` 参数无效。
+   * 传递 `options` 参数时，`asyncValidator` 参数无效。
    *
    */
   new<T = any>(

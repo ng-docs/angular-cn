@@ -59,7 +59,7 @@ export class LocalMetadataRegistry implements MetadataRegistry, MetadataReaderWi
  * A `MetadataRegistry` which registers metadata with multiple delegate `MetadataRegistry`
  * instances.
  *
- * 一种 `MetadataRegistry` ，它向多个委托 `MetadataRegistry` 实例注册元数据。
+ * 一种 `MetadataRegistry`，它向多个委托 `MetadataRegistry` 实例注册元数据。
  *
  */
 export class CompoundMetadataRegistry implements MetadataRegistry {

@@ -16,7 +16,7 @@ import {OnDestroy} from './interface/lifecycle_hooks';
  * during the initial rendering. No tasks are tracked after an initial
  * rendering.
  *
- * 跟踪初始渲染期间系统中发生的未决任务的*内部*服务。 初始渲染后不会跟踪任何任务。
+ * 跟踪初始渲染期间系统中发生的未决任务的*内部*服务。初始渲染后不会跟踪任何任务。
  *
  * This information is needed to make sure that the serialization on the server
  * is delayed until all tasks in the queue \(such as an initial navigation or a

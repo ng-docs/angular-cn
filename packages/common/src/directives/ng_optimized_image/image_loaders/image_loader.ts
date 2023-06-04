@@ -48,7 +48,7 @@ export interface ImageLoaderConfig {
  * Represents an image loader function. Image loader functions are used by the
  * NgOptimizedImage directive to produce full image URL based on the image name and its width.
  *
- * 表示图像加载器函数。 NgOptimizedImage 指令使用图像加载器函数根据图像名称及其宽度生成完整的图像 URL。
+ * 表示图像加载器函数。NgOptimizedImage 指令使用图像加载器函数根据图像名称及其宽度生成完整的图像 URL。
  *
  * @publicApi
  */
@@ -58,7 +58,7 @@ export type ImageLoader = (config: ImageLoaderConfig) => string;
  * Noop image loader that does no transformation to the original src and just returns it as is.
  * This loader is used as a default one if more specific logic is not provided in an app config.
  *
- * Noop 图像加载器，不对原始 src 进行转换，只是按原样返回。 如果应用程序配置中未提供更具体的逻辑，则此加载器将用作默认加载器。
+ * Noop 图像加载器，不对原始 src 进行转换，只是按原样返回。如果应用程序配置中未提供更具体的逻辑，则此加载器将用作默认加载器。
  *
  * @see `ImageLoader`
  * @see `NgOptimizedImage`
@@ -96,7 +96,7 @@ export const IMAGE_LOADER = new InjectionToken<ImageLoader>('ImageLoader', {
  * configuration for a given loader: a DI token corresponding to the actual loader function, plus DI
  * tokens managing preconnect check functionality.
  *
- * 内部辅助函数，可以更轻松地为 `NgOptimizedImage` 指令引入自定义图像加载器。 指定一个 URL 构建器函数就足以为给定的加载器获取完整的 DI 配置：一个对应于实际加载器函数的 DI 令牌，加上管理预连接检查功能的 DI 令牌。
+ * 内部辅助函数，可以更轻松地为 `NgOptimizedImage` 指令引入自定义图像加载器。指定一个 URL 构建器函数就足以为给定的加载器获取完整的 DI 配置：一个对应于实际加载器函数的 DI 令牌，加上管理预连接检查功能的 DI 令牌。
  *
  * @param buildUrlFn a function returning a full URL based on loader's configuration
  *

@@ -21,7 +21,7 @@ export type GetSourceFileFn = () => SourceFile|null;
  * Create a `GetSourceFileFn` that will return the `SourceFile` being linked or `null`, if not
  * available.
  *
- * 创建一个 `GetSourceFileFn` ，它将返回正在链接的 `SourceFile` 或 `null`（如果不可用）。
+ * 创建一个 `GetSourceFileFn`，它将返回正在链接的 `SourceFile` 或 `null`（如果不可用）。
  *
  */
 export function createGetSourceFile(

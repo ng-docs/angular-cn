@@ -198,7 +198,7 @@ function resolveProvider(
  *
  * @param tView `TView` in which to register the hook.
  *
- * 要在其中注册钩子的 `TView` 。
+ * 要在其中注册钩子的 `TView`。
  *
  * @param provider Provider whose hook should be registered.
  *

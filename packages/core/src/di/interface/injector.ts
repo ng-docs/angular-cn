@@ -13,7 +13,7 @@
  * Note: this flag is not included into the `InjectFlags` since it's an internal-only API.
  *
  * 表明装饰器是 `Inject` 类型的特殊标志。它用于使 `Inject` 装饰器可树形抖动（因此我们不必依赖
- * `instanceof` 检查）。注意：此标志不包含在 `InjectFlags` ，因为它是一个仅限内部的 API。
+ * `instanceof` 检查）。注意：此标志不包含在 `InjectFlags`，因为它是一个仅限内部的 API。
  *
  */
 export const enum DecoratorFlags {
@@ -30,7 +30,7 @@ export const enum DecoratorFlags {
  *
  * use an options object for `inject` instead.
  *
- * 改用选项对象进行 `inject` 。
+ * 改用选项对象进行 `inject`。
  *
  */
 export enum InjectFlags {
@@ -132,7 +132,7 @@ export const enum InternalInjectFlags {
   /**
    * Inject `defaultValue` instead if token not found.
    *
-   * 如果找不到标记，则注入 `defaultValue` 。
+   * 如果找不到标记，则注入 `defaultValue`。
    *
    */
   Optional = 0b1000,
@@ -162,7 +162,7 @@ export interface InjectOptions {
   /**
    * Use optional injection, and return `null` if the requested token is not found.
    *
-   * 使用可选注入，如果未找到请求的令牌，则返回 `null` 。
+   * 使用可选注入，如果未找到请求的令牌，则返回 `null`。
    *
    */
   optional?: boolean;
@@ -188,7 +188,7 @@ export interface InjectOptions {
    * Stop injection at the host component's injector. Only relevant when injecting from an element
    * injector, and a no-op for environment injectors.
    *
-   * 在宿主组件的注入器处停止注入。 仅在从元素注入器注入时相关，并且对环境注入器无操作。
+   * 在宿主组件的注入器处停止注入。仅在从元素注入器注入时相关，并且对环境注入器无操作。
    *
    */
   host?: boolean;

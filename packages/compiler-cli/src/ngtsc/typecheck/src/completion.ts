@@ -33,7 +33,7 @@ export class CompletionEngine {
    * Cache of completions for various levels of the template, including the root template (`null`).
    * Memoizes `getTemplateContextCompletions`.
    *
-   * 模板的各个级别的自动完成缓存，包括根模板 ( `null` )。记住 `getTemplateContextCompletions` 。
+   * 模板的各个级别的自动完成缓存，包括根模板 ( `null` )。记住 `getTemplateContextCompletions`。
    *
    */
   private templateContextCache =
@@ -75,7 +75,7 @@ export class CompletionEngine {
    *     for the root
    * template context.
    *
-   * 给定的模板上下文 - `TmplAstTemplate` 嵌入式视图，或根模板上下文为 `null` 。
+   * 给定的模板上下文 - `TmplAstTemplate` 嵌入式视图，或根模板上下文为 `null`。
    *
    * @param node the given AST node
    *
@@ -221,7 +221,7 @@ export class CompletionEngine {
    * Get global completions within the given template context - either a `TmplAstTemplate` embedded
    * view, or `null` for the root context.
    *
-   * 在给定的模板上下文中获取全局自动完成 - `TmplAstTemplate` 嵌入式视图，或根上下文为 `null` 。
+   * 在给定的模板上下文中获取全局自动完成 - `TmplAstTemplate` 嵌入式视图，或根上下文为 `null`。
    *
    */
   private getTemplateContextCompletions(context: TmplAstTemplate|null):

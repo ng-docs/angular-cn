@@ -50,15 +50,15 @@ For example, return:
 
 * a `string`, if the target property expects a string
 
-  一个 `string` ，如果目标属性需要一个字符串
+  一个 `string`，如果目标属性需要一个字符串
 
 * a `number`, if it expects a number
 
-  一个 `number` ，如果目标属性需要一个数字
+  一个 `number`，如果目标属性需要一个数字
 
 * an `object`, if it expects an object.
 
-  一个 `object` ，如果目标属性需要一个对象。
+  一个 `object`，如果目标属性需要一个对象。
 
 模板表达式应该求值为目标属性所期望的值类型。比如，如果目标属性需要一个字符串，就返回一个字符串；如果需要一个数字，就返回一个数字；如果需要一个对象，就返回一个对象。
 
@@ -74,7 +74,7 @@ In the following example, the `childItem` property of the `ItemDetailComponent` 
 
 Confirm this expectation by looking in the `ItemDetailComponent` where the `@Input()` type is `string`:
 
-你可以通过查看 `ItemDetailComponent` 来确认这种预期，其中的 `@Input()` 类型为 `string` ：
+你可以通过查看 `ItemDetailComponent` 来确认这种预期，其中的 `@Input()` 类型为 `string`：
 
 <code-example header="src/app/item-detail/item-detail.component.ts (setting the @Input() type)" path="property-binding/src/app/item-detail/item-detail.component.ts" region="input-type"></code-example>
 

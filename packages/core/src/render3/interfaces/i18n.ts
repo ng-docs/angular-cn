@@ -20,11 +20,11 @@ import {SanitizerFn} from './sanitization';
  *
  * - index > 0: `removeRNode(lView[0])`
  *
- *   索引> 0： `removeRNode(lView[0])`
+ *   索引> 0：`removeRNode(lView[0])`
  *
  * - index &lt; 0: `removeICU(~lView[0])`
  *
- *   索引 &lt; 0： `removeICU(~lView[0])`
+ *   索引 &lt; 0：`removeICU(~lView[0])`
  *
  */
 export interface I18nRemoveOpCodes extends Array<number> {
@@ -70,7 +70,7 @@ export interface I18nRemoveOpCodes extends Array<number> {
  *
  * See: `I18nCreateOpCodes` for example of usage.
  *
- * 有关用法的示例，请参阅： `I18nCreateOpCodes` 。
+ * 有关用法的示例，请参阅：`I18nCreateOpCodes`。
  *
  */
 export const enum IcuCreateOpCode {
@@ -372,7 +372,7 @@ export enum I18nCreateOpCode {
  * determine if the OpCodes should execute.
  *
  * 基本思想是 `i18nExp` OpCodes 捕获表达式更改并更新更改掩码位。（表达式 1 的位 1，表达式 2 的位 2
- * 等……，表达式 32 及更高版本的位 32 。）然后，OpCodes
+ * 等……，表达式 32 及更高版本的位 32。）然后，OpCodes
  * 将其自己的更改掩码与表达式更改掩码进行比较，以确定 OpCodes 是否应该执行。
  *
  * NOTE: 32nd bit is special as it says 32nd or higher. This way if we have more than 32 bindings
@@ -407,7 +407,7 @@ export enum I18nCreateOpCode {
  * We can assume that each call to `i18nExp` sets an internal `changeMask` bit depending on the
  * index of `i18nExp`.
  *
- * 我们可以假设每次对 i18nExp 的调用都根据 `i18nExp` 的索引设置一个内部 `changeMask` `i18nExp` 。
+ * 我们可以假设每次对 i18nExp 的调用都根据 `i18nExp` 的索引设置一个内部 `changeMask` `i18nExp`。
  *
  * ### OpCodes
  *
@@ -472,7 +472,7 @@ export interface TI18n {
    *
    * NOTE: The ICU anchors are filled in with ICU Update OpCode.
    *
-   * 注意： ICU 锚点使用 ICU Update OpCode 填充。
+   * 注意：ICU 锚点使用 ICU Update OpCode 填充。
    *
    */
   create: I18nCreateOpCodes;
@@ -510,7 +510,7 @@ export interface TIcu {
   /**
    * Index in `LView` where the anchor node is stored. `<!-- ICU 0:0 -->`
    *
-   * `LView` 中存储锚节点的索引。 `<!-- ICU 0:0 -->`
+   * `LView` 中存储锚节点的索引。`<!-- ICU 0:0 -->`
    *
    */
   anchorIdx: number;
@@ -531,8 +531,8 @@ export interface TIcu {
    *         regardless of the `mask`. \(After the execution the flag is cleared\)
    *   `>=0` A currently selected case index.
    *
-   * 如果存储的值为： `null` ：未选择当前案例。 `<0` ：一个标志，这意味着 ICU 刚刚切换，并且无论
-   * `mask` 如何，都必须执行 `icuUpdate` 。（执行后，标志被清除）`>=0` 当前选择的案例索引。
+   * 如果存储的值为：`null`：未选择当前案例。`<0`：一个标志，这意味着 ICU 刚刚切换，并且无论
+   * `mask` 如何，都必须执行 `icuUpdate`。（执行后，标志被清除）`>=0` 当前选择的案例索引。
    *
    */
   currentCaseLViewIndex: number;
@@ -568,7 +568,7 @@ export interface TIcu {
   /**
    * A set of OpCodes to apply in order to update the DOM render tree for the ICU bindings.
    *
-   * 要应用的一组 OpCode ，以更新 ICU 绑定的 DOM 渲染树。
+   * 要应用的一组 OpCode，以更新 ICU 绑定的 DOM 渲染树。
    *
    */
   update: I18nUpdateOpCodes[];

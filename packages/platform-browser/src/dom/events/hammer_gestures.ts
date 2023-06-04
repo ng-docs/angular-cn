@@ -131,7 +131,7 @@ export class HammerGestureConfig {
    *
    * 键名是要配置的受支持事件名称，options
    * 对象包含一组属性，以及将套用到命名识别器事件的替代值。比如，要禁用对 Rotate 事件的识别，请指定
-   * `{"rotate": {"enable": false}}` 。
+   * `{"rotate": {"enable": false}}`。
    *
    * Properties that are not present take the HammerJS default values.
    * For information about which properties are supported for which events,

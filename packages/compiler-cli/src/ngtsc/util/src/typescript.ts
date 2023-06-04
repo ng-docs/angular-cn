@@ -148,7 +148,7 @@ export function nodeDebugInfo(node: ts.Node): string {
 /**
  * Resolve the specified `moduleName` using the given `compilerOptions` and `compilerHost`.
  *
- * 使用给定的 `compilerOptions` 和 `compilerHost` 解析指定的 `moduleName` 。
+ * 使用给定的 `compilerOptions` 和 `compilerHost` 解析指定的 `moduleName`。
  *
  * This helper will attempt to use the `CompilerHost.resolveModuleNames()` method if available.
  * Otherwise it will fallback on the `ts.ResolveModuleName()` function.
@@ -179,7 +179,7 @@ export function resolveModuleName(
 /**
  * Returns true if the node is an assignment expression.
  *
- * 如果节点是赋值表达式，则返回 true 。
+ * 如果节点是赋值表达式，则返回 true。
  *
  */
 export function isAssignment(node: ts.Node): node is ts.BinaryExpression {
@@ -211,7 +211,7 @@ export type RequiredDelegations<T> = {
  * identical. TypeScript creates a proxy source file for such source files which has an internal
  * `redirectInfo` property that refers to the original source file.
  *
- * 当包名和版本相同时，源文件可能会重定向到其他源文件。 TypeScript
+ * 当包名和版本相同时，源文件可能会重定向到其他源文件。TypeScript
  * 为此类源文件创建一个代理源文件，该文件具有引用原始源文件的内部 `redirectInfo` 属性。
  *
  */

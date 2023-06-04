@@ -50,7 +50,7 @@ import {getCurrentICUCaseIndex, getParentFromIcuCreateOpCode, getRefFromIcuCreat
  *    that we may end up changing more than we need to. But i18n expressions with 32 bindings is rare
  *    so in practice it should not be an issue.\)
  *
- *    第 32 位是特殊的，因为它是为 32 以后的所有更改共享的。（换句话说，如果你有超过 32 `ɵɵi18nExp` ，那么超过 32nd `ɵɵi18nExp` 的所有更改都将映射到同一个位。这意味着我们最终可能会更改超过我们需要。但具有 32 个绑定的 i18n 表达式很少见，因此在实践中这应该不是问题。）
+ *    第 32 位是特殊的，因为它是为 32 以后的所有更改共享的。（换句话说，如果你有超过 32 `ɵɵi18nExp`，那么超过 32nd `ɵɵi18nExp` 的所有更改都将映射到同一个位。这意味着我们最终可能会更改超过我们需要。但具有 32 个绑定的 i18n 表达式很少见，因此在实践中这应该不是问题。）
  *
  */
 let changeMask = 0b0;
@@ -74,7 +74,7 @@ let changeMaskCounter = 0;
  *
  * `setMaskBit` gets invoked by each call to `ɵɵi18nExp`.
  *
- * 每次调用 `setMaskBit` 都会调用 `ɵɵi18nExp` 。
+ * 每次调用 `setMaskBit` 都会调用 `ɵɵi18nExp`。
  *
  * @param hasChange did `ɵɵi18nExp` detect a change.
  *
@@ -122,7 +122,7 @@ export function applyI18n(tView: TView, lView: LView, index: number) {
  * @param parentRNode Parent node \(so that direct children can be added eagerly\) or `null` if it is
  *     a root node.
  *
- * 父节点（以便可以立即添加直接子项），如果是根节点，则为 `null` 。
+ * 父节点（以便可以立即添加直接子项），如果是根节点，则为 `null`。
  *
  * @param insertInFrontOf DOM node that should be used as an anchor.
  *
@@ -155,7 +155,7 @@ export function applyCreateOpCodes(
 /**
  * Apply `I18nMutateOpCodes` OpCodes.
  *
- * 应用 `I18nMutateOpCodes` 。
+ * 应用 `I18nMutateOpCodes`。
  *
  * @param tView Current `TView`
  *

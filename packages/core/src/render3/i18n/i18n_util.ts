@@ -22,7 +22,7 @@ import {addTNodeAndUpdateInsertBeforeIndex} from './i18n_insert_before_index';
 /**
  * Retrieve `TIcu` at a given `index`.
  *
- * 在给定的 `index` 处检索 `TIcu` 。
+ * 在给定的 `index` 处检索 `TIcu`。
  *
  * The `TIcu` can be stored either directly \(if it is nested ICU\) OR
  * it is stored inside tho `TIcuContainer` if it is top level ICU.
@@ -33,12 +33,12 @@ import {addTNodeAndUpdateInsertBeforeIndex} from './i18n_insert_before_index';
  * tree, but nested ICU's have no TNode, because we don't know ahead of time if the nested ICU is
  * expressed \(parent ICU may have selected a case which does not contain it.\)
  *
- * 原因是顶级 ICU 需要一个 `TNode` ，以便它们是渲染树的一部分，但嵌套 ICU 没有
+ * 原因是顶级 ICU 需要一个 `TNode`，以便它们是渲染树的一部分，但嵌套 ICU 没有
  * TNode，因为我们无法提前知道嵌套 ICU 是否被表达（父 ICU 可能有选择了一个不包含它的案例。）
  *
  * @param tView Current `TView`.
  *
- * 当前 `TView` 。
+ * 当前 `TView`。
  * @param index Index where the value should be read from.
  *
  * 应该从中读取值的索引。
@@ -74,12 +74,12 @@ export function getTIcu(tView: TView, index: number): TIcu|null {
  * tree, but nested ICU's have no TNode, because we don't know ahead of time if the nested ICU is
  * expressed \(parent ICU may have selected a case which does not contain it.\)
  *
- * 原因是顶级 ICU 需要一个 `TNode` ，以便它们是渲染树的一部分，但嵌套 ICU 没有
+ * 原因是顶级 ICU 需要一个 `TNode`，以便它们是渲染树的一部分，但嵌套 ICU 没有
  * TNode，因为我们无法提前知道嵌套 ICU 是否被表达（父 ICU 可能有选择了一个不包含它的案例。）
  *
  * @param tView Current `TView`.
  *
- * 当前 `TView` 。
+ * 当前 `TView`。
  * @param index Index where the value should be stored at in `Tview.data`
  *
  * `Tview.data` 中应该存储值的索引
@@ -104,7 +104,7 @@ export function setTIcu(tView: TView, index: number, tIcu: TIcu): void {
 /**
  * Set `TNode.insertBeforeIndex` taking the `Array` into account.
  *
- * 考虑 `Array` 设置 `TNode.insertBeforeIndex` 。
+ * 考虑 `Array` 设置 `TNode.insertBeforeIndex`。
  *
  * See `TNode.insertBeforeIndex`
  *
@@ -131,7 +131,7 @@ export function setTNodeInsertBeforeIndex(tNode: TNode, index: number) {
  *
  * See `TNodeType.Placeholder` for more information.
  *
- * 有关更多信息，请参阅 `TNodeType.Placeholder` 。
+ * 有关更多信息，请参阅 `TNodeType.Placeholder`。
  *
  */
 export function createTNodePlaceholder(

@@ -48,7 +48,7 @@ If you have any trouble during this lesson, you can review the completed code fo
 
 * Your app has a new component: `HomeComponent`.
 
-  应用程序有了一个新组件： `HomeComponent` 。
+  应用程序有了一个新组件：`HomeComponent`。
 
 ## Conceptual preview of Angular components
 
@@ -77,7 +77,7 @@ When you create your `HomeComponent`, you use these properties:
 
 * `standalone`: to describe whether the component requires a `ngModule`.
 
-  `standalone`：描述组件是否需要 `ngModule` 。
+  `standalone`：描述组件是否需要 `ngModule`。
 
 * `imports`: to describe the component's dependencies.
 
@@ -169,11 +169,11 @@ In the **Edit** pane of your IDE:
 
 1. Open `app.component.ts` in the editor.
 
-   在编辑器中打开 `app.component.ts` 。
+   在编辑器中打开 `app.component.ts`。
 
 1. In `app.component.ts`, import `HomeComponent` by adding this line to the file level imports.
 
-   在 `app.component.ts` 中，通过将此行添加到文件顶部来导入 `HomeComponent` 。
+   在 `app.component.ts` 中，通过将此行添加到文件顶部来导入 `HomeComponent`。
 
    <code-example header="Import HomeComponent in src/app/app.component.ts" path="first-app-lesson-02/src/app/app.component.ts" region="import-home"></code-example>
 
@@ -197,7 +197,7 @@ In the **Edit** pane of your IDE:
    If `ng serve` is not running, start it again.
    *Hello world* in your app should change to *home works!* from the `HomeComponent`.
 
-   如果 `ng serve` 正在运行，应用程序应该更新。如果 `ng serve` 没有运行，请重新启动它。你应用中的*Hello world* 应该已改为来自 `HomeComponent` 的 *home works!* 。
+   如果 `ng serve` 正在运行，应用程序应该更新。如果 `ng serve` 没有运行，请重新启动它。你应用中的*Hello world* 应该已改为来自 `HomeComponent` 的 *home works!*。
 
 1. Check the running app in the browser and confirm that the app has been updated.
 
@@ -228,7 +228,7 @@ In the **Edit** pane of your IDE:
 
 1. In the `first-app` directory, open `home.component.ts` in the editor.
 
-   在 `first-app` 目录下，在编辑器中打开 `home.component.ts` 。
+   在 `first-app` 目录下，在编辑器中打开 `home.component.ts`。
 
 1. In `home.component.ts`, in `@Component`, update the `template` property with this code.
 

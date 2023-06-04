@@ -290,7 +290,7 @@ export class TypeScriptReflectionHost implements ReflectionHost {
    *
    * The import info if this is a namespaced import or `null`.
    *
-   * 如果这是命名空间导入或 `null` ，则为导入信息。
+   * 如果这是命名空间导入或 `null`，则为导入信息。
    *
    */
   protected getImportOfNamespacedIdentifier(
@@ -327,7 +327,7 @@ export class TypeScriptReflectionHost implements ReflectionHost {
   /**
    * Resolve a `ts.Symbol` to its declaration, keeping track of the `viaModule` along the way.
    *
-   * 将 `ts.Symbol` 解析为其声明，同时跟踪 `viaModule` 。
+   * 将 `ts.Symbol` 解析为其声明，同时跟踪 `viaModule`。
    *
    */
   protected getDeclarationOfSymbol(symbol: ts.Symbol, originalId: ts.Identifier|null): Declaration
@@ -655,7 +655,7 @@ function propertyNameToString(node: ts.PropertyName): string|null {
 /**
  * Compute the left most identifier in a qualified type chain. E.g. the `a` of `a.b.c.SomeType`.
  *
- * 计算限定类型链中最左边的标识符。例如 `abcSomeType` 的 `a` 。
+ * 计算限定类型链中最左边的标识符。例如 `abcSomeType` 的 `a`。
  *
  * @param qualifiedName The starting property access expression from which we want to compute
  * the left most identifier.
@@ -666,7 +666,7 @@ function propertyNameToString(node: ts.PropertyName): string|null {
  *
  * the left most identifier in the chain or `null` if it is not an identifier.
  *
- * 链中最左边的标识符，如果不是标识符，则为 `null` 。
+ * 链中最左边的标识符，如果不是标识符，则为 `null`。
  *
  */
 function getQualifiedNameRoot(qualifiedName: ts.QualifiedName): ts.Identifier|null {
@@ -679,7 +679,7 @@ function getQualifiedNameRoot(qualifiedName: ts.QualifiedName): ts.Identifier|nu
 /**
  * Compute the left most identifier in a property access chain. E.g. the `a` of `a.b.c.d`.
  *
- * 计算属性访问链中最左边的标识符。例如，`abcd` 的 `a` 。
+ * 计算属性访问链中最左边的标识符。例如，`abcd` 的 `a`。
  *
  * @param propertyAccess The starting property access expression from which we want to compute
  * the left most identifier.
@@ -690,7 +690,7 @@ function getQualifiedNameRoot(qualifiedName: ts.QualifiedName): ts.Identifier|nu
  *
  * the left most identifier in the chain or `null` if it is not an identifier.
  *
- * 链中最左边的标识符，如果不是标识符，则为 `null` 。
+ * 链中最左边的标识符，如果不是标识符，则为 `null`。
  *
  */
 function getFarLeftIdentifier(propertyAccess: ts.PropertyAccessExpression): ts.Identifier|null {
@@ -704,8 +704,8 @@ function getFarLeftIdentifier(propertyAccess: ts.PropertyAccessExpression): ts.I
  * Return the ImportDeclaration for the given `node` if it is either an `ImportSpecifier` or a
  * `NamespaceImport`. If not return `null`.
  *
- * 如果给定 `node` 是 `ImportSpecifier` 或 `NamespaceImport` ，则返回给定节点的 ImportDeclaration
- * 。如果不返回 `null` 。
+ * 如果给定 `node` 是 `ImportSpecifier` 或 `NamespaceImport`，则返回给定节点的 ImportDeclaration
+ *。如果不返回 `null`。
  *
  */
 function getContainingImportDeclaration(node: ts.Node): ts.ImportDeclaration|null {
@@ -720,7 +720,7 @@ function getContainingImportDeclaration(node: ts.Node): ts.ImportDeclaration|nul
  * then fallback to the `originalId`.
  *
  * 计算 `decl` 导出而不是导入的名称。如果找不到这样的声明（例如它是命名空间导入），则回退到
- * `originalId` 。
+ * `originalId`。
  *
  */
 function getExportedName(decl: ts.Declaration, originalId: ts.Identifier): string {
@@ -735,7 +735,7 @@ const LocalExportedDeclarations = Symbol('LocalExportedDeclarations');
  * A `ts.SourceFile` expando which includes a cached `Set` of local `ts.Declaration`s that are
  * exported either directly \(`export class ...`\) or indirectly \(via `export {...}`\).
  *
- * 一个 `ts.SourceFile` expando，包含一个本地的 `ts.Declaration` 的缓存 `Set` ，可以直接（`export
+ * 一个 `ts.SourceFile` expando，包含一个本地的 `ts.Declaration` 的缓存 `Set`，可以直接（`export
  * class ...`）或间接（通过 `export {...}`）导出。
  *
  * This cache does not cause memory leaks as:
@@ -760,7 +760,7 @@ interface SourceFileWithCachedExports extends ts.SourceFile {
    * Cached `Set` of `ts.Declaration`s which are locally declared in this file and are exported
    * either directly or indirectly.
    *
-   * `ts.Declaration` 的缓存 `Set` ，在此文件中本地声明，并直接或间接导出。
+   * `ts.Declaration` 的缓存 `Set`，在此文件中本地声明，并直接或间接导出。
    *
    */
   [LocalExportedDeclarations]?: Set<ts.Declaration>;

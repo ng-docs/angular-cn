@@ -97,7 +97,7 @@ In the **Terminal** pane of your IDE:
 
 1. In a web browser on your development computer, open `http://localhost:4200`.
 
-   在开发机上的 Web 浏览器中，打开 `http://localhost:4200` 。
+   在开发机上的 Web 浏览器中，打开 `http://localhost:4200`。
 
 1. Confirm that the default web site appears in the browser.
 
@@ -219,7 +219,7 @@ In your IDE:
 
 1. Open `first-app/src/index.html`.
 
-   打开 `first-app/src/index.html` 。
+   打开 `first-app/src/index.html`。
 
 1. In `index.html`, replace the `<title>` element with this code to update the title of the app.
 
@@ -253,11 +253,11 @@ In your IDE:
 
 1. If you stopped the `ng serve` command from step 1, in the **Terminal** window of your IDE, run `ng serve` again.
 
-   如果你在第 1 步曾停止了 `ng serve` 命令，请在 IDE 的**终端**窗口中再次运行 `ng serve` 。
+   如果你在第 1 步曾停止了 `ng serve` 命令，请在 IDE 的**终端**窗口中再次运行 `ng serve`。
 
 1. Open your browser and navigate to `localhost:4200` and confirm that the app builds without error and displays *Hello world* in the title and body of your app:
 
-   打开你的浏览器并导航至 `localhost:4200` 并确认该应用程序构建无误并在应用程序的标题和正文中显示出了*Hello world* ：
+   打开你的浏览器并导航至 `localhost:4200` 并确认该应用程序构建无误并在应用程序的标题和正文中显示出了*Hello world*：
 
    <section class="lightbox">
    <img alt="browser frame of page displaying the text 'Hello World'" src="generated/images/guide/faa/homes-app-lesson-01-browser.png">
@@ -270,7 +270,7 @@ In your IDE:
 In this lesson, you updated a default Angular app to display *Hello world*.
 In the process, you learned about the `ng serve` command to serve your app locally for testing.
 
-在这一课，你更新了默认的 Angular 应用程序以显示 *Hello world* 。在此过程中，你了解了 `ng serve` 命令以便在本地为应用程序启动开发服务器以进行测试。
+在这一课，你更新了默认的 Angular 应用程序以显示 *Hello world*。在此过程中，你了解了 `ng serve` 命令以便在本地为应用程序启动开发服务器以进行测试。
 
 If have any trouble with this lesson, review the completed code for it in the <live-example></live-example>.
 

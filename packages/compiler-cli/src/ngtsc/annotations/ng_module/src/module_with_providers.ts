@@ -19,7 +19,7 @@ import {ClassDeclaration, isNamedClassDeclaration, ReflectionHost, typeNodeToVal
  * type is recognized.
  *
  * 创建一个外部函数解析器，以检测函数或方法声明的返回类型位置中的 `ModuleWithProviders<T>`
- * 类型。如果识别到这样的返回类型，则会生成 `SyntheticValue` 。
+ * 类型。如果识别到这样的返回类型，则会生成 `SyntheticValue`。
  *
  * @param reflector The reflection host to use for analyzing the syntax.
  *
@@ -39,7 +39,7 @@ export function createModuleWithProvidersResolver(
    * Retrieve an `NgModule` identifier \(T\) from the specified `type`, if it is of the form:
    * `ModuleWithProviders<T>`
    *
-   * 从指定的 `type` 检索 `NgModule` 标识符（T），如果它是以下形式： `ModuleWithProviders<T>`
+   * 从指定的 `type` 检索 `NgModule` 标识符（T），如果它是以下形式：`ModuleWithProviders<T>`
    *
    * @param type The type to reflect on.
    *
@@ -48,7 +48,7 @@ export function createModuleWithProvidersResolver(
    *
    * the identifier of the NgModule type if found, or null otherwise.
    *
-   * 如果找到，则为 NgModule 类型的标识符，否则为 null 。
+   * 如果找到，则为 NgModule 类型的标识符，否则为 null。
    */
   function _reflectModuleFromTypeParam(
       type: ts.TypeNode,
@@ -101,7 +101,7 @@ export function createModuleWithProvidersResolver(
    * Retrieve an `NgModule` identifier \(T\) from the specified `type`, if it is of the form:
    * `A|B|{ngModule: T}|C`.
    *
-   * 从指定的 `type` 检索 `NgModule` 标识符（T），如果它是以下格式： `A|B|{ngModule: T}|C` 。
+   * 从指定的 `type` 检索 `NgModule` 标识符（T），如果它是以下格式：`A|B|{ngModule: T}|C`。
    *
    * @param type The type to reflect on.
    *
@@ -110,7 +110,7 @@ export function createModuleWithProvidersResolver(
    *
    * the identifier of the NgModule type if found, or null otherwise.
    *
-   * 如果找到，则为 NgModule 类型的标识符，否则为 null 。
+   * 如果找到，则为 NgModule 类型的标识符，否则为 null。
    */
   function _reflectModuleFromLiteralType(type: ts.TypeNode): ts.Expression|null {
     if (!ts.isIntersectionTypeNode(type)) {

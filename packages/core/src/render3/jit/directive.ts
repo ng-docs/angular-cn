@@ -45,7 +45,7 @@ import {isModuleWithProviders} from './util';
  *
  * 考虑一个扩展组件“B”的组件“A”，两者都在模块“M”中声明。在“A”的编译期间，会请求“B”的定义以捕获继承链，这可能会触发“B”的编译。如果此嵌套编译要触发
  * `flushModuleScopingQueueAsMuchAsPossible`
- * ，则可能会出现模块“M”仍然在队列中挂起的情况，导致“A”和“B”要使用 NgModule
+ *，则可能会出现模块“M”仍然在队列中挂起的情况，导致“A”和“B”要使用 NgModule
  * 范围进行修补。由于“A”的编译仍在进行中，这将引入对其编译的循环依赖。为避免此问题，仅在深度 0
  * 处进行编译时才会刷新模块范围队列，以确保所有编译都已完成。
  *
@@ -65,7 +65,7 @@ let compilationDepth = 0;
  *
  * 编译可能是异步的（例如，由于需要解析组件模板或其他资源的 URL）。如果不是立即编译，
  * `compileComponent` 会将资源解析排入全局队列，并且在调用 `resolveComponentResources`
- * 解析全局队列之前，将无法返回 `ɵcmp` 。
+ * 解析全局队列之前，将无法返回 `ɵcmp`。
  *
  */
 export function compileComponent(type: Type<any>, metadata: Component): void {
@@ -251,7 +251,7 @@ function verifyStandaloneImport(depType: Type<unknown>, importingType: Type<unkn
  * component's `imports`.
  *
  * 为独立组件的组件定义构建 memoized `directiveDefs` 和 `pipeDefs` 函数，它们会处理 `imports`
- * 并过滤掉指令和管道。在这里使用记忆化函数允许延迟解析组件的 `imports` 中存在的任何 `forwardRef` 。
+ * 并过滤掉指令和管道。在这里使用记忆化函数允许延迟解析组件的 `imports` 中存在的任何 `forwardRef`。
  *
  */
 function getStandaloneDefFunctions(type: Type<any>, imports: Type<any>[]): {
@@ -349,7 +349,7 @@ function hasSelectorScope<T>(component: Type<T>): component is Type<T>&
  * will resolve when compilation completes and the directive becomes usable.
  *
  * 如果编译不是立即的，`compileDirective` 将返回一个 `Promise`
- * ，它将在编译完成并且指令变得可用时解析。
+ *，它将在编译完成并且指令变得可用时解析。
  *
  */
 export function compileDirective(type: Type<any>, directive: Directive|null): void {
@@ -420,7 +420,7 @@ export function extendsDirectlyFromObject(type: Type<any>): boolean {
  * Extract the `R3DirectiveMetadata` for a particular directive \(either a `Directive` or a
  * `Component`\).
  *
- * 提取特定指令（`Directive` 或 `Component`）的 `R3DirectiveMetadata` 。
+ * 提取特定指令（`Directive` 或 `Component`）的 `R3DirectiveMetadata`。
  *
  */
 export function directiveMetadata(type: Type<any>, metadata: Directive): R3DirectiveMetadataFacade {

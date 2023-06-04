@@ -117,7 +117,7 @@ export class ElementRef<T = any> {
 /**
  * Unwraps `ElementRef` and return the `nativeElement`.
  *
- * 解开 `ElementRef` 并返回 `nativeElement` 。
+ * 解开 `ElementRef` 并返回 `nativeElement`。
  *
  * @param value value to unwrap
  *
@@ -127,7 +127,7 @@ export class ElementRef<T = any> {
  *
  * `nativeElement` if `ElementRef` otherwise returns value as is.
  *
- * `nativeElement` 如果 `ElementRef` ，否则按原样返回值。
+ * `nativeElement` 如果 `ElementRef`，否则按原样返回值。
  *
  */
 export function unwrapElementRef<T, R>(value: T|ElementRef<R>): T|R {

@@ -73,7 +73,7 @@ export class AppVersion implements UpdateSource {
    * The normalized URL to the file that serves as the index page to satisfy navigation requests.
    * Usually this is `/index.html`.
    *
-   * 作为满足导航请求的索引页面的文件的规范化 URL。通常这是 `/index.html` 。
+   * 作为满足导航请求的索引页面的文件的规范化 URL。通常这是 `/index.html`。
    *
    */
   private indexUrl: NormalizedUrl;

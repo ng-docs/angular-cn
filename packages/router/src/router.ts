@@ -86,12 +86,12 @@ export class Router {
    * `UrlHandlingStrategy`\). That is, after we find the route config tree that we're going to
    * activate, run guards, and are just about to activate the route, we set the currentUrlTree.
    *
-   * 表示 `Router` 配置为处理（通过 `UrlHandlingStrategy` ）的已激活 `UrlTree` 。 也就是说，在我们找到要激活的路由配置树后，运行守卫，并且即将激活路由，我们设置 currentUrlTree。
+   * 表示 `Router` 配置为处理（通过 `UrlHandlingStrategy` ）的已激活 `UrlTree`。也就是说，在我们找到要激活的路由配置树后，运行守卫，并且即将激活路由，我们设置 currentUrlTree。
    *
    * This should match the `browserUrlTree` when a navigation succeeds. If the
    * `UrlHandlingStrategy.shouldProcessUrl` is `false`, only the `browserUrlTree` is updated.
    *
-   * 当导航成功时，这应该与 `browserUrlTree` 匹配。 如果 `UrlHandlingStrategy.shouldProcessUrl` 为 `false` ，则仅更新 `browserUrlTree` 。
+   * 当导航成功时，这应该与 `browserUrlTree` 匹配。如果 `UrlHandlingStrategy.shouldProcessUrl` 为 `false`，则仅更新 `browserUrlTree`。
    *
    * @internal
    */
@@ -100,7 +100,7 @@ export class Router {
    * Meant to represent the entire browser url after a successful navigation. In the life of a
    * navigation transition:
    *
-   * 意味着在成功导航后代表整个浏览器 url。 在导航过渡的生活中：
+   * 意味着在成功导航后代表整个浏览器 url。在导航过渡的生活中：
    *
    * 1. The rawUrl represents the full URL that's being navigated to
    *
@@ -141,7 +141,7 @@ export class Router {
    * the browser url update is skipped via `skipLocationChange`\). With that, note that
    * `browserUrlTree` _may not_ reflect the actual browser URL for two reasons:
    *
-   * 意味着表示 `Router` 设置为处理的浏览器 url 部分（通过 `UrlHandlingStrategy` ）。 该值在浏览器 url 更新后立即更新（或通过 `skipLocationChange` 跳过浏览器 url 更新）。 因此，请注意 `browserUrlTree`_ 可能不会 _ 反映实际的浏览器 URL，原因有两个：
+   * 意味着表示 `Router` 设置为处理的浏览器 url 部分（通过 `UrlHandlingStrategy` ）。该值在浏览器 url 更新后立即更新（或通过 `skipLocationChange` 跳过浏览器 url 更新）。因此，请注意 `browserUrlTree`_ 可能不会 _ 反映实际的浏览器 URL，原因有两个：
    *
    * 1. `UrlHandlingStrategy` only handles part of the URL
    *
@@ -155,7 +155,7 @@ export class Router {
    * current route, either before guards with `urlUpdateStrategy === 'eager'` or right before
    * activation with `'deferred'`.
    *
-   * 因此，重申一下， `browserUrlTree` 仅代表路由器对当前路由的内部理解，要么在 `urlUpdateStrategy === 'eager'` 守卫之前，要么在使用 `'deferred'` 激活之前。
+   * 因此，重申一下，`browserUrlTree` 仅代表路由器对当前路由的内部理解，要么在 `urlUpdateStrategy === 'eager'` 守卫之前，要么在使用 `'deferred'` 激活之前。
    *
    * This should match the `currentUrlTree` when the navigation succeeds.
    *
@@ -231,7 +231,7 @@ export class Router {
    * Subscribe to the `Router` events and watch for `NavigationError` instead.
    *   `provideRouter` has the `withNavigationErrorHandler` feature to make this easier.
    *
-   * 订阅 `Router` 事件并观察 `NavigationError` 。 `provideRouter` 具有 `withNavigationErrorHandler` 功能，使这更容易。
+   * 订阅 `Router` 事件并观察 `NavigationError`。`provideRouter` 具有 `withNavigationErrorHandler` 功能，使这更容易。
    *
    * @see `withNavigationErrorHandler`
    */
@@ -243,7 +243,7 @@ export class Router {
    * The most common case is a `%` sign
    * that's not encoded and is not part of a percent encoded sequence.
    *
-   * uri 格式无效错误的处理器，在 `Router.parseUrl(url)` 由于 `url` 包含无效字符而报错时调用。 最常见的情况可能是 `%` 本身既没有被编码，又不是正常 `%` 编码序列的一部分。
+   * uri 格式无效错误的处理器，在 `Router.parseUrl(url)` 由于 `url` 包含无效字符而报错时调用。最常见的情况可能是 `%` 本身既没有被编码，又不是正常 `%` 编码序列的一部分。
    *
    * @deprecated
    *
@@ -277,7 +277,7 @@ export class Router {
    * Configure using `providers` instead:
    *   `{provide: UrlHandlingStrategy, useClass: MyStrategy}`.
    *
-   * 改为使用 `providers` 进行配置： `{provide: UrlHandlingStrategy, useClass: MyStrategy}` 。
+   * 改为使用 `providers` 进行配置：`{provide: UrlHandlingStrategy, useClass: MyStrategy}`。
    *
    */
   urlHandlingStrategy = inject(UrlHandlingStrategy);
@@ -292,7 +292,7 @@ export class Router {
    * Configure using `providers` instead:
    *   `{provide: RouteReuseStrategy, useClass: MyStrategy}`.
    *
-   * 改为使用 `providers` 进行配置： `{provide: RouteReuseStrategy, useClass: MyStrategy}` 。
+   * 改为使用 `providers` 进行配置：`{provide: RouteReuseStrategy, useClass: MyStrategy}`。
    *
    */
   routeReuseStrategy = inject(RouteReuseStrategy);
@@ -307,7 +307,7 @@ export class Router {
    * Configure using `providers` instead:
    *   `{provide: TitleStrategy, useClass: MyStrategy}`.
    *
-   * 改为使用 `providers` 进行配置： `{provide: TitleStrategy, useClass: MyStrategy}` 。
+   * 改为使用 `providers` 进行配置：`{provide: TitleStrategy, useClass: MyStrategy}`。
    *
    */
   titleStrategy?: TitleStrategy = inject(TitleStrategy);
@@ -391,7 +391,7 @@ export class Router {
    * frequently with `urlUpdateStrategy: 'eager'` and navigations with the browser back/forward
    * buttons.
    *
-   * 'replace' - 始终使用 `location.replaceState` 将浏览器状态设置为导航开始前的路由器状态。 这意味着如果浏览器的 URL 在取消导航 _ 之前 _ 更新，则路由器将简单地替换历史记录中的项目，而不是尝试恢复到会话历史记录中的先前位置。 这种情况最常发生在 `urlUpdateStrategy: 'eager'` 和使用浏览器后退/前进按钮的导航中。
+   * 'replace' - 始终使用 `location.replaceState` 将浏览器状态设置为导航开始前的路由器状态。这意味着如果浏览器的 URL 在取消导航 _ 之前 _ 更新，则路由器将简单地替换历史记录中的项目，而不是尝试恢复到会话历史记录中的先前位置。这种情况最常发生在 `urlUpdateStrategy: 'eager'` 和使用浏览器后退/前进按钮的导航中。
    *
    * 'computed' - Will attempt to return to the same index in the session history that corresponds
    * to the Angular route when the navigation gets cancelled. For example, if the browser back
@@ -404,11 +404,11 @@ export class Router {
    * handles a portion of the URL because the history restoration navigates to the previous place in
    * the browser history rather than simply resetting a portion of the URL.
    *
-   * 注意： ' `UrlHandlingStrategy` ' 选项与任何仅处理一部分 URL 的 UrlHandlingStrategy 不兼容，因为历史恢复会导航到浏览器历史记录中的上一个位置，而不是简单地重置 URL 的一部分。
+   * 注意：' `UrlHandlingStrategy` ' 选项与任何仅处理一部分 URL 的 UrlHandlingStrategy 不兼容，因为历史恢复会导航到浏览器历史记录中的上一个位置，而不是简单地重置 URL 的一部分。
    *
    * The default value is `replace`.
    *
-   * 默认值是 `replace` 。
+   * 默认值是 `replace`。
    *
    * @deprecated
    *
@@ -560,7 +560,7 @@ export class Router {
    * Returns the current `Navigation` object when the router is navigating,
    * and `null` when idle.
    *
-   * 路由器正在导航时返回当前的 `Navigation` 对象，空闲时返回 `null` 。
+   * 路由器正在导航时返回当前的 `Navigation` 对象，空闲时返回 `null`。
    *
    */
   getCurrentNavigation(): Navigation|null {
@@ -571,7 +571,7 @@ export class Router {
    * The `Navigation` object of the most recent navigation to succeed and `null` if there
    *     has not been a successful navigation yet.
    *
-   * 最近一次成功导航的 `Navigation` 对象，如果还没有成功导航则为 `null` 。
+   * 最近一次成功导航的 `Navigation` 对象，如果还没有成功导航则为 `null`。
    *
    */
   get lastSuccessfulNavigation(): Navigation|null {
@@ -782,7 +782,7 @@ export class Router {
    * Navigate based on the provided array of commands and a starting point.
    * If no starting route is provided, the navigation is absolute.
    *
-   * 基于所提供的命令数组和起点路由进行导航。 如果没有指定起点路由，则从根路由开始进行绝对导航。
+   * 基于所提供的命令数组和起点路由进行导航。如果没有指定起点路由，则从根路由开始进行绝对导航。
    *
    * @param commands An array of URL fragments with which to construct the target URL.
    * If the path is static, can be the literal URL string. For a dynamic path, pass an array of path
@@ -801,7 +801,7 @@ export class Router {
    *     fails,
    * or is rejected on error.
    *
-   * 一个 Promise，当导航成功时解析为 `true` ，当导航失败时解析为 `false` ，或因错误而被拒绝。
+   * 一个 Promise，当导航成功时解析为 `true`，当导航失败时解析为 `false`，或因错误而被拒绝。
    *
    * @usageNotes
    *
@@ -860,17 +860,17 @@ export class Router {
    *
    * Use `IsActiveMatchOptions` instead.
    *
-   * 请改用 `IsActiveMatchOptions` 。
+   * 请改用 `IsActiveMatchOptions`。
    *
    * - The equivalent `IsActiveMatchOptions` for `true` is
    *   `{paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}`.
    *
-   *   `true` 的等效 `IsActiveMatchOptions` 是 `{paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}` 。
+   *   `true` 的等效 `IsActiveMatchOptions` 是 `{paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}`。
    *
    * - The equivalent for `false` is
    *   `{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}`.
    *
-   *   `false` 的等价物是 `{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}` 。
+   *   `false` 的等价物是 `{paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}`。
    *
    */
   isActive(url: string|UrlTree, exact: boolean): boolean;

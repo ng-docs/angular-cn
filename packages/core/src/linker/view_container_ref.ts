@@ -66,7 +66,7 @@ export abstract class ViewContainerRef {
    * Each view container can have only one anchor element, and each anchor element
    * can have only a single view container.
    *
-   * 锚点元素用来指定本容器在父容器视图中的位置。 每个视图容器都只能有一个锚点元素，每个锚点元素也只能属于一个视图容器。
+   * 锚点元素用来指定本容器在父容器视图中的位置。每个视图容器都只能有一个锚点元素，每个锚点元素也只能属于一个视图容器。
    *
    * Root elements of views attached to this container become siblings of the anchor element in
    * the rendered view.
@@ -193,7 +193,7 @@ export abstract class ViewContainerRef {
    * @param index The 0-based index at which to insert the new view into this container.
    * If not specified, appends the new view as the last entry.
    *
-   * 从 0 开始的索引，表示新视图要插入到当前容器的哪个位置。 如果没有指定，就把新的视图追加到最后。
+   * 从 0 开始的索引，表示新视图要插入到当前容器的哪个位置。如果没有指定，就把新的视图追加到最后。
    * @returns
    *
    * The `ViewRef` instance for the newly created view.
@@ -229,14 +229,14 @@ export abstract class ViewContainerRef {
    *                this to ensure that all expected providers are available for the component
    *                instantiation.
    *
-   *   ngModuleRef ：组件的 NgModule 的 NgModuleRef ，你几乎应该始终提供它以确保所有预期的提供程序都可用于组件实例化。
+   *   ngModuleRef：组件的 NgModule 的 NgModuleRef，你几乎应该始终提供它以确保所有预期的提供程序都可用于组件实例化。
    *
    * - environmentInjector: an EnvironmentInjector which will provide the component's environment.
    *                you should almost always provide this to ensure that all expected providers
    *                are available for the component instantiation. This option is intended to
    *                replace the `ngModuleRef` parameter.
    *
-   *   EnvironmentInjector ：一个 EnvironmentInjector ，它将提供组件的环境。你几乎应该始终提供此内容，以确保所有预期的提供者都可用于组件实例化。此选项旨在替换 `ngModuleRef` 参数。
+   *   EnvironmentInjector：一个 EnvironmentInjector，它将提供组件的环境。你几乎应该始终提供此内容，以确保所有预期的提供者都可用于组件实例化。此选项旨在替换 `ngModuleRef` 参数。
    *
    * - projectableNodes: list of DOM nodes that should be projected through
    *                     [`<ng-content>`](api/core/ng-content) of the new component instance.
@@ -246,7 +246,7 @@ export abstract class ViewContainerRef {
    *
    * The new `ComponentRef` which contains the component instance and the host view.
    *
-   * 包含组件实例和宿主视图的新 `ComponentRef` 。
+   * 包含组件实例和宿主视图的新 `ComponentRef`。
    *
    */
   abstract createComponent<C>(componentType: Type<C>, options?: {
@@ -268,7 +268,7 @@ export abstract class ViewContainerRef {
    * @param index The index at which to insert the new component's host view into this container.
    * If not specified, appends the new view as the last entry.
    *
-   * 从 0 开始的索引，表示新组件的宿主视图要插入到当前容器的哪个位置。 如果没有指定，就把新的视图追加到最后。
+   * 从 0 开始的索引，表示新组件的宿主视图要插入到当前容器的哪个位置。如果没有指定，就把新的视图追加到最后。
    * @param injector The injector to use as the parent for the new component.
    *
    * 一个注入器，将用作新组件的父注入器。
@@ -279,13 +279,13 @@ export abstract class ViewContainerRef {
    * @param ngModuleRef An instance of the NgModuleRef that represent an NgModule.
    * This information is used to retrieve corresponding NgModule injector.
    *
-   * NgModuleRef 的一个实例，表示一个 NgModule。 此信息用于检索相应的 NgModule 注入器。
+   * NgModuleRef 的一个实例，表示一个 NgModule。此信息用于检索相应的 NgModule 注入器。
    *
    * @returns
    *
    * The new `ComponentRef` which contains the component instance and the host view.
    *
-   * 包含组件实例和宿主视图的新 `ComponentRef` 。
+   * 包含组件实例和宿主视图的新 `ComponentRef`。
    *
    * @deprecated
    *
@@ -311,7 +311,7 @@ export abstract class ViewContainerRef {
    * @param index The 0-based index at which to insert the view.
    * If not specified, appends the new view as the last entry.
    *
-   * 从 0 开始的索引，表示该视图要插入到当前容器的哪个位置。 如果没有指定，就把新的视图追加到最后。
+   * 从 0 开始的索引，表示该视图要插入到当前容器的哪个位置。如果没有指定，就把新的视图追加到最后。
    * @returns
    *
    * The inserted `ViewRef` instance.
@@ -355,7 +355,7 @@ export abstract class ViewContainerRef {
    * The 0-based index of the view's position in this container,
    * or `-1` if this container doesn't contain the view.
    *
-   * 此容器中视图位置的从 0 开始的索引，如果此容器不包含视图，则为 `-1` 。
+   * 此容器中视图位置的从 0 开始的索引，如果此容器不包含视图，则为 `-1`。
    *
    */
   abstract indexOf(viewRef: ViewRef): number;
@@ -368,7 +368,7 @@ export abstract class ViewContainerRef {
    * @param index The 0-based index of the view to destroy.
    * If not specified, the last view in the container is removed.
    *
-   * 要销毁的视图的从 0 开始的索引。 如果不指定 `index`，则移除容器中的最后一个视图。
+   * 要销毁的视图的从 0 开始的索引。如果不指定 `index`，则移除容器中的最后一个视图。
    *
    */
   abstract remove(index?: number): void;
@@ -377,12 +377,12 @@ export abstract class ViewContainerRef {
    * Detaches a view from this container without destroying it.
    * Use along with `insert()` to move a view within the current container.
    *
-   * 从当前容器中分离某个视图，但不会销毁它。 通常会和 `insert()` 一起使用，在当前容器中移动一个视图。
+   * 从当前容器中分离某个视图，但不会销毁它。通常会和 `insert()` 一起使用，在当前容器中移动一个视图。
    *
    * @param index The 0-based index of the view to detach.
    * If not specified, the last view in the container is detached.
    *
-   * 要分离的视图的从 0 开始的索引。 如果省略 `index` 参数，则拆出最后一个 [`ViewRef`](api/core/ViewRef)。
+   * 要分离的视图的从 0 开始的索引。如果省略 `index` 参数，则拆出最后一个 [`ViewRef`](api/core/ViewRef)。
    *
    */
   abstract detach(index?: number): ViewRef|null;
@@ -398,7 +398,7 @@ export abstract class ViewContainerRef {
  * Creates a ViewContainerRef and stores it on the injector. Or, if the ViewContainerRef
  * already exists, retrieves the existing ViewContainerRef.
  *
- * 创建一个 ViewContainerRef 并将其存储在注入器上。 或者，如果 ViewContainerRef 已经存在，则检索现有的 ViewContainerRef。
+ * 创建一个 ViewContainerRef 并将其存储在注入器上。或者，如果 ViewContainerRef 已经存在，则检索现有的 ViewContainerRef。
  *
  * @returns
  *
@@ -795,7 +795,7 @@ export function createContainerRef(
  * be used as an anchor when inserting elements. In this specific case we use low-level DOM
  * manipulation to insert it.
  *
- * 如果宿主是常规元素，我们必须手动插入一个注释节点，该节点将在插入元素时用作锚点。 在这种特定情况下，我们使用低级 DOM 操作来插入它。
+ * 如果宿主是常规元素，我们必须手动插入一个注释节点，该节点将在插入元素时用作锚点。在这种特定情况下，我们使用低级 DOM 操作来插入它。
  *
  */
 function insertAnchorNode(hostLView: LView, hostTNode: TNode): RComment {

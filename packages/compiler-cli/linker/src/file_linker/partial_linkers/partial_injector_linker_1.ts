@@ -16,7 +16,7 @@ import {wrapReference} from './util';
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareInjector()` call expressions.
  *
- * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareInjector()` 调用表达式。
+ * 一个 `PartialLinker`，旨在处理 `ɵɵngDeclareInjector()` 调用表达式。
  *
  */
 export class PartialInjectorLinkerVersion1<TExpression> implements PartialLinker<TExpression> {

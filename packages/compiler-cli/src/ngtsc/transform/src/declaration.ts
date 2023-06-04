@@ -20,7 +20,7 @@ import {addImports} from './utils';
  * Keeps track of `DtsTransform`s per source file, so that it is known which source files need to
  * have their declaration file transformed.
  *
- * 跟踪每个源文件的 `DtsTransform` ，以便知道哪些源文件需要转换其声明文件。
+ * 跟踪每个源文件的 `DtsTransform`，以便知道哪些源文件需要转换其声明文件。
  *
  */
 export class DtsTransformRegistry {
@@ -37,7 +37,7 @@ export class DtsTransformRegistry {
    * Gets the dts transforms to be applied for the given source file, or `null` if no transform is
    * necessary.
    *
-   * 获取要应用于给定源文件的 dts 转换，如果不需要转换，则为 `null` 。
+   * 获取要应用于给定源文件的 dts 转换，如果不需要转换，则为 `null`。
    *
    */
   getAllTransforms(sf: ts.SourceFile): DtsTransform[]|null {

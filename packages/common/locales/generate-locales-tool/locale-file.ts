@@ -40,7 +40,7 @@ export default ${generateBasicLocaleString(locale, localeData, baseCurrencies)};
  * `pluralCase` \].
  *
  * 收集基本的区域设置数据 \[ `localeId`, `dateTime`, `number`, `currency`, `directionality`,
- * `pluralCase` \] 。
+ * `pluralCase` \]。
  *
  */
 export function generateBasicLocaleString(

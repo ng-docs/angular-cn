@@ -117,7 +117,7 @@ export interface TranslateFn {
  *
  * will generate a message-source of `Hi {$PH}! There are {$PH_1} items`.
  *
- * 将生成 `Hi {$PH}! There are {$PH_1} items` 。
+ * 将生成 `Hi {$PH}! There are {$PH_1} items`。
  *
  * The recommended practice is to name the placeholder associated with each expression though.
  *
@@ -131,7 +131,7 @@ export interface TranslateFn {
  *
  * For example, to name the `items.length` expression placeholder `itemCount` you write:
  *
- * 例如，要命名 `items.length` 表达式占位符 `itemCount` ，你可以这样写：
+ * 例如，要命名 `items.length` 表达式占位符 `itemCount`，你可以这样写：
  *
  * ```ts
  * $localize `There are ${items.length}:itemCount: items`;
@@ -146,7 +146,7 @@ export interface TranslateFn {
  * the `:` by preceding it with a backslash:
  *
  * 如果你需要直接在没有元数据块的标记字符串的开头使用 `:` 字符，或直接在没有名称的替换表达式之后使用
- * : ，你必须在 `:` 之前使用反斜杠来转译：
+ * :，你必须在 `:` 之前使用反斜杠来转译：
  *
  * For example:
  *
@@ -178,14 +178,14 @@ export interface TranslateFn {
  *     transpiler, removing the tag and replacing the template literal string with a translated
  *     literal string from a collection of translations provided to the transpilation tool.
  *
- *   **编译时内联**： `$localize`
+ *   **编译时内联**：`$localize`
  *   标签在编译时由转译器转换，删除标签并使用提供给转译工具的翻译集合中的翻译后的文字字符串替换模板文字字符串。
  *
  * * **run-time evaluation**: the `$localize` tag is a run-time function that replaces and
  *     reorders the parts \(static strings and expressions\) of the template literal string with strings
  *     from a collection of translations loaded at run-time.
  *
- *   **运行时估算**： `$localize`
+ *   **运行时估算**：`$localize`
  *   标签是一个运行时函数，它会使用运行时加载的翻译集合中的字符串替换模板文字字符串的部分（静态字符串和表达式）并重新排序。
  *
  * * **pass-through evaluation**: the `$localize` tag is a run-time function that simply evaluates
@@ -193,7 +193,7 @@ export interface TranslateFn {
  *     version is used during development or where there is no need to translate the localized
  *     template literals.
  *
- *   **传递估算**： `$localize`
+ *   **传递估算**：`$localize`
  *   标签是一个运行时函数，它只是估算原始模板文字字符串，而不对各个部分应用任何翻译。此版本在开发期间或无需翻译本地化模板文字的地方使用。
  *
  * @param messageParts a collection of the static parts of the template string.

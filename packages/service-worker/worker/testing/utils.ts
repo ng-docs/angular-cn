@@ -63,7 +63,7 @@ export function normalizeUrl(url: string, relativeTo: string): NormalizedUrl {
 /**
  * Parse a URL into its different parts, such as `origin`, `path` and `search`.
  *
- * 将 URL 解析为其不同的部分，例如 `origin`、`path` 和 `search` 。
+ * 将 URL 解析为其不同的部分，例如 `origin`、`path` 和 `search`。
  *
  */
 export function parseUrl(

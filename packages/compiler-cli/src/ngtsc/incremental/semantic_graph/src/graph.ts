@@ -100,7 +100,7 @@ export class SemanticDepGraph {
    * Attempts to resolve a symbol in this graph that represents the given symbol from another graph.
    * If no matching symbol could be found, null is returned.
    *
-   * 尝试解析此图中的一个符号，该符号表示另一个图中的给定符号。如果找不到匹配的符号，则返回 null 。
+   * 尝试解析此图中的一个符号，该符号表示另一个图中的给定符号。如果找不到匹配的符号，则返回 null。
    *
    * @param symbol The symbol from another graph for which its equivalent in this graph should be
    * found.
@@ -285,7 +285,7 @@ export class SemanticDepGraphUpdater {
    * Creates a `SemanticReference` for the reference to `decl` using the expression `expr`. See
    * the documentation of `SemanticReference` for details.
    *
-   * 使用表达式 `expr` 为对 `decl` 的引用创建一个 `SemanticReference` 。有关详细信息，请参阅
+   * 使用表达式 `expr` 为对 `decl` 的引用创建一个 `SemanticReference`。有关详细信息，请参阅
    * `SemanticReference` 的文档。
    *
    */
@@ -300,7 +300,7 @@ export class SemanticDepGraphUpdater {
    * Gets the `SemanticSymbol` that was registered for `decl` during the current compilation, or
    * returns an opaque symbol that represents `decl`.
    *
-   * 获取在当前编译期间为 `decl` 注册的 `SemanticSymbol` ，或返回表示 `decl` 的不透明符号。
+   * 获取在当前编译期间为 `decl` 注册的 `SemanticSymbol`，或返回表示 `decl` 的不透明符号。
    *
    */
   getSymbol(decl: ClassDeclaration): SemanticSymbol {
@@ -317,7 +317,7 @@ export class SemanticDepGraphUpdater {
   /**
    * Gets or creates an `OpaqueSymbol` for the provided class declaration.
    *
-   * 获取或为提供的类声明创建 `OpaqueSymbol` 。
+   * 获取或为提供的类声明创建 `OpaqueSymbol`。
    *
    */
   private getOpaqueSymbol(decl: ClassDeclaration): OpaqueSymbol {

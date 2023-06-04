@@ -68,9 +68,9 @@ Angular 中有两个注入器层次结构：
 | :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 注入器层次结构              | 详情                                                                                                                                                                      |
 | `ModuleInjector` hierarchy  | Configure a `ModuleInjector` in this hierarchy using an `@NgModule()` or `@Injectable()` annotation.                                                                      |
-| `ModuleInjector` 层次结构   | 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。                                                                                           |
+| `ModuleInjector` 层次结构   | 使用 `@NgModule()` 或 `@Injectable()` 注解在此层次结构中配置 `ModuleInjector`。|
 | `ElementInjector` hierarchy | Created implicitly at each DOM element. An `ElementInjector` is empty by default unless you configure it in the `providers` property on `@Directive()` or `@Component()`. |
-| `ElementInjector` 层次结构  | 在每个 DOM 元素上隐式创建。默认情况下，`ElementInjector` 是空的，除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中配置它。                                  |
+| `ElementInjector` 层次结构  | 在每个 DOM 元素上隐式创建。默认情况下，`ElementInjector` 是空的，除非你在 `@Directive()` 或 `@Component()` 的 `providers` 属性中配置它。|
 
 <a id="register-providers-injectable"></a>
 
@@ -78,7 +78,7 @@ Angular 中有两个注入器层次结构：
 
 The `ModuleInjector` can be configured in one of two ways by using:
 
-可以通过以下两种方式之一配置 `ModuleInjector` ：
+可以通过以下两种方式之一配置 `ModuleInjector`：
 
 * The `@Injectable()` `providedIn` property to refer to `@NgModule()`, or `root`
 
@@ -257,7 +257,7 @@ This means that directives as well as components can configure providers, using 
 When you configure a provider for a component or directive using the `providers` property, that provider belongs to the `ElementInjector` of that component or directive.
 Components and directives on the same element share an injector.
 
-组件是一种特殊类型的指令，这意味着 `@Directive()` 具有 `providers` 属性，`@Component()` 也同样如此。 这意味着指令和组件都可以使用 `providers` 属性来配置提供者。当使用 `providers` 属性为组件或指令配置提供者时，该提供程商就属于该组件或指令的 `ElementInjector`。同一元素上的组件和指令共享同一个注入器。
+组件是一种特殊类型的指令，这意味着 `@Directive()` 具有 `providers` 属性，`@Component()` 也同样如此。这意味着指令和组件都可以使用 `providers` 属性来配置提供者。当使用 `providers` 属性为组件或指令配置提供者时，该提供程商就属于该组件或指令的 `ElementInjector`。同一元素上的组件和指令共享同一个注入器。
 
 <a id="resolution-rules"></a>
 
@@ -280,7 +280,7 @@ When resolving a token for a component/directive, Angular resolves it in two pha
 When a component declares a dependency, Angular tries to satisfy that dependency with its own `ElementInjector`.
 If the component's injector lacks the provider, it passes the request up to its parent component's `ElementInjector`.
 
-当组件声明依赖项时，Angular 会尝试使用它自己的 `ElementInjector` 来满足该依赖。 如果组件的注入器缺少提供者，它将把请求传给其父组件的 `ElementInjector`。
+当组件声明依赖项时，Angular 会尝试使用它自己的 `ElementInjector` 来满足该依赖。如果组件的注入器缺少提供者，它将把请求传给其父组件的 `ElementInjector`。
 
 The requests keep forwarding up until Angular finds an injector that can handle the request or runs out of ancestor `ElementInjector` hierarchies.
 
@@ -396,7 +396,7 @@ To see this in code, assume that the following value for `emoji` is what the par
 Imagine that in the child component, you had a different value, maple leaf <code>🍁</code> but you wanted to use the parent's value instead.
 This is when you'd use `@SkipSelf()`:
 
-想象一下，在子组件中，你有一个不同的值 `🍁`（枫叶），但你想使用父项的值。你就要使用 `@SkipSelf()` ：
+想象一下，在子组件中，你有一个不同的值 `🍁`（枫叶），但你想使用父项的值。你就要使用 `@SkipSelf()`：
 
 <code-example header="src/app/skipself/skipself.component.ts" path="resolution-modifiers/src/app/skipself/skipself.component.ts" region="skipself-component"></code-example>
 
@@ -532,11 +532,11 @@ In the logical tree, you'll see `@Provide`, `@Inject`, and `@NgModule`, which ar
 | :------------------------ | :------ |
 | Angular 服务属性 | 详细信息 |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | Demonstrates that if `Token` is injected at this location in the logical tree its value would be `Value`.             |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | 演示如果 `Token` 在逻辑树中的此位置注入，其值将是 `Value`。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | 演示如果 `Token` 在逻辑树中的此位置注入，其值将是 `Value`。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example>    | Demonstrates that there is a declaration of `Token` provider with value `Value` at this location in the logical tree. |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example> | 演示在逻辑树中的此位置有一个值为 `Value` 的 `Token` provider 声明。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example> | 演示在逻辑树中的此位置有一个值为 `Value` 的 `Token` provider 声明。|
 | <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example>         | Demonstrates that a fallback `NgModule` injector should be used at this location.                                     |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example> | 演示应该在此位置使用后备 `NgModule` 注入器。 |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule(Token) </code-example> | 演示应该在此位置使用后备 `NgModule` 注入器。|
 
 </div>
 
@@ -592,7 +592,7 @@ Knowledge of this structure can inform how you provide and inject your services,
 
 Now, consider that `<app-root>` injects the `FlowerService`:
 
-现在，考虑 `<app-root>` 只注入了 `FlowerService` ：
+现在，考虑 `<app-root>` 只注入了 `FlowerService`：
 
 <code-example header="src/app/app.component.ts" path="providers-viewproviders/src/app/app.component.1.ts" region="injection"></code-example>
 
@@ -1123,7 +1123,7 @@ With `@SkipSelf()` in the `<app-child>`, the injector begins its search for the 
 If you add `@Host()` to the constructor for `AnimalService`, the result is dog <code>🐶</code> because the injector finds the `AnimalService` in the `<app-child>` `<#VIEW>`.
 Here is the `viewProviders` array in the `<app-child>` class and `@Host()` in the constructor:
 
-如果把 `@Host()` 添加到 `AnimalService` 的构造函数上，结果就是🐶（小狗），因为注入器会在 `<app-child>` 的 `<#VIEW>` 中查找 `AnimalService` 服务。这里是 `<app-child>` 类中的 `viewProviders` 数组和构造函数中的 `@Host()` ：
+如果把 `@Host()` 添加到 `AnimalService` 的构造函数上，结果就是🐶（小狗），因为注入器会在 `<app-child>` 的 `<#VIEW>` 中查找 `AnimalService` 服务。这里是 `<app-child>` 类中的 `viewProviders` 数组和构造函数中的 `@Host()`：
 
 <code-example format="typescript" language="typescript">
 
@@ -1246,7 +1246,7 @@ Architectural reasons may lead you to restrict access to a service to the applic
 For example, the guide sample includes a `VillainsListComponent` that displays a list of villains.
 It gets those villains from a `VillainsService`.
 
-出于架构方面的考虑，可能会让你决定把一个服务限制到只能在它所属的那个应用域中访问。 比如，这个例子中包括一个用于显示反派列表的 `VillainsListComponent`，它会从 `VillainsService` 中获得反派列表数据。
+出于架构方面的考虑，可能会让你决定把一个服务限制到只能在它所属的那个应用域中访问。比如，这个例子中包括一个用于显示反派列表的 `VillainsListComponent`，它会从 `VillainsService` 中获得反派列表数据。
 
 If you provided `VillainsService` in the root `AppModule` \(where you registered the `HeroesService`\), that would make the `VillainsService` visible everywhere in the application, including the *Hero* workflows.
 If you later modified the `VillainsService`, you could break something in a hero component somewhere.
@@ -1275,16 +1275,16 @@ As long as `VillainsListComponent` does not get destroyed it will be the same in
 Many applications allow users to work on several open tasks at the same time.
 For example, in a tax preparation application, the preparer could be working on several tax returns, switching from one to the other throughout the day.
 
-很多应用允许用户同时进行多个任务。 比如，在纳税申报应用中，申报人可以打开多个报税单，随时可能从一个切换到另一个。
+很多应用允许用户同时进行多个任务。比如，在纳税申报应用中，申报人可以打开多个报税单，随时可能从一个切换到另一个。
 
 To demonstrate that scenario, imagine an outer `HeroListComponent` that displays a list of super heroes.
 
-为了演示这种场景，假设有一个显示超级英雄列表的外部 `HeroListComponent` 。
+为了演示这种场景，假设有一个显示超级英雄列表的外部 `HeroListComponent`。
 
 To open a hero's tax return, the preparer clicks on a hero name, which opens a component for editing that return.
 Each selected hero tax return opens in its own component and multiple returns can be open at the same time.
 
-要打开一个英雄的报税单，申报者点击英雄名，它就会打开一个组件来编辑那个申报单。 每个选中的申报单都会在自己的组件中打开，并且可以同时打开多个申报单。
+要打开一个英雄的报税单，申报者点击英雄名，它就会打开一个组件来编辑那个申报单。每个选中的申报单都会在自己的组件中打开，并且可以同时打开多个申报单。
 
 Each tax return component has the following characteristics:
 
@@ -1313,12 +1313,12 @@ That would be a straightforward task for a hero tax return.
 In the real world, with a rich tax return data model, the change management would be tricky.
 You could delegate that management to a helper service, as this example does.
 
-假设 `HeroTaxReturnComponent` 还有一些管理并还原这些更改的逻辑。 这对于简单的报税单来说是很容易的。 不过，在现实世界中，报税单的数据模型非常复杂，对这些修改的管理可能不得不投机取巧。 你可以把这种管理任务委托给一个辅助服务，就像这个例子中所做的。
+假设 `HeroTaxReturnComponent` 还有一些管理并还原这些更改的逻辑。这对于简单的报税单来说是很容易的。不过，在现实世界中，报税单的数据模型非常复杂，对这些修改的管理可能不得不投机取巧。你可以把这种管理任务委托给一个辅助服务，就像这个例子中所做的。
 
 The `HeroTaxReturnService` caches a single `HeroTaxReturn`, tracks changes to that return, and can save or restore it.
 It also delegates to the application-wide singleton `HeroService`, which it gets by injection.
 
-报税单服务 HeroTaxReturnService 缓存了单条 HeroTaxReturn，用于跟踪那个申报单的变更，并且可以保存或还原它。 它把后两项职责委托给了全应用级的单例服务 HeroService，HeroService 是通过依赖注入机制取得的。
+报税单服务 HeroTaxReturnService 缓存了单条 HeroTaxReturn，用于跟踪那个申报单的变更，并且可以保存或还原它。它把后两项职责委托给了全应用级的单例服务 HeroService，HeroService 是通过依赖注入机制取得的。
 
 <code-example header="src/app/hero-tax-return.service.ts" path="hierarchical-dependency-injection/src/app/hero-tax-return.service.ts"></code-example>
 
@@ -1333,12 +1333,12 @@ The setter initializes the component's own instance of the `HeroTaxReturnService
 The getter always returns what that service says is the current state of the hero.
 The component also asks the service to save and restore this tax return.
 
-通过 `@Input()` 属性可以得到*要编辑的报税单*，这个属性被实现成了读取器（getter）和设置器（setter）。 设置器根据传进来的报税单初始化了组件自己的 `HeroTaxReturnService` 实例。 读取器总是返回该服务所存英雄的当前状态。 组件也会请求该服务来保存或还原这个报税单。
+通过 `@Input()` 属性可以得到*要编辑的报税单*，这个属性被实现成了读取器（getter）和设置器（setter）。设置器根据传进来的报税单初始化了组件自己的 `HeroTaxReturnService` 实例。读取器总是返回该服务所存英雄的当前状态。组件也会请求该服务来保存或还原这个报税单。
 
 This won't work if the service is an application-wide singleton.
 Every component would share the same service instance, and each component would overwrite the tax return that belonged to another hero.
 
-但如果该服务是一个全应用范围的单例就不行了。 每个组件就都会共享同一个服务实例，每个组件也都会覆盖属于其它英雄的报税单。
+但如果该服务是一个全应用范围的单例就不行了。每个组件就都会共享同一个服务实例，每个组件也都会覆盖属于其它英雄的报税单。
 
 To prevent this, configure the component-level injector of `HeroTaxReturnComponent` to provide the service, using the  `providers` property in the component metadata.
 

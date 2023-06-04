@@ -42,11 +42,11 @@ export class ExportedProviderStatusResolver {
    * either that `ref` is a local type that we _know_ exports providers, or it's imported from a
    * .d.ts library and is declared in a way where the compiler cannot prove that it doesn't.
    *
-   * 如果为 `true` ，则应假定 `ref` 导出提供程序。 实际上，这可能意味着 `ref` 是我们 _ 知道的 _ 导出提供程序的本地类型，或者它是从 .d.ts 库导入的，并且以编译器无法证明它不是的方式声明。
+   * 如果为 `true`，则应假定 `ref` 导出提供程序。实际上，这可能意味着 `ref` 是我们 _ 知道的 _ 导出提供程序的本地类型，或者它是从 .d.ts 库导入的，并且以编译器无法证明它不是的方式声明。
    *
    * If `false`, then `ref` is guaranteed not to export providers.
    *
-   * 如果为 `false` ，则 `ref` 保证不会导出提供者。
+   * 如果为 `false`，则 `ref` 保证不会导出提供者。
    *
    * @param `ref` the class for which the provider status should be determined
    * @param `dependencyCallback` a callback that, if provided, will be called for every type

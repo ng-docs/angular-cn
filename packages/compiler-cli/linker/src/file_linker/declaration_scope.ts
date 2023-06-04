@@ -64,7 +64,7 @@ export interface DeclarationScope<TSharedConstantScope, TExpression> {
    * a reference to a reference object for where the shared constant statements will be
    *     inserted, or `null` if it is not possible to have a shared scope.
    *
-   * 对将插入共享常量语句的引用对象的引用，如果不可能有共享范围，则为 `null` 。
+   * 对将插入共享常量语句的引用对象的引用，如果不可能有共享范围，则为 `null`。
    *
    */
   getConstantScopeRef(expression: TExpression): TSharedConstantScope|null;

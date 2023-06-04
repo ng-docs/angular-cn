@@ -114,7 +114,7 @@ export interface MaybeForwardRefExpression<T extends o.Expression = o.Expression
    *
    * If this value is `ForwardRefHandling.None` then the `expression` is safe to use as-is.
    *
-   * 如果此值为 `ForwardRefHandling.None` ，则 `expression` 可以按原样安全使用。
+   * 如果此值为 `ForwardRefHandling.None`，则 `expression` 可以按原样安全使用。
    *
    * Otherwise the `expression` was wrapped in a call to `forwardRef()` and must not be eagerly
    * evaluated. Instead it must be wrapped in a function closure that will be evaluated lazily to
@@ -150,20 +150,20 @@ export function createMayBeForwardRefExpression<T extends o.Expression>(
  * Convert a `MaybeForwardRefExpression` to an `Expression`, possibly wrapping its expression in a
  * `forwardRef()` call.
  *
- * 将 `MaybeForwardRefExpression` 转换为 `Expression` ，可能将其表达式包装在 `forwardRef()` 调用中。
+ * 将 `MaybeForwardRefExpression` 转换为 `Expression`，可能将其表达式包装在 `forwardRef()` 调用中。
  *
  * If `MaybeForwardRefExpression.forwardRef` is `ForwardRefHandling.Unwrapped` then the expression
  * was originally wrapped in a `forwardRef()` call to prevent the value from being eagerly evaluated
  * in the code.
  *
  * 如果 `MaybeForwardRefExpression.forwardRef` 是 `ForwardRefHandling.Unwrapped`
- * ，则表达式最初被包装在 `forwardRef()` 调用中，以防止在代码中对该值进行热切估算。
+ *，则表达式最初被包装在 `forwardRef()` 调用中，以防止在代码中对该值进行热切估算。
  *
  * See `packages/compiler-cli/src/ngtsc/annotations/src/injectable.ts` and
  * `packages/compiler/src/jit_compiler_facade.ts` for more information.
  *
  * 有关更多信息，请参阅 `packages/compiler-cli/src/ngtsc/annotations/src/injectable.ts` 和
- * `packages/compiler/src/jit_compiler_facade.ts` 。
+ * `packages/compiler/src/jit_compiler_facade.ts`。
  *
  */
 export function convertFromMaybeForwardRefExpression(

@@ -89,7 +89,7 @@ Perform these steps from a command-line tool on your local computer or in the **
 
 1. From your working directory, run this command to navigate to the `aio` directory. The `aio` directory contains Angular's documentation files and tools.
 
-   从你的工作目录，运行此命令以导航到 `aio` 目录。 `aio` 目录包含 Angular 的文档文件和工具。
+   从你的工作目录，运行此命令以导航到 `aio` 目录。`aio` 目录包含 Angular 的文档文件和工具。
 
    <code-example language="shell">
 
@@ -125,7 +125,7 @@ Perform these steps from a command-line tool on your local computer or in the **
    Each time you save an update to a documentation file, the angular.io website at `http://localhost:4200` is updated.
    You might need to refresh your browser to see the changes after you save them.
 
-   这会在本地为你的 angular.io 网站草稿提供 `http://localhost:4200` ，并监视对文档文件的更改。每次你将更新保存到文档文件时，位于 `http://localhost:4200` 的 angular.io 网站都会更新。保存后，你可能需要刷新浏览器以查看更改。
+   这会在本地为你的 angular.io 网站草稿提供 `http://localhost:4200`，并监视对文档文件的更改。每次你将更新保存到文档文件时，位于 `http://localhost:4200` 的 angular.io 网站都会更新。保存后，你可能需要刷新浏览器以查看更改。
 
 ### Documentation linting
 
@@ -388,7 +388,7 @@ Perform these steps from a command-line tool on your local computer or in the **
 
 1. Run `git status` again.
 
-   再次运行 `git status` 。
+   再次运行 `git status`。
 
    <code-example language="shell">
 
@@ -424,7 +424,7 @@ Perform these steps from a command-line tool on your local computer or in the **
    The commit message that follows the `-m` parameter must start with `docs:` followed by space, and your message.
    Replace `detailed commit message` with a message that describes the changes you made.
 
-   运行此命令以将更改的文件提交到你的本地计算机。 `-m` 参数后面的提交消息必须以 `docs:` 开头，后跟空格和你的消息。将 `detailed commit message` 替换为描述你所做更改的消息。
+   运行此命令以将更改的文件提交到你的本地计算机。`-m` 参数后面的提交消息必须以 `docs:` 开头，后跟空格和你的消息。将 `detailed commit message` 替换为描述你所做更改的消息。
 
    <code-example language="shell">
 
@@ -438,7 +438,7 @@ Perform these steps from a command-line tool on your local computer or in the **
 
 Your changes to the documentation are now *committed, but not pushed*.
 
-你对文档的更改现在已*提交，但没有 push* 。
+你对文档的更改现在已*提交，但没有 push*。
 
 ### Push your commits to the cloud
 
@@ -501,7 +501,7 @@ Perform these steps from a command-line tool on your local computer or in the **
    The `origin` is the `personal/angular` repo in GitHub.
    The next command pushes that commit to the `origin` repo.
 
-   此示例输出说，本地计算机上有一个提交不在 `origin` 存储库的 `working-branch` 分支中。 `origin` 是 GitHub 中的 `personal/angular` 存储库。下一个命令将该提交推送到 `origin` 存储库。
+   此示例输出说，本地计算机上有一个提交不在 `origin` 存储库的 `working-branch` 分支中。`origin` 是 GitHub 中的 `personal/angular` 存储库。下一个命令将该提交推送到 `origin` 存储库。
 
 1. Run this command to push the commits on your local computer to your account on GitHub in the cloud.
 

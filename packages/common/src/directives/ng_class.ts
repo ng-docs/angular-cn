@@ -17,7 +17,7 @@ const EMPTY_ARRAY: string[] = [];
  * Represents internal object used to track state of each CSS class. There are 3 different \(boolean\)
  * flags that, combined together, indicate state of a given CSS class:
  *
- * 表示用于跟踪每个 CSS 类状态的内部对象。 有 3 个不同的（布尔值）标志，它们组合在一起，指示给定 CSS 类的状态：
+ * 表示用于跟踪每个 CSS 类状态的内部对象。有 3 个不同的（布尔值）标志，它们组合在一起，指示给定 CSS 类的状态：
  *
  * - enabled: indicates if a class should be present in the DOM \(true\) or not \(false\);
  *

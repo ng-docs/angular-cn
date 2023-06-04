@@ -12,7 +12,7 @@ import {ɵglobal as global} from '@angular/core';
  * Exports the value under a given `name` in the global property `ng`. For example `ng.probe` if
  * `name` is `'probe'`.
  *
- * 导出全局属性 `ng` 中给定 `name` 下的值。例如，如果 `name` 为 `'probe'` ，则 `ng.probe` 。
+ * 导出全局属性 `ng` 中给定 `name` 下的值。例如，如果 `name` 为 `'probe'`，则 `ng.probe`。
  *
  * @param name Name under which it will be exported. Keep in mind this will be a property of the
  * global `ng` object.

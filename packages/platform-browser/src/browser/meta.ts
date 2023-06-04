@@ -159,7 +159,7 @@ export class Meta {
    * @param attrSelector The tag attribute and value to match against, in the format
    * `"tag_attribute='value string'"`.
    *
-   * 要匹配的标签属性和值，格式为 `"tag_attribute='value string'"` 。
+   * 要匹配的标签属性和值，格式为 `"tag_attribute='value string'"`。
    *
    * @returns The matching element, if any.
    *
@@ -179,7 +179,7 @@ export class Meta {
    * @param attrSelector The tag attribute and value to match against, in the format
    * `"tag_attribute='value string'"`.
    *
-   * 要匹配的标签属性和值，格式为 `"tag_attribute='value string'"` 。
+   * 要匹配的标签属性和值，格式为 `"tag_attribute='value string'"`。
    *
    * @returns The matching elements, if any.
    *

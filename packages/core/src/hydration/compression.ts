@@ -12,7 +12,7 @@ import {NodeNavigationStep, REFERENCE_NODE_BODY, REFERENCE_NODE_HOST} from './in
  * Regexp that extracts a reference node information from the compressed node location.
  * The reference node is represented as either:
  *
- * 从压缩节点位置提取参考节点信息的正则表达式。 参考节点表示为：
+ * 从压缩节点位置提取参考节点信息的正则表达式。参考节点表示为：
  *
  * - a number which points to an LView slot
  *
@@ -41,7 +41,7 @@ const REF_EXTRACTOR_REGEXP =
  * 'nextSibling'], the function returns: `bf2n`.
  *
  * 例如，给定：referenceNode = 'b' \(body\) 和 path = ['firstChild', 'firstChild', 'nextSibling']['firstChild', 'firstChild',
- * 'nextSibling'] ，函数返回： `bf2n` 。
+ * 'nextSibling']，函数返回：`bf2n`。
  *
  */
 export function compressNodeLocation(referenceNode: string, path: NodeNavigationStep[]): string {
@@ -74,7 +74,7 @@ export function compressNodeLocation(referenceNode: string, path: NodeNavigation
  * For example, the path like 'bf2n' will be transformed to:
  * ['b', 'firstChild', 2, 'nextSibling', 1].
  *
- * 例如，像 'bf2n' 这样的路径将被转换为： ['b', 'firstChild', 2, 'nextSibling', 1]['b', 'firstChild', 2, 'nextSibling', 1] 。
+ * 例如，像 'bf2n' 这样的路径将被转换为：['b', 'firstChild', 2, 'nextSibling', 1]['b', 'firstChild', 2, 'nextSibling', 1]。
  *
  * This information is later consumed by the code that navigates the DOM to find
  * a given node by its location.

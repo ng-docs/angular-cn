@@ -90,7 +90,7 @@ export class IncrementalCompilation implements IncrementalBuild<ClassRecord, Fil
    * `IncrementalState` of this compilation if it were to be reused in a subsequent incremental
    * compilation at the current moment.
    *
-   * 此编译的 `IncrementalState` ，如果要在当前的后续增量编译中重用。
+   * 此编译的 `IncrementalState`，如果要在当前的后续增量编译中重用。
    *
    * Exposed via the `state` read-only getter.
    *
@@ -115,7 +115,7 @@ export class IncrementalCompilation implements IncrementalBuild<ClassRecord, Fil
   /**
    * Begin a fresh `IncrementalCompilation`.
    *
-   * 开始一个新的 `IncrementalCompilation` 。
+   * 开始一个新的 `IncrementalCompilation`。
    *
    */
   static fresh(program: ts.Program, versions: Map<AbsoluteFsPath, string>|null):

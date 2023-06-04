@@ -14,7 +14,7 @@ import {RuntimeErrorCode} from './errors';
 /**
  * The list of features as an enum to uniquely type each `HydrationFeature`.
  *
- * 作为枚举的功能列表，用于唯一键入每个 `HydrationFeature` 。
+ * 作为枚举的功能列表，用于唯一键入每个 `HydrationFeature`。
  *
  * @see HydrationFeature
  * @publicApi
@@ -53,13 +53,13 @@ function hydrationFeature<FeatureKind extends HydrationFeatureKind>(
  * Disables DOM nodes reuse during hydration. Effectively makes
  * Angular re-render an application from scratch on the client.
  *
- * 在水合期间禁用 DOM 节点重用。 有效地使 Angular 在客户端从头开始重新渲染应用程序。
+ * 在水合期间禁用 DOM 节点重用。有效地使 Angular 在客户端从头开始重新渲染应用程序。
  *
  * When this option is enabled, make sure that the initial navigation
  * option is configured for the Router as `enabledBlocking` by using the
  * `withEnabledBlockingInitialNavigation` in the `provideRouter` call:
  *
- * 启用此选项后，请确保通过在 `provideRouter` 调用中使用 `withEnabledBlockingInitialNavigation` 将路由器的初始导航选项配置为 `enabledBlocking` ：
+ * 启用此选项后，请确保通过在 `provideRouter` 调用中使用 `withEnabledBlockingInitialNavigation` 将路由器的初始导航选项配置为 `enabledBlocking`：
  *
  * ```
  * bootstrapApplication(RootComponent, {
@@ -95,7 +95,7 @@ export function withNoDomReuse(): HydrationFeature<HydrationFeatureKind.NoDomReu
  * Disables HTTP transfer cache. Effectively causes HTTP requests to be performed twice: once on the
  * server and other one on the browser.
  *
- * 禁用 HTTP 传输缓存。 有效地导致 HTTP 请求执行两次：一次在服务器上，另一次在浏览器上。
+ * 禁用 HTTP 传输缓存。有效地导致 HTTP 请求执行两次：一次在服务器上，另一次在浏览器上。
  *
  * @publicApi
  * @developerPreview
@@ -144,7 +144,7 @@ function provideZoneJsCompatibilityDetector(): Provider[] {
  * passing special functions \(from the `HydrationFeatures` set\) as arguments to the
  * `provideClientHydration` function.
  *
- * 设置为应用程序启用水合功能所需的提供程序。 默认情况下，该函数启用推荐的一组功能以获得大多数应用程序的最佳性能。 你可以通过将特殊函数（来自 `HydrationFeatures` 集）作为参数传递给 `provideClientHydration` 函数来启用/禁用功能。
+ * 设置为应用程序启用水合功能所需的提供程序。默认情况下，该函数启用推荐的一组功能以获得大多数应用程序的最佳性能。你可以通过将特殊函数（来自 `HydrationFeatures` 集）作为参数传递给 `provideClientHydration` 函数来启用/禁用功能。
  *
  * @usageNotes
  *

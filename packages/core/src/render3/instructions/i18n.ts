@@ -29,7 +29,7 @@ import {getConstant} from '../util/view_utils';
  * The translation `message` is the value which is locale specific. The translation string may
  * contain placeholders which associate inner elements and sub-templates within the translation.
  *
- * `i18nStart` 和 `i18nEnd` 指令在模板中标记了翻译块。 翻译 `message` 是特定于语言环境的值。 翻译字符串可能包含占位符，这些占位符将翻译中的内部元素和子模板相关联。
+ * `i18nStart` 和 `i18nEnd` 指令在模板中标记了翻译块。翻译 `message` 是特定于语言环境的值。翻译字符串可能包含占位符，这些占位符将翻译中的内部元素和子模板相关联。
  *
  * The translation `message` placeholders are:
  *
@@ -39,20 +39,20 @@ import {getConstant} from '../util/view_utils';
  *   interpolated into. The placeholder `index` points to the expression binding index. An optional
  *   `block` that matches the sub-template in which it was declared.
  *
- *   `�{index}(:{block})�` *绑定占位符*：标记表达式将插入的位置。 占位符 `index` 指向表达式绑定索引。 与声明它的子模板匹配的可选 `block` 。
+ *   `�{index}(:{block})�` *绑定占位符*：标记表达式将插入的位置。占位符 `index` 指向表达式绑定索引。与声明它的子模板匹配的可选 `block`。
  *
  * - `�#{index}(:{block})�`/`�/#{index}(:{block})�`: *Element Placeholder*:  Marks the beginning
  *   and end of DOM element that were embedded in the original translation block. The placeholder
  *   `index` points to the element index in the template instructions set. An optional `block` that
  *   matches the sub-template in which it was declared.
  *
- *   `�#{index}(:{block})�` `�/#{index}(:{block})�` *元素占位符*：标记嵌入原始翻译块中的 DOM 元素的开始和结束。 占位符 `index` 指向模板指令集中的元素索引。 与声明它的子模板匹配的可选 `block` 。
+ *   `�#{index}(:{block})�` `�/#{index}(:{block})�` *元素占位符*：标记嵌入原始翻译块中的 DOM 元素的开始和结束。占位符 `index` 指向模板指令集中的元素索引。与声明它的子模板匹配的可选 `block`。
  *
  * - `�*{index}:{block}�`/`�/\*{index}:{block}�`: *Sub-template Placeholder*: Sub-templates must be
  *   split up and translated separately in each angular template function. The `index` points to the
  *   `template` instruction index. A `block` that matches the sub-template in which it was declared.
  *
- *   `�*{index}:{block}�` `�/\*{index}:{block}�` *子模板占位符*：子模板必须在每个角度模板函数中分开和翻译。 `index` 指向 `template` 指令索引。 与声明它的子模板匹配的 `block` 。
+ *   `�*{index}:{block}�` `�/\*{index}:{block}�` *子模板占位符*：子模板必须在每个角度模板函数中分开和翻译。`index` 指向 `template` 指令索引。与声明它的子模板匹配的 `block`。
  *
  * @param index A unique index of the translation in the static block.
  *
@@ -124,12 +124,12 @@ export function ɵɵi18nEnd(): void {
  * Use this instruction to create a translation block that doesn't contain any placeholder.
  * It calls both {@link i18nStart} and {@link i18nEnd} in one instruction.
  *
- * 使用此指令创建不包含任何占位符的翻译块。 它在一条指令中同时调用 {@link i18nStart} 和 {@link i18nEnd}。
+ * 使用此指令创建不包含任何占位符的翻译块。它在一条指令中同时调用 {@link i18nStart} 和 {@link i18nEnd}。
  *
  * The translation `message` is the value which is locale specific. The translation string may
  * contain placeholders which associate inner elements and sub-templates within the translation.
  *
- * 翻译 `message` 是特定于语言环境的值。 翻译字符串可能包含占位符，这些占位符将翻译中的内部元素和子模板相关联。
+ * 翻译 `message` 是特定于语言环境的值。翻译字符串可能包含占位符，这些占位符将翻译中的内部元素和子模板相关联。
  *
  * The translation `message` placeholders are:
  *
@@ -139,20 +139,20 @@ export function ɵɵi18nEnd(): void {
  *   interpolated into. The placeholder `index` points to the expression binding index. An optional
  *   `block` that matches the sub-template in which it was declared.
  *
- *   `�{index}(:{block})�` *绑定占位符*：标记表达式将插入的位置。 占位符 `index` 指向表达式绑定索引。 与声明它的子模板匹配的可选 `block` 。
+ *   `�{index}(:{block})�` *绑定占位符*：标记表达式将插入的位置。占位符 `index` 指向表达式绑定索引。与声明它的子模板匹配的可选 `block`。
  *
  * - `�#{index}(:{block})�`/`�/#{index}(:{block})�`: *Element Placeholder*:  Marks the beginning
  *   and end of DOM element that were embedded in the original translation block. The placeholder
  *   `index` points to the element index in the template instructions set. An optional `block` that
  *   matches the sub-template in which it was declared.
  *
- *   `�#{index}(:{block})�` `�/#{index}(:{block})�` *元素占位符*：标记嵌入原始翻译块中的 DOM 元素的开始和结束。 占位符 `index` 指向模板指令集中的元素索引。 与声明它的子模板匹配的可选 `block` 。
+ *   `�#{index}(:{block})�` `�/#{index}(:{block})�` *元素占位符*：标记嵌入原始翻译块中的 DOM 元素的开始和结束。占位符 `index` 指向模板指令集中的元素索引。与声明它的子模板匹配的可选 `block`。
  *
  * - `�*{index}:{block}�`/`�/\*{index}:{block}�`: *Sub-template Placeholder*: Sub-templates must be
  *   split up and translated separately in each angular template function. The `index` points to the
  *   `template` instruction index. A `block` that matches the sub-template in which it was declared.
  *
- *   `�*{index}:{block}�` `�/\*{index}:{block}�` *子模板占位符*：子模板必须在每个角度模板函数中分开和翻译。 `index` 指向 `template` 指令索引。 与声明它的子模板匹配的 `block` 。
+ *   `�*{index}:{block}�` `�/\*{index}:{block}�` *子模板占位符*：子模板必须在每个角度模板函数中分开和翻译。`index` 指向 `template` 指令索引。与声明它的子模板匹配的 `block`。
  *
  * @param index A unique index of the translation in the static block.
  *

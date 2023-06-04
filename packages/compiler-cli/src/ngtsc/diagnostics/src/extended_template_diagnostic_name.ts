@@ -15,7 +15,7 @@
  * See the corresponding `ErrorCode` for documentation about each specific error.
  * packages/compiler-cli/src/ngtsc/diagnostics/src/error_code.ts
  *
- * 有关每个特定错误的文档，请参阅相应的 `ErrorCode` 。
+ * 有关每个特定错误的文档，请参阅相应的 `ErrorCode`。
  * package/compiler-cli/src/ngtsc/diagnostics/src/error_code.ts
  *
  * @publicApi

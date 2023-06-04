@@ -67,15 +67,15 @@ export interface LinkerRange<TExpression> {
  * If the `LATEST_VERSION_RANGE` is `<=15.0.0` then the fallback linker would be
  * `PartialDirectiveLinkerVersion1` for any version greater than `15.0.0`.
  *
- * 如果 `LATEST_VERSION_RANGE` 是 `<=15.0.0` ，则对于任何大于 `15.0.0` 的版本，后备链接器将是
- * `PartialDirectiveLinkerVersion1` 。
+ * 如果 `LATEST_VERSION_RANGE` 是 `<=15.0.0`，则对于任何大于 `15.0.0` 的版本，后备链接器将是
+ * `PartialDirectiveLinkerVersion1`。
  *
  * When there is a change to a declaration interface that requires a new partial-linker, the
  * `minVersion` of the partial-declaration should be updated, the new linker implementation should
  * be added to the end of the collection, and the version of the previous linker should be updated.
  *
  * 当需要新的部分链接器的声明接口发生更改时，应该更新部分声明的 `minVersion`
- * ，新的链接器实现应该添加到集合的末尾，并且前一个链接器的版本应该被更新。
+ *，新的链接器实现应该添加到集合的末尾，并且前一个链接器的版本应该被更新。
  *
  */
 export function createLinkerMap<TStatement, TExpression>(
@@ -128,14 +128,14 @@ export function createLinkerMap<TStatement, TExpression>(
  * satisfies the `minVersion` of the partial declaration to be linked.
  *
  * 选择是从链接器实例的数据库中进行的，如果它们的给定 semver 范围满足要链接的部分声明的 `minVersion`
- * ，则选择它。
+ *，则选择它。
  *
  * Note that the ranges are checked in order, and the first matching range will be selected. So
  * ranges should be most restrictive first. In practice, since ranges are always `<=X.Y.Z` this
  * means that ranges should be in ascending order.
  *
  * 请注意，这些范围会按顺序检查，并且将选择第一个匹配的范围。因此，范围应该是最具限制性的。在实践中，由于范围始终
- * `<=XYZ` ，这意味着范围应该按升序。
+ * `<=XYZ`，这意味着范围应该按升序。
  *
  * Note that any "pre-release" versions are stripped from ranges. Therefore if a `minVersion` is
  * `11.1.0-next.1` then this would match `11.1.0-next.2` and also `12.0.0-next.1`. \(This is
@@ -143,7 +143,7 @@ export function createLinkerMap<TStatement, TExpression>(
  * boundaries.\)
  *
  * 请注意，任何“预发布”版本都会从范围中删除。因此，如果 `minVersion` 是 `11.1.0-next.1`
- * ，那么这将匹配 `11.1.0-next.2` 以及 `12.0.0-next.1` 。（这与标准 semver
+ *，那么这将匹配 `11.1.0-next.2` 以及 `12.0.0-next.1`。（这与标准 semver
  * 范围检查不同，其中预发布版本不会跨越完整版本边界。）
  *
  */
@@ -167,7 +167,7 @@ export class PartialLinkerSelector<TExpression> {
    * Returns the `PartialLinker` that can handle functions with the given name and version.
    * Throws an error if there is none.
    *
-   * 返回可以处理具有给定名称和版本的函数的 `PartialLinker` 。如果没有，则抛出错误。
+   * 返回可以处理具有给定名称和版本的函数的 `PartialLinker`。如果没有，则抛出错误。
    *
    */
   getLinker(functionName: string, minVersion: string, version: string): PartialLinker<TExpression> {

@@ -14,7 +14,7 @@ import {AbstractControl, AbstractControlOptions, assertAllValuesPresent, assertC
  * FormGroupValue extracts the type of `.value` from a FormGroup's inner object type. The untyped
  * case falls back to {[key: string]&#x3A; any}.
  *
- * FormGroupValue 从 FormGroup 的内部对象类型中提取 `.value` 的类型。 未类型化的大小写回落到 { [key: string][key: string] : any}。
+ * FormGroupValue 从 FormGroup 的内部对象类型中提取 `.value` 的类型。未类型化的大小写回落到 { [key: string][key: string] : any}。
  *
  * Angular uses this type internally to support Typed Forms; do not use it directly.
  *
@@ -32,7 +32,7 @@ export type ɵFormGroupValue<T extends {[K in keyof T]?: AbstractControl<any>}> 
  * FormGroupRawValue extracts the type of `.getRawValue()` from a FormGroup's inner object type. The
  * untyped case falls back to {[key: string]&#x3A; any}.
  *
- * FormGroupRawValue 从 FormGroup 的内部对象类型中提取 `.getRawValue()` 的类型。 未类型化的大小写回落到 { [key: string][key: string] : any}。
+ * FormGroupRawValue 从 FormGroup 的内部对象类型中提取 `.getRawValue()` 的类型。未类型化的大小写回落到 { [key: string][key: string] : any}。
  *
  * Angular uses this type internally to support Typed Forms; do not use it directly.
  *
@@ -75,7 +75,7 @@ export type ɵOptionalKeys<T> = {
  * `FormGroup` is one of the four fundamental building blocks used to define forms in Angular,
  * along with `FormControl`, `FormArray`, and `FormRecord`.
  *
- * `FormGroup` 是用于在 Angular 中定义表单的四个基本构建块之一，与 `FormControl`、`FormArray` 和 `FormRecord` 。
+ * `FormGroup` 是用于在 Angular 中定义表单的四个基本构建块之一，与 `FormControl`、`FormArray` 和 `FormRecord`。
  *
  * When instantiating a `FormGroup`, pass in a collection of child controls as the first
  * argument. The key for each child registers the name for the control.
@@ -85,12 +85,12 @@ export type ɵOptionalKeys<T> = {
  * `FormGroup` is intended for use cases where the keys are known ahead of time.
  * If you need to dynamically add and remove controls, use {@link FormRecord} instead.
  *
- * `FormGroup` 适用于提前知道密钥的用例。 如果你需要动态添加和删除控件，请改用 {@link FormRecord}。
+ * `FormGroup` 适用于提前知道密钥的用例。如果你需要动态添加和删除控件，请改用 {@link FormRecord}。
  *
  * `FormGroup` accepts an optional type parameter `TControl`, which is an object type with inner
  * control types as values.
  *
- * `FormGroup` 接受一个可选的类型参数 `TControl` ，它是一种以内部控件类型作为值的对象类型。
+ * `FormGroup` 接受一个可选的类型参数 `TControl`，它是一种以内部控件类型作为值的对象类型。
  *
  * @usageNotes
  *
@@ -142,7 +142,7 @@ export type ɵOptionalKeys<T> = {
  * validators as the third arg. These come in handy when you want to perform validation
  * that considers the value of more than one child control.
  *
- * 你可以用第二个参数传入一些组级验证器或用第三个参数传入一些组级异步验证器。 当你要根据一个以上子控件的值来决定有效性时，这很好用。
+ * 你可以用第二个参数传入一些组级验证器或用第三个参数传入一些组级异步验证器。当你要根据一个以上子控件的值来决定有效性时，这很好用。
  *
  * ```
  * const form = new FormGroup({
@@ -177,7 +177,7 @@ export type ɵOptionalKeys<T> = {
  * group level, all child controls default to 'blur', unless the child
  * has explicitly specified a different `updateOn` value.
  *
- * 该选项对象可用来为每个子控件的 `updateOn` 属性设置默认值。 如果在组级把 `updateOn` 设置为 `'blur'`，则所有子控件的默认值也是 `'blur'`，除非这个子控件显式的指定了另一个 `updateOn` 值。
+ * 该选项对象可用来为每个子控件的 `updateOn` 属性设置默认值。如果在组级把 `updateOn` 设置为 `'blur'`，则所有子控件的默认值也是 `'blur'`，除非这个子控件显式的指定了另一个 `updateOn` 值。
  *
  * ```ts
  * const c = new FormGroup({
@@ -204,7 +204,7 @@ export type ɵOptionalKeys<T> = {
  * Notice that `c.value.one` has type `string|null|undefined`. This is because calling `c.reset({})`
  * without providing the optional key `one` will cause it to become `null`.
  *
- * 请注意，`c.value.one` 的类型为 `string|null|undefined` 。这是因为在不提供可选键 `one` 的情况下调用 `c.reset({})` 将导致它变为 `null` 。
+ * 请注意，`c.value.one` 的类型为 `string|null|undefined`。这是因为在不提供可选键 `one` 的情况下调用 `c.reset({})` 将导致它变为 `null`。
  * @publicApi
  */
 export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<any>} = any> extends
@@ -260,7 +260,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * This method does not update the value or validity of the control.
    * Use {@link FormGroup#addControl addControl} instead.
    *
-   * 此方法不更新控件的值或有效性。 使用 {@link FormGroup#addControl addControl} 代替。
+   * 此方法不更新控件的值或有效性。使用 {@link FormGroup#addControl addControl} 代替。
    *
    * @param name The control name to register in the collection
    *
@@ -292,7 +292,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * If you want to replace an existing control, use the {@link FormGroup#setControl setControl}
    * method instead. This method also updates the value and validity of the control.
    *
-   * 如果具有给定名称的控件已经存在，则*不会*用新名称替换它。 如果要替换现有控件，请改用 {@link FormGroup#setControl setControl} 方法。 此方法还更新控件的值和有效性。
+   * 如果具有给定名称的控件已经存在，则*不会*用新名称替换它。如果要替换现有控件，请改用 {@link FormGroup#setControl setControl} 方法。此方法还更新控件的值和有效性。
    *
    * @param name The control name to add to the collection
    *
@@ -309,7 +309,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   added. When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges` 可观察对象在添加控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   `emitEvent`：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges` 可观察对象在添加控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    */
   addControl(
       this: FormGroup<{[key: string]: AbstractControl<any>}>, name: string,
@@ -355,7 +355,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   removed. When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges` 可观察对象会在删除控件时发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   `emitEvent`：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges` 可观察对象会在删除控件时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   removeControl(name: string, options: {emitEvent?: boolean;} = {}): void {
@@ -391,7 +391,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   `valueChanges` observables emit events with the latest status and value when the control is
    *   replaced with a new one. When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时，当控件被替换为新控件时，`statusChanges` 和 `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false 时，不会发出事件。
+   *   `emitEvent`：当为 true 或不提供（默认）时，当控件被替换为新控件时，`statusChanges` 和 `valueChanges` 可观察对象都会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
   setControl<K extends string&keyof TControl>(name: K, control: TControl[K], options?: {
@@ -419,7 +419,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * Reports false for disabled controls. If you'd like to check for existence in the group
    * only, use {@link AbstractControl#get get} instead.
    *
-   * 对禁用的控件报告 false。 如果你只想检查组中是否存在，请改用 {@link AbstractControl#get get}。
+   * 对禁用的控件报告 false。如果你只想检查组中是否存在，请改用 {@link AbstractControl#get get}。
    *
    * @param controlName The control name to check for existence in the collection
    *
@@ -474,7 +474,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    * updateValueAndValidity} method.
    *
-   * 确定控件如何传播更改并在值更改后发出事件的配置选项。 配置选项被传递给 {@link AbstractControl#updateValueAndValidity updateValueAndValidity} 方法。
+   * 确定控件如何传播更改并在值更改后发出事件的配置选项。配置选项被传递给 {@link AbstractControl#updateValueAndValidity updateValueAndValidity} 方法。
    *
    * * `onlySelf`: When true, each change only affects this control, and not its parent. Default is
    *   false.
@@ -486,7 +486,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   observables emit events with the latest status and value when the control value is updated.
    *   When false, no events are emitted.
    *
-   *   `emitEvent`：如果为 `true` 或未提供（默认），则当控件值变化时， `statusChanges` 和 `valueChanges` 这两个 Observable 都会以最近的状态和值发出事件。 如果为 `false`，则不会发出事件。
+   *   `emitEvent`：如果为 `true` 或未提供（默认），则当控件值变化时，`statusChanges` 和 `valueChanges` 这两个 Observable 都会以最近的状态和值发出事件。如果为 `false`，则不会发出事件。
    *
    */
   override setValue(value: ɵFormGroupRawValue<TControl>, options: {
@@ -540,14 +540,14 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * * `onlySelf`: When true, each change only affects this control and not its parent. Default is
    *   true.
    *
-   *   `onlySelf` ：当为 true 时，每次更改都只影响此控件，而不影响其父级。默认为 true。
+   *   `onlySelf`：当为 true 时，每次更改都只影响此控件，而不影响其父级。默认为 true。
    *
    * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *   `valueChanges` observables emit events with the latest status and value when the control value
    *   is updated. When false, no events are emitted. The configuration options are passed to
    *   the {@link AbstractControl#updateValueAndValidity updateValueAndValidity} method.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
+   *   `emitEvent`：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    *   可观察对象会在更新控件值时发出具有最新状态和值的事件。当 false
    *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
    *   updateValueAndValidity} 方法。
@@ -580,14 +580,14 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    * Resets the `FormGroup`, marks all descendants `pristine` and `untouched` and sets
    * the value of all descendants to their default values, or null if no defaults were provided.
    *
-   * 重置 `FormGroup` ，将所有后代标记为 `pristine` 和 `untouched` ，并将所有后代的值设置为默认值，如果没有提供默认值，则为 null 。
+   * 重置 `FormGroup`，将所有后代标记为 `pristine` 和 `untouched`，并将所有后代的值设置为默认值，如果没有提供默认值，则为 null。
    *
    * You reset to a specific form state by passing in a map of states
    * that matches the structure of your form, with control names as keys. The state
    * is a standalone value or a form state object with both a value and a disabled
    * status.
    *
-   * 你可以通过传入一个与表单结构相匹配的以控件名为 key 的 Map，来把表单重置为特定的状态。 其状态可以是一个单独的值，也可以是一个同时具有值和禁用状态的表单状态对象。
+   * 你可以通过传入一个与表单结构相匹配的以控件名为 key 的 Map，来把表单重置为特定的状态。其状态可以是一个单独的值，也可以是一个同时具有值和禁用状态的表单状态对象。
    *
    * @param value Resets the control with an initial value,
    * or an object that defines the initial value and disabled state.
@@ -610,7 +610,7 @@ export class FormGroup<TControl extends {[K in keyof TControl]: AbstractControl<
    *   The configuration options are passed to the {@link AbstractControl#updateValueAndValidity
    *   updateValueAndValidity} method.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
+   *   `emitEvent`：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    *   可观察对象会在控件重置时发出具有最新状态和值的事件。当 false
    *   时，不会发出事件。配置选项会传递给 {@link AbstractControl#updateValueAndValidity
    *   updateValueAndValidity} 方法。
@@ -835,7 +835,7 @@ export interface FormRecord<TControl> {
    *
    * See `FormGroup#registerControl` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#registerControl` 。
+   * 有关其他信息，请参阅 `FormGroup#registerControl`。
    *
    */
   registerControl(name: string, control: TControl): TControl;
@@ -847,7 +847,7 @@ export interface FormRecord<TControl> {
    *
    * See `FormGroup#addControl` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#addControl` 。
+   * 有关其他信息，请参阅 `FormGroup#addControl`。
    *
    */
   addControl(name: string, control: TControl, options?: {emitEvent?: boolean}): void;
@@ -859,7 +859,7 @@ export interface FormRecord<TControl> {
    *
    * See `FormGroup#removeControl` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#removeControl` 。
+   * 有关其他信息，请参阅 `FormGroup#removeControl`。
    *
    */
   removeControl(name: string, options?: {emitEvent?: boolean}): void;
@@ -871,7 +871,7 @@ export interface FormRecord<TControl> {
    *
    * See `FormGroup#setControl` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#setControl` 。
+   * 有关其他信息，请参阅 `FormGroup#setControl`。
    *
    */
   setControl(name: string, control: TControl, options?: {emitEvent?: boolean}): void;
@@ -883,7 +883,7 @@ export interface FormRecord<TControl> {
    *
    * See `FormGroup#contains` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#contains` 。
+   * 有关其他信息，请参阅 `FormGroup#contains`。
    *
    */
   contains(controlName: string): boolean;
@@ -896,7 +896,7 @@ export interface FormRecord<TControl> {
    *
    * See `FormGroup#setValue` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#setValue` 。
+   * 有关其他信息，请参阅 `FormGroup#setValue`。
    *
    */
   setValue(value: {[key: string]: ɵValue<TControl>}, options?: {
@@ -913,7 +913,7 @@ export interface FormRecord<TControl> {
    *
    * See `FormGroup#patchValue` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#patchValue` 。
+   * 有关其他信息，请参阅 `FormGroup#patchValue`。
    *
    */
   patchValue(value: {[key: string]: ɵValue<TControl>}, options?: {
@@ -925,11 +925,11 @@ export interface FormRecord<TControl> {
    * Resets the `FormRecord`, marks all descendants `pristine` and `untouched` and sets
    * the value of all descendants to null.
    *
-   * 重置 `FormRecord` ，将所有后代标记为 `pristine` 和 `untouched` ，并将所有后代的值设置为 null 。
+   * 重置 `FormRecord`，将所有后代标记为 `pristine` 和 `untouched`，并将所有后代的值设置为 null。
    *
    * See `FormGroup#reset` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#reset` 。
+   * 有关其他信息，请参阅 `FormGroup#reset`。
    *
    */
   reset(value?: {[key: string]: ɵValue<TControl>}, options?: {
@@ -944,7 +944,7 @@ export interface FormRecord<TControl> {
    *
    * See `FormGroup#getRawValue` for additional information.
    *
-   * 有关其他信息，请参阅 `FormGroup#getRawValue` 。
+   * 有关其他信息，请参阅 `FormGroup#getRawValue`。
    *
    */
   getRawValue(): {[key: string]: ɵRawValue<TControl>};

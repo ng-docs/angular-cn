@@ -23,7 +23,7 @@ export interface VariableOptimizationOptions {
  * referenced. This stage processes the list of declared variables and all variable usages,
  * and optimizes where possible. It performs 3 main optimizations:
  *
- * 流水线阶段急切地为可以引用的所有可能值生成变量。 此阶段处理声明变量列表和所有变量用法，并在可能的情况下进行优化。 它执行 3 个主要优化：
+ * 流水线阶段急切地为可以引用的所有可能值生成变量。此阶段处理声明变量列表和所有变量用法，并在可能的情况下进行优化。它执行 3 个主要优化：
  *
  * - It transforms variable declarations to side effectful expressions when the
  *   variable is not used, but its initializer has global effects which other
@@ -112,7 +112,7 @@ enum Fence {
    * This is also true of `ViewContextWrite` operations **if** they are followed by a
    * `ViewContextRead`.
    *
-   * **如果**`ViewContextWrite` 操作后跟 `ViewContextRead` ，这也是如此。
+   * **如果**`ViewContextWrite` 操作后跟 `ViewContextRead`，这也是如此。
    *
    */
   SideEffectful = 0b100,
@@ -308,7 +308,7 @@ function optimizeVariablesInOpList(
 /**
  * Given an `ir.Expression`, returns the `Fence` flags for that expression type.
  *
- * 给定一个 `ir.Expression` ，返回该表达式类型的 `Fence` 标志。
+ * 给定一个 `ir.Expression`，返回该表达式类型的 `Fence` 标志。
  *
  */
 function fencesForIrExpression(expr: ir.Expression): Fence {
@@ -327,7 +327,7 @@ function fencesForIrExpression(expr: ir.Expression): Fence {
 /**
  * Build the `OpInfo` structure for the given `op`. This performs two operations:
  *
- * 为给定的 `op` 构建 `OpInfo` 结构。 这执行两个操作：
+ * 为给定的 `op` 构建 `OpInfo` 结构。这执行两个操作：
  *
  * - It tracks which variables are used in the operation's expressions.
  *
@@ -455,7 +455,7 @@ function safeToInlinePastFences(fences: Fence, declFences: Fence): boolean {
  * This may or may not be safe to do. For example, the variable could be read following the
  * execution of an expression with fences that don't permit the variable to be inlined across them.
  *
- * 这样做可能安全也可能不安全。 例如，可以在执行带有不允许变量跨过它们内联的栅栏的表达式后读取变量。
+ * 这样做可能安全也可能不安全。例如，可以在执行带有不允许变量跨过它们内联的栅栏的表达式后读取变量。
  *
  */
 function tryInlineVariableInitializer(

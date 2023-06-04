@@ -31,7 +31,7 @@ export interface IncrementalBuildStrategy {
    * Associate the given `IncrementalState` with the given `ts.Program` and make it available to
    * future compilations.
    *
-   * 将给定的 `IncrementalDriver` 与给定的 `ts.Program` ，并使其可用于将来的编译。
+   * 将给定的 `IncrementalDriver` 与给定的 `ts.Program`，并使其可用于将来的编译。
    *
    */
   setIncrementalState(driver: IncrementalState, program: ts.Program): void;
@@ -69,7 +69,7 @@ export class NoopIncrementalBuildStrategy implements IncrementalBuildStrategy {
 /**
  * Tracks an `IncrementalState` within the strategy itself.
  *
- * 跟踪策略本身中的 `IncrementalDriver` 。
+ * 跟踪策略本身中的 `IncrementalDriver`。
  *
  */
 export class TrackedIncrementalBuildStrategy implements IncrementalBuildStrategy {
@@ -97,7 +97,7 @@ export class TrackedIncrementalBuildStrategy implements IncrementalBuildStrategy
  * Manages the `IncrementalState` associated with a `ts.Program` by monkey-patching it onto the
  * program under `SYM_INCREMENTAL_STATE`.
  *
- * 管理与 `ts.Program` 关联的 `IncrementalDriver` ，方法是通过将其添加到 `SYM_INCREMENTAL_DRIVER`
+ * 管理与 `ts.Program` 关联的 `IncrementalDriver`，方法是通过将其添加到 `SYM_INCREMENTAL_DRIVER`
  * 下的程序上的猴子补丁来管理。
  *
  */
@@ -130,7 +130,7 @@ export class PatchedProgramIncrementalBuildStrategy implements IncrementalBuildS
  * `ts.Program` is sufficient to trigger incremental compilation. This previous `ts.Program` need
  * not be from an Angular compilation \(that is, it need not have been created from `NgCompiler`\).
  *
- * 增量编译的 TS 模型是基于在构建新的 `ts.Program` 中重用以前的 ts.Program 。 `NgCompiler`
+ * 增量编译的 TS 模型是基于在构建新的 `ts.Program` 中重用以前的 ts.Program。`NgCompiler`
  * 遵循这种抽象 - 传入以前的 `ts.Program` 足以触发增量编译。以前的 `ts.Program` 无需来自 Angular
  * 编译（即，它无需是从 `NgCompiler` 创建的）。
  *

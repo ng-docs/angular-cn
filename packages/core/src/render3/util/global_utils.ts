@@ -65,7 +65,7 @@ export function publishDefaultGlobalUtils() {
      * removed completely.
      *
      * 警告：此函数是*INTERNAL*
-     * ，不应在应用程序代码中依赖。函数的契约可能会在任何版本中更改和/或可以完全删除该函数。
+     *，不应在应用程序代码中依赖。函数的契约可能会在任何版本中更改和/或可以完全删除该函数。
      *
      */
     publishGlobalUtil('ɵsetProfiler', setProfiler);
@@ -90,7 +90,7 @@ export declare type GlobalDevModeContainer = {
  * Publishes the given function to `window.ng` so that it can be
  * used from the browser console when an application is not in production.
  *
- * 将给定的函数发布到 `window.ng` ，以便在应用程序不处于生产状态时可以从浏览器控制台使用它。
+ * 将给定的函数发布到 `window.ng`，以便在应用程序不处于生产状态时可以从浏览器控制台使用它。
  *
  */
 export function publishGlobalUtil(name: string, fn: Function): void {

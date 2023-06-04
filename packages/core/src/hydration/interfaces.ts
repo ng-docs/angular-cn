@@ -41,7 +41,7 @@ export enum NodeNavigationStep {
  * Keys within serialized view data structure to represent various
  * parts. See the `SerializedView` interface below for additional information.
  *
- * 序列化视图数据结构中的键来表示各个部分。 有关其他信息，请参阅下面的 `SerializedView` 界面。
+ * 序列化视图数据结构中的键来表示各个部分。有关其他信息，请参阅下面的 `SerializedView` 界面。
  *
  */
 export const ELEMENT_CONTAINERS = 'e';
@@ -60,7 +60,7 @@ export const DISCONNECTED_NODES = 'd';
  * in this container. This information is needed to locate an anchor comment
  * node that goes after all container nodes.
  *
- * 表示该视图中的元素容器，存储为键值对，其中键是容器在 LView 中的索引（也用于 `elementContainerStart` 指令），值是该容器中根节点的数量。 需要此信息来定位所有容器节点之后的锚注释节点。
+ * 表示该视图中的元素容器，存储为键值对，其中键是容器在 LView 中的索引（也用于 `elementContainerStart` 指令），值是该容器中根节点的数量。需要此信息来定位所有容器节点之后的锚注释节点。
  *
  */
 export interface SerializedElementContainers {
@@ -90,7 +90,7 @@ export interface SerializedView {
    * `template` instruction and the value is a unique id that can
    * be used during hydration to identify that template.
    *
-   * 有关模板的序列化信息。 键值对，其中键是相应 `template` 指令的索引，值是可在水合过程中用于识别该模板的唯一 ID。
+   * 有关模板的序列化信息。键值对，其中键是相应 `template` 指令的索引，值是可在水合过程中用于识别该模板的唯一 ID。
    *
    */
   [TEMPLATES]?: Record<number, string>;
@@ -101,7 +101,7 @@ export interface SerializedView {
    * LContainer entry within an LView, and the value is a list
    * of serialized information about views within this container.
    *
-   * 有关视图容器的序列化信息。 键值对，其中键是 LView 中相应 LContainer 条目的索引，值是有关此容器中视图的序列化信息列表。
+   * 有关视图容器的序列化信息。键值对，其中键是 LView 中相应 LContainer 条目的索引，值是有关此容器中视图的序列化信息列表。
    *
    */
   [CONTAINERS]?: Record<number, SerializedContainerView[]>;
@@ -112,7 +112,7 @@ export interface SerializedView {
    * DOM node in an LView and the value is a path that describes
    * the location of this node \(as a set of navigation instructions\).
    *
-   * 有关模板中节点的序列化信息。 键值对，其中键是 LView 中相应 DOM 节点的索引，值是描述该节点位置的路径（作为一组导航指令）。
+   * 有关模板中节点的序列化信息。键值对，其中键是 LView 中相应 DOM 节点的索引，值是描述该节点位置的路径（作为一组导航指令）。
    *
    */
   [NODES]?: Record<number, string>;
@@ -165,7 +165,7 @@ export interface SerializedContainerView extends SerializedView {
    * This information is needed to effectively traverse the DOM tree
    * and identify segments that belong to different views.
    *
-   * 属于该视图的根节点数。 需要此信息来有效地遍历 DOM 树并识别属于不同视图的段。
+   * 属于该视图的根节点数。需要此信息来有效地遍历 DOM 树并识别属于不同视图的段。
    *
    */
   [NUM_ROOT_NODES]: number;
@@ -175,7 +175,7 @@ export interface SerializedContainerView extends SerializedView {
    * This is used to avoid serializing and sending the same hydration
    * information about similar views \(for example, produced by \*ngFor\).
    *
-   * 此视图重复的次数。 这用于避免序列化和发送关于相似视图的相同水合信息（例如，由 \*ngFor 生成）。
+   * 此视图重复的次数。这用于避免序列化和发送关于相似视图的相同水合信息（例如，由 \*ngFor 生成）。
    *
    */
   [MULTIPLIER]?: number;
@@ -232,7 +232,7 @@ export interface DehydratedView {
    * If the value is `null`, it means that there were no disconnected
    * nodes detected in this view at serialization time.
    *
-   * 如果该值为 `null` ，则表示在序列化时在此视图中未检测到断开连接的节点。
+   * 如果该值为 `null`，则表示在序列化时在此视图中未检测到断开连接的节点。
    *
    */
   disconnectedNodes?: Set<number>|null;

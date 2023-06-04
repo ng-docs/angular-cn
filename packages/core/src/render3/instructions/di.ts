@@ -22,7 +22,7 @@ import {getCurrentTNode, getLView} from '../state';
  *  All other injection use `inject` which does not walk the node injector tree.
  *
  * DirectiveInject 旨在用于 `directiveInject` 、组件和管道工厂。所有其他 `inject` 使用 injection
- * ，它不会遍历节点注入器树。
+ *，它不会遍历节点注入器树。
  *
  * Usage example \(in factory function\):
  *

@@ -38,7 +38,7 @@ export function renderComponent(hostLView: LView, componentHostIdx: number) {
  * Typically, blueprints and their view instances should always be in sync, so the loop here
  * will be skipped. However, consider this case of two components side-by-side:
  *
- * 通常，蓝图和它们的视图实例应该总是同步的，所以这里的循环将被跳过。 但是，并排考虑两个组件的情况：
+ * 通常，蓝图和它们的视图实例应该总是同步的，所以这里的循环将被跳过。但是，并排考虑两个组件的情况：
  *
  * App template:
  *
@@ -82,7 +82,7 @@ export function syncViewWithBlueprint(tView: TView, lView: LView) {
 /**
  * Processes a view in the creation mode. This includes a number of steps in a specific order:
  *
- * 在创建模式下处理视图。 这包括按特定顺序执行的多个步骤：
+ * 在创建模式下处理视图。这包括按特定顺序执行的多个步骤：
  *
  * - creating view query functions \(if any\);
  *

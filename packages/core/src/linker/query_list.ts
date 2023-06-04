@@ -69,7 +69,7 @@ export class QueryList<T> implements Iterable<T> {
   /**
    * Returns `Observable` of `QueryList` notifying the subscriber of changes.
    *
-   * 返回 `QueryList` 的 `Observable` ，通知订阅者更改。
+   * 返回 `QueryList` 的 `Observable`，通知订阅者更改。
    *
    */
   get changes(): Observable<any> {

@@ -45,7 +45,7 @@ Perform these steps in a browser.
 
 1. Add or update the `@searchKeywords` tag at the end of the topic with your keywords. The `@searchKeywords` tag takes a set of single-word keywords that are separated by spaces. The tag and the keywords must be enclosed in curly brackets. A sample tag is shown here to add these keywords to a page: *route*, *router*, *routing*, and *navigation*.
 
-   使用你的关键字在主题末尾添加或更新 `@searchKeywords` 标签。 `@searchKeywords` 标签采用一组由空格分隔的单字关键字。标签和关键字必须用大括号括起来。此处显示了一个示例标签，以将这些关键字添加到页面： *route* 、 *router* 、 *routing*和*Navigation* 。
+   使用你的关键字在主题末尾添加或更新 `@searchKeywords` 标签。`@searchKeywords` 标签采用一组由空格分隔的单字关键字。标签和关键字必须用大括号括起来。此处显示了一个示例标签，以将这些关键字添加到页面：*route* 、 *router* 、 *routing*和*Navigation*。
 
    <code-example>
 

@@ -4,7 +4,7 @@
 
 As of version 15.2.0, Angular offers a [schematic](guide/schematics) to help project authors convert existing projects to [the new standalone APIs](guide/standalone-components). The schematic aims to transform as much code as possible automatically, but it may require some manual fixes by the project author. Run the schematic with the following command:
 
-从版本 15.2.0 开始，Angular 提供了一个[原理图](guide/schematics)来帮助项目作者将现有项目转换为[新的独立 API](guide/standalone-components) 。 该原理图旨在自动转换尽可能多的代码，但可能需要项目作者进行一些手动修复。 使用以下命令运行原理图：
+从版本 15.2.0 开始，Angular 提供了一个[原理图](guide/schematics)来帮助项目作者将现有项目转换为[新的独立 API](guide/standalone-components)。该原理图旨在自动转换尽可能多的代码，但可能需要项目作者进行一些手动修复。使用以下命令运行原理图：
 
 <code-example format="shell" language="shell">
 
@@ -40,9 +40,9 @@ Before using the schematic, please ensure that the project:
 | :----- | :---------------------------------------------------------------------------------------------------------------------------- |
 | 选项   | 详情                                                                                                                          |
 | `mode` | The transformation to perform. See [Migration modes](#migration-modes) below for details on the available options.            |
-| `mode` | 要执行的转换。 有关可用选项的详细信息，请参阅下面的[迁移模式](#migration-modes)。                                             |
+| `mode` | 要执行的转换。有关可用选项的详细信息，请参阅下面的[迁移模式](#migration-modes)。|
 | `path` | The path to migrate, relative to the project root. You can use this option to migrate sections of your project incrementally. |
-| `path` | 相对于项目根目录的迁移路径。 你可以使用此选项以增量方式迁移项目的各个部分。                                                   |
+| `path` | 相对于项目根目录的迁移路径。你可以使用此选项以增量方式迁移项目的各个部分。|
 
 ## Migrations steps
 
@@ -50,7 +50,7 @@ Before using the schematic, please ensure that the project:
 
 The migration process is composed of three steps. You'll have to run it multiple times and check manually that the project builds and behaves as expected.
 
-迁移过程由三个步骤组成。 你必须多次运行它并手动检查项目是否能按预期构建和运行。
+迁移过程由三个步骤组成。你必须多次运行它并手动检查项目是否能按预期构建和运行。
 
 <div class="callout is-helpful">
 
@@ -87,7 +87,7 @@ Run the migration in the order listed below, verifying that your code builds and
 
 Congratulations, your application has been converted to standalone 🎉. These are some optional follow-up steps you may want to take now:
 
-恭喜，你的应用程序已转换为独立应用程序 🎉。 这些是你现在可能想要采取的一些可选的后续步骤：
+恭喜，你的应用程序已转换为独立应用程序 🎉。这些是你现在可能想要采取的一些可选的后续步骤：
 
 * Find and remove any remaining `NgModule` declarations: since the ["Remove unnecessary NgModules" step](#remove-unnecessary-ngmodules) cannot remove all modules automatically, you may have to remove the remaining declarations manually.
 
@@ -103,7 +103,7 @@ Congratulations, your application has been converted to standalone 🎉. These a
 
 * Run any linters in your project and fix new warnings. Some linters support a `--fix` flag that may resolve so warnings automatically.
 
-  在你的项目中运行任何静态分析器（linter）并修复新警告。 一些静态分析器支持 `--fix` 标志，可以自动解决一些警告。
+  在你的项目中运行任何静态分析器（linter）并修复新警告。一些静态分析器支持 `--fix` 标志，可以自动解决一些警告。
 
 ## Migration modes
 
@@ -201,7 +201,7 @@ export class GreeterComponent {
 
 After converting all declarations to standalone, many NgModules can be safely removed. This step deletes such module declarations and as many corresponding references as possible. If the migration cannot delete a reference automatically, it leaves the following TODO comment so that you can delete the NgModule manually:
 
-在将所有声明都转换为独立声明后，就可以安全地删除许多 NgModule 了。 此步骤会删除这类模块声明和尽可能多的相应引用。 如果迁移无法自动删除引用，它就会留下以下 TODO 注释，以便你可以手动删除 NgModule：
+在将所有声明都转换为独立声明后，就可以安全地删除许多 NgModule 了。此步骤会删除这类模块声明和尽可能多的相应引用。如果迁移无法自动删除引用，它就会留下以下 TODO 注释，以便你可以手动删除 NgModule：
 
 ```typescript
 /* TODO(standalone-migration): clean up removed NgModule reference manually */
@@ -213,11 +213,11 @@ The migration considers a module safe to remove if that module:
 
 * Has no `declarations`.
 
-  没有 `declarations` 。
+  没有 `declarations`。
 
 * Has no `providers`.
 
-  没有 `providers` 。
+  没有 `providers`。
 
 * Has no `bootstrap` components.
 
@@ -225,7 +225,7 @@ The migration considers a module safe to remove if that module:
 
 * Has no `imports` that reference a `ModuleWithProviders` symbol or a module that can't be removed.
 
-  没有引用 `ModuleWithProviders` 符号或无法删除的模块的 `imports` 。
+  没有引用 `ModuleWithProviders` 符号或无法删除的模块的 `imports`。
 
 * Has no class members. Empty constructors are ignored.
 
@@ -259,7 +259,7 @@ export class ImporterModule {}
 
 This step converts any usages of  `bootstrapModule` to the new, standalone-based `bootstrapApplication`. It also switches the root component to `standalone: true` and deletes the root NgModule. If the root module has any `providers` or `imports`, the migration attempts to copy as much of this configuration as possible into the new bootstrap call.
 
-此步骤将 `bootstrapModule` 的任何用法转换为新的、基于独立的 `bootstrapApplication` 。 它还会将根组件切换为 `standalone: true` 并删除根 NgModule。 如果根模块有任何 `providers` 或 `imports` ，迁移会尝试将尽可能多的配置复制到新的引导程序调用中。
+此步骤将 `bootstrapModule` 的任何用法转换为新的、基于独立的 `bootstrapApplication`。它还会将根组件切换为 `standalone: true` 并删除根 NgModule。如果根模块有任何 `providers` 或 `imports`，迁移会尝试将尽可能多的配置复制到新的引导程序调用中。
 
 **Before:**
 
@@ -328,11 +328,11 @@ Some common problems that may prevent the schematic from working correctly inclu
 
 * Files not included in a tsconfig - the schematic determines which files to migrate by analyzing your project's `tsconfig.json` files. The schematic excludes any files not captured by a tsconfig.
 
-  文件未包含在 tsconfig 中 —— 原理图通过分析项目的 `tsconfig.json` 文件来确定要迁移的文件。 该原理图不会包括任何未被 tsconfig 捕获的文件。
+  文件未包含在 tsconfig 中 —— 原理图通过分析项目的 `tsconfig.json` 文件来确定要迁移的文件。该原理图不会包括任何未被 tsconfig 捕获的文件。
 
 * Code that cannot be statically analyzed - the schematic uses static analysis to understand your code and determine where to make changes. The migration may skip any classes with metadata that cannot be statically analyzed at build time.
 
-  无法静态分析的代码 —— 原理图使用静态分析来理解你的代码并确定在哪里进行更改。 迁移可能会跳过任何包含在构建时无法静态分析的元数据的类。
+  无法静态分析的代码 —— 原理图使用静态分析来理解你的代码并确定在哪里进行更改。迁移可能会跳过任何包含在构建时无法静态分析的元数据的类。
 
 ## Limitations
 
@@ -348,6 +348,6 @@ Due to the size and complexity of the migration, there are some cases that the s
 
 * The schematic relies on direct calls to Angular APIs. The schematic cannot recognize custom wrappers around Angular APIs. For example, if there you define a custom `customConfigureTestModule` function that wraps `TestBed.configureTestingModule`, components it declares may not be recognized.
 
-  该原理图依赖于对 Angular API 的直接调用。 原理图无法识别围绕 Angular API 的自定义包装器。 例如，如果你在那里定义了一个自定义的 `customConfigureTestModule` 函数来包装 `TestBed.configureTestingModule` ，它声明的组件可能无法被识别。
+  该原理图依赖于对 Angular API 的直接调用。原理图无法识别围绕 Angular API 的自定义包装器。例如，如果你在那里定义了一个自定义的 `customConfigureTestModule` 函数来包装 `TestBed.configureTestingModule`，它声明的组件可能无法被识别。
 
 @reviewed 2023-02-15

@@ -247,7 +247,7 @@ function migrateNgModuleClass(
  * Moves all the symbol references from the `declarations` array to the `imports`
  * array of an `NgModule` class and removes the `declarations`.
  *
- * 将所有符号引用从 `declarations` 数组移动到 `NgModule` 类的 `imports` 数组并删除 `declarations` 。
+ * 将所有符号引用从 `declarations` 数组移动到 `NgModule` 类的 `imports` 数组并删除 `declarations`。
  *
  * @param literal Object literal used to configure the module that should be migrated.
  *
@@ -428,7 +428,7 @@ function addPropertyToAngularDecorator(
 /**
  * Checks if a node is a `PropertyAssignment` with a name.
  *
- * 检查节点是否为具有名称的 `PropertyAssignment` 。
+ * 检查节点是否为具有名称的 `PropertyAssignment`。
  *
  */
 function isNamedPropertyAssignment(node: ts.Node): node is ts.PropertyAssignment&
@@ -486,7 +486,7 @@ function findImportLocation(
  * E.g. `declarations: [Foo]` or `declarations: SOME_VAR` would match this description,
  * but not `declarations: []`.
  *
- * 检查节点是否是具有至少一个元素的 `NgModule` 元数据元素。 例如 `declarations: [Foo]` 或 `declarations: SOME_VAR` 将匹配此描述，但不匹配 `declarations: []` 。
+ * 检查节点是否是具有至少一个元素的 `NgModule` 元数据元素。例如 `declarations: [Foo]` 或 `declarations: SOME_VAR` 将匹配此描述，但不匹配 `declarations: []`。
  *
  */
 function hasNgModuleMetadataElements(node: ts.Node): node is ts.PropertyAssignment&

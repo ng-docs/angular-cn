@@ -104,7 +104,7 @@ export interface ComponentAnalysisData {
   /**
    * Raw expression that defined the host directives array. Used for diagnostics.
    *
-   * 定义宿主指令数组的原始表达式。 用于诊断。
+   * 定义宿主指令数组的原始表达式。用于诊断。
    *
    */
   rawHostDirectives: ts.Expression|null;

@@ -54,7 +54,7 @@ const formDirectiveProvider: Provider = {
  * The following example registers a `FormGroup` with first name and last name controls,
  * and listens for the *ngSubmit* event when the button is clicked.
  *
- * 下面的示例使用名字和姓氏控件 `FormGroup` ，并在单击按钮时*侦听 ngSubmit 事件。*
+ * 下面的示例使用名字和姓氏控件 `FormGroup`，并在单击按钮时*侦听 ngSubmit 事件。*
  *
  * {@example forms/ts/simpleFormGroup/simple_form_group_example.ts region='Component'}
  *

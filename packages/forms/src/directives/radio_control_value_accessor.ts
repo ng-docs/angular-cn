@@ -33,7 +33,7 @@ function throwNameError() {
  * declared *after* the `RadioControlRegistry` class and the `providedIn` doesn't support
  * `forwardRef` logic.
  *
- * 仅供内部的 NgModule ，作为 `RadioControlRegistry` 树形抖动提供程序的宿主。注意：
+ * 仅供内部的 NgModule，作为 `RadioControlRegistry` 树形抖动提供程序的宿主。注意：
  * `InternalFormsSharedModule` 不能在这里直接使用，因为它是在 `RadioControlRegistry`
  * 类*之后*声明的，并且 `providedIn` 不支持 `forwardRef` 逻辑。
  *
@@ -127,7 +127,7 @@ export class RadioControlRegistry {
  * Providing a `name` attribute is optional.
  *
  * 下面的示例演示了如何在响应式表单中使用单选按钮。当使用响应式表单的单选按钮时，同一组中的单选按钮应具有相同的
- * `formControlName` 。所提供的 `name` 属性是可选的。
+ * `formControlName`。所提供的 `name` 属性是可选的。
  *
  * {@example forms/ts/reactiveRadioButtons/reactive_radio_button_example.ts region='Reactive'}
  *
@@ -186,7 +186,7 @@ export class RadioControlValueAccessor extends BuiltInControlValueAccessor imple
    * Tracks the name of the `FormControl` bound to the directive. The name corresponds
    * to a key in the parent `FormGroup` or `FormArray`.
    *
-   * 跟踪绑定到指令的 `FormControl` 的名称。该名称对应于父 `FormGroup` 或 `FormArray` 。
+   * 跟踪绑定到指令的 `FormControl` 的名称。该名称对应于父 `FormGroup` 或 `FormArray`。
    *
    */
   // TODO(issue/24571): remove '!'.

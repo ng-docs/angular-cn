@@ -166,7 +166,7 @@ export class IcuPlaceholder implements Node {
  * `Node`, which indicates is it part of a containing `Message`.
  *
  * 受 i18n 标签影响的每个 HTML 节点也将有一个 `I18nMeta` 类型的 `i18n` 属性。此信息可以是 `Message`
- * ，表明它是 i18n 消息的根，或者是 `Node` ，表明它是包含 `Message` 的一部分。
+ *，表明它是 i18n 消息的根，或者是 `Node`，表明它是包含 `Message` 的一部分。
  *
  */
 export type I18nMeta = Message|Node;

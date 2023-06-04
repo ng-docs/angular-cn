@@ -250,7 +250,7 @@ export const MAX_VALIDATOR: Provider = {
  * `formControl`, or control with `ngModel` that also has a `max` attribute.
  *
  * 一个指令，它为任何 `formControlName`、`formControl` 或使用也具有 `max` 属性的 `ngModel`
- * 的控件安装 {@link MaxValidator} 。
+ * 的控件安装 {@link MaxValidator}。
  *
  * @see [Form Validation](guide/form-validation)
  *
@@ -316,7 +316,7 @@ export const MIN_VALIDATOR: Provider = {
  * `formControl`, or control with `ngModel` that also has a `min` attribute.
  *
  * 一个指令，它为任何 `formControlName`、`formControl` 或使用也具有 `min` 属性的 `ngModel`
- * 的控件安装 {@link MinValidator} 。
+ * 的控件安装 {@link MinValidator}。
  *
  * @see [Form Validation](guide/form-validation)
  *

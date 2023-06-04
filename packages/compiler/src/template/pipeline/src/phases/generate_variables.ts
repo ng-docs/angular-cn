@@ -95,7 +95,7 @@ interface Scope {
   /**
    * `XrefId` of the view to which this scope corresponds.
    *
-   * 此范围对应的视图的 `XrefId` 。
+   * 此范围对应的视图的 `XrefId`。
    *
    */
   view: ir.XrefId;
@@ -144,7 +144,7 @@ interface Reference {
   /**
    * `XrefId` of the element-like node which this reference targets.
    *
-   * 此引用指向的类元素节点的 `XrefId` 。
+   * 此引用指向的类元素节点的 `XrefId`。
    *
    * The reference may be either to the element \(or template\) itself, or to a directive on it.
    *
@@ -168,7 +168,7 @@ interface Reference {
  * Process a view and generate a `Scope` representing the variables available for reference within
  * that view.
  *
- * 处理一个视图并生成一个 `Scope` ，表示该视图中可供引用的变量。
+ * 处理一个视图并生成一个 `Scope`，表示该视图中可供引用的变量。
  *
  */
 function getScopeForView(view: ViewCompilation, parent: Scope|null): Scope {

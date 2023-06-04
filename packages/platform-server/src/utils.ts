@@ -114,7 +114,7 @@ const DEFAULT_SERVER_CONTEXT = 'other';
  * \(e.g. whether SSR or SSG was used\). The value is a string and characters other
  * than [a-zA-Z0-9\-] are removed. See the default value in `DEFAULT_SERVER_CONTEXT` const.
  *
- * 允许提供有关服务器上下文的额外信息的内部令牌（例如，是否使用了 SSR 或 SSG）。 该值是一个字符串，除了[a-zA-Z0-9-][a-zA-Z0-9\-]之外的字符都被删除了。 查看 `DEFAULT_SERVER_CONTEXT` const 中的默认值。
+ * 允许提供有关服务器上下文的额外信息的内部令牌（例如，是否使用了 SSR 或 SSG）。该值是一个字符串，除了[a-zA-Z0-9-][a-zA-Z0-9\-]之外的字符都被删除了。查看 `DEFAULT_SERVER_CONTEXT` const 中的默认值。
  *
  */
 export const SERVER_CONTEXT = new InjectionToken<string>('SERVER_CONTEXT');

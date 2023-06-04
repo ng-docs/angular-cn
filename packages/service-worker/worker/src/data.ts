@@ -45,7 +45,7 @@ interface LruNode {
   /**
    * The previous \(more recent\) node in the chain, or null if this is the head.
    *
-   * 链中的前一个（最近的）节点，如果这是头，则为 null 。
+   * 链中的前一个（最近的）节点，如果这是头，则为 null。
    *
    */
   previous: string|null;
@@ -53,7 +53,7 @@ interface LruNode {
   /**
    * The next \(less recent\) node in the chain, or null if this is the tail.
    *
-   * 链中的下一个（最近的）节点，如果这是尾部，则为 null 。
+   * 链中的下一个（最近的）节点，如果这是尾部，则为 null。
    *
    */
   next: string|null;
@@ -73,7 +73,7 @@ interface LruState {
   /**
    * URL of the head node, or null if the chain is empty.
    *
-   * 头节点的 URL，如果链为空，则为 null 。
+   * 头节点的 URL，如果链为空，则为 null。
    *
    */
   head: string|null;
@@ -81,7 +81,7 @@ interface LruState {
   /**
    * URL of the tail node, or null if the chain is empty.
    *
-   * 尾节点的 URL，如果链为空，则为 null 。
+   * 尾节点的 URL，如果链为空，则为 null。
    *
    */
   tail: string|null;
@@ -362,7 +362,7 @@ export class DataGroup {
    * Process a fetch event and return a `Response` if the resource is covered by this group,
    * or `null` otherwise.
    *
-   * 处理 fetch 事件，如果资源被此组覆盖，则返回 `Response` ，否则返回 `null` 。
+   * 处理 fetch 事件，如果资源被此组覆盖，则返回 `Response`，否则返回 `null`。
    *
    */
   async handleFetch(req: Request, event: ExtendableEvent): Promise<Response|null> {

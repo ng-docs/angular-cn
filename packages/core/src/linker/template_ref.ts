@@ -34,7 +34,7 @@ import {EmbeddedViewRef} from './view_ref';
  * using the `TemplateRef` token.
  *
  * 通过把一个指令放在 `<ng-template>` 元素（或一个带 `*` 前缀的指令）上，可以访问 `TemplateRef`
- * 的实例。 内嵌视图的 `TemplateRef` 实例会以 `TemplateRef` 作为令牌，注入到该指令的构造函数中。
+ * 的实例。内嵌视图的 `TemplateRef` 实例会以 `TemplateRef` 作为令牌，注入到该指令的构造函数中。
  *
  * You can also use a `Query` to find a `TemplateRef` associated with
  * a component or a directive.
@@ -110,7 +110,7 @@ export abstract class TemplateRef<C> {
    * Returns an `ssrId` associated with a TView, which was used to
    * create this instance of the `TemplateRef`.
    *
-   * 返回与 TView 关联的 `ssrId` ，它用于创建 `TemplateRef` 的实例。
+   * 返回与 TView 关联的 `ssrId`，它用于创建 `TemplateRef` 的实例。
    *
    * @internal
    */
@@ -138,7 +138,7 @@ const R3TemplateRef = class TemplateRef<T> extends ViewEngineTemplateRef<T> {
    * Returns an `ssrId` associated with a TView, which was used to
    * create this instance of the `TemplateRef`.
    *
-   * 返回与 TView 关联的 `ssrId` ，它用于创建 `TemplateRef` 的实例。
+   * 返回与 TView 关联的 `ssrId`，它用于创建 `TemplateRef` 的实例。
    *
    * @internal
    */
@@ -212,7 +212,7 @@ export function injectTemplateRef<T>(): TemplateRef<T>|null {
  *
  * The TemplateRef instance or null if we can't create a TemplateRef on a given node type
  *
- * TemplateRef 实例；如果我们无法在给定的节点类型上创建 TemplateRef ，则为 null
+ * TemplateRef 实例；如果我们无法在给定的节点类型上创建 TemplateRef，则为 null
  *
  */
 export function createTemplateRef<T>(hostTNode: TNode, hostLView: LView): TemplateRef<T>|null {

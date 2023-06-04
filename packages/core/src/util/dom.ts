@@ -13,7 +13,7 @@
  *
  * see: https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
- * 请参阅： https://html.spec.whatwg.org/multipage/syntax.html#comments
+ * 请参阅：https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
  */
 const COMMENT_DISALLOWED = /^>|^->|<!--|-->|--!>|<!-$/g;
@@ -36,14 +36,14 @@ const COMMENT_DELIMITER_ESCAPED = '\u200B$1\u200B';
  * "--!>" at the end. -->`. Above the `"-->"` is meant to be text not an end to the comment. This
  * can be created programmatically through DOM APIs. \(`<!--` are also disallowed.\)
  *
- * 问题是 HTML 没有指定任何方式来对注释中的注释结尾文本进行转译。考虑： `<!-- The way you close a
+ * 问题是 HTML 没有指定任何方式来对注释中的注释结尾文本进行转译。考虑：`<!-- The way you close a
  * comment is with ">", and "->" at the beginning or by "-->" or "--!>" at the end. -->` . `"-->"`
  * 上方的意思是文本，而不是注释的结尾。这可以通过 DOM API 以编程方式创建。（`<!--`
  * 也不允许使用。）
  *
  * see: https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
- * 请参阅： https://html.spec.whatwg.org/multipage/syntax.html#comments
+ * 请参阅：https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
  * ```
  * div.innerHTML = div.innerHTML
@@ -63,7 +63,7 @@ const COMMENT_DELIMITER_ESCAPED = '\u200B$1\u200B';
  * text it will render normally but it will not cause the HTML parser to close/open the comment.
  *
  * 此函数通过查找注释分隔符（`<` 和 `>`）并用 `_>_` 包围它们来转译注释文本，其中 `_` 是零宽度空格
- * `\u200B` 。结果是，如果注释包含任何注释开始/结束分隔符（例如 `<!--`、`-->` 或 `--!>`
+ * `\u200B`。结果是，如果注释包含任何注释开始/结束分隔符（例如 `<!--`、`-->` 或 `--!>`
  * ），它将正常渲染文本，但不会导致 HTML 解析器关闭/打开评论。
  *
  * @param value text to make safe for comment node by escaping the comment open/close character

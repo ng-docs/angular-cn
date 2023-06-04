@@ -79,12 +79,12 @@ interface LFrame {
   /**
    * Current `TView` associated with the `LFrame.lView`.
    *
-   * 与 `TView` 关联的当前 `LFrame.lView` 。
+   * 与 `TView` 关联的当前 `LFrame.lView`。
    *
    * One can get `TView` from `lFrame[TVIEW]` however because it is so common it makes sense to
    * store it in `LFrame` for perf reasons.
    *
-   * 可以从 `lFrame[TVIEW]` 获取 `TView` ，但是因为它很常见，出于性能的原因将它存储在 `LFrame`
+   * 可以从 `lFrame[TVIEW]` 获取 `TView`，但是因为它很常见，出于性能的原因将它存储在 `LFrame`
    * 中是有意义的。
    *
    */
@@ -109,11 +109,11 @@ interface LFrame {
    *
    * - `true`: then `currentTNode` points to a parent node.
    *
-   *   `true` ：然后 `currentTNode` 指向父节点。
+   *   `true`：然后 `currentTNode` 指向父节点。
    *
    * - `false`: then `currentTNode` points to previous node \(sibling\).
    *
-   *   `false` ：然后 `currentTNode` 指向前一个节点（同级）。
+   *   `false`：然后 `currentTNode` 指向前一个节点（同级）。
    *
    */
   isParent: boolean;
@@ -142,7 +142,7 @@ interface LFrame {
    * The last viewData retrieved by nextContext\(\).
    * Allows building nextContext\(\) and reference\(\) calls.
    *
-   * nextContext\(\) 检索的最后一个 viewData 。允许构建 nextContext\(\) 和 reference\(\) 调用。
+   * nextContext\(\) 检索的最后一个 viewData。允许构建 nextContext\(\) 和 reference\(\) 调用。
    *
    * e.g. const inner = x\(\).$implicit; const outer = x\(\).$implicit;
    *
@@ -178,7 +178,7 @@ interface LFrame {
    * context, this is the TView.expandoStartIndex + any dirs/hostVars before the given dir.
    *
    * 纯函数指令应该从中计算其绑定索引的根索引。在组件视图中，这是 TView.bindingStartIndex
-   * 。在宿主绑定上下文中，这是 TView.expandoStartIndex + 给定目录之前的任何 dirs/hostVars 。
+   *。在宿主绑定上下文中，这是 TView.expandoStartIndex + 给定目录之前的任何 dirs/hostVars。
    *
    */
   bindingRootIndex: number;
@@ -197,7 +197,7 @@ interface LFrame {
    * `TView.data[currentDirectiveIndex]` is `DirectiveDef`
    * `LView[currentDirectiveIndex]` is directive instance.
    *
-   * 当执行宿主绑定时，this 指向了指令索引。 `TView.data[currentDirectiveIndex]` is `DirectiveDef`
+   * 当执行宿主绑定时，this 指向了指令索引。`TView.data[currentDirectiveIndex]` is `DirectiveDef`
    * `LView[currentDirectiveIndex]` 是指令实例。
    *
    */
@@ -255,7 +255,7 @@ interface InstructionState {
    *
    * `null` if we have not called `enterView`
    *
-   * 如果我们没有调用 `enterView` ，则为 `null`
+   * 如果我们没有调用 `enterView`，则为 `null`
    *
    */
   lFrame: LFrame;
@@ -333,7 +333,7 @@ let _isInCheckNoChangesMode = false;
 /**
  * Returns true if the instruction state stack is empty.
  *
- * 如果指令状态堆栈为空，则返回 true 。
+ * 如果指令状态堆栈为空，则返回 true。
  *
  * Intended to be called from tests only \(tree shaken otherwise\).
  *
@@ -469,7 +469,7 @@ export function leaveSkipHydrationBlock(): void {
 /**
  * Return the current `LView`.
  *
- * 返回当前的 `LView` 。
+ * 返回当前的 `LView`。
  *
  */
 export function getLView<T>(): LView<T> {
@@ -479,7 +479,7 @@ export function getLView<T>(): LView<T> {
 /**
  * Return the current `TView`.
  *
- * 返回当前的 `TView` 。
+ * 返回当前的 `TView`。
  *
  */
 export function getTView(): TView {
@@ -650,7 +650,7 @@ export function setBindingRootForHostBindings(
  * `TView.data[getCurrentDirectiveIndex()]` is `DirectiveDef`
  * `LView[getCurrentDirectiveIndex()]` is directive instance.
  *
- * 当执行宿主绑定时，this 指向了指令索引。 `TView.data[getCurrentDirectiveIndex()]` is
+ * 当执行宿主绑定时，this 指向了指令索引。`TView.data[getCurrentDirectiveIndex()]` is
  * `DirectiveDef` `LView[getCurrentDirectiveIndex()]` 是指令实例。
  *
  */
@@ -676,11 +676,11 @@ export function setCurrentDirectiveIndex(currentDirectiveIndex: number): void {
  * Retrieve the current `DirectiveDef` which is active when `hostBindings` instruction is being
  * executed.
  *
- * 检索正在执行 `hostBindings` 指令时处于活动状态的当前 `DirectiveDef` 。
+ * 检索正在执行 `hostBindings` 指令时处于活动状态的当前 `DirectiveDef`。
  *
  * @param tData Current `TData` where the `DirectiveDef` will be looked up at.
  *
- * 将在其中查找 `DirectiveDef` 的当前 `TData` 。
+ * 将在其中查找 `DirectiveDef` 的当前 `TData`。
  *
  */
 export function getCurrentDirectiveDef(tData: TData): DirectiveDef<any> | null {
@@ -699,11 +699,11 @@ export function setCurrentQueryIndex(value: number): void {
 /**
  * Returns a `TNode` of the location where the current `LView` is declared at.
  *
- * 返回声明当前 `TNode` 的位置的 `LView` 。
+ * 返回声明当前 `TNode` 的位置的 `LView`。
  *
  * @param lView an `LView` that we want to find parent `TNode` for.
  *
- * 我们要为其查找父 `TNode` 的 `LView` 。
+ * 我们要为其查找父 `TNode` 的 `LView`。
  *
  */
 function getDeclarationTNode(lView: LView): TNode | null {
@@ -741,7 +741,7 @@ function getDeclarationTNode(lView: LView): TNode | null {
  *     tree from `tNode`  until we find parent declared `TElementNode`.
  *
  * DI 上下文标志。如果设置了 `SkipSelf` 标志，则我们从 `tNode` 声明树向上走，直到找到声明的父
- * `TElementNode` 。
+ * `TElementNode`。
  * @returns
  *
  * `true` if we have successfully entered DI associated with `tNode` \(or with declared
@@ -750,9 +750,9 @@ function getDeclarationTNode(lView: LView): TNode | null {
  *     \- If `true` than this call must be fallowed by `leaveDI`
  *     \- If `false` than this call failed and we should NOT call `leaveDI`
  *
- * `true` 我们已成功输入与 `tNode` 关联的 DI（或者如果 `flags` 具有 `SkipSelf` ，则使用声明的
- * `TNode`），则为 true 。无法输入 DI 意味着无法找到关联 `NodeInjector` ，我们应该改用
- * `ModuleInjector` 。 - 如果为 `true` 比此调用失败，我们 `false` `leaveDI` 调用 `leaveDI`
+ * `true` 我们已成功输入与 `tNode` 关联的 DI（或者如果 `flags` 具有 `SkipSelf`，则使用声明的
+ * `TNode`），则为 true。无法输入 DI 意味着无法找到关联 `NodeInjector`，我们应该改用
+ * `ModuleInjector`。- 如果为 `true` 比此调用失败，我们 `false` `leaveDI` 调用 `leaveDI`
  *
  */
 export function enterDI(lView: LView, tNode: TNode, flags: InjectFlags) {
@@ -897,13 +897,13 @@ function createLFrame(parent: LFrame | null): LFrame {
  * This function only resets `currentTNode` and `LView` as those are the only properties
  * used with DI \(`enterDI()`\).
  *
- * 此函数仅重置 `currentTNode` 和 `LView` ，因为这些是与 DI \( `enterDI()` \) 一起使用的唯一属性。
+ * 此函数仅重置 `currentTNode` 和 `LView`，因为这些是与 DI \( `enterDI()` \) 一起使用的唯一属性。
  *
  * NOTE: This function is reexported as `leaveDI`. However `leaveDI` has return type of `void` where
  * as `leaveViewLight` has `LFrame`. This is so that `leaveViewLight` can be used in `leaveView`.
  *
- * 注意：此函数被重新导出为 `leaveDI` 。但是，`leaveDI` 的返回类型为 `void` ，而 `leaveViewLight`
- * 具有 `LFrame` 。这是为了让 `leaveViewLight` 可以在 `leaveView` 中使用。
+ * 注意：此函数被重新导出为 `leaveDI`。但是，`leaveDI` 的返回类型为 `void`，而 `leaveViewLight`
+ * 具有 `LFrame`。这是为了让 `leaveViewLight` 可以在 `leaveView` 中使用。
  *
  */
 function leaveViewLight(): LFrame {
@@ -934,13 +934,13 @@ export const leaveDI: () => void = leaveViewLight;
  *
  * This pops the `LFrame` with the associated `LView` from the stack.
  *
- * 这会从堆栈中弹出带有关联 `LView` 的 `LFrame` 。
+ * 这会从堆栈中弹出带有关联 `LView` 的 `LFrame`。
  *
  * IMPORTANT: We must zero out the `LFrame` values here otherwise they will be retained. This is
  * because for performance reasons we don't release `LFrame` but rather keep it for next use.
  *
  * 重要提示：我们必须在此将 `LFrame` 值清零，否则它们将被保留。这是因为出于性能原因，我们不会发布
- * `LFrame` ，而是保留它以供下次使用。
+ * `LFrame`，而是保留它以供下次使用。
  *
  */
 export function leaveView() {
@@ -1019,7 +1019,7 @@ export function setSelectedIndex(index: number) {
 /**
  * Gets the `tNode` that represents currently selected element.
  *
- * 获取表示当前所选元素的 `tNode` 。
+ * 获取表示当前所选元素的 `tNode`。
  *
  */
 export function getSelectedTNode() {
@@ -1030,7 +1030,7 @@ export function getSelectedTNode() {
 /**
  * Sets the namespace used to create elements to `'http://www.w3.org/2000/svg'` in global state.
  *
- * 在全局状态下，将用于创建元素的命名空间设置为 `'http://www.w3.org/2000/svg'` 。
+ * 在全局状态下，将用于创建元素的命名空间设置为 `'http://www.w3.org/2000/svg'`。
  *
  * @codeGenApi
  */
@@ -1041,7 +1041,7 @@ export function ɵɵnamespaceSVG() {
 /**
  * Sets the namespace used to create elements to `'http://www.w3.org/1998/MathML/'` in global state.
  *
- * 在全局状态下，将用于创建元素的命名空间设置为 `'http://www.w3.org/1998/MathML/'` 。
+ * 在全局状态下，将用于创建元素的命名空间设置为 `'http://www.w3.org/1998/MathML/'`。
  *
  * @codeGenApi
  */
@@ -1053,8 +1053,8 @@ export function ɵɵnamespaceMathML() {
  * Sets the namespace used to create elements to `null`, which forces element creation to use
  * `createElement` rather than `createElementNS`.
  *
- * 将用于创建元素的命名空间设置为 `null` ，这会强制元素创建使用 `createElement` 而不是
- * `createElementNS` 。
+ * 将用于创建元素的命名空间设置为 `null`，这会强制元素创建使用 `createElement` 而不是
+ * `createElementNS`。
  *
  * @codeGenApi
  */
@@ -1066,8 +1066,8 @@ export function ɵɵnamespaceHTML() {
  * Sets the namespace used to create elements to `null`, which forces element creation to use
  * `createElement` rather than `createElementNS`.
  *
- * 将用于创建元素的命名空间设置为 `null` ，这会强制元素创建使用 `createElement` 而不是
- * `createElementNS` 。
+ * 将用于创建元素的命名空间设置为 `null`，这会强制元素创建使用 `createElement` 而不是
+ * `createElementNS`。
  *
  */
 export function namespaceHTMLInternal() {

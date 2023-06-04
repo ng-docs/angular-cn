@@ -61,7 +61,7 @@ export enum TcbGenericContextBehavior {
   /**
    * Any generic parameters for the component context class will be set to `any`.
    *
-   * 组件上下文类的任何泛型参数都将设置为 `any` 。
+   * 组件上下文类的任何泛型参数都将设置为 `any`。
    *
    * Produces a less useful type, but is always safe to use.
    *
@@ -89,18 +89,18 @@ export enum TcbGenericContextBehavior {
  * to sufficiently understand a template\).
  *
  * 作为为组件生成 TCB 的副作用，也可以为生成期间识别的模板中的问题直接生成 `ts.Diagnostic`
- * 。这些问题记录在 `domSchemaChecker`（检查 DOM 元素和绑定的使用情况）以及 `oobRecorder`
+ *。这些问题记录在 `domSchemaChecker`（检查 DOM 元素和绑定的使用情况）以及 `oobRecorder`
  * （当类型检查代码生成器无法充分理解模板时记录错误）中。
  *
  * @param env an `Environment` into which type-checking code will be generated.
  *
- * 将在其中生成类型检查代码的 `Environment` 。
+ * 将在其中生成类型检查代码的 `Environment`。
  * @param ref a `Reference` to the component class which should be type-checked.
  *
- * a 对应该进行类型检查的组件类的 `Reference` 。
+ * a 对应该进行类型检查的组件类的 `Reference`。
  * @param name a `ts.Identifier` to use for the generated `ts.FunctionDeclaration`.
  *
- * 用于生成的 `ts.Identifier` 的 `ts.FunctionDeclaration` 。
+ * 用于生成的 `ts.Identifier` 的 `ts.FunctionDeclaration`。
  * @param meta metadata about the component's template and the function being generated.
  *
  * 有关组件模板和正在生成的函数的元数据。
@@ -210,7 +210,7 @@ export function generateTypeCheckBlock(
  * Each `TcbOp` may insert statements into the body of the TCB, and also optionally return a
  * `ts.Expression` which can be used to reference the operation's result.
  *
- * 每个 `TcbOp` 都可以将语句插入 TCB 的主体，还可以选择返回可用于引用操作结果的 `ts.Expression` 。
+ * 每个 `TcbOp` 都可以将语句插入 TCB 的主体，还可以选择返回可用于引用操作结果的 `ts.Expression`。
  *
  */
 abstract class TcbOp {
@@ -220,7 +220,7 @@ abstract class TcbOp {
    * code to generate, parse and type-check, overall positively contributing to performance.
    *
    * 如果此操作可以被认为是可选的，则设置为 true
-   * 。可选操作仅在被其他操作依赖时才会执行，否则它们被忽略。这允许更少的代码生成、解析和类型检查，总体上对性能有积极影响。
+   *。可选操作仅在被其他操作依赖时才会执行，否则它们被忽略。这允许更少的代码生成、解析和类型检查，总体上对性能有积极影响。
    *
    */
   abstract readonly optional: boolean;
@@ -238,7 +238,7 @@ abstract class TcbOp {
    * circular references.
    *
    * 这通常是 `null!` 表达式（要求 TS
-   * 推断适当的类型），但在需要额外代码生成来处理循环引用的情况下，可以返回另一个 `TcbOp` 。
+   * 推断适当的类型），但在需要额外代码生成来处理循环引用的情况下，可以返回另一个 `TcbOp`。
    *
    */
   circularFallback(): TcbOp|ts.Expression {
@@ -250,7 +250,7 @@ abstract class TcbOp {
  * A `TcbOp` which creates an expression for a native DOM element \(or web component\) from a
  * `TmplAstElement`.
  *
- * 一个 `TcbOp` ，它从 `TmplAstElement` 为原生 DOM 元素（或 Web 组件）创建表达式。
+ * 一个 `TcbOp`，它从 `TmplAstElement` 为原生 DOM 元素（或 Web 组件）创建表达式。
  *
  * Executing this operation returns a reference to the element variable.
  *
@@ -283,7 +283,7 @@ class TcbElementOp extends TcbOp {
  * A `TcbOp` which creates an expression for particular let- `TmplAstVariable` on a
  * `TmplAstTemplate`'s context.
  *
- * 一个 `TcbOp` ，它在 `TmplAstVariable` 的上下文上为特定的 `TmplAstTemplate` -TmplAstVariable
+ * 一个 `TcbOp`，它在 `TmplAstVariable` 的上下文上为特定的 `TmplAstTemplate` -TmplAstVariable
  * 创建表达式。
  *
  * Executing this operation returns a reference to the variable variable \(lol\).
@@ -331,7 +331,7 @@ class TcbVariableOp extends TcbOp {
 /**
  * A `TcbOp` which generates a variable for a `TmplAstTemplate`'s context.
  *
- * 一个 `TcbOp` ，它为 `TmplAstTemplate` 的上下文生成变量。
+ * 一个 `TcbOp`，它为 `TmplAstTemplate` 的上下文生成变量。
  *
  * Executing this operation returns a reference to the template's context variable.
  *
@@ -360,7 +360,7 @@ class TcbTemplateContextOp extends TcbOp {
  * A `TcbOp` which descends into a `TmplAstTemplate`'s children and generates type-checking code for
  * them.
  *
- * 一个 `TcbOp` ，它会下降到 `TmplAstTemplate` 的子项并为它们生成类型检查代码。
+ * 一个 `TcbOp`，它会下降到 `TmplAstTemplate` 的子项并为它们生成类型检查代码。
  *
  * This operation wraps the children's type-checking code in an `if` block, which may include one
  * or more type guard conditions that narrow types within the template body.
@@ -495,7 +495,7 @@ class TcbTemplateBodyOp extends TcbOp {
 /**
  * A `TcbOp` which renders a text binding \(interpolation\) into the TCB.
  *
- * 一个 `TcbOp` ，它将文本绑定（插值）渲染到 TCB 中。
+ * 一个 `TcbOp`，它将文本绑定（插值）渲染到 TCB 中。
  *
  * Executing this operation returns nothing.
  *
@@ -522,7 +522,7 @@ class TcbTextInterpolationOp extends TcbOp {
  * A `TcbOp` which constructs an instance of a directive. For generic directives, generic
  * parameters are set to `any` type.
  *
- * 构造指令实例的 `TcbOp` 。对于泛型指令，泛型参数被设置为 `any` 类型。
+ * 构造指令实例的 `TcbOp`。对于泛型指令，泛型参数被设置为 `any` 类型。
  *
  */
 abstract class TcbDirectiveTypeOpBase extends TcbOp {
@@ -571,7 +571,7 @@ abstract class TcbDirectiveTypeOpBase extends TcbOp {
  * faster when done in this way as opposed to `TcbDirectiveCtorOp` which is only necessary when the
  * directive is generic.
  *
- * 一个 `TcbOp` ，它在 _ 不 _ 设置任何输入的情况下构造非泛型指令的实例。输入稍后在
+ * 一个 `TcbOp`，它在 _ 不 _ 设置任何输入的情况下构造非泛型指令的实例。输入稍后在
  * `TcbDirectiveInputsOp` 中设置。发现以这种方式完成的类型检查比 TcbDirectiveCtorOp 更快，
  * `TcbDirectiveCtorOp` 仅在指令是泛型时才需要。
  *
@@ -603,13 +603,13 @@ class TcbNonGenericDirectiveTypeOp extends TcbDirectiveTypeOpBase {
  * to `any` type. This op is like `TcbDirectiveTypeOp`, except that generic parameters are set to
  * `any` type. This is used for situations where we want to avoid inlining.
  *
- * 一个 `TcbOp` ，它构造泛型指令的实例，其泛型参数设置为 `any` 类型。此操作类似于
- * `TcbDirectiveTypeOp` ，只是泛型参数设置为 `any` 类型。这用于我们要避免内联的情况。
+ * 一个 `TcbOp`，它构造泛型指令的实例，其泛型参数设置为 `any` 类型。此操作类似于
+ * `TcbDirectiveTypeOp`，只是泛型参数设置为 `any` 类型。这用于我们要避免内联的情况。
  *
  * Executing this operation returns a reference to the directive instance variable with its generic
  * type parameters set to `any`.
  *
- * 执行此操作会返回对指令实例变量的引用，其泛型类型参数设置为 `any` 。
+ * 执行此操作会返回对指令实例变量的引用，其泛型类型参数设置为 `any`。
  *
  */
 class TcbGenericDirectiveTypeWithAnyParamsOp extends TcbDirectiveTypeOpBase {
@@ -630,7 +630,7 @@ class TcbGenericDirectiveTypeWithAnyParamsOp extends TcbDirectiveTypeOpBase {
  * element the ref refers to. When the reference is used in the template, those TCB statements will
  * access this variable as well. For example:
  *
- * 一个 `TcbOp` ，它为模板中的本地引用创建变量。变量的初始化器是 ref
+ * 一个 `TcbOp`，它为模板中的本地引用创建变量。变量的初始化器是 ref
  * 所引用的指令、模板或元素的变量表达式。在模板中使用引用时，这些 TCB 语句也将访问此变量。例如：
  *
  * ```
@@ -711,7 +711,7 @@ class TcbReferenceOp extends TcbOp {
  * variable of type any for usages of the invalid reference to resolve to. The invalid reference
  * itself is recorded out-of-band.
  *
- * 缺少引用目标时使用的 `TcbOp` 。此操作会为要解析的无效引用的用法生成一个 any
+ * 缺少引用目标时使用的 `TcbOp`。此操作会为要解析的无效引用的用法生成一个 any
  * 类型的变量。无效的引用本身会被带外记录。
  *
  */
@@ -736,7 +736,7 @@ class TcbInvalidReferenceOp extends TcbOp {
  * Any errors reported in this statement are ignored, as the type constructor call is only present
  * for type-inference.
  *
- * 一个 `TcbOp` ，它构造具有从其输入推断的类型的指令的实例。此处不会检查输入本身；在
+ * 一个 `TcbOp`，它构造具有从其输入推断的类型的指令的实例。此处不会检查输入本身；在
  * `TcbDirectiveInputsOp`
  * 中实现对输入的检查。此语句中报告的任何错误都被忽略，因为类型构造函数调用仅用于类型推断。
  *
@@ -816,7 +816,7 @@ class TcbDirectiveCtorOp extends TcbOp {
  * A `TcbOp` which generates code to check input bindings on an element that correspond with the
  * members of a directive.
  *
- * 一个 `TcbOp` ，它生成代码以检查与指令成员对应的元素上的输入绑定。
+ * 一个 `TcbOp`，它生成代码以检查与指令成员对应的元素上的输入绑定。
  *
  * Executing this operation returns nothing.
  *
@@ -966,7 +966,7 @@ class TcbDirectiveInputsOp extends TcbOp {
  * via `TcbDirectiveCtorOp` requires a reference to its own type. This can happen using a template
  * reference:
  *
- * 一个 `TcbOp` ，如果通过 `TcbDirectiveCtorOp`
+ * 一个 `TcbOp`，如果通过 `TcbDirectiveCtorOp`
  * 的指令类型的推断需要对其自己的类型的引用，则用于生成后备表达式。这可以用模板引用来实现：
  *
  * ```html
@@ -1007,14 +1007,14 @@ class TcbDirectiveCtorCircularFallbackOp extends TcbOp {
 /**
  * A `TcbOp` which feeds elements and unclaimed properties to the `DomSchemaChecker`.
  *
- * 一个 `TcbOp` ，它将元素和无人认领的属性提供给 `DomSchemaChecker` 。
+ * 一个 `TcbOp`，它将元素和无人认领的属性提供给 `DomSchemaChecker`。
  *
  * The DOM schema is not checked via TCB code generation. Instead, the `DomSchemaChecker` ingests
  * elements and property bindings and accumulates synthetic `ts.Diagnostic`s out-of-band. These are
  * later merged with the diagnostics generated from the TCB.
  *
  * 不会通过 TCB 代码生成检查 DOM 模式。相反，`DomSchemaChecker`
- * 摄取元素和属性绑定，并带外累积合成的 `ts.Diagnostic` 。这些稍后会与从 TCB 生成的诊断合并。
+ * 摄取元素和属性绑定，并带外累积合成的 `ts.Diagnostic`。这些稍后会与从 TCB 生成的诊断合并。
  *
  * For convenience, the TCB iteration of the template is used to drive the `DomSchemaChecker` via
  * the `TcbDomSchemaCheckerOp`.
@@ -1082,7 +1082,7 @@ const ATTR_TO_PROP = new Map(Object.entries({
  * not attributed to any directive or component, and are instead processed against the HTML element
  * itself.
  *
- * 一个 `TcbOp` ，它生成代码以检查“无人认领的输入” -
+ * 一个 `TcbOp`，它生成代码以检查“无人认领的输入” -
  * 元素上的绑定，这些绑定不属于任何指令或组件，而是针对 HTML 元素本身进行处理。
  *
  * Currently, only the expressions of these bindings are checked. The targets of the bindings are
@@ -1152,7 +1152,7 @@ class TcbUnclaimedInputsOp extends TcbOp {
  * A `TcbOp` which generates code to check event bindings on an element that correspond with the
  * outputs of a directive.
  *
- * 一个 `TcbOp` ，它生成代码以检查元素上与指令输出对应的事件绑定。
+ * 一个 `TcbOp`，它生成代码以检查元素上与指令输出对应的事件绑定。
  *
  * Executing this operation returns nothing.
  *
@@ -1227,7 +1227,7 @@ export class TcbDirectiveOutputsOp extends TcbOp {
  * were not attributed to any directive or component, and are instead processed against the HTML
  * element itself.
  *
- * 一种 `TcbOp` ，它生成代码以检查“无人认领的输出” -
+ * 一种 `TcbOp`，它生成代码以检查“无人认领的输出” -
  * 元素上的事件绑定，不属于任何指令或组件，而是针对 HTML 元素本身进行处理。
  *
  * Executing this operation returns nothing.
@@ -1309,7 +1309,7 @@ class TcbUnclaimedOutputsOp extends TcbOp {
 /**
  * A `TcbOp` which generates a completion point for the component context.
  *
- * 一个 `TcbOp` ，它为组件上下文生成完成点。
+ * 一个 `TcbOp`，它为组件上下文生成完成点。
  *
  * This completion point looks like `this. ;` in the TCB output, and does not produce diagnostics.
  * TypeScript autocompletion APIs can be used at this completion point \(after the '.'\) to produce
@@ -1407,7 +1407,7 @@ export class Context {
  * check block, where each nested template is encased in an `if` structure.
  *
  * 顶级模板和每个嵌套 `<ng-template>` 都有自己的 `Scope`
- * ，它们以层次结构存在。此层次结构的结构反映了生成的类型检查块中的语法范围，其中每个嵌套模板都包含在
+ *，它们以层次结构存在。此层次结构的结构反映了生成的类型检查块中的语法范围，其中每个嵌套模板都包含在
  * `if` 结构中。
  *
  * As a template's `TcbOp`s are executed in a given `Scope`, statements are added via
@@ -1415,11 +1415,11 @@ export class Context {
  * via `renderToBlock()`.
  *
  * 由于模板的 `TcbOp` 是在给定的 `Scope` 中执行的，因此可以通过 `addStatement()`
- * 添加语句。完成此处理后，可以通过 `renderToBlock()` 将 `Scope` 转换为 `ts.Block` 。
+ * 添加语句。完成此处理后，可以通过 `renderToBlock()` 将 `Scope` 转换为 `ts.Block`。
  *
  * If a `TcbOp` requires the output of another, it can call `resolve()`.
  *
- * 如果 `TcbOp` 需要另一个 TcbOp 的输出，它可以调用 `resolve()` 。
+ * 如果 `TcbOp` 需要另一个 TcbOp 的输出，它可以调用 `resolve()`。
  *
  */
 class Scope {
@@ -1432,8 +1432,8 @@ class Scope {
    * representing the memoized result of executing the operation. As operations are executed, their
    * results are written into the `opQueue`, overwriting the original operation.
    *
-   * 此数组可以包含尚未执行的 `TcbOp` ，或表示执行操作的记忆化结果的 `ts.Expression|null`
-   * 。当执行操作时，它们的结果会写入 `opQueue` ，覆盖原始操作。
+   * 此数组可以包含尚未执行的 `TcbOp`，或表示执行操作的记忆化结果的 `ts.Expression|null`
+   *。当执行操作时，它们的结果会写入 `opQueue`，覆盖原始操作。
    *
    * If an operation is in the process of being executed, it is temporarily overwritten here with
    * `INFER_TYPE_FOR_CIRCULAR_OP_EXPR`. This way, if a cycle is encountered where an operation
@@ -1513,7 +1513,7 @@ class Scope {
   /**
    * Constructs a `Scope` given either a `TmplAstTemplate` or a list of `TmplAstNode`s.
    *
-   * 在给定 `TmplAstTemplate` 或 `TmplAstNode` 列表的情况下构造一个 `Scope` 。
+   * 在给定 `TmplAstTemplate` 或 `TmplAstNode` 列表的情况下构造一个 `Scope`。
    *
    * @param tcb the overall context of TCB generation.
    *
@@ -1521,12 +1521,12 @@ class Scope {
    * @param parent the `Scope` of the parent template \(if any\) or `null` if this is the root
    * `Scope`.
    *
-   * 父模板的 `Scope`（如果有），如果这是根 `Scope` ，则为 `null` 。
+   * 父模板的 `Scope`（如果有），如果这是根 `Scope`，则为 `null`。
    *
    * @param templateOrNodes either a `TmplAstTemplate` representing the template for which to
    * calculate the `Scope`, or a list of nodes if no outer template object is available.
    *
-   * 表示要为其计算 `Scope` 的模板的 `TmplAstTemplate` ，如果没有外部模板对象可用，则为节点列表。
+   * 表示要为其计算 `Scope` 的模板的 `TmplAstTemplate`，如果没有外部模板对象可用，则为节点列表。
    * @param guard an expression that is applied to this scope for type narrowing purposes.
    *
    * 用于此范围的类型缩小的表达式。
@@ -1576,17 +1576,17 @@ class Scope {
    * including any parent scope\(s\). This method always returns a mutable clone of the
    * `ts.Expression` with the comments cleared.
    *
-   * 查找表示当前 `Scope` 中某些操作的值的 `ts.Expression` ，包括任何父范围。此方法始终返回
+   * 查找表示当前 `Scope` 中某些操作的值的 `ts.Expression`，包括任何父范围。此方法始终返回
    * `ts.Expression` 的可变克隆，并且清除了注释。
    *
    * @param node a `TmplAstNode` of the operation in question. The lookup performed will depend on
    * the type of this node:
    *
-   * 相关操作的 `TmplAstNode` 。执行的查找将取决于此节点的类型：
+   * 相关操作的 `TmplAstNode`。执行的查找将取决于此节点的类型：
    *
    * Assuming `directive` is not present, then `resolve` will return:
    *
-   * 假设不存在 `directive` ，则 `resolve` 将返回：
+   * 假设不存在 `directive`，则 `resolve` 将返回：
    *
    * * `TmplAstElement` - retrieve the expression for the element DOM node
    *
@@ -1674,7 +1674,7 @@ class Scope {
    * Returns an expression of all template guards that apply to this scope, including those of
    * parent scopes. If no guards have been applied, null is returned.
    *
-   * 返回适用于此范围的所有模板保护的表达式，包括父范围的模板保护。如果没有应用保护，则返回 null 。
+   * 返回适用于此范围的所有模板保护的表达式，包括父范围的模板保护。如果没有应用保护，则返回 null。
    *
    */
   guards(): ts.Expression|null {
@@ -1736,7 +1736,7 @@ class Scope {
   /**
    * Like `executeOp`, but assert that the operation actually returned `ts.Expression`.
    *
-   * 与 `executeOp` 一样，但断言操作实际上返回 `ts.Expression` 。
+   * 与 `executeOp` 一样，但断言操作实际上返回 `ts.Expression`。
    *
    */
   private resolveOp(opIndex: number): ts.Expression {
@@ -1750,7 +1750,7 @@ class Scope {
   /**
    * Execute a particular `TcbOp` in the `opQueue`.
    *
-   * 执行 `TcbOp` 中的特定 `opQueue` 。
+   * 执行 `TcbOp` 中的特定 `opQueue`。
    *
    * This method replaces the operation in the `opQueue` with the result of execution (once done)
    * and also protects against a circular dependency from the operation to itself by temporarily
@@ -1993,7 +1993,7 @@ function tcbThisParam(
  * Process an `AST` expression and convert it into a `ts.Expression`, generating references to the
  * correct identifiers in the current scope.
  *
- * 处理 `AST` 表达式并将其转换为 `ts.Expression` ，在当前范围内生成对正确标识符的引用。
+ * 处理 `AST` 表达式并将其转换为 `ts.Expression`，在当前范围内生成对正确标识符的引用。
  *
  */
 function tcbExpression(ast: AST, tcb: Context, scope: Scope): ts.Expression {
@@ -2126,7 +2126,7 @@ class TcbExpressionTranslator {
    * `null` is returned.
    *
    * 尝试解析给定表达式的绑定目标，并将其转换为表示绑定目标的适当 `ts.Expression`
-   * 。如果没有目标可用，则返回 `null` 。
+   *。如果没有目标可用，则返回 `null`。
    *
    */
   protected resolveTarget(ast: AST): ts.Expression|null {
@@ -2217,7 +2217,7 @@ function getBoundAttributes(
 /**
  * Translates the given attribute binding to a `ts.Expression`.
  *
- * 将给定的属性绑定转换为 `ts.Expression` 。
+ * 将给定的属性绑定转换为 `ts.Expression`。
  *
  */
 function translateInput(
@@ -2279,7 +2279,7 @@ interface TcbDirectiveBoundInput {
   /**
    * The `ts.Expression` corresponding with the input binding expression.
    *
-   * 与输入绑定表达式对应的 `ts.Expression` 。
+   * 与输入绑定表达式对应的 `ts.Expression`。
    *
    */
   expression: ts.Expression;
@@ -2328,7 +2328,7 @@ const enum EventParamType {
  * function has a single parameter `$event` and the bound event's handler `AST` represented as a
  * TypeScript expression as its body.
  *
- * 创建一个要用作事件绑定的处理程序函数的箭头函数。处理程序函数有一个参数 `$event` ，并以 TypeScript
+ * 创建一个要用作事件绑定的处理程序函数的箭头函数。处理程序函数有一个参数 `$event`，并以 TypeScript
  * 表达式的形式表示的绑定事件的处理程序 `AST` 作为其主体。
  *
  * When `eventType` is set to `Infer`, the `$event` parameter will not have an explicit type. This
@@ -2391,7 +2391,7 @@ function tcbCreateEventHandler(
  * bindings.
  *
  * 与 `tcbExpression` 类似，此函数将提供的 `AST` 表达式转换为 `ts.Expression`
- * ，并对可在事件绑定中使用的 `$event` 变量进行特殊处理。
+ *，并对可在事件绑定中使用的 `$event` 变量进行特殊处理。
  *
  */
 function tcbEventHandlerExpression(ast: AST, tcb: Context, scope: Scope): ts.Expression {

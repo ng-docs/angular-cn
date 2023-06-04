@@ -30,7 +30,7 @@ type HostDirectiveConfig = Type<unknown>|{
  * function onto it. The expectation is that the runtime will invoke the function during
  * directive matching.
  *
- * 此功能通过将函数修补到指令定义上，将宿主指令行为添加到指令定义中。 期望运行时将在指令匹配期间调用该函数。
+ * 此功能通过将函数修补到指令定义上，将宿主指令行为添加到指令定义中。期望运行时将在指令匹配期间调用该函数。
  *
  * For example:
  *
@@ -118,14 +118,14 @@ function bindingArrayToMap(bindings: string[]|undefined): HostDirectiveBindingMa
  * will always be `foo`, and not `alias` or the minified name of `foo` in apps using property
  * minification.
  *
- * `ngOnChanges` 有一些遗留的旧 ViewEngine 行为，其中 `SimpleChanges` 事件中的键指的是输入的*声明*名称，而不是其公共名称或其缩小名称。 例如，在 `@Input('alias') foo: string` 中， `SimpleChanges` 对象中的名称将始终是 `foo` ，而不是使用属性缩小的应用程序中 `foo` 的 `alias` 或缩小名称。
+ * `ngOnChanges` 有一些遗留的旧 ViewEngine 行为，其中 `SimpleChanges` 事件中的键指的是输入的*声明*名称，而不是其公共名称或其缩小名称。例如，在 `@Input('alias') foo: string` 中，`SimpleChanges` 对象中的名称将始终是 `foo`，而不是使用属性缩小的应用程序中 `foo` 的 `alias` 或缩小名称。
  *
  * This is achieved through the `DirectiveDef.declaredInputs` map that is constructed when the
  * definition is declared. When a property is written to the directive instance, the
  * `NgOnChangesFeature` will try to remap the property name being written to using the
  * `declaredInputs`.
  *
- * 这是通过在声明定义时构造的 `DirectiveDef.declaredInputs` 映射来实现的。 当属性被写入指令实例时， `NgOnChangesFeature` 将尝试使用 `declaredInputs` 重新映射正在写入的属性名称。
+ * 这是通过在声明定义时构造的 `DirectiveDef.declaredInputs` 映射来实现的。当属性被写入指令实例时，`NgOnChangesFeature` 将尝试使用 `declaredInputs` 重新映射正在写入的属性名称。
  *
  * Since the host directive input remapping happens during directive matching, `declaredInputs`
  * won't contain the new alias that the input is available under. This function addresses the
@@ -134,7 +134,7 @@ function bindingArrayToMap(bindings: string[]|undefined): HostDirectiveBindingMa
  * is used *only* by the `NgOnChangesFeature` when determining what name is used in the
  * `SimpleChanges` object which won't be reached if an input doesn't exist.
  *
- * 由于宿主指令输入重新映射发生在指令匹配期间，因此 `declaredInputs` 将不包含输入可用的新别名。 此函数通过将宿主指令别名修补到 `declaredInputs` 来解决此问题。 *不*存在此修补意外向宿主指令引入新输入的风险，因为 `declaredInputs`*仅*由 `NgOnChangesFeature` 在确定 `SimpleChanges` 对象中使用的名称时使用，如果输入不存在则无法访问。
+ * 由于宿主指令输入重新映射发生在指令匹配期间，因此 `declaredInputs` 将不包含输入可用的新别名。此函数通过将宿主指令别名修补到 `declaredInputs` 来解决此问题。*不*存在此修补意外向宿主指令引入新输入的风险，因为 `declaredInputs`*仅*由 `NgOnChangesFeature` 在确定 `SimpleChanges` 对象中使用的名称时使用，如果输入不存在则无法访问。
  *
  */
 function patchDeclaredInputs(
@@ -220,7 +220,7 @@ function validateHostDirective(
  *
  * @param bindingType Kind of binding that is being validated. Used in the error message.
  *
- * 正在验证的绑定类型。 在错误消息中使用。
+ * 正在验证的绑定类型。在错误消息中使用。
  *
  * @param def Definition of the host directive that is being validated against.
  *

@@ -209,7 +209,7 @@ The `RouterLinkActive` directive provides the `ariaCurrentWhenActive` input whic
 
 The following example shows how to apply the `active-page` class to active links as well as setting their `aria-current` attribute to `"page"` when they are active:
 
-以下示例展示了如何将 `active-page` 类应用于活跃链接，以及如何在它们处于活跃状态时将它们的 `aria-current` 属性设置为 `"page"` ：
+以下示例展示了如何将 `active-page` 类应用于活跃链接，以及如何在它们处于活跃状态时将它们的 `aria-current` 属性设置为 `"page"`：
 
 ```html
     <nav>

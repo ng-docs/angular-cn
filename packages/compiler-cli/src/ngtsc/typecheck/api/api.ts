@@ -39,7 +39,7 @@ export type TemplateId = string&{__brand: 'TemplateId'};
  * A `ts.Diagnostic` with additional information about the diagnostic related to template
  * type-checking.
  *
- * 一个 `ts.Diagnostic` ，其中包含有关与模板类型检查相关的诊断的附加信息。
+ * 一个 `ts.Diagnostic`，其中包含有关与模板类型检查相关的诊断的附加信息。
  *
  */
 export interface TemplateDiagnostic extends ts.Diagnostic {
@@ -63,7 +63,7 @@ export interface TemplateDiagnostic extends ts.Diagnostic {
 /**
  * A `TemplateDiagnostic` with a specific error code.
  *
- * 具有特定错误代码的 `TemplateDiagnostic` 。
+ * 具有特定错误代码的 `TemplateDiagnostic`。
  *
  */
 export type NgTemplateDiagnostic<T extends ErrorCode> = TemplateDiagnostic&{__ngCode: T};
@@ -83,7 +83,7 @@ export interface TypeCheckBlockMetadata {
    *
    * This can be used to map errors back to the `ts.ClassDeclaration` for the component.
    *
-   * 这可用于将错误映射回组件的 `ts.ClassDeclaration` 。
+   * 这可用于将错误映射回组件的 `ts.ClassDeclaration`。
    *
    */
   id: TemplateId;
@@ -143,7 +143,7 @@ export interface TypeCtorMetadata {
   /**
    * `Set` of field names which have type coercion enabled.
    *
-   * 启用了类型强制的字段名称 `Set` 。
+   * 启用了类型强制的字段名称 `Set`。
    *
    */
   coercedInputFields: Set<string>;
@@ -160,14 +160,14 @@ export interface TypeCheckingConfig {
    * directive or component is receiving the binding. If set to `true`, both sides of the assignment
    * are checked.
    *
-   * 例如，如果 this 为 `false` ，则表达式 `[input]="expr"` 将进行 `expr`
+   * 例如，如果 this 为 `false`，则表达式 `[input]="expr"` 将进行 `expr`
    * 类型检查，但不会将结果类型分配给正在接收绑定的任何指令或组件的 `input` 属性。如果设置为 `true`
-   * ，则会检查赋值的两边。
+   *，则会检查赋值的两边。
    *
    * This flag only affects bindings to components/directives. Bindings to the DOM are checked if
    * `checkTypeOfDomBindings` is set.
    *
-   * 此标志仅影响到组件/指令的绑定。 如果设置了 `checkTypeOfDomBindings` ，则检查与 DOM 的绑定。
+   * 此标志仅影响到组件/指令的绑定。如果设置了 `checkTypeOfDomBindings`，则检查与 DOM 的绑定。
    *
    */
   checkTypeOfInputBindings: boolean;
@@ -197,11 +197,11 @@ export interface TypeCheckingConfig {
    * null checks. This may be particularly useful when the directive is from a library that is not
    * compiled with `strictNullChecks` enabled.
    *
-   * 如果这是 `true` ，则在启用 TypeScript 的 `strictNullChecks` 的情况下编译的应用程序将为绑定产生类型错误，这些绑定可以计算为 `undefined` 或 `null` ，其中输入的类型不包括 `undefined` 或 `null` 的类型。 如果设置为 `false` ，所有绑定表达式都包含在非空断言运算符中以有效地禁用严格的空检查。 当指令来自未启用 `strictNullChecks` 编译的库时，这可能特别有用。
+   * 如果这是 `true`，则在启用 TypeScript 的 `strictNullChecks` 的情况下编译的应用程序将为绑定产生类型错误，这些绑定可以计算为 `undefined` 或 `null`，其中输入的类型不包括 `undefined` 或 `null` 的类型。如果设置为 `false`，所有绑定表达式都包含在非空断言运算符中以有效地禁用严格的空检查。当指令来自未启用 `strictNullChecks` 编译的库时，这可能特别有用。
    *
    * If `checkTypeOfInputBindings` is set to `false`, this flag has no effect.
    *
-   * 如果 `checkTypeOfInputBindings` 设置为 `false` ，则此标志无效。
+   * 如果 `checkTypeOfInputBindings` 设置为 `false`，则此标志无效。
    *
    */
   strictNullInputBindings: boolean;
@@ -220,11 +220,11 @@ export interface TypeCheckingConfig {
    * 例如，在包含 `<input matInput disabled>` 的模板中，`disabled` 属性最终会被 `matInput` 指令作为
    * `boolean`
    * 类型的输入使用。在运行时，输入将设置为属性的字符串值，对于没有值的属性，这是一个空字符串，因此在此标志设置为
-   * `true` 的情况下，将报告错误。如果设置为 `false` ，则文本属性将永远不会报告错误。
+   * `true` 的情况下，将报告错误。如果设置为 `false`，则文本属性将永远不会报告错误。
    *
    * Note that if `checkTypeOfInputBindings` is set to `false`, this flag has no effect.
    *
-   * 请注意，如果 `checkTypeOfInputBindings` 设置为 `false` ，则此标志无效。
+   * 请注意，如果 `checkTypeOfInputBindings` 设置为 `false`，则此标志无效。
    *
    */
   checkTypeOfAttributes: boolean;
@@ -236,14 +236,14 @@ export interface TypeCheckingConfig {
    *
    * As `checkTypeOfBindings`, but only applies to bindings to DOM properties.
    *
-   * 作为 `checkTypeOfBindings` ，但只适用于绑定到 DOM 属性。
+   * 作为 `checkTypeOfBindings`，但只适用于绑定到 DOM 属性。
    *
    * This does not affect the use of the `DomSchemaChecker` to validate the template against the DOM
    * schema. Rather, this flag is an experimental, not yet complete feature which uses the
    * lib.dom.d.ts DOM typings in TypeScript to validate that DOM bindings are of the correct type
    * for assignability to the underlying DOM element properties.
    *
-   * 这不会影响使用 `DomSchemaChecker` 根据 DOM 模式验证模板。 相反，此标志是一个实验性的、尚未完成的功能，它使用 TypeScript 中的 lib.dom.d.ts DOM 类型来验证 DOM 绑定的类型是否正确，以便可分配给底层 DOM 元素属性。
+   * 这不会影响使用 `DomSchemaChecker` 根据 DOM 模式验证模板。相反，此标志是一个实验性的、尚未完成的功能，它使用 TypeScript 中的 lib.dom.d.ts DOM 类型来验证 DOM 绑定的类型是否正确，以便可分配给底层 DOM 元素属性。
    *
    */
   checkTypeOfDomBindings: boolean;
@@ -258,8 +258,8 @@ export interface TypeCheckingConfig {
    * `EventEmitter`/`Subject` of the output. If set to `false`, the `$event` variable will be of
    * type `any`.
    *
-   * 如果为 `true` ，则 `$event` 的类型将根据输出的 `EventEmitter` / `Subject`
-   * 的泛型类型来推断。如果设置为 `false` ，则 `$event` 变量将是 `any` 类型。
+   * 如果为 `true`，则 `$event` 的类型将根据输出的 `EventEmitter` / `Subject`
+   * 的泛型类型来推断。如果设置为 `false`，则 `$event` 变量将是 `any` 类型。
    *
    */
   checkTypeOfOutputEvents: boolean;
@@ -272,7 +272,7 @@ export interface TypeCheckingConfig {
    * If this is `true`, the type of `$event` will be `AnimationEvent` from `@angular/animations`.
    * If set to `false`, the `$event` variable will be of type `any`.
    *
-   * 如果这是 `true` ， `$event` 的类型将是来自 `@angular/animations` 的 `AnimationEvent` 。 如果设置为 `false` ， `$event` 变量将是 `any` 类型。
+   * 如果这是 `true`，`$event` 的类型将是来自 `@angular/animations` 的 `AnimationEvent`。如果设置为 `false`，`$event` 变量将是 `any` 类型。
    *
    */
   checkTypeOfAnimationEvents: boolean;
@@ -286,8 +286,8 @@ export interface TypeCheckingConfig {
    * `HTMLElementEventMap`, with a fallback to the native `Event` type. If set to `false`, the
    * `$event` variable will be of type `any`.
    *
-   * 如果为 `true` ，则 `$event` 的类型将根据 TypeScript 的 `HTMLElementEventMap` 推断，并回退到原生
-   * `Event` 类型。如果设置为 `false` ，则 `$event` 变量将是 `any` 类型。
+   * 如果为 `true`，则 `$event` 的类型将根据 TypeScript 的 `HTMLElementEventMap` 推断，并回退到原生
+   * `Event` 类型。如果设置为 `false`，则 `$event` 变量将是 `any` 类型。
    *
    */
   checkTypeOfDomEvents: boolean;
@@ -301,7 +301,7 @@ export interface TypeCheckingConfig {
    * determined by the type of `document.createElement` for the given DOM node type. If set to
    * `false`, the type of `ref` for DOM nodes will be `any`.
    *
-   * 如果这是 `true` ，则模板中 DO​​M 节点上的 `#ref` 变量的类型将由给定 DOM 节点类型的 `document.createElement` 类型确定。 如果设置为 `false` ，DOM 节点的 `ref` 类型将为 `any` 。
+   * 如果这是 `true`，则模板中 DO​​M 节点上的 `#ref` 变量的类型将由给定 DOM 节点类型的 `document.createElement` 类型确定。如果设置为 `false`，DOM 节点的 `ref` 类型将为 `any`。
    *
    */
   checkTypeOfDomReferences: boolean;
@@ -316,7 +316,7 @@ export interface TypeCheckingConfig {
    * the template will be inferred correctly. If set to `false`, the type of `ref` for will be
    * `any`.
    *
-   * 如果这是 `true` ，则指向模板中的指令或 `TemplateRef` `#ref` 变量的类型将被正确推断。 如果设置为 `false` ，则 `ref` 的类型将为 `any` 。
+   * 如果这是 `true`，则指向模板中的指令或 `TemplateRef` `#ref` 变量的类型将被正确推断。如果设置为 `false`，则 `ref` 的类型将为 `any`。
    *
    */
   checkTypeOfNonDomReferences: boolean;
@@ -333,13 +333,13 @@ export interface TypeCheckingConfig {
    * references, inputs, or outputs. However, the `TemplateTypeChecker` always needs these
    * statements to be present in order to provide `ts.Symbol`s and `ts.Type`s for the directives.
    *
-   * TCB 中生成的语句针对性能和生成诊断进行了优化。 这些优化可能导致生成的 TCB 不具有 `TemplateTypeChecker` 检索 `Symbol` 所需的所有信息。 例如，作为优化，TCB 不会为没有引用、输入或输出的指令生成变量声明语句。 但是， `TemplateTypeChecker` 始终需要存在这些语句，以便为指令提供 `ts.Symbol` s 和 `ts.Type` s。
+   * TCB 中生成的语句针对性能和生成诊断进行了优化。这些优化可能导致生成的 TCB 不具有 `TemplateTypeChecker` 检索 `Symbol` 所需的所有信息。例如，作为优化，TCB 不会为没有引用、输入或输出的指令生成变量声明语句。但是，`TemplateTypeChecker` 始终需要存在这些语句，以便为指令提供 `ts.Symbol` s 和 `ts.Type` s。
    *
    * When set to `false`, enables TCB optimizations for template diagnostics.
    * When set to `true`, ensures all information required by `TemplateTypeChecker` to
    * retrieve symbols for template nodes is available in the TCB.
    *
-   * 设置为 `false` 时，为模板诊断启用 TCB 优化。 设置为 `true` 时，确保 `TemplateTypeChecker` 检索模板节点符号所需的所有信息在 TCB 中可用。
+   * 设置为 `false` 时，为模板诊断启用 TCB 优化。设置为 `true` 时，确保 `TemplateTypeChecker` 检索模板节点符号所需的所有信息在 TCB 中可用。
    *
    */
   enableTemplateTypeChecker: boolean;
@@ -354,7 +354,7 @@ export interface TypeCheckingConfig {
    * the types of the pipe's value and arguments will not be matched against the `transform()`
    * method.
    *
-   * 如果这是 `true` ，那么管道的 `transform()` 类型签名将用于检查管道的使用情况。 如果这是 `false` ，那么应用管道的结果将为 `any` ，并且管道的值和参数的类型将不会与 `transform()` 方法匹配。
+   * 如果这是 `true`，那么管道的 `transform()` 类型签名将用于检查管道的使用情况。如果这是 `false`，那么应用管道的结果将为 `any`，并且管道的值和参数的类型将不会与 `transform()` 方法匹配。
    *
    */
   checkTypeOfPipes: boolean;
@@ -376,8 +376,8 @@ export interface TypeCheckingConfig {
    * then the return type of `a?.b` for example will be the same as the type of the ternary
    * expression `a != null ? a.b : a`.
    *
-   * 如果这是 `false` ，则 `a?.b` 或 `a?()` 的返回类型将是 `any` 。如果设置为 `true` ，则 `a?.b`
-   * 的返回类型将与三元表达式 `a != null ? ab : a` 的类型相同 `a != null ? ab : a` 。
+   * 如果这是 `false`，则 `a?.b` 或 `a?()` 的返回类型将是 `any`。如果设置为 `true`，则 `a?.b`
+   * 的返回类型将与三元表达式 `a != null ? ab : a` 的类型相同 `a != null ? ab : a`。
    *
    */
   strictSafeNavigationTypes: boolean;
@@ -420,7 +420,7 @@ export interface TypeCheckingConfig {
    * the template type-checking context. If `false`, any generic type parameters of the context
    * component will be set to `any` during type-checking.
    *
-   * 如果这是 `true` ，那么如果上下文组件具有泛型类型，这些将在模板类型检查上下文中得到镜像。 如果为 `false` ，上下文组件的任何通用类型参数都将在类型检查期间设置为 `any` 。
+   * 如果这是 `true`，那么如果上下文组件具有泛型类型，这些将在模板类型检查上下文中得到镜像。如果为 `false`，上下文组件的任何通用类型参数都将在类型检查期间设置为 `any`。
    *
    */
   useContextGenericType: boolean;
@@ -434,7 +434,7 @@ export interface TypeCheckingConfig {
    * same type that TypeScript would infer if the literal appeared in code. If `false`, then such
    * literals are cast to `any` when declared.
    *
-   * 如果这是 `true` ，那么模板中的对象或数组文字的类型将与文字出现在代码中时 TypeScript 推断的类型相同。 如果为 `false` ，则此类文字在声明时将强制转换为 `any` 。
+   * 如果这是 `true`，那么模板中的对象或数组文字的类型将与文字出现在代码中时 TypeScript 推断的类型相同。如果为 `false`，则此类文字在声明时将强制转换为 `any`。
    *
    */
   strictLiteralTypes: boolean;
@@ -448,17 +448,17 @@ export interface TypeCheckingConfig {
    * constructor's parameters has private types, it cannot be created normally, so we inline it in
    * the directives definition file.
    *
-   * 如果这是 `true` ，则在需要时创建内联类型构造函数。 例如，如果类型构造函数的参数有私有类型，则无法正常创建，因此我们将其内联到指令定义文件中。
+   * 如果这是 `true`，则在需要时创建内联类型构造函数。例如，如果类型构造函数的参数有私有类型，则无法正常创建，因此我们将其内联到指令定义文件中。
    *
    * If false, do not create inline type constructors. Fall back to using `any` type for
    * constructors that normally require inlining.
    *
-   * 如果为 false，则不创建内联类型构造函数。 回退到对通常需要内联的构造函数使用 `any` 类型。
+   * 如果为 false，则不创建内联类型构造函数。回退到对通常需要内联的构造函数使用 `any` 类型。
    *
    * This option requires the environment to support inlining. If the environment does not support
    * inlining, this must be set to `false`.
    *
-   * 此选项需要环境支持内联。 如果环境不支持内联，则必须将其设置为 `false` 。
+   * 此选项需要环境支持内联。如果环境不支持内联，则必须将其设置为 `false`。
    *
    */
   useInlineTypeConstructors: boolean;
@@ -515,7 +515,7 @@ export interface DirectTemplateSourceMapping {
  * construct a contiguous mapping for the template string. The `node` refers to the `template`
  * expression.
  *
- * 如果以编译器无法为模板字符串构造连续映射的方式插入模板表达式，就会发生这种情况。 `node` 引用 `template` 表达式。
+ * 如果以编译器无法为模板字符串构造连续映射的方式插入模板表达式，就会发生这种情况。`node` 引用 `template` 表达式。
  *
  */
 export interface IndirectTemplateSourceMapping {
@@ -559,7 +559,7 @@ export interface SourceLocation {
  * A representation of all a node's template mapping information we know. Useful for producing
  * diagnostics based on a TCB node or generally mapping from a TCB node back to a template location.
  *
- * 我们知道的所有节点模板映射信息的表示。 用于基于 TCB 节点生成诊断或通常从 TCB 节点映射回模板位置。
+ * 我们知道的所有节点模板映射信息的表示。用于基于 TCB 节点生成诊断或通常从 TCB 节点映射回模板位置。
  *
  */
 export interface FullTemplateMapping {

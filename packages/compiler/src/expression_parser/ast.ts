@@ -67,8 +67,8 @@ export class ImplicitReceiver extends AST {
  * TODO: we should find a way for this class not to extend from `ImplicitReceiver` in the future.
  *
  * 通过 `this` 访问某些内容时的接收器（例如 `this.foo`）。请注意，此类继承自 `ImplicitReceiver`
- * ，因为通过 `this` 访问某些内容被视为与在 Angular 模板中隐式访问它相同（例如
- * `[attr.title]="this.title"` 与 `[attr.title]="title"` 。）。继承允许 `this`
+ *，因为通过 `this` 访问某些内容被视为与在 Angular 模板中隐式访问它相同（例如
+ * `[attr.title]="this.title"` 与 `[attr.title]="title"`。）。继承允许 `this`
  * 访问被视为与隐式访问相同，除了 `$event` 和 `$any` 等几个异常。
  * TODO：我们应该找到一种方法让这个类将来不要从 `ImplicitReceiver` 扩展。
  *
@@ -254,7 +254,7 @@ export class Unary extends Binary {
   /**
    * Creates a unary minus expression "-x", represented as `Binary` using "0 - x".
    *
-   * 创建一个一元减号表达式“-x”，使用“0 - x”表示为 `Binary` 。
+   * 创建一个一元减号表达式“-x”，使用“0 - x”表示为 `Binary`。
    *
    */
   static createMinus(span: ParseSpan, sourceSpan: AbsoluteSourceSpan, expr: AST): Unary {
@@ -265,7 +265,7 @@ export class Unary extends Binary {
   /**
    * Creates a unary plus expression "+x", represented as `Binary` using "x - 0".
    *
-   * 创建一个一元加表达式“+x”，使用“x - 0”表示为 `Binary` 。
+   * 创建一个一元加表达式“+x”，使用“x - 0”表示为 `Binary`。
    *
    */
   static createPlus(span: ParseSpan, sourceSpan: AbsoluteSourceSpan, expr: AST): Unary {
@@ -499,7 +499,7 @@ export interface AstVisitor {
    * This function is optionally defined to allow classes that implement this
    * interface to selectively decide if the specified `ast` should be visited.
    *
-   * 此函数是可选定义的，以允许实现此接口的类选择性地决定是否应该访问指定的 `ast` 。
+   * 此函数是可选定义的，以允许实现此接口的类选择性地决定是否应该访问指定的 `ast`。
    *
    * @param ast node to visit
    *

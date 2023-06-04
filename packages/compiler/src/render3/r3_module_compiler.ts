@@ -46,7 +46,7 @@ export enum R3SelectorScopeMode {
    * false, which allows unused directives and pipes to be tree-shaken.
    *
    * 这种形式的 Emit 支持 JIT，如果将 `ngJitMode` 标志设置为 false
-   * ，可以将其优化掉，这允许对未使用的指令和管道进行树形抖动。
+   *，可以将其优化掉，这允许对未使用的指令和管道进行树形抖动。
    *
    */
   SideEffect,
@@ -115,7 +115,7 @@ export interface R3NgModuleMetadata {
   /**
    * Whether or not to include `imports` in generated type declarations.
    *
-   * 是否在生成的类型声明中包含 `imports` 。
+   * 是否在生成的类型声明中包含 `imports`。
    *
    */
   includeImportTypes: boolean;
@@ -348,7 +348,7 @@ export function createNgModuleType(
  *
  * 使用所有必要信息生成对 `ɵɵsetNgModuleScope` 的函数调用，以便可以在运行时以 JIT
  * 模式计算可传递模块范围。此调用被标记为 pure
- * ，以便可以忽略对声明、导入和导出的引用，导致这些符号变得可树摇。
+ *，以便可以忽略对声明、导入和导出的引用，导致这些符号变得可树摇。
  *
  */
 function generateSetNgModuleScopeCall(meta: R3NgModuleMetadata): o.Statement|null {

@@ -77,22 +77,22 @@ export const DISABLED = 'DISABLED';
  * * **VALID**: Reports that a control is valid, meaning that no errors exist in the input
  *   value.
  *
- *   **VALID** ：报告控件有效，这意味着输入值中不存在错误。
+ *   **VALID**：报告控件有效，这意味着输入值中不存在错误。
  *
  * * **INVALID**: Reports that a control is invalid, meaning that an error exists in the input
  *   value.
  *
- *   **INVALID** ：报告控件无效，这意味着输入值中存在错误。
+ *   **INVALID**：报告控件无效，这意味着输入值中存在错误。
  *
  * * **PENDING**: Reports that a control is pending, meaning that that async validation is
  *   occurring and errors are not yet available for the input value.
  *
- *   **PENDING** ：报告控件处于挂起状态，这意味着正在发生异步验证，并且输入值尚不存在错误。
+ *   **PENDING**：报告控件处于挂起状态，这意味着正在发生异步验证，并且输入值尚不存在错误。
  *
  * * **DISABLED**: Reports that a control is
  *   disabled, meaning that the control is exempt from ancestor calculations of validity or value.
  *
- *   **DISABLED** ：报告控件已禁用，这意味着该控件可以免于祖先的有效性或值计算。
+ *   **DISABLED**：报告控件已禁用，这意味着该控件可以免于祖先的有效性或值计算。
  *
  * @publicApi
  */
@@ -245,12 +245,12 @@ export type ɵTypedOrUntyped<T, Typed, Untyped> = ɵIsAny<T, Untyped, Typed>;
  * array, including `undefined` for each group element which might be disabled.
  *
  * 请注意，结果类型将遵循与控件、组或数组上的 `.value` 相同的规则，包括每个可能被禁用的 group 元素的
- * `undefined` 。
+ * `undefined`。
  *
  * If you are trying to extract a value type for a data model, you probably want {@link RawValue},
  * which will not have `undefined` in group keys.
  *
- * 如果你尝试为数据模型提取值类型，你可能需要 {@link RawValue} ，它在组键中不会有 `undefined` 。
+ * 如果你尝试为数据模型提取值类型，你可能需要 {@link RawValue}，它在组键中不会有 `undefined`。
  *
  * @usageNotes
  *
@@ -269,7 +269,7 @@ export type ɵTypedOrUntyped<T, Typed, Untyped> = ɵIsAny<T, Untyped, Typed>;
  *
  * The resulting type is `string`.
  *
- * 结果类型是 `string` 。
+ * 结果类型是 `string`。
  *
  * ### `FormGroup` value type
  *
@@ -291,7 +291,7 @@ export type ɵTypedOrUntyped<T, Typed, Untyped> = ɵIsAny<T, Untyped, Typed>;
  *
  * The resulting type is `{address: string|undefined}`.
  *
- * 结果类型是 `{address: string|undefined}` 。
+ * 结果类型是 `{address: string|undefined}`。
  *
  * ### `FormArray` value type
  *
@@ -309,7 +309,7 @@ export type ɵTypedOrUntyped<T, Typed, Untyped> = ɵIsAny<T, Untyped, Typed>;
  *
  * The resulting type is `string[]`.
  *
- * 结果类型是 `string[]` 。
+ * 结果类型是 `string[]`。
  *
  * \*\*Internal: not for public use.
  *
@@ -333,7 +333,7 @@ export type ɵValue<T extends AbstractControl | undefined> =
  * You may also wish to use {@link ɵValue}, which will have `undefined` in group keys \(which can be
  * disabled\).
  *
- * 你可能还希望使用 {@link ɵValue} ，它在组键中将有 `undefined`（可以禁用）。
+ * 你可能还希望使用 {@link ɵValue}，它在组键中将有 `undefined`（可以禁用）。
  *
  * @usageNotes
  *
@@ -357,7 +357,7 @@ export type ɵValue<T extends AbstractControl | undefined> =
  *
  * The resulting type is `{address: string}`. \(Note the absence of `undefined`.\)
  *
- * 结果类型是 `{address: string}` 。（请注意不存在 `undefined` 。）
+ * 结果类型是 `{address: string}`。（请注意不存在 `undefined`。）
  *
  *  \*\*Internal: not for public use.
  *
@@ -420,7 +420,7 @@ export type ɵNavigate<T, K extends (Array<string | number>)> =
 /**
  * ɵWriteable removes readonly from all keys.
  *
- * ɵWriteable 会从所有键中删除 readonly 。
+ * ɵWriteable 会从所有键中删除 readonly。
  *
  */
 export type ɵWriteable<T> = {
@@ -434,7 +434,7 @@ export type ɵWriteable<T> = {
  * This works with both objects, which are indexed by property name, and arrays, which are indexed
  * numerically.
  *
- * GetProperty 接受类型 T 和一些属性名称或索引 K。如果 K 是点号分隔的字符串，则会在继续之前将其标记化为数组。然后，计算 K 处的嵌套属性的类型： `T[K[0]][K[1]][K[2]]`... 这适用于按属性名称索引的对象和按数字索引的数组。
+ * GetProperty 接受类型 T 和一些属性名称或索引 K。如果 K 是点号分隔的字符串，则会在继续之前将其标记化为数组。然后，计算 K 处的嵌套属性的类型：`T[K[0]][K[1]][K[2]]`... 这适用于按属性名称索引的对象和按数字索引的数组。
  *
  * For internal use only.
  *
@@ -462,7 +462,7 @@ export type ɵGetProperty<T, K> =
  * instantiated directly.
  *
  * 它提供了所有控件和控件组都具有的一些共享行为，例如运行验证器、计算状态和重置状态。它还定义了在所有子类之间共享的属性，例如
- * `value`、`valid` 和 `dirty` 。它不应该直接实例化。
+ * `value`、`valid` 和 `dirty`。它不应该直接实例化。
  *
  * The first type parameter TValue represents the value type of the control \(`control.value`\).
  * The optional type parameter TRawValue  represents the raw value type \(`control.getRawValue()`\).
@@ -577,21 +577,21 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * * For a `FormControl`, the current value.
    *
-   *   对于 `FormControl` ，为当前值。
+   *   对于 `FormControl`，为当前值。
    *
    * * For an enabled `FormGroup`, the values of enabled controls as an object
    *   with a key-value pair for each member of the group.
    *
-   *   对于已启用的 `FormGroup` ，已启用控件的值作为对象，为组的每个成员都有一个键值对。
+   *   对于已启用的 `FormGroup`，已启用控件的值作为对象，为组的每个成员都有一个键值对。
    *
    * * For a disabled `FormGroup`, the values of all controls as an object
    *   with a key-value pair for each member of the group.
    *
-   *   对于禁用的 `FormGroup` ，所有控件的值作为对象，并且组的每个成员都有一个键值对。
+   *   对于禁用的 `FormGroup`，所有控件的值作为对象，并且组的每个成员都有一个键值对。
    *
    * * For a `FormArray`, the values of enabled controls as an array.
    *
-   *   对于 `FormArray` ，为数组形式的已启用控件的值。
+   *   对于 `FormArray`，为数组形式的已启用控件的值。
    *
    */
   public readonly value!: TValue;
@@ -625,7 +625,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * See `Validators.compose()` for additional information.
    *
    * 返回用于同步确定此控件的有效性的函数。如果添加了多个验证器，这将是一个组合函数。有关其他信息，请参阅
-   * `Validators.compose()` 。
+   * `Validators.compose()`。
    *
    */
   get validator(): ValidatorFn | null {
@@ -642,7 +642,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * See `Validators.compose()` for additional information.
    *
    * 返回用于异步确定此控件的有效性的函数。如果添加了多个验证器，这将是一个组合函数。有关其他信息，请参阅
-   * `Validators.compose()` 。
+   * `Validators.compose()`。
    *
    */
   get asyncValidator(): AsyncValidatorFn | null {
@@ -689,7 +689,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * True if the control has passed all of its validation tests,
    * false otherwise.
    *
-   * 如果控件已通过其所有验证测试，则为 true ，否则为 false 。
+   * 如果控件已通过其所有验证测试，则为 true，否则为 false。
    */
   get valid(): boolean {
     return this.status === VALID;
@@ -698,7 +698,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /**
    * A control is `invalid` when its `status` is `INVALID`.
    *
-   * 当 `status` 为 `INVALID` 时，控件 `invalid` 。
+   * 当 `status` 为 `INVALID` 时，控件 `invalid`。
    *
    * @see {@link AbstractControl.status}
    * @returns
@@ -706,7 +706,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * True if this control has failed one or more of its validation checks,
    * false otherwise.
    *
-   * 如果此控件未通过其一个或多个验证检查，则为 true ，否则为 false 。
+   * 如果此控件未通过其一个或多个验证检查，则为 true，否则为 false。
    */
   get invalid(): boolean {
     return this.status === INVALID;
@@ -723,7 +723,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * True if this control is in the process of conducting a validation check,
    * false otherwise.
    *
-   * 如果此控件正在进行验证检查，则为 true ，否则为 false 。
+   * 如果此控件正在进行验证检查，则为 true，否则为 false。
    */
   get pending(): boolean {
     return this.status == PENDING;
@@ -732,7 +732,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /**
    * A control is `disabled` when its `status` is `DISABLED`.
    *
-   * 当控件的 `status` 为 `DISABLED` 时，控件被 `disabled` 。
+   * 当控件的 `status` 为 `DISABLED` 时，控件被 `disabled`。
    *
    * Disabled controls are exempt from validation checks and
    * are not included in the aggregate value of their ancestor
@@ -745,7 +745,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * True if the control is disabled, false otherwise.
    *
-   * 如果控件已禁用，则为 true ，否则为 false 。
+   * 如果控件已禁用，则为 true，否则为 false。
    */
   get disabled(): boolean {
     return this.status === DISABLED;
@@ -754,14 +754,14 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /**
    * A control is `enabled` as long as its `status` is not `DISABLED`.
    *
-   * 只要控件的 `status` 不是 `DISABLED` ，则控件就处于 `enabled` 状态。
+   * 只要控件的 `status` 不是 `DISABLED`，则控件就处于 `enabled` 状态。
    *
    * @returns
    *
    * True if the control has any status other than 'DISABLED',
    * false if the status is 'DISABLED'.
    *
-   * 如果控件具有“DISABLED”以外的任何状态，则为 true ，如果状态是“DISABLED”，则为 false 。
+   * 如果控件具有“DISABLED”以外的任何状态，则为 true，如果状态是“DISABLED”，则为 false。
    * @see {@link AbstractControl.status}
    */
   get enabled(): boolean {
@@ -772,7 +772,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * An object containing any errors generated by failing validation,
    * or null if there are no errors.
    *
-   * 包含因验证失败生成的任何错误的对象，如果没有错误，则为 null 。
+   * 包含因验证失败生成的任何错误的对象，如果没有错误，则为 null。
    *
    */
   public readonly errors!: ValidationErrors | null;
@@ -788,7 +788,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * True if the user has not yet changed the value in the UI; compare `dirty`.
    * Programmatic changes to a control's value do not mark it dirty.
    *
-   * 如果用户尚未更改 UI 中的值，则为 True ；比较 `dirty` 。对控件值的编程更改不会将其标记为脏。
+   * 如果用户尚未更改 UI 中的值，则为 True ；比较 `dirty`。对控件值的编程更改不会将其标记为脏。
    *
    */
   public readonly pristine: boolean = true;
@@ -805,7 +805,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * Programmatic changes to a control's value do not mark it dirty.
    *
    * 如果用户在 UI 中更改了此控件的值，则为 True ；比较 `pristine`
-   * 。对控件值的编程更改不会将其标记为脏。
+   *。对控件值的编程更改不会将其标记为脏。
    *
    */
   get dirty(): boolean {
@@ -815,12 +815,12 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /**
    * True if the control is marked as `touched`.
    *
-   * 如果控件被标记为 `touched` ，则为真。
+   * 如果控件被标记为 `touched`，则为真。
    *
    * A control is marked `touched` once the user has triggered
    * a `blur` event on it.
    *
-   * 一旦用户在其上触发了 `blur` 事件，则控件就会被标记为已 `touched` 。
+   * 一旦用户在其上触发了 `blur` 事件，则控件就会被标记为已 `touched`。
    *
    */
   public readonly touched: boolean = false;
@@ -833,7 +833,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * A control is `untouched` if the user has not yet triggered
    * a `blur` event on it.
    *
-   * 如果用户尚未在其上触发 `blur` 事件，则控件 `untouched` 。
+   * 如果用户尚未在其上触发 `blur` 事件，则控件 `untouched`。
    *
    */
   get untouched(): boolean {
@@ -855,7 +855,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * event might result in getting a value that has not been updated yet. Subscribe to the
    * `valueChanges` event of the parent control instead.
    *
-   * **注意**：发射发生在更新此控件的值之后。 父控件的值（例如，如果此 FormControl 是 FormGroup 的一部分）稍后更新，因此从该事件的回调中访问父控件的值（使用 `value` 属性）可能会导致获得一个值尚未更新。 改为订阅父控件的 `valueChanges` 事件。
+   * **注意**：发射发生在更新此控件的值之后。父控件的值（例如，如果此 FormControl 是 FormGroup 的一部分）稍后更新，因此从该事件的回调中访问父控件的值（使用 `value` 属性）可能会导致获得一个值尚未更新。改为订阅父控件的 `valueChanges` 事件。
    *
    */
   public readonly valueChanges!: Observable<TValue>;
@@ -877,8 +877,8 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * Possible values: `'change'` \| `'blur'` \| `'submit'`
    * Default value: `'change'`
    *
-   * 报告 `AbstractControl` 的更新策略（意味着控件更新本身的事件）。可能的值： `'change'` \|
-   * `'blur'` \| `'submit'` 默认值： `'change'`
+   * 报告 `AbstractControl` 的更新策略（意味着控件更新本身的事件）。可能的值：`'change'` \|
+   * `'blur'` \| `'submit'` 默认值：`'change'`
    *
    */
   get updateOn(): FormHooks {
@@ -1133,7 +1133,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * Marks the control as `touched`. A control is touched by focus and
    * blur events that do not change the value.
    *
-   * 将控件标记为 `touched` 。不更改值的焦点和模糊事件会触及控件。
+   * 将控件标记为 `touched`。不更改值的焦点和模糊事件会触及控件。
    *
    * @see `markAsUntouched()`
    * @see `markAsDirty()`
@@ -1146,7 +1146,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    *     marks all direct ancestors. Default is false.
    *
-   *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
+   *   `onlySelf`：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    */
   markAsTouched(opts: { onlySelf?: boolean } = {}): void {
@@ -1160,7 +1160,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /**
    * Marks the control and all its descendant controls as `touched`.
    *
-   * 将控件及其所有后代控件标记为 `touched` 。
+   * 将控件及其所有后代控件标记为 `touched`。
    *
    * @see `markAsTouched()`
    */
@@ -1173,12 +1173,12 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /**
    * Marks the control as `untouched`.
    *
-   * 将控件标记为 `untouched` 。
+   * 将控件标记为 `untouched`。
    *
    * If the control has any children, also marks all children as `untouched`
    * and recalculates the `touched` status of all parent controls.
    *
-   * 如果控件有任何子项，则会将所有子项标记为 `untouched` ，并重新计算所有父控件的 `touched` 状态。
+   * 如果控件有任何子项，则会将所有子项标记为 `untouched`，并重新计算所有父控件的 `touched` 状态。
    *
    * @see `markAsTouched()`
    * @see `markAsDirty()`
@@ -1191,7 +1191,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    *     marks all direct ancestors. Default is false.
    *
-   *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
+   *   `onlySelf`：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    */
   markAsUntouched(opts: { onlySelf?: boolean } = {}): void {
@@ -1211,7 +1211,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * Marks the control as `dirty`. A control becomes dirty when
    * the control's value is changed through the UI; compare `markAsTouched`.
    *
-   * 将控件标记为 `dirty` 。当通过 UI 更改控件的值时，控件会变脏；比较 `markAsTouched` 。
+   * 将控件标记为 `dirty`。当通过 UI 更改控件的值时，控件会变脏；比较 `markAsTouched`。
    *
    * @see `markAsTouched()`
    * @see `markAsUntouched()`
@@ -1224,7 +1224,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    *     marks all direct ancestors. Default is false.
    *
-   *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
+   *   `onlySelf`：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    */
   markAsDirty(opts: { onlySelf?: boolean } = {}): void {
@@ -1238,13 +1238,13 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /**
    * Marks the control as `pristine`.
    *
-   * 将控件标记为 `pristine` 。
+   * 将控件标记为 `pristine`。
    *
    * If the control has any children, marks all children as `pristine`,
    * and recalculates the `pristine` status of all parent
    * controls.
    *
-   * 如果控件有任何子项，则将所有子项标记为 `pristine` ，并重新计算所有父控件的 `pristine` 状态。
+   * 如果控件有任何子项，则将所有子项标记为 `pristine`，并重新计算所有父控件的 `pristine` 状态。
    *
    * @see `markAsTouched()`
    * @see `markAsUntouched()`
@@ -1257,7 +1257,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    *     marks all direct ancestors. Default is false.
    *
-   *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
+   *   `onlySelf`：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    *
    */
@@ -1277,7 +1277,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
   /**
    * Marks the control as `pending`.
    *
-   * 将控件标记为 `pending` 。
+   * 将控件标记为 `pending`。
    *
    * A control is pending while the control performs async validation.
    *
@@ -1292,14 +1292,14 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    *     marks all direct ancestors. Default is false.
    *
-   *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
+   *   `onlySelf`：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    *
    * * `emitEvent`: When true or not supplied \(the default\), the `statusChanges`
    *     observable emits an event with the latest status the control is marked pending.
    *     When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或未提供（默认）时，`statusChanges`
+   *   `emitEvent`：当为 true 或未提供（默认）时，`statusChanges`
    *   可观察到的会发出一个事件，该事件具有该控件被标记为挂起的最新状态。当 false 时，不会发出事件。
    *
    */
@@ -1319,7 +1319,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * Disables the control. This means the control is exempt from validation checks and
    * excluded from the aggregate value of any parent. Its status is `DISABLED`.
    *
-   * 禁用控件。这意味着此控件免于验证检查，并从任何父级的聚合值中排除。其状态是 `DISABLED` 。
+   * 禁用控件。这意味着此控件免于验证检查，并从任何父级的聚合值中排除。其状态是 `DISABLED`。
    *
    * If the control has children, all children are also disabled.
    *
@@ -1334,7 +1334,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    *     marks all direct ancestors. Default is false.
    *
-   *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
+   *   `onlySelf`：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    *
    * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
@@ -1342,7 +1342,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *     observables emit events with the latest status and value when the control is disabled.
    *     When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
+   *   `emitEvent`：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    *   可观察对象在禁用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -1387,7 +1387,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `onlySelf`: When true, mark only this control. When false or not supplied,
    *     marks all direct ancestors. Default is false.
    *
-   *   `onlySelf` ：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
+   *   `onlySelf`：当为 true 时，仅标记此控件。当 false 或未提供时，标记所有直接祖先。默认为
    *   false。
    *
    * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
@@ -1395,7 +1395,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *     observables emit events with the latest status and value when the control is enabled.
    *     When false, no events are emitted.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
+   *   `emitEvent`：当 true 或未提供（默认）时，`statusChanges` 和 `valueChanges`
    *   可观察对象在启用控件时会发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -1491,14 +1491,14 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `onlySelf`: When true, only update this control. When false or not supplied,
    *   update all direct ancestors. Default is false.
    *
-   *   `onlySelf` ：当 true 时，仅更新此控件。当 false 或未提供时，更新所有直接祖先。默认为 false。
+   *   `onlySelf`：当 true 时，仅更新此控件。当 false 或未提供时，更新所有直接祖先。默认为 false。
    *
    * * `emitEvent`: When true or not supplied \(the default\), both the `statusChanges` and
    *     `valueChanges`
    *     observables emit events with the latest status and value when the control is updated.
    *     When false, no events are emitted.
    *
-   *   `emitEvent` ：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
+   *   `emitEvent`：当为 true 或不提供（默认）时，`statusChanges` 和 `valueChanges`
    *   可观察对象会在控件更新时发出具有最新状态和值的事件。当 false 时，不会发出事件。
    *
    */
@@ -1579,7 +1579,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * * `emitEvent`: When true or not supplied \(the default\), the `statusChanges`
    *   observable emits an event after the errors are set.
    *
-   *   `emitEvent` ：当 true 或未提供（默认）时， `statusChanges` observable 在设置错误后发出一个事件。
+   *   `emitEvent`：当 true 或未提供（默认）时，`statusChanges` observable 在设置错误后发出一个事件。
    *
    * @usageNotes
    *
@@ -1716,7 +1716,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * For example, for the following `FormGroup`:
    *
-   * 例如，对于以下 `FormGroup` ：
+   * 例如，对于以下 `FormGroup`：
    *
    * ```
    * form = new FormGroup({
@@ -1745,7 +1745,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    * error data for that particular error. If the control or error is not present,
    * null is returned.
    *
-   * 该特定错误的错误数据。如果不存在控件或错误，则返回 null 。
+   * 该特定错误的错误数据。如果不存在控件或错误，则返回 null。
    *
    */
   getError(errorCode: string, path?: Array<string | number> | string): any {
@@ -1773,7 +1773,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * For example, for the following `FormGroup`:
    *
-   * 例如，对于以下 `FormGroup` ：
+   * 例如，对于以下 `FormGroup`：
    *
    * ```
    * form = new FormGroup({
@@ -1809,7 +1809,7 @@ export abstract class AbstractControl<TValue = any, TRawValue extends TValue = T
    *
    * If the control is not present, false is returned.
    *
-   * 如果控件不存在，则返回 false 。
+   * 如果控件不存在，则返回 false。
    *
    */
   hasError(errorCode: string, path?: Array<string | number> | string): boolean {

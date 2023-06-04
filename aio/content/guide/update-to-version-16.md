@@ -66,7 +66,7 @@ This release includes the first developer preview of Angular's new reactivity pr
 `computed`, and `effect`. See the [signals guide](/guide/signals) for details and the
 [Angular Signals RFC](https://github.com/angular/angular/discussions/49685) for more background.
 
-此版本包括 Angular 的新响应式基础的第一个开发者预览：`signal`、`computed` 和 `effect` 。有关详细信息，请参阅[信号指南](/guide/signals)；有关更多背景信息，请参阅[Angular Signals RFC](https://github.com/angular/angular/discussions/49685) 。
+此版本包括 Angular 的新响应式基础的第一个开发者预览：`signal`、`computed` 和 `effect`。有关详细信息，请参阅[信号指南](/guide/signals)；有关更多背景信息，请参阅[Angular Signals RFC](https://github.com/angular/angular/discussions/49685)。
 
 #### Enhanced hydration developer preview
 
@@ -269,6 +269,6 @@ practicable.
 | <a id="v16-dp-01"></a>Class and `InjectionToken` router guards and resolvers         | See details | Class and `InjectionToken` guards and resolvers are deprecated. Instead, write guards as plain JavaScript functions and inject dependencies with `inject` from `@angular/core`.<br>[PR #47924](https://github.com/angular/angular/pull/47924) |
 | <a id="v16-dp-01"></a>类和 `InjectionToken` 形式的路由守卫和解析器                                | 查看具体信息      | 类和 `InjectionToken` 形式的守卫和解析器已弃用。现在应该将守卫编写为纯 JavaScript 函数，并使用来自 `@angular/core` 的 `inject` 来注入依赖项。<br>[PR #47924](https://github.com/angular/angular/pull/47924)                                                                             |
 | <a id="v16-dp-02"></a>The `ripple` properties of several Angular Material components | None        | The `ripple` property of `MatButton`, `MatCheckbox`, `MatChip` is deprecated. This change moves ripples to being a private implementation detail of the components.                                                                           |
-| <a id="v16-dp-02"></a>几个 Angular Material 组件的 `ripple` 属性                            | 没有了         | `MatButton` 、 `MatCheckbox` 、 `MatChip` 的 `ripple` 属性已弃用。此更改令涟漪成为组件的私有实现细节。                                                                                                                                                                   |
+| <a id="v16-dp-02"></a>几个 Angular Material 组件的 `ripple` 属性                            | 没有了         | `MatButton` 、 `MatCheckbox` 、 `MatChip` 的 `ripple` 属性已弃用。此更改令涟漪成为组件的私有实现细节。|
 
 @reviewed 2023-05-03

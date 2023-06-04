@@ -65,7 +65,7 @@ export interface Database {
   /**
    * Delete an entire `Table` from the database, by name.
    *
-   * 按名称从数据库中删除整个 `Table` 。
+   * 按名称从数据库中删除整个 `Table`。
    *
    */
   'delete'(table: string): Promise<boolean>;
@@ -73,7 +73,7 @@ export interface Database {
   /**
    * List all `Table`s by name.
    *
-   * 按名称列出所有 `Table` 。
+   * 按名称列出所有 `Table`。
    *
    */
   list(): Promise<string[]>;
@@ -81,7 +81,7 @@ export interface Database {
   /**
    * Open a `Table`.
    *
-   * 打开一个 `Table` 。
+   * 打开一个 `Table`。
    *
    */
   open(table: string, cacheQueryOptions?: CacheQueryOptions): Promise<Table>;

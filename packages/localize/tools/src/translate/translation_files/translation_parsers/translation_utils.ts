@@ -58,7 +58,7 @@ export function parseInnerRange(element: Element): ParseTreeResult {
 /**
  * Compute a `LexerRange` that contains all the children of the given `element`.
  *
- * 计算包含给定 `element` 的所有子项的 `LexerRange` 。
+ * 计算包含给定 `element` 的所有子项的 `LexerRange`。
  *
  * @param element The element whose inner range we want to compute.
  *
@@ -80,8 +80,8 @@ function getInnerRange(element: Element): LexerRange {
  * This "hint" object is used to pass information from `analyze()` to `parse()` for
  * `TranslationParser`s that expect XML contents.
  *
- * 对于需要 XML 内容的 `TranslationParser` ，此“hint”对象用于将信息从 `canParse()` 传递到 `parse()`
- * 。
+ * 对于需要 XML 内容的 `TranslationParser`，此“hint”对象用于将信息从 `canParse()` 传递到 `parse()`
+ *。
  *
  * This saves the `parse()` method from having to re-parse the XML.
  *
@@ -97,7 +97,7 @@ export interface XmlTranslationParserHint {
  * Can this XML be parsed for translations, given the expected `rootNodeName` and expected root node
  * `attributes` that should appear in the file.
  *
- * 给定文件中应该出现的预期 `rootNodeName` 和预期的根节点 `attributes` ，是否可以解析此 XML
+ * 给定文件中应该出现的预期 `rootNodeName` 和预期的根节点 `attributes`，是否可以解析此 XML
  * 以进行翻译。
  *
  * @param filePath The path to the file being checked.

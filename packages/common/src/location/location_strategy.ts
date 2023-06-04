@@ -18,8 +18,8 @@ import {joinWithSlash, normalizeQueryParams} from './util';
  * Angular provides two strategies:
  * `HashLocationStrategy` and `PathLocationStrategy`.
  *
- * 使 `Location` 服务能够从浏览器的 URL 读取路由状态。 Angular 提供了两种策略：
- * `HashLocationStrategy` 和 `PathLocationStrategy` 。
+ * 使 `Location` 服务能够从浏览器的 URL 读取路由状态。Angular 提供了两种策略：
+ * `HashLocationStrategy` 和 `PathLocationStrategy`。
  *
  * Applications should use the `Router` or `Location` services to
  * interact with application route state.
@@ -102,7 +102,7 @@ export const APP_BASE_HREF = new InjectionToken<string>('appBaseHref');
  * If you're using `PathLocationStrategy`, you may provide a {@link APP_BASE_HREF}
  * or add a `<base href>` element to the document to override the default.
  *
- * 如果你使用 `PathLocationStrategy` ，则必须提供一个 {@link APP_BASE_HREF} 或在文档中添加 `<base
+ * 如果你使用 `PathLocationStrategy`，则必须提供一个 {@link APP_BASE_HREF} 或在文档中添加 `<base
  * href>`。
  *
  * For instance, if you provide an `APP_BASE_HREF` of `'/my/app/'` and call
@@ -118,8 +118,8 @@ export const APP_BASE_HREF = new InjectionToken<string>('appBaseHref');
  * `location.go('/foo')`, the browser's URL will become
  * `example.com/my/app/foo`.
  *
- * 同样，如果将 `<base href='/my/app/'/>` 添加到文档中并调用 `location.go('/foo')` ，则浏览器的 URL
- * 将变为 `example.com/my/app/foo` 。
+ * 同样，如果将 `<base href='/my/app/'/>` 添加到文档中并调用 `location.go('/foo')`，则浏览器的 URL
+ * 将变为 `example.com/my/app/foo`。
  *
  * Note that when using `PathLocationStrategy`, neither the query nor
  * the fragment in the `<base href>` will be preserved, as outlined

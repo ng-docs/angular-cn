@@ -548,7 +548,7 @@ export class $locationShim {
    * In contrast to the non-AngularJS version `location.host` which returns `hostname:port`, this
    * returns the `hostname` portion only.
    *
-   * 与非 AngularJS 版本不同，其 `location.host` 会返回 `hostname:port` ，而这里会返回 `hostname`
+   * 与非 AngularJS 版本不同，其 `location.host` 会返回 `hostname:port`，而这里会返回 `hostname`
    * 部分。
    *
    * ```js
@@ -661,12 +661,12 @@ export class $locationShim {
    *
    * If `paramValue` is `null`, the property specified via the first argument will be deleted.
    *
-   * 如果 `paramValue` 为 `null` ，则将删除通过第一个参数指定的属性。
+   * 如果 `paramValue` 为 `null`，则将删除通过第一个参数指定的属性。
    *
    * If `paramValue` is `true`, the property specified via the first argument will be added with no
    * value nor trailing equal sign.
    *
-   * 如果 `paramValue` 为 `true` ，则将通过第一个参数指定的属性添加为无值或结尾等号。
+   * 如果 `paramValue` 为 `true`，则将通过第一个参数指定的属性添加为无值或结尾等号。
    *
    * @return {Object} The parsed `search` object of the current URL, or the changed `search` object.
    *
@@ -761,8 +761,8 @@ export class $locationShim {
    * Change the history state object when called with one parameter and return `$location`.
    * The state object is later passed to `pushState` or `replaceState`.
    *
-   * 使用一个参数调用时将更改历史状态对象，并返回 `$location` 。状态对象随后传递给 `pushState` 或
-   * `replaceState` 。
+   * 使用一个参数调用时将更改历史状态对象，并返回 `$location`。状态对象随后传递给 `pushState` 或
+   * `replaceState`。
    *
    * This method is supported only in HTML5 mode and only in browsers supporting
    * the HTML5 History API methods such as `pushState` and `replaceState`. If you need to support

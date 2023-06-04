@@ -40,7 +40,7 @@ export type ResolvedValue =
  * This is a reified type to allow the circular reference of `ResolvedValue` -> `ResolvedValueArray`
  * \-> `ResolvedValue`.
  *
- * 这是一个具体化类型，允许循环引用 `ResolvedValue` -> `ResolvedValueArray` -> `ResolvedValue` 。
+ * 这是一个具体化类型，允许循环引用 `ResolvedValue` -> `ResolvedValueArray` -> `ResolvedValue`。
  *
  */
 export interface ResolvedValueArray extends Array<ResolvedValue> {}

@@ -38,8 +38,8 @@ import {UpgradeAppType} from '../../../src/common/src/util';
  * The AngularJS `ng1AppModule`, which is the AngularJS part of our hybrid application and the
  * `Ng2AppModule`, which is the Angular part.
  *
- * 在以下代码片段中，我们使用两个模块配置 `$injector` ： AngularJS `ng1AppModule`
- * ，它是我们混合应用程序的 AngularJS 部分和 `Ng2AppModule` ，它是 Angular 部分。
+ * 在以下代码片段中，我们使用两个模块配置 `$injector`：AngularJS `ng1AppModule`
+ *，它是我们混合应用程序的 AngularJS 部分和 `Ng2AppModule`，它是 Angular 部分。
  *
  * <code-example path="upgrade/static/ts/full/module.spec.ts"
  * region="angularjs-setup"></code-example>
@@ -66,7 +66,7 @@ import {UpgradeAppType} from '../../../src/common/src/util';
  * `downgradeModule` for more information.
  *
  * 此帮助器用于测试服务而不是组件。对于组件测试，你仍然必须引导混合应用程序。有关更多信息，请参阅
- * `UpgradeModule` 或 `downgradeModule` 。
+ * `UpgradeModule` 或 `downgradeModule`。
  *
  * </div>
  *
@@ -77,7 +77,7 @@ import {UpgradeAppType} from '../../../src/common/src/util';
  * AngularJS handlers of async events from Angular.
  *
  * 生成的配置不会将 AngularJS 摘要连接到 Zone 钩子。测试作者有责任根据需要调用 `$rootScope.$apply`
- * ，以触发来自 Angular 的异步事件的 AngularJS 处理程序。
+ *，以触发来自 Angular 的异步事件的 AngularJS 处理程序。
  *
  * </div>
  *

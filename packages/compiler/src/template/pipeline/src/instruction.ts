@@ -245,7 +245,7 @@ interface VariadicInstructionConfig {
 /**
  * `InterpolationConfig` for the `textInterpolate` instruction.
  *
- * 用于 `textInterpolate` 指令的 `InterpolationConfig` 。
+ * 用于 `textInterpolate` 指令的 `InterpolationConfig`。
  *
  */
 const TEXT_INTERPOLATE_CONFIG: VariadicInstructionConfig = {
@@ -273,7 +273,7 @@ const TEXT_INTERPOLATE_CONFIG: VariadicInstructionConfig = {
 /**
  * `InterpolationConfig` for the `propertyInterpolate` instruction.
  *
- * 用于 `propertyInterpolate` 指令的 `InterpolationConfig` 。
+ * 用于 `propertyInterpolate` 指令的 `InterpolationConfig`。
  *
  */
 const PROPERTY_INTERPOLATE_CONFIG: VariadicInstructionConfig = {

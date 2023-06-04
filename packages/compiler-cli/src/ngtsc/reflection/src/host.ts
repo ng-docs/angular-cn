@@ -40,7 +40,7 @@ export interface Decorator {
    * `Import` by which the decorator was brought into the module in which it was invoked, or `null`
    * if the decorator was declared in the same module and not imported.
    *
-   * 将装饰器引入调用它的模块的 `Import` ，如果装饰器是在同一模块中声明但未导入，则为 `null` 。
+   * 将装饰器引入调用它的模块的 `Import`，如果装饰器是在同一模块中声明但未导入，则为 `null`。
    *
    * Note: this field is declared using computed property syntax to work around a clang-format bug
    * that resulted in inconsistent indentation of this comment block.
@@ -62,7 +62,7 @@ export interface Decorator {
    * Arguments of the invocation of the decorator, if the decorator is invoked, or `null`
    * otherwise.
    *
-   * 装饰器调用的参数，如果装饰器被调用，否则为 `null` 。
+   * 装饰器调用的参数，如果装饰器被调用，否则为 `null`。
    *
    */
   args: ts.Expression[]|null;
@@ -89,7 +89,7 @@ export function isDecoratorIdentifier(exp: ts.Expression): exp is DecoratorIdent
 /**
  * The `ts.Declaration` of a "class".
  *
- * “类”的 `ts.Declaration` 。
+ * “类”的 `ts.Declaration`。
  *
  * Classes are represented differently in different code formats:
  *
@@ -109,7 +109,7 @@ export function isDecoratorIdentifier(exp: ts.Expression): exp is DecoratorIdent
  *   value of an IIFE. The actual "class" is implemented as a constructor function inside the IIFE,
  *   but the outer variable declaration represents the "class" to the rest of the program.
  *
- *   在 ES5 代码中，它们通常被定义为变量声明，并被赋予 IIFE 的返回值。 实际的“类”在 IIFE 中作为构造函数实现，但外部变量声明代表程序其余部分的“类”。
+ *   在 ES5 代码中，它们通常被定义为变量声明，并被赋予 IIFE 的返回值。实际的“类”在 IIFE 中作为构造函数实现，但外部变量声明代表程序其余部分的“类”。
  *
  * For `ReflectionHost` purposes, a class declaration should always have a `name` identifier,
  * because we need to be able to reference it in other parts of the program.
@@ -160,7 +160,7 @@ export interface ClassMember {
    * TypeScript `ts.TypeNode` representing the type of the member, or `null` if not present or
    * applicable.
    *
-   * 表示成员类型的 TypeScript `ts.TypeNode` ，如果不存在或不适用，则为 `null` 。
+   * 表示成员类型的 TypeScript `ts.TypeNode`，如果不存在或不适用，则为 `null`。
    *
    */
   type: ts.TypeNode|null;
@@ -177,7 +177,7 @@ export interface ClassMember {
    * TypeScript `ts.Identifier` or `ts.StringLiteral` representing the name of the member, or `null`
    * if no such node is present.
    *
-   * 表示成员名称的 TypeScript `ts.Identifier` 或 `ts.StringLiteral` ，如果不存在此类节点，则为 `null` 。
+   * 表示成员名称的 TypeScript `ts.Identifier` 或 `ts.StringLiteral`，如果不存在此类节点，则为 `null`。
    *
    * The `nameNode` is useful in writing references to this member that will be correctly source-
    * mapped back to the original file.
@@ -190,7 +190,7 @@ export interface ClassMember {
   /**
    * TypeScript `ts.Expression` which represents the value of the member.
    *
-   * 代表成员值的 TypeScript `ts.Expression` 。
+   * 代表成员值的 TypeScript `ts.Expression`。
    *
    * If the member is a property, this will be the property initializer if there is one, or null
    * otherwise.
@@ -267,7 +267,7 @@ export interface ClassMember {
   /**
    * Any `Decorator`s which are present on the member, or `null` if none are present.
    *
-   * 成员上存在的任何 `Decorator` ，如果不存在则为 `null` 。
+   * 成员上存在的任何 `Decorator`，如果不存在则为 `null`。
    *
    */
   decorators: Decorator[]|null;
@@ -302,7 +302,7 @@ export interface LocalTypeValueReference {
    * to track its usages, preventing the import from being elided if it was originally only used in
    * a type-position. See `DefaultImportTracker` for details.
    *
-   * 如果类型源自默认导入，则会在此处捕获导入语句以便能够跟踪其用法，从而防止导入最初仅用于类型位置时被忽略。 有关详细信息，请参阅 `DefaultImportTracker` 。
+   * 如果类型源自默认导入，则会在此处捕获导入语句以便能够跟踪其用法，从而防止导入最初仅用于类型位置时被忽略。有关详细信息，请参阅 `DefaultImportTracker`。
    *
    */
   defaultImportStatement: ts.ImportDeclaration|null;
@@ -313,7 +313,7 @@ export interface LocalTypeValueReference {
  * `moduleName` of the import. Note that this `moduleName` may be a relative path, and thus is
  * likely only valid within the context of the file which contained the original type reference.
  *
- * 引用导入的类型的引用，并提供导入的符号 `name` 和 `moduleName` 。 请注意，此 `moduleName` 可能是相对路径，因此可能仅在包含原始类型引用的文件的上下文中有效。
+ * 引用导入的类型的引用，并提供导入的符号 `name` 和 `moduleName`。请注意，此 `moduleName` 可能是相对路径，因此可能仅在包含原始类型引用的文件的上下文中有效。
  *
  */
 export interface ImportedTypeValueReference {
@@ -331,7 +331,7 @@ export interface ImportedTypeValueReference {
    * The name of the top-level symbol that is imported from `moduleName`. If `nestedPath` is also
    * present, a nested object is being referenced from the top-level symbol.
    *
-   * 从 `moduleName` 导入的顶级符号的名称。 如果 `nestedPath` 也存在，则嵌套对象是从顶级符号引用的。
+   * 从 `moduleName` 导入的顶级符号的名称。如果 `nestedPath` 也存在，则嵌套对象是从顶级符号引用的。
    *
    */
   importedName: string;
@@ -340,7 +340,7 @@ export interface ImportedTypeValueReference {
    * If present, represents the symbol names that are referenced from the top-level import.
    * When `null` or empty, the `importedName` itself is the symbol being referenced.
    *
-   * 如果存在，则表示从顶级导入中引用的符号名称。 当为 `null` 或为空时， `importedName` 本身就是被引用的符号。
+   * 如果存在，则表示从顶级导入中引用的符号名称。当为 `null` 或为空时，`importedName` 本身就是被引用的符号。
    *
    */
   nestedPath: string[]|null;
@@ -352,7 +352,7 @@ export interface ImportedTypeValueReference {
  * A representation for a type value reference that is used when no value is available. This can
  * occur due to various reasons, which is indicated in the `reason` field.
  *
- * 在没有值可用时使用的类型值引用的表示。 这可能由于各种原因而发生，这在 `reason` 字段中指示。
+ * 在没有值可用时使用的类型值引用的表示。这可能由于各种原因而发生，这在 `reason` 字段中指示。
  *
  */
 export interface UnavailableTypeValueReference {
@@ -475,7 +475,7 @@ export type UnavailableValue =
  * extracted from this would refer to the value of the class `Foo` \(assuming it was actually a
  * type\).
  *
- * 例如，构造函数参数可以声明为 `foo: Foo` 。 从中提取的 `TypeValueReference` 将引用类 `Foo` 的值（假设它实际上是一个类型）。
+ * 例如，构造函数参数可以声明为 `foo: Foo`。从中提取的 `TypeValueReference` 将引用类 `Foo` 的值（假设它实际上是一个类型）。
  *
  * See the individual types for additional information.
  *
@@ -500,7 +500,7 @@ export interface CtorParameter {
    * Some parameters don't have a simple string name \(for example, parameters which are destructured
    * into multiple variables\). In these cases, `name` can be `null`.
    *
-   * 有些参数没有简单的字符串名称（例如，被解构为多个变量的参数）。 在这些情况下， `name` 可以为 `null` 。
+   * 有些参数没有简单的字符串名称（例如，被解构为多个变量的参数）。在这些情况下，`name` 可以为 `null`。
    *
    */
   name: string|null;
@@ -551,7 +551,7 @@ export interface CtorParameter {
   /**
    * Any `Decorator`s which are present on the parameter, or `null` if none are present.
    *
-   * 参数上存在的任何 `Decorator` ，如果不存在则为 `null` 。
+   * 参数上存在的任何 `Decorator`，如果不存在则为 `null`。
    *
    */
   decorators: Decorator[]|null;
@@ -566,7 +566,7 @@ export interface CtorParameter {
  * itself. In ES5 code this can be more complicated, as the default values for parameters may
  * be extracted from certain body statements.
  *
- * 在 TypeScript 代码中，此元数据将是节点本身声明的简单反映。 在 ES5 代码中，这可能更复杂，因为参数的默认值可能会从某些主体语句中提取。
+ * 在 TypeScript 代码中，此元数据将是节点本身声明的简单反映。在 ES5 代码中，这可能更复杂，因为参数的默认值可能会从某些主体语句中提取。
  *
  */
 export interface FunctionDefinition {
@@ -584,7 +584,7 @@ export interface FunctionDefinition {
    * function is identified to represent a tslib helper function, in which case `helper` will
    * indicate which helper this function represents.
    *
-   * 函数主体的语句，如果存在主体，或者如果主体不存在或函数被标识为表示 tslib 辅助函数，则为 null，在这种情况下， `helper` 将指示该函数代表哪个辅助函数。
+   * 函数主体的语句，如果存在主体，或者如果主体不存在或函数被标识为表示 tslib 辅助函数，则为 null，在这种情况下，`helper` 将指示该函数代表哪个辅助函数。
    *
    * This list may have been filtered to exclude statements which perform parameter default value
    * initialization.
@@ -709,7 +709,7 @@ export interface Declaration<T extends ts.Declaration = ts.Declaration> {
    * was imported via an absolute module \(even through a chain of re-exports\). If the symbol is part
    * of the application and was not imported from an absolute path, this will be `null`.
    *
-   * 如果符号是通过绝对模块导入的（甚至通过重新导出链），则符号从中导入应用程序的绝对模块路径。 如果该符号是应用程序的一部分并且不是从绝对路径导入的，则这将为 `null` 。
+   * 如果符号是通过绝对模块导入的（甚至通过重新导出链），则符号从中导入应用程序的绝对模块路径。如果该符号是应用程序的一部分并且不是从绝对路径导入的，则这将为 `null`。
    *
    */
   viaModule: string|null;
@@ -732,7 +732,7 @@ export interface Declaration<T extends ts.Declaration = ts.Declaration> {
  * with different syntactical structures. The `ReflectionHost` abstracts over those differences and
  * presents a single API by which the compiler can query specific information about the AST.
  *
- * 根据被解释代码的格式，不同的概念用不同的句法结构表示。 `ReflectionHost` 对这些差异进行了抽象，并提供了一个 API，编译器可以通过该 API 查询有关 AST 的特定信息。
+ * 根据被解释代码的格式，不同的概念用不同的句法结构表示。`ReflectionHost` 对这些差异进行了抽象，并提供了一个 API，编译器可以通过该 API 查询有关 AST 的特定信息。
  *
  * All operations on the `ReflectionHost` require the use of TypeScript `ts.Node`s with binding
  * information already available \(that is, nodes that come from a `ts.Program` that has been
@@ -754,14 +754,14 @@ export interface ReflectionHost {
    * format, this might be a `ts.VariableDeclaration` as classes in ES5 are represented as the
    * result of an IIFE execution.
    *
-   * 一个 TypeScript `ts.Declaration` 节点，表示要反映的类或函数。 例如，如果意图是反映一个类的装饰器并且源是 ES6 格式，这将是一个 `ts.ClassDeclaration` 节点。 如果源是 ES5 格式，这可能是一个 `ts.VariableDeclaration` ，因为 ES5 中的类表示为 IIFE 执行的结果。
+   * 一个 TypeScript `ts.Declaration` 节点，表示要反映的类或函数。例如，如果意图是反映一个类的装饰器并且源是 ES6 格式，这将是一个 `ts.ClassDeclaration` 节点。如果源是 ES5 格式，这可能是一个 `ts.VariableDeclaration`，因为 ES5 中的类表示为 IIFE 执行的结果。
    *
    * @returns
    *
    * an array of `Decorator` metadata if decorators are present on the declaration, or
    * `null` if either no decorators were present or if the declaration is not of a decoratable type.
    *
-   * 如果声明中存在装饰器，则为 `Decorator` 元数据数组；如果不存在装饰器或声明不是可装饰类型，则为 `null` 。
+   * 如果声明中存在装饰器，则为 `Decorator` 元数据数组；如果不存在装饰器或声明不是可装饰类型，则为 `null`。
    *
    */
   getDecoratorsOfDeclaration(declaration: DeclarationNode): Decorator[]|null;
@@ -809,7 +809,7 @@ export interface ReflectionHost {
    * a constructor exists. If the constructor exists and has 0 parameters, this array will be empty.
    * If the class has no constructor, this method returns `null`.
    *
-   * 如果存在构造函数，则表示构造函数参数的 `Parameter` 数据数组。 如果构造函数存在且参数为 0，则此数组将为空。 如果该类没有构造函数，则此方法返回 `null` 。
+   * 如果存在构造函数，则表示构造函数参数的 `Parameter` 数据数组。如果构造函数存在且参数为 0，则此数组将为空。如果该类没有构造函数，则此方法返回 `null`。
    *
    */
   getConstructorParameters(clazz: ClassDeclaration): CtorParameter[]|null;
@@ -824,7 +824,7 @@ export interface ReflectionHost {
    * on the parameter declaration, whereas an ES5 function has its default value set in a statement
    * of the form:
    *
-   * TypeScript 和 ES5 代码中的函数具有不同的 AST 表示，特别是围绕参数的默认值。 TypeScript 函数将其默认值作为参数声明的初始值设定项，而 ES5 函数将其默认值设置在以下形式的语句中：
+   * TypeScript 和 ES5 代码中的函数具有不同的 AST 表示，特别是围绕参数的默认值。TypeScript 函数将其默认值作为参数声明的初始值设定项，而 ES5 函数将其默认值设置在以下形式的语句中：
    *
    * if \(param === void 0\) { param = 3; }
    *
@@ -861,14 +861,14 @@ export interface ReflectionHost {
    *
    * @param id a TypeScript `ts.Identifier` to reflect.
    *
-   * 要反映的 TypeScript `ts.Identifier` 。
+   * 要反映的 TypeScript `ts.Identifier`。
    *
    * @returns
    *
    * metadata about the `Import` if the identifier was imported from another module, or
    * `null` if the identifier doesn't resolve to an import but instead is locally defined.
    *
-   * 如果标识符是从另一个模块导入的，则有关 `Import` 数据；如果标识符未解析为导入而是在本地定义，则为 `null` 。
+   * 如果标识符是从另一个模块导入的，则有关 `Import` 数据；如果标识符未解析为导入而是在本地定义，则为 `null`。
    *
    */
   getImportOfIdentifier(id: ts.Identifier): Import|null;
@@ -882,12 +882,12 @@ export interface ReflectionHost {
    * imports and re-exports until the original declaration statement is found. A `Declaration`
    * object is returned if the original declaration is found, or `null` is returned otherwise.
    *
-   * 此方法尝试解析给定标识符的声明，通过导入和重新导出进行追溯，直到找到原始声明语句。 如果找到原始声明，则返回一个 `Declaration` 对象，否则返回 `null` 。
+   * 此方法尝试解析给定标识符的声明，通过导入和重新导出进行追溯，直到找到原始声明语句。如果找到原始声明，则返回一个 `Declaration` 对象，否则返回 `null`。
    *
    * If the declaration is in a different module, and that module is imported via an absolute path,
    * this method also returns the absolute path of the imported module. For example, if the code is:
    *
-   * 如果声明在不同的模块中，并且该模块是通过绝对路径导入的，则此方法还会返回导入模块的绝对路径。 例如，如果代码是：
+   * 如果声明在不同的模块中，并且该模块是通过绝对路径导入的，则此方法还会返回导入模块的绝对路径。例如，如果代码是：
    *
    * ```
    * import {RouterModule} from '@angular/core';
@@ -899,7 +899,7 @@ export interface ReflectionHost {
    * then it would trace `RouterModule` via its import from `@angular/core`, and note that the
    * definition was imported from `@angular/core` into the application where it was referenced.
    *
-   * 如果在 `ROUTES` 表达式中的 `RouterModule` 上调用了 `getDeclarationOfIdentifier` ，那么它将通过从 `@angular/core` 导入来跟踪 `RouterModule` ，并注意该定义是从 `@angular/core` 导入到引用它的应用程序中的。
+   * 如果在 `ROUTES` 表达式中的 `RouterModule` 上调用了 `getDeclarationOfIdentifier`，那么它将通过从 `@angular/core` 导入来跟踪 `RouterModule`，并注意该定义是从 `@angular/core` 导入到引用它的应用程序中的。
    *
    * If the definition is re-exported several times from different absolute module names, only
    * the first one \(the one by which the application refers to the module\) is returned.
@@ -910,7 +910,7 @@ export interface ReflectionHost {
    * is relative to the application itself and there was no import through an absolute path, then
    * `viaModule` is `null`.
    *
-   * 该模块名称在 `Declaration` 的 `viaModule` 字段中返回。 如果声明是相对于应用程序本身的，并且没有通过绝对路径导入，则 `viaModule` 为 `null` 。
+   * 该模块名称在 `Declaration` 的 `viaModule` 字段中返回。如果声明是相对于应用程序本身的，并且没有通过绝对路径导入，则 `viaModule` 为 `null`。
    *
    * @param id a TypeScript `ts.Identifier` to trace back to a declaration.
    *
@@ -921,7 +921,7 @@ export interface ReflectionHost {
    * metadata about the `Declaration` if the original declaration is found, or `null`
    * otherwise.
    *
-   * 如果找到原始声明，则有关 `Declaration` 元数据，否则为 `null` 。
+   * 如果找到原始声明，则有关 `Declaration` 元数据，否则为 `null`。
    *
    */
   getDeclarationOfIdentifier(id: ts.Identifier): Declaration|null;
@@ -935,12 +935,12 @@ export interface ReflectionHost {
    * name to its `Declaration`. If an exported value is itself re-exported from another module,
    * the `Declaration`'s `viaModule` will reflect that.
    *
-   * 迭代模块的导出（包括重新导出）并将导出名称的映射返回到它的 `Declaration` 。 如果导出的值本身是从另一个模块重新导出的，则 `Declaration` 的 `viaModule` 将反映这一点。
+   * 迭代模块的导出（包括重新导出）并将导出名称的映射返回到它的 `Declaration`。如果导出的值本身是从另一个模块重新导出的，则 `Declaration` 的 `viaModule` 将反映这一点。
    *
    * @param node a TypeScript `ts.Node` representing the module \(for example a `ts.SourceFile`\) for
    * which to collect exports.
    *
-   * 表示要为其收集导出的模块（例如 `ts.SourceFile` ）的 TypeScript `ts.Node` 。
+   * 表示要为其收集导出的模块（例如 `ts.SourceFile` ）的 TypeScript `ts.Node`。
    *
    * @returns
    *
@@ -1002,7 +1002,7 @@ export interface ReflectionHost {
    * the number of type parameters of the class, if known, or `null` if the declaration
    * is not a class or has an unknown number of type parameters.
    *
-   * 类的类型参数的数量（如果已知）；如果声明不是类或具有未知数量的类型参数，则 `null` 。
+   * 类的类型参数的数量（如果已知）；如果声明不是类或具有未知数量的类型参数，则 `null`。
    *
    */
   getGenericArityOfClass(clazz: ClassDeclaration): number|null;
@@ -1015,7 +1015,7 @@ export interface ReflectionHost {
    * Normally this will be the initializer of the declaration, but where the variable is
    * not a `const` we may need to look elsewhere for the variable's value.
    *
-   * 通常这将是声明的初始值设定项，但如果变量不是 `const` ，我们可能需要在别处查找变量的值。
+   * 通常这将是声明的初始值设定项，但如果变量不是 `const`，我们可能需要在别处查找变量的值。
    *
    * @param declaration a TypeScript variable declaration, whose value we want.
    *
@@ -1026,7 +1026,7 @@ export interface ReflectionHost {
    * the value of the variable, as a TypeScript expression node, or `undefined`
    * if the value cannot be computed.
    *
-   * 变量的值，作为 TypeScript 表达式节点，如果无法计算值，则为 `undefined` 。
+   * 变量的值，作为 TypeScript 表达式节点，如果无法计算值，则为 `undefined`。
    *
    */
   getVariableValue(declaration: ts.VariableDeclaration): ts.Expression|null;
@@ -1034,14 +1034,14 @@ export interface ReflectionHost {
   /**
    * Returns `true` if a declaration is exported from the module in which it's defined.
    *
-   * 如果声明是从定义它的模块中导出的，则返回 `true` 。
+   * 如果声明是从定义它的模块中导出的，则返回 `true`。
    *
    * Not all mechanisms by which a declaration is exported can be statically detected, especially
    * when processing already compiled JavaScript. A `false` result does not indicate that the
    * declaration is never visible outside its module, only that it was not exported via one of the
    * export mechanisms that the `ReflectionHost` is capable of statically checking.
    *
-   * 并非所有导出声明的机制都可以静态检测到，尤其是在处理已编译的 JavaScript 时。 `false` 结果并不表示声明在其模块外永远不可见，只是它不是通过 `ReflectionHost` 能够静态检查的导出机制之一导出的。
+   * 并非所有导出声明的机制都可以静态检测到，尤其是在处理已编译的 JavaScript 时。`false` 结果并不表示声明在其模块外永远不可见，只是它不是通过 `ReflectionHost` 能够静态检查的导出机制之一导出的。
    *
    */
   isStaticallyExported(decl: ts.Node): boolean;

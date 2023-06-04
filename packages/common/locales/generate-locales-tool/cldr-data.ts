@@ -70,7 +70,7 @@ export type CldrLocaleData = CldrStatic&{
  * https://unicode.org/reports/tr35/tr35-info.html#Appendix_Supplemental_Metadata.
  *
  * CLDR 补充数据中存在别名的可能原因。请参阅：
- * https://unicode.org/reports/tr35/tr35-info.html#Appendix_Supplemental_Metadata 。
+ * https://unicode.org/reports/tr35/tr35-info.html#Appendix_Supplemental_Metadata。
  *
  */
 export type CldrLocaleAliasReason =
@@ -87,7 +87,7 @@ export class CldrData {
   /**
    * Path to the CLDR JSON data Bazel repository. i.e. `@cldr_json_data//`.
    *
-   * CLDR JSON 数据 Bazel 存储库的路径。即 `@cldr_json_data//` 。
+   * CLDR JSON 数据 Bazel 存储库的路径。即 `@cldr_json_data//`。
    *
    */
   readonly cldrDataDir = runfiles.resolve('cldr_json_data');
@@ -130,7 +130,7 @@ export class CldrData {
    * Gets the CLDR language aliases.
    * http://cldr.unicode.org/index/cldr-spec/language-tag-equivalences.
    *
-   * 获取 CLDR 语言别名。 http://cldr.unicode.org/index/cldr-spec/language-tag-equivalences 。
+   * 获取 CLDR 语言别名。http://cldr.unicode.org/index/cldr-spec/language-tag-equivalences。
    *
    */
   getLanguageAliases():

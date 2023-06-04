@@ -18,7 +18,7 @@ import {Watch} from '../../signals';
  * before the next effect run. The cleanup function makes it possible to "cancel" any work that the
  * previous effect run might have started.
  *
- * 一个效果可以选择注册一个清理函数。 如果已注册，则在下一次效果运行之前执行清理。 清理功能可以“取消”之前效果运行可能已经开始的任何工作。
+ * 一个效果可以选择注册一个清理函数。如果已注册，则在下一次效果运行之前执行清理。清理功能可以“取消”之前效果运行可能已经开始的任何工作。
  *
  * @developerPreview
  */
@@ -130,7 +130,7 @@ export interface CreateEffectOptions {
   /**
    * The `Injector` in which to create the effect.
    *
-   * 在其中创建效果的 `Injector` 。
+   * 在其中创建效果的 `Injector`。
    *
    * If this is not provided, the current injection context will be used instead \(via `inject`\).
    *
@@ -169,7 +169,7 @@ export interface CreateEffectOptions {
 /**
  * Create a global `Effect` for the given reactive function.
  *
- * 为给定的反应函数创建一个全局 `Effect` 。
+ * 为给定的反应函数创建一个全局 `Effect`。
  *
  * @developerPreview
  */

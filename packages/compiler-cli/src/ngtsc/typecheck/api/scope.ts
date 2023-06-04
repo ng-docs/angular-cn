@@ -50,7 +50,7 @@ export interface PotentialDirective {
   /**
    * The `ts.Symbol` for the directive class.
    *
-   * 指令类的 `ts.Symbol` 。
+   * 指令类的 `ts.Symbol`。
    *
    */
   tsSymbol: SymbolWithValueDeclaration;
@@ -74,7 +74,7 @@ export interface PotentialDirective {
   /**
    * `true` if this directive is a component.
    *
-   * 如果此指令是组件，则为 `true` 。
+   * 如果此指令是组件，则为 `true`。
    *
    */
   isComponent: boolean;
@@ -82,7 +82,7 @@ export interface PotentialDirective {
   /**
    * `true` if this directive is a structural directive.
    *
-   * 如果此指令是结构指令，则为 `true` 。
+   * 如果此指令是结构指令，则为 `true`。
    *
    */
   isStructural: boolean;
@@ -108,7 +108,7 @@ export interface PotentialPipe {
   /**
    * The `ts.Symbol` for the pipe class.
    *
-   * 管道类的 `ts.Symbol` 。
+   * 管道类的 `ts.Symbol`。
    *
    */
   tsSymbol: ts.Symbol;
@@ -150,7 +150,7 @@ export enum PotentialImportMode {
    * where a declaration wasn't standalone when the program was created, but will become standalone
    * as a part of the migration.
    *
-   * 假定导入是独立的并直接导入。 这对于在创建程序时声明不是独立的但将作为迁移的一部分变得独立的迁移很有用。
+   * 假定导入是独立的并直接导入。这对于在创建程序时声明不是独立的但将作为迁移的一部分变得独立的迁移很有用。
    *
    */
   ForceDirect,

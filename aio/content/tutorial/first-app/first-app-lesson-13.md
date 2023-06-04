@@ -86,7 +86,7 @@ In this step, you'll update the `HomeComponent` class to store data in a new arr
 
 1. The `filteredLocationList` should contain the total set of housing locations values by default when the page loads. Update the `constructor` for the `HomeComponent` to set the value.
 
-   页面加载时， `filteredLocationList` 应默认包含所有房屋位置值。更新 `HomeComponent` 的 `constructor` 以设置值。
+   页面加载时，`filteredLocationList` 应默认包含所有房屋位置值。更新 `HomeComponent` 的 `constructor` 以设置值。
 
    <code-example header="Set the value of filteredLocationList" path="first-app-lesson-13/src/app/home/home.component.ts" region="update-constructor"></code-example>
 
@@ -120,7 +120,7 @@ The `HomeComponent` already contains an input field that you will use to capture
 
    By binding to the click event on the button, you are able to call the `filterResults` function. The argument to the function is the `value` property of the `filter` template variable. Specifically, the `.value` property from the `input` HTML element.
 
-   通过绑定到按钮上的单击事件，你可以调用 `filterResults` 函数。该函数的参数是 `filter` 模板变量的 `value` 属性。具体来说， `input` HTML 元素中的 `.value` 属性。
+   通过绑定到按钮上的单击事件，你可以调用 `filterResults` 函数。该函数的参数是 `filter` 模板变量的 `value` 属性。具体来说，`input` HTML 元素中的 `.value` 属性。
 
 1. The last template update is to the `ngFor` directive. Update the `ngFor` value to iterate over values from the `filteredLocationList` array.
 

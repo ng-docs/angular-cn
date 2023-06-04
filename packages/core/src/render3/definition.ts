@@ -47,7 +47,7 @@ interface DirectiveDefinition<T> {
    *
    * The format is in: `{[actualPropertyName: string]:(string|[string, string, Function])}`.
    *
-   * 格式为： `{[actualPropertyName: string]:(string|[string, string, Function])}` 。
+   * 格式为：`{[actualPropertyName: string]:(string|[string, string, Function])}`。
    *
    * Given:
    *
@@ -117,7 +117,7 @@ interface DirectiveDefinition<T> {
    *   this reason `NgOnChanges` will be deprecated and removed in future version and this
    *   API will be simplified to be consistent with `output`.
    *
-   *   此 API 和 `outputs` API 不同的原因是 `NgOnChanges` 具有不一致的行为，因为它使用声明的名称而不是缩小的或公共的。 出于这个原因， `NgOnChanges` 将在未来的版本中被弃用和删除，并且这个 API 将被简化以与 `output` 保持一致。
+   *   此 API 和 `outputs` API 不同的原因是 `NgOnChanges` 具有不一致的行为，因为它使用声明的名称而不是缩小的或公共的。出于这个原因，`NgOnChanges` 将在未来的版本中被弃用和删除，并且这个 API 将被简化以与 `output` 保持一致。
    *
    */
   inputs?: {[P in keyof T]?: string|[string, string, InputTransformFunction?]};
@@ -129,11 +129,11 @@ interface DirectiveDefinition<T> {
    *
    * The format is in: `{[actualPropertyName: string]:string}`.
    *
-   * 格式为： `{[actualPropertyName: string]:string}` 。
+   * 格式为：`{[actualPropertyName: string]:string}`。
    *
    * Which the minifier may translate to: `{[minifiedPropertyName: string]:string}`.
    *
-   * 缩小器可能会翻译成： `{[minifiedPropertyName: string]:string}` 。
+   * 缩小器可能会翻译成：`{[minifiedPropertyName: string]:string}`。
    *
    * This allows the render to re-construct the minified and non-minified names
    * of properties.
@@ -213,7 +213,7 @@ interface DirectiveDefinition<T> {
    * the entries. The marker values themselves are set via entries found in the
    * [AttributeMarker] enum.
    *
-   * 在设置所有类和样式值之前，必须首先在列表的开头定义所有非类和非样式属性。 当值类型发生变化时（例如引入类和样式时），必须使用标记来分隔条目。 标记值本身是通过在[AttributeMarker][AttributeMarker]枚举中找到的条目设置的。
+   * 在设置所有类和样式值之前，必须首先在列表的开头定义所有非类和非样式属性。当值类型发生变化时（例如引入类和样式时），必须使用标记来分隔条目。标记值本身是通过在[AttributeMarker][AttributeMarker]枚举中找到的条目设置的。
    *
    */
   hostAttrs?: TAttributes;
@@ -230,7 +230,7 @@ interface DirectiveDefinition<T> {
    * Additional set of instructions specific to view query processing. This could be seen as a
    * set of instructions to be inserted into the template function.
    *
-   * 特定于视图查询处理的附加指令集。 这可以看作是一组要插入到模板函数中的指令。
+   * 特定于视图查询处理的附加指令集。这可以看作是一组要插入到模板函数中的指令。
    *
    */
   viewQuery?: ViewQueriesFunction<T>|null;
@@ -312,7 +312,7 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
    * Common instructions are:
    * Creation mode instructions:
    *
-   * 常用指令有： 创建模式指令：
+   * 常用指令有：创建模式指令：
    *
    * - `elementStart`, `elementEnd`
    * - `text`
@@ -336,7 +336,7 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
    * Constants for the nodes in the component's view.
    * Includes attribute arrays, local definition arrays etc.
    *
-   * 组件视图中节点的常量。 包括属性数组、局部定义数组等。
+   * 组件视图中节点的常量。包括属性数组、局部定义数组等。
    *
    */
   consts?: TConstantsOrFactory;
@@ -406,7 +406,7 @@ interface ComponentDefinition<T> extends Omit<DirectiveDefinition<T>, 'features'
    * This property is either an array of types or a function that returns the array of types. This
    * function may be necessary to support forward declarations.
    *
-   * 此属性是类型数组或返回类型数组的函数。 此功能可能是支持前向声明所必需的。
+   * 此属性是类型数组或返回类型数组的函数。此功能可能是支持前向声明所必需的。
    *
    */
   dependencies?: TypeOrFactory<DependencyTypeList>;
@@ -690,7 +690,7 @@ export function ɵɵsetNgModuleScope(type: any, scope: {
  *
  * Optionally the function can take `secondary` which will result in: \(public name => declared name\)
  *
- * 可选地，函数可以采取 `secondary` ，这将导致：（公共名称=>声明的名称）
+ * 可选地，函数可以采取 `secondary`，这将导致：（公共名称=>声明的名称）
  *
  * ```
  * {
@@ -781,7 +781,7 @@ export function ɵɵdefinePipe<T>(pipeDef: {
   /**
    * Name of the pipe. Used for matching pipes in template to pipe defs.
    *
-   * 管道的名称。 用于将模板中的管道匹配到管道定义。
+   * 管道的名称。用于将模板中的管道匹配到管道定义。
    *
    */
   name: string;
@@ -789,7 +789,7 @@ export function ɵɵdefinePipe<T>(pipeDef: {
   /**
    * Pipe class reference. Needed to extract pipe lifecycle hooks.
    *
-   * 管道类参考。 需要提取管道生命周期挂钩。
+   * 管道类参考。需要提取管道生命周期挂钩。
    *
    */
   type: Type<T>;
@@ -825,7 +825,7 @@ export function ɵɵdefinePipe<T>(pipeDef: {
  * honors inheritance, but in the future we may change the rule to require that definitions are
  * explicit. This would require some sort of migration strategy.
  *
- * 以下 getter 方法从类型中检索定义。 目前检索尊重继承，但将来我们可能会更改规则以要求定义是明确的。 这将需要某种迁移策略。
+ * 以下 getter 方法从类型中检索定义。目前检索尊重继承，但将来我们可能会更改规则以要求定义是明确的。这将需要某种迁移策略。
  *
  */
 
@@ -846,7 +846,7 @@ export function getPipeDef<T>(type: any): PipeDef<T>|null {
  * This will return false if passed anything other than a Component, Directive, or Pipe class
  * See [this guide](/guide/standalone-components) for additional information:
  *
- * 检查给定的组件、指令或管道是否被标记为独立的。 如果传递的不是组件、指令或管道类，这将返回 false 请参阅[本指南](/guide/standalone-components)以获取更多信息：
+ * 检查给定的组件、指令或管道是否被标记为独立的。如果传递的不是组件、指令或管道类，这将返回 false 请参阅[本指南](/guide/standalone-components)以获取更多信息：
  *
  * @param type A reference to a Component, Directive or Pipe.
  *

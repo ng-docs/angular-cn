@@ -42,11 +42,11 @@ export const SOURCE = '__source';
  *
  * - `undefined`: it is an error to call `inject`
  *
- *   `undefined` ：调用 `inject` 是错误的
+ *   `undefined`：调用 `inject` 是错误的
  *
  * - `null`: `inject` can be called but there is no injector \(limp-mode\).
  *
- *   `null` ：可以调用 injection，但没有 `inject` 器（limp-mode）。
+ *   `null`：可以调用 injection，但没有 `inject` 器（limp-mode）。
  *
  * - Injector instance: Use the injector for resolution.
  *
@@ -89,7 +89,7 @@ export function injectInjectorOnly<T>(token: ProviderToken<T>, flags = InjectFla
  * \(Additional documentation moved to `inject`, as it is the public API, and an alias for this
  * instruction\)
  *
- * （其他文档移到了 `inject` ，因为它是公共 API，并且是此指令的别名）
+ * （其他文档移到了 `inject`，因为它是公共 API，并且是此指令的别名）
  *
  * @see inject
  *
@@ -137,7 +137,7 @@ Please check that 1) the type for the parameter at index ${
  *
  * the injected value if operation is successful, `null` otherwise.
  *
- * 如果操作成功，则注入注入的值，否则为 `null` 。
+ * 如果操作成功，则注入注入的值，否则为 `null`。
  *
  * @throws if called outside of a supported context.
  *
@@ -159,7 +159,7 @@ export function inject<T>(token: ProviderToken<T>): T;
  *
  * the injected value if operation is successful, `null` otherwise.
  *
- * 如果操作成功，则注入注入的值，否则为 `null` 。
+ * 如果操作成功，则注入注入的值，否则为 `null`。
  * @throws if called outside of a supported context.
  *
  * 如果在受支持的上下文之外调用。
@@ -212,7 +212,7 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions&{optio
  * the injected value if operation is successful,  `null` if the token is not
  *     found and optional injection has been requested.
  *
- * 如果操作成功，则为注入的值，如果找不到标记并且已请求可选注入，则为 `null` 。
+ * 如果操作成功，则为注入的值，如果找不到标记并且已请求可选注入，则为 `null`。
  *
  * @throws if called outside of a supported context, or if the token is not found and optional
  *     injection was not requested.
@@ -227,12 +227,12 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  * `inject` is only supported during instantiation of a dependency by the DI system. It can be used
  * during:
  *
- * 从当前活动的注入器注入令牌。 `inject` 仅在 DI 系统实例化依赖项期间受支持。它可以在以下期间使用：
+ * 从当前活动的注入器注入令牌。`inject` 仅在 DI 系统实例化依赖项期间受支持。它可以在以下期间使用：
  *
  * - Construction \(via the `constructor`\) of a class being instantiated by the DI system, such
  *   as an `@Injectable` or `@Component`.
  *
- *   由 DI 系统实例化的类的构造（通过 `constructor`），例如 `@Injectable` 或 `@Component` 。
+ *   由 DI 系统实例化的类的构造（通过 `constructor`），例如 `@Injectable` 或 `@Component`。
  *
  * - In the initializer for fields of such classes.
  *
@@ -259,7 +259,7 @@ export function inject<T>(token: ProviderToken<T>, options: InjectOptions): T|nu
  *
  * the injected value if operation is successful, `null` otherwise.
  *
- * 如果操作成功，则注入注入的值，否则为 `null` 。
+ * 如果操作成功，则注入注入的值，否则为 `null`。
  * @throws if called outside of a supported context.
  *
  * 如果注入成功，则为 true，否则为 null。
@@ -391,7 +391,7 @@ export function injectArgs(types: (ProviderToken<any>|any[])[]): any[] {
  * 提供了 DI 装饰器。
  * @param flag InjectFlag that should be applied.
  *
- * 应该应用的 InjectFlag 。
+ * 应该应用的 InjectFlag。
  */
 export function attachInjectFlag(decorator: any, flag: InternalInjectFlags|DecoratorFlags): any {
   decorator[DI_DECORATOR_FLAG] = flag;

@@ -15,7 +15,7 @@
  * by calling `resolve()`. These two steps are separated because sometimes the
  * resolved URL to the resource is needed as well as its contents.
  *
- * 请注意，`preload()` 和 `load()` 接受一个 `resolvedUrl` ，可以通过调用 `resolve()`
+ * 请注意，`preload()` 和 `load()` 接受一个 `resolvedUrl`，可以通过调用 `resolve()`
  * 来找到它。这两个步骤是分开的，因为有时需要资源的解析 URL 及其内容。
  *
  */
@@ -86,7 +86,7 @@ export interface ResourceLoader {
    * A Promise that is resolved once the resource has been loaded or `undefined`
    * if the file has already been loaded.
    *
-   * 加载资源后解析的 Promise ，如果已加载文件，则为 `undefined` 。
+   * 加载资源后解析的 Promise，如果已加载文件，则为 `undefined`。
    * @throws An Error if pre-loading is not available.
    *
    * 如果预加载不可用，则会出现错误。

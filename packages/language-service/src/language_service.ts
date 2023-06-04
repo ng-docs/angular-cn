@@ -39,7 +39,7 @@ interface LanguageServiceConfig {
    * If true, enable `strictTemplates` in Angular compiler options regardless
    * of its value in tsconfig.json.
    *
-   * 如果为 true，请在 Angular 编译器选项中启用 `strictTemplates` ，无论其在 tsconfig.json
+   * 如果为 true，请在 Angular 编译器选项中启用 `strictTemplates`，无论其在 tsconfig.json
    * 中的值如何。
    *
    */
@@ -437,7 +437,7 @@ export class LanguageService {
    * Passing name of caller instead of using `arguments.caller` because 'caller', 'callee', and
    * 'arguments' properties may not be accessed in strict mode.
    *
-   * 传递调用者的名称而不是使用 `arguments.caller` ，因为在严格模式下可能无法访问 'caller'、'callee'
+   * 传递调用者的名称而不是使用 `arguments.caller`，因为在严格模式下可能无法访问 'caller'、'callee'
    * 和 'arguments' 属性。
    *
    * @param phase the `PerfPhase` to execute the `p` callback in

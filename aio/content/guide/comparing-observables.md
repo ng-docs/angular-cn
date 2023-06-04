@@ -44,7 +44,7 @@ Here are some key differences:
   Promises push errors to the child promises.
   This makes observables useful for centralized and predictable error handling.
 
-  可观察对象的 `subscribe()` 会负责处理错误。Promise 会把错误推送给它的子 Promise 。这让可观察对象可用于进行集中式、可预测的错误处理。
+  可观察对象的 `subscribe()` 会负责处理错误。Promise 会把错误推送给它的子 Promise。这让可观察对象可用于进行集中式、可预测的错误处理。
 
 ### Creation and subscription
 
@@ -112,7 +112,7 @@ Here are some key differences:
 
 * Promises push errors to the child promises.
 
-  Promise 会把错误推给其子 Promise 。
+  Promise 会把错误推给其子 Promise。
 
   <code-example header="src/promises.ts (error)" path="comparing-observables/src/promises.ts" region="error"></code-example>
 
@@ -134,7 +134,7 @@ The following code snippets illustrate how the same kind of operation is defined
 | Subscribe   | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example>    |
 | 订阅        | <code-example format="typescript" hideCopy language="typescript"> sub = obs.subscribe((value) =&gt; { &NewLine;&nbsp; console.log(value) &NewLine;});</code-example> | <code-example format="typescript" hideCopy language="typescript"> promise.then((value) =&gt; { &NewLine;&nbsp; console.log(value); &NewLine;}); </code-example>    |
 | Unsubscribe | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example>                                                                  | Implied by promise resolution.                                                                                                                                     |
-| 取消订阅    | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example>                                                                  | Promise 被解析时隐式完成。                                                                                                                                         |
+| 取消订阅    | <code-example format="typescript" hideCopy language="typescript"> sub.unsubscribe();</code-example>                                                                  | Promise 被解析时隐式完成。|
 
 ## Observables compared to events API
 

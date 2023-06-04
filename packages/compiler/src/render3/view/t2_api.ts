@@ -75,7 +75,7 @@ export interface DirectiveMeta {
   /**
    * The selector for the directive or `null` if there isn't one.
    *
-   * 指令的选择器，如果没有，则为 `null` 。
+   * 指令的选择器，如果没有，则为 `null`。
    *
    */
   selector: string|null;
@@ -170,7 +170,7 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
   /**
    * Get the original `Target` that was bound.
    *
-   * 获取绑定的原始 `Target` 。
+   * 获取绑定的原始 `Target`。
    *
    */
   readonly target: Target;
@@ -188,7 +188,7 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
    * For a given `Reference`, get the reference's target - either an `Element`, a `Template`, or
    * a directive on a particular node.
    *
-   * 对于给定的 `Reference` ，获取引用的目标 - `Element`、`Template` 或特定节点上的指令。
+   * 对于给定的 `Reference`，获取引用的目标 - `Element`、`Template` 或特定节点上的指令。
    *
    */
   getReferenceTarget(ref: Reference): {directive: DirectiveT, node: Element|Template}|Element
@@ -211,11 +211,11 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
    * If the given `AST` expression refers to a `Reference` or `Variable` within the `Target`, then
    * return that.
    *
-   * 如果给定的 `AST` 表达式引用了 `Target` 中的 `Reference` 或 `Variable` ，则返回它。
+   * 如果给定的 `AST` 表达式引用了 `Target` 中的 `Reference` 或 `Variable`，则返回它。
    *
    * Otherwise, returns `null`.
    *
-   * 否则，返回 `null` 。
+   * 否则，返回 `null`。
    *
    * This is only defined for `AST` expressions that read or write to a property of an
    * `ImplicitReceiver`.
@@ -228,14 +228,14 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
   /**
    * Given a particular `Reference` or `Variable`, get the `Template` which created it.
    *
-   * 给定特定的 `Reference` 或 `Variable` ，获取创建它的 `Template` 。
+   * 给定特定的 `Reference` 或 `Variable`，获取创建它的 `Template`。
    *
    * All `Variable`s are defined on templates, so this will always return a value for a `Variable`
    * from the `Target`. For `Reference`s this only returns a value if the `Reference` points to a
    * `Template`. Returns `null` otherwise.
    *
    * 所有 `Variable` 都是在模板上定义的，因此这将始终从 `Target` 中返回 `Variable` 的值。对于
-   * `Reference` s，只有在 `Reference` 指向了 `Template` 时才会返回值。否则返回 `null` 。
+   * `Reference` s，只有在 `Reference` 指向了 `Template` 时才会返回值。否则返回 `null`。
    *
    */
   getTemplateOfSymbol(symbol: Reference|Variable): Template|null;
@@ -248,7 +248,7 @@ export interface BoundTarget<DirectiveT extends DirectiveMeta> {
    * This starts at 1 for top-level `Template`s within the `Target` and increases for `Template`s
    * nested at deeper levels.
    *
-   * 对于 `Target` 中的顶级 `Template` ，这从 1 开始，对于嵌套在更深级别的 `Template` s 会增加。
+   * 对于 `Target` 中的顶级 `Template`，这从 1 开始，对于嵌套在更深级别的 `Template` s 会增加。
    *
    */
   getNestingLevel(template: Template): number;

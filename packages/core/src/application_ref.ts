@@ -54,7 +54,7 @@ let _platformInjector: Injector|null = null;
  * Internal token to indicate whether having multiple bootstrapped platform should be allowed \(only
  * one bootstrapped platform is allowed by default\). This token helps to support SSR scenarios.
  *
- * 指示是否应允许具有多个自举平台的内部令牌（默认情况下只允许一个自举平台）。 此令牌有助于支持 SSR 场景。
+ * 指示是否应允许具有多个自举平台的内部令牌（默认情况下只允许一个自举平台）。此令牌有助于支持 SSR 场景。
  *
  */
 export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultipleToken');
@@ -65,7 +65,7 @@ export const ALLOW_MULTIPLE_PLATFORMS = new InjectionToken<boolean>('AllowMultip
  * `PlatformRef` class \(i.e. register the callback via `PlatformRef.onDestroy`\), thus making the
  * entire class tree-shakeable.
  *
- * 允许注册应在 `PlatformRef.destroy` 操作期间调用的额外回调的内部令牌。 需要此令牌以避免直接引用 `PlatformRef` 类（即通过 `PlatformRef.onDestroy` 注册回调），从而使整个类可摇树。
+ * 允许注册应在 `PlatformRef.destroy` 操作期间调用的额外回调的内部令牌。需要此令牌以避免直接引用 `PlatformRef` 类（即通过 `PlatformRef.onDestroy` 注册回调），从而使整个类可摇树。
  *
  */
 const PLATFORM_DESTROY_LISTENERS =
@@ -145,7 +145,7 @@ export function publishDefaultGlobalUtils() {
 /**
  * Sets the error for an invalid write to a signal to be an Angular `RuntimeError`.
  *
- * 将无效写入信号的错误设置为 Angular `RuntimeError` 。
+ * 将无效写入信号的错误设置为 Angular `RuntimeError`。
  *
  */
 export function publishSignalConfiguration(): void {
@@ -201,7 +201,7 @@ export function createPlatform(injector: Injector): PlatformRef {
  * but avoid referencing `PlatformRef` class.
  * This function is needed for bootstrapping a Standalone Component.
  *
- * 此函数的目标是引导平台注入器，但避免引用 `PlatformRef` 类。 引导独立组件需要此函数。
+ * 此函数的目标是引导平台注入器，但避免引用 `PlatformRef` 类。引导独立组件需要此函数。
  *
  */
 function createOrReusePlatformInjector(providers: StaticProvider[] = []): Injector {
@@ -234,7 +234,7 @@ function runPlatformInitializers(injector: Injector): void {
  * internally and supply the necessary providers during the bootstrap, while exposing
  * platform-specific APIs as a part of their public API.
  *
- * 平台（例如 `platform-browser` ）可能需要不同的应用程序和平台提供商集才能使应用程序正常运行。 因此，平台可以在内部使用此功能并在引导期间提供必要的提供程序，同时将特定于平台的 API 作为其公共 API 的一部分公开。
+ * 平台（例如 `platform-browser` ）可能需要不同的应用程序和平台提供商集才能使应用程序正常运行。因此，平台可以在内部使用此功能并在引导期间提供必要的提供程序，同时将特定于平台的 API 作为其公共 API 的一部分公开。
  *
  * @returns
  *
@@ -328,7 +328,7 @@ export function internalCreateApplication(config: {
  * Creates a factory for a platform. Can be used to provide or override `Providers` specific to
  * your application's runtime needs, such as `PLATFORM_INITIALIZER` and `PLATFORM_ID`.
  *
- * 为平台创建工厂。可用于提供或覆盖针对你的应用程序的运行时需求的 `Providers`，比如 `PLATFORM_INITIALIZER` 和 `PLATFORM_ID` 。
+ * 为平台创建工厂。可用于提供或覆盖针对你的应用程序的运行时需求的 `Providers`，比如 `PLATFORM_INITIALIZER` 和 `PLATFORM_ID`。
  *
  * @param parentPlatformFactory Another platform factory to modify. Allows you to compose factories
  * to build up configurations that might be required by different libraries or parts of the
@@ -468,7 +468,7 @@ export interface NgZoneOptions {
    * triggered async by scheduling a animation frame. So in the case above,
    * the change detection will only be triggered once.
    *
-   * 默认情况下，此选项将是 false 。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为 true，则变更检测将通过调度动画帧来异步触发。因此在上面的情况下，变更检测将只会触发一次。
+   * 默认情况下，此选项将是 false。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为 true，则变更检测将通过调度动画帧来异步触发。因此在上面的情况下，变更检测将只会触发一次。
    *
    */
   eventCoalescing?: boolean;
@@ -512,7 +512,7 @@ export interface BootstrapOptions {
   /**
    * Optionally specify which `NgZone` should be used.
    *
-   * （可选）指定应该使用哪个 `NgZone` 。
+   * （可选）指定应该使用哪个 `NgZone`。
    *
    * - Provide your own `NgZone` instance.
    *
@@ -524,7 +524,7 @@ export interface BootstrapOptions {
    *
    * - `noop` - Use `NoopNgZone` which does nothing.
    *
-   *   `noop` - 使用什么都不做的 `NoopNgZone` 。
+   *   `noop` - 使用什么都不做的 `NoopNgZone`。
    *
    */
   ngZone?: NgZone|'zone.js'|'noop';
@@ -554,7 +554,7 @@ export interface BootstrapOptions {
    * triggered async by scheduling a animation frame. So in the case above,
    * the change detection will only be triggered once.
    *
-   * 默认情况下，此选项将是 false 。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为 true，则变更检测将通过调度动画帧来异步触发。因此在上面的情况下，变更检测将只会触发一次。
+   * 默认情况下，此选项将是 false。因此，事件将不会被合并，并且变更检测将被触发多次。如果此选项设置为 true，则变更检测将通过调度动画帧来异步触发。因此在上面的情况下，变更检测将只会触发一次。
    *
    */
   ngZoneEventCoalescing?: boolean;
@@ -617,7 +617,7 @@ export class PlatformRef {
    * Passing NgModule factories as the `PlatformRef.bootstrapModuleFactory` function
    *     argument is deprecated. Use the `PlatformRef.bootstrapModule` API instead.
    *
-   * 将 NgModule 工厂作为 `PlatformRef.bootstrapModuleFactory` 函数参数传递已弃用。 请改用 `PlatformRef.bootstrapModule` API。
+   * 将 NgModule 工厂作为 `PlatformRef.bootstrapModuleFactory` 函数参数传递已弃用。请改用 `PlatformRef.bootstrapModule` API。
    *
    */
   bootstrapModuleFactory<M>(moduleFactory: NgModuleFactory<M>, options?: BootstrapOptions):
@@ -869,7 +869,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * \(here incrementing a counter, using RxJS `interval`\),
  * and at the same time subscribe to `isStable`.
  *
- * 假设你开始一个循环任务（这里使用 RxJS `interval` 递增一个计数器），同时订阅 `isStable` 。
+ * 假设你开始一个循环任务（这里使用 RxJS `interval` 递增一个计数器），同时订阅 `isStable`。
  *
  * ```
  * constructor(appRef: ApplicationRef) {
@@ -883,7 +883,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * In this example, `isStable` will never emit `true`,
  * and the trace "App is stable now" will never get logged.
  *
- * 在此示例中， `isStable` 永远不会发出 `true` ，并且永远不会记录“A​​pp 现在稳定”的跟踪。
+ * 在此示例中，`isStable` 永远不会发出 `true`，并且永远不会记录“A​​pp 现在稳定”的跟踪。
  *
  * If you want to execute something when the app is stable,
  * you have to wait for the application to be stable
@@ -931,7 +931,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * the `value` field will be updated properly,
  * but the template will not be refreshed!
  *
- * 由于 `isStable` Observable 在 zone 外运行， `value` 字段会正确更新，但模板不会刷新！
+ * 由于 `isStable` Observable 在 zone 外运行，`value` 字段会正确更新，但模板不会刷新！
  *
  * You'll have to manually trigger the change detection to update the template.
  *
@@ -1021,7 +1021,7 @@ export class ApplicationRef {
   /**
    * The `EnvironmentInjector` used to create this application.
    *
-   * 用于创建此应用程序的 `EnvironmentInjector` 。
+   * 用于创建此应用程序的 `EnvironmentInjector`。
    *
    */
   get injector(): EnvironmentInjector {
@@ -1152,7 +1152,7 @@ export class ApplicationRef {
    * Passing Component factories as the `Application.bootstrap` function argument is
    *     deprecated. Pass Component Types instead.
    *
-   * 将组件工厂作为 `Application.bootstrap` 函数参数传递已弃用。 改为传递组件类型。
+   * 将组件工厂作为 `Application.bootstrap` 函数参数传递已弃用。改为传递组件类型。
    *
    */
   bootstrap<C>(componentFactory: ComponentFactory<C>, rootSelectorOrNode?: string|any):
@@ -1463,12 +1463,12 @@ function _lastDefined<T>(args: T[]): T|undefined {
 /**
  * `InjectionToken` used to configure how to call the `ErrorHandler`.
  *
- * `InjectionToken` 用于配置如何调用 `ErrorHandler` 。
+ * `InjectionToken` 用于配置如何调用 `ErrorHandler`。
  *
  * `NgZone` is provided by default today so the default \(and only\) implementation for this
  * is calling `ErrorHandler.handleError` outside of the Angular zone.
  *
- * 现在默认提供 `NgZone` ，因此默认（也是唯一）实现是在 Angular 区域之外调用 `ErrorHandler.handleError` 。
+ * 现在默认提供 `NgZone`，因此默认（也是唯一）实现是在 Angular 区域之外调用 `ErrorHandler.handleError`。
  *
  */
 const INTERNAL_APPLICATION_ERROR_HANDLER = new InjectionToken<(e: any) => void>(
@@ -1557,7 +1557,7 @@ export function internalProvideZoneChangeDetection(ngZoneFactory: () => NgZone):
  * This provider is not available for `platformBrowser().bootstrapModule`, which uses
  * `BootstrapOptions` instead.
  *
- * 默认情况下，应用程序中已经提供了 `NgZone` 。 该提供程序允许你在 `NgZone` 中配置诸如 `eventCoalescing` 之类的选项。 此提供程序不适用于 `platformBrowser().bootstrapModule` ，它使用 `BootstrapOptions` 代替。
+ * 默认情况下，应用程序中已经提供了 `NgZone`。该提供程序允许你在 `NgZone` 中配置诸如 `eventCoalescing` 之类的选项。此提供程序不适用于 `platformBrowser().bootstrapModule`，它使用 `BootstrapOptions` 代替。
  *
  * @usageNotes
  * ```typescript=

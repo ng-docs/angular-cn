@@ -45,7 +45,7 @@ export function loadIcuContainerVisitor() {
    *
    * @param lView `LView` where the `RNode`s should be looked up.
    *
-   * 应该在其中查找 `LView` 的 `RNode` 。
+   * 应该在其中查找 `LView` 的 `RNode`。
    *
    */
   function icuContainerIteratorStart(tIcuContainerNode: TIcuContainerNode, lView: LView): () =>

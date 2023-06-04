@@ -34,7 +34,7 @@ export function makeCyclicImportInfo(
  * Based loosely on https://github.com/sindresorhus/validate-element-name.
  *
  * 检查选择器是否是有效的自定义元素标签名称。松散地基于 https://github.com/sindresorhus/validate-element-name
- * 。
+ *。
  *
  */
 export function checkCustomElementSelectorForErrors(selector: string): string|null {

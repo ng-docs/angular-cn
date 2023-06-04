@@ -55,7 +55,7 @@ import {setDirectiveInputsWhichShadowsStyling} from './property';
  *
  * @param suffix Optional suffix. Used with scalar values to add unit such as `px`.
  *
- * 可选的后缀。与标量值一起使用以添加单位，例如 `px` 。
+ * 可选的后缀。与标量值一起使用以添加单位，例如 `px`。
  *
  * Note that this will apply the provided style value to the host element if this function is called
  * within a host binding function.
@@ -271,12 +271,12 @@ export function checkStylingProperty(
  *        function so that `style` can be processed. This is done for tree shaking purposes.
  *
  * （请参阅“util/array_utils”中的 `keyValueArraySet`）作为函数传入，以便可以处理 `style`
- * 。这样做是为了摇树的目的。
+ *。这样做是为了摇树的目的。
  *
  * @param stringParser Parser used to parse `value` if `string`. \(Passed in as `style` and `class`
  *        have different parsers.\)
  *
- * 解析器用于解析 `string` 的 `value` 。（作为 `style` 传入，并且 `class` 有不同的解析器。）
+ * 解析器用于解析 `string` 的 `value`。（作为 `style` 传入，并且 `class` 有不同的解析器。）
  *
  * @param value bound value from application
  *
@@ -363,7 +363,7 @@ function isInHostBindings(tView: TView, bindingIndex: number): boolean {
  *
  * @param tView `TView` where the binding linked list will be stored.
  *
- * 将存储绑定链表的 `TView` 。
+ * 将存储绑定链表的 `TView`。
  * @param tStylingKey Property/key of the binding.
  *
  * 绑定的属性/键。
@@ -413,14 +413,14 @@ function stylingFirstUpdatePass(
  *
  * See `TStylingStatic` for more details.
  *
- * 有关更多详细信息，请参阅 `TStylingStatic` 。
+ * 有关更多详细信息，请参阅 `TStylingStatic`。
  *
  * @param tData `TData` where the linked list is stored.
  *
- * 存储链表的 `TData` 。
+ * 存储链表的 `TData`。
  * @param tNode `TNode` for which the styling is being computed.
  *
- * 正在计算其样式的 `TNode` 。
+ * 正在计算其样式的 `TNode`。
  * @param stylingKey `TStylingKeyPrimitive` which may need to be wrapped into `TStylingKey`
  *
  * 可能需要包装到 `TStylingKeyPrimitive` 中的 `TStylingKey`
@@ -496,7 +496,7 @@ export function wrapInStaticStylingKey(
 /**
  * Retrieve the `TStylingKey` for the template styling instruction.
  *
- * 检索模板样式说明的 `TStylingKey` 。
+ * 检索模板样式说明的 `TStylingKey`。
  *
  * This is needed since `hostBinding` styling instructions are inserted after the template
  * instruction. While the template instruction needs to update the residual in `TNode` the
@@ -504,21 +504,21 @@ export function wrapInStaticStylingKey(
  * the template instruction is downstream from the `hostBindings` instructions.
  *
  * 这是需要的，因为 `hostBinding` 样式说明是在模板指令之后插入的。虽然模板指令需要更新 `hostBinding`
- * `TNode` 需要更新模板指令的 `TStylingKey` ，因为模板指令是 `hostBindings` 指令的下游。
+ * `TNode` 需要更新模板指令的 `TStylingKey`，因为模板指令是 `hostBindings` 指令的下游。
  *
  * @param tData `TData` where the linked list is stored.
  *
- * 存储链表的 `TData` 。
+ * 存储链表的 `TData`。
  * @param tNode `TNode` for which the styling is being computed.
  *
- * 正在计算其样式的 `TNode` 。
+ * 正在计算其样式的 `TNode`。
  * @param isClassBased `true` if `class` \(`false` if `style`\)
  *
  * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
  *
  * @return `TStylingKey` if found or `undefined` if not found.
  *
- * 如果找到，`TStylingKey` ，如果找不到，则为 `undefined` 。
+ * 如果找到，`TStylingKey`，如果找不到，则为 `undefined`。
  */
 function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: boolean): TStylingKey|
     undefined {
@@ -533,7 +533,7 @@ function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: bo
 /**
  * Update the `TStylingKey` of the first template instruction in `TNode`.
  *
- * 更新 `TStylingKey` 中第一个模板指令的 `TNode` 。
+ * 更新 `TStylingKey` 中第一个模板指令的 `TNode`。
  *
  * Logically `hostBindings` styling instructions are of lower priority than that of the template.
  * However, they execute after the template styling instructions. This means that they get inserted
@@ -548,7 +548,7 @@ function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: bo
  *
  * 如果我们有模板样式指令并执行了新的 `hostBindings`
  * 样式指令，则意味着它可能需要从模板指令中窃取静态字段。此方法允许我们使用新值更新第一个模板指令
- * `TStylingKey` 。
+ * `TStylingKey`。
  *
  * Assume:
  *
@@ -591,10 +591,10 @@ function getTemplateHeadTStylingKey(tData: TData, tNode: TNode, isClassBased: bo
  * ```
  * @param tData `TData` where the linked list is stored.
  *
- * 存储链表的 `TData` 。
+ * 存储链表的 `TData`。
  * @param tNode `TNode` for which the styling is being computed.
  *
- * 正在计算其样式的 `TNode` 。
+ * 正在计算其样式的 `TNode`。
  * @param isClassBased `true` if `class` \(`false` if `style`\)
  *
  * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
@@ -625,10 +625,10 @@ function setTemplateHeadTStylingKey(
  *
  * @param tData `TData` where the `DirectiveDefs` are stored.
  *
- * 存储 `DirectiveDefs` 的 `TData` 。
+ * 存储 `DirectiveDefs` 的 `TData`。
  * @param tNode `TNode` which contains the directive range.
  *
- * 包含指令范围的 `TNode` 。
+ * 包含指令范围的 `TNode`。
  * @param isClassBased `true` if `class` \(`false` if `style`\)
  *
  * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
@@ -663,17 +663,17 @@ function collectResidual(tData: TData, tNode: TNode, isClassBased: boolean): Key
  * @param hostDirectiveDef `DirectiveDef` for which we want to collect lower priority static
  *        styling. \(Or `null` if template styling\)
  *
- * 我们要为其收集较低优先级的静态样式的 `DirectiveDef` 。（如果是模板样式，则为 `null`）
+ * 我们要为其收集较低优先级的静态样式的 `DirectiveDef`。（如果是模板样式，则为 `null`）
  *
  * @param tData `TData` where the linked list is stored.
  *
- * 存储链表的 `TData` 。
+ * 存储链表的 `TData`。
  * @param tNode `TNode` for which the styling is being computed.
  *
- * 正在计算其样式的 `TNode` 。
+ * 正在计算其样式的 `TNode`。
  * @param stylingKey Existing `TStylingKey` to update or wrap.
  *
- * 要更新或包装的现有 `TStylingKey` 。
+ * 要更新或包装的现有 `TStylingKey`。
  * @param isClassBased `true` if `class` \(`false` if `style`\)
  *
  * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
@@ -711,14 +711,14 @@ function collectStylingFromDirectives(
 /**
  * Convert `TAttrs` into `TStylingStatic`.
  *
- * 将 `TAttrs` 转换为 `TStylingStatic` 。
+ * 将 `TAttrs` 转换为 `TStylingStatic`。
  *
  * @param stylingKey existing `TStylingKey` to update or wrap.
  *
- * 要更新或包装的现有 `TStylingKey` 。
+ * 要更新或包装的现有 `TStylingKey`。
  * @param attrs `TAttributes` to process.
  *
- * 要处理的 `TAttributes` 。
+ * 要处理的 `TAttributes`。
  * @param isClassBased `true` if `class` \(`false` if `style`\)
  *
  * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
@@ -751,7 +751,7 @@ function collectStylingFromTAttrs(
 /**
  * Convert user input to `KeyValueArray`.
  *
- * 将用户输入转换为 `KeyValueArray` 。
+ * 将用户输入转换为 `KeyValueArray`。
  *
  * This function takes user input which could be `string`, Object literal, or iterable and converts
  * it into a consistent representation. The output of this is `KeyValueArray` \(which is an array
@@ -759,7 +759,7 @@ function collectStylingFromTAttrs(
  * even indexes contain keys and odd indexes contain values for those keys\).
  *
  * 此函数接受用户输入，可以是 `string`、Object 文字或 iterable
- * ，并将其转换为一致的表示。它的输出是 `KeyValueArray`
+ *，并将其转换为一致的表示。它的输出是 `KeyValueArray`
  * （这是一个数组，其中偶数索引包含键，奇数索引包含这些键的值）。
  *
  * The advantage of converting to `KeyValueArray` is that we can perform diff in an input
@@ -781,7 +781,7 @@ function collectStylingFromTAttrs(
  * which values need to be deleted, over the new `Map` to determine additions, and we would have to
  * keep additional `Map` to keep track of duplicates or items which have not yet been visited.
  *
- * 例如，如果我们将其保留为 `Map` ，我们将不得不迭代以前的 `Map` 来确定需要删除哪些值，遍历新 `Map`
+ * 例如，如果我们将其保留为 `Map`，我们将不得不迭代以前的 `Map` 来确定需要删除哪些值，遍历新 `Map`
  * 来确定要添加的值，并且我们将不得不保留额外的 `Map` 以跟踪重复项或条目尚未访问。
  *
  * @param keyValueArraySet \(See `keyValueArraySet` in "util/array_utils"\) Gets passed in as a
@@ -789,7 +789,7 @@ function collectStylingFromTAttrs(
  *        for tree shaking purposes.
  *
  * （请参阅“util/array_utils”中的 `keyValueArraySet`）作为函数传入，以便可以处理 `style`
- * 。这样做是为了摇树的目的。
+ *。这样做是为了摇树的目的。
  *
  * @param stringParser The parser is passed in so that it will be tree shakable. See
  *        `styleStringParser` and `classStringParser`
@@ -828,11 +828,11 @@ export function toStylingKeyValueArray(
 /**
  * Set a `value` for a `key`.
  *
- * 为 `key` 设置 `value` 。
+ * 为 `key` 设置 `value`。
  *
  * See: `keyValueArraySet` for details
  *
- * 有关详细信息，请参阅： `keyValueArraySet`
+ * 有关详细信息，请参阅：`keyValueArraySet`
  *
  * @param keyValueArray KeyValueArray to add to.
  *
@@ -858,7 +858,7 @@ export function styleKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: st
  *
  * See: `keyValueArraySet` for details
  *
- * 有关详细信息，请参阅： `keyValueArraySet`
+ * 有关详细信息，请参阅：`keyValueArraySet`
  *
  * @param keyValueArray KeyValueArray to add to.
  *
@@ -896,14 +896,14 @@ export function classKeyValueArraySet(keyValueArray: KeyValueArray<any>, key: un
  * 基于映射的样式可以是任何包含多个绑定的东西。例如 `string`
  * 或对象文字。处理所有这些类型会使逻辑复杂化，因此此函数期望复杂的输入首先转换为规范化的
  * `KeyValueArray`
- * 。归一化的优势是我们对值进行了排序，这使得计算前一个值和当前值之间的差值变得非常便宜。
+ *。归一化的优势是我们对值进行了排序，这使得计算前一个值和当前值之间的差值变得非常便宜。
  *
  * @param tView Associated `TView.data` contains the linked list of binding priorities.
  *
  * 关联的 `TView.data` 包含绑定优先级的链表。
  * @param tNode `TNode` where the binding is located.
  *
- * 绑定所在的 `TNode` 。
+ * 绑定所在的 `TNode`。
  * @param lView `LView` contains the values associated with other styling binding at this `TNode`.
  *
  * `LView` 包含与此 `TNode` 上的其他样式绑定关联的值。
@@ -989,14 +989,14 @@ function updateStylingMap(
  *
  * 此函数接受 `prop` 并将 DOM 更新为该值。该函数会考虑绑定值以及绑定优先级来确定应该将哪个值写入
  * DOM。（例如，可以确定有较高优先级的覆盖会阻止 DOM 写入，或者如果值变为 `undefined`
- * ，则可以咨询较低优先级的覆盖。）
+ *，则可以咨询较低优先级的覆盖。）
  *
  * @param tView Associated `TView.data` contains the linked list of binding priorities.
  *
  * 关联的 `TView.data` 包含绑定优先级的链表。
  * @param tNode `TNode` where the binding is located.
  *
- * 绑定所在的 `TNode` 。
+ * 绑定所在的 `TNode`。
  * @param lView `LView` contains the values associated with other styling binding at this `TNode`.
  *
  * `LView` 包含与此 `TNode` 上的其他样式绑定关联的值。
@@ -1008,7 +1008,7 @@ function updateStylingMap(
  * 样式属性名或类名。
  * @param value Either style value for `prop` or `true`/`false` if `prop` is class.
  *
- * `prop` 的样式值，如果 `prop` 是 class，则为 `true` / `false` 。
+ * `prop` 的样式值，如果 `prop` 是 class，则为 `true` / `false`。
  * @param isClassBased `true` if `class` \(`false` if `style`\)
  *
  * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）
@@ -1049,7 +1049,7 @@ function updateStyling(
  * value of lower priority to which we should fall back if the value is `undefined`.
  *
  * 搜索具有较高优先级的样式值，它会覆盖当前值，或者搜索优先级较低的值，如果值为 `undefined`
- * ，我们应该回退到。
+ *，我们应该回退到。
  *
  * When value is being applied at a location, related values need to be consulted.
  *
@@ -1086,10 +1086,10 @@ function updateStyling(
  *
  * @param tData `TData` used for traversing the priority.
  *
- * 用于遍历优先级的 `TData` 。
+ * 用于遍历优先级的 `TData`。
  * @param tNode `TNode` to use for resolving static styling. Also controls search direction.
  *
- * 用于解析静态样式的 `TNode` 。还控制搜索方向。
+ * 用于解析静态样式的 `TNode`。还控制搜索方向。
  *
  * - `TNode` search next and quit as soon as `isStylingValuePresent(value)` is true.
  *      If no value found consult `tNode.residualStyle`/`tNode.residualClass` for default value.
@@ -1171,7 +1171,7 @@ function findStylingValue(
  * Determines if the binding value should be used \(or if the value is 'undefined' and hence priority
  * resolution should be used.\)
  *
- * 确定是否应该使用绑定值（或者该值是否为 'undefined' ，因此应该使用优先级解析。）
+ * 确定是否应该使用绑定值（或者该值是否为 'undefined'，因此应该使用优先级解析。）
  *
  * @param value Binding style value.
  *
@@ -1192,7 +1192,7 @@ function isStylingValuePresent(value: any): boolean {
  *
  * If value is `null`/`undefined` no suffix is added
  *
- * 如果值为 `null` / `undefined` ，则不添加后缀
+ * 如果值为 `null` / `undefined`，则不添加后缀
  *
  * @param value
  * @param suffix
@@ -1224,7 +1224,7 @@ function normalizeSuffix(value: any, suffix: string|undefined|null): string|null
  *
  * @param tNode `TNode` which we would like to see if it has shadow.
  *
- * 我们想查看它是否有阴影的 `TNode` 。
+ * 我们想查看它是否有阴影的 `TNode`。
  * @param isClassBased `true` if `class` \(`false` if `style`\)
  *
  * 如果是基于 `class` 的，则为 `true`（如果是基于 `style` 的，则为 `false`）

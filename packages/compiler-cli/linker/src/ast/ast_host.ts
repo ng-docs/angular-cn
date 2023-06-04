@@ -18,7 +18,7 @@ export interface AstHost<TExpression> {
    * Get the name of the symbol represented by the given expression node, or `null` if it is not a
    * symbol.
    *
-   * 获取给定表达式节点表示的符号的名称，如果不是符号，则为 `null` 。
+   * 获取给定表达式节点表示的符号的名称，如果不是符号，则为 `null`。
    *
    */
   getSymbolName(node: TExpression): string|null;
@@ -26,7 +26,7 @@ export interface AstHost<TExpression> {
   /**
    * Return `true` if the given expression is a string literal, or false otherwise.
    *
-   * 如果给定的表达式是字符串文字，则返回 `true` ，否则返回 false 。
+   * 如果给定的表达式是字符串文字，则返回 `true`，否则返回 false。
    *
    */
   isStringLiteral(node: TExpression): boolean;
@@ -41,7 +41,7 @@ export interface AstHost<TExpression> {
   /**
    * Return `true` if the given expression is a numeric literal, or false otherwise.
    *
-   * 如果给定的表达式是数字文字，则返回 `true` ，否则返回 false 。
+   * 如果给定的表达式是数字文字，则返回 `true`，否则返回 false。
    *
    */
   isNumericLiteral(node: TExpression): boolean;
@@ -56,7 +56,7 @@ export interface AstHost<TExpression> {
   /**
    * Return `true` if the given expression can be considered a boolean literal, or false otherwise.
    *
-   * 如果给定的表达式可以被认为是布尔文字，则返回 `true` ，否则返回 false 。
+   * 如果给定的表达式可以被认为是布尔文字，则返回 `true`，否则返回 false。
    *
    * Note that this should also cover the special case of some minified code where `true` and
    * `false` are replaced by `!0` and `!1` respectively.
@@ -81,7 +81,7 @@ export interface AstHost<TExpression> {
   /**
    * Return `true` if the given expression is an array literal, or false otherwise.
    *
-   * 如果给定的表达式是数组文字，则返回 `true` ，否则返回 false 。
+   * 如果给定的表达式是数组文字，则返回 `true`，否则返回 false。
    *
    */
   isArrayLiteral(node: TExpression): boolean;
@@ -97,7 +97,7 @@ export interface AstHost<TExpression> {
   /**
    * Return `true` if the given expression is an object literal, or false otherwise.
    *
-   * 如果给定的表达式是对象文字，则返回 `true` ，否则返回 false 。
+   * 如果给定的表达式是对象文字，则返回 `true`，否则返回 false。
    *
    */
   isObjectLiteral(node: TExpression): boolean;
@@ -105,7 +105,7 @@ export interface AstHost<TExpression> {
    * Parse the given expression into a map of object property names to property expressions, or
    * throw if it is not an object literal.
    *
-   * 将给定的表达式解析为对象属性名称到属性表达式的映射，如果它不是对象文字，则 throw 。
+   * 将给定的表达式解析为对象属性名称到属性表达式的映射，如果它不是对象文字，则 throw。
    *
    */
   parseObjectLiteral(obj: TExpression): Map<string, TExpression>;
@@ -113,7 +113,7 @@ export interface AstHost<TExpression> {
   /**
    * Return `true` if the given expression is a function, or false otherwise.
    *
-   * 如果给定的表达式是函数，则返回 `true` ，否则返回 false 。
+   * 如果给定的表达式是函数，则返回 `true`，否则返回 false。
    *
    */
   isFunctionExpression(node: TExpression): boolean;
@@ -122,7 +122,7 @@ export interface AstHost<TExpression> {
    * statement, extracting the returned expression, or throw if it is not possible.
    *
    * 通过解析函数表达式的主体以获取单个 `return`
-   * 语句、提取返回的表达式来计算函数表达式的“值”，如果不可能，则 throw 。
+   * 语句、提取返回的表达式来计算函数表达式的“值”，如果不可能，则 throw。
    *
    */
   parseReturnValue(fn: TExpression): TExpression;
@@ -130,7 +130,7 @@ export interface AstHost<TExpression> {
   /**
    * Return true if the given expression is a call expression, or false otherwise.
    *
-   * 如果给定的表达式是调用表达式，则返回 true ，否则返回 false 。
+   * 如果给定的表达式是调用表达式，则返回 true，否则返回 false。
    *
    */
   isCallExpression(node: TExpression): boolean;
@@ -146,7 +146,7 @@ export interface AstHost<TExpression> {
    * Returns the argument expressions for the provided call expression, or throw if it is not
    * a call expression.
    *
-   * 返回所提供的调用表达式的参数表达式，如果不是调用表达式，则返回 throw 。
+   * 返回所提供的调用表达式的参数表达式，如果不是调用表达式，则返回 throw。
    *
    */
   parseArguments(call: TExpression): TExpression[];

@@ -226,15 +226,15 @@ Angular 使用大小写约定来区分多种名字，详见[风格指南中的 "
 | :----------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
 |                                                                                                                          | 详情                                                                                                                                                                         | 例子                |
 | camelCase                                                                                                                | Symbols, properties, methods, pipe names, non-component directive selectors, constants. <br /> Standard or lower camel case uses lowercase on the first letter of the item.  | `selectedHero`      |
-| 小驼峰形式（camelCase）                                                                                                  | 符号、属性、方法、管道名称、非组件指令选择器、常量。<br />标准或小驼峰形式在每个单词的第一个字母上使用小写。                                                                 | `selectedHero`      |
+| 小驼峰形式（camelCase）                                                                                                  | 符号、属性、方法、管道名称、非组件指令选择器、常量。<br />标准或小驼峰形式在每个单词的第一个字母上使用小写。| `selectedHero`      |
 | UpperCamelCase <br /> PascalCase                                                                                         | Class names, including classes that define components, interfaces, NgModules, directives, and pipes. <br /> Upper camel case uses uppercase on the first letter of the item. | `HeroComponent`     |
-| 大驼峰形式<br />Pascal 形式                                                                                              | 类名，包括定义组件、接口、NgModules、指令和管道的类。<br />大驼峰形式在每个单词的第一个字母上使用大写。                                                                      | `HeroComponent`     |
+| 大驼峰形式<br />Pascal 形式                                                                                              | 类名，包括定义组件、接口、NgModules、指令和管道的类。<br />大驼峰形式在每个单词的第一个字母上使用大写。| `HeroComponent`     |
 | dash-case <br /> kebab-case                                                                                              | Descriptive part of file names, component selectors.                                                                                                                         | `app-hero-list`     |
-| 中线形式（dash-case）<br />烤串形式（kebab-case）                                                                        | 文件名中的描述部分，组件的选择器。                                                                                                                                           | `app-hero-list`     |
+| 中线形式（dash-case）<br />烤串形式（kebab-case）                                                                        | 文件名中的描述部分，组件的选择器。| `app-hero-list`     |
 | underscore_case <br /> snake_case                                                                                        | Not typically used in Angular. <br /> Snake case uses words connected with underscores.                                                                                      | `convert_link_mode` |
-| 下划线形式（underscore_case）<br />蛇形形式（snake_case）                                                                | 通常不在 Angular 中使用。<br />蛇形形式使用下划线连接各个单词。                                                                                                              | `convert_link_mode` |
+| 下划线形式（underscore_case）<br />蛇形形式（snake_case）                                                                | 通常不在 Angular 中使用。<br />蛇形形式使用下划线连接各个单词。| `convert_link_mode` |
 | UPPER_UNDERSCORE_CASE <br /> UPPER_SNAKE_CASE <br /> SCREAMING_SNAKE_CASE                                                | Traditional for constants. <br /> This case is acceptable, but camelCase is preferred. <br /> Upper snake case uses words in all capital letters connected with underscores. | `FIX_ME`            |
-| 大写下划线形式（UPPER_UNDERSCORE_CASE）<br />大写蛇形形式（UPPER_SNAKE_CASE）<br /> 尖叫蛇形形式（SCREAMING_SNAKE_CASE） | 传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））<br />大蛇形形式使用下划线分隔的全大写单词。                                                                    | `FIX_ME`            |
+| 大写下划线形式（UPPER_UNDERSCORE_CASE）<br />大写蛇形形式（UPPER_SNAKE_CASE）<br /> 尖叫蛇形形式（SCREAMING_SNAKE_CASE） | 传统的常量写法（可以接受，但更推荐用小驼峰形式（camelCase））<br />大蛇形形式使用下划线分隔的全大写单词。| `FIX_ME`            |
 
 ## change detection
 
@@ -408,7 +408,7 @@ User actions include clicks, touches, keystrokes, and so on.
 In data binding, you declare the relationship between an HTML widget and a data source and let the framework handle the details.
 Data binding is an alternative to manually pushing application data values into HTML, attaching event listeners, pulling changed values from the screen, and updating application data values.
 
-在数据绑定机制下，你只要声明一下 HTML 部件和数据源之间的关系，把细节交给框架去处理。 而以前的手动操作过程是：将数据推送到 HTML 页面中、添加事件监听器、从屏幕获取变化后的数据，并更新应用中的值。
+在数据绑定机制下，你只要声明一下 HTML 部件和数据源之间的关系，把细节交给框架去处理。而以前的手动操作过程是：将数据推送到 HTML 页面中、添加事件监听器、从屏幕获取变化后的数据，并更新应用中的值。
 
 Read about the following forms of binding of the [Template Syntax][AioGuideTemplateSyntax] in Angular:
 
@@ -507,7 +507,7 @@ See also [class field decorator][AioGuideGlossaryClassFieldDecorator].
 
 A design pattern and mechanism for creating and delivering some parts of an application \(dependencies\) to other parts of an application that require them.
 
-依赖注入既是设计模式，同时又是一种机制：当应用程序的一些部件（即一些依赖）需要另一些部件时， 利用依赖注入来创建被请求的部件，并将它们注入到需要它们的部件中。
+依赖注入既是设计模式，同时又是一种机制：当应用程序的一些部件（即一些依赖）需要另一些部件时，利用依赖注入来创建被请求的部件，并将它们注入到需要它们的部件中。
 
 In Angular, dependencies are typically services, but they also can be values, such as strings or functions.
 An [injector][AioGuideGlossaryInjector] for an application \(created automatically during bootstrap\) instantiates dependencies when needed, using a configured [provider][AioGuideGlossaryProvider] of the service or value.
@@ -638,7 +638,7 @@ The documentation generally refers to *elements* as distinct from *DOM elements*
 *Elements* are instances of a `ElementRef` class.
 *DOM elements* are able to be accessed directly, if necessary.
 
-本文档中一般会使用*元素（Element）*，以区别于 *DOM 元素*。这里的*元素*指的是 `ElementRef` 类的实例。 如果需要，*DOM 元素*是可以直接访问的。
+本文档中一般会使用*元素（Element）*，以区别于 *DOM 元素*。这里的*元素*指的是 `ElementRef` 类的实例。如果需要，*DOM 元素*是可以直接访问的。
 
 To learn more, see also [custom element][AioGuideGlossaryCustomElement].
 
@@ -874,21 +874,21 @@ Angular 会按以下顺序调用钩子方法：
 | :-- | :---------------------- | :------------------------------------------------------------------------------------------------ |
 |     | 钩子方法                | 详细信息                                                                                          |
 | 1   | `ngOnChanges`           | When an [input][AioGuideGlossaryInput] or [output][AioGuideGlossaryOutput] binding value changes. |
-| 1   | `ngOnChanges`           | 当[输入][AioGuideGlossaryInput]或[输出][AioGuideGlossaryOutput]绑定值更改时。                     |
+| 1   | `ngOnChanges`           | 当[输入][AioGuideGlossaryInput]或[输出][AioGuideGlossaryOutput]绑定值更改时。|
 | 2   | `ngOnInit`              | After the first `ngOnChanges`.                                                                    |
-| 2   | `ngOnInit`              | 在第一个 `ngOnChanges` 之后。                                                                     |
+| 2   | `ngOnInit`              | 在第一个 `ngOnChanges` 之后。|
 | 3   | `ngDoCheck`             | Developer's custom change detection.                                                              |
-| 3   | `ngDoCheck`             | 开发人员的自定义变更检测。                                                                        |
+| 3   | `ngDoCheck`             | 开发人员的自定义变更检测。|
 | 4   | `ngAfterContentInit`    | After component content initialized.                                                              |
-| 4   | `ngAfterContentInit`    | 组件内容初始化后。                                                                                |
+| 4   | `ngAfterContentInit`    | 组件内容初始化后。|
 | 5   | `ngAfterContentChecked` | After every check of component content.                                                           |
-| 5   | `ngAfterContentChecked` | 在每次检查组件内容之后。                                                                          |
+| 5   | `ngAfterContentChecked` | 在每次检查组件内容之后。|
 | 6   | `ngAfterViewInit`       | After the views of a component are initialized.                                                   |
-| 6   | `ngAfterViewInit`       | 在组件的视图被初始化之后。                                                                        |
+| 6   | `ngAfterViewInit`       | 在组件的视图被初始化之后。|
 | 7   | `ngAfterViewChecked`    | After every check of the views of a component.                                                    |
-| 7   | `ngAfterViewChecked`    | 在每次检查组件视图之后。                                                                          |
+| 7   | `ngAfterViewChecked`    | 在每次检查组件视图之后。|
 | 8   | `ngOnDestroy`           | Just before the directive is destroyed.                                                           |
-| 8   | `ngOnDestroy`           | 就在指令被销毁之前。                                                                              |
+| 8   | `ngOnDestroy`           | 就在指令被销毁之前。|
 
 To learn more, see [Lifecycle Hooks][AioGuideLifecycleHooks].
 
@@ -968,7 +968,7 @@ Learn more about how Angular uses [Npm Packages][AioGuideNpmPackages].
 `ngc` is a Typescript-to-Javascript transpiler that processes Angular decorators, metadata, and templates, and emits JavaScript code.
 The most recent implementation is internally referred to as `ngtsc` because it is a minimalistic wrapper around the TypeScript compiler `tsc` that adds a transform for processing Angular code.
 
-`ngc` 是一个 TypeScript 到 JavaScript 的转译器，它会处理 Angular 的注解、元数据、模板，并生成 JavaScript 代码。 其最新的实现在内部被称为 `ngtsc`，因为它是一个对 TypeScript 编译器 `tsc` 的最小化包装，为其加入了 Angular 代码的转换过程。
+`ngc` 是一个 TypeScript 到 JavaScript 的转译器，它会处理 Angular 的注解、元数据、模板，并生成 JavaScript 代码。其最新的实现在内部被称为 `ngtsc`，因为它是一个对 TypeScript 编译器 `tsc` 的最小化包装，为其加入了 Angular 代码的转换过程。
 
 ## observable
 
@@ -1181,7 +1181,7 @@ See an example of using a [resolve guard][AioGuideRouterTutorialTohResolvePreFet
 A method that controls navigation to a requested route in a routing application.
 Guards determine whether a route can be activated or deactivated, and whether a lazy-loaded module can be loaded.
 
-一种在带路由的应用中对导航到所要求的路由进行控制的方式。 这些守卫会决定一个路由是否可以激活或停止激活，以及惰性加载模块是否可以被加载。
+一种在带路由的应用中对导航到所要求的路由进行控制的方式。这些守卫会决定一个路由是否可以激活或停止激活，以及惰性加载模块是否可以被加载。
 
 Learn more in the [Routing and Navigation][AioGuideRouterPreventingUnauthorizedAccess] guide.
 
@@ -1277,7 +1277,7 @@ To learn more, see also [Integrating Libraries with the CLI][AioGuideCreatingLib
 Schematics come with their own command-line tool.
 Use Node 6.9 or above to install the Schematics CLI globally.
 
-Schematics 自带了一个命令行工具。 使用 Node 6.9 或更高版本，可以全局安装这个 Schematics CLI。
+Schematics 自带了一个命令行工具。使用 Node 6.9 或更高版本，可以全局安装这个 Schematics CLI。
 
 <code-example format="shell" language="shell">
 
@@ -1315,7 +1315,7 @@ Import a scoped package in the same way that you import a normal package.
 A technique that generates static application pages on the server, and can generate and serve those pages in response to requests from browsers.
 It can also pre-generate pages as HTML files that you serve later.
 
-一项在服务端生成静态应用页面的技术，它可以在对来自浏览器的请求进行响应时生成这些页面或用它们提供服务。 它还可以预先把这些页面生成为 HTML 文件，以便稍后用它们来提供服务。
+一项在服务端生成静态应用页面的技术，它可以在对来自浏览器的请求进行响应时生成这些页面或用它们提供服务。它还可以预先把这些页面生成为 HTML 文件，以便稍后用它们来提供服务。
 
 This technique can improve performance on mobile and low-powered devices and improve the user experience by showing a static first page quickly while the client-side application is loading.
 The static version can also make your application more visible to web crawlers.
@@ -1361,7 +1361,7 @@ Standalone components, directives, and pipes differ from non-standalone ones by:
 
 - having the `standalone` field of their decorator set to `true`.
 
-  将装饰器的 `standalone` 字段设置为 `true` 。
+  将装饰器的 `standalone` 字段设置为 `true`。
 
 - allowing their direct importing without the need to pass through NgModules.
 
@@ -1531,7 +1531,7 @@ A variable defined in a template that references an instance associated with an 
 After declaring a template reference variable on an element in a template, you can access values from that variable elsewhere within the same template.
 The following example defines a template reference variable named `#phone`.
 
-模板中定义的一个变量，它可以引用与某元素相关的实例，比如指令实例、组件实例、模板（`TemplateRef`）或 DOM 元素。 在模板中的某个元素上声明了模板引用变量之后，你可以从同一个模板中的其它位置访问这些值。 下面的例子定义了一个名叫 `#phone` 的模板引用变量。
+模板中定义的一个变量，它可以引用与某元素相关的实例，比如指令实例、组件实例、模板（`TemplateRef`）或 DOM 元素。在模板中的某个元素上声明了模板引用变量之后，你可以从同一个模板中的其它位置访问这些值。下面的例子定义了一个名叫 `#phone` 的模板引用变量。
 
 <code-example path="template-reference-variables/src/app/app.component.html" region="ref-var" header="src/app/app.component.html"></code-example>
 
@@ -1599,7 +1599,7 @@ TypeScript provides compile-time type checking and strong tooling support
 The type checking and tooling support include code completion, refactoring, inline documentation, and intelligent search.
 Many code editors and IDEs support TypeScript either natively or with plug-ins.
 
-TypeScript 是一种基于 JavaScript 的程序设计语言，以其可选类型系统著称。 TypeScript 提供了编译时类型检查和强大的工具支持。 这里所说的类型检查和工具支持包括代码补齐、重构、内联文档和智能搜索等。 许多代码编辑器和 IDE 都原生支持 TypeScript 或通过插件提供支持。
+TypeScript 是一种基于 JavaScript 的程序设计语言，以其可选类型系统著称。TypeScript 提供了编译时类型检查和强大的工具支持。这里所说的类型检查和工具支持包括代码补齐、重构、内联文档和智能搜索等。许多代码编辑器和 IDE 都原生支持 TypeScript 或通过插件提供支持。
 
 TypeScript is the preferred language for Angular development.
 To learn more about TypeScript, see [typescriptlang.org][TypescriptlangMain].

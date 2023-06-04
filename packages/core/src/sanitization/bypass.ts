@@ -158,7 +158,7 @@ export function getSanitizationBypassType(value: any): BypassType|null {
  *
  * a `html` which has been branded to be implicitly trusted.
  *
- * 已被标记为隐式信任的 `html` 。
+ * 已被标记为隐式信任的 `html`。
  */
 export function bypassSanitizationTrustHtml(trustedHtml: string): SafeHtml {
   return new SafeHtmlImpl(trustedHtml);
@@ -181,7 +181,7 @@ export function bypassSanitizationTrustHtml(trustedHtml: string): SafeHtml {
  *
  * a `style` hich has been branded to be implicitly trusted.
  *
- * 一种被认为是隐式信任的 `style` 。
+ * 一种被认为是隐式信任的 `style`。
  */
 export function bypassSanitizationTrustStyle(trustedStyle: string): SafeStyle {
   return new SafeStyleImpl(trustedStyle);
@@ -204,7 +204,7 @@ export function bypassSanitizationTrustStyle(trustedStyle: string): SafeStyle {
  *
  * a `script` which has been branded to be implicitly trusted.
  *
- * 已被标记为隐式信任的 `script` 。
+ * 已被标记为隐式信任的 `script`。
  */
 export function bypassSanitizationTrustScript(trustedScript: string): SafeScript {
   return new SafeScriptImpl(trustedScript);
@@ -227,7 +227,7 @@ export function bypassSanitizationTrustScript(trustedScript: string): SafeScript
  *
  * a `url`  which has been branded to be implicitly trusted.
  *
- * 已被标记为隐式信任的 `url` 。
+ * 已被标记为隐式信任的 `url`。
  */
 export function bypassSanitizationTrustUrl(trustedUrl: string): SafeUrl {
   return new SafeUrlImpl(trustedUrl);
@@ -250,7 +250,7 @@ export function bypassSanitizationTrustUrl(trustedUrl: string): SafeUrl {
  *
  * a `url` which has been branded to be implicitly trusted.
  *
- * 已被标记为隐式信任的 `url` 。
+ * 已被标记为隐式信任的 `url`。
  */
 export function bypassSanitizationTrustResourceUrl(trustedResourceUrl: string): SafeResourceUrl {
   return new SafeResourceUrlImpl(trustedResourceUrl);

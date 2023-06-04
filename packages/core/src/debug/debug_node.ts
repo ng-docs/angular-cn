@@ -52,7 +52,7 @@ export class DebugNode {
   /**
    * The `DebugElement` parent. Will be `null` if this is the root element.
    *
-   * `DebugElement` 父级。如果这是根元素，则为 `null` 。
+   * `DebugElement` 父级。如果这是根元素，则为 `null`。
    *
    */
   get parent(): DebugElement|null {
@@ -92,7 +92,7 @@ export class DebugNode {
    * property is the value of the row instance value. For example, the `hero` in \`*ngFor="let hero
    * of heroes"\`.
    *
-   * 当一个元素在*ngFor 中重复时，上下文是一个 `NgForOf` ，其 `$implicit` 属性是行实例值的值。例如，
+   * 当一个元素在*ngFor 中重复时，上下文是一个 `NgForOf`，其 `$implicit` 属性是行实例值的值。例如，
    * `hero`* ngFor="let hero of heros"\` 中的英雄。
    *
    */
@@ -304,7 +304,7 @@ export class DebugElement extends DebugNode {
    *
    * Will be `null` if there is no `style` property on the underlying DOM element.
    *
-   * 如果基础 DOM 元素上没有 `style` 属性，则将为 `null` 。
+   * 如果基础 DOM 元素上没有 `style` 属性，则将为 `null`。
    *
    * @see [ElementCSSInlineStyle](https://developer.mozilla.org/en-US/docs/Web/API/ElementCSSInlineStyle/style)
    */
@@ -327,7 +327,7 @@ export class DebugElement extends DebugNode {
    * Note: The values of this object will always be `true`. The class key will not appear in the KV
    * object if it does not exist on the element.
    *
-   * 注意：此对象的值将始终为 `true` 。如果元素上不存在，则类键将不会出现在 KV 对象中。
+   * 注意：此对象的值将始终为 `true`。如果元素上不存在，则类键将不会出现在 KV 对象中。
    *
    * @see [Element.className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)
    *
@@ -351,7 +351,7 @@ export class DebugElement extends DebugNode {
   /**
    * The `childNodes` of the DOM element as a `DebugNode` array.
    *
-   * DOM 元素的 `childNodes` ，为 `DebugNode` 数组。
+   * DOM 元素的 `childNodes`，为 `DebugNode` 数组。
    *
    * @see [Node.childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
    */
@@ -388,7 +388,7 @@ export class DebugElement extends DebugNode {
    *
    * the first `DebugElement` that matches the predicate at any depth in the subtree.
    *
-   * 子树中任何深度处与谓词匹配的第一个 `DebugElement` 。
+   * 子树中任何深度处与谓词匹配的第一个 `DebugElement`。
    *
    */
   query(predicate: Predicate<DebugElement>): DebugElement {
@@ -433,7 +433,7 @@ export class DebugElement extends DebugNode {
    * If the event lacks a listener or there's some other problem, consider
    * calling `nativeElement.dispatchEvent(eventObject)`.
    *
-   * 如果事件缺少侦听器或存在其他问题，请考虑调用 `nativeElement.dispatchEvent(eventObject)` 。
+   * 如果事件缺少侦听器或存在其他问题，请考虑调用 `nativeElement.dispatchEvent(eventObject)`。
    *
    * @param eventName The name of the event to trigger
    *

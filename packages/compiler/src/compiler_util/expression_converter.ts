@@ -872,7 +872,7 @@ class _AstToIrVisitor implements cdAst.AstVisitor {
    * a `ParseSourceSpan` for the given span or null if no
    * `baseSourceSpan` was provided to this class.
    *
-   * 给定 Span 的 `ParseSourceSpan` ，如果没有向此类提供 `baseSourceSpan` ，则为 null 。
+   * 给定 Span 的 `ParseSourceSpan`，如果没有向此类提供 `baseSourceSpan`，则为 null。
    *
    */
   private convertSourceSpan(span: cdAst.ParseSpan) {

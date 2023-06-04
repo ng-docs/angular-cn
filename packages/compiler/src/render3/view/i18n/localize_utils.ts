@@ -89,7 +89,7 @@ class LocalizeSerializerVisitor implements i18n.Visitor {
 /**
  * Serialize an i18n message into two arrays: messageParts and placeholders.
  *
- * 将 i18n 消息序列化为两个数组： messageParts 和占位符。
+ * 将 i18n 消息序列化为两个数组：messageParts 和占位符。
  *
  * These arrays will be used to generate `$localize` tagged template literals.
  *

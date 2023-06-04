@@ -16,7 +16,7 @@ import {getDependency, parseEnum, wrapReference} from './util';
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareFactory()` call expressions.
  *
- * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareFactory()` 调用表达式。
+ * 一个 `PartialLinker`，旨在处理 `ɵɵngDeclareFactory()` 调用表达式。
  *
  */
 export class PartialFactoryLinkerVersion1<TExpression> implements PartialLinker<TExpression> {

@@ -152,7 +152,7 @@ export function assembleBoundTextPlaceholders(
  * 占位符名称到表达式的映射。
  * @param useCamelCase whether to camelCase the placeholder name when formatting.
  *
- * 格式化时是否要将占位符名称 CamelCase 。
+ * 格式化时是否要将占位符名称 CamelCase。
  * @returns
  *
  * A new map of formatted placeholder names to expressions.
@@ -174,8 +174,8 @@ export function formatI18nPlaceholderNamesInMap(
  * \(for example to use in goog.getMsg call\).
  * Example: `START_TAG_DIV_1` is converted to `startTagDiv_1`.
  *
- * 将内部占位符名称转换为面向公众的格式（例如在 goog.getMsg 调用中使用）。示例： `START_TAG_DIV_1`
- * 被转换为 `startTagDiv_1` 。
+ * 将内部占位符名称转换为面向公众的格式（例如在 goog.getMsg 调用中使用）。示例：`START_TAG_DIV_1`
+ * 被转换为 `startTagDiv_1`。
  *
  * @param name The placeholder name that should be formatted
  *

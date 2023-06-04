@@ -19,7 +19,7 @@ import {BINARY_OPERATORS} from './conversion';
  * Process a template AST and convert it into a `ComponentCompilation` in the intermediate
  * representation.
  *
- * 处理模板 AST 并将其转换为中间表示中的 `ComponentCompilation` 。
+ * 处理模板 AST 并将其转换为中间表示中的 `ComponentCompilation`。
  *
  */
 export function ingest(

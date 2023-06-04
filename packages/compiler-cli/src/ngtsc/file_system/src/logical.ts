@@ -109,7 +109,7 @@ export class LogicalFileSystem {
    * A `LogicalProjectPath` to the source file, or `null` if the source file is not in any
    * of the TS project's root directories.
    *
-   * 源文件的 `LogicalProjectPath` ，如果源文件不在 TS 项目的任何根目录中，则为 `null` 。
+   * 源文件的 `LogicalProjectPath`，如果源文件不在 TS 项目的任何根目录中，则为 `null`。
    *
    */
   logicalPathOfFile(physicalFile: AbsoluteFsPath): LogicalProjectPath|null {

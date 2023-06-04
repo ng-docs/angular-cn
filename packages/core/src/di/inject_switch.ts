@@ -24,8 +24,8 @@ import {ProviderToken} from './provider_token';
  * to `directiveInject`, which brings in the `NodeInjector` system of ivy. It is designed this
  * way for two reasons:
  *
- * 默认情况下，它是 `injectInjectorOnly` ，这使得它可以感知 `Injector` 。它可以更改为
- * `directiveInject` ，它会引入 ivy 的 `NodeInjector` 系统。它是这样设计的，有两个原因：
+ * 默认情况下，它是 `injectInjectorOnly`，这使得它可以感知 `Injector`。它可以更改为
+ * `directiveInject`，它会引入 ivy 的 `NodeInjector` 系统。它是这样设计的，有两个原因：
  *
  * 1. `Injector` should not depend on ivy logic.
  *
@@ -87,7 +87,7 @@ export function injectRootLimpMode<T>(
 /**
  * Assert that `_injectImplementation` is not `fn`.
  *
- * 断言 `_injectImplementation` 不是 `fn` 。
+ * 断言 `_injectImplementation` 不是 `fn`。
  *
  * This is useful, to prevent infinite recursion.
  *

@@ -18,7 +18,7 @@ import {last, shallowEqual} from './utils/collection';
 /**
  * Creates a `UrlTree` relative to an `ActivatedRouteSnapshot`.
  *
- * 创建相对于 `ActivatedRouteSnapshot` 的 `UrlTree` 。
+ * 创建相对于 `ActivatedRouteSnapshot` 的 `UrlTree`。
  *
  * @publicApi
  * @param relativeTo The `ActivatedRouteSnapshot` to apply the commands to
@@ -141,7 +141,7 @@ function isMatrixParams(command: any): boolean {
  * Determines if a given command has an `outlets` map. When we encounter a command
  * with an outlets k/v map, we need to apply each outlet individually to the existing segment.
  *
- * 确定给定命令是否具有 `outlets` 映射。 当我们遇到带有出口 k/v 映射的命令时，我们需要将每个出口单独应用于现有段。
+ * 确定给定命令是否具有 `outlets` 映射。当我们遇到带有出口 k/v 映射的命令时，我们需要将每个出口单独应用于现有段。
  *
  */
 function isCommandWithOutlets(command: any): command is {outlets: {[key: string]: any}} {
@@ -176,7 +176,7 @@ function tree(
  * the Router's current url tree. If we don't create new segment groups, we end up modifying that
  * value.
  *
- * 用 `newSegment` 替换 `current` 的某个子节点中的 `oldSegment` 。 这也具有创建新的 `UrlSegmentGroup` 副本以更新引用的效果。 这不是必需的，但创建中无效 ActivatedRoute 的回退逻辑使用路由器的当前 url 树。 如果我们不创建新的段组，我们最终会修改该值。
+ * 用 `newSegment` 替换 `current` 的某个子节点中的 `oldSegment`。这也具有创建新的 `UrlSegmentGroup` 副本以更新引用的效果。这不是必需的，但创建中无效 ActivatedRoute 的回退逻辑使用路由器的当前 url 树。如果我们不创建新的段组，我们最终会修改该值。
  *
  */
 function replaceSegment(

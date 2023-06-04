@@ -70,7 +70,7 @@ function getOrCreateCurrentLViewConsumer() {
  * Sometimes, a previously created consumer may be reused, in order to save on allocations. In that
  * case, the LView will be updated.
  *
- * 创建一个指向指定 LView 的新模板消费者。 有时，可能会重用先前创建的消费者，以节省分配。 在这种情况下，LView 将被更新。
+ * 创建一个指向指定 LView 的新模板消费者。有时，可能会重用先前创建的消费者，以节省分配。在这种情况下，LView 将被更新。
  *
  */
 export function getReactiveLViewConsumer(
@@ -93,7 +93,7 @@ export function getReactiveLViewConsumer(
  * If no producers are present, we do not assign the current template context. This also means we
  * can just reuse the template context for the next LView.
  *
- * 如果不存在生产者，我们不分配当前模板上下文。 这也意味着我们可以为下一个 LView 重用模板上下文。
+ * 如果不存在生产者，我们不分配当前模板上下文。这也意味着我们可以为下一个 LView 重用模板上下文。
  *
  */
 export function commitLViewConsumerIfHasProducers(

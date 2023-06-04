@@ -11,7 +11,7 @@ This topic describes the tasks that you perform when you start to work on a docu
 The documentation in angular.io is built from [markdown](https://en.wikipedia.org/wiki/Markdown) source code files.
 The markdown source code files are stored in the `angular` repo that you forked into your GitHub account.
 
-angular.io 中的文档是从[markdown](https://en.wikipedia.org/wiki/Markdown)源代码文件构建的。 Markdown 源代码文件存储在你 fork 到 GitHub 帐户中的 `angular` 存储库中。
+angular.io 中的文档是从[markdown](https://en.wikipedia.org/wiki/Markdown)源代码文件构建的。Markdown 源代码文件存储在你 fork 到 GitHub 帐户中的 `angular` 存储库中。
 
 To update the Angular documentation, you need:
 
@@ -43,12 +43,12 @@ The procedures in this topic assume that the files on your local computer are or
 * Your 'git' workspace directory.
   In this example, the path to your 'git' workspace directory is `github-projects`.
 
-  你的 'git' 工作区目录。在此示例中，你的 “git” 工作空间目录的路径是 `github-projects` 。
+  你的 'git' 工作区目录。在此示例中，你的 “git” 工作空间目录的路径是 `github-projects`。
 
 * Your working directory, which is the directory that you created when you cloned your fork into your `git` workspace.
   In this example, the path to your working directory is `github-projects/personal/angular`, where `personal` is replaced with your GitHub username.
 
-  你的工作目录，这是你将 fork 克隆到 `git` 工作区时创建的目录。在此示例中，你的工作目录的路径是 `github-projects/personal/angular` ，其中的 `personal` 被替换为你的 GitHub 用户名。
+  你的工作目录，这是你将 fork 克隆到 `git` 工作区时创建的目录。在此示例中，你的工作目录的路径是 `github-projects/personal/angular`，其中的 `personal` 被替换为你的 GitHub 用户名。
 
 <div class="lightbox">
 
@@ -210,7 +210,7 @@ Perform these steps in a command-line program on your local computer.
    If you are improving error messages, you might name it, `error-message-improvements`.
    A branch name can have alphanumeric characters, hyphens, underscores, and slashes, but it can't have any spaces or other special characters.
 
-   为你的工作分支命名与你的编辑任务相关的内容，例如，如果你要解决 `issue #12345` ，你可以将分支命名为 `issue-12345` 。如果你正在改进错误消息，你可以将其命名为 `error-message-improvements` 。分支名称可以有字母数字字符、连字符、下划线和斜线，但不能有任何空格或其他特殊字符。
+   为你的工作分支命名与你的编辑任务相关的内容，例如，如果你要解决 `issue #12345`，你可以将分支命名为 `issue-12345`。如果你正在改进错误消息，你可以将其命名为 `error-message-improvements`。分支名称可以有字母数字字符、连字符、下划线和斜线，但不能有任何空格或其他特殊字符。
 
    <code-example format="shell" language="shell">
 

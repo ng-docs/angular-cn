@@ -24,7 +24,7 @@ import {generateTypeCheckBlock, TcbGenericContextBehavior} from './type_check_bl
  * An `Environment` representing the single type-checking file into which most \(if not all\) Type
  * Check Blocks \(TCBs\) will be generated.
  *
- * 一个 `Environment` ，表示将在其中生成大多数（如果不是全部）类型检查块（TCB）的单个类型检查文件。
+ * 一个 `Environment`，表示将在其中生成大多数（如果不是全部）类型检查块（TCB）的单个类型检查文件。
  *
  * The `TypeCheckFile` hosts multiple TCBs and allows the sharing of declarations \(e.g. type
  * constructors\) between them. Rather than return such declarations via `getPreludeStatements()`, it

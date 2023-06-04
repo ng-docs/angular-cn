@@ -66,7 +66,7 @@ export function ɵɵproperty<T>(
  * Given `<div style="..." my-dir>` and `MyDir` with `@Input('style')` we need to write to
  * directive input.
  *
- * 给定 `<div style="..." my-dir>` 和带有 `MyDir` `@Input('style')` MyDir ，我们需要写入指令输入。
+ * 给定 `<div style="..." my-dir>` 和带有 `MyDir` `@Input('style')` MyDir，我们需要写入指令输入。
  *
  */
 export function setDirectiveInputsWhichShadowsStyling(

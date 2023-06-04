@@ -79,12 +79,12 @@ const formGroupNameProvider: Provider = {
  *
  * ### Register a nested `FormGroup`.
  *
- * ### 注册一个嵌套的 `FormGroup` 。
+ * ### 注册一个嵌套的 `FormGroup`。
  *
  * The following example registers a nested *name* `FormGroup` within an existing `FormGroup`,
  * and provides methods to retrieve the nested `FormGroup` and individual controls.
  *
- * 下面的示例在现有 `FormGroup` 注册一个嵌套*名称*的 `FormGroup` ，并提供检索嵌套 `FormGroup`
+ * 下面的示例在现有 `FormGroup` 注册一个嵌套*名称*的 `FormGroup`，并提供检索嵌套 `FormGroup`
  * 和各个控件的方法。
  *
  * {@example forms/ts/nestedFormGroup/nested_form_group_example.ts region='Component'}

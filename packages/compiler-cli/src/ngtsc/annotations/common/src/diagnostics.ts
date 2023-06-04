@@ -61,7 +61,7 @@ export function makeDuplicateDeclarationError(
  * a representation of the actual type that was unsupported, or in the case of a dynamic value the
  * trace to the node where the dynamic value originated.
  *
- * 为未评估为预期类型的​​节点创建 `FatalDiagnosticError` 。 创建的诊断将包括有关为什么值不正确的详细信息，即它包括不受支持的实际类型的表示，或者在动态值的情况下跟踪到动态值起源的节点。
+ * 为未评估为预期类型的​​节点创建 `FatalDiagnosticError`。创建的诊断将包括有关为什么值不正确的详细信息，即它包括不受支持的实际类型的表示，或者在动态值的情况下跟踪到动态值起源的节点。
  *
  * @param node The node for which the diagnostic should be produced.
  *

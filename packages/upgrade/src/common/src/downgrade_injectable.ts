@@ -79,7 +79,7 @@ import {getTypeName, isFunction, validateInjectionKey} from './util';
  *
  * @param token an `InjectionToken` that identifies a service provided from Angular.
  *
- * 一个 `InjectionToken` ，用于标识 Angular 提供的服务。
+ * 一个 `InjectionToken`，用于标识 Angular 提供的服务。
  * @param downgradedModule the name of the downgraded module \(if any\) that the injectable
  * "belongs to", as returned by a call to `downgradeModule()`. It is the module, whose injector will
  * be used for instantiating the injectable.<br />

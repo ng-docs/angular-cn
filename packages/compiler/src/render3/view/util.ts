@@ -29,7 +29,7 @@ import {isI18nAttribute} from './i18n/util';
  * inputs that contain potentially unsafe chars.
  *
  * TODO\(FW-1136\)
- * ：这是一个临时解决方案，我们需要想出一种更好的方法来处理包含可能不安全的字符的输入。
+ *：这是一个临时解决方案，我们需要想出一种更好的方法来处理包含可能不安全的字符的输入。
  *
  */
 const UNSAFE_OBJECT_KEY_NAME_REGEXP = /[-.]/;

@@ -52,7 +52,7 @@ export interface RouterOutletContract {
   /**
    * The instance of the activated component or `null` if the outlet is not activated.
    *
-   * 已激活组件的实例；如果未激活插座，则为 `null` 。
+   * 已激活组件的实例；如果未激活插座，则为 `null`。
    *
    */
   component: Object|null;
@@ -60,7 +60,7 @@ export interface RouterOutletContract {
   /**
    * The `Data` of the `ActivatedRoute` snapshot.
    *
-   * `ActivatedRoute` 快照的 `Data` 。
+   * `ActivatedRoute` 快照的 `Data`。
    *
    */
   activatedRouteData: Data;
@@ -68,7 +68,7 @@ export interface RouterOutletContract {
   /**
    * The `ActivatedRoute` for the outlet or `null` if the outlet is not activated.
    *
-   * 插座的 `ActivatedRoute` ，如果此插座未激活，则为 `null` 。
+   * 插座的 `ActivatedRoute`，如果此插座未激活，则为 `null`。
    *
    */
   activatedRoute: ActivatedRoute|null;
@@ -89,7 +89,7 @@ export interface RouterOutletContract {
    * When a `RouteReuseStrategy` indicates that an `ActivatedRoute` should be removed but stored for
    * later re-use rather than destroyed, the `Router` will call `detach` instead.
    *
-   * 当 `RouteReuseStrategy` 表明应该删除 `ActivatedRoute` 但存储以供以后重用而不是销毁时，`Router` 将改为调用 `detach` 。
+   * 当 `RouteReuseStrategy` 表明应该删除 `ActivatedRoute` 但存储以供以后重用而不是销毁时，`Router` 将改为调用 `detach`。
    *
    */
   deactivate(): void;
@@ -102,7 +102,7 @@ export interface RouterOutletContract {
    * This is similar to `deactivate`, but the activated component should _not_ be destroyed.
    * Instead, it is returned so that it can be reattached later via the `attach` method.
    *
-   * 这类似于 `deactivate` ，但激活的组件 _ 不应 _ 被销毁。 相反，它会被返回，以便稍后可以通过 `attach` 方法重新附加它。
+   * 这类似于 `deactivate`，但激活的组件 _ 不应 _ 被销毁。相反，它会被返回，以便稍后可以通过 `attach` 方法重新附加它。
    *
    */
   detach(): ComponentRef<unknown>;
@@ -479,7 +479,7 @@ export const INPUT_BINDER = new InjectionToken<RoutedComponentInputBinder>('');
  * input is set to `undefined`. If it were not done this way, the previous information would be
  * retained if the data got removed from the route \(i.e. if a query parameter is removed\).
  *
- * 当附加或激活 `ActivatedRoute` 时，RouterOutlet 将自己注册到此服务。 发生这种情况时，服务会订阅 `ActivatedRoute` 可观察对象（参数、查询参数、数据）并使用 `ComponentRef.setInput` 设置组件的输入。 重要的是，当输入在路由数据中没有具有匹配键的项目时，此输入将设置为 `undefined` 。 如果不这样做，如果数据从路由中移除（即，如果查询参数被移除），先前的信息将被保留。
+ * 当附加或激活 `ActivatedRoute` 时，RouterOutlet 将自己注册到此服务。发生这种情况时，服务会订阅 `ActivatedRoute` 可观察对象（参数、查询参数、数据）并使用 `ComponentRef.setInput` 设置组件的输入。重要的是，当输入在路由数据中没有具有匹配键的项目时，此输入将设置为 `undefined`。如果不这样做，如果数据从路由中移除（即，如果查询参数被移除），先前的信息将被保留。
  *
  * The `RouterOutlet` should unregister itself when destroyed via `unsubscribeFromRouteData` so that
  * the subscriptions are cleaned up.

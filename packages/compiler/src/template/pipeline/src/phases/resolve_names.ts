@@ -113,7 +113,7 @@ interface SavedView {
   /**
    * The view `ir.XrefId` which was saved into this variable.
    *
-   * 保存到此变量中的视图 `ir.XrefId` 。
+   * 保存到此变量中的视图 `ir.XrefId`。
    *
    */
   view: ir.XrefId;
@@ -121,7 +121,7 @@ interface SavedView {
   /**
    * The `ir.XrefId` of the variable into which the view was saved.
    *
-   * 保存视图的变量的 `ir.XrefId` 。
+   * 保存视图的变量的 `ir.XrefId`。
    *
    */
   variable: ir.XrefId;

@@ -82,7 +82,7 @@ Perform these steps on the app code in your IDE.
 
 1. From the terminal, enter the following command to create the `DetailsComponent`:
 
-   从终端输入以下命令以创建 `DetailsComponent` ：
+   从终端输入以下命令以创建 `DetailsComponent`：
 
    <code-example format="shell" language="shell">
 
@@ -166,7 +166,7 @@ In the previous step you removed the reference to the `<app-home>` component in 
 
       The entries in the `routeConfig` array represent the routes in the application. The first entry navigates to the `HomeComponent` whenever the url matches `''`. The second entry uses some special formatting that will be revisited in a future lesson.
 
-      `routeConfig` 数组中的条目表示应用程序中的路由。只要 url 与 `''` 匹配，第一个条目就会导航到 `HomeComponent` 。第二个条目使用了一些特殊的格式，将在以后的课程中重新讨论。
+      `routeConfig` 数组中的条目表示应用程序中的路由。只要 url 与 `''` 匹配，第一个条目就会导航到 `HomeComponent`。第二个条目使用了一些特殊的格式，将在以后的课程中重新讨论。
 
 1. Save all changes and confirm that the application works in the browser. The application should still display the list of housing locations.
 

@@ -146,7 +146,7 @@ export class ViewFixture {
    * If you use `ViewFixture` and `enter()`, please add `afterEach(ViewFixture.cleanup);` to ensure
    * that he global `LFrame` stack gets cleaned up between the tests.
    *
-   * 如果你使用 `ViewFixture` 并 `enter()` ，请添加 `afterEach(ViewFixture.cleanup);` 以确保他的全局
+   * 如果你使用 `ViewFixture` 并 `enter()`，请添加 `afterEach(ViewFixture.cleanup);` 以确保他的全局
    * `LFrame` 堆栈在测试之间被清理。
    *
    */

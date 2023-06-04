@@ -680,7 +680,7 @@ export class NgModuleDecoratorHandler implements
   /**
    * Add class metadata statements, if provided, to the `ngModuleStatements`.
    *
-   * 将类元数据语句（如果提供）添加到 `ngModuleStatements` 。
+   * 将类元数据语句（如果提供）添加到 `ngModuleStatements`。
    *
    */
   private insertMetadataStatement(ngModuleStatements: Statement[], metadata: Expression|null):
@@ -693,7 +693,7 @@ export class NgModuleDecoratorHandler implements
   /**
    * Add remote scoping statements, as needed, to the `ngModuleStatements`.
    *
-   * 根据需要，将远程范围声明添加到 `ngModuleStatements` 。
+   * 根据需要，将远程范围声明添加到 `ngModuleStatements`。
    *
    */
   private appendRemoteScopingStatements(
@@ -840,7 +840,7 @@ function isNgModule(node: ClassDeclaration, compilation: ScopeData): boolean {
 /**
  * Checks whether the given `ts.Expression` is the expression `module.id`.
  *
- * 检查给定的 `ts.Expression` 是否是表达式 `module.id` 。
+ * 检查给定的 `ts.Expression` 是否是表达式 `module.id`。
  *
  */
 function isModuleIdExpression(expr: ts.Expression): boolean {

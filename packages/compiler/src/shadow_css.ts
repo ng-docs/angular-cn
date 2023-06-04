@@ -33,7 +33,7 @@ const animationKeywords = new Set([
  * The following class has its origin from a port of shadowCSS from webcomponents.js to TypeScript.
  * It has since diverge in many ways to tailor Angular's needs.
  *
- * 以下类起源于从 webcomponents.js 到 TypeScript 的 shadowCSS 端口。 从那以后，它在许多方面都有所不同，以适应 Angular 的需求。
+ * 以下类起源于从 webcomponents.js 到 TypeScript 的 shadowCSS 端口。从那以后，它在许多方面都有所不同，以适应 Angular 的需求。
  *
  * Source:
  * https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js
@@ -1009,7 +1009,7 @@ function escapeInStrings(input: string): string {
  * to it's original form of:
  *  `animation: "my-anim:at\"ion" 1s;`
  *
- * 例如，它将文本： `animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;` 还原为它的原始形式： `animation: "my-anim:at\"ion" 1s;`
+ * 例如，它将文本：`animation: "my-anim%COLON_IN_PLACEHOLDER%at\"ion" 1s;` 还原为它的原始形式：`animation: "my-anim:at\"ion" 1s;`
  *
  * Note: For the sake of simplicity this function does not check that the placeholders are
  * actually inside strings as it would anyway be extremely unlikely to find them outside of strings.
@@ -1052,7 +1052,7 @@ function unescapeInStrings(input: string): string {
  * \(note that the latter backslashes are not removed as they are not actually escaping the single
  * quote\)
  *
- * 例如，它将字符串（假设被引用）： `this \\"is\\" a \\'\\\\'test` 转换为： `this "is" a '\\\\'test` （注意后者反斜杠没有被删除，因为它们实际上并没有转义单引号）
+ * 例如，它将字符串（假设被引用）：`this \\"is\\" a \\'\\\\'test` 转换为：`this "is" a '\\\\'test` （注意后者反斜杠没有被删除，因为它们实际上并没有转义单引号）
  *
  * @param input the string possibly containing escaped quotes.
  *
@@ -1092,7 +1092,7 @@ function unescapeQuotes(str: string, isQuoted: boolean): string {
  * When there is more than one context selector we also have to create combinations of those
  * selectors with each other. For example if there are `A` and `B` selectors the output is:
  *
- * 当有多个上下文选择器时，我们还必须创建这些选择器彼此的组合。 例如，如果有 `A` 和 `B` 选择器，则输出为：
+ * 当有多个上下文选择器时，我们还必须创建这些选择器彼此的组合。例如，如果有 `A` 和 `B` 选择器，则输出为：
  *
  * ```
  * AB<hostMarker>, AB <hostMarker>, A B<hostMarker>,
@@ -1160,7 +1160,7 @@ function combineHostContextSelectors(contextSelectors: string[], otherSelectors:
  * @param groups An array of groups of strings that will be repeated. This array is mutated
  *     in-place.
  *
- * 一组将重复的字符串组。 这个数组是就地变异的。
+ * 一组将重复的字符串组。这个数组是就地变异的。
  *
  * @param multiples The number of times the current groups should appear.
  *

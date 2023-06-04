@@ -36,7 +36,7 @@ let upgradeCount: number = 0;
  * 2. creation of AngularJS directive from Angular component.
  *    \(See [UpgradeAdapter#downgradeNg2Component()]\)
  *
- *    从 Angular 组件创建 AngularJS 指令。 （参见[UpgradeAdapter#downgradeNg2Component\(\)][UpgradeAdapter#downgradeNg2Component()] ）
+ *    从 Angular 组件创建 AngularJS 指令。（参见[UpgradeAdapter#downgradeNg2Component\(\)][UpgradeAdapter#downgradeNg2Component()] ）
  *
  * 3. Bootstrapping of a hybrid Angular application which contains both of the frameworks
  *    coexisting in a single application.
@@ -99,7 +99,7 @@ let upgradeCount: number = 0;
  * 9. The new application is running in Angular zone, and therefore it no longer needs calls to
  *    `$apply()`.
  *
- *    新应用程序在 Angular 区域中运行，因此它不再需要调用 `$apply()` 。
+ *    新应用程序在 Angular 区域中运行，因此它不再需要调用 `$apply()`。
  *
  * ### Example
  *
@@ -144,7 +144,7 @@ let upgradeCount: number = 0;
  * Deprecated since v5. Use `upgrade/static` instead, which also supports
  * [Ahead-of-Time compilation](guide/aot-compiler).
  *
- * 自 v5 后已弃用。 使用 `upgrade/static` 代替，它也支持[Ahead-of-Time compilation](guide/aot-compiler) 。
+ * 自 v5 后已弃用。使用 `upgrade/static` 代替，它也支持[Ahead-of-Time compilation](guide/aot-compiler)。
  *
  * @publicApi
  */
@@ -286,19 +286,19 @@ export class UpgradeAdapter {
    *
    *   - Attribute: `<comp name="World">`
    *
-   *     属性： `<comp name="World">`
+   *     属性：`<comp name="World">`
    *
    *   - Interpolation:  `<comp greeting="Hello {{name}}!">`
    *
-   *     插值： `<comp greeting="Hello {{name}}!">`
+   *     插值：`<comp greeting="Hello {{name}}!">`
    *
    *   - Expression:  `<comp [name]="username">`
    *
-   *     表达式： `<comp [name]="username">`
+   *     表达式：`<comp [name]="username">`
    *
    *   - Event:  `<comp (close)="doSomething()">`
    *
-   *     事件： `<comp (close)="doSomething()">`
+   *     事件：`<comp (close)="doSomething()">`
    *
    * - Transclusion: yes
    *
@@ -313,63 +313,63 @@ export class UpgradeAdapter {
    *   - `compile`: not supported because the host element is owned by Angular, which does
    *     not allow modifying DOM structure during compilation.
    *
-   *     `compile` ：不支持，因为宿主元素归 Angular 所有，它不允许在编译期间修改 DOM 结构。
+   *     `compile`：不支持，因为宿主元素归 Angular 所有，它不允许在编译期间修改 DOM 结构。
    *
    *   - `controller`: supported. \(NOTE: injection of `$attrs` and `$transclude` is not supported.\)
    *
-   *     `controller` ：支持。（注意：不支持注入 `$attrs` 和 `$transclude` 。）
+   *     `controller`：支持。（注意：不支持注入 `$attrs` 和 `$transclude`。）
    *
    *   - `controllerAs`: supported.
    *
-   *     `controllerAs` ：支持。
+   *     `controllerAs`：支持。
    *
    *   - `bindToController`: supported.
    *
-   *     `bindToController` ：支持。
+   *     `bindToController`：支持。
    *
    *   - `link`: supported. \(NOTE: only pre-link function is supported.\)
    *
-   *     `link` ：支持。（注意：仅支持预链接功能。）
+   *     `link`：支持。（注意：仅支持预链接功能。）
    *
    *   - `name`: supported.
    *
-   *     `name` ：支持。
+   *     `name`：支持。
    *
    *   - `priority`: ignored.
    *
-   *     `priority` ：忽略。
+   *     `priority`：忽略。
    *
    *   - `replace`: not supported.
    *
-   *     `replace` ：不支持。
+   *     `replace`：不支持。
    *
    *   - `require`: supported.
    *
-   *     `require` ：支持。
+   *     `require`：支持。
    *
    *   - `restrict`: must be set to 'E'.
    *
-   *     `restrict` ：必须设置为 'E'。
+   *     `restrict`：必须设置为 'E'。
    *
    *   - `scope`: supported.
    *
-   *     `scope` ：支持。
+   *     `scope`：支持。
    *
    *   - `template`: supported.
    *
-   *     `template` ：支持。
+   *     `template`：支持。
    *
    *   - `templateUrl`: supported.
    *
-   *     `templateUrl` ：支持。
+   *     `templateUrl`：支持。
    *
    *   - `terminal`: ignored.
    *
-   *     `terminal` ：被忽略。
+   *     `terminal`：被忽略。
    *
    *   - `transclude`: supported.
    *
-   *     `transclude` ：支持。
+   *     `transclude`：支持。
    *
    * ### Example
    *
@@ -467,7 +467,7 @@ export class UpgradeAdapter {
    * an `UpgradeAdapterRef`, which lets you register a `ready()` callback to
    * run assertions once the Angular components are ready to test through AngularJS.
    *
-   * 一个 `UpgradeAdapterRef` ，一旦 Angular 组件准备好通过 AngularJS 进行测试，它允许你注册一个 `ready()` 回调来运行断言。
+   * 一个 `UpgradeAdapterRef`，一旦 Angular 组件准备好通过 AngularJS 进行测试，它允许你注册一个 `ready()` 回调来运行断言。
    *
    */
   registerForNg1Tests(modules?: string[]): UpgradeAdapterRef {
@@ -805,7 +805,7 @@ export class UpgradeAdapter {
  * Deprecated since v5. Use `upgrade/static` instead, which also supports
  * [Ahead-of-Time compilation](guide/aot-compiler).
  *
- * 自 v5 后已弃用。 使用 `upgrade/static` 代替，它也支持[Ahead-of-Time compilation](guide/aot-compiler) 。
+ * 自 v5 后已弃用。使用 `upgrade/static` 代替，它也支持[Ahead-of-Time compilation](guide/aot-compiler)。
  *
  * @publicApi
  */
@@ -836,7 +836,7 @@ export class UpgradeAdapterRef {
    * The `ready` callback function is invoked inside the Angular zone, therefore it does not
    * require a call to `$apply()`.
    *
-   * `ready` 回调函数是在 Angular 区域内调用的，因此它不需要调用 `$apply()` 。
+   * `ready` 回调函数是在 Angular 区域内调用的，因此它不需要调用 `$apply()`。
    *
    */
   public ready(fn: (upgradeAdapterRef: UpgradeAdapterRef) => void) {

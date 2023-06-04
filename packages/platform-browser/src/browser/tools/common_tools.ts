@@ -18,7 +18,7 @@ export class ChangeDetectionPerfRecord {
  * Entry point for all Angular profiling-related debug tools. This object
  * corresponds to the `ng.profiler` in the dev console.
  *
- * 所有 Angular 分析相关的调试工具的入口点。此对象对应于开发控制台中的 `ng.profiler` 。
+ * 所有 Angular 分析相关的调试工具的入口点。此对象对应于开发控制台中的 `ng.profiler`。
  *
  */
 export class AngularProfiler {

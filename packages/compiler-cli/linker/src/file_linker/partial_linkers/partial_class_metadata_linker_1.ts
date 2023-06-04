@@ -14,7 +14,7 @@ import {LinkedDefinition, PartialLinker} from './partial_linker';
 /**
  * A `PartialLinker` that is designed to process `ɵɵngDeclareClassMetadata()` call expressions.
  *
- * 一个 `PartialLinker` ，旨在处理 `ɵɵngDeclareClassMetadata()` 调用表达式。
+ * 一个 `PartialLinker`，旨在处理 `ɵɵngDeclareClassMetadata()` 调用表达式。
  *
  */
 export class PartialClassMetadataLinkerVersion1<TExpression> implements PartialLinker<TExpression> {

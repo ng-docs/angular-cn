@@ -129,7 +129,7 @@ export class ParseSourceSpan {
    *
    * 标记的开始，而不跳过领先的琐事。这由进一步拆分标记的工具使用，例如从文本标记中提取 Angular
    * 插值。此类工具会创建相对于原始标记的 source-span 的新的 source-span
-   * 。如果已跳过前导琐事字符，则新的 source-spans 可能会被错误地偏移。
+   *。如果已跳过前导琐事字符，则新的 source-spans 可能会被错误地偏移。
    * @param details
    * Additional information \(such as identifier names\) that should be associated with the span.
    *

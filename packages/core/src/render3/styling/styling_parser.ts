@@ -42,7 +42,7 @@ import {CharCode} from '../../util/char_code';
  *
  * NOTE: `value` and `valueEnd` are used only for styles, not classes.
  *
- * 注意： `value` 和 `valueEnd` 仅用于样式，而不用于类。
+ * 注意：`value` 和 `valueEnd` 仅用于样式，而不用于类。
  *
  */
 interface ParserState {
@@ -64,7 +64,7 @@ const parserState: ParserState = {
 /**
  * Retrieves the last parsed `key` of style.
  *
- * 检索 style 的最后一个解析 `key` 。
+ * 检索 style 的最后一个解析 `key`。
  *
  * @param text the text to substring the key from.
  *
@@ -78,7 +78,7 @@ export function getLastParsedKey(text: string): string {
 /**
  * Retrieves the last parsed `value` of style.
  *
- * 检索 style 的最后解析的 `value` 。
+ * 检索 style 的最后解析的 `value`。
  *
  * @param text the text to substring the key from.
  *
@@ -356,7 +356,7 @@ export function consumeStyleKey(text: string, startIndex: number, endIndex: numb
 /**
  * Consumes all whitespace and the separator `:` after the style key.
  *
- * 使用样式键之后的所有空格和分隔符 `:` 。
+ * 使用样式键之后的所有空格和分隔符 `:`。
  *
  * @param text Text to scan
  *

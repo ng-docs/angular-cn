@@ -20,7 +20,7 @@ import {LView} from './view';
  *
  * 特定于给定 DOM 元素、指令或组件实例的内部视图上下文。此处的每个值（除了 LView
  * 和元素节点详细信息之外）都可以存在、 null 或
- * undefined。如果未定义，则表示该值尚未被查找，否则，如果为 null ，则执行查找并且没有找到任何内容。
+ * undefined。如果未定义，则表示该值尚未被查找，否则，如果为 null，则执行查找并且没有找到任何内容。
  *
  * Each value will get filled when the respective value is examined within the getContext
  * function. The component, element and each directive instance will share the same instance

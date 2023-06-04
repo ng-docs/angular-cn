@@ -18,7 +18,7 @@ import {getTView} from '../state';
 /**
  * NOTE: The word `styling` is used interchangeably as style or class styling.
  *
- * 注意： `styling` 一词可与样式或类样式互换使用。
+ * 注意：`styling` 一词可与样式或类样式互换使用。
  *
  * This file contains code to link styling instructions together so that they can be replayed in
  * priority order. The file exists because Ivy styling instruction execution order does not match
@@ -145,13 +145,13 @@ import {getTView} from '../state';
  * Once the items are correctly sorted in the list, the answer is simply the last item in the
  * concatenation list which is `#002`.
  *
- * 一旦项目在列表中正确排序，答案就是串联列表中的最后一项，即 `#002` 。
+ * 一旦项目在列表中正确排序，答案就是串联列表中的最后一项，即 `#002`。
  *
  * To do so we keep a linked list of all of the bindings which pertain to this element.
  * Notice that the bindings are inserted in the order of execution, but the `TView.data` allows
  * us to traverse them in the order of priority.
  *
- * 为此，我们保留了与此元素相关的所有绑定的链接列表。 请注意，绑定是按执行顺序插入的，但 `TView.data` 允许我们按优先级顺序遍历它们。
+ * 为此，我们保留了与此元素相关的所有绑定的链接列表。请注意，绑定是按执行顺序插入的，但 `TView.data` 允许我们按优先级顺序遍历它们。
  *
  * | Idx                | `TView.data` | `LView`            | Notes                                  |
  * | ------------------ | ------------ | ------------------ | -------------------------------------- |
@@ -185,12 +185,12 @@ import {getTView} from '../state';
  * there is a map \(which may contain the name\). This information is useful in knowing if other
  * styles with higher priority need to be searched for overwrites.
  *
- * 注意：除了跟踪下一个/上一个索引之外， `TView.data` 还存储上一个/下一个重复位。 如果为真，则重复位表示存在具有相同名称的绑定或存在映射（可能包含名称）。 此信息有助于了解是否需要搜索具有更高优先级的其他样式以进行覆盖。
+ * 注意：除了跟踪下一个/上一个索引之外，`TView.data` 还存储上一个/下一个重复位。如果为真，则重复位表示存在具有相同名称的绑定或存在映射（可能包含名称）。此信息有助于了解是否需要搜索具有更高优先级的其他样式以进行覆盖。
  *
  * NOTE: See `should support example in 'tnode_linked_list.ts' documentation` in
  * `tnode_linked_list_spec.ts` for working example.
  *
- * 注意：有关工作示例，请参阅 `tnode_linked_list_spec.ts` `should support example in 'tnode_linked_list.ts' documentation` 。
+ * 注意：有关工作示例，请参阅 `tnode_linked_list_spec.ts` `should support example in 'tnode_linked_list.ts' documentation`。
  *
  */
 let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefined;
@@ -203,7 +203,7 @@ let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefin
  *
  * Note: this function is executed during `firstUpdatePass` only to populate the `TView.data`.
  *
- * 注意：此函数在 `firstUpdatePass` 期间执行，仅用于填充 `TView.data` 。
+ * 注意：此函数在 `firstUpdatePass` 期间执行，仅用于填充 `TView.data`。
  *
  * The function works by keeping track of `tStylingRange` which contains two pointers pointing to
  * the head/tail of the template portion of the styles.
@@ -220,13 +220,13 @@ let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefin
  *
  * @param tData The `TData` to insert into.
  *
- * 要插入的 `TData` 。
+ * 要插入的 `TData`。
  * @param tNode `TNode` associated with the styling element.
  *
- * 与样式元素关联的 `TNode` 。
+ * 与样式元素关联的 `TNode`。
  * @param tStylingKey See `TStylingKey`.
  *
- * 请参阅 `TStylingKey` 。
+ * 请参阅 `TStylingKey`。
  * @param index location of where `tStyleValue` should be stored \(and linked into list.\)
  *
  * 应该存储 `tStyleValue` 的位置（并链接到列表中。）
@@ -234,13 +234,13 @@ let __unused_const_as_closure_does_not_like_standalone_comment_blocks__: undefin
  * @param isHostBinding `true` if the insertion is for a `hostBinding`. \(insertion is in front of
  *               template.\)
  *
- * `true` 插入是针对 `hostBinding` 的，则为 true 。（插入在模板前面。）
+ * `true` 插入是针对 `hostBinding` 的，则为 true。（插入在模板前面。）
  *
  * @param isClassBinding True if the associated `tStylingKey` as a `class` styling.
  *                       `tNode.classBindings` should be used \(or `tNode.styleBindings` otherwise.\)
  *
  * 如果关联的 `tStylingKey` 作为 `class` 样式，则为真。应使用 `tNode.classBindings`（或否则使用
- * `tNode.styleBindings` 。）
+ * `tNode.styleBindings`。）
  *
  */
 export function insertTStylingBinding(
@@ -339,13 +339,13 @@ export function insertTStylingBinding(
  *
  * @param tNode `TNode` where the residual is stored.
  *
- * 存储残差的 `TNode` 。
+ * 存储残差的 `TNode`。
  * @param tStylingKey `TStylingKey` to store.
  *
- * 要存储的 `TStylingKey` 。
+ * 要存储的 `TStylingKey`。
  * @param tData `TData` associated with the current `LView`.
  *
- * 与当前 `TData` 关联的 `LView` 。
+ * 与当前 `TData` 关联的 `LView`。
  * @param index location of where `tStyleValue` should be stored \(and linked into list.\)
  *
  * 应该存储 `tStyleValue` 的位置（并链接到列表中。）
@@ -354,7 +354,7 @@ export function insertTStylingBinding(
  *                       `tNode.classBindings` should be used \(or `tNode.styleBindings` otherwise.\)
  *
  * 如果关联的 `tStylingKey` 作为 `class` 样式，则为真。应使用 `tNode.classBindings`（或否则使用
- * `tNode.styleBindings` 。）
+ * `tNode.styleBindings`。）
  *
  */
 function markDuplicateOfResidualStyling(
@@ -372,7 +372,7 @@ function markDuplicateOfResidualStyling(
  * Marks `TStyleValue`s as duplicates if another style binding in the list has the same
  * `TStyleValue`.
  *
- * 如果列表中的另一个样式绑定具有相同的 `TStyleValue` ，则将 `TStyleValue` 标记为重复。
+ * 如果列表中的另一个样式绑定具有相同的 `TStyleValue`，则将 `TStyleValue` 标记为重复。
  *
  * NOTE: this function is intended to be called twice once with `isPrevDir` set to `true` and once
  * with it set to `false` to search both the previous as well as next items in the list.
@@ -394,7 +394,7 @@ function markDuplicateOfResidualStyling(
  * duplicates because `width` is not found in any other part of the linked list.
  *
  * 在上述情况下，将 `[style.width.px]` 添加到现有的 `[style.color]`
- * 不会产生重复项，因为在链表的任何其他部分都找不到 `width` 。
+ * 不会产生重复项，因为在链表的任何其他部分都找不到 `width`。
  *
  * Duplicate case
  *
@@ -426,7 +426,7 @@ function markDuplicateOfResidualStyling(
  * `[style]` is a Map and as such is fully dynamic and could produce `color` or `width`.
  *
  * 在上述情况下，添加 `[style]` 将生成与任何其他绑定的副本，因为 `[style]` 是 Map
- * ，因此是完全动态的，可以生成 `color` 或 `width` 。
+ *，因此是完全动态的，可以生成 `color` 或 `width`。
  *
  * Map case 2
  *
@@ -443,7 +443,7 @@ function markDuplicateOfResidualStyling(
  * `width`.
  *
  * 在上述情况下，添加 `[style.color]` 将产生重复，因为已经有了一个 `[style]` 绑定，它是 Map
- * ，因此是完全动态的，可以生成 `color` 或 `width` 。
+ *，因此是完全动态的，可以生成 `color` 或 `width`。
  *
  * NOTE: Once `[style]` \(Map\) is added into the system all things are mapped as duplicates.
  * NOTE: We use `style` as example, but same logic is applied to `class`es as well.
@@ -453,11 +453,11 @@ function markDuplicateOfResidualStyling(
  *
  * @param tData `TData` where the linked list is stored.
  *
- * 存储链表的 `TData` 。
+ * 存储链表的 `TData`。
  * @param tStylingKey `TStylingKeyPrimitive` which contains the value to compare to other keys in
  *        the linked list.
  *
- * `TStylingKeyPrimitive` ，其中包含要与链表中其他键进行比较的值。
+ * `TStylingKeyPrimitive`，其中包含要与链表中其他键进行比较的值。
  * @param index Starting location in the linked list to search from
  *
  * 链表中要搜索的起始位置
@@ -465,7 +465,7 @@ function markDuplicateOfResidualStyling(
  *        \- `true` for previous \(lower priority\);
  *        \- `false` for next \(higher priority\).
  *
- * 方向。 - 上一个为 `true`（优先级较低）； - 下一个为 `false`（更高优先级）。
+ * 方向。- 上一个为 `true`（优先级较低）； - 下一个为 `false`（更高优先级）。
  *
  */
 function markDuplicates(
