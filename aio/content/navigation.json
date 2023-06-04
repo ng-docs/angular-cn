@@ -910,7 +910,7 @@
         },
         {
           "url": "guide/web-worker",
-          "titleCn": "网络工作者",
+          "titleCn": "Web Worker",
           "title": "Web Workers",
           "tooltipCn": "使用 Web Worker 进行后台处理。",
           "tooltip": "Using web workers for background processing."
@@ -981,11 +981,11 @@
               "title": "RxJS Interop for Signals",
               "tooltip": "Angular signals and Observable interop",
               "titleCn": "信号的 RxJS 互操作",
-              "tooltipCn": "角度信号和 Observable 互操作"
+              "tooltipCn": "Angular 信号和 Observable 互操作"
             }
           ],
-          "titleCn": "功能预览",
-          "tooltipCn": "Angular 预览功能和 API"
+          "titleCn": "特性预览",
+          "tooltipCn": "Angular 特性预览和 API"
         }
       ]
     },
@@ -1177,14 +1177,14 @@
               "url": "tutorial/first-app/first-app-lesson-01",
               "title": "Hello world",
               "tooltip": "Start coding in Angular with Hello World",
-              "titleCn": "你好世界",
+              "titleCn": "Hello world",
               "tooltipCn": "使用 Hello World 开始在 Angular 中编码"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-02",
               "title": "Create home component",
               "tooltip": "Create the app's HomeComponent",
-              "titleCn": "创建主页组件",
+              "titleCn": "创建 home 组件",
               "tooltipCn": "创建应用程序的 HomeComponent"
             },
             {
@@ -1192,21 +1192,21 @@
               "title": "Create housing location component",
               "tooltip": "Create the app's HousingLocation",
               "titleCn": "创建住房位置组件",
-              "tooltipCn": "创建应用程序的 HousingLocation"
+              "tooltipCn": "创建应用程序的 HousingLocation 组件"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-04",
               "title": "Create an interface",
               "tooltip": "Create an interface for your app",
-              "titleCn": "创建接口",
+              "titleCn": "创建界面",
               "tooltipCn": "为你的应用创建界面"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-05",
               "title": "Add inputs to components",
               "tooltip": "Add inputs to components in your app",
-              "titleCn": "向组件添加输入",
-              "tooltipCn": "向应用中的组件添加输入"
+              "titleCn": "向组件添加输入属性",
+              "tooltipCn": "向应用中的组件添加输入属性"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-06",
@@ -1220,7 +1220,7 @@
               "title": "Add dynamic values to templates",
               "tooltip": "Add dynamic values to your templates in your app",
               "titleCn": "向模板添加动态值",
-              "tooltipCn": "将动态值添加到应用中的模板"
+              "tooltipCn": "将动态值添加到应用中的模板上"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-08",
@@ -1233,15 +1233,15 @@
               "url": "tutorial/first-app/first-app-lesson-09",
               "title": "Angular services",
               "tooltip": "Add an Angular service to your app",
-              "titleCn": "角度服务",
-              "tooltipCn": "将 Angular 服务添加到你的应用程序"
+              "titleCn": "Angular 服务",
+              "tooltipCn": "将 Angular 服务添加到你的应用程序中"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-10",
               "title": "Add routing",
               "tooltip": "Add routing to your app",
               "titleCn": "添加路由",
-              "tooltipCn": "将路由添加到你的应用程序"
+              "tooltipCn": "将路由添加到你的应用程序中"
             },
             {
               "url": "tutorial/first-app/first-app-lesson-11",
@@ -1353,7 +1353,7 @@
       "children": [
         {
           "url": "guide/update-to-version-16",
-          "titleCn": "发布实践",
+          "titleCn": "把 Angular 升级到最新版",
           "title": "Update Angular to the latest version",
           "tooltipCn": "Angular 的版本控制、发布、支持和弃用策略及实践。",
           "tooltip": "Update your Angular application to the latest version."
@@ -1617,7 +1617,7 @@
                 },
                 {
                   "url": "guide/ngmodule-api",
-                  "titleCn": "模块 API",
+                  "titleCn": "NgModule API",
                   "title": "NgModule API",
                   "tooltipCn": "了解 NgModules 的细节。",
                   "tooltip": "Understand the details of NgModules."
@@ -2036,7 +2036,7 @@
       "children": [
         {
           "url": "https://stackoverflow.com/questions/tagged/angular",
-          "titleCn": "堆栈溢出",
+          "titleCn": "Stack Overflow",
           "title": "Stack Overflow",
           "tooltipCn": "Stack Overflow：这里社区会回答你的 Angular 技术问题。",
           "tooltip": "Stack Overflow: where the community answers your technical Angular questions."
@@ -2050,7 +2050,7 @@
         },
         {
           "url": "https://gitter.im/angular/angular",
-          "titleCn": "网格",
+          "titleCn": "Gitter",
           "title": "Gitter",
           "tooltipCn": "和老鸟聊聊 Angular。",
           "tooltip": "Chat about Angular with other birds of a feather."
@@ -2091,9 +2091,9 @@
         },
         {
           "url": "https://twitter.com/angular",
-          "titleCn": "推特",
+          "titleCn": "Twitter",
           "title": "Twitter",
-          "tooltipCn": "推特",
+          "tooltipCn": "Twitter",
           "tooltip": "Twitter"
         },
         {
@@ -2137,7 +2137,7 @@
           "url": "https://angular.jp/"
         },
         {
-          "titleCn": "韩国人",
+          "titleCn": "한국어",
           "title": "한국어",
           "url": "https://angular.kr/"
         },

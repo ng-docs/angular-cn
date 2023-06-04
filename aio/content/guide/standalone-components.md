@@ -355,7 +355,7 @@ Angular 应用程序可以通过指定一组可用的提供者来配置依赖注
 
 Making `NgModule`s optional will require new ways of configuring "module" injectors with application-wide providers \(for example, [HttpClient](/api/common/http/HttpClient)\). In the standalone application \(one created with `bootstrapApplication`\), “module” providers can be configured during the bootstrap process, in the `providers` option: 
 
-使 `NgModule` 变成可选的将需要一种新方法来用应用程序范围的提供者（例如[HttpClient](https://angular.io/api/common/http/HttpClient)）配置“模块”注入器。在独立应用程序（使用 `bootstrapApplication` 创建的）中，可以在引导过程中在 `providers` 选项中配置“模块”提供者：
+使 `NgModule` 变成可选的将需要一种新方法来用应用程序范围的提供者（例如[HttpClient](/api/common/http/HttpClient)）配置“模块”注入器。在独立应用程序（使用 `bootstrapApplication` 创建的）中，可以在引导过程中在 `providers` 选项中配置“模块”提供者：
 
 ```ts
 bootstrapApplication(PhotoAppComponent, {
@@ -476,7 +476,7 @@ The order of class declaration matters in TypeScript. You can't refer directly t
 
 This isn't usually a problem but sometimes circular references are unavoidable. For example, when class 'A' refers to class 'B' and 'B' refers to 'A'. One of them has to be defined first.
 
-这通常不是问题，但有时循环引用是不可避免的。 例如，当类“A”引用类“B”而“B”引用“A”时。 其中之一必须首先定义。
+这通常不是问题，但有时循环引用是不可避免的。 例如，当类“A”引用类“B”而“B”也引用“A”时。 其中之一必须首先定义。
 
 The Angular `forwardRef()` function creates an indirect reference that Angular can resolve later. 
 
@@ -511,5 +511,7 @@ export class ChildComponent {
 <div class="alert is-important">
 
 This kind of imports may result in an infinite recursion during component instantiation. Make sure that this recursion has an exit condition that stops it at some point.
+
+这种类型的导入可能会导致组件实例化期间出现无限递归。请确保这种递归具有停止条件，会在某种时刻停止。
 
 </div>

@@ -85,7 +85,7 @@ export class RouterTestingHarness {
   /**
    * Instructs the root fixture to run change detection.
    *
-   * 指示根夹具运行更改检测。
+   * 指示根夹具运行变更检测。
    *
    */
   detectChanges(): void {

@@ -33,7 +33,7 @@ import {enableFindMatchingDehydratedViewImpl} from './views';
  * Indicates whether the hydration-related code was added,
  * prevents adding it multiple times.
  *
- * 指示是否添加了与水化相关的代码，防止多次添加。
+ * 指示是否添加了与水合相关的代码，防止多次添加。
  *
  */
 let isHydrationSupportEnabled = false;

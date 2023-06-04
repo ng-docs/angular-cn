@@ -90,12 +90,12 @@
         {%- endif -%}
       </h3>
       {%- if method.developerPreview %}
-      <label class="api-status-label dev-preview" title="This API is in Developer Preview">
-        <a href="guide/releases#developer-preview">developer preview</a>
+      <label class="api-status-label dev-preview" title="本 API 是开发者预览版">
+        <a href="guide/releases#developer-preview">开发者预览</a>
       </label>
       {% endif %}
       {%- if method.deprecated %}
-      <label class="api-status-label deprecated" title="This API is deprecated">Deprecated</label>
+      <label class="api-status-label deprecated" title="本 API 已弃用">已弃用</label>
       {% endif %}
       {$ github.githubLinks(method, versionInfo) $}
     </div>
@@ -232,12 +232,12 @@
         </td>
         <td>
           {%- if property.developerPreview %}
-          <label class="api-status-label dev-preview" title="This API is in Developer Preview">
-            <a href="guide/releases#developer-preview">developer preview</a>
+          <label class="api-status-label dev-preview" title="本 API 是开发者预览版">
+            <a href="guide/releases#developer-preview">开发者预览</a>
           </label>
           {% endif %}
           {%- if property.deprecated %}
-          <label class="api-status-label deprecated" title="This API is deprecated">Deprecated</label>
+          <label class="api-status-label deprecated" title="本 API 已弃用">已弃用</label>
           {% endif %}
 
           {%- if (property.isGetAccessor or property.isReadonly) and not property.isSetAccessor %}

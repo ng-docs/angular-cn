@@ -179,7 +179,7 @@ To get information from a route:
 
 1. Add the `withComponentInputBinding` feature to the `provideRouter` method.
 
-   将 `withComponentInputBinding` 功能添加到 `provideRouter` 方法。
+   将 `withComponentInputBinding` 特性添加到 `provideRouter` 方法。
 
    <code-example header="provideRouter feature" path="router/src/app/app-routing.module.11.ts" region="withComponentInputBinding"></code-example>
 
@@ -500,7 +500,7 @@ To use route guards, consider using [component-less routes](api/router/Route#com
 
 Create a file for your guard:
 
-为你的守卫创建一项服务：
+为你的守卫创建一个文件：
 
 <code-example format="shell" language="shell">
 
@@ -511,7 +511,7 @@ ng generate guard your-guard
 In your guard file, add the guard functions you want to use.
 The following example uses `canActivateFn` to guard the route.
 
-请在守卫函数里实现你要用到的守卫。下面的例子使用 `canActivate` 来保护该路由。
+请在守卫文件里添加你要用到的守卫函数。下面的例子使用 `canActivateFn` 来保护该路由。
 
 <code-example header="guard (excerpt)">
 

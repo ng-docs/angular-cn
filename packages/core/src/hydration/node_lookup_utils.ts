@@ -48,7 +48,7 @@ function getNoOffsetIndex(tNode: TNode): number {
  *
  * @param hydrationInfo The hydration annotation data
  *
- * 水化注释数据
+ * 水合注释数据
  *
  * @param tView the current tView
  *

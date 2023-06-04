@@ -110,7 +110,7 @@ On your local computer, in a command line tool or the **Terminal** pane of your 
 
 1. Run these commands to run the end-to-end tests.
 
-   运行这些命令以运行端到端测试。
+   执行这些命令以运行端到端测试。
 
    <code-example format="shell" language="shell">
 

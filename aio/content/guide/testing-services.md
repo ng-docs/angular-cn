@@ -100,8 +100,6 @@ As a service *tester*, you must at least think about the first level of service 
 
 ## Angular `TestBed`
 
-## 角度 `TestBed` 台
-
 The `TestBed` is the most important of the Angular testing utilities.
 The `TestBed` creates a dynamically-constructed Angular *test* module that emulates an Angular [`@NgModule`](guide/ngmodules).
 

@@ -1,4 +1,4 @@
-# HTTP&#x3A; Request data from a server
+# HTTP: Request data from a server
 
 # HTTP：从服务器请求数据
 

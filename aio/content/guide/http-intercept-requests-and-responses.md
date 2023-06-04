@@ -69,7 +69,7 @@ The final `next` in the chain is the `HttpClient` backend handler that sends the
 Most interceptors call `next.handle()` so that the request flows through to the next interceptor and, eventually, the backend handler.
 An interceptor *could* skip calling `next.handle()`, short-circuit the chain, and [return its own `Observable`](guide/http-interceptor-use-cases#caching) with an artificial server response.
 
-大多数拦截器调用 `next.handle()` 以便请求流经下一个拦截器，并最终流向后端处理程序。 拦截器*可以*跳过调用 `next.handle()` ，使链短路，并[返回带有人工服务器响应的自己的 `Observable`](guide/http-interceptor-use-cases#caching) 。
+大多数拦截器都会调用 `next.handle()` 以便请求流经下一个拦截器，并最终流向后端处理程序。 拦截器*可以*跳过对 `next.handle()` 的调用，使调用链短路，并[返回带有人工响应体的自定义 `Observable`](guide/http-interceptor-use-cases#caching) 。
 
 This is a common middleware pattern found in frameworks such as Express.js.
 

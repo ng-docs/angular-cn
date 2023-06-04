@@ -256,6 +256,8 @@ Set to `true` to preserve blank text nodes.
 
 When using hydration, it is recommended that you use `preserveWhitespaces: false`, which is the default value. If you choose to enable preserving whitespaces by adding `preserveWhitespaces: true` to your tsconfig, it is possible you may encounter issues with hydration. This is not yet a fully supported configuration. Ensure this is also consistently set between the server and client tsconfig files. See the [hydration guide](guide/hydration#preserve-whitespaces) for more details.
 
+当使用水合时，建议使用 `preserveWhitespaces: false`，这是默认值。如果你通过把 `preserveWhitespaces: true` 添加到 tsconfig 中启用了“保留空白字符”功能，水合时就可能出问题。因为这还不是一个收到全面支持的特性。要确保服务端和客户端的 tsconfig 文件中，此项设置是一致的。欲知详情，参见[水合指南](guide/hydration#preserve-whitespaces)。
+
 </div>
 
 ### `skipMetadataEmit`

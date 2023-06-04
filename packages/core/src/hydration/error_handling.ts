@@ -49,7 +49,7 @@ function getFriendlyStringFromTNodeType(tNodeType: TNodeType): string {
 /**
  * Validates that provided nodes match during the hydration process.
  *
- * 验证提供的节点在水化过程中是否匹配。
+ * 验证提供的节点在水合过程中是否匹配。
  *
  */
 export function validateMatchingNode(

@@ -1,7 +1,5 @@
 # NgModule API
 
-# 模块 API
-
 At a high level, NgModules are a way to organize Angular applications and they accomplish this through the metadata in the `@NgModule` decorator.
 The metadata falls into three categories:
 

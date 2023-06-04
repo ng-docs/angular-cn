@@ -32,11 +32,11 @@ In v16, we released a developer preview of non-destructive full hydration, see t
 
 在 v16 中，我们发布了无损完全水合的开发者预览版，请参阅[水合指南](guide/hydration)和[博客文章](https://blog.angular.io/whats-next-for-server-side-rendering-in-angular-2a6f27662b67)了解更多信息。 我们已经看到 Core Web Vitals 的显着改进，包括[LCP](https://web.dev/lcp)和[CLS](https://web.dev/cls) 。 在实验室测试中，我们始终观察到真实应用程序的 LCP 提高了 45%。
 
-### 探索水化（hydration）和服务端渲染可用性的改进
+### 探索水合（hydration）和服务端渲染可用性的改进
 
 As the next step, we will iterate on polishing full hydration and further explore the dynamically evolving space of partial hydration and resumability. These more advanced patterns carry their own trade-offs; we'll share updates as we progress.
 
-作为该项目的第一步，我们将实现无损水化。这项技术将允许我们复用服务端渲染好的 DOM，而不是重新渲染它，仅会附加事件侦听器并创建 Angular 运行时所需的数据结构。下一步，我们将进一步探索部分水化和可恢复的动态演化空间。每种方法都有它们的权衡，我们希望做出明智的决定，什么是 Angular 的最佳长期解决方案。
+作为该项目的第一步，我们将实现无损水合。这项技术将允许我们复用服务端渲染好的 DOM，而不是重新渲染它，仅会附加事件侦听器并创建 Angular 运行时所需的数据结构。下一步，我们将进一步探索部分水合和可恢复的动态演化空间。每种方法都有它们的权衡，我们希望做出明智的决定，什么是 Angular 的最佳长期解决方案。
 
 ### Improve runtime performance and developer experience with a new reactivity model
 
@@ -44,7 +44,7 @@ As the next step, we will iterate on polishing full hydration and further explor
 
 In v16, we shared a developer preview of Angular Signals which fully implemented make Zone.js optional. The feature resulted from hundreds of discussions, conversations with developers, feedback sessions, user experience studies, and a series of [RFCs](https://github.com/angular/angular/discussions/49685), which received over 1,000 comments. As part of the release, we made a signals library and an RxJS interoperability package available. Next, after addressing the feedback we received from developers, we’ll continue implementing the proposals from the RFC.
 
-在 v16 中，我们分享了 Angular Signals 的开发者预览版，它完全实现了使 Zone.js 可选。 该功能是数百次讨论、与开发人员的对话、反馈会议、用户体验研究和一系列[RFC](https://github.com/angular/angular/discussions/49685)的结果，收到了 1,000 多条评论。 作为发布的一部分，我们提供了一个信号库和一个 RxJS 互操作性包。 接下来，在解决了我们从开发人员那里收到的反馈后，我们将继续实施 RFC 中的建议。
+在 v16 中，我们分享了 Angular Signals 的开发者预览版，它完全实现了让 Zone.js 变成可选的。 该功能是数百次讨论、与开发人员的对话、反馈会议、用户体验研究和一系列[RFC](https://github.com/angular/angular/discussions/49685)的结果，收到了 1,000 多条评论。 作为发布的一部分，我们提供了一个信号库和一个 RxJS 互操作性包。 接下来，在解决了我们从开发人员那里收到的反馈后，我们将继续实施 RFC 中的建议。
 
 ### Explore ergonomic component-level code-splitting APIs
 
@@ -62,7 +62,7 @@ Web 应用程序的一个常见问题是它们的初始加载时间很慢。 改
 
 We released a developer preview of the `ng new --standalone` schematics collection, allowing you to create apps free of NgModules. Next, we'll iterate on the schematics to fill feature gaps and release a new tutorial based on standalone components.
 
-我们正在努力为使用独立组件引导的应用程序开发一个 `ng new` 集合。此外，我们正在填补简化的独立组件 API 的文档空白。
+我们正在努力为使用独立组件引导的应用程序开发一个 `ng new --standalone` 原理图集合。此外，我们正在逐步填补简化的独立组件 API 的文档空白。
 
 ### Introduce dependency injection debugging APIs
 
@@ -70,7 +70,7 @@ We released a developer preview of the `ng new --standalone` schematics collecti
 
 To improve the debugging utilities of Angular and Angular DevTools, we'll work on APIs that provide access to the dependency injection runtime. As part of the project, we'll expose debugging methods that allow us to explore the injector hierarchy and the dependencies across their associated providers. As of v16, we have a design of a feature that enables us to plug into the dependency injection life-cycle. As the next step, we'll implement the functionality and provide integration with Angular DevTools.
 
-为了改进 Angular 和 Angular DevTools 的调试工具，我们将使用提供依赖注入运行时访问的 API。作为项目的一部分，我们将公开调试方法，这些方法允许我们探索注入器层次结构以及跨关联提供者的依赖项。
+为了改进Angular和Angular DevTools的调试工具，我们将致力于提供访问依赖注入运行时的 API。作为该项目的一部分，我们将公开调试方法，以便探索注入器层次结构和其关联提供程序中的依赖关系。截至 v16，我们已经设计出了一项特性，可以让我们介入到依赖注入的生命周期中。下一步，我们将实现该特性并与 Angular DevTools 进行集成。
 
 ### Streamline standalone imports with Language Service
 
@@ -78,7 +78,7 @@ To improve the debugging utilities of Angular and Angular DevTools, we'll work o
 
 As part of this initiative, the language service automatically imports components and pipes in standalone and NgModule-based apps. Additionally, to enable smaller app bundles, we'll work on allowing the language service to propose the automatic removal of unused imports.
 
-作为该计划的一部分，我们将实现独立组件的模板依赖项的自动导入。此外，为了启用更小的应用程序包，语言服务将建议自动删除未使用的导入。
+作为该举措的一部分，语言服务将自动在独立应用程序和基于 NgModule 的应用程序中导入组件和管道。此外，为了实现更小的应用包，我们将致力于让语言服务向你建议自动删除未使用的导入。
 
 ### Investigate modern bundles
 

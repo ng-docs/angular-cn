@@ -31,7 +31,7 @@ When using `HttpClient.request()` with an HTTP method, configure the method with
 
 Next, pass this request object to the `HttpClient.request()` method, which returns an `Observable` of `HttpEvents` \(the same events processed by [interceptors](guide/http-intercept-requests-and-responses#interceptor-events)\).
 
-接下来，将此请求对象传递给 `HttpClient.request()` 方法，该方法返回 `HttpEvents` 的 `Observable` （[拦截器](guide/http-intercept-requests-and-responses#interceptor-events)处理的相同事件）。
+接下来，将此请求对象传给 `HttpClient.request()` 方法，该方法返回 `HttpEvents`（与[拦截器](guide/http-intercept-requests-and-responses#interceptor-events)处理的事件相同）的 `Observable` 。
 
 <code-example header="app/uploader/uploader.service.ts (upload body)" path="http/src/app/uploader/uploader.service.ts" region="upload-body"></code-example>
 

@@ -29,7 +29,7 @@ const TRANSFER_STATE_TOKEN_ID = '__ɵnghData__';
 /**
  * Lookup key used to reference DOM hydration data \(ngh\) in `TransferState`.
  *
- * 用于在 `TransferState` 中引用 DOM 水化数据 \(ngh\) 的查找键。
+ * 用于在 `TransferState` 中引用 DOM 水合数据 \(ngh\) 的查找键。
  *
  */
 export const NGH_DATA_KEY = makeStateKey<Array<SerializedView>>(TRANSFER_STATE_TOKEN_ID);
@@ -76,7 +76,7 @@ export const enum TextNodeMarker {
  * and retrieves hydration information from the TransferState using that value
  * as an index. Returns `null` by default, when hydration is not enabled.
  *
- * 引用从给定 RNode 读取 `ngh` 属性值并使用该值作为索引从 TransferState 检索水化信息的函数。 未启用水合时，默认返回 `null` 。
+ * 引用从给定 RNode 读取 `ngh` 属性值并使用该值作为索引从 TransferState 检索水合信息的函数。 未启用水合时，默认返回 `null` 。
  *
  * @param rNode Component's host element.
  *
@@ -246,7 +246,7 @@ type ClaimedNode = {
  * This is needed to make assessments in tests whether
  * the hydration process handled all nodes.
  *
- * 通过水合过程将节点标记为“已声明”。 这需要在测试中评估水化过程是否处理了所有节点。
+ * 通过水合过程将节点标记为“已声明”。 这需要在测试中评估水合过程是否处理了所有节点。
  *
  */
 export function markRNodeAsClaimedByHydration(node: RNode, checkIfAlreadyClaimed = true) {

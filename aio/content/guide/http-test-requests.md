@@ -98,7 +98,7 @@ Once returned, these requests are removed from future matching and you are respo
 
 ## Test for errors
 
-## 测试错误
+## 对报错进行测试
 
 You should test the app's defenses against HTTP requests that fail.
 

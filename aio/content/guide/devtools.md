@@ -5,7 +5,7 @@
 Angular DevTools is a browser extension that provides debugging and profiling capabilities for Angular applications.
 Angular DevTools supports Angular v12 and later when compiled with the [optimization configuration option](guide/workspace-config#optimization-configuration) disabled \(<code>{optimization:false}</code>\). 
 
-Angular DevTools 是一个浏览器扩展，为 Angular 应用程序提供调试和剖析功能。Angular DevTools 支持 Angular v12 及更高版本。
+Angular DevTools 是一个浏览器扩展，为 Angular 应用程序提供调试和剖析功能。当禁用了[优化配置选项](guide/workspace-config#optimization-configuration) 时（<code>{optimization:false}</code>），Angular DevTools 能支持 Angular v12 及更高版本。
 
 <div class="video-container">
 

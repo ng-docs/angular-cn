@@ -12,7 +12,7 @@ Change detection is sufficiently fast for most applications. However, when an ap
 
 If you are confident that a part of the application is not affected by a state change, you can use [OnPush](/api/core/ChangeDetectionStrategy) to skip change detection in an entire component subtree.
 
-如果你确信应用程序的一部分不受状态更改的影响，可以用 [OnPush](https://angular.io/api/core/ChangeDetectionStrategy) 跳过整个组件子树中的变更检测。
+如果你确信应用程序的一部分不受状态更改的影响，可以用 [OnPush](/api/core/ChangeDetectionStrategy) 跳过整个组件子树中的变更检测。
 
 ## Using `OnPush`
 

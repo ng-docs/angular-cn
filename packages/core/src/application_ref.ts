@@ -910,7 +910,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  * which means that the code in the subscription
  * to this Observable will not trigger the change detection.
  *
- * 另请注意，此 Observable 在 Angular 区域之外运行，这意味着订阅此 Observable 中的代码不会触发更改检测。
+ * 另请注意，此 Observable 在 Angular 区域之外运行，这意味着订阅此 Observable 中的代码不会触发变更检测。
  *
  * Let's imagine that instead of logging the counter value,
  * you update a field of your component
@@ -935,7 +935,7 @@ function optionsReducer<T extends Object>(dst: T, objs: T|T[]): T {
  *
  * You'll have to manually trigger the change detection to update the template.
  *
- * 你必须手动触发更改检测才能更新模板。
+ * 你必须手动触发变更检测才能更新模板。
  *
  * ```
  * constructor(appRef: ApplicationRef, cd: ChangeDetectorRef) {
@@ -1550,7 +1550,7 @@ export function internalProvideZoneChangeDetection(ngZoneFactory: () => NgZone):
  * Provides `NgZone`-based change detection for the application bootstrapped using
  * `bootstrapApplication`.
  *
- * 为使用 `bootstrapApplication` 引导的应用程序提供基于 `NgZone` 的更改检测。
+ * 为使用 `bootstrapApplication` 引导的应用程序提供基于 `NgZone` 的变更检测。
  *
  * `NgZone` is already provided in applications by default. This provider allows you to configure
  * options like `eventCoalescing` in the `NgZone`.

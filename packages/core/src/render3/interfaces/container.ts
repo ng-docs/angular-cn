@@ -37,7 +37,7 @@ export const TYPE = 1;
  * Flag to signify that this `LContainer` may have transplanted views which need to be change
  * detected. \(see: `LView[DECLARATION_COMPONENT_VIEW])`.
  *
- * 标志表示此 `LContainer` 可能具有需要更改检测的移植视图。 （参见： `LView[DECLARATION_COMPONENT_VIEW])` 。
+ * 标志表示此 `LContainer` 可能具有需要变更检测的移植视图。 （参见： `LView[DECLARATION_COMPONENT_VIEW])` 。
  *
  * This flag, once set, is never unset for the `LContainer`. This means that when unset we can skip
  * a lot of work in `refreshEmbeddedViews`. But when set we still need to verify
@@ -111,7 +111,7 @@ export interface LContainer extends Array<any> {
    * Flag to signify that this `LContainer` may have transplanted views which need to be change
    * detected. \(see: `LView[DECLARATION_COMPONENT_VIEW])`.
    *
-   * 标志表示此 `LContainer` 可能具有需要更改检测的移植视图。 （参见： `LView[DECLARATION_COMPONENT_VIEW])` 。
+   * 标志表示此 `LContainer` 可能具有需要变更检测的移植视图。 （参见： `LView[DECLARATION_COMPONENT_VIEW])` 。
    *
    * This flag, once set, is never unset for the `LContainer`.
    *
@@ -204,7 +204,7 @@ export interface LContainer extends Array<any> {
    * "garbage-collected" later on, i.e. removed from the DOM once the hydration
    * logic finishes.
    *
-   * 此信息在客户端的水合过程中使用。 水合逻辑试图找到匹配的脱水视图，“声明”它并使用此信息进行进一步匹配。 之后，这个“已声明”的视图将从列表中删除。 剩下的“无人认领”的视图稍后会被“垃圾收集”，即一旦水化逻辑完成就从 DOM 中删除。
+   * 此信息在客户端的水合过程中使用。 水合逻辑试图找到匹配的脱水视图，“声明”它并使用此信息进行进一步匹配。 之后，这个“已声明”的视图将从列表中删除。 剩下的“无人认领”的视图稍后会被“垃圾收集”，即一旦水合逻辑完成就从 DOM 中删除。
    *
    */
   [DEHYDRATED_VIEWS]: DehydratedContainerView[]|null;

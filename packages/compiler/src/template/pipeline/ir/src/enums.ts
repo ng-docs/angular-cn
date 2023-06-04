@@ -229,7 +229,7 @@ export enum ExpressionKind {
   /**
    * Defines and calls a function with change-detected arguments.
    *
-   * 定义并调用带有更改检测参数的函数。
+   * 定义并调用带有变更检测参数的函数。
    *
    */
   PureFunctionExpr,

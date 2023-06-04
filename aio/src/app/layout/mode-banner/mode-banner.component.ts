@@ -7,9 +7,7 @@ import { VersionInfo } from 'app/navigation/navigation.service';
   template: `
     <div *ngIf="mode === 'archive'" class="mode-banner alert archive-warning">
       <p>
-        This is the <strong>archived documentation for Angular v{{ version.major }}.</strong> Please visit
-        <a href="https://angular.cn{{currentPath}}?redirected_from={{version.major}}">angular.cn</a>
-         to see this page for the current version of Angular.
+        这是 <strong>Angular v{{ version.major }} 的存档版本。</strong>请访问 <a href="https://angular.cn{{currentPath}}?redirected_from={{version.major}}">angular.cn</a> 以查看 Angular 当前版本中的本页面。
       </p>
     </div>
   `,

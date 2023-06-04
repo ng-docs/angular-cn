@@ -46,7 +46,7 @@ export class ComponentNgElementStrategyFactory implements NgElementStrategyFacto
  * Creates and destroys a component ref using a component factory and handles change detection
  * in response to input changes.
  *
- * 使用组件工厂创建和销毁组件引用，并处理更改检测以响应输入更改。
+ * 使用组件工厂创建和销毁组件引用，并处理变更检测以响应输入更改。
  *
  */
 export class ComponentNgElementStrategy implements NgElementStrategy {
@@ -213,7 +213,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Creates a new component through the component factory with the provided element host and
    * sets up its initial inputs, listens for outputs changes, and runs an initial change detection.
    *
-   * 使用提供的元素宿主通过组件工厂创建一个新组件，并设置其初始输入，侦听输出更改，并运行初始更改检测。
+   * 使用提供的元素宿主通过组件工厂创建一个新组件，并设置其初始输入，侦听输出更改，并运行初始变更检测。
    *
    */
   protected initializeComponent(element: HTMLElement) {
@@ -304,7 +304,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
    * Schedules change detection to run on the component.
    * Ignores subsequent calls if already scheduled.
    *
-   * 安排更改检测在组件上运行。 如果已经安排，则忽略后续呼叫。
+   * 安排变更检测在组件上运行。 如果已经安排，则忽略后续呼叫。
    *
    */
   protected scheduleDetectChanges(): void {
@@ -350,7 +350,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
   /**
    * Runs change detection on the component.
    *
-   * 在组件上运行更改检测。
+   * 在组件上运行变更检测。
    *
    */
   protected detectChanges(): void {

@@ -462,11 +462,11 @@ providers: [
 
 A loader function for the `NgOptimizedImage` directive takes an object with the `ImageLoaderConfig` type \(from `@angular/common`\) as its argument and returns the absolute URL of the image asset. The `ImageLoaderConfig` object contains the `src` property, and optional `width` and `loaderParams` properties.
 
-`NgOptimizedImage` 指令的加载器函数将 `ImageLoaderConfig` 类型的对象（来自 `@angular/common` ）作为其参数，并返回图像资产的绝对 URL。 `ImageLoaderConfig` 对象包含 `src` 属性，以及可选的 `width` 和 `loaderParams` 属性。
+`NgOptimizedImage` 指令的加载器函数将 `ImageLoaderConfig` 类型的对象（来自 `@angular/common` ）作为其参数，并返回图像资产（assets）的绝对 URL。 `ImageLoaderConfig` 对象包含 `src` 属性，以及可选的 `width` 和 `loaderParams` 属性。
 
 Note: even though the `width` property may not always be present, a custom loader must use it to support requesting images at various widths in order for `ngSrcset` to work properly.
 
-注意：即使 `width` 属性可能并不总是存在，自定义加载器必须使用它来支持请求各种宽度的图像，以便 `ngSrcset` 正常工作。
+注意：即使 `width` 属性可能并不总是存在，自定义加载器也必须使用它来支持请求各种宽度的图像，以便让 `ngSrcset` 正常工作。
 
 ### The `loaderParams` Property
 
@@ -474,7 +474,7 @@ Note: even though the `width` property may not always be present, a custom loade
 
 There is an additional attribute supported by the `NgOptimizedImage` directive, called `loaderParams`, which is specifically designed to support the use of custom loaders. The `loaderParams` attribute take an object with any properties as a value, and does not do anything on its own. The data in `loaderParams` is added to the `ImageLoaderConfig` object passed to your custom loader, and can be used to control the behavior of the loader.
 
-`NgOptimizedImage` 指令支持一个额外的属性，称为 `loaderParams` ，它专门设计用于支持自定义加载器的使用。 `loaderParams` 属性将具有任何属性的对象作为值，它自己不做任何事情。 `loaderParams` 中的数据被添加到传递给自定义加载器的 `ImageLoaderConfig` 对象中，可用于控制加载器的行为。
+`NgOptimizedImage` 指令支持一个额外的属性，称为 `loaderParams` ，它是专门为了支持自定义加载器的使用而设计的。 `loaderParams` 属性将以具有任何属性的对象作为值，它自己不做任何事情。 `loaderParams` 中的数据会被添加到传递给自定义加载器的 `ImageLoaderConfig` 对象中，可用于控制加载器的行为。
 
 A common use for `loaderParams` is controlling advanced image CDN features.
 
@@ -486,7 +486,7 @@ A common use for `loaderParams` is controlling advanced image CDN features.
 
 The following shows an example of a custom loader function. This example function concatenates `src` and `width`, and uses `loaderParams` to control a custom CDN feature for rounded corners:
 
-下面显示了自定义加载程序函数的示例。 此示例函数连接 `src` 和 `width` ，并使用 `loaderParams` 控制圆角的自定义 CDN 功能：
+下面显示了自定义加载器函数的示例。 此示例函数连接 `src` 和 `width` ，并使用 `loaderParams` 控制圆角的自定义 CDN 功能：
 
 <code-example format="typescript" language="typescript">
 const myCustomLoader = (config: ImageLoaderConfig) => {
@@ -504,7 +504,7 @@ const myCustomLoader = (config: ImageLoaderConfig) => {
 
 Note that in the above example, we've invented the 'roundedCorners' property name to control a feature of our custom loader. We could then use this feature when creating an image, as follows:
 
-请注意，在上面的示例中，我们发明了“roundedCorners”属性名称来控制自定义加载器的功能。 然后我们可以在创建图像时使用此功能，如下所示：
+请注意，在上面的示例中，我们发明了“roundedCorners”属性名称来控制自定义加载器的特性。 然后我们可以在创建图像时使用此特性，如下所示：
 
 <code-example format="html" language="html">
 

@@ -90,7 +90,7 @@ export interface SerializedView {
    * `template` instruction and the value is a unique id that can
    * be used during hydration to identify that template.
    *
-   * 有关模板的序列化信息。 键值对，其中键是相应 `template` 指令的索引，值是可在水化过程中用于识别该模板的唯一 ID。
+   * 有关模板的序列化信息。 键值对，其中键是相应 `template` 指令的索引，值是可在水合过程中用于识别该模板的唯一 ID。
    *
    */
   [TEMPLATES]?: Record<number, string>;
@@ -138,7 +138,7 @@ export interface SerializedView {
  * annotation information about a view that is a part of a
  * ViewContainer collection.
  *
- * 包含有关作为 ViewContainer 集合一部分的视图的相关水化注释信息的序列化数据结构。
+ * 包含有关作为 ViewContainer 集合一部分的视图的相关水合注释信息的序列化数据结构。
  *
  */
 export interface SerializedContainerView extends SerializedView {
@@ -175,7 +175,7 @@ export interface SerializedContainerView extends SerializedView {
    * This is used to avoid serializing and sending the same hydration
    * information about similar views \(for example, produced by \*ngFor\).
    *
-   * 此视图重复的次数。 这用于避免序列化和发送关于相似视图的相同水化信息（例如，由 \*ngFor 生成）。
+   * 此视图重复的次数。 这用于避免序列化和发送关于相似视图的相同水合信息（例如，由 \*ngFor 生成）。
    *
    */
   [MULTIPLIER]?: number;
@@ -187,14 +187,14 @@ export interface SerializedContainerView extends SerializedView {
  * the DOM, to facilitate the hydration process for a given hydration
  * boundary on the client.
  *
- * 一个对象，包含在服务器上序列化的水化相关信息，以及对 DOM 段的必要引用，以促进客户端上给定水化边界的水化过程。
+ * 一个对象，包含在服务器上序列化的水合相关信息，以及对 DOM 段的必要引用，以促进客户端上给定水合边界的水合过程。
  *
  */
 export interface DehydratedView {
   /**
    * The readonly hydration annotation data.
    *
-   * 只读水化注释数据。
+   * 只读水合注释数据。
    *
    */
   data: Readonly<SerializedView>;
@@ -245,7 +245,7 @@ export interface DehydratedView {
  * inside a view container \(either an embedded view or a view created
  * for a component\).
  *
- * 包含在服务器上序列化的水化相关信息的对象，以及对 DOM 段的必要引用，以促进视图容器内给定视图（嵌入式视图或为组件创建的视图）的水化过程\).。
+ * 包含在服务器上序列化的水合相关信息的对象，以及对 DOM 段的必要引用，以促进视图容器内给定视图（嵌入式视图或为组件创建的视图）的水合过程\).。
  *
  */
 export interface DehydratedContainerView extends DehydratedView {

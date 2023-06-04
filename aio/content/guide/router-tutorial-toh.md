@@ -86,8 +86,6 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 * [Angular CLI](cli)
 
-  [角 CLI](cli)
-
 You might find the [Tour of Heroes tutorial](tutorial/tour-of-heroes) helpful, but it is not required.
 
 你可能会发现[《英雄之旅》教程](tutorial/tour-of-heroes)很有用，但这不是必需的。
@@ -1252,8 +1250,6 @@ If the user re-navigates to this route with a new `id` while the `HeroService` i
 `AsyncPipe` 处理这个可观察的订阅，而且该组件的 `hero` 属性也会用检索到的英雄（重新）进行设置。
 
 #### `ParamMap` API
-
-#### 参数 `ParamMap` 接口
 
 The `ParamMap` API is inspired by the [URLSearchParams interface](https://developer.mozilla.org/docs/Web/API/URLSearchParams).
 It provides methods to handle parameter access for both route parameters \(`paramMap`\) and query parameters \(`queryParamMap`\).
@@ -2868,7 +2864,7 @@ If the user is logged in, it returns `true` and the navigation continues.
 Otherwise, it redirects to a login page; a page you haven't created yet.
 Returning a `UrlTree` tells the `Router` to cancel the current navigation and schedule a new one to redirect the user.
 
-这个守卫返回一个同步布尔结果或一个 `UrlTree` 。 如果用户已登录，则返回 `true` 并继续导航。 否则，它会重定向到登录页面； 你尚未创建的页面。 返回一个 `UrlTree` 告诉 `Router` 取消当前导航并安排一个新的导航来重定向用户。
+这个守卫会返回一个同步布尔结果或一个 `UrlTree` 。 如果用户已登录，则返回 `true` 并继续导航。 否则，它会重定向到登录页面 —— 你尚未创建它。 返回一个 `UrlTree` 会告诉 `Router` 取消当前导航并安排一个新的导航来重定向用户。
 
 <a id="add-login-component"></a>
 
@@ -3394,7 +3390,7 @@ A `canMatch` guard controls whether the `Router` attempts to match a `Route`. Th
 multiple `Route` configurations that share the same `path` but are matched based on different conditions. This approach
 allows the `Router` to match the wildcard `Route` instead.
 
-`canMatch` 守卫控制 `Router` 是否尝试匹配 `Route` 。 这使你可以拥有多个 `Route` 配置，这些配置共享相同的 `path` 但根据不同的条件进行匹配。 这种方法允许 `Router` 改为匹配通配符 `Route` 。
+`canMatch` 守卫控制着 `Router` 是否会尝试匹配 `Route`。 这能让你拥有多个 `Route` 配置，这些配置共享相同的 `path` 但根据不同的条件进行匹配。 这种方法能让 `Router` 转而匹配通配符 `Route` 。
 
 The existing `authGuard` contains the logic to support the `canMatch` guard.
 

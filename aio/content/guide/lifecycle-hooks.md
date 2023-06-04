@@ -1,6 +1,6 @@
 # Component Lifecycle
 
-# 生命周期钩子
+# 组件的生命周期
 
 A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views.
 The lifecycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed.
@@ -148,7 +148,7 @@ Use the `ngOnInit()` method to perform the following initialization tasks.
 
 Angular provides several ways to clean up when an instance is destroyed.
 
-Angular 提供了几种方法来在实例被销毁时进行清理。
+Angular 提供了几种方法以便在实例被销毁时进行清理。
 
 ### `ngOnDestroy`
 
@@ -181,7 +181,7 @@ The `ngOnDestroy()` method is also the time to notify another part of the applic
 
 In addition to to `ngOnDestroy()`, you can inject Angular's `DestroyRef` and register callback functions to be called when the enclosing context is destroyed. This can be useful for building reusable utilities that require cleanup.
 
-除了 `ngOnDestroy()` 之外，你还可以注入 Angular 的 `DestroyRef` 并注册要在封闭上下文被销毁时调用的回调函数。 这对于构建需要清理的可重用实用程序很有用。
+除了 `ngOnDestroy()` 之外，你还可以注入 Angular 的 `DestroyRef`，并向它注册将在闭包上下文被销毁时调用的回调函数。 这在构建需要清理的可复用实用工具时很有用。
 
 Register a callback with the `DestroyRef`:
 
@@ -212,11 +212,13 @@ Like `ngOnDestroy`, `DestroyRef` works in any Angular service, directive, compon
 
 `takeUntilDestroyed` is available for [developer preview](/guide/releases#developer-preview). It's ready for you to try, but it might change before it is stable.
 
+`takeUntilDestroyed` 函数已经提供了[开发者预览版](/guide/releases#developer-preview)。你已经可以尝试使用了，但在稳定之前可能会发生变化。
+
 </div>
 
 When using RxJS Observables in components or directives, you may want to complete any observables when the component or directive is destroyed. Angular's `@angular/core/rxjs-interop` package provides an operator, `takeUntilDestroyed`, to simplify this common task:
 
-在组件或指令中使用 RxJS Observables 时，你可能希望在组件或指令被销毁时完成任何 observables。 Angular 的 `@angular/core/rxjs-interop` 包提供了一个运算符 `takeUntilDestroyed` 来简化这个常见任务：
+在组件或指令中使用 RxJS Observables 时，你可能希望在组件或指令被销毁时完成（complete）任何可观察对象。 Angular 的 `@angular/core/rxjs-interop` 包提供了一个操作符 `takeUntilDestroyed` 来简化这个常见任务：
 
 ```ts
 data$ = http.get('...').pipe(takeUntilDestroyed());
@@ -224,7 +226,7 @@ data$ = http.get('...').pipe(takeUntilDestroyed());
 
 By default, `takeUntilDestroyed` must be called in an injection context so that it can access `DestroyRef`. If an injection context isn't available, you can explicitly provide a `DestroyRef`.
 
-默认情况下，必须在注入上下文中调用 `takeUntilDestroyed` 以便它可以访问 `DestroyRef` 。 如果注入上下文不可用，你可以显式提供 `DestroyRef` 。
+默认情况下，必须在注入上下文中调用 `takeUntilDestroyed` 以便它能访问 `DestroyRef`。 如果注入上下文不可用，你可以显式提供 `DestroyRef` 。
 
 ## General examples
 
@@ -266,20 +268,13 @@ The sequence of log messages follows the prescribed hook calling order:
 | :--------- | :-------------------- |
 | 钩子顺序   | 日志信息              |
 | 1          | `OnChanges`           |
-| 1 个        | `OnChanges`           |
 | 2          | `OnInit`              |
-| 2 个        | `OnInit`              |
 | 3          | `DoCheck`             |
-| 3 个        | `DoCheck`             |
 | 4          | `AfterContentInit`    |
-| 4 个        | `AfterContentInit`    |
 | 5          | `AfterContentChecked` |
-| 5 个        | `AfterContentChecked` |
 | 6          | `AfterViewInit`       |
-| 6 个        | `AfterViewInit`       |
 | 7          | `AfterViewChecked`    |
 | 8          | `DoCheck`             |
-| 8 个        | `DoCheck`             |
 | 9          | `AfterContentChecked` |
 | 10         | `AfterViewChecked`    |
 | 11         | `OnDestroy`           |

@@ -117,8 +117,6 @@ Angular 语言服务目前在[Visual Studio Code](https://code.visualstudio.com)
 
 ### Visual Studio Code
 
-### 视觉工作室代码
-
 In [Visual Studio Code](https://code.visualstudio.com), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template).
 Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open \(⌘+P on Mac, CTRL+P on Windows\) and type "? ext".
 In the marketplace, search for Angular Language Service extension, and click the **Install** button.
@@ -130,8 +128,6 @@ The Visual Studio Code integration with the Angular language service is maintain
 Visual Studio Code 与 Angular 语言服务的集成工作是由 Angular 团队发布的。
 
 ### Visual Studio
-
-### 视觉工作室
 
 In [Visual Studio](https://visualstudio.microsoft.com), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.AngularLanguageService).
 Open the marketplace from the editor selecting Extensions on the top menu pane, and then selecting Manage Extensions.
@@ -155,8 +151,6 @@ Since WebStorm 2019.1, the `@angular/language-service` is not required anymore a
 从 WebStorm 2019.1 开始，`@angular/language-service` 已经不再需要了，应该从你的 `package.json` 中移除。
 
 ### Sublime Text
-
-### 崇高的文字
 
 In [Sublime Text](https://www.sublimetext.com), the Language Service supports only in-line templates when installed as a plug-in.
 You need a custom Sublime plug-in \(or modifications to the current plug-in\) for completions in HTML files.
@@ -215,8 +209,6 @@ This lets the Angular Language Service provide diagnostics and completions in `.
 这样就能让 Angular 语言服务提供 `.ts` 文件中的诊断与自动补全信息。
 
 ### Eclipse IDE
-
-### 日蚀集成开发环境
 
 Either directly install the "Eclipse IDE for Web and JavaScript developers" package which comes with the Angular Language Server included, or from other Eclipse IDE packages, use Help > Eclipse Marketplace to find and install [Eclipse Wild Web Developer](https://marketplace.eclipse.org/content/wild-web-developer-html-css-javascript-typescript-nodejs-angular-json-yaml-kubernetes-xml).
 

@@ -107,13 +107,19 @@ Replace the default contents of `in-memory-data.service.ts` with the following:
 
 In the `AppModule`, import the `HttpClientInMemoryWebApiModule` and the `InMemoryDataService` class, which you create next.
 
+在 `AppModule` 中导入 `HttpClientInMemoryWebApiModule` 和 `InMemoryDataService` 类，接下来你要创建这个类。
+
 <code-example header="src/app/app.module.ts (In-memory Web API imports)" path="toh-pt6/src/app/app.module.ts" region="import-in-mem-stuff"></code-example>
 
 After the `HttpClientModule`, add the `HttpClientInMemoryWebApiModule` to the `AppModule` `imports` array and configure it with the `InMemoryDataService`.
 
+将 `HttpClientInMemoryWebApiModule` 添加到 `AppModule` 的 `imports` 数组中的 `HttpClientModule` 后面，并使用 `InMemoryDataService` 进行配置。
+
 <code-example header="src/app/app.module.ts (imports array excerpt)" path="toh-pt6/src/app/app.module.ts" region="in-mem-web-api-imports"></code-example>
 
 The `forRoot()` configuration method takes an `InMemoryDataService` class that primes the in-memory database.
+
+`forRoot()` 配置方法会接受一个 `InMemoryDataService` 类，用于初始化内存数据库。
 
 The `in-memory-data.service.ts` file takes over the function of `mock-heroes.ts`.
 Don't delete `mock-heroes.ts` yet. You still need it for a few more steps of this tutorial.
@@ -292,7 +298,7 @@ Because each service method returns a different kind of `Observable` result, `ha
 
 The `getHeros()` method taps into the flow of observable values and sends a message, using the `log()` method, to the message area at the bottom of the page.
 
-`HeroService` 的方法将会窥探 `Observable` 的数据流，并通过 `log()` 方法往页面底部发送一条消息。
+`getHeros()` 方法将会窥探 `Observable` 的数据流，并通过 `log()` 方法往页面底部发送一条消息。
 
 The RxJS `tap()` operator enables this ability by looking at the observable values, doing something with those values, and passing them along.
 The `tap()` callback doesn't access the values themselves.

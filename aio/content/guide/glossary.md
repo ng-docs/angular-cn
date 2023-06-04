@@ -780,8 +780,6 @@ Read more in the [Interpolation][AioGuideInterpolation] guide.
 
 ## Ivy
 
-## 常春藤
-
 Ivy is the historical code name for the current [compilation and rendering pipeline][AngularBlogAPlanForVersion80AndIvyB3318dfc19f7] in Angular.
 It is now the only supported engine, so everything uses Ivy.
 

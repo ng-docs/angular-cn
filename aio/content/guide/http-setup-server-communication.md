@@ -1,4 +1,4 @@
-# HTTP&#x3A; Setup for server communication
+# HTTP: Setup for server communication
 
 # HTTP：服务器通信设置
 

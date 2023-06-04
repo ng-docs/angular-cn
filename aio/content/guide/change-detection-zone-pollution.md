@@ -44,7 +44,7 @@ In the image above, there is a series of change detection calls triggered by eve
 
 In such cases, you can instruct Angular to avoid calling change detection for tasks scheduled by a given piece of code using [NgZone](/guide/zone).
 
-在这种情况下，你可以指示 Angular 避免使用[NgZone](https://angular.io/guide/zone)为给定代码段调度的任务调用变更检测。
+在这种情况下，你可以指示 Angular 避免使用[NgZone](/guide/zone)为给定代码段调度的任务调用变更检测。
 
 ```ts
 import { Component, NgZone, OnInit } from '@angular/core';

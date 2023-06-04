@@ -2,8 +2,6 @@
 
 {@searchKeywords test testing karma jasmine coverage}
 
-{@searchKeywords 测试测试业力茉莉花覆盖范围}
-
 # Testing
 
 # 测试
@@ -32,16 +30,16 @@ Before writing tests for your Angular application, you should have a basic under
 
 * [Angular CLI](cli)
 
-  [角 CLI](cli)
-
 The testing documentation offers tips and techniques for unit and integration testing Angular applications through a sample application created with the [Angular CLI](cli).
 This sample application is much like the one in the [*Tour of Heroes* tutorial](tutorial/tour-of-heroes).
 
-测试文档提供了通过使用[Angular CLI](cli)创建的示例应用程序对 Angular 应用程序进行单元和集成测试的提示和技术。 这个示例应用程序与[*英雄之旅*教程](tutorial/tour-of-heroes)中的示例应用程序非常相似。
+测试文档提供了通过使用 [Angular CLI](cli) 创建的示例应用程序对 Angular 应用程序进行单元和集成测试的提示和技术。 这个示例应用程序与[*英雄之旅*教程](tutorial/tour-of-heroes)中的示例应用程序非常相似。
 
 <div class="alert is-helpful">
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
+
+如果你想尝试本指南所讲的应用程序，<live-example name="testing" noDownload>请在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 

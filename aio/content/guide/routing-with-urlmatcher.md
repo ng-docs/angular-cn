@@ -41,8 +41,6 @@ To complete this tutorial, you should have a basic understanding of the followin
 
 * [Angular CLI](cli)
 
-  [角 CLI](cli)
-
 If you are unfamiliar with how Angular's router works, review [Using Angular routes in a single-page application](guide/router-tutorial).
 
 如果你不熟悉 Angular 路由器的工作原理，请阅读[在单页应用程序中使用 Angular 路由](guide/router-tutorial)。

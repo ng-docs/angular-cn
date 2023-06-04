@@ -222,7 +222,7 @@ For each entrypoint, the available formats are:
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
 
-知道这些密钥的工具可以优先从 `"exports"` 中选择所需的代码格式。
+能理解这些键名的工具可以优先从 `"exports"` 中选择所需的代码格式。
 
 Libraries may want to expose additional static files which are not captured by the exports of the JavaScript-based entry-points such as Sass mixins or pre-compiled CSS.
 
@@ -407,7 +407,7 @@ The abbreviated name, FESM, pronounced *phe-som*, can be followed by a number su
 The number refers to the language level of the JavaScript inside the module.
 Accordingly a FESM2022 file would be ESM+ES2022 and include import/export statements and ES2022 source code.
 
-缩写名称 FESM，发音为*phe-som* ，后面可以跟一个数字，例如 FESM2020。 该数字是指模块内 JavaScript 的语言级别。 因此，FESM2022 文件将是 ESM+ES2022，并且包括导入/导出语句和 ES2022 源代码。
+缩写名称 FESM，发音为*phe-som* ，后面可以跟一个数字，例如 FESM2020。 该数字是指模块内 JavaScript 的语言级别。 因此，FESM2022 文件将是 ESM+ES2022 格式的，并且包括导入/导出语句和 ES2022 源代码。
 
 To generate a flattened ES Module index file, use the following configuration options in your tsconfig.json file:
 
@@ -445,7 +445,7 @@ This is why `module` and `es2022` package.json entries still point to FESM files
 This issue is being investigated. It is expected to switch the `module` and `es2022` package.json entry points to unflattened files after the size regression issue is resolved.
 The APF currently includes unflattened ESM2022 code for the purpose of validating such a future change.
 
-从 webpack v4 开始，ES 模块优化的扁平化对于 webpack 用户来说应该不是必需的。 在不扁平化 webpack 中的模块的情况下，应该可以获得更好的代码拆分。 在实践中，当使用未展平的模块作为 webpack v4 的输入时，仍然可以看到尺寸回归。 这就是为什么 `module` 和 `es2022` package.json 条目仍然指向 FESM 文件的原因。 这个问题正在调查中。 预计在解决大小回归问题后，将 `module` 和 `es2022` package.json 入口点切换为未展平的文件。 APF 目前包含未扁平化的 ESM2022 代码，用于验证此类未来更改。
+从 webpack v4 开始，ES 模块优化的扁平化对于 webpack 用户来说不再是必需的。 当不扁平化 webpack 中的模块时，可以获得更好的代码拆分效果。 在实践中，当使用未展平的模块作为 webpack v4 的输入时，仍然可能出现体积回归现象（也就是体积反而变大了）。 这就是为什么 package.json 中的 `module` 和 `es2022` 条目仍然指向 FESM 文件的原因。 这个问题正在调查中。 预计在解决体积回归问题后，会将 package.json 中的 `module` 和 `es2022` 入口点切换为未展平的文件。 APF 目前包含未扁平化的 ESM2022 代码，用于验证这种未来可能出现的更改。
 
 ### "sideEffects" flag
 
@@ -462,7 +462,7 @@ The end result of these optimizations should be smaller bundle size and better c
 This optimization can break your code if it contains non-local side-effects - this is however not common in Angular applications and it's usually a sign of bad design.
 The recommendation is for all packages to claim the side-effect free status by setting the `sideEffects` property to `false`, and that developers follow the [Angular Style Guide](/guide/styleguide) which naturally results in code without non-local side-effects.
 
-诸如 Webpack 之类的构建工具支持一个标志，该标志允许包声明它们并不依赖于其模块顶层的副作用代码，从而使工具可以更自由地对包中的代码进行摇树优化。这些优化的最终结果应该是较小的包大小和代码拆分后包块中更好的代码分布。如果此优化包含非本地副作用，则此优化可能会破坏你的代码 - 然而，这在 Angular 应用程序中并不常见，并且通常是糟糕设计的标志。建议让所有包通过将 `sideEffects` 属性设置为 `false` 来声明无副作用状态，并且让开发人员遵循 [Angular 风格指南](https://angular.io/guide/styleguide)，这自然会导致代码没有非本地副作用。
+诸如 Webpack 之类的构建工具支持一个标志，该标志允许包声明它们并不依赖于其模块顶层的副作用代码，从而使工具可以更自由地对包中的代码进行摇树优化。这些优化的最终结果应该是较小的包大小和代码拆分后包块中更好的代码分布。如果此优化包含非本地副作用，则此优化可能会破坏你的代码 - 然而，这在 Angular 应用程序中并不常见，并且通常是糟糕设计的标志。建议让所有包通过将 `sideEffects` 属性设置为 `false` 来声明无副作用状态，并且让开发人员遵循 [Angular 风格指南](/guide/styleguide)，这自然会导致代码没有非本地副作用。
 
 More info: [webpack docs on side effects](https://github.com/webpack/webpack/tree/master/examples/side-effects)
 
@@ -470,12 +470,12 @@ More info: [webpack docs on side effects](https://github.com/webpack/webpack/tre
 
 ### ES2022 language level
 
-### ES2022 语言等级
+### ES2022 语言级别
 
 ES2022 Language level is now the default language level that is consumed by Angular CLI and other tooling.
 The Angular CLI down-levels the bundle to a language level that is supported by all targeted browsers at application build time.
 
-ES2022 语言级别现在是 Angular CLI 和其他工具使用的默认语言级别。 Angular CLI 在应用程序构建时将捆绑包降低到所有目标浏览器都支持的语言级别。
+ES2022 语言级别现在是 Angular CLI 和其他工具使用的默认语言级别。 Angular CLI 在应用程序构建时会将捆绑包降级到所有目标浏览器都支持的语言级别。
 
 ### d.ts bundling / type definition flattening
 

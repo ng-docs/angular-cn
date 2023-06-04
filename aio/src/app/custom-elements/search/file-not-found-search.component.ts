@@ -9,8 +9,7 @@ import {SearchService} from 'app/search/search.service';
   selector: 'aio-file-not-found-search',
   template: `<div class="alert is-helpful">
       <p *ngIf="redirectedFrom">
-        You were redirected from the Angular v{{ redirectedFrom }} documentation, but this page doesn't
-        exist in this version.
+        你正在重定向到 Angular v{{ redirectedFrom }} 文档，但是此页面在当前版本中不存在。
       </p>
       <p>Let's see if any of these search results help...</p>
     </div>

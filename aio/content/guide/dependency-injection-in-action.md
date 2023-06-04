@@ -726,7 +726,7 @@ These complications argue for *avoiding component inheritance*.
 
 ## Resolve circular dependencies with a forward class reference \(*forwardRef*\)
 
-## 使用一个前向引用（*forwardRef*）来打破循环
+## 使用一个前向引用（*forwardRef*）来解析循环依赖
 
 The order of class declaration matters in TypeScript.
 You can't refer directly to a class until it's been defined.
@@ -738,7 +738,7 @@ But sometimes circular references are unavoidable.
 For example, when class 'A' refers to class 'B' and 'B' refers to 'A'.
 One of them has to be defined first.
 
-这通常不是一个问题，特别是当你遵循*一个文件一个类*规则的时候。但是有时候循环引用可能不能避免。当一个类*A 引用类 B*，同时'B'引用'A'的时候，你就陷入困境了：它们中间的某一个必须要先定义。
+这通常不是一个问题，特别是当你遵循*一个文件一个类*规则的时候。但是有时候循环引用可能不能避免。例如，当一个类 'A' 引用类 'B'，同时 'B' 引用 'A' 的时候，它们中间的某一个必须要先定义。
 
 The Angular `forwardRef()` function creates an *indirect* reference that Angular can resolve later.
 

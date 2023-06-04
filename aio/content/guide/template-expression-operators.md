@@ -99,7 +99,7 @@ The `$any()` cast function works anywhere in a binding expression where a method
 
 Also note that `$any()` only affects the typing. There is no method call in the generated code; the `$any()` function is entirely compiled away.
 
-还要注意 `$any()` 只影响输入。 生成的代码中没有方法调用； `$any()` 函数完全被编译掉了。
+还要注意 `$any()` 只影响类型。 生成的代码中没有此方法调用；`$any()` 函数完全被编译掉了。
 
 <!-- links -->
 

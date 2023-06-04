@@ -15,8 +15,11 @@ Tutorials and guides include downloadable examples to help you start your projec
 <div class="card-container">
   <a href="tutorial/first-app" class="docs-card" title="Work through a full tutorial">
     <section>Build your first Angular app</section>
+    <section>构建你的第一个 Angular 应用</section>
     <p>Work through a full tutorial to create your first application.</p>
+    <p>完成一个完整的教程，创建你的第一个应用程序。</p>
     <p class="card-footer">Homes App Tutorial</p>
+    <p class="card-footer">应用教程</p>
   </a>
   <a href="guide/what-is-angular" class="docs-card" title="Angular Platform Overview">
     <section>What is Angular</section>

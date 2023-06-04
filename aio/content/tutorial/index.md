@@ -6,10 +6,16 @@ This section contains tutorials to help you get started developing applications 
 
 ## First App Tutorial - Angular Homes
 
+## 第一个应用教程 - Angular Homes
+
 [First App Tutorial - Angular Homes](tutorial/first-app) gets you started with Angular
 The First App tutorial guides you through building an Angular app by taking you step by step through the fundamentals of building an application in Angular.
 
+[第一个应用程序教程 - Angular Homes](tutorial/first-app)会帮助你开始使用 Angular。第一个应用程序教程将通过逐步指导你构建Angular应用程序的基础知识，来教你构建出 Angular 应用程序。
+
 Learn how to use Standalone Components, Inputs, Angular templates, data binding and more.
+
+学习如何使用独立组件、输入属性、Angular 模板、数据绑定等特性。
 
 ## Tour of Heroes
 

@@ -46,7 +46,7 @@ export function hasNgSkipHydrationAttr(tNode: TNode): boolean {
  * Checks whether a TNode has a flag to indicate that it's a part of
  * a skip hydration block.
  *
- * 检查 TNode 是否有一个标志来指示它是跳过水化块的一部分。
+ * 检查 TNode 是否有一个标志来指示它是跳过水合块的一部分。
  *
  */
 export function hasInSkipHydrationBlockFlag(tNode: TNode): boolean {
@@ -58,7 +58,7 @@ export function hasInSkipHydrationBlockFlag(tNode: TNode): boolean {
  * by navigating up the TNode tree to see if any parent nodes have skip hydration
  * attribute.
  *
- * 通过向上导航 TNode 树以查看是否有任何父节点具有跳过水化属性来确定给定节点是否在跳过水化块内的辅助函数。
+ * 通过向上导航 TNode 树以查看是否有任何父节点具有跳过水合属性来确定给定节点是否在跳过水合块内的辅助函数。
  *
  * TODO\(akushnir\): this function should contain the logic of `hasInSkipHydrationBlockFlag`,
  * there is no need to traverse parent nodes when we have a TNode flag \(which would also

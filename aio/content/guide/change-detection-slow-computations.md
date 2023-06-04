@@ -45,7 +45,7 @@ Here are several techniques to remove slow computations:
 
 * **Caching using pure pipes**. You can move the heavy computation to a pure [pipe](/guide/pipes). Angular reevaluates a pure pipe only if it detects that its inputs have changed, compared to the previous time Angular called it.
 
-  **使用纯管道进行缓存**。你可以将繁重的计算移动到纯[管道](https://angular.io/guide/pipes)中。与 Angular 上一次调用它时相比，只有在检测到其输入发生更改时，Angular 才会重新估算纯管道。
+  **使用纯管道进行缓存**。你可以将繁重的计算移动到纯[管道](/guide/pipes)中。与 Angular 上一次调用它时相比，只有在检测到其输入发生更改时，Angular 才会重新估算纯管道。
 
 * **Using memoization**. [Memoization](https://en.wikipedia.org/wiki/Memoization) is a similar technique to pure pipes, with the difference that pure pipes preserve only the last result from the computation where memoization could store multiple results.
 

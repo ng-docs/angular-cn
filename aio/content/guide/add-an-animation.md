@@ -9,7 +9,7 @@ When you create a new project using the Angular framework, these dependencies ar
 
 To get started with adding Angular animations to your project, import the animation-specific modules along with standard Angular capability.
 
-要开始向你的项目添加 Angular 动画，请导入特定于动画的模块以及标准的 Angular 功能。
+要开始向你的项目添加 Angular 动画，请导入动画的专属模块以及标准的 Angular 功能。
 
 ## Step 1: Enabling the animations module
 

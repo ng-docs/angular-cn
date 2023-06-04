@@ -385,21 +385,22 @@ Some extra options can only be set through the configuration file, either by dir
 一些额外的选项（如下所列）只能通过配置文件来设置，可以直接编辑，也可以使用 [`ng config`](cli/config) 命令。
 
 | Options properties         | Details                                                                                                                                                                                                                                                                                                 |
-|:---------------------------| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 选项属性                       | 详情                                                                                                                                                                                                                                                                                                    |
+|:---------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 选项属性                       | 详情                                                                                                                                                                                                                                                                                                      |
 | `assets`                   | An object containing paths to static assets to add to the global context of the project. The default paths point to the project's icon file and its `assets` directory. See more in the [Assets configuration](#asset-config) section.                                                                  |
-| `assets`                   | 一个对象，包含一些用于添加到项目的全局上下文中的静态文件路径。它的默认路径指向项目的图标文件及项目的 `assets` 文件夹。参阅[项目资产（asset）配置](#asset-config)部分。                                                                                                                                  |
+| `assets`                   | 一个对象，包含一些用于添加到项目的全局上下文中的静态文件路径。它的默认路径指向项目的图标文件及项目的 `assets` 文件夹。参阅[项目资产（asset）配置](#asset-config)部分。                                                                                                                                                                                                     |
 | `styles`                   | An array of style files to add to the global context of the project. Angular CLI supports CSS imports and all major CSS preprocessors: [sass/scss](https://sass-lang.com) and [less](http://lesscss.org). See more in the [Styles and scripts configuration](#style-script-config) section.             |
-| `styles`                   | 一个对象，包含一些要添加到项目全局上下文中的样式文件。Angular CLI 支持 CSS 导入和所有主要的 CSS 预处理器：[sass/scss](http://sass-lang.com) 和 [less](http://lesscss.org/)。参阅 [样式和脚本配置](#style-script-config)部分。                                                                           |
+| `styles`                   | 一个对象，包含一些要添加到项目全局上下文中的样式文件。Angular CLI 支持 CSS 导入和所有主要的 CSS 预处理器：[sass/scss](http://sass-lang.com) 和 [less](http://lesscss.org/)。参阅 [样式和脚本配置](#style-script-config)部分。                                                                                                                                   |
 | `stylePreprocessorOptions` | An object containing option-value pairs to pass to style preprocessors. See more in the [Styles and scripts configuration](#style-script-config) section.                                                                                                                                               |
-| `stylePreprocessorOptions` | 一个对象，包含要传给样式预处理器的选项"值-对"。参阅 [样式和脚本配置](#style-script-config) 部分。                                                                                                                                                                                                       |
+| `stylePreprocessorOptions` | 一个对象，包含要传给样式预处理器的选项"值-对"。参阅 [样式和脚本配置](#style-script-config) 部分。                                                                                                                                                                                                                                         |
 | `scripts`                  | An object containing JavaScript script files to add to the global context of the project. The scripts are loaded exactly as if you had added them in a `<script>` tag inside `index.html`. See more in the [Styles and scripts configuration](#style-script-config) section.                            |
-| `scripts`                  | 一个对象，包含一些 JavaScript 脚本文件，用于添加到项目的全局上下文中。这些脚本的加载方式和在 `index.html` 的 `<script>` 标签中添加是完全一样的。参阅 [样式和脚本配置](#style-script-config) 部分。                                                                                                      |
+| `scripts`                  | 一个对象，包含一些 JavaScript 脚本文件，用于添加到项目的全局上下文中。这些脚本的加载方式和在 `index.html` 的 `<script>` 标签中添加是完全一样的。参阅 [样式和脚本配置](#style-script-config) 部分。                                                                                                                                                                       |
 | `budgets`                  | Default size-budget type and thresholds for all or parts of your application. You can configure the builder to report a warning or an error when the output reaches or exceeds a threshold size. See [Configure size budgets](guide/build#configure-size-budgets). \(Not available in `test` section.\) |
-| `budgets`                  | 全部或部分应用的默认尺寸预算的类型和阈值。当构建的输出达到或超过阈值大小时，你可以将构建器配置为报告警告或错误。参阅[配置尺寸预算](guide/build#configure-size-budgets)。（不适用于 `test` 部分。）                                                                                                      |
+| `budgets`                  | 全部或部分应用的默认尺寸预算的类型和阈值。当构建的输出达到或超过阈值大小时，你可以将构建器配置为报告警告或错误。参阅[配置尺寸预算](guide/build#configure-size-budgets)。（不适用于 `test` 部分。）                                                                                                                                                                                |
 | `fileReplacements`         | An object containing files and their compile-time replacements. See more in [Configure target-specific file replacements](guide/build#configure-target-specific-file-replacements).                                                                                                                     |
-| `fileReplacements`         | 一个对象，包含一些文件及其编译时替代品。参阅[为指定的目标配置文件替换规则](guide/build#configure-target-specific-file-replacements) 部分。                                                                                                                                                              |
-| `index`                    | Configures the generation of the application's HTML index. See more in [Index configuration](#index-config). \(Only available in `browser` section.\)                                                                                                         |
+| `fileReplacements`         | 一个对象，包含一些文件及其编译时替代品。参阅[为指定的目标配置文件替换规则](guide/build#configure-target-specific-file-replacements) 部分。                                                                                                                                                                                                     |
+| `index`                    | Configures the generation of the application's HTML index. See more in [Index configuration](#index-config). \(Only available in `browser` section.\)                                                                                                                                                   |
+| `index`                    | 配置应用的 HTML 索引的生成方式。欲知详情，参见[索引配置](#index-config)。（只在 `browser` 小节有效）                                                                                                                                                                                                                                     |
 
 <a id="complex-config"></a>
 
@@ -411,7 +412,7 @@ The `assets`, `index`, `styles`, and `scripts` options can have either simple pa
 The `sourceMap` and `optimization` options can be set to a simple Boolean value with a command flag. They can also be given a complex value using the configuration file.
 The following sections provide more details of how these complex values are used in each case.
 
-选项 `assets`，`styles` 和 `scripts` 的值可以是简单的路径字符串，也可以是带有特定字段的对象值。可以使用命令标志将 `sourceMap` 和 `optimization` 选项设置为简单的布尔值，但也可以使用配置文件为其指定复杂的值。以下各节提供了在每种情况下如何使用这些复数值的详细信息。
+选项 `assets`、`index`、`styles` 和 `scripts` 的值可以是简单的路径字符串，也可以是带有特定字段的对象值。可以使用命令标志将 `sourceMap` 和 `optimization` 选项设置为简单的布尔值，但也可以使用配置文件为其指定复杂的值。以下各节提供了在每种情况下如何使用这些复数值的详细信息。
 
 <a id="asset-config"></a>
 
@@ -769,19 +770,31 @@ These are useful if you only want source maps to map error stack traces in error
 
 ### Index configuration
 
+### 索引配置
+
 Configures the generation of the application's HTML index.
+
+配置应用的 HTML 索引的生成方式。
 
 The `index` option can be either a String or an Object for more fine-tune configuration.
 
+`index` 选项可以是字符串，还可以用对象来对配置进行更多微调。
+
 When supplying the value as a String the filename of the specified path will be used for the generated file and will be created in the root of the application's configured output path.
+
+当以字符串形式提供值时，指定路径的文件名会被用于要生成的文件，并将创建在应用程序配置的输出路径的根目录中。
 
 #### Index options
 
+#### 索引选项
+
 | Options  | Details                                                                                                                                                                          | Value type     | Default value      |
-| :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:---------------| :----------------- |
-| 选项     | 详情                                                                                                                                                                             | 值的类型           | 默认值 |
+| :------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------| :----------------- |
+| 选项     | 详情                                                                                                                                                                               | 值的类型           | 默认值 |
 | `input`  | The path of a file to use for the application's generated HTML index.                                                                                                            | `string`       |                    |
+| `input`  | 供应用程序用来生成 HTML 索引的文件的路径。                                                                                                                                                         | `string`       |                    |
 | `output` | The output path of the application's generated HTML index file. The full provided path will be used and will be considered relative to the application's configured output path. | `string`       | `index.html`       |
+| `output` | 应用程序生成的HTML索引文件的输出路径。将使用提供的完整路径，并将其视为相对于应用程序配置的输出路径。                                                                                                                             | `string`       | `index.html`       |
 
 <!-- links -->
 

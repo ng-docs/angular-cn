@@ -119,7 +119,7 @@ AOT 编译分为三个阶段。
 | 2   | code generation        | In this phase, the compiler's `StaticReflector` interprets the metadata collected in phase 1, performs additional validation of the metadata, and throws an error if it detects a metadata restriction violation.                                                                                  |
 | 2   | 代码生成               | 在此阶段，编译器的 `StaticReflector` 会解释在阶段 1 收集的元数据，对元数据执行额外的验证，如果检测到违反元数据限制，则会抛出错误。                                                                                                                                                                 |
 | 3   | template type checking | In this optional phase, the Angular *template compiler* uses the TypeScript compiler to validate the binding expressions in templates. You can enable this phase explicitly by setting the `strictTemplates` configuration option; see [Angular compiler options](guide/angular-compiler-options). |
-| 3   | 模板类型检查           | 在此可选阶段，Angular *模板编译器*使用 TypeScript 编译器来验证模板中的绑定表达式。你可以通过设置 `fullTemplateTypeCheck` 配置选项来明确启用此阶段。请参阅 [Angular 编译器选项](guide/angular-compiler-options)。                                                                                   |
+| 3   | 模板类型检查           | 在此可选阶段，Angular *模板编译器*使用 TypeScript 编译器来验证模板中的绑定表达式。你可以通过设置 `strictTemplates` 配置选项来明确启用此阶段。请参阅 [Angular 编译器选项](guide/angular-compiler-options)。                                                                                   |
 
 ### Metadata restrictions
 
@@ -143,7 +143,7 @@ You write metadata in a *subset* of TypeScript that must conform to the followin
 
 * Input/Outputs and data-bound class members must be public or protected.
 
-  被装饰和用于数据绑定的类成员必须是公共（public）的。
+  输入属性、输出属性和用于数据绑定的类成员必须是公共（public）的或受保护的（protected）。
 
 For additional guidelines and instructions on preparing an application for AOT compilation, see [Angular: Writing AOT-friendly applications](https://medium.com/sparkles-blog/angular-writing-aot-friendly-applications-7b64c8afbe3f).
 
@@ -478,7 +478,7 @@ The compiler understands all syntax forms that the collector supports, but it ma
 
 ### Public or protected symbols
 
-### 公共符号
+### 公共的或受保护的符号
 
 The compiler can only reference *exported symbols*.
 

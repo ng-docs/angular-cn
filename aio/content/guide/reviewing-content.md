@@ -30,7 +30,7 @@ Perform these steps in a browser.
 
 1. [Find a topic to review](#find-topics-to-review) by:
 
-   [查找要审查的主题](#find-topics-to-review)：
+   [查找要审核的主题](#find-topics-to-review)：
 
    1. Finding a topic with a **Last reviewed** date that is six months or more in the past.
 
@@ -38,7 +38,7 @@ Perform these steps in a browser.
 
    1. Finding a topic that has no **Last reviewed** date.
 
-      查找没有**上次审查**日期的主题。
+      查找没有**上次审核**日期的主题。
 
    1. Finding a topic that you've read recently.
 
@@ -146,12 +146,12 @@ You can also see an example of this at the end of this topic.
 
 ### Topics that have never been reviewed
 
-### 从未审查过的主题
+### 从未审核过的主题
 
 If a topic doesn't have a **Last reviewed** date at the bottom, it has never been reviewed.
 You can review such a topic and add a new **Last reviewed** date after you review it.
 
-如果一个主题的底部没有“**最后审查”**日期，则表明它从未被审查过。你可以查看这样的主题，并在查看之后添加新的**上次查看**日期。
+如果一个主题的底部没有“**最后审核”**日期，则表明它从未被审核过。你可以查看这样的主题，并在查看之后添加新的**上次查看**日期。
 
 ### Topics that you know have a problem
 
@@ -243,7 +243,7 @@ If the topic requires major changes, you can [make a major change](guide/contrib
 
 Whether you make the changes the topic needs or open a docs issue, you should still [update the **Last reviewed** date](#update-the-last-reviewed-date). You can use the GitHub user interface in the browser if you only want to update the **Last reviewed** date.
 
-无论你是进行主题需要的更改还是打开文档问题，你仍然应该[更新**Last reviewed** date](#update-the-last-reviewed-date) 。 如果你只想更新**上次审查**日期，你可以在浏览器中使用 GitHub 用户界面。
+无论你是进行主题需要的更改还是打开文档问题，你仍然应该[更新**Last reviewed** date](#update-the-last-reviewed-date) 。 如果你只想更新**上次审核**日期，你可以在浏览器中使用 GitHub 用户界面。
 
 <!-- links -->
 

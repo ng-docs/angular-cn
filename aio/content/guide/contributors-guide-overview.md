@@ -19,19 +19,26 @@ You can update the Angular documentation in these ways:
 
 * [Make a minor change][AioGuideContributorsGuideOverviewMakeAMinorChange]
 
-  [做一个小改动][AioGuideContributorsGuideOverviewMakeAMinorChange]
+  [做出小改动][AioGuideContributorsGuideOverviewMakeAMinorChange]
 
 * [Make a major change][AioGuideContributorsGuideOverviewMakeAMajorChange]
 
-  [做出重大改变][AioGuideContributorsGuideOverviewMakeAMajorChange]
+  [做出重大变更][AioGuideContributorsGuideOverviewMakeAMajorChange]
 
 <div class="alert is-important">
 
 **IMPORTANT**:<br />
 To submit changes to the Angular documentation, you must have:
 
+要往 Angular 文档中提交变更，你必须有：
+
 *   A [GitHub][GithubMain] account
+
+    一个 [GitHub][GithubMain] 账号
+
 *   A signed [Contributor License Agreement][GithubAngularAngularBlobMainContributingMdSigningTheCla]
+
+    签署了 [贡献者授权协议][GithubAngularAngularBlobMainContributingMdSigningTheCla]
 
 </div>
 

@@ -361,19 +361,19 @@ For more information, see the [`forRoot()` pattern](guide/singleton-services#for
 Preloading improves UX by loading parts of your application in the background.
 You can preload modules, standalone components or component data. 
 
-预加载通过在后台加载部分应用来改进用户体验。你可以预加载模块或组件数据。
+预加载通过在后台加载部分应用来改进用户体验。你可以预加载模块、独立组件或组件数据。
 
 ### Preloading modules and standalone components
 
-### 预加载模块
+### 预加载模块和预加载独立组件
 
 Preloading modules and standalone components improves UX by loading parts of your application in the background. By doing this, users don't have to wait for the elements to download when they activate a route.
 
-预加载模块通过在后台加载部分应用来改善用户体验。这样一来，用户在激活路由时就无需等待下载这些元素。
+预加载模块和预加载独立组件通过在后台加载部分应用来改善用户体验。这样一来，用户在激活路由时就无需等待下载这些元素。
 
 To enable preloading of all lazy loaded modules and standalone components, import the `PreloadAllModules` token from the Angular `router`.
 
-要启用所有延迟加载模块和独立组件的预加载，请从 Angular `router` 导入 `PreloadAllModules` 令牌。
+要启用所有惰性加载模块和独立组件的预加载，请从 Angular `router` 导入 `PreloadAllModules` 令牌。
 
 ### Module based application
 
@@ -408,7 +408,7 @@ RouterModule.forRoot(
 
 For standalone applications configure preloading strategies by adding `withPreloading` to  `provideRouter`s RouterFeatures in `app.config.ts`
 
-对于独立应用程序，通过添加 `withPreloading` 来配置预加载策略以在 `app.config.ts` 中 `provideRouter` Router 的 RouterFeatures
+对于独立应用程序，请通过将 `withPreloading` 添加到 `app.config.ts` 文件中的 `provideRouter` 的`RouterFeatures` 参数中来配置预加载策略。
 
 <code-example header="`app.config.ts`">
 

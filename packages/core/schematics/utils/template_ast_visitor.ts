@@ -38,7 +38,7 @@ export class TemplateAstVisitor implements TmplAstRecursiveVisitor {
    * ESM `@angular/compiler` into a CommonJS schematic.
    *
    * 使用 `@angular/compiler` 包的实例创建一个新的 Render3 模板 AST 访问器。由于需要将 ESM
-   * `@angular/compiler` 动态导入到 CommonJS 示意图中，因此需要传入编译器。
+   * `@angular/compiler` 动态导入到 CommonJS 原理图中，因此需要传入编译器。
    *
    * @param compilerModule The compiler instance that should be used within the visitor.
    *

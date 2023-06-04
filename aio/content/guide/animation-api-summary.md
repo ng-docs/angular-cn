@@ -1,6 +1,6 @@
 # Animation API summary
 
-# 动画 API 总结
+# 动画 API 汇总
 
 <!-- vale off -->
 

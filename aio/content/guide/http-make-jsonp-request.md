@@ -1,4 +1,4 @@
-# HTTP&#x3A; Make a JSONP request
+# HTTP: Make a JSONP request
 
 # HTTP：发出 JSONP 请求
 

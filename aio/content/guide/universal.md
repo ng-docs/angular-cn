@@ -4,15 +4,15 @@
 
 This guide describes **Angular Universal**, a technology that allows Angular to render applications on the server.
 
-本指南介绍**Angular Universal** ，一种允许 Angular 在服务端渲染应用程序的技术。
+本指南介绍 **Angular Universal** ，一种允许 Angular 在服务端渲染应用程序的技术。
 
 By default, Angular renders applications only in a *browser*. Angular Universal allows Angular to render an application on the *server*, generating *static* HTML contents, which represents an application state. Once the HTML contents is rendered in a browser, Angular bootstraps an application and reuses the information available in the server-generated HTML.
 
-默认情况下，Angular 仅在*浏览器*中渲染应用程序。 Angular Universal 允许 Angular 在*服务器*上渲染应用程序，生成*静态*HTML 内容，代表应用程序状态。 一旦 HTML 内容在浏览器中渲染，Angular 就会引导应用程序并重用服务器生成的 HTML 中可用的信息。
+默认情况下，Angular 仅在*浏览器*中渲染应用程序。 Angular Universal 允许 Angular 在*服务器*上渲染应用程序，生成*静态*HTML 内容，以表达应用程序状态。 一旦 HTML 内容在浏览器中渲染，Angular 就会引导应用程序并复用服务器生成的 HTML 中可用的信息。
 
 With server-side rendering an application generally renders in a browser faster, giving users a chance to view the application UI before it becomes fully interactive. See \([the "Why use Server-Side Rendering?" section](#why-do-it)\) below for addition information.
 
-使用服务端渲染，应用程序通常可以更快地在浏览器中渲染，让用户有机会在应用程序 UI 变得完全交互之前查看它。 有关其他信息，请参阅下面的（ [“为什么使用服务端渲染？”部分](#why-do-it)）。
+使用服务端渲染，应用程序通常可以更快地在浏览器中渲染，让用户有机会在应用程序 UI 变得可完全交互之前查看它。 有关其他信息，请参阅下面的（ [“为什么使用服务端渲染？”部分](#why-do-it)）。
 
 Also for a more detailed look at different techniques and concepts surrounding SSR, check out this [article](https://developers.google.com/web/updates/2019/02/rendering-on-the-web).
 
@@ -26,6 +26,8 @@ You can enable server-side rendering in your Angular application using the `@ngu
 
 Angular Universal requires an [active LTS or maintenance LTS](https://nodejs.org/about/releases) version of Node.js.
 For information see the [version compatibility](guide/versions) guide to learn about the currently supported versions.
+
+Angular Universal 要求使用 Node.js 的[活跃期 LTS 版本或维护期 LTS 版本](https://nodejs.org/about/releases)。有关信息，请查看[版本兼容性](guide/versions)指南，了解当前支持的版本。
 
 </div>
 
@@ -56,7 +58,7 @@ A Node.js Express web server compiles HTML pages with Universal based on client 
 
 Run the following command to add SSR support into your application:
 
-运行以下命令将 SSR 支持添加到你的应用程序中：
+运行以下命令为你的应用程序添加 SSR 支持：
 
 <code-example format="shell" language="shell">
 
@@ -66,7 +68,7 @@ ng add &commat;nguniversal/express-engine
 
 The command updates the application code to enable SSR and adds extra files to the project structure \(files that are marked with the `*` symbol\).
 
-该命令更新应用程序代码以启用 SSR 并将额外文件添加到项目结构（标有 `*` 符号的文件）。
+该命令会更新应用程序代码以启用 SSR 并将额外文件（标有 `*` 符号的文件）添加到项目结构中。
 
 <div class='filetree'>
     <div class='file'>
@@ -124,17 +126,19 @@ The command updates the application code to enable SSR and adds extra files to t
 
 ### Step 2. Enable Client Hydration
 
-### 步骤 2. 启用客户端水化
+### 步骤 2. 启用客户端水合
 
 <div class="alert is-important">
 
 The hydration feature is available for [developer preview](/guide/releases#developer-preview). It's ready for you to try, but it might change before it is stable.
 
+水合功能已经提供了[开发者预览版](/guide/releases#developer-preview)。你已经可以尝试使用它了，但在稳定之前可能会发生变化。
+
 </div>
 
 Hydration is the process that restores the server side rendered application on the client. This includes things like reusing the server rendered DOM structures, persisting the application state, transferring application data that was retrieved already by the server, and other processes. Learn more about hydration in [this guide](guide/hydration).
 
-Hydration 是在客户端恢复服务端渲染的应用程序的过程。 这包括重用服务端渲染的 DOM 结构、持久化应用程序状态、传输服务器已经检索到的应用程序数据以及其他进程。 在[本指南](guide/hydration)中了解更多关于水合的信息。
+水合是在客户端还原服务端渲染的应用程序的过程。 这包括复用服务端渲染的 DOM 结构、持久化应用程序状态、传输服务器已经检索到的应用程序数据，以及另外一些过程。 在[本指南](guide/hydration)中了解更多关于水合的信息。
 
 You can enable hydration by updating the `app.module.ts` file. Import the `provideClientHydration` function from `@angular/platform-browser` and add the function call to the `providers` section of the `AppModule` as shown below.
 
@@ -170,7 +174,7 @@ npm run dev:ssr
 
 ### Step 4. Run your application in a browser
 
-### 第 4 步。在浏览器中运行你的应用程序
+### 第 4 步. 在浏览器中运行你的应用程序
 
 Once the web server starts, open a browser and navigate to `http://localhost:4200`.
 You should see the familiar Tour of Heroes dashboard page.
@@ -321,6 +325,9 @@ The sample web server for this guide is based on the popular [Express](https://e
 *Any* web server technology can serve a Universal application as long as it can call Angular `platform-server` package [`renderModule`](api/platform-server/renderModule) or [`renderApplication`](api/platform-server/renderApplication) functions.
 The principles and decision points discussed here apply to any web server technology.
 
+**注意**: <br />
+只要能够调用Angular `platform-server`包的 [`renderModule`](api/platform-server/renderModule)或[`renderApplication`](api/platform-server/renderApplication) 函数，*任何* Web 服务器技术都可以作为 Universal 服务器。这里讨论的原则和决策点适用于任何 Web 服务器技术。
+
 </div>
 
 Universal applications use the Angular `platform-server` package \(as opposed to `platform-browser`\), which provides
@@ -331,16 +338,16 @@ Universal 应用使用 `platform-server` 包（而不是 `platform-browser`）�
 The server \([Node.js Express](https://expressjs.com) in this guide's example\) passes client requests for application pages to the NgUniversal `ngExpressEngine`.
 Under the hood, the render functions, while providing caching and other helpful utilities.
 
-服务器（这个例子中使用的是 [Node.js Express](https://expressjs.com) 服务器）会把客户端对应用页面的请求传给 NgUniversal 的 `ngExpressEngine`。在内部实现上，它会调用 Universal 的 `renderModule()` 函数，它还提供了缓存等有用的工具函数。
+服务器（这个例子中使用的是 [Node.js Express](https://expressjs.com) 服务器）会把客户端对应用页面的请求传给 NgUniversal 的 `ngExpressEngine`。在内部实现上，它会调用 Universal 的渲染函数，它还提供了缓存等有用的工具函数。
 
 The render functions takes as inputs a *template* HTML page \(usually `index.html`\), and Angular *module* containing components or a function that when invoked returns a `Promise` that resolves to an `ApplicationRef`, and a *route* that determines which components to display. The route comes from the client's request to the server.
 
-`renderModule()` 函数接受一个*模板* HTML 页面（通常是 `index.html`）、一个包含组件的 Angular *模块*和一个用于决定该显示哪些组件的*路由*作为输入。 该路由从客户端的请求中传给服务器。
+渲染函数接受一个*模板* HTML 页面（通常是 `index.html`）、一个包含组件的 Angular *模块*、一个能在调用时返回解析出 `ApplicationRef` 型 `Promise` 的函数，和一个用于决定该显示哪些组件的*路由*作为输入。 该路由会从客户端的请求中传给服务器。
 
 Each request results in the appropriate view for the requested route.
 The render function renders the view within the `<app>` tag of the template, creating a finished HTML page for the client.
 
-每次请求都会给出所请求路由的一个适当的视图。`renderModule()` 在模板中的 `<app>` 标记中渲染出这个视图，并为客户端创建一个完成的 HTML 页面。
+每次请求都会给出所请求路由的一个适当的视图。渲染函数会在模板中的 `<app>` 标记中渲染出这个视图，并为客户端创建一个完成的 HTML 页面。
 
 Finally, the server returns the rendered page to the client.
 
@@ -377,7 +384,7 @@ This is a good argument for making the application [routable](guide/router).
 
 If you are using Universal in conjunction with the Angular service worker, the behavior is different than the normal server side rendering behavior. The initial server request will be rendered on the server as expected. However, after that initial request, subsequent requests are handled by the service worker. For subsequent requests, the `index.html` file is served statically and bypasses server side rendering.
 
-如果你将 Universal 与 Angular service worker 结合使用，则其行为不同于正常的服务端渲染行为。 初始服务器请求将按预期在服务端渲染。 但是，在该初始请求之后，后续请求将由 service worker 处理。 对于后续请求， `index.html` 文件是静态提供的并绕过服务端渲染。
+如果你将 Universal 与 Angular Service Worker 结合使用，则其行为将不同于正常的服务端渲染行为。 初始服务器请求将按预期在服务端渲染。 但是，在该初始请求之后，后续请求将交给 Service Worker 处理。 对于后续请求来说， `index.html` 文件是静态提供的并绕过服务端渲染。
 
 <a id="universal-engine"></a>
 
@@ -393,19 +400,19 @@ The important bit in the `server.ts` file is the `ngExpressEngine()` function.
 
 The `ngExpressEngine()` function is a wrapper around the Angular `platform-server` package [`renderModule`](api/platform-server/renderModule) and [`renderApplication`](api/platform-server/renderApplication) functions which turns a client's requests into server-rendered HTML pages.
 
-`ngExpressEngine()` 函数是 Angular `platform-server` 包[`renderModule`](api/platform-server/renderModule)和[`renderApplication`](api/platform-server/renderApplication)函数的包装器，它将客户端的请求转换为服务端渲染的 HTML 页面。
+`ngExpressEngine()` 函数是 Angular `platform-server` 包 [`renderModule`](api/platform-server/renderModule) 和 [`renderApplication`](api/platform-server/renderApplication) 函数的包装器，它将客户端的请求转换为服务端渲染的 HTML 页面。
 
 It accepts an object with the following properties:
 
 `ngExpressEngine()` 是对 Universal 的 `renderModule()` 函数的封装。它会把客户端请求转换成服务端渲染的 HTML 页面。它接受一个具有下列属性的对象：
 
 | Properties       | Details                                                                                                                                                                                                                                                                                                   |
-| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 属性             | 详情                                                                                                                                                                                                                                                                                                      |
+| :--------------- |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 属性             | 详情                                                                                                                                                                                                                                                                                                        |
 | `bootstrap`      | The root `NgModule` or function that when invoked returns a `Promise` that resolves to an `ApplicationRef` of the application when rendering on the server. For the example application, it is `AppServerModule`. It's the bridge between the Universal server-side renderer and the Angular application. |
-| `bootstrap`      | 根 `NgModule` 或函数在调用时返回一个 `Promise` ，该 Promise 在服务端渲染时解析为应用程序的 `ApplicationRef` 。 对于示例应用程序，它是 `AppServerModule` 。 它是通用服务端渲染器和 Angular 应用程序之间的桥梁。                                                                                             |
+| `bootstrap`      | 根 `NgModule` 或函数在调用时会返回一个 `Promise` ，该 Promise 在服务端渲染时解析为应用程序的 `ApplicationRef` 。 对于示例应用程序，它是 `AppServerModule` 。 它是通用服务端渲染器和 Angular 应用程序之间的桥梁。                                                                                                                                                          |
 | `extraProviders` | This property is optional and lets you specify dependency providers that apply only when rendering the application on the server. Do this when your application needs information that can only be determined by the currently running server instance.                                                   |
-| `extraProviders` | 这是可选的，可以让你指定仅在服务端渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。                                                                                                                                                            |
+| `extraProviders` | 这是可选的，可以让你指定仅在服务端渲染应用程序时才适用的依赖提供者。当你的应用需要某些只能由当前运行的服务器实例确定的信息时，可以执行此操作。                                                                                                                                                                                                                                   |
 
 The `ngExpressEngine()` function returns a `Promise` callback that resolves to the rendered page.
 It's up to the engine to decide what to do with that page.
@@ -522,7 +529,7 @@ This option is the least intrusive as it does not require any changes to the app
 Here, "request URL" refers to the URL of the request as a response to which the application is being rendered on the server.
 For example, if the client requested `https://my-server.com/dashboard` and you are rendering the application on the server to respond to that request, `options.url` should be set to `https://my-server.com/dashboard`.
 
-推荐的解决方案是将完整的请求 URL 传递给[renderModule](api/platform-server/renderModule)的 `options` 参数。 此选项的侵入性最小，因为它不需要对应用程序进行任何更改。 此处，“请求 URL”指的是请求的 URL，作为应用程序在服务端渲染的响应。 例如，如果客户端请求 `https://my-server.com/dashboard` 并且你正在服务端渲染应用程序以响应该请求，则 `options.url` 应设置为 `https://my-server.com/dashboard` 。
+推荐的解决方案是将完整的请求 URL 传递给 [renderModule](api/platform-server/renderModule) 的 `options` 参数。 此选项的侵入性最小，因为它不需要对应用程序进行任何更改。 这里所说的“请求 URL”指的是原始的请求 URL，把它传给服务端渲染应用程序。例如，如果客户端请求 `https://my-server.com/dashboard` 并且你正在服务端渲染应用程序以响应该请求，则 `options.url` 应设置为 `https://my-server.com/dashboard` 。
 
 Now, on every HTTP request made as part of rendering the application on the server, Angular can correctly resolve the request URL to an absolute URL, using the provided `options.url`.
 

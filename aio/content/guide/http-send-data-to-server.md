@@ -1,4 +1,4 @@
-# HTTP&#x3A; Send data to a server
+# HTTP: Send data to a server
 
 # HTTP：向服务器发送数据
 
@@ -28,16 +28,16 @@ The method takes a resource URL and two additional parameters:
 `HttpClient.post()` 方法像 `get()` 一样也有类型参数，可以用它来指出你期望服务器返回特定类型的数据。该方法需要一个资源 URL 和两个额外的参数：
 
 | Parameter        | Details                                                                            |
-| :--------------- | :--------------------------------------------------------------------------------- |
-| 参数             | 详情                                                                               |
+| :--------------- |:-----------------------------------------------------------------------------------|
+| 参数             | 详情                                                                                 |
 | body             | The data to POST in the body of the request.                                       |
-| body             | 要在请求正文中 POST 的数据。                                                       |
+| body             | 要在请求正文中 POST 的数据。                                                                  |
 | options          | An object containing method options which, in this case, specify required headers. |
-| options | 包含方法选项的对象，在这种情况下，指定所需的标头。                                 |
+| options | 包含方法选项的对象，在这里用于指定所需的标头。                                                            |
 
 The example catches errors as [described above](guide/http-handle-request-errors#error-details).
 
-该示例[如上所述](guide/http-handle-request-errors#error-details)捕获错误。
+该示例[如上所述](guide/http-handle-request-errors#error-details)会捕获错误。
 
 The `HeroesComponent` initiates the actual POST operation by subscribing to the `Observable` returned by this service method.
 
@@ -93,11 +93,11 @@ The following `HeroesService` example, like the POST example, replaces a resourc
 
 As for any of the HTTP methods that return an observable, the caller, `HeroesComponent.update()` [must `subscribe()`](guide/http-request-data-from-server#always-subscribe "Why you must always subscribe.") to the observable returned from the `HttpClient.put()` in order to initiate the request.
 
-对于任何返回可观察对象的 HTTP 方法，调用者 `HeroesComponent.update()` [必须 `subscribe()`](guide/http-request-data-from-server#always-subscribe "为什么你必须始终订阅。")到从 `HttpClient.put()` 返回的可观察对象以发起请求。
+对于任何返回可观察对象的 HTTP 方法，调用者 `HeroesComponent.update()` [必须 `subscribe()`](guide/http-request-data-from-server#always-subscribe "为什么你必须始终订阅。") 从 `HttpClient.put()` 返回的可观察对象才会发起请求。
 
 ## Add and updating headers
 
-## 添加和更新标题
+## 添加和更新表头
 
 Many servers require extra headers for save operations.
 For example, a server might require an authorization token, or "Content-Type" header to explicitly declare the MIME type of the request body.
@@ -106,7 +106,7 @@ For example, a server might require an authorization token, or "Content-Type" he
 
 ### Add headers
 
-### 添加标题
+### 添加标头
 
 The `HeroesService` defines such headers in an `httpOptions` object that are passed to every `HttpClient` save method.
 
@@ -116,7 +116,7 @@ The `HeroesService` defines such headers in an `httpOptions` object that are pas
 
 ### Update headers
 
-### 更新标题
+### 更新标头
 
 You can't directly modify the existing headers within the previous options
 object because instances of the `HttpHeaders` class are immutable.

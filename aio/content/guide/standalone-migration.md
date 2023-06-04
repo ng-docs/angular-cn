@@ -4,7 +4,7 @@
 
 As of version 15.2.0, Angular offers a [schematic](guide/schematics) to help project authors convert existing projects to [the new standalone APIs](guide/standalone-components). The schematic aims to transform as much code as possible automatically, but it may require some manual fixes by the project author. Run the schematic with the following command:
 
-从版本 15.2.0 开始，Angular 提供了一个[示意图](guide/schematics)来帮助项目作者将现有项目转换为[新的独立 API](guide/standalone-components) 。 该原理图旨在自动转换尽可能多的代码，但可能需要项目作者进行一些手动修复。 使用以下命令运行原理图：
+从版本 15.2.0 开始，Angular 提供了一个[原理图](guide/schematics)来帮助项目作者将现有项目转换为[新的独立 API](guide/standalone-components) 。 该原理图旨在自动转换尽可能多的代码，但可能需要项目作者进行一些手动修复。 使用以下命令运行原理图：
 
 <code-example format="shell" language="shell">
 
@@ -18,7 +18,7 @@ ng generate @angular/core:standalone
 
 Before using the schematic, please ensure that the project:
 
-在使用原理图之前，请确保项目：
+在使用本原理图之前，请确保项目：
 
 1. Is using Angular 15.2.0 or later.
 
@@ -34,7 +34,7 @@ Before using the schematic, please ensure that the project:
 
 ## Schematic options
 
-## 示意图选项
+## 原理图选项
 
 | Option | Details                                                                                                                       |
 | :----- | :---------------------------------------------------------------------------------------------------------------------------- |
@@ -50,7 +50,7 @@ Before using the schematic, please ensure that the project:
 
 The migration process is composed of three steps. You'll have to run it multiple times and check manually that the project builds and behaves as expected.
 
-迁移过程由三个步骤组成。 你必须多次运行它并手动检查项目是否按预期构建和运行。
+迁移过程由三个步骤组成。 你必须多次运行它并手动检查项目是否能按预期构建和运行。
 
 <div class="callout is-helpful">
 
@@ -67,19 +67,19 @@ Run the migration in the order listed below, verifying that your code builds and
 
 1. Run `ng g @angular/core:standalone` and select "Convert all components, directives and pipes to standalone"
 
-   运行 `ng g @angular/core:standalone` 并选择“Convert all components, directives and pipes to standalone”
+   运行 `ng g @angular/core:standalone` 并选择 “Convert all components, directives and pipes to standalone”
 
 2. Run `ng g @angular/core:standalone` and select "Remove unnecessary NgModule classes"
 
-   运行 `ng g @angular/core:standalone` 并选择“删除不必要的 NgModule 类”
+   运行 `ng g @angular/core:standalone` 并选择 “Remove unnecessary NgModule classes”
 
 3. Run `ng g @angular/core:standalone` and select "Bootstrap the project using standalone APIs"
 
-   运行 `ng g @angular/core:standalone` 并选择“Bootstrap the project using standalone APIs”
+   运行 `ng g @angular/core:standalone` 并选择 “Bootstrap the project using standalone APIs”
 
 4. Run any linting and formatting checks, fix any failures, and commit the result
 
-   运行任何 linting 和格式检查，修复任何故障，并提交结果
+   运行任何静态分析（lint）和格式检查，修复任何故障，并提交结果
 
 ## After the migration
 
@@ -99,19 +99,19 @@ Congratulations, your application has been converted to standalone 🎉. These a
 
 * Run any code formatters, if the project uses automatic formatting.
 
-  如果项目使用自动格式化，则运行任何代码格式化程序。
+  如果项目使用了自动格式化，则运行所有代码格式化程序。
 
 * Run any linters in your project and fix new warnings. Some linters support a `--fix` flag that may resolve so warnings automatically.
 
-  在你的项目中运行任何 linters 并修复新警告。 一些 linters 支持 `--fix` 标志，可以自动解决 so 警告。
+  在你的项目中运行任何静态分析器（linter）并修复新警告。 一些静态分析器支持 `--fix` 标志，可以自动解决一些警告。
 
 ## Migration modes
 
-## 迁移方式
+## 迁移模式
 
 The migration has the following modes:
 
-迁移有以下几种模式：
+迁移有以下几个步骤：
 
 1. Convert declarations to standalone.
 
@@ -124,7 +124,9 @@ The migration has the following modes:
 3. Switch to standalone bootstrapping API.
    You should run these migrations in the order given.
 
-   切换到独立的引导 API。 你应该按照给定的顺序运行这些迁移。
+   切换到独立的引导启动 API。
+ 
+你应该按照给定的顺序运行这些迁移。
 
 ### Convert declarations to standalone
 
@@ -137,6 +139,8 @@ In this mode, the migration converts all components, directives and pipes to sta
 <div class="callout is-helpful">
 
 The schematic ignores NgModules which bootstrap a component during this step because they are likely root modules used by `bootstrapModule` rather than the standalone-compatible `bootstrapApplication`. The schematic converts these declarations automatically as a part of the ["Switch to standalone bootstrapping API"](#switch-to-standalone-bootstrapping-api) step.
+
+在此步骤中，该原理图会忽略在此过程中引导组件的 NgModules，因为它们很可能是由 `bootstrapModule` 使用的根模块，而不是兼容独立的 `bootstrapApplication`。该原理图会自动将这些声明转换为["独立引导 API"](#switch-to-standalone-bootstrapping-api) 步骤的一部分。
 
 </div>
 
@@ -197,7 +201,7 @@ export class GreeterComponent {
 
 After converting all declarations to standalone, many NgModules can be safely removed. This step deletes such module declarations and as many corresponding references as possible. If the migration cannot delete a reference automatically, it leaves the following TODO comment so that you can delete the NgModule manually:
 
-将所有声明转换为独立声明后，可以安全地删除许多 NgModule。 此步骤删除此类模块声明和尽可能多的相应引用。 如果迁移无法自动删除引用，它会留下以下 TODO 注释，以便你可以手动删除 NgModule：
+在将所有声明都转换为独立声明后，就可以安全地删除许多 NgModule 了。 此步骤会删除这类模块声明和尽可能多的相应引用。 如果迁移无法自动删除引用，它就会留下以下 TODO 注释，以便你可以手动删除 NgModule：
 
 ```typescript
 /* TODO(standalone-migration): clean up removed NgModule reference manually */
@@ -205,7 +209,7 @@ After converting all declarations to standalone, many NgModules can be safely re
 
 The migration considers a module safe to remove if that module:
 
-如果该模块满足以下条件，则迁移认为该模块可以安全删除：
+如果该模块满足以下条件，则迁移器就认为该模块可以安全删除了：
 
 * Has no `declarations`.
 
@@ -225,7 +229,7 @@ The migration considers a module safe to remove if that module:
 
 * Has no class members. Empty constructors are ignored.
 
-  没有班级成员。 空构造函数将被忽略。
+  没有类成员。空构造函数将被忽略。
 
 **Before:**
 
@@ -255,7 +259,7 @@ export class ImporterModule {}
 
 This step converts any usages of  `bootstrapModule` to the new, standalone-based `bootstrapApplication`. It also switches the root component to `standalone: true` and deletes the root NgModule. If the root module has any `providers` or `imports`, the migration attempts to copy as much of this configuration as possible into the new bootstrap call.
 
-此步骤将 `bootstrapModule` 的任何用法转换为新的、基于独立的 `bootstrapApplication` 。 它还将根组件切换为 `standalone: true` 并删除根 NgModule。 如果根模块有任何 `providers` 或 `imports` ，迁移会尝试将尽可能多的配置复制到新的引导程序调用中。
+此步骤将 `bootstrapModule` 的任何用法转换为新的、基于独立的 `bootstrapApplication` 。 它还会将根组件切换为 `standalone: true` 并删除根 NgModule。 如果根模块有任何 `providers` 或 `imports` ，迁移会尝试将尽可能多的配置复制到新的引导程序调用中。
 
 **Before:**
 
@@ -320,15 +324,15 @@ Some common problems that may prevent the schematic from working correctly inclu
 
 * Compilation errors - if the project has compilation errors, Angular cannot analyze and migrate it correctly.
 
-  编译错误——如果项目有编译错误，Angular 无法正确分析和迁移它。
+  编译错误 —— 如果项目有编译错误，Angular 就无法正确分析和迁移它。
 
 * Files not included in a tsconfig - the schematic determines which files to migrate by analyzing your project's `tsconfig.json` files. The schematic excludes any files not captured by a tsconfig.
 
-  文件不包含在 tsconfig 中——原理图通过分析项目的 `tsconfig.json` 文件来确定要迁移的文件。 该原理图不包括任何未被 tsconfig 捕获的文件。
+  文件未包含在 tsconfig 中 —— 原理图通过分析项目的 `tsconfig.json` 文件来确定要迁移的文件。 该原理图不会包括任何未被 tsconfig 捕获的文件。
 
 * Code that cannot be statically analyzed - the schematic uses static analysis to understand your code and determine where to make changes. The migration may skip any classes with metadata that cannot be statically analyzed at build time.
 
-  无法静态分析的代码——原理图使用静态分析来理解你的代码并确定在哪里进行更改。 迁移可能会跳过任何包含在构建时无法静态分析的元数据的类。
+  无法静态分析的代码 —— 原理图使用静态分析来理解你的代码并确定在哪里进行更改。 迁移可能会跳过任何包含在构建时无法静态分析的元数据的类。
 
 ## Limitations
 
@@ -340,10 +344,10 @@ Due to the size and complexity of the migration, there are some cases that the s
 
 * Because unit tests are not ahead-of-time \(AoT\) compiled, `imports` added to components in unit tests might not be entirely correct.
 
-  因为单元测试不是提前 \(AoT\) 编译的，所以在单元测试中添加到组件的 `imports` 可能不完全正确。
+  因为单元测试不是预先（AoT）编译的，所以在单元测试中往组件的 `imports` 中添加类可能不完全正确。
 
 * The schematic relies on direct calls to Angular APIs. The schematic cannot recognize custom wrappers around Angular APIs. For example, if there you define a custom `customConfigureTestModule` function that wraps `TestBed.configureTestingModule`, components it declares may not be recognized.
 
-  该示意图依赖于对 Angular API 的直接调用。 原理图无法识别围绕 Angular API 的自定义包装器。 例如，如果你在那里定义了一个自定义的 `customConfigureTestModule` 函数来包装 `TestBed.configureTestingModule` ，它声明的组件可能无法被识别。
+  该原理图依赖于对 Angular API 的直接调用。 原理图无法识别围绕 Angular API 的自定义包装器。 例如，如果你在那里定义了一个自定义的 `customConfigureTestModule` 函数来包装 `TestBed.configureTestingModule` ，它声明的组件可能无法被识别。
 
 @reviewed 2023-02-15

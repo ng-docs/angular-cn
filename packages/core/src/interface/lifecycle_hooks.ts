@@ -121,7 +121,7 @@ export interface OnInit {
  * For a more complete example and discussion, see
  * [Defining custom change detection](guide/lifecycle-hooks#defining-custom-change-detection).
  *
- * 有关更完整的示例和讨论，请参阅[定义自定义更改检测](guide/lifecycle-hooks#defining-custom-change-detection)。
+ * 有关更完整的示例和讨论，请参阅[定义自定义变更检测](guide/lifecycle-hooks#defining-custom-change-detection)。
  *
  * @publicApi
  */

@@ -18,11 +18,7 @@ This topic lists localized versions of the Angular documentation.
 
 * [한국어](https://angular.kr) <!-- 한국어 -->
 
-  [韩国人](https://angular.kr)
-
 * [Ελληνικά](https://angular-gr.web.app) <!-- Ελληνικά -->
-
-  [希腊语](https://angular-gr.web.app)
 
 For information on localizing Angular documentation, see [Angular localization guidelines](guide/localizing-angular).
 

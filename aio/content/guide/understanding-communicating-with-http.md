@@ -29,7 +29,7 @@ Before working with the `HttpClientModule`, you should have a basic understandin
 * Observable techniques and operators.
   See the [Observables guide](guide/observables).
 
-  可观察的技术和运算符。 请参阅[Observables 指南](guide/observables)。
+  Observable 的技术和运算符。 请参阅 [Observables 指南](guide/observables)。
 
 ## HTTP client service features
 
@@ -41,19 +41,19 @@ HTTP 客户端服务提供了以下主要功能。
 
 * The ability to request [typed response objects](guide/http-request-data-from-server)
 
-  请求[类型化响应对象的](guide/http-request-data-from-server)能力
+  请求[类型化响应对象](guide/http-request-data-from-server)的能力
 
 * Streamlined [error handling](guide/http-handle-request-errors)
 
-  简化的[错误处理](guide/http-handle-request-errors)
+  管道式[错误处理](guide/http-handle-request-errors)
 
 * [Testability](guide/http-test-requests) features
 
-  [可测性](guide/http-test-requests)特征
+  [可测试性](guide/http-test-requests)的特性
 
 * Request and response [interception](guide/http-intercept-requests-and-responses)
 
-  请求和响应[拦截](guide/http-intercept-requests-and-responses)
+  对请求和响应的[拦截](guide/http-intercept-requests-and-responses)
 
 ## What's next
 
@@ -61,6 +61,6 @@ HTTP 客户端服务提供了以下主要功能。
 
 * [Setup for server communication](guide/http-server-communication)
 
-  [设置服务器通信](guide/http-server-communication)
+  [建立服务器通信](guide/http-server-communication)
 
 @reviewed 2023-03-14

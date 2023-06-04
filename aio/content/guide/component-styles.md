@@ -120,9 +120,7 @@ The following sections describe these selectors.
 
 组件样式中有一些从影子（Shadow） DOM 样式范围领域（记录在[W3C](https://www.w3.org)的[CSS Scoping Module Level 1](https://www.w3.org/TR/css-scoping-1)中）引入的特殊*选择器*：
 
-### :host
-
-### ：主持人
+### `:host`
 
 Every component is associated within an element that matches the component's selector.
 This element, into which the template is rendered, is called the *host element*.

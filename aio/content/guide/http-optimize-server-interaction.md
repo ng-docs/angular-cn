@@ -1,6 +1,6 @@
 # HTTP - Optimize server interaction with debouncing
 
-# HTTP - 通过去抖优化服务器交互
+# HTTP - 通过防抖优化服务器交互
 
 If you need to make an HTTP request in response to user input, it's not efficient to send a request for every keystroke. It's better to wait until the user stops typing and then send a request. This technique is known as debouncing.
 
@@ -8,7 +8,7 @@ If you need to make an HTTP request in response to user input, it's not efficien
 
 ## Implement debouncing
 
-## 实施去抖动
+## 实现防抖
 
 Consider the following template, which lets a user enter a search term to find a package by name. When the user enters a name in a search-box, the `PackageSearchComponent` sends a search request for a package with that name to the package search API.
 

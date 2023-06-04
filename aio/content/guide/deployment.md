@@ -129,9 +129,7 @@ You can read more by following the links associated with the package names below
 | [Firebase hosting](https://firebase.google.com/docs/hosting)      | [`@angular/fire`](https://npmjs.org/package/@angular/fire)                           |
 | [Firebase 托管](https://firebase.google.com/docs/hosting)         | [`@angular/fire`](https://npmjs.org/package/@angular/fire)                           |
 | [Vercel](https://vercel.com/solutions/angular)                    | [`vercel init angular`](https://github.com/vercel/vercel/tree/main/examples/angular) |
-| [韦塞尔](https://vercel.com/solutions/angular)                    | [`vercel init angular`](https://github.com/vercel/vercel/tree/main/examples/angular) |
 | [Netlify](https://www.netlify.com)                                | [`@netlify-builder/deploy`](https://npmjs.org/package/@netlify-builder/deploy)       |
-| [网络化](https://www.netlify.com)                                 | [`@netlify-builder/deploy`](https://npmjs.org/package/@netlify-builder/deploy)       |
 | [GitHub pages](https://pages.github.com)                          | [`angular-cli-ghpages`](https://npmjs.org/package/angular-cli-ghpages)               |
 | [GitHub 页面](https://pages.github.com)                           | [`angular-cli-ghpages`](https://npmjs.org/package/angular-cli-ghpages)               |
 | [NPM](https://npmjs.com)                                          | [`ngx-deploy-npm`](https://npmjs.org/package/ngx-deploy-npm)                         |
@@ -402,20 +400,20 @@ The `production` configuration engages the following build optimization features
 `production` 配置项指定如下优化特性。
 
 | Features                                                | Details                                                                  |
-| :------------------------------------------------------ | :----------------------------------------------------------------------- |
-| 特性                                                    | 详细信息                                                                 |
+| :------------------------------------------------------ |:-------------------------------------------------------------------------|
+| 特性                                                    | 详细信息                                                                     |
 | [Ahead-of-Time \(AOT\) Compilation](guide/aot-compiler) | Pre-compiles Angular component templates.                                |
-| [预先（AOT）编译](guide/aot-compiler)                   | 预编译 Angular 的组件模板。                                              |
+| [预先（AOT）编译](guide/aot-compiler)                   | 预编译 Angular 的组件模板。                                                       |
 | [Production mode](#prod-mode)                           | Optimizes the application for the best runtime performance               |
-| [生产模式](#prod-mode)                                  | 部署到启用了*生产模式*的生产环境。                                       |
+| [生产模式](#prod-mode)                                  | 为获得最佳的运行时性能而优化此应用。                                                       |
 | Bundling                                                | Concatenates your many application and library files into a few bundles. |
-| 打包                                                    | 把你的多个应用于库文件拼接到少量包（bundle）中。                         |
+| 打包                                                    | 把你的多个应用于库文件拼接到少量包（bundle）中。                                              |
 | Minification                                            | Removes excess whitespace, comments, and optional tokens.                |
-| 缩小                                                    | 删除多余的空格、注释和可选标记。                                         |
+| 缩小                                                    | 删除多余的空格、注释和可选标记。                                                         |
 | Uglification                                            | Rewrites code to use short, cryptic variable and function names.         |
-| 丑化                                                    | 重写代码，使用简短的、不容易理解的变量名和函数名。                       |
+| 丑化                                                    | 重写代码，使用简短的、不容易理解的变量名和函数名。                                                |
 | Dead code elimination                                   | Removes unreferenced modules and much unused code.                       |
-| 死代码消除                                              | 删除未引用过的模块和很多未用到的代码。                                   |
+| 死代码消除                                              | 删除未引用过的模块和很多未用到的代码。                                                      |
 
 See [`ng build`](cli/build) for more about CLI build options and what they do.
 
@@ -432,7 +430,7 @@ at runtime. The development mode at runtime enables extra safety checks, more de
 and debugging utilities, such as the [expression-changed-after-checked](errors/NG0100) detection. Angular outputs
 a message in the browser console to indicate that the development mode is enabled.
 
-当你使用 `ng serve` 在本地运行应用程序时，Angular 在运行时使用开发模式配置。 运行时的开发模式支持额外的安全检查、更详细的错误消息和调试实用程序，例如[检查后表达式更改](errors/NG0100)检测。 Angular 在浏览器控制台输出一条消息，表明开发模式已启用。
+当你使用 `ng serve` 在本地运行应用程序时，Angular 会在运行时使用开发模式配置。 运行时的开发模式支持额外的安全检查、更详细的错误消息和调试实用程序，例如[检查后表达式更改](errors/NG0100)检测。 Angular 在浏览器控制台输出一条消息，表明开发模式已启用。
 
 Those extra checks are helpful during the development, but they require an extra code in a bundle, which is
 undesirable in production. To ensure that there are no implications on the bundle size, the build optimizer

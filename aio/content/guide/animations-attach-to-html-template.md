@@ -4,7 +4,7 @@
 
 Animations are defined in the metadata of the component that controls the HTML element to be animated.
 
-动画是在控制要动画的 HTML 元素的组件的元数据中定义的。
+动画是在控制要动画的 HTML 元素的宿主组件的元数据中定义的。
 
 ## Define the animation
 
@@ -12,14 +12,14 @@ Animations are defined in the metadata of the component that controls the HTML e
 
 Put the code that defines your animations under the `animations:` property within the `@Component()` decorator.
 
-将定义动画的代码放在 `animations:` 属性下 `@Component()` 装饰器中。
+将定义动画的代码放在 `@Component()` 装饰器中的 `animations:` 属性下。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="component"></code-example>
 
 When an animation trigger for a component is defined, attach it to an element in the template. Wrap the trigger name in brackets and precede it with an `@` symbol.
 Bind the trigger to a template expression using standard Angular property binding syntax. The `triggerName` is the name of the trigger, and `expression` evaluates to a defined animation state.
 
-定义组件的动画触发器后，将其附加到模板中的元素。 将触发器名称括在方括号中，并在其前面加上 `@` 符号。 使用标准的 Angular 属性绑定语法将触发器绑定到模板表达式。 `triggerName` 是触发器的名称， `expression` 计算为定义的动画状态。
+定义了组件的动画触发器后，将其附加到模板中的元素。 将触发器名称括在方括号中，并在它前面加上 `@` 符号。 可以使用标准的 Angular 属性绑定语法将触发器绑定到模板表达式。其中 `triggerName` 是触发器的名称， `expression` 计算为某个已定义的动画状态。
 
 <code-example format="typescript" language="typescript">
 

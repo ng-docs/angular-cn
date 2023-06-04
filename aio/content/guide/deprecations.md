@@ -16,7 +16,7 @@ This guide contains a summary of noteworthy Angular APIs and features that are c
 See the [full changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md) for
 comprehensive details on deprecations and breaking changes.
 
-本指南包含了当前已弃用的所有 Angular API 和特性的汇总表。
+本指南包含了当前已弃用的重要 Angular API 和特性的汇总表。参见[完整的变更记录](https://github.com/angular/angular/blob/main/CHANGELOG.md)来更全面地了解这些弃用的详情和重大变更。
 
 <div class="alert is-helpful">
 
@@ -99,18 +99,18 @@ v16 - v19
 ### 可以在 v15 或更高版本中删除的已弃用特性
 
 | Area                    | API or Feature                                                                                             | Deprecated in | May be removed in |
-| :---------------------- | :--------------------------------------------------------------------------------------------------------- | :------------ | :---------------- |
-| 特性区                  | API 或特性                                                                                                 | 已弃用于      | 可能会移除于      |
+| :---------------------- |:-----------------------------------------------------------------------------------------------------------| :------------ | :---------------- |
+| 特性区                  | API 或特性                                                                                                    | 已弃用于      | 可能会移除于      |
 | `@angular/compiler-cli` | [Input setter coercion](#input-setter-coercion)                                                            | v13           | v15               |
-| `@angular/compiler-cli` | [输入设置器强制](#input-setter-coercion)                                                                   | v13           | v15               |
+| `@angular/compiler-cli` | [输入属性 Setter 类型转换](#input-setter-coercion)                                                                 | v13           | v15               |
 | `@angular/compiler-cli` | [`fullTemplateTypeCheck`](#full-template-type-check)                                                       | v13           | v15               |
 | `@angular/core`         | [Factory-based signature of `ApplicationRef.bootstrap`](#core)                                             | v13           | v15               |
-| `@angular/core`         | [`ApplicationRef.bootstrap` 的基于工厂的签名](#core)                                                        | v13           | v15               |
+| `@angular/core`         | [`ApplicationRef.bootstrap` 的基于工厂的签名](#core)                                                               | v13           | v15               |
 | `@angular/core`         | [`PlatformRef.bootstrapModuleFactory`](#core)                                                              | v13           | v15               |
 | `@angular/core`         | [Factory-based signature of `ViewContainerRef.createComponent`](api/core/ViewContainerRef#createComponent) | v13           | v15               |
-| `@angular/core`         | [`ViewContainerRef.createComponent` 的基于工厂的签名](api/core/ViewContainerRef#createComponent)           | v13           | v15               |
+| `@angular/core`         | [`ViewContainerRef.createComponent` 的基于工厂的签名](api/core/ViewContainerRef#createComponent)                   | v13           | v15               |
 | `@angular/upgrade`      | [Factory-based signature of `downgradeModule`](#upgrade-static)                                            | v13           | v15               |
-| `@angular/upgrade`      | [`downgradeModule` 的基于工厂的签名](#upgrade-static)                                                       | v13           | v15               |
+| `@angular/upgrade`      | [`downgradeModule` 的基于工厂的签名](#upgrade-static)                                                              | v13           | v15               |
 | template syntax         | [`bind-`, `on-`, `bindon-`, and `ref-`](#bind-syntax)                                                      | v13           | v15               |
 | 模板语法                | [`bind-`, `on-`, `bindon-`, and `ref-`](#bind-syntax)                                                      | v13           | v15               |
 
@@ -160,7 +160,7 @@ v16 - v19
 
 ### Deprecated features that can be removed in v18 or later
 
-### 可以在 v18 或更高版本中删除的弃用功能
+### 将会在 v18 或更高版本中删除的已弃用功能
 
 | Area                        | API or Feature                                                                                                    | Deprecated in | May be removed in |
 | :-------------------------- | :---------------------------------------------------------------------------------------------------------------- | :------------ | :---------------- |
@@ -208,8 +208,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/common
 
-### &commat;角/普通
-
 | API                                                                                  | Replacement                                                             | Deprecation announced | Details                                                                                                                                   |
 | :----------------------------------------------------------------------------------- | :---------------------------------------------------------------------- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
 | API                                                                                  | 替代品                                                                  | 已宣布弃用            | 详情                                                                                                                                      |
@@ -223,8 +221,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 <a id="core"></a>
 
 ### &commat;angular/core
-
-### &commat;角/核心
 
 | API                                                                                                        | Replacement                                                                                                                                                 | Deprecation announced | Details                                                                                                                                                                                                                                                           |     |
 | :--------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
@@ -276,8 +272,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/core/testing
 
-### &commat;角/核心/测试
-
 | API                                           | Replacement                                         | Deprecation announced | Details                                       |
 | :-------------------------------------------- | :-------------------------------------------------- | :-------------------- | :-------------------------------------------- |
 | API                                           | 替代品                                              | 已宣布弃用            | 详情                                          |
@@ -289,8 +283,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 <a id="router"></a>
 
 ### &commat;angular/router
-
-### &commat;角/路由器
 
 | API                                                                           | Replacement                                    | Deprecation announced | Details                                                                                                                                                             |
 | :---------------------------------------------------------------------------- | :--------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -308,8 +300,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/platform-browser
 
-### &commat;angular/平台浏览器
-
 | API                                                                                             | Replacement                  | Deprecation announced | Details                                                             |
 | :---------------------------------------------------------------------------------------------- | :--------------------------- | :-------------------- | :------------------------------------------------------------------ |
 | API                                                                                             | 替代品                       | 已宣布弃用            | 详情                                                                |
@@ -322,8 +312,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/platform-browser-dynamic
 
-### &commat;angular/平台浏览器动态
-
 | API                                                                               | Replacement | Deprecation announced | Details                                                                                                                           |
 | :-------------------------------------------------------------------------------- | :---------- | :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
 | API                                                                               | 替代品      | 已宣布弃用            | 详情                                                                                                                              |
@@ -335,8 +323,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 <a id="platform-server"></a>
 
 ### &commat;angular/platform-server
-
-### &commat;angular/平台服务器
 
 | API                                                                                                               | Replacement                                                                     | Deprecation announced | Details                                                                                                                                                                                                        |
 | :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -352,8 +338,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/forms
 
-### &commat;角/形式
-
 | API                                                                         | Replacement                                                                  | Deprecation announced | Details |
 | :-------------------------------------------------------------------------- | :--------------------------------------------------------------------------- | :-------------------- | :------ |
 | API                                                                         | 替代品                                                                       | 已宣布弃用            | 详情    |
@@ -365,8 +349,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 <a id="service-worker"></a>
 
 ### &commat;angular/service-worker
-
-### &commat;angular/服务工作者
 
 | API                                                           | Replacement                                                                            | Deprecation announced | Details                                                                                                                                                                    |
 | :------------------------------------------------------------ | :------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -380,8 +362,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 
 ### &commat;angular/upgrade
 
-### &commat;角/升级
-
 | API                             | Replacement                                     | Deprecation announced | Details                                        |
 | :------------------------------ | :---------------------------------------------- | :-------------------- | :--------------------------------------------- |
 | API                             | 替代品                                          | 已宣布弃用            | 详情                                           |
@@ -391,8 +371,6 @@ In the [API reference section](api) of this site, deprecated APIs are indicated 
 <a id="upgrade-static"></a>
 
 ### &commat;angular/upgrade/static
-
-### &commat;angular/升级/静态
 
 | API                                                                                | Replacement                                                                         | Deprecation announced | Details                                                                                                 |
 | :--------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------ |
@@ -558,7 +536,7 @@ Class and injection token guards and resolvers are deprecated. Instead, `Route`
 objects should use functional-style guards and resolvers. Class-based guards can
 be converted to functions by instead using `inject` to get dependencies.
 
-类和注入令牌守卫和解析器已弃用。 相反， `Route` 对象应该使用函数式风格的守卫和解析器。 基于类的守卫可以通过使用 `inject` 来获取依赖项来转换为函数。
+类和注入令牌守卫和解析器已弃用。现在 `Route` 对象应该使用函数式风格的守卫和解析器。 基于类的守卫可以通过使用 `inject` 来获取依赖项来转换为函数。
 
 For testing a function `canActivate` guard, using `TestBed` and `TestBed.runInInjectionContext` is recommended.
 Test mocks and stubs can be provided through DI with `{provide: X, useValue: StubX}`.
@@ -566,7 +544,7 @@ Functional guards can also be written in a way that's either testable with
 `runInInjectionContext` or by passing mock implementations of dependencies.
 For example:
 
-为了测试函数 `canActivate` guard，建议使用 `TestBed` 和 `TestBed.runInInjectionContext` 。 可以通过 DI 使用 `{provide: X, useValue: StubX}` 提供测试模拟和存根。 功能性守卫也可以用 `runInInjectionContext` 可测试的方式或通过传递依赖项的模拟实现来编写。 例如：
+为了测试函数式 `canActivate` 守卫，建议使用 `TestBed` 和 `TestBed.runInInjectionContext` 。 可以通过 DI 使用 `{provide: X, useValue: StubX}` 来提供测试模拟和存根。 函数式守卫也可以用 `runInInjectionContext` 以可测试的方式或通过传递依赖项的模拟实现来编写。 例如：
 
 ```
 export function myGuardWithMockableDeps(
@@ -590,12 +568,12 @@ sense. That said, the interfaces like `CanActivate`,
 to be a function like `canActivate: [() => inject(MyGuard).canActivate()]` is sufficient
 to get rid of the deprecation warning.
 
-此弃用仅影响 `Route` 定义中对类和 `InjectionToken` 守卫的支持。 `Injectable` classes 和 `InjectionToken` providers 在一般意义上 _ 并没有 _ 被弃用。 也就是说，像 `CanActivate` 、 `CanDeactivate` 等接口将在 Angular 的未来版本中删除。 只需从可注入类中删除 `implements CanActivate` 并将路由定义更新为类似 `canActivate: [() => inject(MyGuard).canActivate()]` 就足以消除弃用警告。
+此弃用仅影响 `Route` 定义中对类和 `InjectionToken` 守卫的支持。 `Injectable` 类和 `InjectionToken` 提供者在通常意义上**并没有**被弃用。 也就是说，像 `CanActivate` 、 `CanDeactivate` 等接口将在 Angular 的未来版本中删除。 只需从可注入类中删除 `implements CanActivate` 并将路由定义更新为类似 `canActivate: [() => inject(MyGuard).canActivate()]` 就足以消除弃用警告。
 
 Functional guards are robust enough to even support the existing
 class-based guards through a transform:
 
-功能守卫足够健壮，甚至可以通过转换支持现有的基于类的守卫：
+函数式守卫足够健壮，甚至可以通过转换来支持现有的基于类的守卫：
 
 ```
 import {CanMatchFn} from '@angular/router';
@@ -618,13 +596,13 @@ to functions at the route definition.
 
 ### Public `Router` properties
 
-### 公共 `Router` 属性
+### `Router` 的公共属性
 
 None of the public properties of the `Router` are meant to be writeable.
 They should all be configured using other methods, all of which have been
 documented.
 
-`Router` 的所有公共属性都不是可写的。 它们都应该使用其他方法进行配置，所有这些方法都已记录在案。
+`Router` 的所有公共属性都是不可写的。 它们都应该使用其他方法进行配置，所有这些方法都有相应文档。
 
 The following strategies are meant to be configured by registering the
 application strategy in DI via the `providers` in the root `NgModule` or
@@ -671,7 +649,7 @@ matched at all and also prevent loading the children of the `Route`. `CanMatch` 
 goals as `CanLoad` but with the addition of allowing the navigation to match other routes when they reject
 \(such as a wildcard route\). There is no need to have both types of guards in the API surface.
 
-路由器中的 `CanLoad` 守卫已弃用，取而代之的是 `CanMatch` 。 这些守卫在导航的生命周期中同时执行。 返回 false 的 `CanMatch` 守卫将完全阻止 `Route` 匹配，并且还会阻止加载 `Route` 的子级。 `CanMatch` 守卫可以实现与 `CanLoad` 相同的目标，但增加了允许导航在拒绝时匹配其他路由（例如通配符路由）。 API 表面中不需要同时拥有这两种类型的守卫。
+路由器中的 `CanLoad` 守卫已弃用，取而代之的是 `CanMatch` 。 这些守卫在导航的生命周期中同时执行。 返回 `false` 的 `CanMatch` 守卫将完全阻止 `Route` 匹配，并且还会阻止加载 `Route` 的子级。 `CanMatch` 守卫可以实现与 `CanLoad` 相同的目标，但允许导航在被拒绝时匹配其他路由（例如通配符路由）。公开 API 接口不需要同时拥有这两种类型的守卫。
 
 <a id="loadChildren"></a>
 
@@ -958,7 +936,7 @@ With Ivy, JIT compilation takes place implicitly if the Component, NgModule, etc
 Those special providers were made available in Ivy for backwards-compatibility with ViewEngine to make the transition to Ivy smoother.
 Since ViewEngine is deprecated and will soon be removed, those symbols are now deprecated as well.
 
-在 ViewEngine 中，[JIT 编译](https://angular.io/guide/glossary#jit)需要在应用程序中注入特殊的提供者（如 `Compiler`、`CompilerFactory` 等）并调用相应的方法。使用 Ivy，如果 Component、NgModule 等尚未进行 [AOT 编译](https://angular.io/guide/glossary#aot)，则 JIT 编译会隐式进行。这些特殊的提供者在 Ivy 中仍然可用，以便与 ViewEngine 向后兼容，从而使向 Ivy 的过渡更加顺畅。由于 ViewEngine 已被弃用并将很快被删除，因此这些符号现在也已被弃用。
+在 ViewEngine 中，[JIT 编译](/guide/glossary#jit)需要在应用程序中注入特殊的提供者（如 `Compiler`、`CompilerFactory` 等）并调用相应的方法。使用 Ivy，如果 Component、NgModule 等尚未进行 [AOT 编译](/guide/glossary#aot)，则 JIT 编译会隐式进行。这些特殊的提供者在 Ivy 中仍然可用，以便与 ViewEngine 向后兼容，从而使向 Ivy 的过渡更加顺畅。由于 ViewEngine 已被弃用并将很快被删除，因此这些符号现在也已被弃用。
 
 <div class="alert is-important">
 

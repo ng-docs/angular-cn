@@ -424,7 +424,7 @@ export interface LView<T = unknown> extends Array<any> {
    * the `DECLARATION_COMPONENT_VIEW` of the current component and the child `LView` does not match
    * \(it has been transplanted across components.\)
    *
-   * 当更改检测运行时，它会遍历 `[MOVED_VIEWS]` 并 CD 任何子 `LView` ，其中当前组件的 `DECLARATION_COMPONENT_VIEW` 与子 `LView` 不匹配（它已被跨组件移植。）
+   * 当变更检测运行时，它会遍历 `[MOVED_VIEWS]` 并 CD 任何子 `LView` ，其中当前组件的 `DECLARATION_COMPONENT_VIEW` 与子 `LView` 不匹配（它已被跨组件移植。）
    *
    * Note: `[DECLARATION_COMPONENT_VIEW]` points to itself if the LView is a component view \(the
    *       simplest / most common case\).
@@ -503,7 +503,7 @@ export interface LView<T = unknown> extends Array<any> {
   /**
    * A container related to hydration annotation information that's associated with this LView.
    *
-   * 与与此 LView 关联的水化注释信息相关的容器。
+   * 与与此 LView 关联的水合注释信息相关的容器。
    *
    */
   [HYDRATION]: DehydratedView|null;
@@ -629,7 +629,7 @@ export const enum LViewFlags {
   /**
    * Whether this view has default change detection strategy \(checks always\) or onPush
    *
-   * 此视图是否具有默认更改检测策略（始终检查）或 onPush
+   * 此视图是否具有默认变更检测策略（始终检查）或 onPush
    *
    */
   CheckAlways = 1 << 4,
@@ -653,7 +653,7 @@ export const enum LViewFlags {
   /**
    * Whether or not this view is currently attached to change detection tree.
    *
-   * 此视图当前是否附加到更改检测树。
+   * 此视图当前是否附加到变更检测树。
    *
    */
   Attached = 1 << 7,
@@ -1091,7 +1091,7 @@ export interface TView {
   /**
    * Stores the OpCodes to be replayed during change-detection to process the `HostBindings`
    *
-   * 存储 OpCodes 以在更改检测期间重播以处理 `HostBindings`
+   * 存储 OpCodes 以在变更检测期间重播以处理 `HostBindings`
    *
    * See `HostBindingOpCodes` for encoding details.
    *

@@ -257,7 +257,7 @@ The view-to-model diagram shows how data flows when an input field's value is ch
 
 The model-to-view diagram shows how a programmatic change to the model is propagated to the view through the following steps.
 
-这个模型到视图的示意图体现了程序中对模型的修改是如何通过下列步骤传播到视图中的。
+这个模型到视图的原理图体现了程序中对模型的修改是如何通过下列步骤传播到视图中的。
 
 1. The user calls the `favoriteColorControl.setValue()` method, which updates the `FormControl` value.
 
@@ -331,7 +331,7 @@ The view-to-model diagram shows how data flows when an input field's value is ch
 
 The model-to-view diagram shows how data flows from model to view when the `favoriteColor` changes from *Blue* to *Red*, through the following steps
 
-这个模型到视图的示意图展示了当 `favoriteColor` 从*蓝*变到*红*时，数据是如何经过如下步骤从模型流动到视图的。
+这个模型到视图的原理图展示了当 `favoriteColor` 从*蓝*变到*红*时，数据是如何经过如下步骤从模型流动到视图的。
 
 1. The `favoriteColor` value is updated in the component.
 

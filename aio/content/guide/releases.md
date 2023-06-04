@@ -187,14 +187,14 @@ Approximate dates are offered as general guidance and are subject to change.
 ### 发布时间表
 
 | Version | Date               |
-| :------ | :----------------- |
-| 版本    | 日期               |
+|:--------|:-------------------|
+| 版本      | 日期                 |
 | v16.1   | Week of 2023-06-12 |
-| v16.1   | 2023-06-12 周      |
+| v16.1   | 2023-06-12 那一周     |
 | v16.2   | Week of 2023-07-24 |
-| v16.2   | 2023-07-24 周      |
+| v16.2   | 2023-07-24 那一周     |
 | v17.0   | Week of 2023-11-06 |
-| v17.0   | 2023-11-06 周      |
+| v17.0   | 2023-11-06 那一周     |
 
 ### Support window
 
@@ -230,7 +230,7 @@ The following table provides the status for Angular versions under support.
 
 Angular versions v2 to v13 are no longer supported.
 
-不再为 v2 到 v12  版提供支持。
+不再为 v2 到 v13  版提供支持。
 
 ### LTS fixes
 
