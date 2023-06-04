@@ -200,11 +200,7 @@ export class UpgradeAdapter {
    *    即使组件是在 AngularJS 中实例化的，它也将使用 Angular 语法。必须这样做，因为我们必须遵循 Angular 组件，而不是声明应该如何解释属性。
    *
    * 3. `ng-model` is controlled by AngularJS and communicates with the downgraded Angular component
-   *    by way of the `ControlValueAccessor` interface from
-   *
-   *    `ng-model` 由 AngularJS 控制，并通过 `ControlValueAccessor` 接口与降级后的 Angular 组件通信
-   *
-   * @angular /forms. Only components that
+   *    by way of the `ControlValueAccessor` interface from `@angular/forms`. Only components that
    *    implement this interface are eligible.
    *
    * ### Supported Features

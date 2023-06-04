@@ -228,9 +228,9 @@ export type RestoredState = {
 /**
  * Information about a navigation operation.
  * Retrieve the most recent navigation object with the
- * [Router.getCurrentNavigation\(\) method](api/router/Router#getcurrentnavigation) .
+ * [Router.getCurrentNavigation() method](api/router/Router#getcurrentnavigation) .
  *
- * 有关导航操作的信息。使用[Router.getCurrentNavigation\(\) 方法](api/router/Router#getcurrentnavigation)检索最新的导航对象。
+ * 有关导航操作的信息。使用[Router.getCurrentNavigation() 方法](api/router/Router#getcurrentnavigation)检索最新的导航对象。
  *
  * * *id* : The unique identifier of the current navigation.
  *

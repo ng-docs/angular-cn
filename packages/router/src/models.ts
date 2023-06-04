@@ -1631,10 +1631,10 @@ export interface NavigationBehaviorOptions {
   /**
    * Developer-defined state that can be passed to any navigation.
    * Access this value through the `Navigation.extras` object
-   * returned from the [Router.getCurrentNavigation\(\)
+   * returned from the [Router.getCurrentNavigation()
    * method](api/router/Router#getcurrentnavigation) while a navigation is executing.
    *
-   * 由开发人员定义的状态，可以传递给任何导航。当执行导航时会通过由 [Router.getCurrentNavigation\(\) 方法](api/router/Router#getcurrentnavigation)返回的 `Navigation.extras` 对象来访问此值。
+   * 由开发人员定义的状态，可以传递给任何导航。当执行导航时会通过由 [Router.getCurrentNavigation() 方法](api/router/Router#getcurrentnavigation)返回的 `Navigation.extras` 对象来访问此值。
    *
    * After a navigation completes, the router writes an object containing this
    * value together with a `navigationId` to `history.state`.
