@@ -1,12 +1,20 @@
 # Version compatibility
 
+# 版本兼容性
+
 The following tables describe the versions of Node.js, TypeScript, and RxJS that each version of
 Angular requires.
 
+下表描述了每个 Angular 版本所需的 Node.js、TypeScript 和 RxJS 版本。
+
 ## Actively supported versions
+
+## 活跃支持版
 
 This table
 covers [Angular versions under active support](guide/releases#actively-supported-versions).
+
+此表涵盖了[具有活跃支持的 Angular 版本](guide/releases#actively-supported-versions)。
 
 | Angular                        | Node.js                                                      | TypeScript        | RxJS                           |
 | ------------------------------ | ------------------------------------------------------------ | ----------------- | ------------------------------ |
@@ -18,9 +26,13 @@ covers [Angular versions under active support](guide/releases#actively-supported
 
 ## Unsupported Angular versions
 
+## 不再支持的 Angular 版本
+
 This table covers Angular versions that are no longer under long-term support \(LTS\). This
 information was correct when each version went out of LTS and is provided without any further
 guarantees. It is listed here for historical reference.
+
+此表涵盖了不再处于长期支持（LTS）下的 Angular 版本。当每个版本结束了 LTS 阶段并且没有提供任何进一步的保障时，这些信息都是正确的。在此列出以供历史参考。
 
 | Angular                        | Node.js                                                      | TypeScript        | RxJS                           |
 | ------------------------------ | ------------------------------------------------------------ | ----------------- | ------------------------------ |
@@ -41,7 +53,11 @@ guarantees. It is listed here for historical reference.
 
 ### Before v9
 
+### v9 之前
+
 Until Angular v9, Angular and Angular CLI versions were not synced. 
+
+在 Angular v9 之前，Angular 和 Angular CLI 版本不是同步的。
 
 | Angular                                             | Angular CLI                  | Node.js                         | TypeScript        | RxJS   |
 | --------------------------------------------------- | ---------------------------- | ------------------------------- | ----------------- | ------ |
