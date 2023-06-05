@@ -17,9 +17,9 @@ chmod -R +w .
 
 cp -r ../../../dist/bin/aio/build/* .
 
-nt mark './generated/**/*.json'
+nt export './generated/**/*.json'
 
-ossutil cp -r . oss://angular-15 -e oss-cn-hangzhou.aliyuncs.com -u
+ossutil cp -r . oss://angular-16 -e oss-cn-hangzhou.aliyuncs.com -u
 
 cp index.html 404.html
 
