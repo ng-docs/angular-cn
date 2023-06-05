@@ -20,7 +20,7 @@ Before continuing with this topic, you should be familiar with the following:
 
 * [Transition and triggers](guide/transition-and-triggers)
 
-  [转场与触发器](guide/transition-and-triggers)
+  [过渡与触发器](guide/transition-and-triggers)
 
 ## Create reusable animations
 
@@ -75,7 +75,7 @@ You might also be interested in the following:
 
 * [Transition and triggers](guide/transition-and-triggers)
 
-  [转场与触发器](guide/transition-and-triggers)
+  [过渡与触发器](guide/transition-and-triggers)
 
 * [Complex animation Sequences](guide/complex-animation-sequences)
 
@@ -83,6 +83,6 @@ You might also be interested in the following:
 
 * [Route transition animations](guide/route-animations)
 
-  [路由转场动画](guide/route-animations)
+  [路由过渡动画](guide/route-animations)
 
 @reviewed 2022-10-11

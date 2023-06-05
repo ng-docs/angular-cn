@@ -4,7 +4,7 @@
 
 You can define a set of styles together to make up a specific state for animating elements and transitions. These states represent style at certain points in your animations that you can animate to and from. For example, you can animate a state as the starting point to a different state and the end of an animation.
 
-你可以同时定义一组样式来规定动画元素和转场的特定状态。这些状态代表动画中某些时间点的样式，你可以对其进行动画处理。例如，你可以将一个状态设置为不同状态的起点和动画的结束点。
+你可以同时定义一组样式来规定动画元素和过渡的特定状态。这些状态代表动画中某些时间点的样式，你可以对其进行动画处理。例如，你可以将一个状态设置为不同状态的起点和动画的结束点。
 
 ## What is a state?
 
@@ -26,7 +26,7 @@ Use Angular's [`state()`](api/animations/state) function to define different sta
 This function takes two arguments:
 A unique name like `open` or `closed` and a `style()` function.
 
-使用 Angular 的 [`state()`](api/animations/state) 函数来定义不同的状态，供每次转场结束时调用。该函数接受两个参数：一个唯一的名字，比如 `open` 或 `closed` 和一个 `style()` 函数。
+使用 Angular 的 [`state()`](api/animations/state) 函数来定义不同的状态，供每次过渡结束时调用。该函数接受两个参数：一个唯一的名字，比如 `open` 或 `closed` 和一个 `style()` 函数。
 
 Use the `style()` function to define a set of styles to associate with a given state name.
 You must use [*camelCase*](guide/glossary#case-conventions) for style attributes that contain dashes, such as `backgroundColor` or wrap them in quotes, such as `'background-color'`.

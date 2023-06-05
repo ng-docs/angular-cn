@@ -28,7 +28,7 @@ Animations can improve your application and user experience in many ways:
 
 * Without animations, web page transitions can seem abrupt and jarring
 
-  没有动画，Web 页面的转场就会显得突兀、不协调
+  没有动画，Web 页面的过渡就会显得突兀、不协调
 
 * Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
 

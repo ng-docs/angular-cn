@@ -16,7 +16,7 @@ A basic understanding of the following concepts:
 
 * [Transition and triggers](guide/transition-and-triggers)
 
-  [转场与触发器](guide/transition-and-triggers)
+  [过渡与触发器](guide/transition-and-triggers)
 
 So far, we've learned simple animations of single HTML elements.
 Angular also lets you animate coordinated sequences, such as an entire grid or list of elements as they enter and leave a page.
@@ -193,7 +193,7 @@ HTML 模板中包含一个名叫 `filterAnimation` 的触发器。
 
 The `filterAnimation` in the component's decorator contains three transitions.
 
-该组件装饰器中的 `filterAnimation` 包含三个转场。
+该组件装饰器中的 `filterAnimation` 包含三个过渡。
 
 <code-example header="src/app/hero-list-page.component.ts" path="animations/src/app/hero-list-page.component.ts" region="filter-animations"></code-example>
 
@@ -286,7 +286,7 @@ You might also be interested in the following:
 
 * [Transition and triggers](guide/transition-and-triggers)
 
-  [转场与触发器](guide/transition-and-triggers)
+  [过渡与触发器](guide/transition-and-triggers)
 
 * [Reusable animations](guide/reusable-animations)
 
@@ -294,7 +294,7 @@ You might also be interested in the following:
 
 * [Route transition animations](guide/route-animations)
 
-  [路由转场动画](guide/route-animations)
+  [路由过渡动画](guide/route-animations)
 
 <!-- links -->
 

@@ -1,10 +1,10 @@
 # Animation transition and timing
 
-# 动画的转场与计时
+# 动画的过渡与计时
 
 An animation *transition* specifies changes that occur between one state and another. Set the transition to make the change less abrupt. An animation *transition* specifies the changes that occur between one state and another.
 
-动画*转场*用于指定一种状态与另一种状态之间发生的变化。设置转场可以使变化不那么突然。
+动画*过渡*用于指定一种状态与另一种状态之间发生的变化。设置过渡可以使变化不那么突然。
 
 ## Animation `transition()` function defined
 
@@ -17,11 +17,11 @@ The `transition()` function accepts two arguments:
 An expression that defines the direction between two transition states
 An expression that accepts one or a series of `animate()` steps
 
-定义两个转场状态之间方向的表达式，和定义一个或一系列 `animate()` 步骤的表达式
+定义两个过渡状态之间方向的表达式，和定义一个或一系列 `animate()` 步骤的表达式
 
 Use the `animate()` function of a transition to define:
 
-使用转场的 `animate()` 函数来定义：
+使用过渡的 `animate()` 函数来定义：
 
 * Length
 
@@ -152,7 +152,7 @@ See the Material Design website's topic on [Natural easing curves](https://mater
 
 This example provides a state transition from `open` to `closed` with a 1-second transition between states.
 
-下面的例子提供了一个从 `open` 到 `closed` 的持续一秒的状态转场。
+下面的例子提供了一个从 `open` 到 `closed` 的持续一秒的状态过渡。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="transition1"></code-example>
 
@@ -160,11 +160,11 @@ In the preceding code snippet, the `=>` operator indicates unidirectional transi
 Within the transition, `animate()` specifies how long the transition takes.
 In this case, the state change from `open` to `closed` takes 1 second, expressed here as `1s`.
 
-在上面的代码片段中，`=>` 操作符表示单向转场，而 `<=>` 表示双向转场。在转场过程中，`animate()` 指定了转场需要花费的时间。在这里，从 `open` 到 `closed` 状态的转换要花费 1 秒中，表示成 `1s`。
+在上面的代码片段中，`=>` 操作符表示单向过渡，而 `<=>` 表示双向过渡。在过渡过程中，`animate()` 指定了过渡需要花费的时间。在这里，从 `open` 到 `closed` 状态的转换要花费 1 秒中，表示成 `1s`。
 
 This example adds a state transition from the `closed` state to the `open` state with a 0.5-second transition animation arc.
 
-下面的例子添加了一个从 `closed` 到 `open` 的状态转场，转场动画持续 0.5 秒。
+下面的例子添加了一个从 `closed` 到 `open` 的状态过渡，过渡动画持续 0.5 秒。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="transition2"></code-example>
 

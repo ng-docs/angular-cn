@@ -1,6 +1,6 @@
 # Route transition animations
 
-# 路由转场动画
+# 路由过渡动画
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ A basic understanding of the following concepts:
 
 * [Transition and triggers](guide/transition-and-triggers)
 
-  [转场与触发器](guide/transition-and-triggers)
+  [过渡与触发器](guide/transition-and-triggers)
 
 * [Reusable animations](guide/reusable-animations)
 
@@ -35,11 +35,11 @@ The Angular router comes with high-level animation functions that let you animat
 To produce an animation sequence when switching between routes, you need to define nested animation sequences.
 Start with the top-level component that hosts the view, and nest animations in the components that host the embedded views.
 
-Angular 路由器天生带有高级动画功能，它可以让你为在路由变化时为视图之间设置转场动画。要想在路由切换时生成动画序列，你需要首先定义出嵌套的动画序列。从宿主视图的顶层组件开始，在这些内嵌视图的宿主组件中嵌套动画。
+Angular 路由器天生带有高级动画功能，它可以让你为在路由变化时为视图之间设置过渡动画。要想在路由切换时生成动画序列，你需要首先定义出嵌套的动画序列。从宿主视图的顶层组件开始，在这些内嵌视图的宿主组件中嵌套动画。
 
 To enable routing transition animation, do the following:
 
-要启用路由转场动画，需要做如下步骤：
+要启用路由过渡动画，需要做如下步骤：
 
 1. Import the routing module into the application and create a routing configuration that defines the possible routes.
 
@@ -57,7 +57,7 @@ Illustrate a router transition animation by navigating between two routes, *Home
 Both of these component views are children of the top-most view, hosted by `AppComponent`.
 Implement a router transition animation that slides in the new view to the right and slides out the old view when navigating between the two routes.
 
-让我们以两个路由之间的导航过程来解释一下路由转场动画，*Home* 和 *About* 分别与 `HomeComponent` 和 `AboutComponent` 的视图相关联。所有这些组件视图都是顶层视图的子节点，其宿主是 `AppComponent`。接下来将实现路由器过渡动画，该动画会在出现新视图时向右滑动，并当在两个路由之间导航时把旧视图滑出。
+让我们以两个路由之间的导航过程来解释一下路由过渡动画，*Home* 和 *About* 分别与 `HomeComponent` 和 `AboutComponent` 的视图相关联。所有这些组件视图都是顶层视图的子节点，其宿主是 `AppComponent`。接下来将实现路由器过渡动画，该动画会在出现新视图时向右滑动，并当在两个路由之间导航时把旧视图滑出。
 
 <div class="lightbox">
 
@@ -144,7 +144,7 @@ Here's an example of an `AppComponent` method that detects when a route change h
 The `getRouteAnimationData()` method takes the value of the outlet. It returns a string that represents the state of the animation based on the custom data of the current active route.
 Use this data to control which transition to run for each route.
 
-这里的 `getRouteAnimationData()` 方法会获取这个 outlet 指令的值（通过 `#outlet="outlet"`）。它会根据当前活动路由的自定义数据返回一个表示动画状态的字符串值。可以用这个数据来控制各个路由之间该执行哪个转场。
+这里的 `getRouteAnimationData()` 方法会获取这个 outlet 指令的值（通过 `#outlet="outlet"`）。它会根据当前活动路由的自定义数据返回一个表示动画状态的字符串值。可以用这个数据来控制各个路由之间该执行哪个过渡。
 
 ## Animation definition
 
@@ -167,11 +167,11 @@ The animation definition performs the following tasks:
 
 * Defines two transitions \(a single `trigger` can define multiple states and transitions\)
 
-  定义两个转场。每个触发器都可以定义多个状态和多个转场
+  定义两个过渡。每个触发器都可以定义多个状态和多个过渡
 
 * Adjusts the styles of the host and child views to control their relative positions during the transition
 
-  调整宿主视图和子视图的样式，以便在转场期间，控制它们的相对位置
+  调整宿主视图和子视图的样式，以便在过渡期间，控制它们的相对位置
 
 * Uses `query()` to determine which child view is entering and which is leaving the host view
 
@@ -179,7 +179,7 @@ The animation definition performs the following tasks:
 
 A route change activates the animation trigger, and a transition matching the state change is applied.
 
-路由的变化会激活这个动画触发器，并应用一个与该状态变更相匹配的转场
+路由的变化会激活这个动画触发器，并应用一个与该状态变更相匹配的过渡
 
 <div class="alert is-helpful">
 
@@ -187,7 +187,7 @@ A route change activates the animation trigger, and a transition matching the st
 The transition states must match the `data` property value defined in the route configuration.
 
 **注意**：<br />
-这些转场状态必须和路由配置中定义的 `data` 属性的值相一致。
+这些过渡状态必须和路由配置中定义的 `data` 属性的值相一致。
 
 </div>
 
@@ -206,7 +206,7 @@ To prevent this behavior, update the host view to use relative positioning.
 Then, update the removed and inserted child views to use absolute positioning.
 Adding these styles to the views animates the containers in place and prevents one view from affecting the position of the other on the page.
 
-在转场期间，新视图将直接插入在旧视图后面，并且这两个元素会同时出现在屏幕上。要防止这种行为，就要修改宿主视图，改用相对定位。然后，把已移除或已插入的子视图改用绝对定位。在这些视图中添加样式，就可以让容器就地播放动画，并防止某个视图影响页面中其它视图的位置。
+在过渡期间，新视图将直接插入在旧视图后面，并且这两个元素会同时出现在屏幕上。要防止这种行为，就要修改宿主视图，改用相对定位。然后，把已移除或已插入的子视图改用绝对定位。在这些视图中添加样式，就可以让容器就地播放动画，并防止某个视图影响页面中其它视图的位置。
 
 <code-example header="src/app/animations.ts (excerpt)" path="animations/src/app/animations.ts" region="style-view"></code-example>
 
@@ -221,7 +221,7 @@ The `query(":enter")` statement returns the view that is being inserted, and `qu
 
 Assume that you are routing from the *Home => About*.
 
-假设你正在从 *Home* 转场到 *About*，`Home => About`。
+假设你正在从 *Home* 过渡到 *About*，`Home => About`。
 
 <code-example header="src/app/animations.ts (excerpt)" path="animations/src/app/animations.ts" region="query"></code-example>
 
@@ -279,7 +279,7 @@ You might also be interested in the following:
 
 * [Transition and triggers](guide/transition-and-triggers)
 
-  [转场与触发器](guide/transition-and-triggers)
+  [过渡与触发器](guide/transition-and-triggers)
 
 * [Complex animation sequences](guide/complex-animation-sequences)
 

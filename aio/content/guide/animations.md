@@ -10,7 +10,7 @@ Animations can improve your application and user experience in a number of ways:
 
 * Without animations, web page transitions can seem abrupt and jarring
 
-  没有动画，Web 页面的转场就会显得突兀、不协调
+  没有动画，Web 页面的过渡就会显得突兀、不协调
 
 * Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
 
@@ -30,7 +30,7 @@ Angular's animation system is built on CSS functionality, which means you can an
 This includes positions, sizes, transforms, colors, borders, and more.
 The W3C maintains a list of animatable properties on its [CSS Transitions](https://www.w3.org/TR/css-transitions-1) page.
 
-Angular 的动画系统是基于 CSS 功能构建的，这意味着你可以 "动" 浏览器认为可动的任何属性。包括位置、大小、变形、颜色、边框等。W3C 在它的 [CSS Transitions（转场）](https://www.w3.org/TR/css-transitions-1) 页中维护了一个可动属性的列表。
+Angular 的动画系统是基于 CSS 功能构建的，这意味着你可以 "动" 浏览器认为可动的任何属性。包括位置、大小、变形、颜色、边框等。W3C 在它的 [CSS Transitions（过渡）](https://www.w3.org/TR/css-transitions-1) 页中维护了一个可动属性的列表。
 
 ## About this guide
 
@@ -126,14 +126,14 @@ You put the trigger that defines an animation within the `animations` metadata p
 
 ## Animating a transition
 
-## 转场动画
+## 过渡动画
 
 Let's animate a transition that changes a single HTML element from one state to another.
 For example, you can specify that a button displays either **Open** or **Closed** based on the user's last action.
 When the button is in the `open` state, it's visible and yellow.
 When it's the `closed` state, it's translucent and blue.
 
-我们来做一个简单的转场动作，它把单个 HTML 元素从一个状态变成另一个状态。比如，你可以指定按钮根据用户的最后一个动作显示成**Open**或**Closed**状态。当按钮处于 `open` 状态时，它是可见的，并且是黄色的。当它处于 `closed` 状态时，它是透明的，并且是蓝色的。
+我们来做一个简单的过渡动作，它把单个 HTML 元素从一个状态变成另一个状态。比如，你可以指定按钮根据用户的最后一个动作显示成**Open**或**Closed**状态。当按钮处于 `open` 状态时，它是可见的，并且是黄色的。当它处于 `closed` 状态时，它是透明的，并且是蓝色的。
 
 In HTML, these attributes are set using ordinary CSS styles such as color and opacity.
 In Angular, use the `style()` function to specify a set of CSS styles for use with animations.
@@ -145,7 +145,7 @@ Collect a set of styles in an animation state, and give the state a name, such a
 
 Let's create a new `open-close` component to animate with simple transitions.
 
-我们创建一个具有简单转场动画的 `open-close` 组件。
+我们创建一个具有简单过渡动画的 `open-close` 组件。
 
 Run the following command in terminal to generate the component:
 
@@ -171,7 +171,7 @@ Use Angular's [`state()`](api/animations/state) function to define different sta
 This function takes two arguments:
 A unique name like `open` or `closed` and a `style()` function.
 
-使用 Angular 的 [`state()`](api/animations/state) 函数来定义不同的状态，供每次转场结束时调用。该函数接受两个参数：一个唯一的名字，比如 `open` 或 `closed` 和一个 `style()` 函数。
+使用 Angular 的 [`state()`](api/animations/state) 函数来定义不同的状态，供每次过渡结束时调用。该函数接受两个参数：一个唯一的名字，比如 `open` 或 `closed` 和一个 `style()` 函数。
 
 Use the `style()` function to define a set of styles to associate with a given state name.
 You must use [*camelCase*](guide/glossary#case-conventions) for style attributes that contain dashes, such as `backgroundColor` or wrap them in quotes, such as `'background-color'`.
@@ -195,7 +195,7 @@ In the following `closed` state, the button has a height of 100 pixels, an opaci
 
 ### Transitions and timing
 
-### 转场与时序
+### 过渡与时序
 
 In Angular, you can set multiple styles without any animation.
 However, without further refinement, the button instantly transforms with no fade, no shrinkage, or other visible indicator that a change is occurring.
@@ -206,13 +206,13 @@ To make the change less abrupt, you need to define an animation *transition* to 
 The `transition()` function accepts two arguments:
 The first argument accepts an expression that defines the direction between two transition states, and the second argument accepts one or a series of `animate()` steps.
 
-要让这些变化不那么突兀，就要定义一个动画*转场*来要求这些状态之间的变化在一段时间内发生。`transition()` 接受两个参数：第一个参数接受一个表达式，它定义两个转场状态之间的方向；第二个参数接受一个或一系列 `animate()` 函数。
+要让这些变化不那么突兀，就要定义一个动画*过渡*来要求这些状态之间的变化在一段时间内发生。`transition()` 接受两个参数：第一个参数接受一个表达式，它定义两个过渡状态之间的方向；第二个参数接受一个或一系列 `animate()` 函数。
 
 Use the `animate()` function to define the length, delay, and easing of a transition, and to designate the style function for defining styles while transitions are taking place.
 Use the `animate()` function to define the `keyframes()` function for multi-step animations.
 These definitions are placed in the second argument of the `animate()` function.
 
-使用 `animate()` 函数来定义长度、延迟和缓动效果，并指定一个样式函数，以定义转场过程中的样式。可以用 `animate()` 函数来为多步动画定义 `keyframes()` 函数。这些定义放在 `animate()` 函数的第二个参数中。
+使用 `animate()` 函数来定义长度、延迟和缓动效果，并指定一个样式函数，以定义过渡过程中的样式。可以用 `animate()` 函数来为多步动画定义 `keyframes()` 函数。这些定义放在 `animate()` 函数的第二个参数中。
 
 #### Animation metadata: duration, delay, and easing
 
@@ -220,7 +220,7 @@ These definitions are placed in the second argument of the `animate()` function.
 
 The `animate()` function \(second argument of the transition function\) accepts the `timings` and `styles` input parameters.
 
-`animate()` 函数（作为转场函数的第二个参数）可以接受 `timings` 和 `styles` 参数。
+`animate()` 函数（作为过渡函数的第二个参数）可以接受 `timings` 和 `styles` 参数。
 
 The `timings` parameter takes either a number or a string defined in three parts.
 
@@ -307,7 +307,7 @@ See the Material Design website's topic on [Natural easing curves](https://mater
 
 This example provides a state transition from `open` to `closed` with a 1-second transition between states.
 
-下面的例子提供了一个从 `open` 到 `closed` 的持续一秒的状态转场。
+下面的例子提供了一个从 `open` 到 `closed` 的持续一秒的状态过渡。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="transition1"></code-example>
 
@@ -315,11 +315,11 @@ In the preceding code snippet, the `=>` operator indicates unidirectional transi
 Within the transition, `animate()` specifies how long the transition takes.
 In this case, the state change from `open` to `closed` takes 1 second, expressed here as `1s`.
 
-在上面的代码片段中，`=>` 操作符表示单向转场，而 `<=>` 表示双向转场。在转场过程中，`animate()` 指定了转场需要花费的时间。在这里，从 `open` 到 `closed` 状态的转换要花费 1 秒中，表示成 `1s`。
+在上面的代码片段中，`=>` 操作符表示单向过渡，而 `<=>` 表示双向过渡。在过渡过程中，`animate()` 指定了过渡需要花费的时间。在这里，从 `open` 到 `closed` 状态的转换要花费 1 秒中，表示成 `1s`。
 
 This example adds a state transition from the `closed` state to the `open` state with a 0.5-second transition animation arc.
 
-下面的例子添加了一个从 `closed` 到 `open` 的状态转场，转场动画持续 0.5 秒。
+下面的例子添加了一个从 `closed` 到 `open` 的状态过渡，过渡动画持续 0.5 秒。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="transition2"></code-example>
 
@@ -333,7 +333,7 @@ Some additional notes on using styles within [`state`](api/animations/state) and
 
 * Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
 
-  请用 [`state()`](api/animations/state) 来定义那些每个转场结束时的样式，这些样式在动画完成后仍会保留
+  请用 [`state()`](api/animations/state) 来定义那些每个过渡结束时的样式，这些样式在动画完成后仍会保留
 
 * Use `transition()` to define intermediate styles, which create the illusion of motion during the animation
 
@@ -362,18 +362,18 @@ Some additional notes on using styles within [`state`](api/animations/state) and
 An animation requires a *trigger*, so that it knows when to start.
 The `trigger()` function collects the states and transitions, and gives the animation a name, so that you can attach it to the triggering element in the HTML template.
 
-动画需要*触发器*，以便知道该在何时开始。`trigger()` 函数会把一些状态和转场组合在一起，并为这个动画命名，这样你就可以在 HTML 模板中把它附加到想要触发动画的元素上了。
+动画需要*触发器*，以便知道该在何时开始。`trigger()` 函数会把一些状态和过渡组合在一起，并为这个动画命名，这样你就可以在 HTML 模板中把它附加到想要触发动画的元素上了。
 
 The `trigger()` function describes the property name to watch for changes.
 When a change occurs, the trigger initiates the actions included in its definition.
 These actions can be transitions or other functions, as we'll see later on.
 
-`trigger()` 函数描述了监听变化时要使用的触发器名称。当这个触发器名称所绑定的值发生了变化时，触发器就会启动它所定义的操作。这些操作可能是转场，也可能是其它功能，我们稍后就会看到。
+`trigger()` 函数描述了监听变化时要使用的触发器名称。当这个触发器名称所绑定的值发生了变化时，触发器就会启动它所定义的操作。这些操作可能是过渡，也可能是其它功能，我们稍后就会看到。
 
 In this example, we'll name the trigger `openClose`, and attach it to the `button` element.
 The trigger describes the open and closed states, and the timings for the two transitions.
 
-在这个例子中，我们将把该触发器命名为 `openClose`，并把它附加到 `button` 元素上。该触发器描述了 `open` 和 `closed` 两个状态，以及两个转场效果的时序。
+在这个例子中，我们将把该触发器命名为 `openClose`，并把它附加到 `button` 元素上。该触发器描述了 `open` 和 `closed` 两个状态，以及两个过渡效果的时序。
 
 <div class="alert is-helpful">
 
@@ -448,7 +448,7 @@ In the HTML template file, use the trigger name to attach the defined animations
 
 Here are the code files discussed in the transition example.
 
-下面是转场动画范例中讨论过的代码文件。
+下面是过渡动画范例中讨论过的代码文件。
 
 <code-tabs>
     <code-pane header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="component"></code-pane>
@@ -462,11 +462,11 @@ Here are the code files discussed in the transition example.
 
 You learned to add animation to a transition between two states, using `style()` and [`state()`](api/animations/state) along with `animate()` for the timing.
 
-你已经学会了如何在两个状态之间添加简单的转场动画，只要使用 `style()` 和 [`state()`](api/animations/state)，并使用 `animate()` 来定义时序就可以了。
+你已经学会了如何在两个状态之间添加简单的过渡动画，只要使用 `style()` 和 [`state()`](api/animations/state)，并使用 `animate()` 来定义时序就可以了。
 
 Learn about more advanced features in Angular animations under the Animation section, beginning with advanced techniques in [transition and triggers](guide/transition-and-triggers).
 
-请到 "动画" 组下学习 Angular 动画的高级特性，不妨先从[转场与触发器](guide/transition-and-triggers)中讲述的高级技巧开始。
+请到 "动画" 组下学习 Angular 动画的高级特性，不妨先从[过渡与触发器](guide/transition-and-triggers)中讲述的高级技巧开始。
 
 <a id="animation-api-summary"></a>
 
@@ -489,7 +489,7 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | [`state()`](api/animations/state) | Creates a named set of CSS styles that should be applied on successful transition to a given state. The state can then be referenced by name within other animation functions.                              |
 | [`state()`](api/animations/state) | 创建一组有名字的 CSS 样式，它会在成功转换到指定的状态时应用到元素上。该状态可以在其它动画函数中通过名字进行引用。|
 | `animate()`                       | Specifies the timing information for a transition. Optional values for `delay` and `easing`. Can contain `style()` calls within.                                                                            |
-| `animate()`                       | 指定转场的时序信息。`delay` 和 `easing` 是可选值。其中可以包含 `style()` 调用。|
+| `animate()`                       | 指定过渡的时序信息。`delay` 和 `easing` 是可选值。其中可以包含 `style()` 调用。|
 | `transition()`                    | Defines the animation sequence between two named states. Uses array syntax.                                                                                                                                 |
 | `transition()`                    | 定义两个命名状态之间的动画序列。使用数组语法。|
 | `keyframes()`                     | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax.                       |
@@ -519,7 +519,7 @@ You might also be interested in the following:
 
 * [Transition and triggers](guide/transition-and-triggers)
 
-  [转场与触发器](guide/transition-and-triggers)
+  [过渡与触发器](guide/transition-and-triggers)
 
 * [Complex animation sequences](guide/complex-animation-sequences)
 
@@ -531,7 +531,7 @@ You might also be interested in the following:
 
 * [Route transition animations](guide/route-animations)
 
-  [路由转场动画](guide/route-animations)
+  [路由过渡动画](guide/route-animations)
 
 <div class="alert is-helpful">
 

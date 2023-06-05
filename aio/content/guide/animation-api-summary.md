@@ -21,7 +21,7 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | [`state()`](api/animations/state) | Creates a named set of CSS styles that should be applied on successful transition to a given state. The state can then be referenced by name within other animation functions.                              |
 | [`state()`](api/animations/state) | 创建一组有名字的 CSS 样式，它会在成功转换到指定的状态时应用到元素上。该状态可以在其它动画函数中通过名字进行引用。|
 | `animate()`                       | Specifies the timing information for a transition. Optional values for `delay` and `easing`. Can contain `style()` calls within.                                                                            |
-| `animate()`                       | 指定转场的时序信息。`delay` 和 `easing` 是可选值。其中可以包含 `style()` 调用。|
+| `animate()`                       | 指定过渡的时序信息。`delay` 和 `easing` 是可选值。其中可以包含 `style()` 调用。|
 | `transition()`                    | Defines the animation sequence between two named states. Uses array syntax.                                                                                                                                 |
 | `transition()`                    | 定义两个命名状态之间的动画序列。使用数组语法。|
 | `keyframes()`                     | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax.                       |

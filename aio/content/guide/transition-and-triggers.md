@@ -1,11 +1,11 @@
 # Animation transitions and triggers
 
-# 动画转场和触发器
+# 动画过渡和触发器
 
 This guide goes into depth on special transition states such as the `*` wildcard and `void`. It shows how these special states are used for elements entering and leaving a view.
 This section also explores multiple animation triggers, animation callbacks, and sequence-based animation using keyframes.
 
-本章将深入讲解特殊的转场状态，如 `*` 通配符和 `void`，并说明这些特殊状态如何作用于进入或离开视图的元素。本节还探讨了多重触发器、动画回调，以及使用关键帧技术的序列动画。
+本章将深入讲解特殊的过渡状态，如 `*` 通配符和 `void`，并说明这些特殊状态如何作用于进入或离开视图的元素。本节还探讨了多重触发器、动画回调，以及使用关键帧技术的序列动画。
 
 ## Predefined states and wildcard matching
 
@@ -13,7 +13,7 @@ This section also explores multiple animation triggers, animation callbacks, and
 
 In Angular, transition states can be defined explicitly through the [`state()`](api/animations/state) function, or using the predefined `*` wildcard and `void` states.
 
-在 Angular 中，转场状态可以通过 [`state()`](api/animations/state) 函数进行显式定义，或使用预定义的 `*` 通配符状态和 `void` 状态。
+在 Angular 中，过渡状态可以通过 [`state()`](api/animations/state) 函数进行显式定义，或使用预定义的 `*` 通配符状态和 `void` 状态。
 
 ### Wildcard state
 
@@ -22,11 +22,11 @@ In Angular, transition states can be defined explicitly through the [`state()`](
 An asterisk `*` or *wildcard* matches any animation state.
 This is useful for defining transitions that apply regardless of the HTML element's start or end state.
 
-星号 `*` 或者叫*通配符*可以匹配任何一个动画状态。它可用来定义那些不用在乎 HTML 元素的起始状态或结束状态的转场动画。
+星号 `*` 或者叫*通配符*可以匹配任何一个动画状态。它可用来定义那些不用在乎 HTML 元素的起始状态或结束状态的过渡动画。
 
 For example, a transition of `open => *` applies when the element's state changes from open to anything else.
 
-比如，一个 `open => *` 转场可应用在当元素的状态从 `open` 变成任何其它状态时。
+比如，一个 `open => *` 过渡可应用在当元素的状态从 `open` 变成任何其它状态时。
 
 <div class="lightbox">
 
@@ -37,23 +37,23 @@ For example, a transition of `open => *` applies when the element's state change
 The following is another code sample using the wildcard state together with the previous example using the `open` and `closed` states.
 Instead of defining each state-to-state transition pair, any transition to `closed` takes 1 second, and any transition to `open` takes 0.5 seconds.
 
-下面是通配符状态的另一个代码范例，以及我们以前使用 `open` 和 `closed` 状态的实例。但这次，对于每个状态到状态的转换对，我们这次规定从任何状态转场到 `closed` 状态时要花 1 秒钟，而从任何状态转场到 `open` 状态时要花 0.5 秒。
+下面是通配符状态的另一个代码范例，以及我们以前使用 `open` 和 `closed` 状态的实例。但这次，对于每个状态到状态的转换对，我们这次规定从任何状态过渡到 `closed` 状态时要花 1 秒钟，而从任何状态过渡到 `open` 状态时要花 0.5 秒。
 
 This allows the addition of new states without having to include separate transitions for each one.
 
-这让我们可以添加新状态，而不必把它手动包含到每个单独的转场中。
+这让我们可以添加新状态，而不必把它手动包含到每个单独的过渡中。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="trigger-wildcard1"></code-example>
 
 Use a double arrow syntax to specify state-to-state transitions in both directions.
 
-使用双向箭头语法可以指定任意方向的状态转场。
+使用双向箭头语法可以指定任意方向的状态过渡。
 
 <code-example header="src/app/open-close.component.ts" path="animations/src/app/open-close.component.ts" region="trigger-wildcard2"></code-example>
 
 ### Use wildcard state with multiple transition states
 
-### 使用带多个转场状态的通配符状态
+### 使用带多个过渡状态的通配符状态
 
 In the two-state button example, the wildcard isn't that useful because there are only two possible states, `open` and `closed`.
 In general, use wildcard states when an element has multiple potential states that it can change to.
@@ -71,17 +71,17 @@ If the button can change from `open` to either `closed` or something like `inPro
 
 The `* => *` transition applies when any change between two states takes place.
 
-当在*任意*两个状态之间切换时，`* => *` 转场都会生效。
+当在*任意*两个状态之间切换时，`* => *` 过渡都会生效。
 
 Transitions are matched in the order in which they are defined.
 Thus, you can apply other transitions on top of the `* => *` transition.
 For example, define style changes or animations that would apply just to `open => closed`, then use `* => *` as a fallback for state pairings that aren't otherwise called out.
 
-转场会按照其定义的顺序进行匹配。因此，你可以在 `* => *` 转场的前面定义其它转场。比如，定义只针对 `open => closed` 的状态变更或动画，而使用 `* => *` 作为匹配不上其它状态对时的后备。
+过渡会按照其定义的顺序进行匹配。因此，你可以在 `* => *` 过渡的前面定义其它过渡。比如，定义只针对 `open => closed` 的状态变更或动画，而使用 `* => *` 作为匹配不上其它状态对时的后备。
 
 To do this, list the more specific transitions *before* `* => *`.
 
-要这么做，只要把那些更特殊的转场放在 `* => *` *前面*就行了。
+要这么做，只要把那些更特殊的过渡放在 `* => *` *前面*就行了。
 
 ### Use wildcards with styles
 
@@ -101,7 +101,7 @@ Wildcard is a fallback value that's used if the state being animated isn't decla
 Use the `void` state to configure transitions for an element that is entering or leaving a page.
 See [Animating entering and leaving a view](#enter-leave-view).
 
-可以使用 `void` 状态来为进入或离开页面的元素配置转场。参阅[进入和离开视图的动画](#enter-leave-view)。
+可以使用 `void` 状态来为进入或离开页面的元素配置过渡。参阅[进入和离开视图的动画](#enter-leave-view)。
 
 ### Combine wildcard and void states
 
@@ -109,15 +109,15 @@ See [Animating entering and leaving a view](#enter-leave-view).
 
 Combine wildcard and void states in a transition to trigger animations that enter and leave the page:
 
-可以在转场中组合使用通配符和 `void` 状态，以触发那些进入和离开页面的动画：
+可以在过渡中组合使用通配符和 `void` 状态，以触发那些进入和离开页面的动画：
 
 * A transition of `* => void` applies when the element leaves a view, regardless of what state it was in before it left
 
-  当元素离开视图时，就会触发 `* => void` 转场，而不管它离开前处于什么状态
+  当元素离开视图时，就会触发 `* => void` 过渡，而不管它离开前处于什么状态
 
 * A transition of `void => *` applies when the element enters a view, regardless of what state it assumes when entering
 
-  当元素进入视图时，就会触发 `void => *` 转场，而不管它进入时处于什么状态
+  当元素进入视图时，就会触发 `void => *` 过渡，而不管它进入时处于什么状态
 
 * The wildcard state `*` matches to *any* state, including `void`
 
@@ -178,7 +178,7 @@ Use the aliases `:enter` and `:leave` to target HTML elements that are inserted 
 
 The `:enter` transition runs when any `*ngIf` or `*ngFor` views are placed on the page, and `:leave` runs when those views are removed from the page.
 
-当任何 `*ngIf` 或 `*ngFor` 中的视图放进页面中时，会运行 `:enter` 转场；当移除这些视图时，就会运行 `:leave` 转场。
+当任何 `*ngIf` 或 `*ngFor` 中的视图放进页面中时，会运行 `:enter` 过渡；当移除这些视图时，就会运行 `:leave` 过渡。
 
 <div class="alert is-important">
 
@@ -200,7 +200,7 @@ The HTML template contains the following code.
 
 In the component file, the `:enter` transition sets an initial opacity of 0. It then animates it to change that opacity to 1 as the element is inserted into the view.
 
-在组件文件中，`:enter` 转场会将初始透明度设置为 0，然后设置动画，当该元素已经插入视图中之后，把这个透明度设置为 1。
+在组件文件中，`:enter` 过渡会将初始透明度设置为 0，然后设置动画，当该元素已经插入视图中之后，把这个透明度设置为 1。
 
 <code-example header="src/app/insert-remove.component.ts" path="animations/src/app/insert-remove.component.ts" region="enter-leave-trigger"></code-example>
 
@@ -210,12 +210,12 @@ Note that this example doesn't need to use [`state()`](api/animations/state).
 
 ## Transition :increment and :decrement
 
-## 转场中的 `:increment` 和 `:decrement`
+## 过渡中的 `:increment` 和 `:decrement`
 
 The `transition()` function takes other selector values, `:increment` and `:decrement`.
 Use these to kick off a transition when a numeric value has increased or decreased in value.
 
-`transition()` 函数还能接受额外的选择器值：`:increment` 和 `:decrement`。当数值增加或减小时，使用这些来启动转场。
+`transition()` 函数还能接受额外的选择器值：`:increment` 和 `:decrement`。当数值增加或减小时，使用这些来启动过渡。
 
 <div class="alert is-helpful">
 
@@ -232,7 +232,7 @@ For more information on these methods, see the [complex sequences](guide/complex
 
 ## Boolean values in transitions
 
-## 转场中的逻辑值
+## 过渡中的逻辑值
 
 If a trigger contains a Boolean value as a binding value, then this value can be matched using a `transition()` expression that compares `true` and `false`, or `1` and `0`.
 
@@ -417,7 +417,7 @@ If you omit them, evenly spaced offsets are automatically assigned.
 For example, three keyframes without predefined offsets receive offsets of 0, 0.5, and 1.
 Specifying an offset of 0.8 for the middle transition in the preceding example might look like this.
 
-定义关键帧的偏移量是可选的。如果省略它们，就会自动分配均匀间隔的偏移。比如，三个没有预定义偏移的关键帧会分别使用 0、0.5、1 作为偏移。在上面的例子中，还可以为中间的转场指定偏移量 0.8。代码如下。
+定义关键帧的偏移量是可选的。如果省略它们，就会自动分配均匀间隔的偏移。比如，三个没有预定义偏移的关键帧会分别使用 0、0.5、1 作为偏移。在上面的例子中，还可以为中间的过渡指定偏移量 0.8。代码如下。
 
 <div class="lightbox">
 
@@ -475,7 +475,7 @@ Angular animations support builds on top of web animations, so you can animate a
 This includes positions, sizes, transforms, colors, borders, and more.
 The W3C maintains a list of animatable properties on its [CSS Transitions](https://www.w3.org/TR/css-transitions-1) page.
 
-Angular 的动画支持是基于 Web 动画的，所以你可以动浏览器认为可动（animatable）的任意属性。包括位置、大小、变形、颜色、边框等。W3C 在 [CSS 转场](https://www.w3.org/TR/css-transitions-1)页也维护了一个可动属性的列表。
+Angular 的动画支持是基于 Web 动画的，所以你可以动浏览器认为可动（animatable）的任意属性。包括位置、大小、变形、颜色、边框等。W3C 在 [CSS 过渡](https://www.w3.org/TR/css-transitions-1)页也维护了一个可动属性的列表。
 
 For properties with a numeric value, define a unit by providing the value as a string, in quotes, with the appropriate suffix:
 
@@ -538,7 +538,7 @@ The animation takes whatever height the element has before it leaves, and animat
 
 The `keyframes()` function in Angular allows you to specify multiple interim styles within a single transition. An optional `offset` can be used to define the point in the animation where each style change should occur.
 
-Angular 中的 `keyframes()` 函数允许你在单个转场中指定多个临时样式，并使用可选的 `offset` 来定义动画中每次样式变化的发生时机。
+Angular 中的 `keyframes()` 函数允许你在单个过渡中指定多个临时样式，并使用可选的 `offset` 来定义动画中每次样式变化的发生时机。
 
 ## More on Angular animations
 
@@ -562,6 +562,6 @@ You might also be interested in the following:
 
 * [Route transition animations](guide/route-animations)
 
-  [路由转场动画](guide/route-animations)
+  [路由过渡动画](guide/route-animations)
 
 @reviewed 2022-10-11

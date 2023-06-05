@@ -1610,7 +1610,7 @@ Next, add a `data` object to the routes for `HeroListComponent` and `HeroDetailC
 Transitions are based on `states` and you use the `animation` data from the route to provide a named animation [`state`](api/animations/state) for the transitions.
 
 接下来，为指向 `HeroListComponent` 和 `HeroDetailComponent` 的路由定义添加一个 `data` 对象。
-转场是基于 [`state`](api/animations/state) 的，你将使用来自路由的 `animation` 数据为转场提供一个有名字的动画 `state`。
+过渡是基于 [`state`](api/animations/state) 的，你将使用来自路由的 `animation` 数据为过渡提供一个有名字的动画 `state`。
 
 <code-example header="src/app/heroes/heroes-routing.module.ts (animation data)" path="router/src/app/heroes/heroes-routing.module.2.ts"></code-example>
 
@@ -1634,7 +1634,7 @@ This file does the following:
 
 * Defines one transition when switching back and forth from the `heroes` and `hero` routes to ease the component in from the left of the screen as it enters the application view \(`:enter`\), the other to animate the component to the right as it leaves the application view \(`:leave`\)
 
-  定义一个转场动画，当在 `heroes` 和 `hero` 路由之间来回切换时，如果进入（`:enter`）应用视图则让组件从屏幕的左侧滑入，如果离开（`:leave`）应用视图则让组件从右侧划出。
+  定义一个过渡动画，当在 `heroes` 和 `hero` 路由之间来回切换时，如果进入（`:enter`）应用视图则让组件从屏幕的左侧滑入，如果离开（`:leave`）应用视图则让组件从右侧划出。
 
 Back in the `AppComponent`, import the `RouterOutlet` token from the `@angular/router` package and the `slideInAnimation` from `'./animations.ts`.
 
@@ -1654,7 +1654,7 @@ For the `@routeAnimation` transitions to key off states, provide it with the `da
 The `RouterOutlet` is exposed as an `outlet` template variable, so you bind a reference to the router outlet.
 This example uses a variable of `routerOutlet`.
 
-为了把 `@routeAnimation` 转场转场到指定的状态，你需要从 `ActivatedRoute` 的 `data` 中提供它。`RouterOutlet` 导出成了一个模板变量 `outlet`，这样你就可以绑定一个到路由出口的引用了。这个例子中使用了一个 `routerOutlet` 变量。
+为了把 `@routeAnimation` 过渡过渡到指定的状态，你需要从 `ActivatedRoute` 的 `data` 中提供它。`RouterOutlet` 导出成了一个模板变量 `outlet`，这样你就可以绑定一个到路由出口的引用了。这个例子中使用了一个 `routerOutlet` 变量。
 
 <code-example header="src/app/app.component.html (router outlet)" path="router/src/app/app.component.2.html"></code-example>
 
