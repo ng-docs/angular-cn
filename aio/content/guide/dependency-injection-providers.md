@@ -48,7 +48,7 @@ The expanded provider configuration is an object literal with two properties:
 
   - useClass - this option tells Angular DI to instantiate a provided class when a dependency is injected
 
-    useClass -此选项告诉 Angular DI 在注入依赖项时要实例化这里提供的类
+    useClass - 此选项告诉 Angular DI 在注入依赖项时要实例化这里提供的类
 
   - useExisting - allows you to alias a token and reference any existing one.
 

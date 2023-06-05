@@ -260,9 +260,9 @@ This example uses an `<ng-container>` attribute to simulate projecting a compone
 
 <div class="callout is-helpful">
 
-<header>Reminder!</header>
+<header>Reminder</header>
 
-<header>注意！</header>
+<header>注意</header>
 
 The `ng-container` element is a logical construct that is used to group other DOM elements; however, the `ng-container` itself is not rendered in the DOM tree.
 

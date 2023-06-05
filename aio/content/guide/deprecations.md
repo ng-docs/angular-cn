@@ -908,19 +908,19 @@ Projects that currently have `fullTemplateTypeCheck: true` configured can migrat
 <code-example language="json" header="tsconfig.app.json">
 
 {
-"angularCompilerOptions": {
-&hellip;
-"strictTemplates": true,
-"strictInputTypes": false,
-"strictNullInputTypes": false,
-"strictAttributeTypes": false,
-"strictOutputEventTypes": false,
-"strictDomEventTypes": false,
-"strictDomLocalRefTypes": false,
-"strictSafeNavigationTypes": false,
-"strictContextGenerics": false,
-&hellip;
-}
+  "angularCompilerOptions": {
+    &hellip;
+    "strictTemplates": true,
+    "strictInputTypes": false,
+    "strictNullInputTypes": false,
+    "strictAttributeTypes": false,
+    "strictOutputEventTypes": false,
+    "strictDomEventTypes": false,
+    "strictDomLocalRefTypes": false,
+    "strictSafeNavigationTypes": false,
+    "strictContextGenerics": false,
+    &hellip;
+  }
 }
 
 </code-example>

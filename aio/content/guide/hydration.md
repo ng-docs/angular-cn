@@ -45,7 +45,6 @@ import {
   bootstrapApplication,
   provideClientHydration,
 } from '@angular/platform-browser';
-
 ...
 
 bootstrapApplication(RootCmp, {
@@ -67,8 +66,7 @@ import {NgModule} from '@angular/core';
   bootstrap: [RootCmp],
   providers: [provideClientHydration()],
 })
-export class AppModule {
-}
+export class AppModule {}
 ```
 
 <div class="alert is-helpful">
@@ -226,8 +224,7 @@ Some components may not work properly with hydration enabled due to some of the 
 由于上述某些问题（例如直接操作 DOM），某些组件可能在启用水合的情况下无法正常工作。作为一种变通方法，你可以将 `ngSkipHydration` 属性添加到组件的标签中，以跳过对整个组件进行水合处理。
 
 ```html
-
-<example-cmp ngSkipHydration/>
+<example-cmp ngSkipHydration />
 ```
 
 Alternatively you can set `ngSkipHydration` as a host binding.
@@ -237,15 +234,9 @@ Alternatively you can set `ngSkipHydration` as a host binding.
 ```typescript
 @Component({
   ...
-    host:
-{
-  ngSkipHydration: 'true'
-}
-,
+  host: {ngSkipHydration: 'true'},
 })
-
-class ExampleCmp {
-}
+class ExampleCmp {}
 ```
 
 The `ngSkipHydration` attribute will force Angular to skip hydrating the entire component and its children. Using this attribute means that the component will behave as if hydration is not enabled, meaning it will destroy and re-render itself.
