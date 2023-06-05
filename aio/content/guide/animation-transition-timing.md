@@ -145,6 +145,9 @@ For example, `ease-in` causes the animation to begin slowly, and to pick up spee
 **NOTE**: <br />
 See the Material Design website's topic on [Natural easing curves](https://material.io/design/motion/speed.html#easing) for general information on easing curves.
 
+**注意：**<br />
+有关缓动曲线的普遍性信息，请参见 Material Design 网站上的[自然缓动曲线](https://material.io/design/motion/speed.html#easing) 主题。
+
 </div>
 
 This example provides a state transition from `open` to `closed` with a 1-second transition between states.
@@ -170,16 +173,30 @@ This example adds a state transition from the `closed` state to the `open` state
 **NOTE**: <br />
 Using styles within [`state`](api/animations/state) and `transition` functions:
 
-*   Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
-*   Use `transition()` to define intermediate styles, which create the illusion of motion during the animation
-*   When animations are turned off, `transition()` styles can be skipped, but [`state()`](api/animations/state) styles can't
-*   Include multiple state pairs within the same `transition()` argument:
+**注意**: <br />
+在 [`state`](api/animations/state) 和 `transition` 函数中使用样式时：
 
-    <code-example format="typescript" language="typescript">
+* Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
 
-    transition( 'on =&gt; off, off =&gt; void' )
+  使用 [`state()`](api/animations/state) 定义当每个转换结束时要应用的样式，它们在动画完成后仍然存在
 
-    </code-example>
+* Use `transition()` to define intermediate styles, which create the illusion of motion during the animation
+
+  使用 `transition()` 定义中间样式，这些样式会在动画过程中创造出运动的幻觉
+
+* When animations are turned off, `transition()` styles can be skipped, but [`state()`](api/animations/state) styles can't
+
+  当动画关闭时，可以跳过 `transition()` 样式，但不能跳过 [`state()`](api/animations/state) 样式
+
+* Include multiple state pairs within the same `transition()` argument:
+
+  在同一个 `transition()` 参数中包含多个状态对：
+
+  <code-example format="typescript" language="typescript">
+
+  transition( 'on =&gt; off, off =&gt; void' )
+
+  </code-example>
 
 </div>
 

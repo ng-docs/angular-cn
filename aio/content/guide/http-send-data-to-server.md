@@ -76,6 +76,8 @@ Calling the `subscribe()` method *executes* the observable, which is what initia
 You must call `subscribe()` or nothing happens.
 Just calling `HeroesService.deleteHero()` does not initiate the DELETE request.
 
+你必须调用 `subscribe()`，否则什么也不会发生。只调用 `HeroesService.deleteHero()` 是不会发起 DELETE 请求的。
+
 </div>
 
 <code-example path="http/src/app/heroes/heroes.component.ts" region="delete-hero-no-subscribe"></code-example>

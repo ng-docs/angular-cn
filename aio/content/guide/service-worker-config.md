@@ -59,7 +59,7 @@ Unless otherwise commented, patterns use a **limited\*** glob format that intern
 
 <div class="alert is-helpful">
 
-  **\*** Pay attention that some characters with a special meaning in a regular expression are not escaped and also the pattern is not wrapped in `^`/`$` in the internal glob to regex conversion.
+**\*** Pay attention that some characters with a special meaning in a regular expression are not escaped and also the pattern is not wrapped in `^`/`$` in the internal glob to regex conversion.
 
 **\***请注意，在内部 glob 到正则表达式的转换中，正则表达式中某些具有特殊含义的字符不会被转义，并且模式不会用 `^` / `$` 包装。
 

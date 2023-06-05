@@ -25,6 +25,8 @@ Here, the `keyup` event binding sends every keystroke to the component's `search
 The type of `$event.target` is only `EventTarget` in the template.
 In the `getValue()` method, the target is cast to an `HTMLInputElement` to let type-safe have access to its `value` property.
 
+在模板中，`$event.target` 的类型只是 `EventTarget`。在 `getValue()` 方法中，要将目标转换为 `HTMLInputElement`，以便通过类型安全的方式访问其 `value` 属性。
+
 <code-example path="http/src/app/package-search/package-search.component.ts" region="getValue"></code-example>
 
 </div>
@@ -63,6 +65,8 @@ The template subscribes to `packages$` with the [AsyncPipe](api/common/AsyncPipe
 
 See [Using interceptors to request multiple values](guide/http-interceptor-use-cases#cache-refresh) for more about the `withRefresh` option.
 
+有关 `withRefresh` 选项的更多信息，请参见[使用拦截器请求多个值](guide/http-interceptor-use-cases#cache-refresh)。
+
 </div>
 
 ## Using the `switchMap()` operator
@@ -80,11 +84,16 @@ If a previous search request is still in-flight, such as when the network connec
 **NOTE**: <br />
 `switchMap()` returns service responses in their original request order, even if the server returns them out of order.
 
+**注意**：<br />
+即使服务器是以任意顺序返回的响应，`switchMap()` 也会按照它们最初的请求顺序返回它们。
+
 </div>
 
 <div class="alert is-helpful">
 
 If you think you'll reuse this debouncing logic, consider moving it to a utility function or into the `PackageSearchService` itself.
+
+如果你认为自己会复用这个防抖逻辑，请考虑将它移动到一个实用工具函数或者 `PackageSearchService` 本身中。
 
 </div>
 

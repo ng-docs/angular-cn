@@ -133,6 +133,8 @@ ng generate config karma
 
 Read more about Karma configuration in the [Karma configuration guide](http://karma-runner.github.io/6.4/config/configuration-file.html).
 
+在 [Karma 配置指南](http://karma-runner.github.io/6.4/config/configuration-file.html)中可以了解更多关于 Karma 配置的内容。
+
 </div>
 
 ### Other test frameworks
@@ -155,6 +157,8 @@ Inside the `src/app` folder the Angular CLI generated a test file for the `AppCo
 <div class="alert is-important">
 
 The test file extension **must be `.spec.ts`** so that tooling can identify it as a file with tests \(also known as a *spec* file\).
+
+测试文件的扩展名**必须是 `.spec.ts`**，以便测试工具可以把它识别成一个包含测试的文件，也叫 *spec（规约）* 文件。
 
 </div>
 

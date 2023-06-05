@@ -27,6 +27,8 @@ Angular 支持大多数常用浏览器，包括下列版本：
 
 Angular's continuous integration process runs unit tests of the framework on all of these browsers for every pull request, using [Sauce Labs](https://saucelabs.com).
 
+Angular 的持续集成过程会在每次 Pull Request 时通过 [Sauce Labs](https://saucelabs.com) 在所有浏览器上运行本框架的单元测试。
+
 </div>
 
 ## Polyfills
@@ -45,12 +47,17 @@ Angular 构建于 Web 平台的最新标准之上。要支持这么多浏览器�
 The suggested polyfills are the ones that run full Angular applications.
 You might need additional polyfills to support features not covered by this list.
 
+建议使用的腻子脚本是用于运行完整 Angular 应用程序的。你可能需要其他腻子脚本来支持本列表未曾涵盖的特性。
+
 </div>
 
 <div class="alert is-helpful">
 
 **NOTE**: <br />
 Polyfills cannot magically transform an old, slow browser into a modern, fast one.
+
+注意：<br />
+腻子脚本并不能神奇地将老旧、慢速的浏览器变成现代、快速的浏览器。
 
 </div>
 

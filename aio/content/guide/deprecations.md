@@ -23,7 +23,12 @@ comprehensive details on deprecations and breaking changes.
 Features and APIs that were deprecated in v6 or earlier are candidates for removal in version 9 or any later major version.
 For information about Angular's deprecation and removal practices, see [Angular Release Practices](guide/releases#deprecation-practices "Angular Release Practices: Deprecation practices").
 
+在 v6 或之前版本中弃用的功能和 API 可能会在版本 9 或任何后续主要版本中被移除。
+有关 Angular 弃用和移除做法的信息，请参见 [Angular 的版本与发布](guide/releases#deprecation-practices "Angular Release Practices: Deprecation practices")。
+
 For step-by-step instructions on how to update to the latest Angular release, use the interactive update guide at [update.angular.io](https://update.angular.io).
+
+要了解如何逐步更新到最新版本的 Angular，请使用 [update.angular.io](https://update.angular.io) 上的交互式更新指南。
 
 </div>
 
@@ -201,6 +206,9 @@ This section contains a complete list all deprecated APIs, with details to help 
 
 **TIP**: <br />
 In the [API reference section](api) of this site, deprecated APIs are indicated by ~~strikethrough.~~ You can filter the API list by [Status: deprecated](api?status=deprecated).
+
+**提示**：<br />
+在本站点的 [API 参考文档](api) 部分，已弃用的 API 会以 ~~删除线~~ 的形式标示出来。你可以通过[状态：已弃用](api?status=deprecated)来筛选 API 列表。
 
 </div>
 
@@ -684,6 +692,8 @@ In version 8, the string syntax for the [`loadChildren`](api/router/LoadChildren
 **Version 8 update**: When you update to version 8, the [`ng update`](cli/update) command performs the transformation automatically.
 Prior to version 7, the `import()` syntax only works in JIT mode \(with view engine\).
 
+**版本 8 更新**：当你升级到版本 8 时，[`ng update`](cli/update) 命令会自动执行转换。在版本 7 之前，`import()` 语法只能在 JIT 模式下（使用 View Engine）起作用。
+
 </div>
 
 <div class="alert is-helpful">
@@ -692,6 +702,9 @@ Prior to version 7, the `import()` syntax only works in JIT mode \(with view eng
 It's important to follow the route declaration syntax `loadChildren: () => import('...').then(m => m.ModuleName)` to allow `ngc` to discover the lazy-loaded module and the associated `NgModule`.
 You can find the complete list of allowed syntax constructs [here](https://github.com/angular/angular-cli/blob/a491b09800b493fe01301387fa9a025f7c7d4808/packages/ngtools/webpack/src/transformers/import_factory.ts#L104-L113).
 These restrictions will be relaxed with the release of Ivy since it'll no longer use `NgFactories`.
+
+**声明语法**：<br />
+对于 `ngc` 发现惰性加载的模块和相关的 `NgModule` 来说，遵循路由声明语法 `loadChildren: () => import('...').then(m => m.ModuleName)` 是非常重要的。你可以在[这里](https://github.com/angular/angular-cli/blob/a491b09800b493fe01301387fa9a025f7c7d4808/packages/ngtools/webpack/src/transformers/import_factory.ts#L104-L113)找到允许的语法结构的完整列表。这些限制会在 Ivy 正式发布后放宽，因为 Ivy 不再使用 `NgFactories`。
 
 </div>
 
@@ -809,6 +822,9 @@ The same applies to the `ANALYZE_FOR_ENTRY_COMPONENTS` injection token.
 **NOTE**: <br />
 You may still need to keep these if building a library that will be consumed by a View Engine application.
 
+**注意：**<br />
+如果构建要供 View Engine 应用程序使用的库，则可能仍然需要保留这些。
+
 </div>
 
 <a id="moduleWithProviders"></a>
@@ -855,6 +871,9 @@ For full rationale and discussion behind this deprecation, see [RFC: Internet Ex
 
 **NOTE**: <br />
 IE11 will be supported in Angular v12 LTS releases through November 2022.
+
+**注意**：<br />
+Angular v12 LTS 版本会支持 IE11，直到 2022 年 11 月为止。
 
 </div>
 
@@ -943,6 +962,9 @@ Since ViewEngine is deprecated and will soon be removed, those symbols are now d
 **IMPORTANT**: <br />
 this deprecation doesn't affect JIT mode in Ivy \(JIT remains available with Ivy, however we are exploring a possibility of deprecating it in the future.
 See [RFC: Exploration of use-cases for Angular JIT compilation mode](https://github.com/angular/angular/issues/43133)\).
+
+**重要提示**：<br />
+这个弃用并不影响使用 Ivy 的 JIT 模式（但我们仍在探索将来弃用 JIT 的可能性。请参见 [RFC: Exploration of use-cases for Angular JIT compilation mode](https://github.com/angular/angular/issues/43133)）。
 
 </div>
 

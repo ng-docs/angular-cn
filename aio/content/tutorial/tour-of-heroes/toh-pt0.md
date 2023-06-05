@@ -122,12 +122,23 @@ ng serve --open
 
 The `ng serve` command:
 
+`ng serve` 命令：
+
 * Builds the application
+
+  构建本应用
+
 * Starts the development server
+
+  启动开发服务器
+
 * Watches the source files
+
+  监听源文件
+
 * Rebuilds the application as you make changes
 
-`ng serve` 命令会构建本应用、启动开发服务器、监听源文件，并且当那些文件发生变化时重新构建本应用。
+  当文件发生变化时重新构建本应用
 
 The `--open` flag opens a browser to `http://localhost:4200`.
 

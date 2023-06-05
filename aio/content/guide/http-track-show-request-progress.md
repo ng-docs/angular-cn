@@ -21,7 +21,12 @@ To make a request with progress events enabled, create an instance of `HttpReque
 **TIP**: <br />
 Every progress event triggers change detection, so only turn them on if you need to report progress in the UI.
 
+**提示**：<br />
+每个进度事件都会触发变更检测，所以只有当需要在 UI 上报告进度时，你才应该开启它们。
+
 When using `HttpClient.request()` with an HTTP method, configure the method with `observe: 'events'` to see all events, including the progress of transfers.
+
+当 `HttpClient.request()` 和 HTTP 方法一起使用时，可以用 `observe: 'events'` 来查看所有事件，包括传输的进度。
 
 </div>
 
@@ -45,6 +50,8 @@ The `getEventMessage` method interprets each type of `HttpEvent` in the event st
 
 The sample app for this guide doesn't have a server that accepts uploaded files.
 The `UploadInterceptor` in `app/http-interceptors/upload-interceptor.ts` intercepts and short-circuits upload requests by returning an observable of simulated events.
+
+本指南中的范例应用中没有用来接受上传文件的服务器。`app/http-interceptors/upload-interceptor.ts` 的 `UploadInterceptor` 通过返回一个模拟这些事件的可观察对象来拦截和短路上传请求。
 
 </div>
 

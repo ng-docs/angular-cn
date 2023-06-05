@@ -71,6 +71,8 @@ In HTML, these attributes are set using ordinary CSS styles such as color and op
 
 To create a new `open-close` component to animate with simple transitions, run the following command in the command line tool to create the component:
 
+要创建一个新的 `open-close` 组件并使用简单的过渡动画进行动画处理，请在命令行工具中运行以下命令来创建组件：
+
 <code-example format="shell" language="shell">
 
 ng g component open-close
@@ -78,6 +80,8 @@ ng g component open-close
 </code-example>
 
 This creates the component at `src/app/open-close.component.ts`.
+
+这将在 `src/app/open-close.component.ts` 中创建该组件。
 
 </div>
 

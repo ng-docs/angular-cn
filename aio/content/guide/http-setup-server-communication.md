@@ -27,11 +27,17 @@ These `ConfigService` imports are typical.
 
 You can run the <live-example></live-example> that accompanies this guide.
 
+你可以运行本指南随附的<live-example></live-example>。
+
 The sample app does not require a data server.
 It relies on the [Angular *in-memory-web-api*](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api), which replaces the *HttpClient* module's `HttpBackend`.
 The replacement service simulates the behavior of a REST-like backend.
 
+示例应用不需要数据服务器。它依赖于 [Angular 的 *in-memory-web-api*](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api)，该模块替换了 *HttpClient* 模块的 `HttpBackend`。这个替代服务模拟了 REST 后端的行为。
+
 Look at the `AppModule` *imports* to see how it is configured.
+
+查看 `AppModule` 中的 *imports*，就能了解它是如何配置的。
 
 </div>
 

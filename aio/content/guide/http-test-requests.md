@@ -24,8 +24,12 @@ At the end, tests can verify that the app made no unexpected requests.
 
 You can run <live-example stackblitz="specs">these sample tests</live-example> in a live coding environment.
 
+你可以到在线编程环境中运行<live-example stackblitz="specs">这些范例测试</live-example>。
+
 The tests described in this guide are in `src/testing/http-client.spec.ts`.
 There are also tests of an application data service that call `HttpClient` in `src/app/heroes/heroes.service.spec.ts`.
+
+本章所讲的这些测试位于 `src/testing/http-client.spec.ts` 中。在 `src/app/heroes/heroes.service.spec.ts` 中还有一些测试，用于测试那些调用了 `HttpClient` 的数据服务。
 
 </div>
 

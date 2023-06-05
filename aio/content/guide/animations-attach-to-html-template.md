@@ -52,9 +52,16 @@ For example, use `*ngIf` with the animation trigger in the HTML template.
 **NOTE**: <br />
 In the component file, set the trigger that defines the animations as the value of the `animations:` property in the `@Component()` decorator.
 
+注意：<br />
+在组件文件中，将定义动画的触发器设置为 `@Component()` 装饰器中 `animations:` 属性的值。
+
 ## Attach an animation to an HTML template
 
+## 将动画附加到 HTML 模板
+
 In the HTML template file, use the trigger name to attach the defined animations to the HTML element to be animated.
+
+在 HTML 模板文件中，使用触发器名称把已定义的动画附着到要执行动画的 HTML 元素上。
 
 </div>
 

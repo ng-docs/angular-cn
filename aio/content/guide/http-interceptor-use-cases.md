@@ -147,9 +147,15 @@ The `CachingInterceptor` in the following example demonstrates this approach.
 Notice how `sendRequest()` intercepts the response on its way back to the application.
 This method pipes the response through the `tap()` operator, whose callback adds the response to the cache.
 
+请注意 `sendRequest()` 是如何在响应返回应用程序时拦截它的。此方法通过 `tap()` 操作符将响应联入管道，其回调会将响应添加到缓存中。
+
 The original response continues untouched back up through the chain of interceptors to the application caller.
 
+原始响应会不经过修改地沿着拦截器链回到应用程序的调用者处。
+
 Data services, such as `PackageSearchService`, are unaware that some of their `HttpClient` requests actually return cached responses.
+
+数据服务（例如 `PackageSearchService`）并不知道它们的某些 `HttpClient` 请求实际上返回的是已缓存的响应。
 
 </div>
 
@@ -174,8 +180,12 @@ The following revised version of the `CachingInterceptor` optionally returns an 
 
 The *cache-then-refresh* option is triggered by the presence of a custom `x-refresh` header.
 
+*cache-then-refresh* 选项是通过自定义标头 `x-refresh` 来触发的。
+
 A checkbox on the `PackageSearchComponent` toggles a `withRefresh` flag, which is one of the arguments to `PackageSearchService.search()`.
 That `search()` method creates the custom `x-refresh` header and adds it to the request before calling `HttpClient.get()`.
+
+`PackageSearchComponent` 上的复选框切换了 `withRefresh` 标志，这是 `PackageSearchService.search()` 的参数之一。`search()` 方法创建了自定义标头 `x-refresh`，并在调用 `HttpClient.get()` 之前将其添加到请求中。
 
 </div>
 

@@ -94,6 +94,8 @@ This initial root-level application is the *default app* for CLI commands \(unle
 
 Besides using the CLI on the command line, you can also manipulate files directly in the application's source folder and configuration files.
 
+除了通过命令行使用 CLI 之外，还可以直接操作应用程序源文件夹和配置文件中的文件。
+
 </div>
 
 For a single-application workspace, the `src` subfolder of the workspace contains the source files \(application logic, data, and assets\) for the root application.
@@ -131,6 +133,8 @@ Subfolders contain the application source and application-specific configuration
 New Angular projects use strict mode by default.
 If this is not desired you can opt out when creating the project.
 For more information, see [Strict mode](guide/strict-mode).
+
+新的 Angular 项目默认使用严格模式。如果不需要使用严格模式，可以在创建项目时选择不用它。更多信息，请参见[严格模式](guide/strict-mode)。
 
 </div>
 

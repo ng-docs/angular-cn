@@ -42,7 +42,11 @@ Important options include the *observe* and *responseType* properties.
 Use the `options` object to configure various other aspects of an outgoing request.
 In adding headers, for example, the service set the default headers using the `headers` option property.
 
+使用 `options` 对象来配置外发请求的其他方面。例如，在添加标头信息时，此服务会使用 `headers` 选项的属性来设置默认头信息。
+
 Use the `params` property to configure a request with HTTP URL parameters, and the `reportProgress` option to listen for progress events when transferring large amounts of data.
+
+使用 `params` 属性来配置带有 HTTP URL 参数的请求，使用 `reportProgress` 选项来监听传输大量数据时的进度事件。
 
 </div>
 
@@ -102,6 +106,8 @@ This is true for *all* `HttpClient` *methods*.
 
 You should always unsubscribe from an observable when a component is destroyed.
 
+当组件被销毁时，你应该总是取消订阅 Observable。
+
 </div>
 
 All observables returned from `HttpClient` methods are *cold* by design.
@@ -121,6 +127,8 @@ Think of these observables as *blueprints* for actual HTTP requests.
 
 In fact, each `subscribe()` initiates a separate, independent execution of the observable.
 Subscribing twice results in two HTTP requests.
+
+事实上，每个 `subscribe()` 都会启动 observable 的一次单独的、独立的执行。订阅两次就会导致两次 HTTP 请求。
 
 <code-example format="javascript" language="javascript">
 
@@ -152,6 +160,8 @@ Specifying the response type is a declaration to TypeScript that it should treat
 This is a build-time check and doesn't guarantee that the server actually responds with an object of this type.
 It is up to the server to ensure that the type specified by the server API is returned.
 
+指定响应类型是为了告诉 TypeScript 应该将响应视为给定类型的声明。这是一个编译期检查，不能保证服务器的响应一定是这种类型的对象。服务器有责任确保返回服务器 API 所指定的类型。
+
 </div>
 
 To specify the response object type, first define an interface with the required properties.
@@ -171,6 +181,8 @@ Next, specify that interface as the `HttpClient.get()` call's type parameter in 
 
 When you pass an interface as a type parameter to the `HttpClient.get()` method, use the [RxJS `map` operator](guide/rx-library#operators) to transform the response data as needed by the UI.
 You can then pass the transformed data to the [async pipe](api/common/AsyncPipe).
+
+当你将一个接口作为类型参数传给 `HttpClient.get()` 方法时，要使用 [RxJS 的 `map` 操作符](guide/rx-library#operators)来根据 UI 的需要变换响应数据。然后就可以将转换后的数据传给 [async 管道](api/common/AsyncPipe)了。
 
 </div>
 
@@ -200,7 +212,11 @@ For example, the following `subscribe` callback receives `data` as an Object, an
 
 <header><code>observe</code> and <code>response</code> types</header>
 
+<header><code>observe</code> 和 <code>response</code> 类型</header>
+
 The types of the `observe` and `response` options are *string unions*, rather than plain strings.
+
+`observe` 和 `response` 选项的类型是*字符串联合*类型，而不是普通字符串。
 
 <code-example format="typescript" language="typescript">
 
@@ -216,6 +232,8 @@ options: {
 
 This can cause confusion.
 For example:
+
+这可能导致混淆。例如：
 
 <code-example format="typescript" language="typescript">
 
@@ -234,7 +252,11 @@ In the second case, TypeScript infers the type of `options` to be `{responseType
 The type is too wide to pass to `HttpClient.get` which is expecting the type of `responseType` to be one of the *specific* strings.
 `HttpClient` is typed explicitly this way so that the compiler can report the correct return type based on the options you provided.
 
+在第二种情况中，TypeScript 推断 `options` 的类型为 `{responseType: string}`。这个类型过于宽泛，无法传给 `HttpClient.get`，因为后者期望 `responseType` 的类型是*几个特定的*字符串之一。`HttpClient` 被显式地以这种方式进行了类型化，以便编译器可以根据你提供的选项报告出正确的返回类型。
+
 Use `as const` to let TypeScript know that you really do mean to use a constant string type:
+
+使用 `as const` 来让 TypeScript 知道你确实是要使用一个常量字符串类型：
 
 <code-example format="typescript" language="typescript">
 

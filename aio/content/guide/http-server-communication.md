@@ -35,11 +35,17 @@ These `ConfigService` imports are typical.
 
 You can run the <live-example></live-example> that accompanies this guide.
 
+你可以运行本指南随附的<live-example></live-example>。
+
 The sample app does not require a data server.
 It relies on the [Angular *in-memory-web-api*](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api), which replaces the *HttpClient* module's `HttpBackend`.
 The replacement service simulates the behavior of a REST-like backend.
 
+示例应用不需要数据服务器。它依赖于 [Angular 的 *in-memory-web-api*](https://github.com/angular/angular/tree/main/packages/misc/angular-in-memory-web-api)，该模块替换了 *HttpClient* 模块的 `HttpBackend`。这个替代服务模拟了 REST 后端的行为。
+
 Look at the `AppModule` *imports* to see how it is configured.
+
+查看 `AppModule` 中的 *imports*，就能了解它是如何配置的。
 
 </div>
 
@@ -87,7 +93,11 @@ Important options include the *observe* and *responseType* properties.
 Use the `options` object to configure various other aspects of an outgoing request.
 In adding headers, for example, the service set the default headers using the `headers` option property.
 
-Use the `params` property to configure a request with [TTP URL parameters, and the `reportProgress` option to listen for progress events when transferring large amounts of data.
+使用 `options` 对象来配置外发请求的其他方面。例如，在添加标头信息时，此服务会使用 `headers` 选项的属性来设置默认头信息。
+
+Use the `params` property to configure a request with HTTP URL parameters, and the `reportProgress` option to listen for progress events when transferring large amounts of data.
+
+使用 `params` 属性来配置带有 HTTP URL 参数的请求，使用 `reportProgress` 选项来监听传输大量数据时的进度事件。
 
 </div>
 
@@ -147,6 +157,8 @@ This is true for *all* `HttpClient` *methods*.
 
 You should always unsubscribe from an observable when a component is destroyed.
 
+当组件被销毁时，你应该总是取消订阅 Observable。
+
 </div>
 
 All observables returned from `HttpClient` methods are *cold* by design.
@@ -166,6 +178,8 @@ Think of these observables as *blueprints* for actual HTTP requests.
 
 In fact, each `subscribe()` initiates a separate, independent execution of the observable.
 Subscribing twice results in two HTTP requests.
+
+事实上，每个 `subscribe()` 都会启动 observable 的一次单独的、独立的执行。订阅两次就会导致两次 HTTP 请求。
 
 <code-example format="javascript" language="javascript">
 
@@ -197,6 +211,8 @@ Specifying the response type is a declaration to TypeScript that it should treat
 This is a build-time check and doesn't guarantee that the server actually responds with an object of this type.
 It is up to the server to ensure that the type specified by the server API is returned.
 
+指定响应类型是为了告诉 TypeScript 应该将响应视为给定类型的声明。这是一个编译期检查，不能保证服务器的响应一定是这种类型的对象。服务器有责任确保返回服务器 API 所指定的类型。
+
 </div>
 
 To specify the response object type, first define an interface with the required properties.
@@ -216,6 +232,8 @@ Next, specify that interface as the `HttpClient.get()` call's type parameter in 
 
 When you pass an interface as a type parameter to the `HttpClient.get()` method, use the [RxJS `map` operator](guide/rx-library#operators) to transform the response data as needed by the UI.
 You can then pass the transformed data to the [async pipe](api/common/AsyncPipe).
+
+当你将一个接口作为类型参数传给 `HttpClient.get()` 方法时，要使用 [RxJS 的 `map` 操作符](guide/rx-library#operators)来根据 UI 的需要变换响应数据。然后就可以将转换后的数据传给 [async 管道](api/common/AsyncPipe)了。
 
 </div>
 
@@ -245,7 +263,11 @@ For example, the following `subscribe` callback receives `data` as an Object, an
 
 <header><code>observe</code> and <code>response</code> types</header>
 
+<header><code>observe</code> 和 <code>response</code> 类型</header>
+
 The types of the `observe` and `response` options are *string unions*, rather than plain strings.
+
+`observe` 和 `response` 选项的类型是*字符串联合*类型，而不是普通字符串。
 
 <code-example format="typescript" language="typescript">
 
@@ -261,6 +283,8 @@ options: {
 
 This can cause confusion.
 For example:
+
+这可能导致混淆。例如：
 
 <code-example format="typescript" language="typescript">
 

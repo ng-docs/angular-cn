@@ -26,6 +26,9 @@ Import `BrowserAnimationsModule`, which introduces the animation capabilities in
 **NOTE**: <br />
 When you use the Angular framework to create your application, the root application module `app.module.ts` is placed in the `src/app` directory.  If you are using standalone components, look at main.ts or look at your root application component.
 
+注意：<br />
+当你使用 Angular 框架创建应用时，根应用模块 `app.module.ts` 位于 `src/app` 目录下。如果你正在使用独立的组件，请查看 `main.ts` 或应用的根组件。
+
 </div>
 
 ## Step 2: Importing animation functions into component files

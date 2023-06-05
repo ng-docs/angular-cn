@@ -370,6 +370,8 @@ Depending on CommonJS modules can prevent bundlers and minifiers from optimizing
 Instead, it is recommended that you use [ECMAScript modules](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import) in your entire application.
 For more information, see [How CommonJS is making your bundles larger](https://web.dev/commonjs-larger-bundles).
 
+建议你避免在 Angular 应用程序中依赖 CommonJS 模块。依赖 CommonJS 模块可能会阻止捆绑器和压缩器优化此应用，导致捆绑包体积变大。建议你在整个应用程序中使用 [ECMAScript 模块](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import)。更多信息，请参见 [为何 CommonJS 让捆绑包变大了](https://web.dev/commonjs-larger-bundles)。
+
 </div>
 
 The Angular CLI outputs warnings if it detects that your browser application depends on CommonJS modules.
@@ -427,6 +429,8 @@ See the [browserslist repository](https://github.com/browserslist/browserslist) 
 <div class="alert is-helpful">
 
 Use [browsersl.ist](https://browsersl.ist) to display compatible browsers for a `browserslist` query.
+
+使用 [browsersl.ist](https://browsersl.ist) 显示与 `browserslist` 查询兼容的浏览器。
 
 </div>
 
@@ -492,6 +496,9 @@ For a description of all options, see [webpack DevServer documentation](https://
 
 **NOTE**: <br />
 If you edit the proxy configuration file, you must relaunch the `ng serve` process to make your changes effective.
+
+注意：<br />
+如果你编辑了代理配置文件，必须重新启动 `ng serve` 进程才能使更改生效。
 
 </div>
 

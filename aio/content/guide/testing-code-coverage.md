@@ -13,7 +13,7 @@ CLI 可以运行单元测试并创建代码覆盖率报告。代码覆盖率报�
 
 If you'd like to experiment with the application that this guide describes, <live-example name="testing" noDownload>run it in your browser</live-example> or <live-example name="testing" downloadOnly>download and run it locally</live-example>.
 
-  如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
+如果你要试验本指南中所讲的应用，请<live-example name="testing" noDownload>在浏览器中运行它</live-example>或<live-example name="testing" downloadOnly>下载并在本地运行它</live-example>。
 
 </div>
 
@@ -84,6 +84,8 @@ coverageReporter: {
 <div class="alert is-helpful">
 
 Read more about creating and fine tunning Karma configuration in the [testing guide](guide/testing#configuration).
+
+在[测试指南](guide/testing#configuration)中可以了解更多关于创建和微调 Karma 配置的内容。
 
 </div>
 

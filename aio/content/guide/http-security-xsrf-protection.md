@@ -34,6 +34,8 @@ To prevent collisions in environments where multiple Angular apps share the same
 Your backend service must be configured to set the cookie for your page, and to verify that the header is present on all eligible requests.
 Failing to do so renders Angular's default protection ineffective.
 
+*`HttpClient` 仅支持受 XSRF 保护的客户端部分*。后端服务必须配置为能够为页面设置 cookie，并验证在所有符合条件的请求中是否存在该标头。如果后端服务未能正确设置它们，则会让 Angular 的默认保护失效。
+
 </div>
 
 ## Configure custom cookie/header names

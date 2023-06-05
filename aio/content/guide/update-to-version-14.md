@@ -22,6 +22,8 @@ For step-by-step instructions on how to update to the latest Angular release and
 
 For information about the deprecation and removal practices of Angular, see [Angular Release Practices](guide/releases#deprecation-practices).
 
+关于 Angular 的弃用和移除实践，可以参考 [Angular 发布实践](guide/releases#deprecation-practices)。
+
 </div>
 
 * **Strictly Typed Reactive Forms**

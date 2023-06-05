@@ -132,6 +132,8 @@ As you create new interceptors, add them to the `httpInterceptorProviders` array
 
 There are many more interceptors in the complete sample code.
 
+在完整的示例代码中还有许多其他的拦截器。
+
 </div>
 
 ## Interceptor order
@@ -156,6 +158,8 @@ Angular 会按你提供拦截器的顺序应用它们。比如，考虑一个场
 <div class="alert is-helpful">
 
 The last interceptor in the process is always the `HttpBackend` that handles communication with the server.
+
+处理过程中的最后一个拦截器始终是 `HttpBackend`，它负责与服务器通信。
 
 </div>
 
@@ -196,6 +200,8 @@ Immutability ensures that interceptors see the same request for each try.
 <div class="alert is-helpful">
 
 Your interceptor should return every event without modification unless it has a compelling reason to do otherwise.
+
+除非有充分的理由，否则你的拦截器应该返回每个事件而不进行任何修改。
 
 </div>
 
@@ -266,6 +272,9 @@ To do this, set the cloned request body to `null`.
 
 **TIP**: <br />
 If you set the cloned request body to `undefined`, Angular assumes you intend to leave the body as is.
+
+**提示**：<br />
+如果你将克隆后的请求体设置为 `undefined`，Angular 就会认为你打算按原样保留请求体。
 
 </div>
 

@@ -50,6 +50,8 @@ A Node.js Express web server compiles HTML pages with Universal based on client 
 
 <live-example downloadOnly>Download the finished sample code</live-example>, which runs in a [Node.js® Express](https://expressjs.com) server.
 
+<live-example downloadOnly>下载完成的示例代码</live-example>，它要在一个 [Node.js® Express](https://expressjs.com) 服务器上运行。
+
 </div>
 
 ### Step 1. Enable Server-Side Rendering
@@ -430,6 +432,9 @@ This engine's `Promise` callback returns the rendered page to the web server, wh
 The basic behavior described below is handled automatically when using the NgUniversal Express schematic.
 This is helpful when trying to understand the underlying behavior or replicate it without using the schematic.
 
+**注意**：<br />
+当使用 NgUniversal Express 脚手架时，会自动处理基本行为。这对于尝试理解底层行为或在不使用脚手架的情况下复现它是很有帮助的。
+
 </div>
 
 The web server must distinguish *app page requests* from other kinds of requests.
@@ -474,8 +479,13 @@ Node.js Express 服务器是一系列中间件构成的管道，它会挨个对�
 **NOTE**: <br />
 This sample server doesn't handle data requests.
 
+**注意**：<br />
+这个示例服务器不能处理数据请求。
+
 The tutorial's "in-memory web API" module, a demo and development tool, intercepts all HTTP calls and simulates the behavior of a remote data server.
 In practice, you would remove that module and register your web API middleware on the server here.
+
+本教程中的“内存 Web API”模块是一个演示和开发工具，它会拦截所有 HTTP 请求并模拟远程数据服务器的行为。在实际应用中，你要删除该模块并在此注册你的 Web API 中间件。
 
 </div>
 

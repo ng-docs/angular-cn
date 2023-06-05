@@ -18,6 +18,8 @@ APF 能让包在使用 Angular 的大多数常见场景下无缝工作。使用 
 APF is versioned along with the rest of Angular, and every major version improves the package format.
 You can find the versions of the specification prior to v13 in this [google doc](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview).
 
+APF（Angular Package Format）一直在跟随 Angular 的版本而发展，每个主要版本都会改进包格式。你可以在这份 [google 文档](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview)中找到 v13 之前的版本规范。
+
 </div>
 
 ## Why specify a package format?

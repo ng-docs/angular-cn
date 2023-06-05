@@ -50,7 +50,7 @@ The flag is not supported in `@ViewChildren()` or `@ContentChildren()` queries, 
 **注意**：<br />
 `@ViewChildren()` 或 `@ContentChildren()` 查询中不支持该标志，因此该原理图不会检查这些属性。
 
-</br>
+</div>
 
 ## Why is this migration necessary?
 

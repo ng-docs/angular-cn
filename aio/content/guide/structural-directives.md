@@ -96,11 +96,11 @@ For more information, see the [NgFor API](api/common/NgFor "API: NgFor") and [Ng
 
 <div class="alert is-helpful">
 
-  Note that Angular's `<ng-template>` element defines a template that doesn't render anything by default, if you just wrap elements in an `<ng-template>` without applying a structural directive those elements will not be rendered.
+Note that Angular's `<ng-template>` element defines a template that doesn't render anything by default, if you just wrap elements in an `<ng-template>` without applying a structural directive those elements will not be rendered.
 
 请注意，Angular 的 `<ng-template>` 元素定义了一个默认不渲染任何内容的模板，如果你只是在 `<ng-template>` 中包装元素而不应用结构指令，则不会渲染这些元素。
 
-  For more information, see the [ng-template API](api/core/ng-template) documentation.
+For more information, see the [ng-template API](api/core/ng-template) documentation.
 
 有关更多信息，请参阅[ng-template API](api/core/ng-template)文档。
 

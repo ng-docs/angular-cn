@@ -15,6 +15,9 @@ This topic describes tasks that you perform while making changes to the document
 **IMPORTANT**: <br />
 Only perform these tasks after you have created a working branch in which to work as described in [Create a working branch for editing](guide/doc-update-start#create-a-working-branch-for-editing).
 
+**重要提示**：<br />
+只有在执行了[为编辑创建工作分支](guide/doc-update-start#create-a-working-branch-for-editing) 中所讲的操作后，才能执行这些任务。
+
 </div>
 
 ## Work in the correct working branch
@@ -383,6 +386,9 @@ Perform these steps from a command-line tool on your local computer or in the **
 
    **IMPORTANT**: <br />
    Files that are not tracked by `git` are not committed or pushed to your repo on `github.com` and they do not appear in your pull request.
+
+   **重要提示**：<br />
+   未被 `git` 跟踪的文件不会提交或推送到你在 `github.com` 上的源码库中，也不会出现在你的 Pull Request 中。
 
    </div>
 
