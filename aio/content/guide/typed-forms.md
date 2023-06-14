@@ -23,10 +23,10 @@ As background for this guide, you should already be familiar with [Angular React
 ## 类型化表单概览
 
 <video controls>
-  <source src="http://videos.angular.cn/Typed Forms in Angular-L-odCf4MfJc.webm" type="video/webm">
-  <source src="http://videos.angular.cn/Typed Forms in Angular-L-odCf4MfJc.mp4" type="video/mp4">
-  <track src="http://videos.angular.cn/Typed Forms in Angular-L-odCf4MfJc.en.vtt" label="English" kind="subtitles" srclang="en">
-  <track src="http://videos.angular.cn/Typed Forms in Angular-L-odCf4MfJc.cn.vtt" label="简体中文" kind="subtitles" srclang="cn" default>
+  <source src="//videos.angular.cn/Typed Forms in Angular-L-odCf4MfJc.webm" type="video/webm">
+  <source src="//videos.angular.cn/Typed Forms in Angular-L-odCf4MfJc.mp4" type="video/mp4">
+  <track src="//videos.angular.cn/Typed Forms in Angular-L-odCf4MfJc.en.vtt" label="English" kind="subtitles" srclang="en">
+  <track src="//videos.angular.cn/Typed Forms in Angular-L-odCf4MfJc.cn.vtt" label="简体中文" kind="subtitles" srclang="cn" default>
   <p>注意：本视频不支持 IE 浏览器</p>
 </video>
 
