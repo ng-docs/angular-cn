@@ -42,7 +42,7 @@ For a quick introduction to localization and internationalization watch this vid
     <source src="//videos.angular.cn/Introduction to Internationalization in Angular-KNTN-nsbV7M.webm" type="video/webm">
     <source src="//videos.angular.cn/Introduction to Internationalization in Angular-KNTN-nsbV7M.mp4" type="video/mp4">
     <track src="//videos.angular.cn/Introduction to Internationalization in Angular-KNTN-nsbV7M.en.vtt" label="English" kind="subtitles" srclang="en">
-    <track src="//videos.angular.cn/Introduction to Internationalization in Angular-KNTN-nsbV7M.cn.vtt" label="简体中文" kind="subtitles" srclang="cn" default>
+    <track src="//videos.angular.cn/Introduction to Internationalization in Angular-KNTN-nsbV7M.cn.vtt" label="简体中文" kind="subtitles" srclang="zh-CN" default>
     <p>注意：本视频不支持 IE 浏览器</p>
   </video>
 
