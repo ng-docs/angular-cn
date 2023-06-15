@@ -14,7 +14,8 @@
       <source src="{$ doc.videoUrl $}.webm" type="video/webm">
       <source src="{$ doc.videoUrl $}.mp4" type="video/mp4">
       <track src="{$ doc.videoUrl $}.en.vtt" label="English" kind="subtitles" srclang="en">
-      <track src="{$ doc.videoUrl $}.cn.vtt" label="简体中文" kind="subtitles" srclang="zh-CN" default>
+      <track src="{$ doc.videoUrl $}.cn.vtt" label="简体中文" kind="subtitles" srclang="zh-CN">
+      <track src="{$ doc.videoUrl $}.tw.vtt" label="正體中文" kind="subtitles" srclang="zh-TW">
     </video>
   </div>
   {% endif%}
@@ -22,7 +23,7 @@
 
   <div class="error-description">
     <h2 translation-result="on">说明</h2>
-  <h2 translation-origin="off">Description</h2>
+    <h2 translation-origin="off">Description</h2>
     {$ doc.description | marked $}
   </div>
 
@@ -32,7 +33,7 @@
 
   <div class="debugging">
     <h2 translation-result="on">如何排除本错误</h2>
-  <h2 translation-origin="off">Debugging the error</h2>
+    <h2 translation-origin="off">Debugging the error</h2>
     {$ doc.debugging | marked $}
   </div>
   {% endif%}

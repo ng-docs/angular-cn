@@ -16,6 +16,10 @@ git pull -r
 chmod -R +w .
 
 cp -r ../../../dist/bin/aio/build/* .
+mkdir -p assets/videos
+cp ../../../../angular-cn-videos/*.mp4 assets/videos/
+cp ../../../../angular-cn-videos/*.webm assets/videos/
+cp ../../../../angular-cn-videos/*.vtt assets/videos/
 
 nt export './generated/**/*.json'
 
