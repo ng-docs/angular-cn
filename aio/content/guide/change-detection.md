@@ -23,7 +23,7 @@ Watch this video if you prefer to learn more about performance optimizations in 
     <source src="assets/videos/4 Runtime Performance Optimizations-f8sA-i6gkGQ.webm" type="video/webm">
     <source src="assets/videos/4 Runtime Performance Optimizations-f8sA-i6gkGQ.mp4" type="video/mp4">
     <track src="assets/videos/4 Runtime Performance Optimizations-f8sA-i6gkGQ.en.vtt" label="English" kind="subtitles" srclang="en">
-    <track src="assets/videos/4 Runtime Performance Optimizations-f8sA-i6gkGQ.cn.vtt" label="简体中文" kind="subtitles" srclang="zh-CN">
+    <track src="assets/videos/4 Runtime Performance Optimizations-f8sA-i6gkGQ.cn.vtt" label="简体中文" kind="subtitles" srclang="zh-CN" default>
     <track src="assets/videos/4 Runtime Performance Optimizations-f8sA-i6gkGQ.tw.vtt" label="正體中文" kind="subtitles" srclang="zh-TW">
     <p>注意：本视频不支持 IE 浏览器</p>
   </video>

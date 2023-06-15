@@ -27,7 +27,7 @@ As background for this guide, you should already be familiar with [Angular React
   <source src="assets/videos/Typed Forms in Angular-L-odCf4MfJc.mp4" type="video/mp4">
   <track src="assets/videos/Typed Forms in Angular-L-odCf4MfJc.en.vtt" label="English" kind="subtitles" srclang="en">
   <track src="assets/videos/Typed Forms in Angular-L-odCf4MfJc.cn.vtt" label="简体中文" kind="subtitles" srclang="zh-CN" default>
-  <track src="assets/videos/Typed Forms in Angular-L-odCf4MfJc.tw.vtt" label="正體中文" kind="subtitles" srclang="zh-CN" default>
+  <track src="assets/videos/Typed Forms in Angular-L-odCf4MfJc.tw.vtt" label="正體中文" kind="subtitles" srclang="zh-TW">
   <p>注意：本视频不支持 IE 浏览器</p>
 </video>
 
