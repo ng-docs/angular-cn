@@ -10,7 +10,14 @@
 
 ## 创建独立组件
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/x5PZwb4XurU" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<video controls>
+  <source src="assets/videos/Getting Started with Standalone Components in Angular-x5PZwb4XurU.webm" type="video/webm">
+  <source src="assets/videos/Getting Started with Standalone Components in Angular-x5PZwb4XurU.mp4" type="video/mp4">
+  <track src="assets/videos/Getting Started with Standalone Components in Angular-x5PZwb4XurU.en.vtt" label="English" kind="subtitles" srclang="en">
+  <track src="assets/videos/Getting Started with Standalone Components in Angular-x5PZwb4XurU.cn.vtt" label="简体中文" kind="subtitles" srclang="zh-CN" default>
+  <track src="assets/videos/Getting Started with Standalone Components in Angular-x5PZwb4XurU.tw.vtt" label="正體中文" kind="subtitles" srclang="zh-TW">
+  <p>注意：本视频不支持 IE 浏览器</p>
+</video>
 
 ### The `standalone` flag and component `imports`
 
