@@ -290,7 +290,7 @@ Displaying the first page quickly can be critical for user engagement.
 Pages that load faster perform better, [even with changes as small as 100ms](https://web.dev/shopping-for-speed-on-ebay).
 Your application might have to launch faster to engage these users before they decide to do something else.
 
-快速显示第一页对于吸引用户是至关重要的。加载速度更快的页面效果更好，即使其差异只有 100 毫秒也是如此（https://web.dev/shopping-for-speed-on-ebay/）。你的应用要启动得更快一点，以便在用户决定做别的事情之前吸引他们的注意力。
+快速显示第一页对于吸引用户是至关重要的。加载速度更快的页面效果更好，[即使其差异只有 100 毫秒也是如此](https://web.dev/shopping-for-speed-on-ebay/)。你的应用要启动得更快一点，以便在用户决定做别的事情之前吸引他们的注意力。
 
 With Angular Universal, you can generate landing pages for the application that look like the complete application.
 The pages are pure HTML, and can display even if JavaScript is disabled.
