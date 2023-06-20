@@ -423,7 +423,7 @@ The user should be able to get to these details in three ways.
 
 This section enables navigation to the `HeroDetailComponent` and liberates it from the `HeroesComponent`.
 
-这一节弃用了导航到 `HeroDetailComponent` 的功能，并把它从 `HeroesComponent` 中解放出来。
+这一节启用了导航到 `HeroDetailComponent` 的功能，并把它从 `HeroesComponent` 中解放出来。
 
 ### Delete *hero details* from `HeroesComponent`
 
