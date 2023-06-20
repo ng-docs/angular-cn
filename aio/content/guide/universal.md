@@ -296,7 +296,7 @@ With Angular Universal, you can generate landing pages for the application that 
 The pages are pure HTML, and can display even if JavaScript is disabled.
 The pages don't handle browser events, but they *do* support navigation through the site using [`routerLink`](guide/router-reference#router-link).
 
-使用 Angular Universal，你可以为应用生成“着陆页”，它们看起来就和完整的应用一样。这些着陆页是纯 HTML，并且即使 JavaScript 被禁用了也能显示。这些页面不会处理浏览器事件，不过它们*可以*用 `[routerLink](guide/router-reference#router-link)` 在这个网站中导航。
+使用 Angular Universal，你可以为应用生成“着陆页”，它们看起来就和完整的应用一样。这些着陆页是纯 HTML，并且即使 JavaScript 被禁用了也能显示。这些页面不会处理浏览器事件，不过它们*可以*用 [routerLink](guide/router-reference#router-link) 在这个网站中导航。
 
 In practice, you'll serve a static version of the landing page to hold the user's attention.
 At the same time, you'll load the full Angular application behind it.
