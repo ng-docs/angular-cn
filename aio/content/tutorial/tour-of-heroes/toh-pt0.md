@@ -1,6 +1,6 @@
 # Create a new project
 
-# 应用的外壳
+# 创建新项目
 
 Use the `ng new` command to start creating your **Tour of Heroes** application.
 

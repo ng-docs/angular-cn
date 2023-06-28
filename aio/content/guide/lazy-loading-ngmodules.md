@@ -289,7 +289,7 @@ The other feature module's routing module is configured similarly.
 
 ### Verify lazy loading
 
-### 确认它工作正常
+### 验证惰性加载
 
 You can verify that a module is indeed being lazy loaded with the Chrome developer tools.
 In Chrome, open the developer tools by pressing `Cmd+Option+i` on a Mac or `Ctrl+Shift+j` on a PC and go to the Network Tab.

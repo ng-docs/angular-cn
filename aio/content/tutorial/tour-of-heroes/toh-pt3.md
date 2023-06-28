@@ -1,6 +1,6 @@
 # Create a feature component
 
-# 主从组件
+# 创建特性组件
 
 At the moment, the `HeroesComponent` displays both the list of heroes and the selected hero's details.
 

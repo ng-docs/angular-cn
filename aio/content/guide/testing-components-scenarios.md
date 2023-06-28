@@ -1328,7 +1328,7 @@ Tests can explore how the `HeroDetailComponent` responds to different `id` param
 
 #### Testing with the `RouterTestingHarness`
 
-#### 使用 `ActivatedRouteStub` 进行测试
+#### 使用 `RouterTestingHarness` 进行测试
 
 Here's a test demonstrating the component's behavior when the observed `id` refers to an existing hero:
 

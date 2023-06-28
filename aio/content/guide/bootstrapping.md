@@ -1,6 +1,6 @@
 # Launching your app with a root module
 
-# 启动过程
+# 通过根模块启动应用
 
 ## Prerequisites
 

@@ -975,7 +975,7 @@
         "r"
       ],
       "deprecated": false,
-      "shortDescriptionCn": "在给定项目中生成新的通用解析程序定义。"
+      "shortDescriptionCn": "在给定项目中生成新的通用的解析器定义。"
     },
     {
       "name": "service",

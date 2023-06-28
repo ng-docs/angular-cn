@@ -326,11 +326,11 @@ Below is the "Little Tour of Heroes" component.
 
 ### Observations
 
-### 小结
+### 注意事项
 
 | Observations                                | Details                                                                                                                                                                                              |
 | :------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 小结                                        | 详情                                                                                                                                                                                                 |
+| 注意事项                                    | 详情                                                                                                                                                                                                 |
 | Use template variables to refer to elements | The `newHero` template variable refers to the `<input>` element. You can reference `newHero` from any sibling or child of the `<input>` element.                                                     |
 | 使用模板变量来引用元素                      | `newHero` 模板变量引用了 `<input>` 元素。你可以在 `<input>` 的任何兄弟或子级元素中引用 `newHero`。|
 | Pass values, not elements                   | Instead of passing the `newHero` into the component's `addHero` method, get the input box value and pass *that* to `addHero`.                                                                        |

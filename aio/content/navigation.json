@@ -402,9 +402,9 @@
             },
             {
               "url": "guide/dependency-injection-providers",
-              "titleCn": "DI 提供者",
+              "titleCn": "定义依赖提供者",
               "title": "Defining dependency providers",
-              "tooltipCn": "关于不同类型的提供者的更多信息。",
+              "tooltipCn": "提供者工厂函数是一个普通函数，Angular 会调用它来创建依赖。",
               "tooltip": "A provider factory function is a plain function that Angular can call to create a dependency."
             },
             {
@@ -434,7 +434,7 @@
         {
           "titleCn": "独立组件",
           "title": "Standalone",
-          "tooltipCn": "独立组件、指令和管道",
+          "tooltipCn": "学习 Angular 的独立 API，以及如何把应用转换为独立的。",
           "tooltip": "Learn about Angular's standalone APIs and how to convert your application to them.",
           "children": [
             {
@@ -773,7 +773,7 @@
               "children": [
                 {
                   "url": "guide/i18n-optional-overview",
-                  "titleCn": "可选的国际化实践",
+                  "titleCn": "概览",
                   "title": "Overview",
                   "tooltipCn": "介绍可选的 Angular 国际化任务，以及能帮你手动配置本地化设置的主题列表。",
                   "tooltip": "Introduces the optional Angular internationalization tasks and lists topics that teach you how to manually configure localization settings for your applications"
@@ -1803,7 +1803,7 @@
             },
             {
               "url": "guide/reviewing-content",
-              "titleCn": "查看内容",
+              "titleCn": "文档复查",
               "title": "Review documentation",
               "tooltipCn": "通过查看主题的准确性来使 Angular 内容保持最新。",
               "tooltip": "Keep Angular content up-to-date by reviewing topics for accuracy."
@@ -1839,9 +1839,9 @@
             },
             {
               "url": "guide/doc-select-issue",
-              "titleCn": "使用 GitHub UI 更新内容",
+              "titleCn": "选择文档的问题",
               "title": "Select a documentation issue",
-              "tooltipCn": "通过 GitHub 用户界面更新浏览器中的主题。",
+              "tooltipCn": "此过程用于识别和选中文档的问题。",
               "tooltip": "The procedures used to identify and select a documentation issue."
             },
             {

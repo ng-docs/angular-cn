@@ -67,7 +67,7 @@ The following table summarizes the key characteristics of each category.
 | Routed       | Yes          | Rare            | No            | None                           |
 | 带路由的模块 | 是           | 罕见            | 否            | 无                             |
 | Routing      | No           | Yes \(Guards\)  | RouterModule  | Another domain \(for routing\) |
-| 路由         | 否           | 是 （路由守卫） | RouterModule  | 其它领域模块（为获取路由定义） |
+| 路由         | 否           | 是 （路由守卫） | RouterModule  | 其它领域模块（为使用路由功能）                |
 | Service      | No           | Yes             | No            | `AppModule`                    |
 | 服务模块     | 否           | 是              | 否            | `AppModule`                    |
 | Widget       | Yes          | Rare            | Yes           | Another domain                 |

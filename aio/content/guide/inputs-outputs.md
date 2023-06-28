@@ -195,8 +195,8 @@ The `EventEmitter` then relays the data to the parent component.
    上述声明中的差异点如下：
 
    | Declaration parts            | Details                                                                                         |
-   | :--------------------------- | :---------------------------------------------------------------------------------------------- |
-   | 装饰器部件                   | 详情                                                                                            |
+   | ---------------------------- | :---------------------------------------------------------------------------------------------- |
+   | 声明中的部件                 | 详情                                                                                            |
    | `@Output()`                  | A decorator function marking the property as a way for data to go from the child to the parent. |
    | `@Output()`                  | 一个装饰器函数，它把该属性标记为数据从子组件进入父组件的一种途径。|
    | `newItemEvent`               | The name of the `@Output()`.                                                                    |

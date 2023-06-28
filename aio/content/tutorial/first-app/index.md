@@ -79,7 +79,7 @@ Working on your own computer has the advantage of being able to save your work l
 The lessons in this tutorial create a simple Angular app that lists houses for rent and show the details of individual houses.
 This app uses features that are common to many Angular apps.
 
-本教程中的课程创建了一个简单的 Angular 应用程序，其中列出了出租房屋并显示了各个房屋的详细信息。此应用程序使用许多 Angular 应用程序所共有的功能。
+本教程中的课程创建了一个简单的 Angular 应用程序，其中列出了一些出租房屋并显示了各个房屋的详细信息。此应用程序使用许多 Angular 应用程序所共有的功能。
 
 <section class="lightbox">
   <img alt="Output of heroes dashboard" src="generated/images/guide/faa/homes-app-landing-page.png">

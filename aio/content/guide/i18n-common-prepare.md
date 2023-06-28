@@ -420,7 +420,7 @@ The following pluralization categories are available for English and may change 
 
 | Pluralization category | Details                    | Example                    |
 | :--------------------- | :------------------------- | :------------------------- |
-| 复数类                 | 详情                       | 范例                       |
+| 复数类别               | 详情                       | 范例                       |
 | `zero`                 | Quantity is zero           | `=0 { }` <br /> `zero { }` |
 | `zero`                 | 数量为零                   | `=0 { }` <br /> `zero { }` |
 | `one`                  | Quantity is 1              | `=1 { }` <br /> `one { }`  |

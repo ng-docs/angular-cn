@@ -128,9 +128,7 @@ The migration has the following modes:
 3. Switch to standalone bootstrapping API.
    You should run these migrations in the order given.
 
-   切换到独立的引导启动 API。
- 
-你应该按照给定的顺序运行这些迁移。
+   切换到独立的引导启动 API。你应该按照给定的顺序运行这些迁移。
 
 ### Convert declarations to standalone
 

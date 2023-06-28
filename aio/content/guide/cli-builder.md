@@ -489,7 +489,7 @@ You need to update the `angular.json` file to add a target for this builder to t
 
 * The `configurations` key is optional, we'll leave it out for now
 
-  这些配置键都是可选的，但我们先不展开
+  `configurations` 键是可选的，但我们先不展开
 
 <code-example format="json" header="angular.json" language="json">
 

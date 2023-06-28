@@ -185,7 +185,7 @@ To get information from a route:
 
 1. Update the component to have an `Input` matching the name of the parameter.
 
-   更新 `ngOnInit()` 方法来访问这个 `ActivatedRoute` 并跟踪 `name` 参数：
+   为该组件添加一个 `Input`，其名字与本参数一致。
 
    <code-example header="The component input (excerpt)" path="router/src/app/heroes/hero-detail/hero-detail.component.4.ts" region="id-input">
 
