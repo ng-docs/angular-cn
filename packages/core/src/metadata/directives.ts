@@ -36,7 +36,7 @@ export interface DirectiveDecorator {
    * how the directive should be processed, instantiated and used at
    * runtime.
    *
-   * 像组件类一样，指令类也可以实现[生命周期钩子](guide/lifecycle-hooks)，以影响它们的配置和行为。
+   * 这些选项提供配置元数据，用于确定在运行时指令会如何被处理、实例化和使用。
    *
    * Directive classes, like component classes, can implement
    * [life-cycle hooks](guide/lifecycle-hooks) to influence their configuration and behavior.
