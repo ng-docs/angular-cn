@@ -123,7 +123,7 @@ export class TransferState {
   /**
    * Remove a key from the store.
    *
-   * 从商店中取出键名。
+   * 从 store 中移除 key。
    *
    */
   remove<T>(key: StateKey<T>): void {

@@ -140,7 +140,7 @@ The router resolves that array into a complete URL.
 
 ## Active router links
 
-## 活动路由链路
+## 活动路由链接
 
 The `RouterLinkActive` directive toggles CSS classes for active `RouterLink` bindings based on the current `RouterState`.
 

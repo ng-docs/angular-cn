@@ -247,7 +247,7 @@ export class RouterOutlet implements OnDestroy, OnInit, RouterOutletContract {
    *
    * @see [named outlets](guide/router-tutorial-toh#displaying-multiple-routes-in-named-outlets)
    *
-   * [命名网点](guide/router-tutorial-toh#displaying-multiple-routes-in-named-outlets)
+   * [命名出口](guide/router-tutorial-toh#displaying-multiple-routes-in-named-outlets)
    *
    */
   @Input() name = PRIMARY_OUTLET;
