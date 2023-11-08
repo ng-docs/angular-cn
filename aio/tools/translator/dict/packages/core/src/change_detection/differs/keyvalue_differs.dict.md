@@ -1,0 +1,98 @@
+A differ that tracks changes made to an object over time.
+
+跟踪对象随时间变化的差异。
+
+containing the new value.
+
+包含新值。
+
+an object describing the difference. The return value is only valid until the next
+`diff()` invocation.
+
+描述差异的对象。返回值仅在下一次 `diff()` 调用之前有效。
+
+Compute a difference between the previous state and the new `object` state.
+
+计算先前状态和新 `object` 状态之间的差异。
+
+An object describing the changes in the `Map` or `{[k:string]: string}` since last time
+`KeyValueDiffer#diff()` was invoked.
+
+一个对象，描述自上次调用 `KeyValueDiffer#diff()` 以来的变化的 `Map` 或 `{[k:string]: string}`。
+
+Iterate over all changes. `KeyValueChangeRecord` will contain information about changes
+to each item.
+
+遍历所有更改。`KeyValueChangeRecord` 将包含有关每个条目更改的信息。
+
+Iterate over changes in the order of original Map showing where the original items
+have moved.
+
+按照原始映射表中的顺序遍历更改，以显示原始条目移动过的位置。
+
+Iterate over all keys for which values have changed.
+
+遍历所有更改了值的键名。
+
+Iterate over all added items.
+
+遍历所有已添加的条目。
+
+Iterate over all removed items.
+
+遍历所有已删除的条目。
+
+Record representing the item change information.
+
+代表条目变更信息的记录。
+
+Current key in the Map.
+
+地图中的当前键名。
+
+Current value for the key or `null` if removed.
+
+键名的当前值；如果已删除，则为 `null`
+
+Previous value for the key or `null` if added.
+
+键名的先前值；如果是添加的，则为 `null`
+
+Provides a factory for {&commat;link KeyValueDiffer}.
+
+提供 {&commat;link KeyValueDiffer} 的工厂。
+
+Test to see if the differ knows how to diff this kind of object.
+
+测试看此差分器是否知道如何区分这种对象。
+
+Create a `KeyValueDiffer`.
+
+创建一个 `KeyValueDiffer`。
+
+A repository of different Map diffing strategies used by NgClass, NgStyle, and others.
+
+NgClass、NgStyle 等使用的不同映射表差异策略的存储库。
+
+v4.0.0 - Should be private.
+
+v4.0.0-应该是私有的。
+
+Example
+
+例子
+
+The following example shows how to extend an existing list of factories,
+which will only be applied to the injector for this component and its children.
+This step is all that's required to make a new {&commat;link KeyValueDiffer} available.
+
+以下示例显示如何扩展现有工厂列表，该列表仅适用于该组件及其子组件的注入器。这是使新的{&commat;link
+KeyValueDiffer}可用的全部步骤。
+
+Takes an array of {&commat;link KeyValueDifferFactory} and returns a provider used to extend the
+inherited {&commat;link KeyValueDiffers} instance with the provided factories and return a new
+{&commat;link KeyValueDiffers} instance.
+
+接受 {&commat;link KeyValueDifferFactory}
+的数组，并返回一个提供者，用于使用提供的工厂扩展所继承的 {&commat;link KeyValueDiffers}
+实例，并返回一个新的 {&commat;link KeyValueDiffers} 实例。

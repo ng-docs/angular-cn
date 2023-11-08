@@ -1,0 +1,97 @@
+Subscribe to update notifications from the Service Worker, trigger update
+checks, and forcibly activate updates.
+
+订阅来自 Service Worker 的更新通知、触发更新检查以及强制激活更新。
+
+Emits a `VersionDetectedEvent` event whenever a new version is detected on the server.
+
+每当在服务器上检测到新版本时，都会发出 `VersionDetectedEvent` 事件。
+
+Emits a `VersionInstallationFailedEvent` event whenever checking for or downloading a new
+version fails.
+
+每当检查或下载新版本失败时都会发出 `VersionInstallationFailedEvent` 事件。
+
+Emits a `VersionReadyEvent` event whenever a new version has been downloaded and is ready for
+activation.
+
+每当已下载新版本并准备好激活时，都会发出 `VersionReadyEvent` 事件。
+
+Use {&commat;link versionUpdates} instead.
+
+改用 {&commat;link versionUpdates}。
+
+The behavior of `available` can be replicated by using `versionUpdates` by filtering for the
+`VersionReadyEvent`:
+
+可以用 `versionUpdates` 通过过滤 `VersionReadyEvent` 来复制 `available` 的行为：
+
+{&commat;example service-worker-getting-started/src/app/prompt-update.service.ts
+region='sw-replicate-available'}
+
+
+
+Emits an `UpdateAvailableEvent` event whenever a new app version is available.
+
+每当有新应用版本可用时都会发出 `UpdateAvailableEvent` 事件。
+
+Use the return value of {&commat;link SwUpdate#activateUpdate} instead.
+
+改用 {&commat;link SwUpdate#activateUpdate} 的返回值。
+
+Emits an `UpdateActivatedEvent` event whenever the app has been updated to a new version.
+
+每当应用更新到新版本时都会发出 `UpdateActivatedEvent` 事件。
+
+Emits an `UnrecoverableStateEvent` event whenever the version of the app used by the service
+worker to serve this client is in a broken state that cannot be recovered from without a full
+page reload.
+
+每当 Service Worker
+用于为此客户端提供服务的应用程序版本处于破损状态（如果不重新加载完整页面就无法恢复）时，都会发出
+`UnrecoverableStateEvent` 事件。
+
+True if the Service Worker is enabled \(supported by the browser and enabled via
+`ServiceWorkerModule`\).
+
+如果启用了 Service Worker（受浏览器支持并通过 `ServiceWorkerModule` 启用），则为真。
+
+a promise that
+
+一个承诺
+
+resolves to `true` if a new version was found and is ready to be activated.
+
+如果找到了新版本并准备好激活，则解析为 `true`。
+
+resolves to `false` if no new version was found
+
+如果没有找到新版本，则解析为 `false`
+
+rejects if any error occurs
+
+如果发生任何错误，则拒绝
+
+Checks for an update and waits until the new version is downloaded from the server and ready
+for activation.
+
+检查更新并等到从服务器下载新版本并准备好激活。
+
+resolves to `true` if an update was activated successfully
+
+如果更新已成功激活，则解析为 `true`
+
+resolves to `false` if no update was available \(for example, the client was already on the
+latest version\).
+
+如果没有可用的更新（例如，客户端已经在最新版本上），则解析为 `false`。
+
+Updates the current client \(i.e. browser tab\) to the latest version that is ready for
+activation.
+
+将当前客户端（即浏览器选项卡）更新到可激活的最新版本。
+
+In most cases, you should not use this method and instead should update a client by reloading
+the page.
+
+在大多数情况下，你不应该使用此方法，而应该通过重新加载页面来更新客户端。

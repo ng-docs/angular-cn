@@ -1,0 +1,307 @@
+Creates and initializes a custom renderer that implements the `Renderer2` base class.
+
+创建并初始化实现 `Renderer2` 基类的自定义渲染器。
+
+The element to render.
+
+要渲染的元素。
+
+The base class to implement.
+
+要实现的基类。
+
+The new custom renderer instance.
+
+新的自定义渲染器实例。
+
+Creates and initializes a custom renderer for a host DOM element.
+
+为宿主 DOM 元素创建并初始化自定义渲染器。
+
+A callback invoked when rendering has begun.
+
+渲染开始时调用的回调。
+
+A callback invoked when rendering has completed.
+
+渲染完成时调用的回调。
+
+The asynchronous result of the developer-defined function.
+
+由开发人员定义函数的异步结果。
+
+Use with animations test-only mode. Notifies the test when rendering has completed.
+
+与动画的“仅测试”模式一起使用。渲染完成后通知该测试。
+
+Extend this base class to implement custom rendering. By default, Angular
+renders a template into DOM. You can use custom rendering to intercept
+rendering calls, or to render to something other than DOM.
+
+扩展此基类以实现自定义渲染器。默认情况下，Angular 会把模板渲染成 DOM。
+你可以使用自定义渲染器来拦截渲染类调用，或用于渲染一些非 DOM 的东西。
+
+Create your custom renderer using `RendererFactory2`.
+
+使用 `RendererFactory2` 创建你的自定义渲染器。
+
+Use a custom renderer to bypass Angular's templating and
+make custom UI changes that can't be expressed declaratively.
+For example if you need to set a property or an attribute whose name is
+not statically known, use the `setProperty()` or
+`setAttribute()` method.
+
+使用自定义渲染器可以绕过 Angular 的模板机制，并进行无法以声明式语法表达的自定义 UI 变更。
+比如，如果你要设置无法静态得知名称的 Property 或 Attribute，可以使用 `setProperty()` 或
+`setAttribute()` 方法。
+
+Use to store arbitrary developer-defined data on a renderer instance,
+as an object containing key-value pairs.
+This is useful for renderers that delegate to other renderers.
+
+用于在渲染器实例上以 key-value 对象的形式保存任意自定义数据。
+这对于要委托给其它渲染器的渲染器很有用。
+
+Implement this callback to destroy the renderer or the host element.
+
+实现此回调以便销毁渲染器或其宿主元素。
+
+An identifying name for the new element, unique within the namespace.
+
+对新元素的标识名，在指定的命名空间内应该是唯一的。
+
+The namespace for the new element.
+
+新元素的命名空间。
+
+The new element.
+
+新元素。
+
+Implement this callback to create an instance of the host element.
+
+实现此回调以便创建宿主元素的实例。
+
+The comment text.
+
+注释文本。
+
+The modified element.
+
+修改后的元素。
+
+Implement this callback to add a comment to the DOM of the host element.
+
+实现此回调以便向宿主元素的 DOM 中添加一个注释。
+
+The text string.
+
+文本字符串。
+
+Implement this callback to add text to the DOM of the host element.
+
+实现此回调以便向宿主元素的 DOM 中添加文本。
+
+If null or undefined, the view engine won't call it.
+This is used as a performance optimization for production mode.
+
+如果为 null 或 undefined，视图引擎就不会调用它。
+用于在产品模式下进行优化。
+
+The parent node.
+
+父节点。
+
+The new child node.
+
+新的子节点。
+
+Appends a child to a given parent node in the host element DOM.
+
+把子元素追加到宿主元素 DOM 中的指定父节点下。
+
+The new child nodes.
+
+新的子节点。
+
+The existing child node before which `newChild` is inserted.
+
+将会插入在这个新节点之前的现有节点。
+
+Optional argument which signifies if the current `insertBefore` is a result of a
+    move. Animation uses this information to trigger move animations. In the past the Animation
+    would always assume that any `insertBefore` is a move. This is not strictly true because
+    with runtime i18n it is possible to invoke `insertBefore` as a result of i18n and it should
+    not trigger an animation move.
+
+可选参数，指示当前的 `insertBefore`
+是否是移动的结果。动画使用此信息来触发移动动画。过去，Animation 始终假定任何 `insertBefore`
+都是一次移动。但严格来说这是不正确的，因为在支持 i18n 的运行环境中，可以调用
+`insertBefore`，而不应触发移动动画。
+
+Implement this callback to insert a child node at a given position in a parent node
+in the host element DOM.
+
+实现此回调，以便往宿主元素中父节点的指定位置插入一个子节点。
+
+The child node to remove.
+
+要移除的子节点。
+
+Optionally signal to the renderer whether this element is a host element
+or not
+
+可选值，用于告诉渲染器该元素是否宿主元素
+
+Implement this callback to remove a child node from the host element's DOM.
+
+实现此回调以便从宿主元素的 DOM 中移除一个子节点。
+
+The DOM element.
+
+DOM 元素。
+
+Whether the contents of the root element
+should be preserved, or cleared upon bootstrap \(default behavior\).
+Use with `ViewEncapsulation.ShadowDom` to allow simple native
+content projection via `<slot>` elements.
+
+根元素的内容是应该保留还是在启动期间清除（默认行为）。
+和 `ViewEncapsulation.ShadowDom` 联用以支持使用 `<slot>` 元素进行简单的原生内容投影。
+
+The root element.
+
+根元素。
+
+Implement this callback to prepare an element to be bootstrapped
+as a root element, and return the element instance.
+
+实现此回调以准备将其作为根元素进行引导的元素，返回该元素的实例。
+
+The child node to query.
+
+要查询的子节点。
+
+The parent node, or null if there is no parent.
+This is because the check is synchronous,
+and the caller can't rely on checking for null.
+
+它的父节点，如果没有父节点则为 null。
+对于 WebWorkers，总是返回 `true`。
+这是因为该检查是同步的，该调用者不能依赖于检查 null。
+
+Implement this callback to get the parent of a given node
+in the host element's DOM.
+
+实现此回调以获得宿主元素的 DOM 中指定节点的父节点。
+
+The sibling node, or null if there is no sibling.
+This is because the check is synchronous,
+and the caller can't rely on checking for null.
+
+它的兄弟节点，如果没有兄弟节点则为 null。
+对于 WebWorkers，总是返回 `true`。
+这是因为该检查是同步的，该调用者不能依赖于检查 null。
+
+Implement this callback to get the next sibling node of a given node
+in the host element's DOM.
+
+实现此回调，以获得宿主元素的 DOM 中指定节点的下一个兄弟节点。
+
+The element.
+
+目标元素。
+
+The attribute name.
+
+属性名。
+
+The new value.
+
+新值。
+
+The namespace.
+
+命名空间。
+
+Implement this callback to set an attribute value for an element in the DOM.
+
+实现此回调以便在 DOM 中设置指定元素的属性值。
+
+Implement this callback to remove an attribute from an element in the DOM.
+
+实现此回调以便从 DOM 中某个元素上移除一个属性。
+
+The class name.
+
+CSS 类名。
+
+Implement this callback to add a class to an element in the DOM.
+
+实现此回调，以便为 DOM 中的某个元素添加一个 CSS 类。
+
+Implement this callback to remove a class from an element in the DOM.
+
+实现此回调，以便从 DOM 中的某个元素上移除一个 CSS 类。
+
+The name of the style.
+
+样式名。
+
+Flags for style variations. No flags are set by default.
+
+样式的修饰符标志。默认没有任何标志。
+
+Implement this callback to set a CSS style for an element in the DOM.
+
+实现此回调函数，以便为 DOM 中的某个元素设置 CSS 样式。
+
+Flags for style variations to remove, if set. ???
+
+要移除的样式修饰符标志。
+
+Implement this callback to remove the value from a CSS style for an element in the DOM.
+
+实现此回调，以便从 DOM 中某个元素上移除一个 CSS 样式值。
+
+The property name.
+
+属性名。
+
+Implement this callback to set the value of a property of an element in the DOM.
+
+实现此回调，以便设置 DOM 中某个元素的属性值。
+
+The node.
+
+目标节点。
+
+Implement this callback to set the value of a node in the host element.
+
+实现本回调，以便在宿主元素中设置节点的值。
+
+The context in which to listen for events. Can be
+the entire window or document, the body of the document, or a specific
+DOM element.
+
+要监听事件的上下文。可以是整个窗口或文档、文档的 body 或指定的 DOM 元素。
+
+The event to listen for.
+
+要监听的事件。
+
+A handler function to invoke when the event occurs.
+
+当该事件发生时要执行的处理器函数。
+
+An "unlisten" function for disposing of this handler.
+
+一个 "取消监听" 函数，用于解除该处理器。
+
+Implement this callback to start an event listener.
+
+实现此回调以启动事件监听器。
+
+Injects a Renderer2 for the current component.
+
+为当前组件注入 Renderer2。

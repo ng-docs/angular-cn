@@ -1,0 +1,3 @@
+SampleDescription merges all available descriptions about a sample
+
+SampleDescription 合并有关示例的所有可用描述

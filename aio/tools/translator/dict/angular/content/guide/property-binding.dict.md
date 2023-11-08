@@ -1,0 +1,151 @@
+Property binding
+
+属性绑定
+
+Property binding in Angular helps you set values for properties of HTML elements or directives. Use property binding to do things such as toggle button features, set paths programmatically, and share values between components.
+
+Angular 中的属性绑定可帮助你设置 HTML 元素或指令的属性值。使用属性绑定，可以执行诸如切换按钮、以编程方式设置路径，以及在组件之间共享值之类的功能。
+
+Prerequisites
+
+前提条件
+
+[Basics of components](guide/architecture-components)
+
+[组件基础](guide/architecture-components)
+
+[Basics of templates](guide/glossary#template)
+
+[模板基础](guide/glossary#template)
+
+[Binding syntax](guide/binding-syntax)
+
+[绑定语法](guide/binding-syntax)
+
+Understanding the flow of data
+
+了解数据流
+
+Property binding moves a value in one direction, from a component's property into a target element property.
+
+属性绑定在单一方向上将值从组件的属性送到目标元素的属性。
+
+To read a target element property or call one of its methods, see the API reference for [ViewChild](api/core/ViewChild) and [ContentChild](api/core/ContentChild).
+
+要读取目标元素的属性或调用其方法，请参阅 [ViewChild](api/core/ViewChild) 和 [ContentChild](api/core/ContentChild) 的 API 参考手册。
+
+Binding to a property
+
+绑定到属性
+
+To bind to an element's property, enclose it in square brackets, `[]`, which identifies the property as a target property.
+
+要绑定到元素的属性，请将其放在方括号 `[]` 中，这会将此属性标识为目标属性。
+
+A target property is the DOM property to which you want to assign a value.
+
+要绑定到元素的属性，请将其括在方括号 `[]` 内，这会将此属性标为目标属性。目标属性就是你要对其进行赋值的 DOM 属性。
+
+To assign a value to a target property for the image element's `src` property, type the following code:
+
+要为 image 元素的目标属性（`src`）赋值，请键入以下代码：
+
+In most cases, the target name is the name of a property, even when it appears to be the name of an attribute.
+
+在大多数情况下，目标名称是 Property（属性）名称，即使它看起来是 Attribute（属性）名称。
+
+In this example, `src` is the name of the `<img>` element property.
+
+在这个例子中，`src` 就是 `<img>` 元素的 Property 名称。
+
+The brackets, `[]`, cause Angular to evaluate the right-hand side of the assignment as a dynamic expression.
+
+方括号 `[]` 使 Angular 将等号的右侧看作动态表达式进行求值。
+
+Without the brackets, Angular treats the right-hand side as a string literal and sets the property to that static value.
+
+如果不使用方括号，Angular 就会将右侧视为字符串字面量并将此属性设置为该静态值。
+
+To assign a string to a property, type the following code:
+
+要将字符串赋值给属性，请键入以下代码：
+
+Omitting the brackets renders the string `parentItem`, not the value of `parentItem`.
+
+省略方括号就会渲染出字符串 `parentItem`，而不是 `parentItem` 的值。
+
+Setting an element property to a component property value
+
+将元素的属性设置为组件属性的值
+
+To bind the `src` property of an `<img>` element to a component's property, place `src` in square brackets followed by an equal sign and then the property.
+
+要将 `<img>` 的 `src` 属性绑定到组件的属性，请将 `src` 放在方括号中，后跟等号，然后是组件的属性。
+
+Using the property `itemImageUrl`, type the following code:
+
+使用属性 `itemImageUrl`，键入以下代码：
+
+Declare the `itemImageUrl` property in the class, in this case `AppComponent`.
+
+在组件类 `AppComponent` 中声明 `itemImageUrl` 属性。
+
+`colspan` and `colSpan`
+
+`colspan` 和 `colSpan`
+
+A common point of confusion is between the attribute, `colspan`, and the property, `colSpan`.  Notice that these two names differ by only a single letter.
+
+最容易混淆的地方是 `colspan` 这个 Attribute 和 `colSpan` 这个 Property。请注意，这两个名称只有一个字母的大小写不同。
+
+To use property binding using `colSpan`, type the following:
+
+要通过 `colSpan` 使用属性绑定，请键入以下内容：
+
+To disable a button while the component's `isUnchanged` property is `true`, type the following:
+
+要在组件的 `isUnchanged` 属性为 `true` 时禁用按钮，请键入以下内容：
+
+To set a property of a directive, type the following:
+
+要设置指令的属性，请键入以下内容：
+
+To set the model property of a custom component for parent and child components to communicate with each other, type the following:
+
+要将自定义组件的模型属性设置为供父组件和子组件互相通信的，请键入以下内容：
+
+Toggling button features
+
+切换按钮功能
+
+To use a Boolean value to disable a button's features, bind the `disabled` DOM attribute to a Boolean property in the class.
+
+要使用布尔值来禁用某个按钮的特性，请将 DOM 属性 `disabled` 绑定到此类中的某个 Boolean 型属性。
+
+Because the value of the property `isUnchanged` is `true` in the `AppComponent`, Angular disables the button.
+
+由于 `AppComponent` 中属性 `isUnchanged` 的值是 `true`，Angular 会禁用该按钮。
+
+What's next
+
+下一步呢？
+
+[Property binding best practices](guide/property-binding-best-practices)
+
+[属性绑定的最佳实践](guide/property-binding-best-practices)
+
+[Event binding](guide/event-binding)
+
+[事件绑定](guide/event-binding)
+
+[Text Interpolation](guide/interpolation)
+
+[文本插值](guide/interpolation)
+
+[Class & Style Binding](guide/class-binding)
+
+[类和样式绑定](guide/class-binding)
+
+[Attribute Binding](guide/attribute-binding)
+
+[attribute 绑定](guide/attribute-binding)

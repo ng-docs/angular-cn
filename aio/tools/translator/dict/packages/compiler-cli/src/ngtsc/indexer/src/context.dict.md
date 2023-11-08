@@ -1,0 +1,45 @@
+Unparsed selector of the directive, or null if the directive does not have a selector.
+
+指令的未解析的选择器，如果指令没有选择器，则为 null。
+
+An intermediate representation of a component.
+
+组件的中间表示。
+
+Component TypeScript class declaration
+
+组件 TypeScript 类声明
+
+Component template selector if it exists, otherwise null.
+
+组件模板选择器如果存在，否则为 null。
+
+BoundTarget containing the parsed template. Can also be used to query for directives used in
+the template.
+
+包含解析后的模板的 BoundTarget。也可用于查询模板中使用的指令。
+
+Metadata about the template
+
+有关模板的元数据
+
+Whether the component template is inline
+
+组件模板是否是内联的
+
+Template file recorded by template parser
+
+模板解析器记录的模板文件
+
+A context for storing indexing information about components of a program.
+
+用于存储有关程序组件的索引信息的上下文。
+
+An `IndexingContext` collects component and template analysis information from
+`DecoratorHandler`s and exposes them to be indexed.
+
+`IndexingContext` 会从 `DecoratorHandler` 收集组件和模板分析信息，并将它们公开以被索引。
+
+Adds a component to the context.
+
+将组件添加到上下文。
