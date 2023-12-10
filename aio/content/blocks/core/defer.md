@@ -22,7 +22,7 @@ A type of [block](api/core/defer) that can be used to defer load the JavaScript 
 
 <h3>Blocks</h3>
 
-Supported sections of a defer block. Note: only the @defer block template fragment is deferred loaded. The remaining optional blocks are eagerly loaded.
+Supported sections of a defer block. Note: only the `@defer` block template fragment is deferred loaded. The remaining optional blocks are eagerly loaded.
 
 | block       | Description |
 | ----------- | ----------- |

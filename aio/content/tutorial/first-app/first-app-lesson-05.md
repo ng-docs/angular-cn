@@ -23,6 +23,7 @@ Learn more in the [Sharing data between child and parent directives and componen
 This step imports the `Input` decorator into the class.
 
 In the code editor:
+
 1.  Navigate to `src/app/housing-location/housing-location.component.ts`
 1.  Update the file imports to include `Input` and `HousingLocation`:
 

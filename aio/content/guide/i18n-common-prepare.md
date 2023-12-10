@@ -89,7 +89,7 @@ To mark the title attribute for translation, complete the following action.
 
 ## Mark text in component code
 
-In component code, the translation source text and the metadata are surrounded by backtick (<code>&#96;</code>) characters.
+In component code, the translation source text and the metadata are surrounded by backtick (`&#96;`) characters.
 
 Use the [`$localize`][AioApiLocalizeInitLocalize] tagged message string to mark a string in your code for translation.
 

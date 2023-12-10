@@ -11,6 +11,7 @@ ng generate @angular/core:standalone
 ## Prerequisites
 
 Before using the schematic, please ensure that the project:
+
 1. Is using Angular 15.2.0 or later.
 2. Builds without any compilation errors.
 3. Is on a clean Git branch and all work is saved.
@@ -36,6 +37,7 @@ You should plan to apply manual fixes after each step of the migration. Addition
 </div>
 
 Run the migration in the order listed below, verifying that your code builds and runs between each step:
+
 1. Run `ng g @angular/core:standalone` and select "Convert all components, directives and pipes to standalone"
 2. Run `ng g @angular/core:standalone` and select "Remove unnecessary NgModule classes"
 3. Run `ng g @angular/core:standalone` and select "Bootstrap the project using standalone APIs"
@@ -50,7 +52,9 @@ Congratulations, your application has been converted to standalone 🎉. These a
 * Run any linters in your project and fix new warnings. Some linters support a `--fix` flag that may resolve some of your warnings automatically.
 
 ## Migration modes
+
 The migration has the following modes:
+
 1. Convert declarations to standalone.
 2. Remove unnecessary NgModules.
 3. Switch to standalone bootstrapping API.

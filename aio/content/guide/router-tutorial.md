@@ -109,17 +109,18 @@ The second property, `component`, is a string that specifies what component your
 1. From your code editor, create and open the `app.routes.ts` file.
 1. Create and export a routes list for your application:
 
-```
-import {Routes} from '@angular/router';
+   ```
+   import {Routes} from '@angular/router';
+   
+   export const routes = [];
+   ```
 
-export const routes = [];
-```
 1. Add two routes for your first two components:
 
-```
-  {path: 'crisis-list', component: CrisisListComponent},
-  {path: 'heroes-list', component: HeroesListComponent},
-```
+   ```
+     {path: 'crisis-list', component: CrisisListComponent},
+     {path: 'heroes-list', component: HeroesListComponent},
+   ```
 
 This routes list is an array of JavaScript objects, with each object defining the properties of a route.
 
@@ -224,6 +225,7 @@ Add this functionality using Angular's `routerLinkActive` directive.
 1.  Update the anchor tags to include the `routerLinkActive` directive.
 
     <code-example header="src/app/app.component.html" path="router-tutorial/src/app/app.component.html" region="routeractivelink"></code-example>
+
 1. Add the `RouterLinkActive` directive to the `imports` list of `AppComponent` in `app.component.ts`.
 
 View your application again.

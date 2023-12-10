@@ -316,7 +316,7 @@ To disable these warnings, add the CommonJS module name to `allowedCommonJsDepen
 
 ## Configuring browser compatibility
 
-The Angular CLI uses [Browserslist](https://github.com/browserslist/browserslist) to ensure compatibility with different browser versions. [Autoprefixer](https://github.com/postcss/autoprefixer) is used for CSS vendor prefixing and [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env) for JavaScript syntax transformations.
+The Angular CLI uses [Browserslist](https://github.com/browserslist/browserslist) to ensure compatibility with different browser versions. [Autoprefixer](https://github.com/postcss/autoprefixer) is used for CSS vendor prefixing and [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for JavaScript syntax transformations.
 
 Internally, the Angular CLI uses the below `browserslist` configuration which matches the [browsers that are supported](guide/browser-support) by Angular.
 

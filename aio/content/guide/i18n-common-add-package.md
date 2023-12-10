@@ -18,15 +18,15 @@ If `@angular/localize` is not installed and you try to build a localized version
 
 ## Options
 
-| OPTION           | DESCRIPTION | VALUE TYPE | DEFAULT VALUE
-|:---              |:---    |:------     |:------
+| OPTION           | DESCRIPTION | VALUE TYPE | DEFAULT VALUE |
+|:---              |:---    |:------     |:------ |
 | `--project`      | The name of the project. | `string` |
-| `--use-at-runtime` | If set, then `$localize` can be used at runtime. Also `@angular/localize` gets included in the `dependencies` section of `package.json`, rather than `devDependencies`, which is the default.  | `boolean` | `false`
+| `--use-at-runtime` | If set, then `$localize` can be used at runtime. Also `@angular/localize` gets included in the `dependencies` section of `package.json`, rather than `devDependencies`, which is the default.  | `boolean` | `false` |
 
 For more available options, see [ng add][AioCliAdd] in [Angular CLI][AioCliMain].
 ## What's next
 
-*   [@angular/localize API][AioApiLocalize]
+*   [`@angular/localize` API][AioApiLocalize]
 *   [Refer to locales by ID][AioGuideI18nCommonLocaleId]
 
 <!-- links -->

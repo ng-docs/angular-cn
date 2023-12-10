@@ -154,7 +154,7 @@ In the short form, the type is inferred from the property's type and constraints
 | "type": "string"   | input                                        |
 | "type": "number"   | input (only valid numbers accepted)        |
 | "type": "integer"  | input (only valid numbers accepted)        |
-| "enum": [&hellip;] | list (enum members become list selections) |
+| "enum": […] | list (enum members become list selections) |
 
 In the following example, the property takes an enumerated value, so the schematic automatically chooses the list type, and creates a menu from the possible values.
 

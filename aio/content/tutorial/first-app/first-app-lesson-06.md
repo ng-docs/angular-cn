@@ -24,6 +24,7 @@ For a more in depth explanation, please refer to the [Property binding](guide/pr
 This step adds property binding to the `<app-housing-location>` tag.
 
 In the code editor:
+
 1.  Navigate to `src/app/home/home.component.ts`
 1.  In the template property of the `@Component` decorator, update the code to match the code below:
     <code-example header="Add housingLocation property binding" path="first-app-lesson-06/src/app/home/home.component.ts" region="add-property-binding"></code-example>

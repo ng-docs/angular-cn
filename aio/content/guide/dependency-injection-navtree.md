@@ -49,7 +49,7 @@ In the following example, the parent `AlexComponent` has several children includ
 
 <code-example header="parent-finder.component.ts (CathyComponent)" path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="cathy"></code-example>
 
-Notice that even though the [@Optional](guide/dependency-injection-in-action#optional) qualifier is there for safety, the <live-example name="dependency-injection-in-action"></live-example> confirms that the `alex` parameter is set.
+Notice that even though the [`@Optional`](guide/dependency-injection-in-action#optional) qualifier is there for safety, the <live-example name="dependency-injection-in-action"></live-example> confirms that the `alex` parameter is set.
 
 <a id="base-parent"></a>
 

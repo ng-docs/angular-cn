@@ -22,7 +22,7 @@ This cookbook contains recipes for common component communication scenarios in w
 
 ## Pass data from parent to child with input binding
 
-`HeroChildComponent` has two ***input properties***, typically adorned with [@Input() decorator](guide/inputs-outputs#input).
+`HeroChildComponent` has two ***input properties***, typically adorned with [`@Input()` decorator](guide/inputs-outputs#input).
 
 <code-example header="component-interaction/src/app/hero-child.component.ts" path="component-interaction/src/app/hero-child.component.ts"></code-example>
 
@@ -121,7 +121,7 @@ Test that ***both*** input properties are set initially and that button clicks t
 The child component exposes an `EventEmitter` property with which it `emits` events when something happens.
 The parent binds to that event property and reacts to those events.
 
-The child's `EventEmitter` property is an ***output property***, typically adorned with an [@Output() decorator](guide/inputs-outputs#output) as seen in this `VoterComponent`:
+The child's `EventEmitter` property is an ***output property***, typically adorned with an [`@Output()` decorator](guide/inputs-outputs#output) as seen in this `VoterComponent`:
 
 <code-example header="component-interaction/src/app/voter.component.ts" path="component-interaction/src/app/voter.component.ts"></code-example>
 

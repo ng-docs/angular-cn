@@ -34,6 +34,7 @@ For example:
 An RxJS [`Subject`](https://rxjs.dev/guide/subject) is a popular way to create and control an observable of your own design.
 
 A `Subject` is a special kind of `Observable`. It is special in two important respects:
+
 1. You can push values into that `Observable` by calling its `next(value)` method.
 2. It is a ["multicast"](https://rxjs.dev/guide/glossary-and-semantics#multicast) observable, which means all subscribers of a `Subject` instance receive the same values from that instance.
 

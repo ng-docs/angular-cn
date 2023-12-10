@@ -117,10 +117,10 @@ That `search()` method creates the custom `x-refresh` header and adds it to the 
 The revised `CachingInterceptor` sets up a server request whether there's a cached value or not, using the same `sendRequest()` method described [above](#send-request).
 The `results$` observable makes the request when subscribed.
 
-*   If there's no cached value, the interceptor returns `results$`.
-*   If there is a cached value, the code *pipes* the cached response onto `results$`. This produces a recomposed observable that emits two responses, so subscribers will see a sequence of these two responses:  
-  *   The cached response that's emitted immediately
-  *   The response from the server, that's emitted later
+* If there's no cached value, the interceptor returns `results$`.
+* If there is a cached value, the code *pipes* the cached response onto `results$`. This produces a recomposed observable that emits two responses, so subscribers will see a sequence of these two responses:  
+  * The cached response that's emitted immediately
+  * The response from the server, that's emitted later
 
 <a id="report-progress"></a>
 

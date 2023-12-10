@@ -108,7 +108,7 @@ When using template expressions, follow these best practices:
 
   There is one exception to this behavior that applies to `*ngFor`.
   `*ngFor` has `trackBy` functionality that can deal with changing values in objects when iterating over them.
-  See [*ngFor with `trackBy`](guide/built-in-directives#ngfor-with-trackby) for details.
+  See [`*ngFor` with `trackBy`](guide/built-in-directives#ngfor-with-trackby) for details.
 
   </div>
 

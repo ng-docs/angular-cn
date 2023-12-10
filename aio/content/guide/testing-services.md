@@ -63,9 +63,9 @@ As a service *tester*, you must at least think about the first level of service 
 ## Angular `TestBed`
 
 The `TestBed` is the most important of the Angular testing utilities.
-The `TestBed` creates a dynamically-constructed Angular *test* module that emulates an Angular [@NgModule](guide/ngmodules).
+The `TestBed` creates a dynamically-constructed Angular *test* module that emulates an Angular [`@NgModule`](guide/ngmodules).
 
-The `TestBed.configureTestingModule()` method takes a metadata object that can have most of the properties of an [@NgModule](guide/ngmodules).
+The `TestBed.configureTestingModule()` method takes a metadata object that can have most of the properties of an [`@NgModule`](guide/ngmodules).
 
 To test a service, you set the `providers` metadata property with an array of the services that you'll test or mock.
 

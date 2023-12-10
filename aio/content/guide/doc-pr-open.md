@@ -31,7 +31,7 @@ These steps are performed in your web browser.
 
         Click the link text in the `"This branch is"` message to open the **Comparing changes** page.
 
-        <div class="lightbox>
+        <div class="lightbox">
 
         <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
         <img alt="Screenshot of Comparing Changes page in github.com page showing a difference between branches of a repo" src="generated/images/guide/doc-pr-open/github-branch-diff.png">
@@ -50,7 +50,7 @@ These steps are performed in your web browser.
 
         </div>
 
-<!-- vale Angular.Google_We = NO -->
+        <!-- vale Angular.Google_We = NO -->
 
         1.  **The commit message follows our guidelines**
 
@@ -84,7 +84,7 @@ These steps are performed in your web browser.
 
             Add any other information that can help reviewers understand your pull request here.
 
-<!-- vale Angular.Google_We = YES -->
+        <!-- vale Angular.Google_We = YES -->
 
 1.  Click the arrow next to **Draft pull request** and select whether you want to create a draft pull request or a pull request.
     1.  A draft pull request runs the continuous integration (CI) testing, but does not send the pull request to reviewers.

@@ -57,6 +57,7 @@ In the **Terminal** pane of your IDE:
     <div class="callout is-helpful">
       It should render the same as it did in the previous lesson because even though you added a new component, you haven't included it in any of the app's templates, yet.
     </div>
+
 1.  Leave `ng serve` running as you complete the next steps.
 
 ## Step 2 - Add the new component to your app's layout

@@ -721,7 +721,7 @@ You can easily prepare an application for server-side rendering by using the [An
 
 ## service
 
-In Angular, a class with the [@Injectable()][AioGuideGlossaryInjectable] decorator that encapsulates non-UI logic and code that can be reused across an application.
+In Angular, a class with the [`@Injectable()`][AioGuideGlossaryInjectable] decorator that encapsulates non-UI logic and code that can be reused across an application.
 Angular distinguishes components from services to increase modularity and reusability.
 
 The `@Injectable()` metadata allows the service class to be used with the [dependency injection][AioGuideGlossaryDependencyInjectionDi] mechanism.

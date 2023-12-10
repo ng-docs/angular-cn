@@ -162,7 +162,7 @@ For each entrypoint, the available formats are:
 | Typings (`.d.ts` files) | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                           |
 | `es2022`                  | ES2022 code flattened into a single source file.                                                                                                                                  |
 | `esm2022`                 | ES2022 code in unflattened source files (this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details). |
-| `default`               | ES2022 code flattened into a single source.
+| `default`               | ES2022 code flattened into a single source. |
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
 
@@ -347,8 +347,8 @@ This is because the tslib version is tied to the TypeScript version used to comp
 
 ## Examples
 
-*   [@angular/core package](https://unpkg.com/browse/@angular/core@13.0.0-rc.0)
-*   [@angular/material package](https://unpkg.com/browse/@angular/material@13.0.0-rc.0)
+*   [`@angular/core` package](https://unpkg.com/browse/@angular/core@13.0.0-rc.0)
+*   [`@angular/material` package](https://unpkg.com/browse/@angular/material@13.0.0-rc.0)
 
 ## Definition of terms
 

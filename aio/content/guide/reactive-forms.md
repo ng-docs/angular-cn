@@ -275,8 +275,6 @@ For complete syntax details, see the API reference documentation for the [Forms 
 | `FormBuilder`     | An injectable service that provides factory methods for creating control instances.                                                                                                     |
 | `FormRecord`      | Tracks the value and validity state of a collection of `FormControl` instances, each of which has the same value type.                                                                  |
 
-</table>
-
 #### Directives
 
 | Directive              | Details |

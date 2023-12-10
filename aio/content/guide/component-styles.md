@@ -239,7 +239,7 @@ Once included, the CLI includes the stylesheet, whether the link tag's href URL 
 
 </div>
 
-### CSS @imports
+### CSS `@imports`
 
 Import CSS files into the CSS files using the standard CSS `@import` rule.
 For details, see [`@import`](https://developer.mozilla.org/en/docs/Web/CSS/@import) on the [MDN](https://developer.mozilla.org) site.

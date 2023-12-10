@@ -372,7 +372,7 @@ The `AfterViewComponent` displays this child view *within its template*:
 
 <code-example header="AfterViewComponent (template)" path="lifecycle-hooks/src/app/after-view.component.ts" region="template"></code-example>
 
-The following hooks take action based on changing values *within the child view*, which can only be reached by querying for the child view using the property decorated with [@ViewChild](api/core/ViewChild).
+The following hooks take action based on changing values *within the child view*, which can only be reached by querying for the child view using the property decorated with [`@ViewChild`](api/core/ViewChild).
 
 <code-example header="AfterViewComponent (class excerpts)" path="lifecycle-hooks/src/app/after-view.component.ts" region="hooks"></code-example>
 
@@ -452,7 +452,7 @@ The key difference is in the child component.
 *   The *AfterView* hooks concern `ViewChildren`, the child components whose element tags appear *within* the component's template
 *   The *AfterContent* hooks concern `ContentChildren`, the child components that Angular projected into the component
 
-The following *AfterContent* hooks take action based on changing values in a *content child*, which can only be reached by querying for them using the property decorated with [@ContentChild](api/core/ContentChild).
+The following *AfterContent* hooks take action based on changing values in a *content child*, which can only be reached by querying for them using the property decorated with [`@ContentChild`](api/core/ContentChild).
 
 <code-example header="AfterContentComponent (class excerpts)" path="lifecycle-hooks/src/app/after-content.component.ts" region="hooks"></code-example>
 

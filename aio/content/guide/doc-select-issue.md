@@ -19,7 +19,7 @@ After you select an issue to resolve:
 1.  In the issue page, add `working on fix` as a comment to let others know that you are working on it.
 1.  Continue to [Starting to edit a documentation topic](guide/doc-update-start).
 
-<a id="links-to-documentation-issues"/>
+<a id="links-to-documentation-issues"></a>
 
 | Links to documentation issues |
 |:---                           |

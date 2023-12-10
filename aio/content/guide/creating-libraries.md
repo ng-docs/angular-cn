@@ -186,7 +186,7 @@ You need to add these manually to the conditional ["exports"](guide/angular-pack
 
 </code-example>
 
-The above is an extract from the [@angular/material](https://unpkg.com/browse/@angular/material/package.json) distributable.
+The above is an extract from the [`@angular/material`](https://unpkg.com/browse/@angular/material/package.json) distributable.
 </div>
 
 ## Peer dependencies

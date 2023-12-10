@@ -700,7 +700,7 @@ When your application matches a route that needs AngularJS, the AngularJS applic
 
 ## Using the Unified Angular Location Service
 
-In AngularJS, the [$location service][AngularjsDocsApiNgServiceLocation] handles all routing configuration and navigation, encoding and decoding of URLS, redirects, and interactions with browser APIs.
+In AngularJS, the [`$location` service][AngularjsDocsApiNgServiceLocation] handles all routing configuration and navigation, encoding and decoding of URLS, redirects, and interactions with browser APIs.
 Angular uses its own underlying `Location` service for all of these tasks.
 
 When you migrate from AngularJS to Angular you will want to move as much responsibility as possible to Angular, so that you can take advantage of new APIs.
@@ -1380,7 +1380,7 @@ Do that in a new file called `ajs-upgraded-providers.ts` and import it in `app.m
 
 <code-example header="app/ajs-upgraded-providers.ts" path="upgrade-phonecat-2-hybrid/app/ajs-upgraded-providers.ts"></code-example>
 
-<code-example header="app/app.module.ts ($routeParams)" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="routeparams"></code-example>
+<code-example header="app/app.module.ts (`$routeParams`)" path="upgrade-phonecat-2-hybrid/app/app.module.ts" region="routeparams"></code-example>
 
 Convert the phone detail component template into Angular syntax as follows:
 

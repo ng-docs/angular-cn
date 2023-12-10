@@ -30,7 +30,7 @@ All file paths must begin with `/`, which corresponds to the deployment director
 
 <a id="glob-patterns"></a>
 
-Unless otherwise commented, patterns use a **limited*** glob format that internally will be converted into regex:
+Unless otherwise commented, patterns use a **limited** glob format that internally will be converted into regex:
 
 | Glob formats | Details |
 |:---          |:---     |
@@ -43,7 +43,8 @@ Unless otherwise commented, patterns use a **limited*** glob format that interna
 
   **\*** Pay attention that some characters with a special meaning in a regular expression are not escaped and also the pattern is not wrapped in `^`/`$` in the internal glob to regex conversion.
 
-  *   `$` is a special character in regex that matches the end of the string and will not be automatically escaped when converting the glob pattern to a regular expression.
+  * `$` is a special character in regex that matches the end of the string and will not be automatically escaped when converting the glob pattern to a regular expression.
+
       If you want to literally match the `$` character, you have to escape it yourself (with `\\$`).
 
       <div class="alert is-important">
@@ -52,7 +53,8 @@ Unless otherwise commented, patterns use a **limited*** glob format that interna
 
       </div>
 
-  *   The pattern will not be automatically wrapped in `^` and `$` when converting it to a regular expression.
+  * The pattern will not be automatically wrapped in `^` and `$` when converting it to a regular expression.
+
       Therefore, the patterns will partially match the request URLs.
       If you want your patterns to match the beginning and/or end of URLs, you can add `^`/`$` yourself.
 

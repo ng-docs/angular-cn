@@ -24,6 +24,7 @@ For a more in depth explanation, please refer to the [Displaying values with int
 This step adds new HTML structure and interpolated values in the `HousingLocationComponent` template.
 
 In the code editor:
+
 1.  Navigate to `src/app/housing-location/housing-location.component.ts`
 1.  In the template property of the `@Component` decorator, replace the existing HTML markup with the following code:
 
@@ -51,7 +52,7 @@ If you are having any trouble with this lesson, you can review the completed cod
 
 ## Next steps
 
-* [Lesson 8 - Use *ngFor to list objects in component](tutorial/first-app/first-app-lesson-08)
+* [Lesson 8 - Use `*ngFor` to list objects in component](tutorial/first-app/first-app-lesson-08)
 
 ## For more information about the topics covered in this lesson, visit:
 * [Displaying values with interpolation](/guide/interpolation)

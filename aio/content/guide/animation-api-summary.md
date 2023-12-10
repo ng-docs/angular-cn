@@ -4,7 +4,9 @@
 
 The functional API provided by the `@angular/animations` module provides a domain-specific language (DSL) for creating and controlling animations in Angular applications.
 See the [API reference](api/animations) for a complete listing and syntax details of the core functions and related data structures.
+
 <!-- vale on --> 
+
 | Function name                     | What it does                                                                                                                                                                                                |
 |:---                               |:---                                                                                                                                                                                                         |
 | `trigger()`                       | Kicks off the animation and serves as a container for all other animation function calls. HTML template binds to `triggerName`. Use the first argument to declare a unique trigger name. Uses array syntax. |
@@ -20,7 +22,5 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | `animation()`                     | Produces a reusable animation that can be invoked from elsewhere. Used together with `useAnimation()`.                                                                                                      |
 | `useAnimation()`                  | Activates a reusable animation. Used with `animation()`.                                                                                                                                                    |
 | `animateChild()`                  | Allows animations on child components to be run within the same timeframe as the parent.                                                                                                                    |
-
-</table>
 
 @reviewed 2022-10-28

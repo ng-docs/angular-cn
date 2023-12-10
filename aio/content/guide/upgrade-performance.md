@@ -54,7 +54,7 @@ For example, if the user clicks a button that submits a form, the component usua
 That being said, there *are* cases where you want to propagate changes to some other part of the application that may be controlled by the other framework.
 In such cases, you are responsible for notifying the interested parties by manually triggering change detection.
 
-If you want a particular piece of code to trigger change detection in the AngularJS part of the app, you need to wrap it in [scope.$apply()](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply).
+If you want a particular piece of code to trigger change detection in the AngularJS part of the app, you need to wrap it in [`scope.$apply()`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply).
 Similarly, for triggering change detection in Angular you would use [ngZone.run()](api/core/NgZone#run).
 
 In many cases, a few extra change detection runs may not matter much.

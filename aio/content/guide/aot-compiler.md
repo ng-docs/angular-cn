@@ -131,7 +131,7 @@ Define metadata objects with the following limited syntax:
 | Property access           | `pie.slice`                                                            |
 | Array index               | `ingredients[0]`                                                       |
 | Identity reference        | `Component`                                                            |
-| A template string         | <code>&grave;pie is &dollar;{multiplier} times better than cake&grave;</code> |
+| A template string         | `&grave;pie is &dollar;{multiplier} times better than cake&grave;` |
 | Literal string            | `'pi'`                                                                 |
 | Literal number            | `3.14153265`                                                           |
 | Literal boolean           | `true`                                                                 |

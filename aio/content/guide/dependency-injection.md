@@ -12,7 +12,7 @@ This topic covers basic scenarios of how a class can act as a dependency. Angula
 
 Imagine there is a class called HeroService that needs to act as a dependency in a component.
 
-The first step is to add the @Injectable decorator to show that the class can be injected.
+The first step is to add the `@Injectable` decorator to show that the class can be injected.
 
 <code-example language="typescript">
 @Injectable()

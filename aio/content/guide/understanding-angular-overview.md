@@ -39,11 +39,6 @@ To get the most out of these developer guides, you should review the following t
     <p>Learn about dependency injection. Dependency injection refers to services or objects that a class needs to perform a specific function.</p>
     <p class="card-footer">Dependency injection</p>
   </a>
-  <!-- <a href="guide/rendering-overview" class="docs-card" title="Angular service worker developer guide">
-    <section>Rendering</section>
-    <p>Learn how about server-side rendering and pre-rendering using Angular Universal.</p>
-    <p class="card-footer">Angular Universal</p>
-  </a> -->
 </div>
 
 <!-- links -->

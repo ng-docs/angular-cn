@@ -15,13 +15,6 @@ To prepare your project for translations, you should have a basic understanding 
 ## Learn about optional Angular internationalization practices
 
 <div class="card-container">
-    <!-- Page removed; contents relocated to `i18n-optional-import-global-variants.md`
-    <a href="guide/i18n-optional-manual-runtime-locale" class="docs-card" title="Set the runtime locale manually">
-        <section>Set the runtime locale manually</section>
-        <p>Learn how to change the runtime locale for your project</p>
-        <p class="card-footer">Set the runtime locale manually</p>
-    </a> 
-    -->
     <a href="guide/i18n-optional-import-global-variants" class="docs-card" title="Import global variants of the locale data">
         <section>Import global variants of the locale data</section>
         <p>Learn how to import locale data for language variants</p>

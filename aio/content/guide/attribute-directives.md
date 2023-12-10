@@ -61,7 +61,7 @@ Angular creates an instance of the `HighlightDirective` class and injects a refe
 
 This section shows you how to detect when a user mouses into or out of the element and to respond by setting or clearing the highlight color.
 
-1.  Import `HostListener` from '@angular/core'.
+1.  Import `HostListener` from `@angular/core`.
 
     <code-example header="src/app/highlight.directive.ts (imports)" path="attribute-directives/src/app/highlight.directive.2.ts" region="imports"></code-example>
 

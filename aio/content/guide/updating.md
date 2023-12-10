@@ -19,7 +19,7 @@ If you are currently using AngularJS, see [Upgrading from AngularJS](guide/upgra
 
 ## Getting notified of new releases
 
-To be notified when new releases are available, follow [@angular](https://twitter.com/angular "@angular on Twitter") on Twitter or subscribe to the [Angular blog](https://blog.angular.io "Angular blog").
+To be notified when new releases are available, follow [&commat;angular](https://twitter.com/angular "@angular on Twitter") on Twitter or subscribe to the [Angular blog](https://blog.angular.io "Angular blog").
 
 <a id="learn"></a>
 

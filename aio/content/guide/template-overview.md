@@ -37,7 +37,7 @@ You might also be interested in the following:
     </a>
     <a href="guide/property-binding" class="docs-card" title="Property binding">
         <section>Property binding</section>
-        <p>Set properties of target elements or directive @Input() decorators.</p>
+        <p>Set properties of target elements or directive &commat;Input() decorators.</p>
         <p class="card-footer">Property binding</p>
     </a>
     <a href="guide/attribute-binding" class="docs-card" title="Attribute binding">

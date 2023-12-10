@@ -324,7 +324,7 @@ The NgOptimizedImage does not directly support the `background-image` css proper
 Here's a simple step-by-step process for migrating from `background-image` to `NgOptimizedImage`. For these steps, we'll refer to the element that has an image background as the "containing element":
 
 1) Remove the `background-image` style from the containing element.
-2) Ensure that the containing element has `position: "relative"`, `position: "fixed"`, or `position: "absolute"`.
+2) Ensure that the containing element has `position: "relative"`, `position: "fixed"`, or `position: "absolute"`.
 3) Create a new image element as a child of the containing element, using `ngSrc` to enable the `NgOptimizedImage` directive.
 4) Give that element the `fill` attribute. Do not include a `height` and `width`.
 5) If you believe this image might be your [LCP element](https://web.dev/lcp/), add the `priority` attribute to the image element.

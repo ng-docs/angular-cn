@@ -31,7 +31,7 @@ You should be familiar with the Angular apps in general, and have the fundamenta
   </a>
   <a href="guide/dependency-injection-providers" class="docs-card" title="Configuring dependency providers">
     <section>Configuring dependency providers</section>
-    <p>Describes how to configure dependencies using the providers field on the @Component and @NgModule decorators. Also describes how to use InjectionToken to provide and inject values in DI, which can be helpful when you want to use a value other than classes as dependencies.</p>
+    <p>Describes how to configure dependencies using the providers field on the &commat;Component and &commat;NgModule decorators. Also describes how to use InjectionToken to provide and inject values in DI, which can be helpful when you want to use a value other than classes as dependencies.</p>
     <p class="card-footer">Configuring dependency providers</p>
   </a>
     <a href="guide/dependency-injection-context" class="docs-card" title="Injection context">

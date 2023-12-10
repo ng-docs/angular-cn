@@ -1,4 +1,4 @@
-# Lesson 8: Use *ngFor to list objects in component
+# Lesson 8: Use `*ngFor` to list objects in component
 This tutorial lesson demonstrates how to use `ngFor` directive in Angular templates in order to display dynamically repeated data in a template.
 
 **Estimated time**: ~10 minutes

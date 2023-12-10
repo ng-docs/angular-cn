@@ -97,12 +97,12 @@ The following table lists all the `browser` builder options that will need to be
 | :-------------- | :----- | :----- |
 | `main` | rename option to `browser` | |
 | `polyfills` | convert value to an array | may already have been migrated | 
-| `buildOptimizer` | remove option |
+| `buildOptimizer` | remove option | |
 | `resourcesOutputPath` | remove option | always `media` |
-| `vendorChunk` | remove option |
-| `commonChunk` | remove option |
-| `deployUrl`   | remove option | 
-| `ngswConfigPath` | move value to `serviceWorker` and remove option | `serviceWorker` is now either `false` or a configuration path
+| `vendorChunk` | remove option | |
+| `commonChunk` | remove option | |
+| `deployUrl`   | remove option | |
+| `ngswConfigPath` | move value to `serviceWorker` and remove option | `serviceWorker` is now either `false` or a configuration path |
 
 
 If the application is not using SSR currently, this should be the final step to allow `ng build` to function.
