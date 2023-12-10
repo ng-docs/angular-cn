@@ -68,7 +68,7 @@ See [Keeping Up-to-Date](guide/updating "Updating your projects") for more infor
 
 ### Preview releases
 
-We let you preview what's coming by providing "Next" and Release Candidates \(`rc`\) pre-releases for each major and minor release:
+We let you preview what's coming by providing "Next" and Release Candidates (`rc`) pre-releases for each major and minor release:
 
 | Pre-release type  | Details |
 |:---               |:---     |
@@ -93,7 +93,7 @@ In general, expect the following release cycle:
 
 *   A major release every 6 months
 *   1-3 minor releases for each major release
-*   A patch release and pre-release \(`next` or `rc`\) build almost every week
+*   A patch release and pre-release (`next` or `rc`) build almost every week
 
 This cadence of releases gives eager developers access to new features as soon as they are fully developed and pass through our code review and integration testing processes, while maintaining the stability and reliability of the platform for production users that prefer to receive features after they have been validated by Google and other developers that use the pre-release builds.
 
@@ -123,7 +123,7 @@ All major releases are typically supported for 18 months.
 | Support stage     | Support Timing | Details |
 |:---               |:---            |:---     |
 | Active            | 6 months       | Regularly-scheduled updates and patches are released                |
-| Long-term \(LTS\) | 12 months      | Only [critical fixes and security patches](#lts-fixes) are released |
+| Long-term (LTS) | 12 months      | Only [critical fixes and security patches](#lts-fixes) are released |
 
 ### Actively supported versions
 
@@ -148,7 +148,7 @@ As a general rule, a fix is considered for an LTS version if it resolves one of:
 
 ## Deprecation practices
 
-Sometimes "breaking changes", such as the removal of support for select APIs and features, are necessary to innovate and stay current with new best practices, changing dependencies, or changes in the \(web\) platform itself.
+Sometimes "breaking changes", such as the removal of support for select APIs and features, are necessary to innovate and stay current with new best practices, changing dependencies, or changes in the (web) platform itself.
 
 To make these transitions as straightforward as possible, we make these commitments to you:
 

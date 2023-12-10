@@ -110,7 +110,7 @@ Might be required by some third-party Angular libraries.
 
 ### `flatModuleId`
 
-The module ID to use for importing a flat module \(when `flatModuleOutFile` is `true`\).
+The module ID to use for importing a flat module (when `flatModuleOutFile` is `true`).
 References created by the template compiler use this module name when importing symbols from the flat module.
 Ignored if `flatModuleOutFile` is `false`.
 
@@ -148,7 +148,7 @@ The `fullTemplateTypeCheck` option has been deprecated in Angular 13 in favor of
 
 ### `generateCodeForLibraries`
 
-When `true`, creates factory files \(`.ngfactory.js` and `.ngstyle.js`\) for `.d.ts` files with a corresponding `.metadata.json` file. The default value is `true`.
+When `true`, creates factory files (`.ngfactory.js` and `.ngstyle.js`) for `.d.ts` files with a corresponding `.metadata.json` file. The default value is `true`.
 
 When `false`, factory files are created only for `.ts` files.
 Do this when using factory summaries.

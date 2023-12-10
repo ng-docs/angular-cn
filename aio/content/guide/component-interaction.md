@@ -257,7 +257,7 @@ This `MissionService` connects the `MissionControlComponent` to multiple `Astron
 
 <code-example header="component-interaction/src/app/mission.service.ts" path="component-interaction/src/app/mission.service.ts"></code-example>
 
-The `MissionControlComponent` both provides the instance of the service that it shares with its children \(through the `providers` metadata array\) and injects that instance into itself through its constructor:
+The `MissionControlComponent` both provides the instance of the service that it shares with its children (through the `providers` metadata array) and injects that instance into itself through its constructor:
 
 <code-example header="component-interaction/src/app/missioncontrol.component.ts" path="component-interaction/src/app/missioncontrol.component.ts"></code-example>
 

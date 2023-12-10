@@ -8,7 +8,7 @@ The following are frequently used Angular modules with examples of some of the t
 |:---                   |:---                         |:---            |
 | `BrowserModule`       | `@angular/platform-browser` | To run your application in a browser.                  |
 | `CommonModule`        | `@angular/common`           | To use `NgIf` and `NgFor`.                             |
-| `FormsModule`         | `@angular/forms`            | To build template driven forms \(includes `NgModel`\). |
+| `FormsModule`         | `@angular/forms`            | To build template driven forms (includes `NgModel`). |
 | `ReactiveFormsModule` | `@angular/forms`            | To build reactive forms.                               |
 | `RouterModule`        | `@angular/router`           | To use `RouterLink`, `.forRoot()`, and `.forChild()`.  |
 | `HttpClientModule`    | `@angular/common/http`      | To communicate with a server using the HTTP protocol.  |

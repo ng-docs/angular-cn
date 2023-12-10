@@ -69,7 +69,7 @@ Since TypeScript is a superset of ECMAScript 2015, which in turn is a superset o
 But just doing that is not hugely useful or exciting, of course.
 Additional steps like the following can give us much more bang for the buck:
 
-*   For applications that use a module loader, TypeScript imports and exports \(which are really ECMAScript 2015 imports and exports\) can be used to organize code into modules.
+*   For applications that use a module loader, TypeScript imports and exports (which are really ECMAScript 2015 imports and exports) can be used to organize code into modules.
 *   Type annotations can be gradually added to existing functions and variables to pin down their types and get benefits like build-time error checking, great autocompletion support and inline documentation.
 *   JavaScript features new to ES2015, like arrow functions, `let`s and `const`s, default function parameters, and destructuring assignments can also be gradually added to make the code more expressive.
 *   Services and controllers can be turned into *classes*.
@@ -103,7 +103,7 @@ Component directives may also use the following attributes:
 
 Component directives **should not** use the following attributes:
 
-| Attributes \(avoid\)         | Details |
+| Attributes (avoid)         | Details |
 |:---                          |:---     |
 | `compile`                    | This will not be supported in Angular.                                                                                         |
 | `replace: true`              | Angular never replaces a component element with the component template. This attribute is also deprecated in AngularJS.        |
@@ -263,9 +263,9 @@ When you downgrade an Angular component and then use it from AngularJS, the inpu
 When those inputs change, the corresponding properties in the component are set.
 You can also hook into the changes by implementing the [OnChanges][AioApiCoreOnchanges] interface in the component, just like you could if it hadn't been downgraded.
 
-Correspondingly, when you upgrade an AngularJS component and use it from Angular, all the bindings defined for `scope` \(or `bindToController`\) of the component directive will be hooked into Angular change detection.
+Correspondingly, when you upgrade an AngularJS component and use it from Angular, all the bindings defined for `scope` (or `bindToController`) of the component directive will be hooked into Angular change detection.
 They will be treated as regular Angular inputs.
-Their values will be written to the scope \(or controller\) of the upgraded component when they change.
+Their values will be written to the scope (or controller) of the upgraded component when they change.
 
 ### Using UpgradeModule with Angular *NgModules*
 
@@ -385,7 +385,7 @@ The net result is an AngularJS directive called `heroDetail`, that you can use l
 <div class="alert is-helpful">
 
 **NOTE**: <br />
-This AngularJS is an element directive \(`restrict: 'E'`\) called `heroDetail`.
+This AngularJS is an element directive (`restrict: 'E'`) called `heroDetail`.
 An AngularJS element directive is matched based on its *name*.
 *The `selector` metadata of the downgraded Angular component is ignored*.
 
@@ -770,7 +770,7 @@ See [https://github.com/angular/angular/issues/35989][GithubAngularAngularIssues
 
 ## Using Ahead-of-time compilation with hybrid apps
 
-You can take advantage of Ahead-of-time \(AOT\) compilation on hybrid apps just like on any other Angular application.
+You can take advantage of Ahead-of-time (AOT) compilation on hybrid apps just like on any other Angular application.
 The setup for a hybrid app is mostly the same as described in the [Ahead-of-time Compilation chapter][AioGuideAotCompiler] save for differences in `index.html` and `main-aot.ts`
 
 The `index.html` will likely have script tags loading AngularJS files, so the `index.html` for AOT must also load those files.
@@ -975,7 +975,7 @@ npm install &commat;types/angular-material --save-dev
 You should also configure the TypeScript compiler with a `tsconfig.json` in the project directory as described in the [TypeScript Configuration][AioGuideTypescriptConfiguration] guide.
 The `tsconfig.json` file tells the TypeScript compiler how to turn your TypeScript files into ES5 code bundled into CommonJS modules.
 
-Finally, you should add some npm scripts in `package.json` to compile the TypeScript files to JavaScript \(based on the `tsconfig.json` configuration file\):
+Finally, you should add some npm scripts in `package.json` to compile the TypeScript files to JavaScript (based on the `tsconfig.json` configuration file):
 
 <code-example format="shell" language="shell">
 
@@ -1475,7 +1475,7 @@ It replaces the old AngularJS `ng-view` directive:
 
 A router needs configuration whether it is the AngularJS or Angular or any other router.
 
-The details of Angular router configuration are best left to the [Routing documentation][AioGuideRouter] which recommends that you create a `NgModule` dedicated to router configuration \(called a *Routing Module*\).
+The details of Angular router configuration are best left to the [Routing documentation][AioGuideRouter] which recommends that you create a `NgModule` dedicated to router configuration (called a *Routing Module*).
 
 <code-example header="app/app-routing.module.ts" path="upgrade-phonecat-3-final/app/app-routing.module.ts"></code-example>
 

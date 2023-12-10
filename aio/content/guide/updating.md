@@ -68,7 +68,7 @@ It also describes supported update paths.
 *   Release announcements:
     [Angular blog - release announcements](https://blog.angular.io/tagged/release%20notes "Angular blog announcements about recent releases")
 
-*   Release announcements \(older\):
+*   Release announcements (older):
     [Angular blog - announcements about releases prior to August 2017](https://blog.angularjs.org/search?q=available&by-date=true "Angular blog announcements about releases prior to August 2017")
 
 *   Release details:

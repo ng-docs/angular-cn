@@ -1,7 +1,7 @@
 # Angular service worker introduction
 
 Service workers augment the traditional web deployment model and empower applications to deliver a user experience with the reliability and performance on par with code that is written to run on your operating system and hardware.
-Adding a service worker to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://web.dev/progressive-web-apps/) \(also known as a PWA\).
+Adding a service worker to an Angular application is one of the steps for turning an application into a [Progressive Web App](https://web.dev/progressive-web-apps/) (also known as a PWA).
 
 At its simplest, a service worker is a script that runs in the web browser and manages caching for an application.
 
@@ -44,7 +44,7 @@ To achieve this, the Angular service worker follows these guidelines:
     Resources are only downloaded if they've changed.
 
 To support these behaviors, the Angular service worker loads a *manifest* file from the server.
-The file, called `ngsw.json` \(not to be confused with the [web app manifest](https://developer.mozilla.org/docs/Web/Manifest)\), describes the resources to cache and includes hashes of every file's contents.
+The file, called `ngsw.json` (not to be confused with the [web app manifest](https://developer.mozilla.org/docs/Web/Manifest)), describes the resources to cache and includes hashes of every file's contents.
 When an update to the application is deployed, the contents of the manifest change, informing the service worker that a new version of the application should be downloaded and cached.
 This manifest is generated from a CLI-generated configuration file called `ngsw-config.json`.
 
@@ -65,7 +65,7 @@ There is one exception to this rule: to make local development more straightforw
 ### Browser support
 
 To benefit from the Angular service worker, your application must run in a web browser that supports service workers in general.
-Currently, service workers are supported in the latest versions of Chrome, Firefox, Edge, Safari, Opera, UC Browser \(Android version\) and Samsung Internet.
+Currently, service workers are supported in the latest versions of Chrome, Firefox, Edge, Safari, Opera, UC Browser (Android version) and Samsung Internet.
 Browsers like IE and Opera Mini do not support service workers.
 
 If the user is accessing your application with a browser that does not support service workers, the service worker is not registered and related behavior such as offline cache management and push notifications does not happen.

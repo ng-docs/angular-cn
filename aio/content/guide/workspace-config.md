@@ -179,7 +179,7 @@ See the example in [Build target](#build-target) below.
 | `architect/lint`         | Configures defaults for options of the `ng lint` command, which performs code analysis on project source files.                                                                                                  |
 | `architect/extract-i18n` | Configures defaults for options of the `ng extract-i18n` command, which extracts marked message strings from source code and outputs translation files.                                                          |
 | `architect/server`       | Configures defaults for creating a Universal application with server-side rendering, using the `ng run <project>:server` command.                                                                                |
-| `architect/app-shell`    | Configures defaults for creating an application shell for a progressive web application \(PWA\), using the `ng run <project>:app-shell` command.                                                                 |
+| `architect/app-shell`    | Configures defaults for creating an application shell for a progressive web application (PWA), using the `ng run <project>:app-shell` command.                                                                 |
 
 In general, the options for which you can configure defaults correspond to the command options listed in the [Angular CLI reference page](cli) for each command.
 
@@ -199,7 +199,7 @@ It has the following top-level properties.
 
 | PROPERTY        | Details                                                                                                                                                                                                                                                                                                              |
 |:---             |:---                                                                                                                                                                                                                                                                                                                      |
-| `builder`       | The npm package for the build tool used to create this target. The default builder for an application \(`ng build myApp`\) is `@angular-devkit/build-angular:application`, which uses the [esbuild](https://esbuild.github.io/) package bundler. <div class="alert is-helpful"> **NOTE**: A different builder is used for building a library \(`ng build myLib`\). </div> |
+| `builder`       | The npm package for the build tool used to create this target. The default builder for an application (`ng build myApp`) is `@angular-devkit/build-angular:application`, which uses the [esbuild](https://esbuild.github.io/) package bundler. <div class="alert is-helpful"> **NOTE**: A different builder is used for building a library (`ng build myLib`). </div> |
 | `options`       | This section contains default build target options, used when no named alternative configuration is specified. See the [Default build targets](#default-build-targets) section.                                                                                                                                                |
 | `configurations`| This section defines and names alternative configurations for different intended destinations. It contains a section for each named configuration, which sets the default options for that intended environment. See the [Alternate build configurations](#build-configs) section.                                             |
 
@@ -215,7 +215,7 @@ By default, the `ng build` command uses the `production` configuration, which ap
 *   Removing comments and dead code
 *   Rewriting code to use short, mangled names, also known as minification
 
-You can define and name extra alternate configurations \(such as `stage`, for instance\) appropriate to your development process.
+You can define and name extra alternate configurations (such as `stage`, for instance) appropriate to your development process.
 Some examples of different build configurations are `stable`, `archive`, and `next` used by Angular.io itself, and the individual locale-specific configurations required for building localized versions of an application.
 For details, see [Internationalization (i18n)][AioGuideI18nCommonMerge].
 
@@ -242,9 +242,9 @@ Some extra options can only be set through the configuration file, either by dir
 | `styles`                   | An array of style files to add to the global context of the project. Angular CLI supports CSS imports and all major CSS preprocessors: [sass/scss](https://sass-lang.com) and [less](https://lesscss.org). See more in the [Styles and scripts configuration](#style-script-config) section.            |
 | `stylePreprocessorOptions` | An object containing option-value pairs to pass to style preprocessors. See more in the [Styles and scripts configuration](#style-script-config) section.                                                                                                                                               |
 | `scripts`                  | An object containing JavaScript script files to add to the global context of the project. The scripts are loaded exactly as if you had added them in a `<script>` tag inside `index.html`. See more in the [Styles and scripts configuration](#style-script-config) section.                            |
-| `budgets`                  | Default size-budget type and thresholds for all or parts of your application. You can configure the builder to report a warning or an error when the output reaches or exceeds a threshold size. See [Configure size budgets](guide/build#configure-size-budgets). \(Not available in `test` section.\) |
+| `budgets`                  | Default size-budget type and thresholds for all or parts of your application. You can configure the builder to report a warning or an error when the output reaches or exceeds a threshold size. See [Configure size budgets](guide/build#configure-size-budgets). (Not available in `test` section.) |
 | `fileReplacements`         | An object containing files and their compile-time replacements. See more in [Configure target-specific file replacements](guide/build#configure-target-specific-file-replacements).                                                                                                                     |
-`index`                    | Configures the generation of the application's HTML index. See more in [Index configuration](#index-config). \(Only available in `browser` section.\)                                                                                                                                                   |                                                                                                        |
+`index`                    | Configures the generation of the application's HTML index. See more in [Index configuration](#index-config). (Only available in `browser` section.)                                                                                                                                                   |                                                                                                        |
 
 
 <a id="complex-config"></a>
@@ -283,7 +283,7 @@ An asset specification object can have the following fields.
 |:---              |:---     |
 | `glob`           | A [node-glob](https://github.com/isaacs/node-glob/blob/master/README.md) using `input` as base directory.                                                              |
 | `input`          | A path relative to the workspace root.                                                                                                                                 |
-| `output`         | A path relative to `outDir` \(default is `dist/project-name`\). Because of the security implications, the Angular CLI never writes files outside of the project output path. |
+| `output`         | A path relative to `outDir` (default is `dist/project-name`). Because of the security implications, the Angular CLI never writes files outside of the project output path. |
 | `ignore`         | A list of globs to exclude.                                                                                                                                            |
 | `followSymlinks` | Allow glob patterns to follow symlink directories. This allows subdirectories of the symlink to be searched. Defaults to `false`.                                      |
 

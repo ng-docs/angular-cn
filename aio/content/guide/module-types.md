@@ -38,7 +38,7 @@ The following table summarizes the key characteristics of each category.
 |:---      |:---          |:---            |:---           |:---         |
 | Domain   | Yes          | Rare           | Top component | Another domain, `AppModule`    |
 | Routed   | Yes          | Rare           | No            | None                           |
-| Routing  | No           | Yes \(Guards\) | RouterModule  | Another domain \(for routing\) |
+| Routing  | No           | Yes (Guards) | RouterModule  | Another domain (for routing) |
 | Service  | No           | Yes            | No            | `AppModule`                    |
 | Widget   | Yes          | Rare           | Yes           | Another domain                 |
 | Shared   | Yes          | No             | Yes           | Another domain                 |
@@ -54,7 +54,7 @@ A domain NgModule organizes the code related to a certain function, containing a
 Your top component in the domain NgModule acts as the feature or domain's root, and is the only component you export.
 Private supporting subcomponents descend from it.
 
-Import a domain NgModule exactly once into another NgModule, such as a domain NgModule, or into the root NgModule \(`AppModule`\) of an application that contains only a few NgModules.
+Import a domain NgModule exactly once into another NgModule, such as a domain NgModule, or into the root NgModule (`AppModule`) of an application that contains only a few NgModules.
 
 Domain NgModules consist mostly of declarations.
 You rarely include providers.
@@ -76,7 +76,7 @@ Routed NgModules don't export anything because their components never appear in 
 
 Don't import a lazy-loaded routed NgModule into another NgModule, as this would trigger an eager load, defeating the purpose of lazy loading.
 
-Routed NgModules rarely have providers because you load a routed NgModule only when needed \(such as for routing\).
+Routed NgModules rarely have providers because you load a routed NgModule only when needed (such as for routing).
 Services listed in the NgModules' `provider` array would not be available because the root injector wouldn't know about the lazy-loaded NgModule.
 If you include providers, the lifetime of the provided services should be the same as the lifetime of the NgModule.
 Don't provide app-wide [singleton services](guide/singleton-services) in a routed NgModule or in an NgModule that the routed NgModule imports.

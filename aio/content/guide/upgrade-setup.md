@@ -57,7 +57,7 @@ npm install
 
 ## Delete *non-essential* files (optional)
 
-You can quickly delete the *non-essential* files that concern testing and QuickStart repository maintenance \(***including all git-related artifacts*** such as the `.git` folder and `.gitignore`\).
+You can quickly delete the *non-essential* files that concern testing and QuickStart repository maintenance (***including all git-related artifacts*** such as the `.git` folder and `.gitignore`).
 
 <div class="alert is-important">
 
@@ -91,7 +91,7 @@ rd e2e /s /q
 
 Since the quickstart repository is deprecated, it is no longer updated and you need some additional steps to use the latest Angular.
 
-1.  Remove the obsolete `@angular/http` package \(both from `package.json > dependencies` and `src/systemjs.config.js > SystemJS.config() > map`\).
+1.  Remove the obsolete `@angular/http` package (both from `package.json > dependencies` and `src/systemjs.config.js > SystemJS.config() > map`).
 1.  Install the latest versions of the Angular framework packages by running:
 
     <code-example format="shell" language="shell">
@@ -100,7 +100,7 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
     </code-example>
 
-1.  Install the latest versions of other packages used by Angular \(RxJS, TypeScript, Zone.js\) by running:
+1.  Install the latest versions of other packages used by Angular (RxJS, TypeScript, Zone.js) by running:
 
     <code-example format="shell" language="shell">
 
@@ -118,7 +118,7 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
     </code-example>
 
-1.  In order to be able to load the latest Angular framework packages \(in ES2015 format\) correctly, replace the relevant entries in `src/systemjs.config.js`:
+1.  In order to be able to load the latest Angular framework packages (in ES2015 format) correctly, replace the relevant entries in `src/systemjs.config.js`:
 
     <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="angular-paths"></code-example>
 
@@ -126,7 +126,7 @@ Since the quickstart repository is deprecated, it is no longer updated and you n
 
     <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="rxjs-paths"></code-example>
 
-1.  In order to be able to load the `tslib` package \(which is required for files transpiled by TypeScript\), add the following entry to `src/systemjs.config.js`:
+1.  In order to be able to load the `tslib` package (which is required for files transpiled by TypeScript), add the following entry to `src/systemjs.config.js`:
 
     <code-examples format="javascript" language="javascript" path="upgrade-phonecat-2-hybrid/systemjs.config.1.js" region="tslib-paths"></code-example>
 
@@ -165,7 +165,7 @@ Consequently, there are many files in the project folder on your machine, most o
 
 <a id="app-files"></a>
 
-Focus on the following three TypeScript \(`.ts`\) files in the `/src` folder.
+Focus on the following three TypeScript (`.ts`) files in the `/src` folder.
 
 <div class="filetree">
   <div class="file">
@@ -210,11 +210,11 @@ The following are all in `src/`
 |:---                  |:---     |
 | app/app.component.ts | Defines the same `AppComponent` as the one in the QuickStart playground. It is the **root** component of what will become a tree of nested components as the application evolves.                                                                                                                                                                                                                                                                                                                      |
 | app/app.module.ts    | Defines `AppModule`, the  [root module](guide/bootstrapping "AppModule: the root module") that tells Angular how to assemble the application. When initially created, it declares only the `AppComponent`. Over time, you add more components to declare.                                                                                                                                                                                                                                              |
-| main.ts              | Compiles the application with the [JIT compiler](guide/glossary#jit) and [bootstraps](guide/bootstrapping) the application's main module \(`AppModule`\) to run in the browser. The JIT compiler is a reasonable choice during the development of most projects and it's the only viable choice for a sample running in a *live-coding* environment such as Stackblitz. Alternative [compilation](guide/aot-compiler), [build](guide/build), and [deployment](guide/deployment) options are available. |
+| main.ts              | Compiles the application with the [JIT compiler](guide/glossary#jit) and [bootstraps](guide/bootstrapping) the application's main module (`AppModule`) to run in the browser. The JIT compiler is a reasonable choice during the development of most projects and it's the only viable choice for a sample running in a *live-coding* environment such as Stackblitz. Alternative [compilation](guide/aot-compiler), [build](guide/build), and [deployment](guide/deployment) options are available. |
 
 ## Appendix: Test using `fakeAsync()/waitForAsync()`
 
-If you use the `fakeAsync()` or `waitForAsync()` helper functions to run unit tests \(for details, read the [Testing guide](guide/testing-components-scenarios#fake-async)\), you need to import `zone.js/testing` in your test setup file.
+If you use the `fakeAsync()` or `waitForAsync()` helper functions to run unit tests (for details, read the [Testing guide](guide/testing-components-scenarios#fake-async)), you need to import `zone.js/testing` in your test setup file.
 
 <div class="alert is-important">
 

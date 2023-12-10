@@ -115,7 +115,7 @@ To define a template within the component, add a `template` property to the `@Co
 
 <code-example path="component-overview/src/app/component-overview/component-overview.component.1.ts" region="template"></code-example>
 
-If you want your template to span multiple lines, use backticks \(<code>&grave;</code>\).
+If you want your template to span multiple lines, use backticks (<code>&grave;</code>).
 For example:
 
 <code-example path="component-overview/src/app/component-overview/component-overview.component.2.ts" region="templatebacktick"></code-example>

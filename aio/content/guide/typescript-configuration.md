@@ -49,7 +49,7 @@ TypeScript developers disagree about whether the `noImplicitAny` flag should be 
 There is no correct answer and you can change the flag later.
 But your choice now can make a difference in larger projects, so it merits discussion.
 
-When the `noImplicitAny` flag is `false` \(the default\), and if the compiler cannot infer the variable type based on how it's used, the compiler silently defaults the type to `any`.
+When the `noImplicitAny` flag is `false` (the default), and if the compiler cannot infer the variable type based on how it's used, the compiler silently defaults the type to `any`.
 That's what is meant by *implicit `any`*.
 
 When the `noImplicitAny` flag is `true` and the TypeScript compiler cannot infer the type, it still generates the JavaScript files, but it also **reports an error**.

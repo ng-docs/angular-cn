@@ -357,7 +357,7 @@ To define and show an error message when appropriate, take the following steps.
 
     <div class="alert is-helpful">
 
-    The template reference variable \(`#name`\) is set to `"ngModel"` because that is the value of the [`NgModel.exportAs`](api/core/Directive#exportAs) property.
+    The template reference variable (`#name`) is set to `"ngModel"` because that is the value of the [`NgModel.exportAs`](api/core/Directive#exportAs) property.
     This property tells Angular how to link a reference variable to a directive.
 
     </div>
@@ -426,7 +426,7 @@ See the [User Input](guide/user-input) guide for more information about listenin
 ## Submit the form with `ngSubmit`
 
 The user should be able to submit this form after filling it in.
-The **Submit** button at the bottom of the form does nothing on its own, but it does trigger a form-submit event because of its type \(`type="submit"`\).
+The **Submit** button at the bottom of the form does nothing on its own, but it does trigger a form-submit event because of its type (`type="submit"`).
 To respond to this event, take the following steps.
 
 1.  Bind the form's [`ngSubmit`](api/forms/NgForm#properties) event property to the hero-form component's `onSubmit()` method.

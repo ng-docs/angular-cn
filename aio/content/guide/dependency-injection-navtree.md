@@ -76,7 +76,7 @@ This isn't necessarily good design.
 This example is examining *whether a component can inject its parent via the parent's base class*.
 
 The sample's `CraigComponent` explores this question.
-[Looking back](#alex), you see that the `Alex` component *extends* \(*inherits*\) from a class named `Base`.
+[Looking back](#alex), you see that the `Alex` component *extends* (*inherits*) from a class named `Base`.
 
 <code-example header="parent-finder.component.ts (Alex class signature)" path="dependency-injection-in-action/src/app/parent-finder.component.ts" region="alex-class-signature"></code-example>
 

@@ -22,7 +22,7 @@ Starting from the top line:
 *   The severity.
     One of these icons indicates the severity of the message:
 
-    *   **Error** \(A red `x` in a circle\)
+    *   **Error** (A red `x` in a circle)
         Errors must be corrected before the file can be merged.
 
         <div class="lightbox">
@@ -31,7 +31,7 @@ Starting from the top line:
 
         </div>
 
-    *   **Warning** \(A yellow exclamation mark in a triangle\)
+    *   **Warning** (A yellow exclamation mark in a triangle)
         Warnings should be corrected before the file is merged.
 
         <div class="lightbox">
@@ -40,7 +40,7 @@ Starting from the top line:
 
         </div>
 
-    *   **Info** \(A blue lower-case `i` in a circle\)
+    *   **Info** (A blue lower-case `i` in a circle)
         Informational messages should be corrected before the file is merged.
 
         <div class="lightbox">

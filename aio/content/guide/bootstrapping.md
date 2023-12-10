@@ -137,7 +137,7 @@ For more information, see [Providers](guide/providers).
 ## The `bootstrap` array
 
 The application launches by bootstrapping the root `AppModule`, which is also referred to as an `entryComponent`.
-Among other things, the bootstrapping process creates the component\(s\) listed in the `bootstrap` array and inserts each one into the browser DOM.
+Among other things, the bootstrapping process creates the component(s) listed in the `bootstrap` array and inserts each one into the browser DOM.
 
 Each bootstrapped component is the base of its own tree of components.
 Inserting a bootstrapped component usually triggers a cascade of component creations that fill out that tree.

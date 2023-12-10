@@ -6,7 +6,7 @@ A pull request is how you share your update in a way that allows it to be merged
 <div class="alert is-important">
 
 **IMPORTANT**: <br />
-Make sure that you have reviewed your documentation update, removed any lint errors, and confirmed that it passes the end-to-end \(e2e\) tests without errors.
+Make sure that you have reviewed your documentation update, removed any lint errors, and confirmed that it passes the end-to-end (e2e) tests without errors.
 
 </div>
 

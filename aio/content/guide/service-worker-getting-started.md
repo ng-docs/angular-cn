@@ -27,7 +27,7 @@ The CLI configures your application to use service workers with the following ac
 1.  Updates the `index.html` file:
     *   Includes a link to add the `manifest.webmanifest` file
     *   Adds a meta tag for `theme-color`
-1.  Installs icon files to support the installed Progressive Web App \(PWA\).
+1.  Installs icon files to support the installed Progressive Web App (PWA).
 1.  Creates the service worker configuration file called [`ngsw-config.json`](guide/service-worker-config), 
 which specifies the caching behaviors and other settings.
 
@@ -98,7 +98,7 @@ To simulate a network issue, disable network interaction for your application.
 
 In Chrome:
 
-1.  Select **Tools** &gt; **Developer Tools** \(from the Chrome menu located in the top right corner\).
+1.  Select **Tools** &gt; **Developer Tools** (from the Chrome menu located in the top right corner).
 1.  Go to the **Network tab**.
 1.  Select **Offline** in the **Throttling** dropdown menu.
 
@@ -139,9 +139,9 @@ The `ngsw-config.json` boilerplate configuration is set up to cache the specific
 
 *   `index.html`
 *   `favicon.ico`
-*   Build artifacts \(JS and CSS bundles\)
+*   Build artifacts (JS and CSS bundles)
 *   Anything under `assets`
-*   Images and fonts directly under the configured `outputPath` \(by default `./dist/<project-name>/`\) or `resourcesOutputPath`.
+*   Images and fonts directly under the configured `outputPath` (by default `./dist/<project-name>/`) or `resourcesOutputPath`.
     See [`ng build`](cli/build) for more information about these options.
 
 <div class="alert is-important">

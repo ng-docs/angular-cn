@@ -17,7 +17,7 @@ For the final sample application with two lazy-loaded modules that this page des
 This section introduces the basic procedure for configuring a lazy-loaded route.
 For a step-by-step example, see the [step-by-step setup](#step-by-step) section on this page.
 
-To lazy load Angular modules, use `loadChildren` \(instead of `component`\) in your `AppRoutingModule` `routes` configuration as follows.
+To lazy load Angular modules, use `loadChildren` (instead of `component`) in your `AppRoutingModule` `routes` configuration as follows.
 
 <code-example header="AppRoutingModule (excerpt)">
 
@@ -103,7 +103,7 @@ The import path is the relative path to the module.
 <header>String-based lazy loading</header>
 
 In Angular version 8, the string syntax for the `loadChildren` route specification [was deprecated](guide/deprecations#loadChildren) in favor of the `import()` syntax.
-You can opt into using string-based lazy loading \(`loadChildren: './path/to/module#Module'`\) by including the lazy-loaded routes in your `tsconfig` file, which includes the lazy-loaded files in the compilation.
+You can opt into using string-based lazy loading (`loadChildren: './path/to/module#Module'`) by including the lazy-loaded routes in your `tsconfig` file, which includes the lazy-loaded files in the compilation.
 
 By default the Angular CLI generates projects with stricter file inclusions intended to be used with the `import()` syntax.
 

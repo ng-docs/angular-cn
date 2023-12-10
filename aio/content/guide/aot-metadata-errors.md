@@ -54,7 +54,7 @@ and be wary of new or unusual TypeScript features.
 
 <div class="alert is-helpful">
 
-*Reference to a local \(non-exported\) symbol 'symbol name'. Consider exporting the symbol.*
+*Reference to a local (non-exported) symbol 'symbol name'. Consider exporting the symbol.*
 
 </div>
 
@@ -78,7 +78,7 @@ export class MyComponent {}
 
 </code-example>
 
-The compiler generates the component factory, which includes the `useValue` provider code, in a separate module. *That* factory module can't reach back to *this* source module to access the local \(non-exported\) `foo` variable.
+The compiler generates the component factory, which includes the `useValue` provider code, in a separate module. *That* factory module can't reach back to *this* source module to access the local (non-exported) `foo` variable.
 
 You could fix the problem by initializing `foo`.
 
@@ -457,7 +457,7 @@ export class MyComponent {
 The `Window` type in the constructor is no longer a problem for the compiler because it
 uses the `@Inject(WINDOW)` to generate the injection code.
 
-Angular does something similar with the `DOCUMENT` token so you can inject the browser's `document` object \(or an abstraction of it, depending upon the platform in which the application runs\).
+Angular does something similar with the `DOCUMENT` token so you can inject the browser's `document` object (or an abstraction of it, depending upon the platform in which the application runs).
 
 <code-example format="typescript" language="typescript">
 

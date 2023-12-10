@@ -1,7 +1,7 @@
 # Angular package format
 
-This document describes the Angular Package Format \(APF\).
-APF is an Angular specific specification for the structure and format of npm packages that is used by all first-party Angular packages \(`@angular/core`, `@angular/material`, etc.\) and most third-party Angular libraries.
+This document describes the Angular Package Format (APF).
+APF is an Angular specific specification for the structure and format of npm packages that is used by all first-party Angular packages (`@angular/core`, `@angular/material`, etc.) and most third-party Angular libraries.
 
 APF enables a package to work seamlessly under most common scenarios that use Angular.
 Packages that use APF are compatible with the tooling offered by the Angular team as well as wider JavaScript ecosystem.
@@ -16,12 +16,12 @@ You can find the versions of the specification prior to v13 in this [google doc]
 
 ## Why specify a package format?
 
-In today's JavaScript landscape, developers consume packages in many different ways, using many different toolchains \(Webpack, rollup, esbuild, etc.\).
+In today's JavaScript landscape, developers consume packages in many different ways, using many different toolchains (Webpack, rollup, esbuild, etc.).
 These tools may understand and require different inputs - some tools may be able to process the latest ES language version, while others may benefit from directly consuming an older ES version.
 
-The Angular distribution format supports all of the commonly used development tools and workflows, and adds emphasis on optimizations that result either in smaller application payload size or faster development iteration cycle \(build time\).
+The Angular distribution format supports all of the commonly used development tools and workflows, and adds emphasis on optimizations that result either in smaller application payload size or faster development iteration cycle (build time).
 
-Developers can rely on Angular CLI and [ng-packagr](https://github.com/ng-packagr/ng-packagr) \(a build tool Angular CLI uses\) to produce packages in the Angular package format.
+Developers can rely on Angular CLI and [ng-packagr](https://github.com/ng-packagr/ng-packagr) (a build tool Angular CLI uses) to produce packages in the Angular package format.
 See the [Creating Libraries](guide/creating-libraries) guide for more details.
 
 ## File layout
@@ -60,7 +60,7 @@ The following example shows a simplified version of the `@angular/core` package'
             </div>
         </div>
         <div class='file'>
-          fesm2022 &nbsp; <!-- // &lt;-- Code for all entrypoints in flattened \(FESM\) ES2022 format, along with sourcemaps. -->
+          fesm2022 &nbsp; <!-- // &lt;-- Code for all entrypoints in flattened (FESM) ES2022 format, along with sourcemaps. -->
         </div>
         <div class='children'>
             <div class='file'>
@@ -96,7 +96,7 @@ This table describes the file layout under `node_modules/@angular/core` annotate
 | `index.d.ts`                                                                                                                                               | Bundled `.d.ts` for the primary entrypoint `@angular/core`.                                                                                                                                                    |
 | `esm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs`                                         | Tree of `@angular/core` sources in unflattened ES2022 format.                                                                                                                                                  |
 | `esm2022/testing/`                                                                                                                                        | Tree of the `@angular/core/testing` entrypoint in unflattened ES2022 format.                                                                                                                                   |
-| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened \(FESM\) ES2022 format, along with source maps.                                                                                                                           |
+| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened (FESM) ES2022 format, along with source maps.                                                                                                                           |
 | `testing/`                                                                                                                                                | Directory representing the "testing" entrypoint.                                                                                                                                                               |
 | `testing/index.d.ts`                                                                                                                                    | Bundled `.d.ts` for the `@angular/core/testing` entrypoint.                                                                                                                                                     |
 
@@ -104,7 +104,7 @@ This table describes the file layout under `node_modules/@angular/core` annotate
 
 The primary `package.json` contains important package metadata, including the following:
 
-*   It [declares](#esm-declaration) the package to be in EcmaScript Module \(ESM\) format
+*   It [declares](#esm-declaration) the package to be in EcmaScript Module (ESM) format
 *   It contains an [`"exports"` field](#exports) which defines the available source code formats of all entrypoints
 *   It contains [keys](#legacy-resolution-keys) which define the available source code formats of the primary `@angular/core` entrypoint, for tools which do not understand `"exports"`.
     These keys are considered deprecated, and could be removed as the support for `"exports"` rolls out across the ecosystem.
@@ -159,9 +159,9 @@ For each entrypoint, the available formats are:
 
 | Formats                   | Details |
 |:---                       |:---     |
-| Typings \(`.d.ts` files\) | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                           |
+| Typings (`.d.ts` files) | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                           |
 | `es2022`                  | ES2022 code flattened into a single source file.                                                                                                                                  |
-| `esm2022`                 | ES2022 code in unflattened source files \(this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details\). |
+| `esm2022`                 | ES2022 code in unflattened source files (this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details). |
 | `default`               | ES2022 code flattened into a single source.
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
@@ -202,10 +202,10 @@ Most Angular packages should not depend on top-level side effects, and thus shou
 
 ## Entrypoints and code splitting
 
-Packages in the Angular Package Format contain one primary entrypoint and zero or more secondary entrypoints \(for example, `@angular/common/http`\).
+Packages in the Angular Package Format contain one primary entrypoint and zero or more secondary entrypoints (for example, `@angular/common/http`).
 Entrypoints serve several functions.
 
-1.  They define the module specifiers from which users import code \(for example, `@angular/core` and `@angular/core/testing`\).
+1.  They define the module specifiers from which users import code (for example, `@angular/core` and `@angular/core/testing`).
 
     Users typically perceive these entrypoints as distinct groups of symbols, with different purposes or capability.
 
@@ -214,7 +214,7 @@ Entrypoints serve several functions.
 
 1.  They define the granularity at which code can be lazily loaded.
 
-    Many modern build tools are only capable of "code splitting" \(aka lazy loading\) at the ES Module level.
+    Many modern build tools are only capable of "code splitting" (aka lazy loading) at the ES Module level.
     The Angular Package Format uses primarily a single "flat" ES Module per entry point. This means that most build tooling is not able to split code with a single entry point into multiple output chunks.
 
 The general rule for APF packages is to use entrypoints for the smallest sets of logically connected code possible.
@@ -305,7 +305,7 @@ To generate a flattened ES Module index file, use the following configuration op
 
 </code-example>
 
-Once the index file \(for example, `my-ui-lib.js`\) is generated by ngc, bundlers and optimizers like Rollup can be used to produce the flattened ESM file.
+Once the index file (for example, `my-ui-lib.js`) is generated by ngc, bundlers and optimizers like Rollup can be used to produce the flattened ESM file.
 
 #### Note about the defaults in package.json
 
@@ -373,7 +373,7 @@ This is identical to the definition of modules in the ECMAScript spec.
 
 #### ESM
 
-Short for ECMAScript Modules \(see above\).
+Short for ECMAScript Modules (see above).
 
 #### FESM
 
@@ -381,12 +381,12 @@ Short for Flattened ES Modules and consists of a file format created by flatteni
 
 #### Module ID
 
-The identifier of a module used in the import statements \(for example, `@angular/core`\).
+The identifier of a module used in the import statements (for example, `@angular/core`).
 The ID often maps directly to a path on the filesystem, but this is not always the case due to various module resolution strategies.
 
 #### Module specifier
 
-A module identifier \(see above\).
+A module identifier (see above).
 
 #### Module resolution strategy
 
@@ -396,20 +396,20 @@ Node.js has one that is well specified and widely used, TypeScript supports seve
 #### Module format
 
 Specification of the module syntax that covers at minimum the syntax for the importing and exporting from a file.
-Common module formats are CommonJS \(CJS, typically used for Node.js applications\) or ECMAScript Modules \(ESM\).
+Common module formats are CommonJS (CJS, typically used for Node.js applications) or ECMAScript Modules (ESM).
 The module format indicates only the packaging of the individual modules, but not the JavaScript language features used to make up the module content.
-Because of this, the Angular team often uses the language level specifier as a suffix to the module format, \(for example, ESM+ES2022 specifies that the module is in ESM format and contains ES2022 code\).
+Because of this, the Angular team often uses the language level specifier as a suffix to the module format, (for example, ESM+ES2022 specifies that the module is in ESM format and contains ES2022 code).
 
 #### Bundle
 
-An artifact in the form of a single JS file, produced by a build tool \(for example, [Webpack](https://webpack.js.org) or [Rollup](https://rollupjs.org)\) that contains symbols originating in one or more modules.
+An artifact in the form of a single JS file, produced by a build tool (for example, [Webpack](https://webpack.js.org) or [Rollup](https://rollupjs.org)) that contains symbols originating in one or more modules.
 Bundles are a browser-specific workaround that reduce network strain that would be caused if browsers were to start downloading hundreds if not tens of thousands of files.
 Node.js typically doesn't use bundles.
 Common bundle formats are UMD and System.register.
 
 #### Language level
 
-The language of the code \(ES2022\).
+The language of the code (ES2022).
 Independent of the module format.
 
 #### Entry point

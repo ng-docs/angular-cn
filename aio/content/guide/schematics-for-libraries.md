@@ -81,7 +81,7 @@ To tell the library how to build the schematics, add a `tsconfig.schematics.json
     | `rootDir` | Specifies that your `schematics` folder contains the input files to be compiled.                                 |
     | `outDir`  | Maps to the library's output folder. By default, this is the `dist/my-lib` folder at the root of your workspace. |
 
-1.  To make sure your schematics source files get compiled into the library bundle, add the following scripts to the `package.json` file in your library project's root folder \(`projects/my-lib`\).
+1.  To make sure your schematics source files get compiled into the library bundle, add the following scripts to the `package.json` file in your library project's root folder (`projects/my-lib`).
 
     <code-example header="projects/my-lib/package.json (Build Scripts)" path="schematics-for-libraries/projects/my-lib/package.json"></code-example>
 
@@ -197,7 +197,7 @@ The options are the option values passed through from the `ng generate` command.
 
 You now have the framework in place for creating the code that actually modifies the user's application to set it up for the service defined in your library.
 
-The Angular workspace where the user installed your library contains multiple projects \(applications and libraries\).
+The Angular workspace where the user installed your library contains multiple projects (applications and libraries).
 The user can specify the project on the command line, or let it default.
 In either case, your code needs to identify the specific project to which this schematic is being applied, so that you can retrieve information from the project configuration.
 

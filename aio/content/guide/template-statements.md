@@ -28,7 +28,7 @@ You can change anything in your application during a single event loop.
 
 Like [template expressions](guide/interpolation), template statements use a language that looks like JavaScript.
 However, the parser for template statements differs from the parser for template expressions.
-In addition, the template statements parser specifically supports both basic assignment \(`=`\) and chaining expressions with semicolons \(`;`\).
+In addition, the template statements parser specifically supports both basic assignment (`=`) and chaining expressions with semicolons (`;`).
 
 The following JavaScript and template expression syntax is not allowed:
 

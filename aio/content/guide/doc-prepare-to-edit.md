@@ -34,14 +34,14 @@ These sections are particularly important for documentation contributions:
 To edit, build, and test Angular documentation on your local computer, you need the following software.
 The instructions in this section assume that you are using the software in this list to complete the tasks.
 
-Some software in this list, such as the integrated development environment \(IDE\), can be substituted with similar software.
+Some software in this list, such as the integrated development environment (IDE), can be substituted with similar software.
 If you use a substitute IDE, you might need to adapt the instructions in this section to your IDE.
 
 For more information about the required software, see [Setting up the local environment and workspace](guide/setup-local).
 
 *   **Version control software**
     *   [Git command line](https://github.com/git-guides/install-git)
-    *   [GitHub desktop](https://desktop.github.com) \(optional\)
+    *   [GitHub desktop](https://desktop.github.com) (optional)
 *   **Integrated development environment**
     *   [Visual Studio Code](https://code.visualstudio.com)
 *   **Utility software**
@@ -52,7 +52,7 @@ For more information about the required software, see [Setting up the local envi
     *   [nvm](https://github.com/nvm-sh/nvm#about)
     *   [Yarn](https://yarnpkg.com/getting-started/install)
     *   [Homebrew](https://brew.sh) for macOS or [Chocolatey](https://chocolatey.org/install) for Windows
-    *   [Vale][GithubAngularAngularTreeMainAioToolsDocLinterInstallValeOnYourDevelopmentSystemReadmeMd] \(see note\)
+    *   [Vale][GithubAngularAngularTreeMainAioToolsDocLinterInstallValeOnYourDevelopmentSystemReadmeMd] (see note)
 
 <div class="alert is-important">
 

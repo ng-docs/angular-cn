@@ -16,7 +16,7 @@ The [Angular CLI](cli) processes this configuration file during `ng build`.
 
 <!-- Does the following ngsw-config tool still work? Does not seem to. Not even clear what it does.
 
-Manually, process it with the `ngsw-config` tool \(where `<project-name>` is the name of the project being built\):
+Manually, process it with the `ngsw-config` tool (where `<project-name>` is the name of the project being built):
 
 <code-example format="shell" language="shell">
 
@@ -189,7 +189,7 @@ This section describes the resources to cache, broken up into the following grou
 | Resource groups | Details |
 |:---             |:---     |
 | `files`         | Lists patterns that match files in the distribution directory. These can be single files or glob-like patterns that match a number of files.                                                                                                                                                                                                                                                                   |
-| `urls`          | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *\(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.\)* |
+| `urls`          | Includes both URLs and URL patterns that are matched at runtime. These resources are not fetched directly and do not have content hashes, but they are cached according to their HTTP headers. This is most useful for CDNs such as the Google Fonts service. <br />  *(Negative glob patterns are not supported and `?` will be matched literally; that is, it will not match any character other than `?`.)* |
 
 #### `cacheQueryOptions`
 
@@ -265,7 +265,7 @@ Similar to `assetGroups`, every data group has a `name` which uniquely identifie
 
 A list of URL patterns.
 URLs that match these patterns are cached according to this data group's policy.
-Only non-mutating requests \(GET and HEAD\) are cached.
+Only non-mutating requests (GET and HEAD) are cached.
 
 *   Negative glob patterns are not supported
 *   `?` is matched literally; that is, it matches *only* the character `?`
@@ -386,7 +386,7 @@ A request is considered to be a navigation request if:
 *   Its [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) is `navigation`
 *   It accepts a `text/html` response as determined by the value of the `Accept` header
 *   Its URL matches the following criteria:
-    *   The URL must not contain a file extension \(that is, a `.`\) in the last path segment
+    *   The URL must not contain a file extension (that is, a `.`) in the last path segment
     *   The URL must not contain `__`
 
 <div class="alert is-helpful">
@@ -401,7 +401,7 @@ While these default criteria are fine in most cases, it is sometimes desirable t
 For example, you might want to ignore specific routes, such as those that are not part of the Angular app, and pass them through to the server.
 
 This field contains an array of URLs and [glob-like](#glob-patterns) URL patterns that are matched at runtime.
-It can contain both negative patterns \(that is, patterns starting with `!`\) and non-negative patterns and URLs.
+It can contain both negative patterns (that is, patterns starting with `!`) and non-negative patterns and URLs.
 
 Only requests whose URLs match *any* of the non-negative URLs/patterns and *none* of the negative ones are considered navigation requests.
 The URL query is ignored when matching.

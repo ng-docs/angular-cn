@@ -2,9 +2,9 @@ A special element that can hold structural directives without adding new element
 
 The `<ng-container>` allows us to use structural directives without any extra element, making sure that the only DOM changes being applied are those dictated by the directives themselves.
 
-This not only increases performance \(even so slightly\) since the browser ends up rendering less elements but can also be a valuable asset in having cleaner DOMs and styles alike.
+This not only increases performance (even so slightly) since the browser ends up rendering less elements but can also be a valuable asset in having cleaner DOMs and styles alike.
 
-It can for example enable us to use structural directives without breaking styling dependent on a precise DOM structure \(as for example the ones we get when using flex containers, margins, the child combinator selector, etc.\).
+It can for example enable us to use structural directives without breaking styling dependent on a precise DOM structure (as for example the ones we get when using flex containers, margins, the child combinator selector, etc.).
 
 @usageNotes
 

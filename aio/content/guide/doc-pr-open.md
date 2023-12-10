@@ -58,7 +58,7 @@ These steps are performed in your web browser.
             Remember that the commit messages and the pull request title are different.
             For more information about commit message formatting, see [Preparing a documentation update for a pull request](guide/doc-pr-prep) and [Commit message format](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit).
 
-        1.  **Docs have been added / updated \(for bug fixes / features\)**
+        1.  **Docs have been added / updated (for bug fixes / features)**
 
             Mark this comment to show that documentation has been updated.
 
@@ -87,12 +87,12 @@ These steps are performed in your web browser.
 <!-- vale Angular.Google_We = YES -->
 
 1.  Click the arrow next to **Draft pull request** and select whether you want to create a draft pull request or a pull request.
-    1.  A draft pull request runs the continuous integration \(CI\) testing, but does not send the pull request to reviewers.
+    1.  A draft pull request runs the continuous integration (CI) testing, but does not send the pull request to reviewers.
         You can ask people to review it by sending them the pull request link.
         You might use this option to see how your pull request passes the CI testing before you send it for review to be merged.
         Draft pull requests cannot be merged.
 
-    1.  A pull request runs the continuous integration \(CI\) testing and sends your pull request to reviewers to review and merge.
+    1.  A pull request runs the continuous integration (CI) testing and sends your pull request to reviewers to review and merge.
 
         <div class="alert is-helpful">
 

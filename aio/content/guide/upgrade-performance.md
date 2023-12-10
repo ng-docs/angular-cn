@@ -128,11 +128,11 @@ You define that recipe by providing a factory function that can create an instan
 *   `NgModuleFactory`
 *   `(extraProviders: StaticProvider[]) => Promise<NgModuleRef>`
 
-When you pass an `NgModuleFactory`, `downgradeModule()` uses it to instantiate the module using [platformBrowser](api/platform-browser/platformBrowser)'s [bootstrapModuleFactory()](api/core/PlatformRef#bootstrapModuleFactory), which is compatible with ahead-of-time \(AOT\) compilation.
+When you pass an `NgModuleFactory`, `downgradeModule()` uses it to instantiate the module using [platformBrowser](api/platform-browser/platformBrowser)'s [bootstrapModuleFactory()](api/core/PlatformRef#bootstrapModuleFactory), which is compatible with ahead-of-time (AOT) compilation.
 AOT compilation helps make your applications load faster
 For more about AOT and how to create an `NgModuleFactory`, see the [Ahead-of-Time Compilation](guide/aot-compiler) guide.
 
-Alternatively, you can pass a plain function, which is expected to return a promise resolving to an [NgModuleRef](api/core/NgModuleRef) \(that is, an instance of your Angular module\).
+Alternatively, you can pass a plain function, which is expected to return a promise resolving to an [NgModuleRef](api/core/NgModuleRef) (that is, an instance of your Angular module).
 The function is called with an array of extra [Providers](api/core/StaticProvider) that are expected to be available on the returned `NgModuleRef`'s [Injector](api/core/Injector).
 For example, if you are using [platformBrowser](api/platform-browser/platformBrowser) or [platformBrowserDynamic](api/platform-browser-dynamic/platformBrowserDynamic), you can pass the `extraProviders` array to them:
 
@@ -272,7 +272,7 @@ For example, it is *OK* to use a downgraded service in an upgraded component tha
 
 ## Using ahead-of-time compilation with hybrid apps
 
-You can take advantage of ahead-of-time \(AOT\) compilation in hybrid applications just like in any other Angular application.
+You can take advantage of ahead-of-time (AOT) compilation in hybrid applications just like in any other Angular application.
 The setup for a hybrid application is mostly the same as described in the [Ahead-of-Time Compilation](guide/aot-compiler) guide save for differences in `index.html` and `main-aot.ts`.
 
 AOT needs to load any AngularJS files that are in the `<script>` tags in the AngularJS `index.html`.

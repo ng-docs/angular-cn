@@ -45,7 +45,7 @@ expected '' to contain 'Test Tour of Heroes'.
 
 Binding happens when Angular performs **change detection**.
 
-In production, change detection kicks in automatically when Angular creates a component or the user enters a keystroke or an asynchronous activity \(for example, AJAX\) completes.
+In production, change detection kicks in automatically when Angular creates a component or the user enters a keystroke or an asynchronous activity (for example, AJAX) completes.
 
 The `TestBed.createComponent` does *not* trigger change detection; a fact confirmed in the revised test:
 
@@ -230,7 +230,7 @@ The first is a sanity test; it confirms that the stubbed `UserService` is called
 
 <div class="alert is-helpful">
 
-The second parameter to the Jasmine matcher \(for example, `'expected name'`\) is an optional failure label.
+The second parameter to the Jasmine matcher (for example, `'expected name'`) is an optional failure label.
 If the expectation fails, Jasmine appends this label to the expectation failure message.
 In a spec with multiple expectations, it can help clarify what went wrong and which expectation failed.
 
@@ -262,7 +262,7 @@ In this example, the `TwainComponent.getQuote()` method tells you that the `quot
 <code-example header="app/twain/twain.component.ts (getQuote)" path="testing/src/app/twain/twain.component.ts" region="get-quote"></code-example>
 
 The `TwainComponent` gets quotes from an injected `TwainService`.
-The component starts the returned `Observable` with a placeholder value \(`'...'`\), before the service can return its first quote.
+The component starts the returned `Observable` with a placeholder value (`'...'`), before the service can return its first quote.
 
 The `catchError` intercepts service errors, prepares an error message, and returns the placeholder value on the success channel.
 It must wait a tick to set the `errorMessage` in order to avoid updating that message twice in the same change detection cycle.
@@ -330,11 +330,11 @@ fakeAsync(() =&gt; { /* test body */ })
 
 The `fakeAsync()` function enables a linear coding style by running the test body in a special `fakeAsync test zone`.
 The test body appears to be synchronous.
-There is no nested syntax \(like a `Promise.then()`\) to disrupt the flow of control.
+There is no nested syntax (like a `Promise.then()`) to disrupt the flow of control.
 
 <div class="alert is-helpful">
 
-Limitation: The `fakeAsync()` function won't work if the test body makes an `XMLHttpRequest` \(XHR\) call.
+Limitation: The `fakeAsync()` function won't work if the test body makes an `XMLHttpRequest` (XHR) call.
 XHR calls within a test are rare, but if you need to call XHR, see the [`waitForAsync()`](#waitForAsync) section.
 
 </div>
@@ -424,7 +424,7 @@ For example:
 <div class="alert is-helpful">
 
 **NOTE**: <br />
-In order to make the `<canvas>` element Zone.js-aware in your app, you need to import the `zone-patch-canvas` patch \(either in `polyfills.ts` or in the specific file that uses `<canvas>`\):
+In order to make the `<canvas>` element Zone.js-aware in your app, you need to import the `zone-patch-canvas` patch (either in `polyfills.ts` or in the specific file that uses `<canvas>`):
 
 </div>
 
@@ -470,7 +470,7 @@ Here's a `fakeAsync()` test that demonstrates the data flow you'd expect in the 
 
 <code-example path="testing/src/app/twain/twain.component.spec.ts" region="fake-async-test"></code-example>
 
-Notice that the quote element displays the placeholder value \(`'...'`\) after `ngOnInit()`.
+Notice that the quote element displays the placeholder value (`'...'`) after `ngOnInit()`.
 The first quote hasn't arrived yet.
 
 To flush the first quote from the observable, you call [tick()](api/core/testing/tick).
@@ -565,8 +565,8 @@ There's no `fakeAsync()`.
 Marble testing uses a test scheduler to simulate the passage of time in a synchronous test.
 
 The beauty of marble testing is in the visual definition of the observable streams.
-This test defines a [*cold* observable](#cold-observable) that waits three [frames](#marble-frame) \(`---`\), emits a value \(`x`\), and completes \(`|`\).
-In the second argument you map the value marker \(`x`\) to the emitted value \(`testQuote`\).
+This test defines a [*cold* observable](#cold-observable) that waits three [frames](#marble-frame) (`---`), emits a value (`x`), and completes (`|`).
+In the second argument you map the value marker (`x`) to the emitted value (`testQuote`).
 
 <code-example path="testing/src/app/twain/twain.component.marbles.spec.ts" region="test-quote-marbles"></code-example>
 
@@ -591,7 +591,7 @@ Look at the marble observable definition.
 
 <code-example path="testing/src/app/twain/twain.component.marbles.spec.ts" region="error-marbles"></code-example>
 
-This is a *cold* observable that waits three frames and then emits an error, the hash \(`#`\) character indicates the timing of the error that is specified in the third argument.
+This is a *cold* observable that waits three frames and then emits an error, the hash (`#`) character indicates the timing of the error that is specified in the third argument.
 The second argument is null because the observable never emits a value.
 
 #### Learn about marble testing
@@ -599,7 +599,7 @@ The second argument is null because the observable never emits a value.
 <a id="marble-frame"></a>
 
 A *marble frame* is a virtual unit of testing time.
-Each symbol \(`-`, `x`, `|`, `#`\) marks the passing of one frame.
+Each symbol (`-`, `x`, `|`, `#`) marks the passing of one frame.
 
 <a id="cold-observable"></a>
 
@@ -670,7 +670,7 @@ Here's the meat of the spec file setup.
 
 <code-example header="app/dashboard/dashboard-hero.component.spec.ts (setup)" path="testing/src/app/dashboard/dashboard-hero.component.spec.ts" region="setup"></code-example>
 
-Notice how the setup code assigns a test hero \(`expectedHero`\) to the component's `hero` property, emulating the way the `DashboardComponent` would set it using the property binding in its repeater.
+Notice how the setup code assigns a test hero (`expectedHero`) to the component's `hero` property, emulating the way the `DashboardComponent` would set it using the property binding in its repeater.
 
 The following test verifies that the hero name is propagated to the template using a binding.
 
@@ -686,7 +686,7 @@ This small test demonstrates how Angular tests can verify a component's visual r
 
 #### Clicking
 
-Clicking the hero should raise a `selected` event that the host component \(`DashboardComponent` presumably\) can hear:
+Clicking the hero should raise a `selected` event that the host component (`DashboardComponent` presumably) can hear:
 
 <code-example path="testing/src/app/dashboard/dashboard-hero.component.spec.ts" region="click-test"></code-example>
 
@@ -791,7 +791,7 @@ This testing module configuration shows three important differences:
 The `createComponent` returns a `fixture` that holds an instance of `TestHostComponent` instead of an instance of `DashboardHeroComponent`.
 
 Creating the `TestHostComponent` has the side effect of creating a `DashboardHeroComponent` because the latter appears within the template of the former.
-The query for the hero element \(`heroEl`\) still finds it in the test DOM, albeit at greater depth in the element tree than before.
+The query for the hero element (`heroEl`) still finds it in the test DOM, albeit at greater depth in the element tree than before.
 
 The tests themselves are almost identical to the stand-alone version:
 
@@ -889,7 +889,7 @@ The `AppComponent`, for example, displays a navigation bar with anchors and thei
 
 To validate the links, you don't need the `Router` to navigate and you don't need the `<router-outlet>` to mark where the `Router` inserts *routed components*.
 
-The `BannerComponent` and `WelcomeComponent` \(indicated by `<app-banner>` and `<app-welcome>`\) are also irrelevant.
+The `BannerComponent` and `WelcomeComponent` (indicated by `<app-banner>` and `<app-welcome>`) are also irrelevant.
 
 Yet any test that creates the `AppComponent` in the DOM also creates instances of these three components and, if you let that happen, you'll have to configure the `TestBed` to create them.
 
@@ -1212,7 +1212,7 @@ Those are providers for the *testing module*, not the component.
 They prepare the dependency injector at the *fixture level*.
 
 Angular creates the component with its *own* injector, which is a *child* of the fixture injector.
-It registers the component's providers \(the `HeroDetailService` in this case\) with the child injector.
+It registers the component's providers (the `HeroDetailService` in this case) with the child injector.
 
 A test cannot get to child injector services from the fixture injector.
 And `TestBed.configureTestingModule` can't configure them either.
@@ -1250,7 +1250,7 @@ Focus on the `overrideComponent` method.
 
 <code-example header="app/hero/hero-detail.component.spec.ts (overrideComponent)" path="testing/src/app/hero/hero-detail.component.spec.ts" region="override-component-method"></code-example>
 
-It takes two arguments: the component type to override \(`HeroDetailComponent`\) and an override metadata object.
+It takes two arguments: the component type to override (`HeroDetailComponent`) and an override metadata object.
 The [override metadata object](guide/testing-utility-apis#metadata-override-object) is a generic defined as follows:
 
 <code-example language="javascript">

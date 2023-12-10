@@ -200,7 +200,7 @@ To turn off all animations for an Angular application, place the `@.disabled` ho
 <div class="alert is-helpful">
 
 **NOTE**: <br />
-Disabling animations application-wide is useful during end-to-end \(E2E\) testing.
+Disabling animations application-wide is useful during end-to-end (E2E) testing.
 
 </div>
 
@@ -312,7 +312,7 @@ Expressing 50 pixels as `50` is the same as saying `'50px'`.
 <div class="alert is-helpful">
 
 **NOTE**: <br />
-The string `"50"` would instead not be considered valid\).
+The string `"50"` would instead not be considered valid).
 
 </div>
 

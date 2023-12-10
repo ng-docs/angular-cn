@@ -13,8 +13,8 @@ If you'd like to experiment with the application that this guide describes, <liv
 
 ## Testing the `HighlightDirective`
 
-The sample application's `HighlightDirective` sets the background color of an element based on either a data bound color or a default color \(lightgray\).
-It also sets a custom property of the element \(`customProperty`\) to `true` for no reason other than to show that it can.
+The sample application's `HighlightDirective` sets the background color of an element based on either a data bound color or a default color (lightgray).
+It also sets a custom property of the element (`customProperty`) to `true` for no reason other than to show that it can.
 
 <code-example header="app/shared/highlight.directive.ts" path="testing/src/app/shared/highlight.directive.ts"></code-example>
 

@@ -378,7 +378,7 @@ Open `HeroService` and add the following `getHero()` method with the `id` after 
 <div class="alert is-important">
 
 **IMPORTANT**: <br />
-The backtick \( <code>&grave;</code> \) characters define a JavaScript [template literal](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Template_literals) for embedding the `id`.
+The backtick ( <code>&grave;</code> ) characters define a JavaScript [template literal](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Template_literals) for embedding the `id`.
 
 </div>
 

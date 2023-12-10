@@ -6,7 +6,7 @@
 When performing HTTP requests, an interceptor reads a token from a cookie, by default `XSRF-TOKEN`, and sets it as an HTTP header, `X-XSRF-TOKEN`.
 Because only code that runs on your domain could read the cookie, the backend can be certain that the HTTP request came from your client application and not an attacker.
 
-By default, an interceptor sends this header on all mutating requests \(such as POST\)
+By default, an interceptor sends this header on all mutating requests (such as POST)
 to relative URLs, but not on GET/HEAD requests or on requests with an absolute URL.
 
 To take advantage of this, your server needs to set a token in a JavaScript readable session cookie called `XSRF-TOKEN` on either the page load or the first GET request.

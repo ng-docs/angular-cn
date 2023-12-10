@@ -158,7 +158,7 @@ To prevent this, call a method on the component to construct a trusted video URL
 
 ### Content security policy
 
-Content Security Policy \(CSP\) is a defense-in-depth technique to prevent XSS.
+Content Security Policy (CSP) is a defense-in-depth technique to prevent XSS.
 To enable CSP, configure your web server to return an appropriate `Content-Security-Policy` HTTP header.
 Read more about content security policy at the [Web Fundamentals guide](https://developers.google.com/web/fundamentals/security/csp) on the Google Developers website.
 
@@ -203,8 +203,8 @@ If you cannot generate nonces in your project, you can allow inline styles by ad
 | Sections                | Details |
 |:---                     |:---     |
 | `default-src 'self';`   | Allows the page to load all its required resources from the same origin. |
-| `style-src 'self' 'nonce-randomNonceGoesHere';`     | Allows the page to load global styles from the same origin \(`'self'`\) and styles inserted by Angular with the `nonce-randomNonceGoesHere`. |
-| `script-src 'self' 'nonce-randomNonceGoesHere';`     | Allows the page to load JavaScript from the same origin \(`'self'`\) and scripts inserted by the Angular CLI with the `nonce-randomNonceGoesHere`. This is only required if you're using critical CSS inlining. |
+| `style-src 'self' 'nonce-randomNonceGoesHere';`     | Allows the page to load global styles from the same origin (`'self'`) and styles inserted by Angular with the `nonce-randomNonceGoesHere`. |
+| `script-src 'self' 'nonce-randomNonceGoesHere';`     | Allows the page to load JavaScript from the same origin (`'self'`) and scripts inserted by the Angular CLI with the `nonce-randomNonceGoesHere`. This is only required if you're using critical CSS inlining. |
 
 Angular itself requires only these settings to function correctly.
 As your project grows, you may need to expand your CSP settings to accommodate extra features specific to your application.
@@ -241,8 +241,8 @@ To enforce Trusted Types for your application, you must configure your applicati
 You should configure the HTTP headers for Trusted Types in the following locations:
 
 *   Production serving infrastructure
-*   Angular CLI \(`ng serve`\), using the `headers` property in the `angular.json` file, for local development and end-to-end testing
-*   Karma \(`ng test`\), using the `customHeaders` property in the `karma.config.js` file, for unit testing
+*   Angular CLI (`ng serve`), using the `headers` property in the `angular.json` file, for local development and end-to-end testing
+*   Karma (`ng test`), using the `customHeaders` property in the `karma.config.js` file, for unit testing
 
 The following is an example of a header specifically configured for Trusted Types and Angular:
 
@@ -313,14 +313,14 @@ Don't create Angular templates on the server side using a templating language. T
 
 ## HTTP-level vulnerabilities
 
-Angular has built-in support to help prevent two common HTTP vulnerabilities, cross-site request forgery \(CSRF or XSRF\) and cross-site script inclusion \(XSSI\).
+Angular has built-in support to help prevent two common HTTP vulnerabilities, cross-site request forgery (CSRF or XSRF) and cross-site script inclusion (XSSI).
 Both of these must be mitigated primarily on the server side, but Angular provides helpers to make integration on the client side easier.
 
 <a id="xsrf"></a>
 
 ### Cross-site request forgery
 
-In a cross-site request forgery \(CSRF or XSRF\), an attacker tricks the user into visiting a different web page \(such as `evil.com`\) with malignant code. This web page secretly sends a malicious request to the application's web server \(such as `example-bank.com`\).
+In a cross-site request forgery (CSRF or XSRF), an attacker tricks the user into visiting a different web page (such as `evil.com`) with malignant code. This web page secretly sends a malicious request to the application's web server (such as `example-bank.com`).
 
 Assume the user is logged into the application at `example-bank.com`.
 The user opens an email and clicks a link to `evil.com`, which opens in a new tab.
@@ -346,7 +346,7 @@ The malicious code on `evil.com` can't.
 Angular's `HttpClient` has built-in support for the client-side half of this technique.
 Read about it more in the [HttpClient guide](guide/http-security-xsrf-protection).
 
-For information about CSRF at the Open Web Application Security Project \(OWASP\), see [Cross-Site Request Forgery (CSRF)](https://owasp.org/www-community/attacks/csrf) and [Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
+For information about CSRF at the Open Web Application Security Project (OWASP), see [Cross-Site Request Forgery (CSRF)](https://owasp.org/www-community/attacks/csrf) and [Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
 The Stanford University paper [Robust Defenses for Cross-Site Request Forgery](https://seclab.stanford.edu/websec/csrf/csrf.pdf) is a rich source of detail.
 
 See also Dave Smith's [talk on XSRF at AngularConnect 2016](https://www.youtube.com/watch?v=9inczw6qtpY "Cross Site Request Funkery Securing Your Angular Apps From Evil Doers").

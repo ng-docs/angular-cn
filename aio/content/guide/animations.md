@@ -138,7 +138,7 @@ These definitions are placed in the second argument of the `animate()` function.
 
 #### Animation metadata: duration, delay, and easing
 
-The `animate()` function \(second argument of the transition function\) accepts the `timings` and `styles` input parameters.
+The `animate()` function (second argument of the transition function) accepts the `timings` and `styles` input parameters.
 
 The `timings` parameter takes either a number or a string defined in three parts.
 
@@ -271,7 +271,7 @@ The following code snippet binds the trigger to the value of the `isOpen` proper
 In this example, when the `isOpen` expression evaluates to a defined state of `open` or `closed`, it notifies the trigger `openClose` of a state change.
 Then it's up to the `openClose` code to handle the state change and kick off a state change animation.
 
-For elements entering or leaving a page \(inserted or removed from the DOM\), you can make the animations conditional.
+For elements entering or leaving a page (inserted or removed from the DOM), you can make the animations conditional.
 For example, use `*ngIf` with the animation trigger in the HTML template.
 
 <div class="alert is-helpful">
@@ -303,7 +303,7 @@ Learn about more advanced features in Angular animations under the Animation sec
 
 ## Animations API summary
 
-The functional API provided by the `@angular/animations` module provides a domain-specific language \(DSL\) for creating and controlling animations in Angular applications.
+The functional API provided by the `@angular/animations` module provides a domain-specific language (DSL) for creating and controlling animations in Angular applications.
 See the [API reference](api/animations) for a complete listing and syntax details of the core functions and related data structures.
 
 | Function name                     | What it does                                                                                                                                                                                                |
@@ -314,7 +314,7 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | `animate()`                       | Specifies the timing information for a transition. Optional values for `delay` and `easing`. Can contain `style()` calls within.                                                                            |
 | `transition()`                    | Defines the animation sequence between two named states. Uses array syntax.                                                                                                                                 |
 | `keyframes()`                     | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax.                       |
-| [`group()`](api/animations/group) | Specifies a group of animation steps \(*inner animations*\) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`.     |
+| [`group()`](api/animations/group) | Specifies a group of animation steps (*inner animations*) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`.     |
 | `query()`                         | Finds one or more inner HTML elements within the current element.                                                                                                                                           |
 | `sequence()`                      | Specifies a list of animation steps that are run sequentially, one by one.                                                                                                                                  |
 | `stagger()`                       | Staggers the starting time for animations for multiple elements.                                                                                                                                            |

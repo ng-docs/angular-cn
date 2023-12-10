@@ -104,14 +104,14 @@ For example, imagine the following scenario:
     The old version is no longer available on the server.
 
 *   In the meantime, the user's browser decides to evict `lazy-chunk.<lazy-hash-1>.js` from its cache.
-    Browsers might decide to evict specific \(or all\) resources from a cache in order to reclaim disk space.
+    Browsers might decide to evict specific (or all) resources from a cache in order to reclaim disk space.
 
 *   The user opens the application again.
-    The service worker serves the latest version known to it at this point, namely the old version \(`index.html` and `main.<main-hash-1>.js`\).
+    The service worker serves the latest version known to it at this point, namely the old version (`index.html` and `main.<main-hash-1>.js`).
 
 *   At some later point, the application requests the lazy bundle, `lazy-chunk.<lazy-hash-1>.js`.
-*   The service worker is unable to find the asset in the cache \(remember that the browser evicted it\).
-    Nor is it able to retrieve it from the server \(because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version\).
+*   The service worker is unable to find the asset in the cache (remember that the browser evicted it).
+    Nor is it able to retrieve it from the server (because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version).
 
 In the preceding scenario, the service worker is not able to serve an asset that would normally be cached.
 That particular application version is broken and there is no way to fix the state of the client without reloading the page.

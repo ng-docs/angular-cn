@@ -52,7 +52,7 @@ By default, the CLI command `ng new my-app` creates a workspace folder named "my
 A newly generated application contains source files for a root module, with a root component and template.
 
 When the workspace file structure is in place, you can use the `ng generate` command on the command line to add functionality and data to the application.
-This initial root-level application is the *default app* for CLI commands \(unless you change the default after creating [additional apps](#multiple-projects)\).
+This initial root-level application is the *default app* for CLI commands (unless you change the default after creating [additional apps](#multiple-projects)).
 
 <div class="alert is-helpful">
 
@@ -60,7 +60,7 @@ Besides using the CLI on the command line, you can also manipulate files directl
 
 </div>
 
-For a single-application workspace, the `src` subfolder of the workspace contains the source files \(application logic, data, and assets\) for the root application.
+For a single-application workspace, the `src` subfolder of the workspace contains the source files (application logic, data, and assets) for the root application.
 For a multi-project workspace, additional projects in the `projects` folder contain a `project-name/src/` subfolder with the same structure.
 
 ### Application source files
@@ -74,7 +74,7 @@ Subfolders contain the application source and application-specific configuration
 | `assets/`                 | Contains image and other asset files to be copied as-is when you build your application.                                                                                                                                                                                                                                                                   |
 | `favicon.ico`             | An icon to use for this application in the bookmark bar.                                                                                                                                                                                                                                                                                                   |
 | `index.html`              | The main HTML page that is served when someone visits your site. The CLI automatically adds all JavaScript and CSS files when building your app, so you typically don't need to add any `<script>` or` <link>` tags here manually.                                                                                                                         |
-| `main.ts`                 | The main entry point for your application. Compiles the application with the [JIT compiler](guide/glossary#jit) and bootstraps the application's root module \(AppModule\) to run in the browser. You can also use the [AOT compiler](guide/aot-compiler) without changing any code by appending the `--aot` flag to the CLI `build` and `serve` commands. |
+| `main.ts`                 | The main entry point for your application. Compiles the application with the [JIT compiler](guide/glossary#jit) and bootstraps the application's root module (AppModule) to run in the browser. You can also use the [AOT compiler](guide/aot-compiler) without changing any code by appending the `--aot` flag to the CLI `build` and `serve` commands. |
 | `styles.css`             | Lists CSS files that supply styles for a project. The extension reflects the style preprocessor you have configured for the project.                                                                                                                                                                                                                       |
 
 <div class="alert is-helpful">
@@ -115,7 +115,7 @@ Project-specific [TypeScript](https://www.typescriptlang.org) configuration file
 
 ## Multiple projects
 
-A multi-project workspace is suitable for an enterprise that uses a single repository and global configuration for all Angular projects \(the "monorepo" model\).
+A multi-project workspace is suitable for an enterprise that uses a single repository and global configuration for all Angular projects (the "monorepo" model).
 A multi-project workspace also supports library development.
 
 ### Setting up for a multi-project workspace
@@ -184,7 +184,7 @@ When you create projects this way, the file structure of the workspace is entire
 
 ## Library project files
 
-When you generate a library using the CLI \(with a command such as `ng generate library my-lib`\), the generated files go into the `projects/` folder of the workspace.
+When you generate a library using the CLI (with a command such as `ng generate library my-lib`), the generated files go into the `projects/` folder of the workspace.
 For more information about creating your own libraries, see  [Creating Libraries](guide/creating-libraries).
 
 Libraries unlike applications have their own `package.json` configuration file.

@@ -20,7 +20,7 @@ To see property and event binding in action, add the following code to your `svg
 
 <code-example header="src/app/svg.component.svg" path="template-syntax/src/app/svg.component.svg"></code-example>
 
-The example given uses a `click()` event binding and the property binding syntax \(`[attr.fill]="fillColor"`\).
+The example given uses a `click()` event binding and the property binding syntax (`[attr.fill]="fillColor"`).
 
 <!-- links -->
 

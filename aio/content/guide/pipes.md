@@ -11,7 +11,7 @@ For the sample application used in this topic, see the <live-example></live-exam
 
 </div>
 
-Angular provides built-in pipes for typical data transformations, including transformations for internationalization \(i18n\), which use locale information to format data.
+Angular provides built-in pipes for typical data transformations, including transformations for internationalization (i18n), which use locale information to format data.
 The following are commonly used built-in pipes for data formatting:
 
 | Pipes                                       | Details |
@@ -26,7 +26,7 @@ The following are commonly used built-in pipes for data formatting:
 <div class="alert is-helpful">
 
 *   For a complete list of built-in pipes, see the [pipes API documentation](api/common#pipes "Pipes API reference summary").
-*   To learn more about using pipes for internationalization \(i18n\) efforts, see [formatting data based on locale][AioGuideI18nCommonFormatDataLocale].
+*   To learn more about using pipes for internationalization (i18n) efforts, see [formatting data based on locale][AioGuideI18nCommonFormatDataLocale].
 
 </div>
 
@@ -116,7 +116,7 @@ Then, use your custom pipe in template expressions, the same way you use built-i
 ### Marking a class as a pipe
 
 To mark a class as a pipe and supply configuration metadata, apply the [`@Pipe`](api/core/Pipe "API reference for Pipe") [decorator](guide/glossary#decorator--decoration "Definition for decorator") to the class.
-Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") \(the general convention for class names\) for the pipe class name, and [camelCase](guide/glossary#case-types "Definition of case types") for the corresponding `name` string.
+Use [UpperCamelCase](guide/glossary#case-types "Definition of case types") (the general convention for class names) for the pipe class name, and [camelCase](guide/glossary#case-types "Definition of case types") for the corresponding `name` string.
 Do not use hyphens in the `name`.
 For details and more examples, see [Pipe names](guide/styleguide#pipe-names "Pipe names in the Angular coding style guide").
 
@@ -125,7 +125,7 @@ Use `name` in template expressions as you would for a built-in pipe.
 <div class="alert is-important">
 
 *   Include your pipe in the `declarations` field of the `NgModule` metadata in order for it to be available to a template.
-    See the `app.module.ts` file in the example application \(<live-example></live-example>\).
+    See the `app.module.ts` file in the example application (<live-example></live-example>).
     For details, see [NgModules](guide/ngmodules "NgModules introduction").
 
 *   Register your custom pipes.
@@ -149,8 +149,8 @@ The following code example shows two component definitions:
 
 | Files                          | Details |
 |:---                            |:---     |
-| `exponential-strength.pipe.ts` | Defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation. It defines an argument to the `transform` method \(`exponent`\) for a parameter passed to the pipe. |
-| `power-booster.component.ts`   | Demonstrates how to use the pipe, specifying a value \(`2`\) and the exponent parameter \(`10`\).                                                                                                                   |
+| `exponential-strength.pipe.ts` | Defines a custom pipe named `exponentialStrength` with the `transform` method that performs the transformation. It defines an argument to the `transform` method (`exponent`) for a parameter passed to the pipe. |
+| `power-booster.component.ts`   | Demonstrates how to use the pipe, specifying a value (`2`) and the exponent parameter (`10`).                                                                                                                   |
 
 <code-tabs>
     <code-pane header="src/app/exponential-strength.pipe.ts" path="pipes/src/app/exponential-strength.pipe.ts"></code-pane>
@@ -190,7 +190,7 @@ The `exponentialStrength` pipe executes every time the user changes the "normal 
 
 Angular detects each change and immediately runs the pipe.
 This is fine for primitive input values.
-However, if you change something *inside* a composite object \(such as the month of a date, an element of an array, or an object property\), you need to understand how change detection works, and how to use an `impure` pipe.
+However, if you change something *inside* a composite object (such as the month of a date, an element of an array, or an object property), you need to understand how change detection works, and how to use an `impure` pipe.
 
 ### How change detection works
 
@@ -220,7 +220,7 @@ So Angular uses a faster change-detection algorithm for executing a pipe, as des
 ### Detecting pure changes to primitives and object references
 
 By default, pipes are defined as *pure* so that Angular executes the pipe only when it detects a *pure change* to the input value.
-A pure change is either a change to a primitive input value \(such as `String`, `Number`, `Boolean`, or `Symbol`\), or a changed object reference \(such as `Date`, `Array`, `Function`, or `Object`\).
+A pure change is either a change to a primitive input value (such as `String`, `Number`, `Boolean`, or `Symbol`), or a changed object reference (such as `Date`, `Array`, `Function`, or `Object`).
 
 <a id="pure-pipe-pure-fn"></a>
 
@@ -235,8 +235,8 @@ To demonstrate this issue, change the previous example to filter the list of her
 Use the `FlyingHeroesPipe` in the `*ngFor` repeater as shown in the following code.
 The tabs for the example show the following:
 
-*   The template \(`flying-heroes.component.html (flyers)`\) with the new pipe
-*   The `FlyingHeroesPipe` custom pipe implementation \(`flying-heroes.pipe.ts`\)
+*   The template (`flying-heroes.component.html (flyers)`) with the new pipe
+*   The `FlyingHeroesPipe` custom pipe implementation (`flying-heroes.pipe.ts`)
 
 <code-tabs>
     <code-pane header="src/app/flying-heroes.component.html (flyers)" path="pipes/src/app/flying-heroes.component.html" region="template-flying-heroes"></code-pane>
@@ -312,7 +312,7 @@ To confirm that the display updates as the user adds heroes, see the <live-examp
 
 [Observables](guide/glossary#observable "Definition of observable") let you pass messages between parts of your application.
 Observables are recommended for event handling, asynchronous programming, and handling multiple values.
-Observables can deliver single or multiple values of any type, either synchronously \(as a function delivers a value to its caller\) or asynchronously on a schedule.
+Observables can deliver single or multiple values of any type, either synchronously (as a function delivers a value to its caller) or asynchronously on a schedule.
 
 <div class="alert is-helpful">
 
@@ -343,8 +343,8 @@ Impure pipes are called whenever change detection runs for a component, which co
 To avoid performance problems, call the server only when the requested URL changes, as shown in the following example, and use the pipe to cache the server response.
 The tabs show the following:
 
-*   The `fetch` pipe \(`fetch-json.pipe.ts`\).
-*   A harness component \(`hero-list.component.ts`\) for demonstrating the request, using a template that defines two bindings to the pipe requesting the heroes from the `heroes.json` file.
+*   The `fetch` pipe (`fetch-json.pipe.ts`).
+*   A harness component (`hero-list.component.ts`) for demonstrating the request, using a template that defines two bindings to the pipe requesting the heroes from the `heroes.json` file.
     The second binding chains the `fetch` pipe with the built-in `JsonPipe` to display the same hero data in JSON format.
 
 <code-tabs>

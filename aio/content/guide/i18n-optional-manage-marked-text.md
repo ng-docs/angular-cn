@@ -89,7 +89,7 @@ The following displays the translation in French.
 
 <code-example header="src/locale/messages.fr.xlf" path="i18n/doc-files/messages.fr.xlf.html" region="i18n-duplicate-custom-id"></code-example>
 
-Both elements now use the same translation \(`Bonjour`\), because both were defined with the same custom ID.
+Both elements now use the same translation (`Bonjour`), because both were defined with the same custom ID.
 
 <code-example path="i18n/doc-files/rendered-output.html"></code-example>
 

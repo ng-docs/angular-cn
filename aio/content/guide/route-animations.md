@@ -92,7 +92,7 @@ The `data` property of each `Route` can be used to animate routing transitions.
 <code-example header="src/app/app.component.html" path="animations/src/app/app.component.html" region="route-animations-outlet"></code-example>
 
 `AppComponent` defines a method that can detect when a view changes.
-The method assigns an animation state value to the animation trigger \(`@routeAnimation`\) based on the route configuration `data` property value.
+The method assigns an animation state value to the animation trigger (`@routeAnimation`) based on the route configuration `data` property value.
 Here's an example of an `AppComponent` method that detects when a route change happens.
 
 <code-example header="src/app/app.component.ts" path="animations/src/app/app.component.ts" region="get-route-animations-data"></code-example>
@@ -111,7 +111,7 @@ The following code snippet defines a reusable animation named `slideInAnimation`
 
 The animation definition performs the following tasks:
 
-*   Defines two transitions \(a single `trigger` can define multiple states and transitions\)
+*   Defines two transitions (a single `trigger` can define multiple states and transitions)
 *   Adjusts the styles of the host and child views to control their relative positions during the transition
 *   Uses `query()` to determine which child view is entering and which is leaving the host view
 
@@ -124,7 +124,7 @@ The transition states must match the `data` property value defined in the route 
 
 </div>
 
-Make the animation definition available in your application by adding the reusable animation \(`slideInAnimation`\) to the `animations` metadata of the `AppComponent`.
+Make the animation definition available in your application by adding the reusable animation (`slideInAnimation`) to the `animations` metadata of the `AppComponent`.
 
 <code-example header="src/app/app.component.ts" path="animations/src/app/app.component.ts" region="define"></code-example>
 

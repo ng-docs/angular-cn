@@ -49,7 +49,7 @@ The [Angular CLI](cli) generates the following basic `AppModule` when creating a
 </code-example>
 
 At the top are the import statements.
-The next section is where you configure the `@NgModule` by stating what components and directives belong to it \(`declarations`\) as well as which other modules it uses \(`imports`\).
+The next section is where you configure the `@NgModule` by stating what components and directives belong to it (`declarations`) as well as which other modules it uses (`imports`).
 For more information on the structure of an `@NgModule`, be sure to read [Bootstrapping](guide/bootstrapping).
 
 ## More on NgModules

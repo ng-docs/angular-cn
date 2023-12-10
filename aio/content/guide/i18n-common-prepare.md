@@ -89,7 +89,7 @@ To mark the title attribute for translation, complete the following action.
 
 ## Mark text in component code
 
-In component code, the translation source text and the metadata are surrounded by backtick \(<code>&#96;</code>\) characters.
+In component code, the translation source text and the metadata are surrounded by backtick (<code>&#96;</code>) characters.
 
 Use the [`$localize`][AioApiLocalizeInitLocalize] tagged message string to mark a string in your code for translation.
 
@@ -101,7 +101,7 @@ Use the [`$localize`][AioApiLocalizeInitLocalize] tagged message string to mark 
 
 </code-example>
 
-The i18n metadata is surrounded by colon \(`:`\) characters and prepends the translation source text.
+The i18n metadata is surrounded by colon (`:`) characters and prepends the translation source text.
 
 <!--todo: replace with code-example -->
 
@@ -227,7 +227,7 @@ That one translation entry is merged back into the application wherever the same
 ## ICU expressions
 
 ICU expressions help you mark alternate text in component templates to meet conditions.
-An ICU expression includes a component property, an ICU clause, and the case statements surrounded by open curly brace \(`{`\) and close curly brace \(`}`\) characters.
+An ICU expression includes a component property, an ICU clause, and the case statements surrounded by open curly brace (`{`) and close curly brace (`}`) characters.
 
 <!--todo: replace with code-example -->
 
@@ -245,7 +245,7 @@ An ICU clause defines the type of conditional text.
 | [`plural`][AioGuideI18nCommonPrepareMarkPlurals]                        | Mark the use of plural numbers                                      |
 | [`select`][AioGuideI18nCommonPrepareMarkAlternatesAndNestedExpressions] | Mark choices for alternate text based on your defined string values |
 
-To simplify translation, use International Components for Unicode clauses \(ICU clauses\) with regular expressions.
+To simplify translation, use International Components for Unicode clauses (ICU clauses) with regular expressions.
 
 <div class="alert is-helpful">
 
@@ -267,7 +267,7 @@ Use the `plural` clause to mark expressions that may not be meaningful if transl
 
 </code-example>
 
-After the pluralization category, enter the default text \(English\) surrounded by open curly brace \(`{`\) and close curly brace \(`}`\) characters.
+After the pluralization category, enter the default text (English) surrounded by open curly brace (`{`) and close curly brace (`}`) characters.
 
 <!--todo: replace with code-example -->
 
@@ -309,13 +309,13 @@ For more information about pluralization categories, see [Choosing plural catego
 <header id="background-locales-may-not-support-some-pluralization-categories">Background: Locales may not support some pluralization categories</header>
 
 Many locales don't support some of the pluralization categories.
-The default locale \(`en-US`\) uses a very simple `plural()` function that doesn't support the `few` pluralization category.
+The default locale (`en-US`) uses a very simple `plural()` function that doesn't support the `few` pluralization category.
 Another locale with a simple `plural()` function is `es`.
 The following code example shows the [en-US `plural()`][GithubAngularAngularBlobEcffc3557fe1bff9718c01277498e877ca44588dPackagesCoreSrcI18nLocaleEnTsL14L18] function.
 
 <code-example path="i18n/doc-files/locale_plural_function.ts" class="no-box" hideCopy></code-example>
 
-The `plural()` function only returns 1 \(`one`\) or 5 \(`other`\).
+The `plural()` function only returns 1 (`one`) or 5 (`other`).
 The `few` category never matches.
 
 </div>
@@ -381,7 +381,7 @@ The `select` clause marks choices for alternate text based on your defined strin
 
 Translate all of the alternates to display alternate text based on the value of a variable.
 
-After the selection category, enter the text \(English\) surrounded by open curly brace \(`{`\) and close curly brace \(`}`\) characters.
+After the selection category, enter the text (English) surrounded by open curly brace (`{`) and close curly brace (`}`) characters.
 
 <!--todo: replace with code-example -->
 

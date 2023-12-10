@@ -88,7 +88,7 @@ None of the preceding *class-only* tests can answer key questions about how the 
 *   Is `Lightswitch.clicked()` bound to anything such that the user can invoke it?
 *   Is the `Lightswitch.message` displayed?
 *   Can the user actually select the hero displayed by `DashboardHeroComponent`?
-*   Is the hero name displayed as expected \(such as uppercase\)?
+*   Is the hero name displayed as expected (such as uppercase)?
 *   Is the welcome message displayed by the template of `WelcomeComponent`?
 
 These might not be troubling questions for the preceding simple components illustrated.
@@ -102,7 +102,7 @@ To write these kinds of test, you'll use additional features of the `TestBed` as
 
 The CLI creates an initial test file for you by default when you ask it to generate a new component.
 
-For example, the following CLI command generates a `BannerComponent` in the `app/banner` folder \(with inline template and styles\):
+For example, the following CLI command generates a `BannerComponent` in the `app/banner` folder (with inline template and styles):
 
 <code-example format="shell" language="shell">
 

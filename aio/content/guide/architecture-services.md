@@ -78,7 +78,7 @@ The process of `HeroService` injection looks something like this.
 
 You must register at least one *provider* of any service you are going to use.
 The provider can be part of the service's own metadata, making that service available everywhere, or you can register providers with specific components.
-You register providers in the metadata of the service \(in the `@Injectable()` decorator\) or `@Component()` metadata
+You register providers in the metadata of the service (in the `@Injectable()` decorator) or `@Component()` metadata
 
 *   By default, the Angular CLI command [`ng generate service`](cli/generate) registers a provider with the root injector for your service by including provider metadata in the `@Injectable()` decorator.
     The tutorial uses this method to register the provider of `HeroService` class definition.

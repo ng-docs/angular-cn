@@ -41,10 +41,10 @@ Such template variables can be used in conjunction with `ngTemplateOutlet` direc
 
 ### Querying
 
-A [Query](api/core/Query) \(such as `ViewChild`\) can find the `TemplateRef` associated to an `<ng-template>` element so that it can be used programmatically; for instance, to pass it to the `ViewContainerRef` method `createEmbeddedView()`.
+A [Query](api/core/Query) (such as `ViewChild`) can find the `TemplateRef` associated to an `<ng-template>` element so that it can be used programmatically; for instance, to pass it to the `ViewContainerRef` method `createEmbeddedView()`.
 
 ### Context
 
 Inside the `<ng-template>` tags you can reference variables present in the surrounding outer template.
 Additionally, a context object can be associated with `<ng-template>` elements.
-Such an object contains variables that can be accessed from within the template contents via template \(`let` and `as`\) declarations.
+Such an object contains variables that can be accessed from within the template contents via template (`let` and `as`) declarations.

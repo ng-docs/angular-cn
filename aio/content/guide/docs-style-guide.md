@@ -53,7 +53,7 @@ It is customary but not required to precede the closing HTML tag with a blank li
 
 Every guide document must have a title, and it should appear at the top of the page.
 
-Begin the title with the Markdown hash \(`#`\) character, which renders as an `<h1>` in the browser.
+Begin the title with the Markdown hash (`#`) character, which renders as an `<h1>` in the browser.
 
 <code-example format="html" language="html">
 
@@ -744,7 +744,7 @@ Each sample folder usually has a single unnamed definition file, the default `st
 ### Live Example for named StackBlitz
 
 You can create additional, named definition files in the form `name.stackblitz.json`.
-The [Testing](guide/testing) guide \(`aio/content/guide/testing.md`\) references a named StackBlitz file as follows:
+The [Testing](guide/testing) guide (`aio/content/guide/testing.md`) references a named StackBlitz file as follows:
 
 <code-example format="html" language="html">
 

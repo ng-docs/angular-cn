@@ -203,7 +203,7 @@ As you make changes to files in the working directory of your fork of the Angula
 
 * **Made but not saved**
 
-    This is the state of your changes as you edit a file in your integrated development environment \(IDE\).
+    This is the state of your changes as you edit a file in your integrated development environment (IDE).
     This is the state of your changes as you're making them in your IDE.
 
 * **Saved but not committed**

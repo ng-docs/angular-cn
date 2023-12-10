@@ -18,7 +18,7 @@ These decorators provide metadata that tells Angular how to use them.
 *   The metadata for a component class associates it with a *template* that defines a view.
     A template combines ordinary HTML with Angular *directives* and *binding markup* that allow Angular to modify the HTML before rendering it for display.
 
-*   The metadata for a service class provides the information Angular needs to make it available to components through *dependency injection \(DI\)*
+*   The metadata for a service class provides the information Angular needs to make it available to components through *dependency injection (DI)*
 
 An application's components typically define many views, arranged hierarchically.
 Angular provides the `Router` service to help you define navigation paths among views.
@@ -38,7 +38,7 @@ For the sample application that this page describes, see the <live-example></liv
 
 ## Components
 
-Every Angular application has at least one component, the *root component* that connects a component hierarchy with the page document object model \(DOM\).
+Every Angular application has at least one component, the *root component* that connects a component hierarchy with the page document object model (DOM).
 Each component defines a class that contains application data and logic, and is associated with an HTML *template* that defines a view to be displayed in a target environment.
 
 The `@Component()` decorator identifies the class immediately below it as a component, and provides the template and related component-specific metadata.
@@ -84,7 +84,7 @@ For data or logic that isn't associated with a specific view, and that you want 
 A service class definition is immediately preceded by the `@Injectable()` decorator.
 The decorator provides the metadata that allows other providers to be **injected** as dependencies into your class.
 
-*Dependency injection* \(DI\) lets you keep your component classes lean and efficient.
+*Dependency injection* (DI) lets you keep your component classes lean and efficient.
 They don't fetch data from the server, validate user input, or log directly to the console; they delegate such tasks to services.
 
 <div class="alert is-helpful">

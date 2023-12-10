@@ -18,7 +18,7 @@ For information about preparing your system to make major changes to the documen
 
 | Task                                                     | Scope |
 |:---                                                      |:---   |
-| [Review current documentation](guide/reviewing-content)  | Minor \(See note\) |
+| [Review current documentation](guide/reviewing-content)  | Minor (See note) |
 | [Update search keywords](guide/updating-search-keywords) | Minor       |
 | [Resolve linter errors](guide/docs-lint-errors)          | Major       |
 | [Resolve documentation issues](guide/doc-select-issue)   | Major       |

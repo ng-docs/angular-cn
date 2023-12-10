@@ -21,7 +21,7 @@ Currently, Angular supports the following extended diagnostics:
 Extended diagnostics are warnings by default and do not block compilation.
 Each diagnostic can be configured as either:
 
-*   `warning` \(default\) - The compiler emits the diagnostic as a warning but does not block
+*   `warning` (default) - The compiler emits the diagnostic as a warning but does not block
   compilation. The compiler will still exit with status code 0, even if warnings are emitted.
 *   `error` - The compiler emits the diagnostic as an error and fails the compilation.
     The compiler will exit with a non-zero status code if one or more errors are emitted.
@@ -78,8 +78,8 @@ Extended diagnostics should generally:
 *   Clearly articulate why this pattern can lead to bugs or unintended behavior
 *   Suggest one or more clear solutions
 *   Have a low, preferably zero, false-positive rate
-*   Apply to the vast majority of Angular applications \(not specific to an unofficial library\)
-*   Improve program correctness or performance \(not style, that responsibility falls to a linter\)
+*   Apply to the vast majority of Angular applications (not specific to an unofficial library)
+*   Improve program correctness or performance (not style, that responsibility falls to a linter)
 
 If you have an idea for a compiler check which fits these criteria, consider filing a [feature request](https://github.com/angular/angular/issues/new?template=2-feature-request.yaml).
 

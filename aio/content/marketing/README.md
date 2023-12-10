@@ -1,6 +1,6 @@
 # Contributors page
 
-We have an official accounting of who is on the Angular Team \(see [this link](/about?group=Angular)\), who are "trusted collaborators" \(see [this link](/about?group=Collaborators)\), and so on.
+We have an official accounting of who is on the Angular Team (see [this link](/about?group=Angular)), who are "trusted collaborators" (see [this link](/about?group=Collaborators)), and so on.
 
 The `contributors.json` should be maintained to keep our "org chart" in a single consistent place.
 
@@ -15,7 +15,7 @@ There are two pages:
 
 ## About the data
 
-*   Keys in `contributors.json` should be GitHub handles. \(Most currently are, but not all.\)
+*   Keys in `contributors.json` should be GitHub handles. (Most currently are, but not all.)
     This will allow us to use GitHub as the default source for things like name, avatar, etc.
 
 *   Keys are sorted in alphabetical order, please keep the sorting order when adding new entries.

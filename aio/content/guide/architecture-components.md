@@ -125,7 +125,7 @@ This example from the `HeroListComponent` template uses three of these forms.
 | `(click)` [event binding](guide/user-input#binding-to-user-input-events) | Calls the component's `selectHero` method when the user clicks a hero's name.                                                     |
 | `{{hero.name}}` [interpolation](guide/interpolation)                     | Displays the component's `hero.name` property value within the `<button>` element.                                                |
 
-Two-way data binding \(used mainly in [template-driven forms](guide/forms)\) combines property and event binding in a single notation.
+Two-way data binding (used mainly in [template-driven forms](guide/forms)) combines property and event binding in a single notation.
 Here's an example from the `HeroDetailComponent` template that uses two-way data binding with the `ngModel` directive.
 
 <code-example header="src/app/hero-detail.component.html (ngModel)" path="architecture/src/app/hero-detail.component.html" region="ngModel"></code-example>
@@ -221,7 +221,7 @@ The example template uses two built-in structural directives to add application 
 In templates they look like regular HTML attributes, hence the name.
 
 The `ngModel` directive, which implements two-way data binding, is an example of an attribute directive.
-`ngModel` modifies the behavior of an existing element \(typically `<input>`\) by setting its display value property and responding to change events.
+`ngModel` modifies the behavior of an existing element (typically `<input>`) by setting its display value property and responding to change events.
 
 <code-example header="src/app/hero-detail.component.html (ngModel)" path="architecture/src/app/hero-detail.component.html" region="ngModel"></code-example>
 

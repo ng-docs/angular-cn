@@ -42,7 +42,7 @@ Membership in one list doesn't imply membership in another list.
 
 *   `AppComponent` could be declared in this module but not bootstrapped.
 *   `AppComponent` could be bootstrapped in this module but declared in a different feature module.
-*   A component could be imported from another application module \(so you can't declare it\) and re-exported by this module.
+*   A component could be imported from another application module (so you can't declare it) and re-exported by this module.
 *   A component could be exported for inclusion in an external component's template as well as dynamically loaded in a pop-up dialog.
 
 ## What does "Can't bind to 'x' since it isn't a known property of 'y'" mean?
@@ -58,7 +58,7 @@ The "x" class isn't visible to other modules until you add it to the `exports` l
 
 ## What should I import?
 
-Import NgModules whose public \(exported\) [declarable classes](guide/bootstrapping#the-declarations-array)
+Import NgModules whose public (exported) [declarable classes](guide/bootstrapping#the-declarations-array)
 you need to reference in this module's component templates.
 
 This always means importing `CommonModule` from `@angular/common` for access to
@@ -131,7 +131,7 @@ Don't export the following:
     Such components can never be selected in another component's template.
     While there's no harm in exporting them, there's also no benefit.
 
-*   Pure service modules that don't have public \(exported\) declarations.
+*   Pure service modules that don't have public (exported) declarations.
     For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
     Its only purpose is to add http service providers to the application as a whole.
 
@@ -193,7 +193,7 @@ Providers listed in the `@NgModule.providers` of a bootstrapped module have appl
 Adding a service provider to `@NgModule.providers` effectively publishes the service to the entire application.
 
 When you import an NgModule,
-Angular adds the module's service providers \(the contents of its `providers` list\) to the application root injector.
+Angular adds the module's service providers (the contents of its `providers` list) to the application root injector.
 
 This makes the provider visible to every class in the application that knows the provider's lookup token, or name.
 
@@ -287,10 +287,10 @@ Thus, the lazy loading is preferable.
 
 ## Should I add application-wide providers to the root `AppModule` or the root `AppComponent`?
 
-Define application-wide providers by specifying `providedIn: 'root'` on its `@Injectable()` decorator \(in the case of services\) or at `InjectionToken` construction \(in the case where tokens are provided\).
+Define application-wide providers by specifying `providedIn: 'root'` on its `@Injectable()` decorator (in the case of services) or at `InjectionToken` construction (in the case where tokens are provided).
 Providers that are created this way automatically are made available to the entire application and don't need to be listed in any module.
 
-If a provider cannot be configured in this way \(perhaps because it has no sensible default value\), then register application-wide providers in the root `AppModule`, not in the `AppComponent`.
+If a provider cannot be configured in this way (perhaps because it has no sensible default value), then register application-wide providers in the root `AppModule`, not in the `AppComponent`.
 
 Lazy-loaded modules and their components can inject `AppModule` services; they can't inject `AppComponent` services.
 
@@ -321,10 +321,10 @@ This means that lazy-loaded modules can't reach them.
 ## Should I add other providers to a module or a component?
 
 Providers should be configured using `@Injectable` syntax.
-If possible, they should be provided in the application root \(`providedIn: 'root'`\).
+If possible, they should be provided in the application root (`providedIn: 'root'`).
 Services that are configured this way are lazily loaded if they are only used from a lazily loaded context.
 
-If it's the consumer's decision whether a provider is available application-wide or not, then register providers in modules \(`@NgModule.providers`\) instead of registering in components \(`@Component.providers`\).
+If it's the consumer's decision whether a provider is available application-wide or not, then register providers in modules (`@NgModule.providers`) instead of registering in components (`@Component.providers`).
 
 Register a provider with a component when you *must* limit the scope of a service instance to that component and its component tree.
 Apply the same reasoning to registering a provider with a directive.
@@ -342,7 +342,7 @@ The changes that editor makes in its service don't touch the instances elsewhere
 ### The eagerly loaded scenario
 
 When an eagerly loaded module provides a service, for example a `UserService`, that service is available application-wide.
-If the root module provides `UserService` and imports another module that provides the same `UserService`, Angular registers one of them in the root application injector \(see [What if I import the same module twice?](guide/ngmodule-faq#q-reimport)\).
+If the root module provides `UserService` and imports another module that provides the same `UserService`, Angular registers one of them in the root application injector (see [What if I import the same module twice?](guide/ngmodule-faq#q-reimport)).
 
 Then, when some component injects `UserService`, Angular finds it in the application root injector, and delivers the app-wide singleton service.
 No problem.
@@ -439,7 +439,7 @@ For more information, see [Feature Modules](guide/feature-modules) and [Module T
 
 In an Angular app, NgModules and JavaScript modules work together.
 
-In modern JavaScript, every file is a module \(see the [Modules](https://exploringjs.com/es6/ch_modules.html) page of the Exploring ES6 website\).
+In modern JavaScript, every file is a module (see the [Modules](https://exploringjs.com/es6/ch_modules.html) page of the Exploring ES6 website).
 Within each file you write an `export` statement to make parts of the module public.
 
 An Angular NgModule is a class with the `@NgModule` decorator &mdash;JavaScript modules don't have to have the `@NgModule` decorator.

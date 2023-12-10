@@ -172,7 +172,7 @@ Typically, updates occur for one of the following reasons:
     </code-example>
 
 1.  MicroTasks, such as `Promise.then()`.
-    Other asynchronous APIs return a Promise object \(such as `fetch`\), so the `then()` callback function can also update the data.
+    Other asynchronous APIs return a Promise object (such as `fetch`), so the `then()` callback function can also update the data.
     For example:
 
     <code-example format="typescript" language="typescript">

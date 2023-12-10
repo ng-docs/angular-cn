@@ -16,7 +16,7 @@ For the sample application that this page describes, see the <live-example></liv
 
 ## Accessibility attributes
 
-Building accessible web experience often involves setting [Accessible Rich Internet Applications \(ARIA\) attributes](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) to provide semantic meaning where it might otherwise be missing.
+Building accessible web experience often involves setting [Accessible Rich Internet Applications (ARIA) attributes](https://developers.google.com/web/fundamentals/accessibility/semantics-aria) to provide semantic meaning where it might otherwise be missing.
 Use [attribute binding](guide/attribute-binding) template syntax to control the values of accessibility-related attributes.
 
 When binding to ARIA attributes in Angular, you must use the `attr.` prefix. The ARIA specification depends specifically on HTML attributes rather than properties of DOM elements.
@@ -45,7 +45,7 @@ Static ARIA attributes require no extra syntax.
 
 <div class="alert is-helpful">
 
-By convention, HTML attributes use lowercase names \(`tabindex`\), while properties use camelCase names \(`tabIndex`\).
+By convention, HTML attributes use lowercase names (`tabindex`), while properties use camelCase names (`tabIndex`).
 
 See the [Binding syntax](guide/binding-syntax#html-attribute-vs-dom-property) guide for more background on the difference between attributes and properties.
 
@@ -130,7 +130,7 @@ You should avoid situations where focus returns to the `body` element after a ro
 CSS classes applied to active `RouterLink` elements, such as `RouterLinkActive`, provide a visual cue to identify the active link.
 Unfortunately, a visual cue doesn't help blind or visually impaired users.
 Applying the `aria-current` attribute to the element can help identify the active link.
-For more information, see [Mozilla Developer Network \(MDN\) aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
+For more information, see [Mozilla Developer Network (MDN) aria-current](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)).
 
 The `RouterLinkActive` directive provides the `ariaCurrentWhenActive` input which sets the `aria-current` to a specified value when the link becomes active.
 

@@ -4,7 +4,7 @@
 Observables are a technique for event handling, asynchronous programming, and handling multiple values emitted over time.
 
 The observer pattern is a software design pattern in which an object, called the *subject*, maintains a list of its dependents, called *observers*, and notifies them automatically of state changes.
-This pattern is similar \(but not identical\) to the [publish/subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) design pattern.
+This pattern is similar (but not identical) to the [publish/subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) design pattern.
 
 Angular apps tend to use the [RxJS library for Observables](https://rxjs.dev/). This overview covers just the basics of observables as implemented by that library.
 ## Basic usage and terms
@@ -109,7 +109,7 @@ Producing an error also causes the observable to clean up subscriptions and stop
 
 <code-example  path="observables/src/subscribing.ts" region="next-or-error"></code-example>
 
-Error handling \(and specifically recovering from an error\) is [covered in more detail in a later section](guide/rx-library#error-handling).
+Error handling (and specifically recovering from an error) is [covered in more detail in a later section](guide/rx-library#error-handling).
 
 ## Creating observables
 

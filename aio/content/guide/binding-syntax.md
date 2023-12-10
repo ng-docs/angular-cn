@@ -142,7 +142,7 @@ Angular provides three categories of data binding according to the direction of 
 | Two-way                                                                  | <code-example> [(target)]="expression" </code-example>                       | Two-way                                 |
 
 Binding types other than interpolation have a target name to the left of the equal sign.
-The target of a binding is a property or event, which you surround with square bracket \(`[ ]`\) characters, parenthesis \(`( )`\) characters, or both \(`[( )]`\) characters.
+The target of a binding is a property or event, which you surround with square bracket (`[ ]`) characters, parenthesis (`( )`) characters, or both (`[( )]`) characters.
 
 The binding punctuation of `[]`, `()`, `[()]`, and the prefix specify the direction of data flow.
 
@@ -150,7 +150,7 @@ The binding punctuation of `[]`, `()`, `[()]`, and the prefix specify the direct
 *   Use `()` to bind from view to source
 *   Use `[()]` to bind in a two-way sequence of view to source to view
 
-Place the expression or statement to the right of the equal sign within double quote \(`""`\) characters.
+Place the expression or statement to the right of the equal sign within double quote (`""`) characters.
 For more information see [Interpolation](guide/interpolation) and [Template statements](guide/template-statements).
 
 ## Binding types and targets
@@ -164,7 +164,7 @@ The following table summarizes the targets for the different binding types.
 | Property  | Element property <br /> Component property <br /> Directive property | `alt`, `src`, `hero`, and `ngClass` in the following: <code-example path="template-syntax/src/app/app.component.html" region="property-binding-syntax-1"></code-example> <!-- For more information, see [Property Binding](guide/property-binding). --> |
 | Event     | Element event <br /> Component event <br /> Directive event           | `click`, `deleteRequest`, and `myClick` in the following: <code-example path="template-syntax/src/app/app.component.html" region="event-binding-syntax-1"></code-example>                                                                               |
 | Two-way   | Event and property                                                   | <code-example path="template-syntax/src/app/app.component.html" region="2-way-binding-syntax-1"></code-example>                                                                                                                                         |
-| Attribute | Attribute \(the exception\)                                          | <code-example path="template-syntax/src/app/app.component.html" region="attribute-binding-syntax-1"></code-example>                                                                                                                                     |
+| Attribute | Attribute (the exception)                                          | <code-example path="template-syntax/src/app/app.component.html" region="attribute-binding-syntax-1"></code-example>                                                                                                                                     |
 | Class     | `class` property                                                     | <code-example path="template-syntax/src/app/app.component.html" region="class-binding-syntax-1"></code-example>                                                                                                                                         |
 | Style     | `style` property                                                     | <code-example path="template-syntax/src/app/app.component.html" region="style-binding-syntax-1"></code-example>                                                                                                                                         |
 

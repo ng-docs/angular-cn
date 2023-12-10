@@ -1,6 +1,6 @@
 # Dependency injection in action
 
-This guide explores many of the features of dependency injection \(DI\) in Angular.
+This guide explores many of the features of dependency injection (DI) in Angular.
 
 <div class="alert is-helpful">
 
@@ -57,7 +57,7 @@ When a class requires a dependency, that dependency is added to the constructor 
 When Angular needs to instantiate the class, it calls upon the DI framework to supply the dependency.
 By default, the DI framework searches for a provider in the injector hierarchy, starting at the component's local injector, and if necessary bubbling up through the injector tree until it reaches the root injector.
 
-*   The first injector configured with a provider supplies the dependency \(a service instance or value\) to the constructor
+*   The first injector configured with a provider supplies the dependency (a service instance or value) to the constructor
 *   If no provider is found in the root injector, the DI framework throws an error
 
 There are a number of options for modifying the default search behavior, using *parameter decorators* on the service-valued parameters of a class constructor.
@@ -183,9 +183,9 @@ To illustrate, here's a minimal version of `HighlightDirective` from the [Attrib
 The directive sets the background to a highlight color when the user mouses over the DOM element to which the directive is applied.
 
 Angular sets the constructor's `el` parameter to the injected `ElementRef`.
-\(An `ElementRef` is a wrapper around a DOM element, whose `nativeElement` property exposes the DOM element for the directive to manipulate.\)
+(An `ElementRef` is a wrapper around a DOM element, whose `nativeElement` property exposes the DOM element for the directive to manipulate.)
 
-The sample code applies the directive's `appHighlight` attribute to two `<div>` tags, first without a value \(yielding the default color\) and then with an assigned color value.
+The sample code applies the directive's `appHighlight` attribute to two `<div>` tags, first without a value (yielding the default color) and then with an assigned color value.
 
 <code-example header="src/app/app.component.html (highlight)" path="dependency-injection-in-action/src/app/app.component.html" region="highlight"></code-example>
 
@@ -262,7 +262,7 @@ The following code shows two examples in `HeroOfTheMonthComponent`.
 
 <code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-class"></code-example>
 
-The first provider is the *de-sugared*, expanded form of the most typical case in which the class to be created \(`HeroService`\) is also the provider's dependency injection token.
+The first provider is the *de-sugared*, expanded form of the most typical case in which the class to be created (`HeroService`) is also the provider's dependency injection token.
 The short form is generally preferred; this long form makes the details explicit.
 
 The second provider substitutes `DateLoggerService` for `LoggerService`.
@@ -337,7 +337,7 @@ Notice that this form of provider has a third key, `deps`, which specifies depen
 
 Use this technique to create a dependency object with a factory function whose inputs are a combination of *injected services* and *local state*.
 
-The dependency object \(returned by the factory function\) is typically a class instance, but can be other things as well.
+The dependency object (returned by the factory function) is typically a class instance, but can be other things as well.
 In this example, the dependency object is a string of the names of the runners-up to the "Hero of the Month" contest.
 
 In the example, the local state is the number `2`, the number of runners-up that the component should show.
@@ -346,7 +346,7 @@ The `runnersUpFactory()` returns the *provider factory function*, which can use 
 
 <code-example header="runners-up.ts (excerpt)" path="dependency-injection-in-action/src/app/runners-up.ts" region="factory-synopsis"></code-example>
 
-The provider factory function \(returned by `runnersUpFactory()`\) returns the actual dependency object, the string of names.
+The provider factory function (returned by `runnersUpFactory()`) returns the actual dependency object, the string of names.
 
 *   The function takes a winning `Hero` and a `HeroService` as arguments.
     Angular supplies these arguments from injected values identified by the two *tokens* in the `deps` array.

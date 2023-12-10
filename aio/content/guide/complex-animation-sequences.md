@@ -29,7 +29,7 @@ Most complex animations rely on the `query()` function to find child elements an
 | Examples                               | Details |
 |:---                                    |:---     |
 | `query()` followed by `animate()`      | Used to query simple HTML elements and directly apply animations to them.                                                                                                                            |
-| `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation \(which would be otherwise be blocked by the current/parent element's animation\). |
+| `query()` followed by `animateChild()` | Used to query child elements, which themselves have animations metadata applied to them and trigger such animation (which would be otherwise be blocked by the current/parent element's animation). |
 
 The first argument of `query()` is a [css selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) string which can also contain the following Angular-specific tokens:
 
@@ -46,7 +46,7 @@ The first argument of `query()` is a [css selector](https://developer.mozilla.or
 
 Not all child elements are actually considered as entering/leaving; this can, at times, be counterintuitive and confusing. Please see the [query api docs](api/animations/query#entering-and-leaving-elements) for more information.
 
-You can also see an illustration of this in the animations live example \(introduced in the animations [introduction section](guide/animations#about-this-guide)\) under the Querying tab.
+You can also see an illustration of this in the animations live example (introduced in the animations [introduction section](guide/animations#about-this-guide)) under the Querying tab.
 
 </div>
 
@@ -54,7 +54,7 @@ You can also see an illustration of this in the animations live example \(introd
 
 After having queried child elements via `query()`, the `stagger()` function lets you define a timing gap between each queried item that is animated and thus animates elements with a delay between them.
 
-The following example demonstrates how to use the `query()` and `stagger()` functions to animate a list \(of heroes\) adding each in sequence, with a slight delay, from top to bottom.
+The following example demonstrates how to use the `query()` and `stagger()` functions to animate a list (of heroes) adding each in sequence, with a slight delay, from top to bottom.
 
 *   Use `query()` to look for an element entering the page that meets certain criteria
 *   For each of these elements, use `style()` to set the same initial style for the element.
@@ -113,7 +113,7 @@ The `filterAnimation` in the component's decorator contains three transitions.
 
 The code in this example performs the following tasks:
 
-*   Skips animations when the user first opens or navigates to this page \(the filter animation narrows what is already there, so it only works on elements that already exist in the DOM\)
+*   Skips animations when the user first opens or navigates to this page (the filter animation narrows what is already there, so it only works on elements that already exist in the DOM)
 *   Filters heroes based on the search input's value
 
 For each change:

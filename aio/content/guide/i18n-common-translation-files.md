@@ -26,7 +26,7 @@ To extract the source language file, complete the following actions.
     <code-example path="i18n/doc-files/commands.sh" region="extract-i18n-default"></code-example>
 
 The `extract-i18n` command creates a source language file named `messages.xlf` in the root directory of your project.
-For more information about the XML Localization Interchange File Format \(XLIFF, version 1.2\), see [XLIFF][WikipediaWikiXliff].
+For more information about the XML Localization Interchange File Format (XLIFF, version 1.2), see [XLIFF][WikipediaWikiXliff].
 
 Use the following [`extract-i18n`][AioCliExtractI18n] command options to change the source language file location, format, and file name.
 
@@ -56,7 +56,7 @@ The `extract-i18n` command creates files in the following translation formats.
 | JSON               | [JavaScript Object Notation][JsonMain]                                                                           | `.json`           |
 | XLIFF 1.2          | [XML Localization Interchange File Format, version 1.2][OasisOpenDocsXliffXliffCoreXliffCoreHtml]                | `.xlf`            |
 | XLIFF 2            | [XML Localization Interchange File Format, version 2][OasisOpenDocsXliffXliffCoreV20Cos01XliffCoreV20Cose01Html] | `.xlf`            |
-| XMB                | [XML Message Bundle][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                 | `.xmb` \(`.xtb`\) |
+| XMB                | [XML Message Bundle][UnicodeCldrDevelopmentDevelopmentProcessDesignProposalsXmb]                                 | `.xmb` (`.xtb`) |
 
 Specify the translation format explicitly with the `--format` command option.
 
@@ -114,7 +114,7 @@ For example, to create a French translation file, complete the following actions
 
 1.  Run the `extract-i18n` command.
 1.  Make a copy of the `messages.xlf` source language file.
-1.  Rename the copy to `messages.fr.xlf` for the French language \(`fr`\) translation.
+1.  Rename the copy to `messages.fr.xlf` for the French language (`fr`) translation.
 1.  Move the `fr` translation file to the `src/locale` directory.
 1.  Send the `fr` translation file to the translator.
 
@@ -193,7 +193,7 @@ The following example displays a `select` ICU expression in the component templa
 <code-example header="src/app/app.component.html" path="i18n/src/app/app.component.html" region="i18n-select"></code-example>
 
 In this example, Angular extracts the expression into two translation units.
-The first contains the text outside of the `select` clause, and uses a placeholder for `select` \(`<x id="ICU">`\):
+The first contains the text outside of the `select` clause, and uses a placeholder for `select` (`<x id="ICU">`):
 
 <code-example header="src/locale/messages.fr.xlf (&lt;trans-unit&gt;)" path="i18n/doc-files/messages.fr.xlf.html" region="translate-select-1"></code-example>
 

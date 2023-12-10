@@ -26,7 +26,7 @@ The following code snippet binds the trigger to the value of the `isOpen` proper
 In this example, when the `isOpen` expression evaluates to a defined state of `open` or `closed`, it notifies the trigger `openClose` of a state change.
 Then it's up to the `openClose` code to handle the state change and kick off a state change animation.
 
-For elements entering or leaving a page \(inserted or removed from the DOM\), you can make the animations conditional.
+For elements entering or leaving a page (inserted or removed from the DOM), you can make the animations conditional.
 For example, use `*ngIf` with the animation trigger in the HTML template.
 
 <div class="alert is-helpful">

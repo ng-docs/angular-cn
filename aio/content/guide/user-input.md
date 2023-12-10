@@ -52,7 +52,7 @@ When the user clicks the button, Angular calls the `onClickMe` method from `Clic
 DOM events carry a payload of information that may be useful to the component.
 This section shows how to bind to the `keyup` event of an input box to get the user's input after each keystroke.
 
-The following code listens to the `keyup` event and passes the entire event payload \(`$event`\) to the component event handler.
+The following code listens to the `keyup` event and passes the entire event payload (`$event`) to the component event handler.
 
 <code-example header="src/app/keyup.components.ts (template v.1)" path="user-input/src/app/keyup.components.ts" region="key-up-component-1-template"></code-example>
 
@@ -66,7 +66,7 @@ For example, a mouse event includes different information than an input box edit
 All [standard DOM event objects](https://developer.mozilla.org/docs/Web/API/Event) have a `target` property, a reference to the element that raised the event.
 In this case, `target` refers to the [`<input>` element](https://developer.mozilla.org/docs/Web/API/HTMLInputElement) and `event.target.value` returns the current contents of that element.
 
-After each call, the `onKey()` method appends the contents of the input box value to the list in the component's `values` property, followed by a separator character \(`|`\).
+After each call, the `onKey()` method appends the contents of the input box value to the list in the component's `values` property, followed by a separator character (`|`).
 The [interpolation](guide/interpolation) displays the accumulating input box changes from the `values` property.
 
 <!-- vale Angular.Angular_Spelling = NO -->
@@ -129,7 +129,7 @@ The next section shows how to use template reference variables to address this p
 There's another way to get the user data:
 use Angular [**template reference variables**](guide/template-reference-variables).
 These variables provide direct access to an element from within the template.
-To declare a template reference variable, precede an identifier with a hash/pound character \(`#`\).
+To declare a template reference variable, precede an identifier with a hash/pound character (`#`).
 
 The following example uses a template reference variable to implement a keystroke loopback in a simple template.
 

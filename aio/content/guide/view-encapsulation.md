@@ -40,7 +40,7 @@ Two kinds of these attributes exist:
 | Attributes   | Details |
 |:---          |:---     |
 | `_nghost`    | Are added to elements that enclose a component's view and that would be ShadowRoots in a native Shadow DOM encapsulation. This is typically the case for components' host elements.          |
-| `_ngcontent` | Are added to child element within a component's view, those are used to match the elements with their respective emulated ShadowRoots \(host elements with a matching `_nghost` attribute\). |
+| `_ngcontent` | Are added to child element within a component's view, those are used to match the elements with their respective emulated ShadowRoots (host elements with a matching `_nghost` attribute). |
 
 The exact values of these attributes are a private implementation detail of Angular.
 They are automatically created and you should never refer to them in application code.

@@ -148,8 +148,8 @@ In this section, you'll update your application to test the `UnlessDirective`.
     <code-example header="src/app/app.component.html (appUnless)" path="structural-directives/src/app/app.component.html" region="appUnless"></code-example>
 
     The asterisk is shorthand that marks `appUnless` as a structural directive.
-    When the `condition` is falsy, the top \(A\) paragraph appears and the bottom \(B\) paragraph disappears.
-    When the `condition` is truthy, the top \(A\) paragraph disappears and the bottom (B) paragraph appears.
+    When the `condition` is falsy, the top (A) paragraph appears and the bottom (B) paragraph disappears.
+    When the `condition` is truthy, the top (A) paragraph disappears and the bottom (B) paragraph appears.
 
 1.  To change and display the value of `condition` in the browser, add markup that displays the status and a button.
 

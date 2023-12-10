@@ -46,7 +46,7 @@ Though you may see it coded this way, using the `providedIn` property of the `@I
 Generally, you'll only need `providedIn` for providing services and `forRoot()`/`forChild()` for routing.
 However, understanding how `forRoot()` works to make sure a service is a singleton will inform your development at a deeper level.
 
-If a module defines both providers and declarations \(components, directives, pipes\), then loading the module in multiple feature modules would duplicate the registration of the service.
+If a module defines both providers and declarations (components, directives, pipes), then loading the module in multiple feature modules would duplicate the registration of the service.
 This could result in multiple service instances and the service would no longer behave as a singleton.
 
 There are multiple ways to prevent this:

@@ -37,7 +37,7 @@ http://localhost:3002/app/index.html
 
 ## Running E2E tests
 
-Like for any example \(at the project root\):
+Like for any example (at the project root):
 
 ```shell
 gulp run-e2e-tests --filter=phonecat-1

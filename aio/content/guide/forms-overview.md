@@ -132,7 +132,7 @@ The following diagrams illustrate both kinds of data flow for each type of form,
 
 ### Data flow in reactive forms
 
-In reactive forms each form element in the view is directly linked to the form model \(a `FormControl` instance\).
+In reactive forms each form element in the view is directly linked to the form model (a `FormControl` instance).
 Updates from the view to the model and from the model to the view are synchronous and do not depend on how the UI is rendered.
 
 The view-to-model diagram shows how data flows when an input field's value is changed from the view through the following steps.
@@ -176,7 +176,7 @@ The view-to-model diagram shows how data flows when an input field's value is ch
 1.  The `FormControl` instance emits the new value through the `valueChanges` observable.
 1.  Any subscribers to the `valueChanges` observable receive the new value.
 1.  The control value accessor also calls the `NgModel.viewToModelUpdate()` method which emits an `ngModelChange` event.
-1.  Because the component template uses two-way data binding for the `favoriteColor` property, the `favoriteColor` property in the component is updated to the value emitted by the `ngModelChange` event \(*Blue*\).
+1.  Because the component template uses two-way data binding for the `favoriteColor` property, the `favoriteColor` property in the component is updated to the value emitted by the `ngModelChange` event (*Blue*).
 
 <div class="lightbox">
 

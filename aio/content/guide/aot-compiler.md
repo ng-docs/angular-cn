@@ -34,10 +34,10 @@ Angular offers two ways to compile your application:
 
 | Angular compile       | Details |
 |:---                   |:---     |
-| Just-in-Time \(JIT\)  | Compiles your application in the browser at runtime. This was the default until Angular 8.        |
-| Ahead-of-Time \(AOT\) | Compiles your application and libraries at build time. This is the default starting in Angular 9. |
+| Just-in-Time (JIT)  | Compiles your application in the browser at runtime. This was the default until Angular 8.        |
+| Ahead-of-Time (AOT) | Compiles your application and libraries at build time. This is the default starting in Angular 9. |
 
-When you run the [`ng build`](cli/build) \(build only\) or [`ng serve`](cli/serve) \(build and serve locally\) CLI commands, the type of compilation \(JIT or AOT\) depends on the value of the `aot` property in your build configuration specified in `angular.json`.
+When you run the [`ng build`](cli/build) (build only) or [`ng serve`](cli/serve) (build and serve locally) CLI commands, the type of compilation (JIT or AOT) depends on the value of the `aot` property in your build configuration specified in `angular.json`.
 By default, `aot` is set to `true` for new CLI applications.
 
 See the [CLI command reference](cli) and [Building and serving Angular apps](guide/build) for more information.
@@ -90,7 +90,7 @@ For additional guidelines and instructions on preparing an application for AOT c
 
 <div class="alert is-helpful">
 
-Errors in AOT compilation commonly occur because of metadata that does not conform to the compiler's requirements \(as described more fully below\).
+Errors in AOT compilation commonly occur because of metadata that does not conform to the compiler's requirements (as described more fully below).
 For help in understanding and resolving these problems, see [AOT Metadata Errors](guide/aot-metadata-errors).
 
 </div>
@@ -327,13 +327,13 @@ The compiler can only reference *exported symbols*.
 The collector can represent a function call or object creation with `new` as long as the syntax is valid.
 The compiler, however, can later refuse to generate a call to a *particular* function or creation of a *particular* object.
 
-The compiler can only create instances of certain classes, supports only core decorators, and only supports calls to macros \(functions or static methods\) that return expressions.
+The compiler can only create instances of certain classes, supports only core decorators, and only supports calls to macros (functions or static methods) that return expressions.
 
 | Compiler action      | Details |
 |:---                  |:---     |
 | New instances        | The compiler only allows metadata that create instances of the class `InjectionToken` from `@angular/core`.                                            |
 | Supported decorators | The compiler only supports metadata for the [Angular decorators in the `@angular/core` module](api/core#decorators).                                   |
-| Function calls       | Factory functions must be exported, named functions. The AOT compiler does not support lambda expressions \("arrow functions"\) for factory functions. |
+| Function calls       | Factory functions must be exported, named functions. The AOT compiler does not support lambda expressions ("arrow functions") for factory functions. |
 
 <a id="function-calls"></a>
 

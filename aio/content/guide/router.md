@@ -225,7 +225,7 @@ const routes: Routes = [
 
 In this example, the third route is a redirect so that the router defaults to the `first-component` route.
 Notice that this redirect precedes the wildcard route.
-Here, `path: ''` means to use the initial relative URL \(`''`\).
+Here, `path: ''` means to use the initial relative URL (`''`).
 
 For more details on `pathMatch` see [Spotlight on `pathMatch`](guide/router-tutorial-toh#pathmatch).
 
@@ -550,7 +550,7 @@ The following minimal `RouterLink` example builds upon a specified [default chil
 
 Review the following:
 
-*   The first item in the array identifies the parent route \(`/crisis-center`\)
+*   The first item in the array identifies the parent route (`/crisis-center`)
 *   There are no parameters for this parent route
 *   There is no default for the child route so you need to pick one
 *   You're navigating to the `CrisisListComponent`, whose route path is `/`, but you don't need to explicitly add the slash
@@ -561,11 +561,11 @@ Consider the following router link that navigates from the root of the applicati
 <a [routerLink]="['/crisis-center', 1]">Dragon Crisis</a>
 ```
 
-*   The first item in the array identifies the parent route \(`/crisis-center`\)
+*   The first item in the array identifies the parent route (`/crisis-center`)
 *   There are no parameters for this parent route
-*   The second item identifies the child route details about a particular crisis \(`/:id`\)
+*   The second item identifies the child route details about a particular crisis (`/:id`)
 *   The details child route requires an `id` route parameter
-*   You added the `id` of the Dragon Crisis as the second item in the array \(`1`\)
+*   You added the `id` of the Dragon Crisis as the second item in the array (`1`)
 *   The resulting path is `/crisis-center/1`
 
 You could also redefine the `AppComponent` template with Crisis Center routes exclusively:
@@ -583,7 +583,7 @@ template: `
 ```
 
 In summary, you can write applications with one, two or more levels of routing.
-The link parameters array affords the flexibility to represent any routing depth and any legal sequence of route paths, \(required\) router parameters, and \(optional\) route parameter objects.
+The link parameters array affords the flexibility to represent any routing depth and any legal sequence of route paths, (required) router parameters, and (optional) route parameter objects.
 
 <a id="browser-url-styles"></a>
 <a id="location-strategy"></a>
@@ -603,7 +603,7 @@ localhost:3002/crisis-center
 
 </code-example>
 
-Older browsers send page requests to the server when the location URL changes unless the change occurs after a "#" \(called the "hash"\).
+Older browsers send page requests to the server when the location URL changes unless the change occurs after a "#" (called the "hash").
 Routers can take advantage of this exception by composing in-application route URLs with hashes.
 Here's a "hash URL" that routes to the Crisis Center.
 
@@ -639,7 +639,7 @@ It produces URLs that are easier for users to understand and it preserves the op
 Rendering critical pages on the server is a technique that can greatly improve perceived responsiveness when the application first loads.
 An application that would otherwise take ten or more seconds to start could be rendered on the server and delivered to the user's device in less than a second.
 
-This option is only available if application URLs look like normal web URLs without hash \(`#`\) characters in the middle.
+This option is only available if application URLs look like normal web URLs without hash (`#`) characters in the middle.
 
 ## `<base href>`
 
@@ -652,7 +652,7 @@ Modern HTML5 browsers were the first to support `pushState` which is why many pe
 <div class="alert is-helpful">
 
 HTML5 style navigation is the router default.
-In the [LocationStrategy and browser URL styles](#browser-url-styles) section, learn why HTML5 style is preferable, how to adjust its behavior, and how to switch to the older hash \(`#`\) style, if necessary.
+In the [LocationStrategy and browser URL styles](#browser-url-styles) section, learn why HTML5 style is preferable, how to adjust its behavior, and how to switch to the older hash (`#`) style, if necessary.
 
 </div>
 
@@ -684,20 +684,20 @@ The preferred way to configure the strategy is to add a [`<base href>` element](
 
 <code-example header="src/index.html (base-href)" path="router/src/index.html" region="base-href"></code-example>
 
-Without that tag, the browser might not be able to load resources \(images, CSS, scripts\) when "deep linking" into the application.
+Without that tag, the browser might not be able to load resources (images, CSS, scripts) when "deep linking" into the application.
 
 Some developers might not be able to add the `<base>` element, perhaps because they don't have access to `<head>` or the `index.html`.
 
 Those developers can still use HTML5 URLs by taking the following two steps:
 
 1.  Provide the router with an appropriate `APP_BASE_HREF` value.
-1.  Use root URLs \(URLs with an `authority`\) for all web resources: CSS, images, scripts, and template HTML files.
+1.  Use root URLs (URLs with an `authority`) for all web resources: CSS, images, scripts, and template HTML files.
 
     *   The `<base href>` `path` should end with a "/", as browsers ignore characters in the `path` that follow the right-most "`/`"
     *   If the `<base href>` includes a `query` part, the `query` is only used if the `path` of a link in the page is empty and has no `query`.
         This means that a `query` in the `<base href>` is only included when using `HashLocationStrategy`.
 
-    *   If a link in the page is a root URL \(has an `authority`\), the `<base href>` is not used.
+    *   If a link in the page is a root URL (has an `authority`), the `<base href>` is not used.
         In this way, an `APP_BASE_HREF` with an authority will cause all links created by Angular to ignore the `<base href>` value.
 
     *   A fragment in the `<base href>` is *never* persisted

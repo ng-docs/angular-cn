@@ -317,13 +317,13 @@ Type names provide pattern matching for any automated tasks.
 
 <div class="s-rule do">
 
-**Do** append the symbol name with the conventional suffix \(such as `Component`, `Directive`, `Module`, `Pipe`, or `Service`\) for a thing of that type.
+**Do** append the symbol name with the conventional suffix (such as `Component`, `Directive`, `Module`, `Pipe`, or `Service`) for a thing of that type.
 
 </div>
 
 <div class="s-rule do">
 
-**Do** give the filename the conventional suffix \(such as `.component.ts`, `.directive.ts`, `.module.ts`, `.pipe.ts`, or `.service.ts`\) for a file of that type.
+**Do** give the filename the conventional suffix (such as `.component.ts`, `.directive.ts`, `.module.ts`, `.pipe.ts`, or `.service.ts`) for a file of that type.
 
 </div>
 
@@ -564,7 +564,7 @@ The Angular HTML parser is case-sensitive and recognizes lower camel case.
 
 <div class="s-rule do">
 
-**Do** use a custom prefix for the selector of directives \(for example, the prefix `toh` from **T**our **o**f **H**eroes\).
+**Do** use a custom prefix for the selector of directives (for example, the prefix `toh` from **T**our **o**f **H**eroes).
 
 </div>
 
@@ -609,8 +609,8 @@ Directives are easily identified.
 <div class="s-rule do">
 
 **Do** use consistent names for all pipes, named after their feature.
-The pipe class name should use [UpperCamelCase](guide/glossary#case-types) \(the general convention for class names\), and the corresponding `name` string should use *lowerCamelCase*.
-The `name` string cannot use hyphens \("dash-case" or "kebab-case"\).
+The pipe class name should use [UpperCamelCase](guide/glossary#case-types) (the general convention for class names), and the corresponding `name` string should use *lowerCamelCase*.
+The `name` string cannot use hyphens ("dash-case" or "kebab-case").
 
 </div>
 
@@ -835,7 +835,7 @@ To confirm your intuition about a particular structure, ask:
 <div class="s-why-last">
 
 **Why**? <br />
-To work efficiently you must be able to find files quickly, especially when you do not know \(or do not remember\) the file *names*.
+To work efficiently you must be able to find files quickly, especially when you do not know (or do not remember) the file *names*.
 Keeping related files near each other in an intuitive location saves time.
 A descriptive folder structure makes a world of difference to you and the people who come after you.
 
@@ -926,13 +926,13 @@ Use a flatter structure until there is an obvious value to creating a new folder
 
 <a id="04-05"></a>
 
-### *T-DRY* \(Try to be *DRY*\)
+### *T-DRY* (Try to be *DRY*)
 
 #### Style 04-05
 
 <div class="s-rule do">
 
-**Do** be DRY \(Don't Repeat Yourself\).
+**Do** be DRY (Don't Repeat Yourself).
 
 </div>
 
@@ -980,7 +980,7 @@ But if something is not obvious or departs from a convention, then spell it out.
 
 <div class="s-rule consider">
 
-**Consider** creating a folder for a component when it has multiple accompanying files \(`.ts`, `.html`, `.css`, and `.spec`\).
+**Consider** creating a folder for a component when it has multiple accompanying files (`.ts`, `.html`, `.css`, and `.spec`).
 
 </div>
 
@@ -994,7 +994,7 @@ Helps keep the application structure small and easy to maintain in the early sta
 <div class="s-why-last">
 
 **Why**? <br />
-Components often have four files \(for example, `*.html`, `*.css`, `*.ts`, and `*.spec.ts`\) and can clutter a folder quickly.
+Components often have four files (for example, `*.html`, `*.css`, `*.ts`, and `*.spec.ts`) and can clutter a folder quickly.
 
 </div>
 
@@ -1156,7 +1156,7 @@ Here is a compliant folder and file structure:
 
 <div class="alert is-helpful">
 
-While components in dedicated folders are widely preferred, another option for small applications is to keep components flat \(not in a dedicated folder\).
+While components in dedicated folders are widely preferred, another option for small applications is to keep components flat (not in a dedicated folder).
 This adds up to four files to the existing folder, but also reduces the folder nesting.
 Whatever you choose, be consistent.
 
@@ -1653,7 +1653,7 @@ Large, inline templates and styles obscure the component's purpose and implement
 
 **Why**? <br />
 In most editors, syntax hints and code snippets aren't available when developing inline templates and styles.
-The Angular TypeScript Language Service \(forthcoming\) promises to overcome this deficiency for HTML templates in those editors that support it; it won't help with CSS styles.
+The Angular TypeScript Language Service (forthcoming) promises to overcome this deficiency for HTML templates in those editors that support it; it won't help with CSS styles.
 
 </div>
 
@@ -1749,7 +1749,7 @@ Put it on the line above when doing so is clearly more readable.
 <div class="s-why">
 
 **Why**? <br />
-Two names for the same property \(one private, one public\) is inherently confusing.
+Two names for the same property (one private, one public) is inherently confusing.
 
 </div>
 
@@ -1917,7 +1917,7 @@ If the event itself was prefixed with `on` this would result in an `on-onEvent` 
 <div class="s-why">
 
 **Why**? <br />
-Logic will be contained in one place \(the component class\) instead of being spread in two places.
+Logic will be contained in one place (the component class) instead of being spread in two places.
 
 </div>
 
@@ -2159,7 +2159,7 @@ In this scenario it would be better to provide the service at the component leve
 <div class="s-why">
 
 **Why**? <br />
-The Angular Dependency Injection \(DI\) mechanism resolves a service's own
+The Angular Dependency Injection (DI) mechanism resolves a service's own
 dependencies based on the declared types of that service's constructor parameters.
 
 </div>
@@ -2209,7 +2209,7 @@ Separating the data services moves the logic on how to get it to the data servic
 <div class="s-why">
 
 **Why**? <br />
-This makes it easier to test \(mock or real\) the data calls when testing a component that uses a data service.
+This makes it easier to test (mock or real) the data calls when testing a component that uses a data service.
 
 </div>
 

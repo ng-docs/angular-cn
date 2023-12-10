@@ -94,7 +94,7 @@ built-in validators &mdash;this time, in function form, as in the following exam
 <code-example header="reactive/hero-form-reactive.component.ts (validator functions)" path="form-validation/src/app/reactive/hero-form-reactive.component.1.ts" region="form-group"></code-example>
 
 In this example, the `name` control sets up two built-in validators &mdash;`Validators.required` and `Validators.minLength(4)`&mdash; and one custom validator, `forbiddenNameValidator`.
-\(For more details see [custom validators](#custom-validators).\)
+(For more details see [custom validators](#custom-validators).)
 
 All of these validators are synchronous, so they are passed as the second argument.
 Notice that you can support multiple validators by passing the functions in as an array.
@@ -187,7 +187,7 @@ The following classes are currently supported.
 *   `.ng-dirty`
 *   `.ng-untouched`
 *   `.ng-touched`
-*   `.ng-submitted` \(enclosing form element only\)
+*   `.ng-submitted` (enclosing form element only)
 
 In the following example, the hero form uses the `.ng-valid` and `.ng-invalid` classes to
 set the color of each form control's border.
@@ -284,7 +284,7 @@ These are very similar to their synchronous counterparts, with the following dif
     To convert an infinite observable into a finite one, pipe the observable through a filtering operator such as `first`, `last`, `take`, or `takeUntil`.
 
 Asynchronous validation happens after the synchronous validation, and is performed only if the synchronous validation is successful.
-This check lets forms avoid potentially expensive async validation processes \(such as an HTTP request\) if the more basic validation methods have already found invalid input.
+This check lets forms avoid potentially expensive async validation processes (such as an HTTP request) if the more basic validation methods have already found invalid input.
 
 After asynchronous validation begins, the form control enters a `pending` state.
 Inspect the control's `pending` property and use it to give visual feedback about the ongoing validation operation.
@@ -369,7 +369,7 @@ With synchronous validators, this does not normally have a noticeable impact on 
 Async validators, however, commonly perform some kind of HTTP request to validate the control.
 Dispatching an HTTP request after every keystroke could put a strain on the backend API, and should be avoided if possible.
 
-You can delay updating the form validity by changing the `updateOn` property from `change` \(default\) to `submit` or `blur`.
+You can delay updating the form validity by changing the `updateOn` property from `change` (default) to `submit` or `blur`.
 
 With template-driven forms, set the property in the template.
 

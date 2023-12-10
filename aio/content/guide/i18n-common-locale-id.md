@@ -1,6 +1,6 @@
 # Refer to locales by ID
 
-Angular uses the Unicode *locale identifier* \(Unicode locale ID\) to find the correct locale data for internationalization of text strings.
+Angular uses the Unicode *locale identifier* (Unicode locale ID) to find the correct locale data for internationalization of text strings.
 
 <div class="callout is-helpful">
 
@@ -14,7 +14,7 @@ Angular uses the Unicode *locale identifier* \(Unicode locale ID\) to find the c
 </div>
 
 A locale ID specifies the language, country, and an optional code for further variants or subdivisions.
-A locale ID consists of the language identifier, a hyphen \(`-`\) character, and the locale extension.
+A locale ID consists of the language identifier, a hyphen (`-`) character, and the locale extension.
 
 <code-example>
 

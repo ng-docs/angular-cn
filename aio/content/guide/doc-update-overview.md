@@ -42,7 +42,7 @@ For more information about how to create a `working` branch, see [Starting to ed
 ## Revise topics
 
 In your `working` branch, you edit and create the documentation topics necessary to resolve the issue.
-You perform most of this work in your integrated development environment \(IDE\).
+You perform most of this work in your integrated development environment (IDE).
 
 For more information about how to revise a documentation topic, see [Revising a documentation topic](guide/doc-editing).
 

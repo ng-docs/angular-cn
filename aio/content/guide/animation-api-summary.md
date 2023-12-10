@@ -2,7 +2,7 @@
 
 <!-- vale off -->
 
-The functional API provided by the `@angular/animations` module provides a domain-specific language \(DSL\) for creating and controlling animations in Angular applications.
+The functional API provided by the `@angular/animations` module provides a domain-specific language (DSL) for creating and controlling animations in Angular applications.
 See the [API reference](api/animations) for a complete listing and syntax details of the core functions and related data structures.
 <!-- vale on --> 
 | Function name                     | What it does                                                                                                                                                                                                |
@@ -13,7 +13,7 @@ See the [API reference](api/animations) for a complete listing and syntax detail
 | `animate()`                       | Specifies the timing information for a transition. Optional values for `delay` and `easing`. Can contain `style()` calls within.                                                                            |
 | `transition()`                    | Defines the animation sequence between two named states. Uses array syntax.                                                                                                                                 |
 | `keyframes()`                     | Allows a sequential change between styles within a specified time interval. Use within `animate()`. Can include multiple `style()` calls within each `keyframe()`. Uses array syntax.                       |
-| [`group()`](api/animations/group) | Specifies a group of animation steps \(*inner animations*\) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`.     |
+| [`group()`](api/animations/group) | Specifies a group of animation steps (*inner animations*) to be run in parallel. Animation continues only after all inner animation steps have completed. Used within `sequence()` or `transition()`.     |
 | `query()`                         | Finds one or more inner HTML elements within the current element.                                                                                                                                           |
 | `sequence()`                      | Specifies a list of animation steps that are run sequentially, one by one.                                                                                                                                  |
 | `stagger()`                       | Staggers the starting time for animations for multiple elements.                                                                                                                                            |

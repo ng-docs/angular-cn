@@ -196,7 +196,7 @@ When you select a bar, DevTools renders a bar chart with all the components and 
 Earlier on the change detection timeline, you can find how much time Angular spent in this cycle.
 Angular DevTools attempts to estimate the frame drop at this point to indicate when the execution of your application might impact the user experience.
 
-Angular DevTools also indicates what triggered the change detection \(that is, the change detection's source\).
+Angular DevTools also indicates what triggered the change detection (that is, the change detection's source).
 
 ### Understand component execution
 

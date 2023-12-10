@@ -1,6 +1,6 @@
 # Angular elements overview
 
-_Angular elements_ are Angular components packaged as _custom elements_ \(also called Web Components\), a web standard for defining new HTML elements in a framework-agnostic way.
+_Angular elements_ are Angular components packaged as _custom elements_ (also called Web Components), a web standard for defining new HTML elements in a framework-agnostic way.
 
 <div class="alert is-helpful">
 
@@ -8,7 +8,7 @@ For the sample application that this page describes, see the <live-example></liv
 
 </div>
 
-[Custom elements](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements) are a Web Platform feature currently supported by Chrome, Edge \(Chromium-based\), Firefox, Opera, and Safari, and available in other browsers through polyfills \(see [Browser Support](#browser-support)\).
+[Custom elements](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements) are a Web Platform feature currently supported by Chrome, Edge (Chromium-based), Firefox, Opera, and Safari, and available in other browsers through polyfills (see [Browser Support](#browser-support)).
 A custom element extends HTML by allowing you to define a tag whose content is created and controlled by JavaScript code.
 The browser maintains a `CustomElementRegistry` of defined custom elements, which maps an instantiable JavaScript class to an HTML tag.
 
@@ -106,7 +106,7 @@ The recently-developed [custom elements](https://developer.mozilla.org/docs/Web/
 | Browser                 | Custom Element Support |
 | :---------------------- | :--------------------- |
 | Chrome                  | Supported natively.    |
-| Edge \(Chromium-based\) | Supported natively.    |
+| Edge (Chromium-based) | Supported natively.    |
 | Firefox                 | Supported natively.    |
 | Opera                   | Supported natively.    |
 | Safari                  | Supported natively.    |
@@ -153,9 +153,9 @@ Generic DOM APIs, such as `document.createElement()` or `document.querySelector(
 For example, calling `document.createElement('a')` returns an `HTMLAnchorElement`, which TypeScript knows has an `href` property.
 Similarly, `document.createElement('div')` returns an `HTMLDivElement`, which TypeScript knows has no `href` property.
 
-When called with unknown elements, such as a custom element name \(`popup-element` in our example\), the methods return a generic type, such as `HTMLElement`, because TypeScript can't infer the correct type of the returned element.
+When called with unknown elements, such as a custom element name (`popup-element` in our example), the methods return a generic type, such as `HTMLElement`, because TypeScript can't infer the correct type of the returned element.
 
-Custom elements created with Angular extend `NgElement` \(which in turn extends `HTMLElement`\).
+Custom elements created with Angular extend `NgElement` (which in turn extends `HTMLElement`).
 Additionally, these custom elements will have a property for each input of the corresponding component.
 For example, our `popup-element` has a `message` property of type `string`.
 
@@ -172,7 +172,7 @@ class MyDialog {
 </code-example>
 
 The most straightforward way to get accurate typings is to cast the return value of the relevant DOM methods to the correct type.
-For that, use the `NgElement` and `WithProperties` types \(both exported from `@angular/elements`\):
+For that, use the `NgElement` and `WithProperties` types (both exported from `@angular/elements`):
 
 <code-example format="typescript" language="typescript">
 
@@ -186,7 +186,7 @@ aDialog.body = 'News'; // &lt;-- ERROR: TypeScript knows there is no `body` prop
 This is a good way to quickly get TypeScript features, such as type checking and autocomplete support, for your custom element.
 But it can get cumbersome if you need it in several places, because you have to cast the return type on every occurrence.
 
-An alternative way, that only requires defining each custom element's type once, is augmenting the `HTMLElementTagNameMap`, which TypeScript uses to infer the type of a returned element based on its tag name \(for DOM methods such as `document.createElement()`, `document.querySelector()`, etc.\):
+An alternative way, that only requires defining each custom element's type once, is augmenting the `HTMLElementTagNameMap`, which TypeScript uses to infer the type of a returned element based on its tag name (for DOM methods such as `document.createElement()`, `document.querySelector()`, etc.):
 
 <code-example format="typescript" language="typescript">
 

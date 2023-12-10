@@ -26,7 +26,7 @@ To display the current date in the format for the current locale, use the follow
 
 Add the `locale` parameter to the pipe to override the current value of `LOCALE_ID` token.
 
-To force the currency to use American English \(`en-US`\), use the following format for the `CurrencyPipe`
+To force the currency to use American English (`en-US`), use the following format for the `CurrencyPipe`
 
 <!--todo: replace with code-example -->
 

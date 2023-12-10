@@ -38,7 +38,7 @@ This glossary lists the most prominent terms and a few less familiar ones with u
 
 ## ahead-of-time (AOT) compilation
 
-The Angular ahead-of-time \(AOT\) compiler converts Angular HTML and TypeScript code into efficient JavaScript code during the build phase. The build phase occurs before the browser downloads and runs the rendered code.
+The Angular ahead-of-time (AOT) compiler converts Angular HTML and TypeScript code into efficient JavaScript code during the build phase. The build phase occurs before the browser downloads and runs the rendered code.
 This is the best compilation mode for production environments, with decreased load time and increased performance compared to [just-in-time (JIT) compilation][AioGuideGlossaryJustInTimeJitCompilation].
 
 By compiling your application using the `ngc` command-line tool, you can bootstrap directly to a module factory, so you do not need to include the Angular compiler in your JavaScript bundle.
@@ -263,7 +263,7 @@ Note that declarables can also be declared as standalone and simply be imported 
 ## decorator | decoration
 
 A function that modifies a class or property definition.
-Decorators are an experimental \(stage 3\) [JavaScript language feature][GithubTC39ProposalDecorators].
+Decorators are an experimental (stage 3) [JavaScript language feature][GithubTC39ProposalDecorators].
 A decorator is also referenced as an *annotation*.
 TypeScript adds support for decorators.
 
@@ -274,10 +274,10 @@ See also [class field decorator][AioGuideGlossaryClassFieldDecorator].
 
 ## dependency injection (DI)
 
-A design pattern and mechanism for creating and delivering some parts of an application \(dependencies\) to other parts of an application that require them.
+A design pattern and mechanism for creating and delivering some parts of an application (dependencies) to other parts of an application that require them.
 
 In Angular, dependencies are typically services, but they also can be values, such as strings or functions.
-An [injector][AioGuideGlossaryInjector] for an application \(created automatically during bootstrap\) instantiates dependencies when needed, using a configured [provider][AioGuideGlossaryProvider] of the service or value.
+An [injector][AioGuideGlossaryInjector] for an application (created automatically during bootstrap) instantiates dependencies when needed, using a configured [provider][AioGuideGlossaryProvider] of the service or value.
 Learn more in [Dependency Injection in Angular][AioGuideDependencyInjection].
 
 ## DI token
@@ -435,9 +435,9 @@ To learn more, see also [TypeScript][AioGuideGlossaryTypescript].
 
 ## just-in-time (JIT) compilation
 
-The Angular just-in-time \(JIT\) compiler converts your Angular HTML and TypeScript code into efficient JavaScript code at run time, as part of bootstrapping.
+The Angular just-in-time (JIT) compiler converts your Angular HTML and TypeScript code into efficient JavaScript code at run time, as part of bootstrapping.
 
-JIT compilation is the default \(as opposed to AOT compilation\) when you run the `ng build` and `ng serve` Angular CLI commands, and is a good choice during development.
+JIT compilation is the default (as opposed to AOT compilation) when you run the `ng build` and `ng serve` Angular CLI commands, and is a good choice during development.
 JIT mode is strongly discouraged for production use because it results in large application payloads that hinder the bootstrap performance.
 
 Compare to [ahead-of-time (AOT) compilation][AioGuideGlossaryAheadOfTimeAotCompilation].
@@ -785,7 +785,7 @@ You can then run the target using the [`ng run`][AioCliRun] Angular [CLI][AioGui
 
 Code that defines how to render the [view][AioGuideGlossaryView] of a component.
 
-A template combines straight HTML with Angular [data-binding][AioGuideGlossaryDataBinding] syntax, [directives][AioGuideGlossaryDirective], and [template expressions][AioGuideGlossaryTemplateExpression] \(logical constructs\).
+A template combines straight HTML with Angular [data-binding][AioGuideGlossaryDataBinding] syntax, [directives][AioGuideGlossaryDirective], and [template expressions][AioGuideGlossaryTemplateExpression] (logical constructs).
 The Angular elements insert or calculate values that modify the HTML elements before the page is displayed.
 Learn more about Angular template language in the [Template Syntax][AioGuideTemplateSyntax] guide.
 
@@ -883,7 +883,7 @@ A data flow model where the component tree is always checked for changes in one 
 
 In practice, this means that data in Angular flows downward during change detection.
 A parent component can easily change values in its child components because the parent is checked first.
-A failure could occur, however, if a child component tries to change a value in its parent during change detection \(inverting the expected data flow\), because the parent component has already been rendered.
+A failure could occur, however, if a child component tries to change a value in its parent during change detection (inverting the expected data flow), because the parent component has already been rendered.
 In development mode, Angular throws the `ExpressionChangedAfterItHasBeenCheckedError` error if your application attempts to do this, rather than silently failing to render the new value.
 
 To avoid this error, a [lifecycle hook][AioGuideLifecycleHooks] method that seeks to make such a change should trigger a new change detection run.
@@ -906,7 +906,7 @@ A view is specifically represented by a `ViewRef` instance associated with a com
 A view that belongs immediately to a component is referenced as a *host view*.
 Views are typically collected into [view hierarchies][AioGuideGlossaryViewHierarchy].
 
-Properties of elements in a view can change dynamically, in response to user actions; the structure \(number and order\) of elements in a view cannot.
+Properties of elements in a view can change dynamically, in response to user actions; the structure (number and order) of elements in a view cannot.
 You can change the structure of elements by inserting, moving, or removing nested views within their view containers.
 
 View hierarchies can be loaded and unloaded dynamically as the user navigates through the application, typically under the control of a [router][AioGuideGlossaryRouter].
@@ -938,12 +938,12 @@ See [custom element][AioGuideGlossaryCustomElement].
 
 ## workspace
 
-A collection of Angular [projects][AioGuideGlossaryProject] \(that is, applications and libraries\) powered by the Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] that are typically co-located in a single source-control repository \(such as [git][GitScmMain]\).
+A collection of Angular [projects][AioGuideGlossaryProject] (that is, applications and libraries) powered by the Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] that are typically co-located in a single source-control repository (such as [git][GitScmMain]).
 
-The [`ng new`][AioCliNew] Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] command creates a file system directory \(the "workspace root"\).
-In the workspace root, it also creates the workspace [configuration file][AioGuideGlossaryConfiguration] \(`angular.json`\) and, by default, an initial application project with the same name.
+The [`ng new`][AioCliNew] Angular [CLI][AioGuideGlossaryCommandLineInterfaceCli] command creates a file system directory (the "workspace root").
+In the workspace root, it also creates the workspace [configuration file][AioGuideGlossaryConfiguration] (`angular.json`) and, by default, an initial application project with the same name.
 
-Commands that create or operate on applications and libraries \(such as `add` and `generate`\) must be executed from within a workspace directory.
+Commands that create or operate on applications and libraries (such as `add` and `generate`) must be executed from within a workspace directory.
 To learn more, see [Workspace Configuration][AioGuideWorkspaceConfig].
 
 ## workspace configuration

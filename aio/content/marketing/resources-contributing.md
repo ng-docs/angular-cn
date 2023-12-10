@@ -12,7 +12,7 @@ While we can't accept all contributions, qualifying contributions can be submitt
 
 1.  Your contribution must be valid, and contain a link to a page talking specifically about using Angular
 1.  Your contribution should have a clear and concise title and description
-1.  Your resource should follow our brand guidelines \(see our [Press kit](presskit)\)
+1.  Your resource should follow our brand guidelines (see our [Press kit](presskit))
 1.  Your resource should have significant benefit to Angular developers
 1.  Your resource should already have traction and praise from Angular developers
 

@@ -66,13 +66,13 @@ Look at this one as an example and model for your own add schematic.
 Partner and third party libraries also support the Angular CLI with add schematics.
 For example, `@ng-bootstrap/schematics` adds [ng-bootstrap](https://ng-bootstrap.github.io)  to an app, and  `@clr/angular` installs and sets up [Clarity from VMWare](https://clarity.design/documentation/get-started).
 
-An *add schematic* can also update a project with configuration changes, add additional dependencies \(such as polyfills\), or scaffold package-specific initialization code.
+An *add schematic* can also update a project with configuration changes, add additional dependencies (such as polyfills), or scaffold package-specific initialization code.
 For example, the `@angular/pwa` schematic turns your application into a PWA by adding an application manifest and service worker.
 
 ### Generation schematics
 
 Generation schematics are instructions for the `ng generate` command.
-The documented sub-commands use the default Angular generation schematics, but you can specify a different schematic \(in place of a sub-command\) to generate an artifact defined in your library.
+The documented sub-commands use the default Angular generation schematics, but you can specify a different schematic (in place of a sub-command) to generate an artifact defined in your library.
 
 Angular Material, for example, supplies generation schematics for the UI components that it defines.
 The following command uses one of these schematics to render an Angular Material `<mat-table>` that is pre-configured with a datasource for sorting and pagination.
@@ -106,11 +106,11 @@ We analyzed your package.json, there are some packages to update:
 
 </code-example>
 
-If you pass the command a set of libraries to update \(or the `--all` flag\), it updates those libraries, their peer dependencies, and the peer dependencies that depend on them.
+If you pass the command a set of libraries to update (or the `--all` flag), it updates those libraries, their peer dependencies, and the peer dependencies that depend on them.
 
 <div class="alert is-helpful">
 
-If there are inconsistencies \(for example, if peer dependencies cannot be matched by a simple [semver](https://semver.io) range\), the command generates an error and does not change anything in the workspace.
+If there are inconsistencies (for example, if peer dependencies cannot be matched by a simple [semver](https://semver.io) range), the command generates an error and does not change anything in the workspace.
 
 We recommend that you do not force an update of all dependencies by default.
 Try updating specific dependencies first.

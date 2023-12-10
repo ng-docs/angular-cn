@@ -9,14 +9,14 @@ This topic uses the following pictographs.
 
 | html entities | pictographs |
 |:---         |:--- |
-| <code>&#x1F33A;</code> | red hibiscus \(`🌺`\)  |
-| <code>&#x1F33B;</code> | sunflower \(`🌻`\)     |
-| <code>&#x1F337;</code> | tulip \(`🌷`\)         |
-| <code>&#x1F33F;</code> | fern \(`🌿`\)          |
-| <code>&#x1F341;</code> | maple leaf \(`🍁`\)    |
-| <code>&#x1F433;</code> | whale \(`🐳`\)         |
-| <code>&#x1F436;</code> | dog \(`🐶`\)           |
-| <code>&#x1F994;</code> | hedgehog \(`🦔`\)       |
+| <code>&#x1F33A;</code> | red hibiscus (`🌺`)  |
+| <code>&#x1F33B;</code> | sunflower (`🌻`)     |
+| <code>&#x1F337;</code> | tulip (`🌷`)         |
+| <code>&#x1F33F;</code> | fern (`🌿`)          |
+| <code>&#x1F341;</code> | maple leaf (`🍁`)    |
+| <code>&#x1F433;</code> | whale (`🐳`)         |
+| <code>&#x1F436;</code> | dog (`🐶`)           |
+| <code>&#x1F994;</code> | hedgehog (`🦔`)       |
 
 </div>
 
@@ -351,7 +351,7 @@ Understanding the idea of the `<#VIEW>` demarcation is especially significant wh
 
 ## Providing services in `@Component()`
 
-How you provide services using a `@Component()` \(or `@Directive()`\) decorator determines their visibility.
+How you provide services using a `@Component()` (or `@Directive()`) decorator determines their visibility.
 The following sections demonstrate `providers` and `viewProviders` along with ways to modify service visibility with `@SkipSelf()` and `@Host()`.
 
 A component class can provide services in two ways:
@@ -509,7 +509,7 @@ In the logical tree, this is represented as follows:
 
 </code-example>
 
-When `<app-child>` requests the `FlowerService`, the injector begins its search at the `<#VIEW>` belonging to `<app-child>` \(`<#VIEW>` is included because it is injected from `@Component()`\) and ends with `<app-child>`.
+When `<app-child>` requests the `FlowerService`, the injector begins its search at the `<#VIEW>` belonging to `<app-child>` (`<#VIEW>` is included because it is injected from `@Component()`) and ends with `<app-child>`.
 In this case, the `FlowerService` is resolved in the `providers` array with sunflower <code>&#x1F33B;</code> of the `<app-child>`.
 The injector doesn't have to look any further in the injector tree.
 It stops as soon as it finds the `FlowerService` and never sees the red hibiscus <code>&#x1F33A;</code>.
@@ -739,7 +739,7 @@ In a logical tree, this same idea might look like this:
 
 Though `<app-child>` provides the sunflower <code>&#x1F33B;</code>, the application renders the red hibiscus <code>&#x1F33A;</code> because `@SkipSelf()`  causes the current injector to skip itself and look to its parent.
 
-If you now add `@Host()` \(in addition to the `@SkipSelf()`\) to the `@Inject` of the `FlowerService`, the result will be `null`.
+If you now add `@Host()` (in addition to the `@SkipSelf()`) to the `@Inject` of the `FlowerService`, the result will be `null`.
 This is because `@Host()` limits the upper bound of the search to the `<#VIEW>`.
 Here's the idea in the logical tree:
 
@@ -928,7 +928,7 @@ Architectural reasons may lead you to restrict access to a service to the applic
 For example, the guide sample includes a `VillainsListComponent` that displays a list of villains.
 It gets those villains from a `VillainsService`.
 
-If you provided `VillainsService` in the root `AppModule` \(where you registered the `HeroesService`\), that would make the `VillainsService` visible everywhere in the application, including the *Hero* workflows.
+If you provided `VillainsService` in the root `AppModule` (where you registered the `HeroesService`), that would make the `VillainsService` visible everywhere in the application, including the *Hero* workflows.
 If you later modified the `VillainsService`, you could break something in a hero component somewhere.
 
 Instead, you can provide the `VillainsService` in the `providers` metadata of the `VillainsListComponent` like this:
@@ -1005,13 +1005,13 @@ Another reason to provide a service again at another level is to substitute a *m
 
 For example, consider a `Car` component that includes tire service information and depends on other services to provide more details about the car.
 
-The root injector, marked as \(A\), uses *generic* providers for details about `CarService` and `EngineService`.
+The root injector, marked as (A), uses *generic* providers for details about `CarService` and `EngineService`.
 
-1. `Car` component \(A\).  Component \(A\) displays tire service data about a car and specifies generic services to provide more information about the car.
+1. `Car` component (A).  Component (A) displays tire service data about a car and specifies generic services to provide more information about the car.
 
-2. Child component \(B\). Component \(B\) defines its own, *specialized* providers for `CarService` and `EngineService` that have special capabilities suitable for what's going on in component \(B\).
+2. Child component (B). Component (B) defines its own, *specialized* providers for `CarService` and `EngineService` that have special capabilities suitable for what's going on in component (B).
 
-3. Child component \(C\) as a child of Component \(B\). Component \(C\) defines its own, even *more specialized* provider for `CarService`.
+3. Child component (C) as a child of Component (B). Component (C) defines its own, even *more specialized* provider for `CarService`.
 
 <div class="lightbox">
 
@@ -1021,11 +1021,11 @@ The root injector, marked as \(A\), uses *generic* providers for details about `
 
 Behind the scenes, each component sets up its own injector with zero, one, or more providers defined for that component itself.
 
-When you resolve an instance of `Car` at the deepest component \(C\), its injector produces: 
+When you resolve an instance of `Car` at the deepest component (C), its injector produces: 
 
-* An instance of `Car` resolved by injector \(C\)
-* An `Engine` resolved by injector \(B\)
-* Its `Tires` resolved by the root injector \(A\).
+* An instance of `Car` resolved by injector (C)
+* An `Engine` resolved by injector (B)
+* Its `Tires` resolved by the root injector (A).
 
 <div class="lightbox">
 

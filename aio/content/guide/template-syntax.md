@@ -33,7 +33,7 @@ To see all of them working together in one application, see the comprehensive <l
 ## Empower your HTML
 
 Extend the HTML vocabulary of your applications With special Angular syntax in your templates.
-For example, Angular helps you get and set DOM \(Document Object Model\) values dynamically with features such as built-in template functions, variables, event listening, and data binding.
+For example, Angular helps you get and set DOM (Document Object Model) values dynamically with features such as built-in template functions, variables, event listening, and data binding.
 
 Almost all HTML syntax is valid template syntax.
 However, because an Angular template is part of an overall webpage, and not the entire page, you don't need to include elements such as `<html>`, `<body>`, or `<base>`, and can focus exclusively on the part of the page you are developing.
@@ -62,7 +62,7 @@ You might also be interested in the following:
 | [Built-in directives](guide/built-in-directives)                     | Listen to and modify the behavior and layout of HTML.                                                                   |
 | [Template reference variables](guide/template-reference-variables)   | Use special variables to reference a DOM element within a template.                                                     |
 | [Inputs and Outputs](guide/inputs-outputs)                           | Share data between the parent context and child directives or components                                                |
-| [Template expression operators](guide/template-expression-operators) | Learn about the pipe operator \(<code>&verbar;</code>\), and protect against `null` or `undefined` values in your HTML. |
+| [Template expression operators](guide/template-expression-operators) | Learn about the pipe operator (<code>&verbar;</code>), and protect against `null` or `undefined` values in your HTML. |
 | [SVG in templates](guide/svg-in-templates)                           | Dynamically generate interactive graphics.                                                                              |
 
 <!-- links -->

@@ -20,7 +20,7 @@ For details about changes between versions, and information about updating from 
 
 Invoke the tool on the command line through the `ng` executable.
 Online help is available on the command line.
-Enter the following to list commands or options for a given command \(such as [new](cli/new)\) with a short description.
+Enter the following to list commands or options for a given command (such as [new](cli/new)) with a short description.
 
 <code-example format="shell" language="shell">
 
@@ -92,8 +92,8 @@ Command syntax is shown as follows:
 *   Most commands, and some options, have aliases.
     Aliases are shown in the syntax statement for each command.
 
-*   Option names are prefixed with a double dash \(`--`\) characters.
-    Option aliases are prefixed with a single dash \(`-`\) character.
+*   Option names are prefixed with a double dash (`--`) characters.
+    Option aliases are prefixed with a single dash (`-`) character.
     Arguments are not prefixed.
     For example:
 

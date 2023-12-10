@@ -98,7 +98,7 @@ The Angular CLI includes a server, for you to build and serve your app locally.
 The `ng serve` command launches the server, watches your files,
 and rebuilds the app as you make changes to those files.
 
-The `--open` \(or just `-o`\) option automatically opens your browser
+The `--open` (or just `-o`) option automatically opens your browser
 to `http://localhost:4200/`.
 
 If your installation and setup was successful, you should see a page similar to the following.

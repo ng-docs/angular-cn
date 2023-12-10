@@ -45,12 +45,12 @@ The following sub-options identify the source language and tell the compiler whe
 
 | Suboption      | Details |
 |:---            |:--- |
-| `sourceLocale` | The locale you use within the application source code \(`en-US` by default\) |
+| `sourceLocale` | The locale you use within the application source code (`en-US` by default) |
 | `locales`      | A map of locale identifiers to translation files                             |
 
 ### `angular.json` for `en-US` and `fr` example
 
-For example, the following excerpt of an [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file sets the source locale to `en-US` and provides the path to the French \(`fr`\) locale translation file.
+For example, the following excerpt of an [`angular.json`][AioGuideWorkspaceConfig] workspace build configuration file sets the source locale to `en-US` and provides the path to the French (`fr`) locale translation file.
 
 <code-example header="angular.json" path="i18n/angular.json" region="locale-config"></code-example>
 
@@ -76,7 +76,7 @@ If you changed this setting, set `"aot"` to `true` in order to use AOT.
 Due to the deployment complexities of i18n and the need to minimize rebuild time, the development server only supports localizing a single locale at a time.
 If you set the `"localize"` option to `true`, define more than one locale, and use `ng serve`; then an error occurs.
 If you want to develop against a specific locale, set the `"localize"` option to a specific locale.
-For example, for French \(`fr`\), specify `"localize": ["fr"]`.
+For example, for French (`fr`), specify `"localize": ["fr"]`.
 
 </div>
 
@@ -113,7 +113,7 @@ To apply specific build options to only one locale, specify a single locale to c
 
 <div class="alert is-important">
 
-Use the [Angular CLI][AioCliMain] development server \(`ng serve`\) with only a single locale.
+Use the [Angular CLI][AioCliMain] development server (`ng serve`) with only a single locale.
 
 </div>
 
@@ -159,7 +159,7 @@ When you compile your Angular project into an Angular application, the instances
 This means that your Angular application is translated after compilation.
 This also means that you can create localized versions of your Angular application without re-compiling your entire Angular project for each locale.
 
-When you translate your Angular application, the *translation transformation* replaces and reorders the parts \(static strings and expressions\) of the template literal string with strings from a collection of translations.
+When you translate your Angular application, the *translation transformation* replaces and reorders the parts (static strings and expressions) of the template literal string with strings from a collection of translations.
 For more information, see [`$localize`][AioApiLocalizeInitLocalize].
 
 <div class="alert is-helpful">

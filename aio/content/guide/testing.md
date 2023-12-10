@@ -66,7 +66,7 @@ The test output is displayed in the browser using [Karma Jasmine HTML Reporter](
 
 </div>
 
-Click on a test row to re-run just that test or click on a description to re-run the tests in the selected test group \("test suite"\).
+Click on a test row to re-run just that test or click on a description to re-run the tests in the selected test group ("test suite").
 
 Meanwhile, the `ng test` command is watching for changes.
 
@@ -102,12 +102,12 @@ Inside the `src/app` folder the Angular CLI generated a test file for the `AppCo
 
 <div class="alert is-important">
 
-The test file extension **must be `.spec.ts`** so that tooling can identify it as a file with tests \(also known as a *spec* file\).
+The test file extension **must be `.spec.ts`** so that tooling can identify it as a file with tests (also known as a *spec* file).
 
 </div>
 
 The `app.component.ts` and `app.component.spec.ts` files are siblings in the same folder.
-The root file names \(`app.component`\) are the same for both files.
+The root file names (`app.component`) are the same for both files.
 
 Adopt these two conventions in your own projects for *every kind* of test file.
 
@@ -121,8 +121,8 @@ as the application source code files that they test:
 *   Such tests are painless to find
 *   You see at a glance if a part of your application lacks tests
 *   Nearby tests can reveal how a part works in context
-*   When you move the source \(inevitable\), you remember to move the test
-*   When you rename the source file \(inevitable\), you remember to rename the test file
+*   When you move the source (inevitable), you remember to move the test
+*   When you rename the source file (inevitable), you remember to rename the test file
 
 <a id="q-specs-in-test-folder"></a>
 
@@ -144,9 +144,9 @@ next to their corresponding helper files.
 
 One of the best ways to keep your project bug-free is through a test suite, but you might forget to run tests all the time.
 
-Continuous integration \(CI\) servers let you set up your project repository so that your tests run on every commit and pull request.
+Continuous integration (CI) servers let you set up your project repository so that your tests run on every commit and pull request.
 
-To test your Angular CLI application in Continuous integration \(CI\) run the following command:
+To test your Angular CLI application in Continuous integration (CI) run the following command:
 
 <code-example format="shell" language="shell">
 

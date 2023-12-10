@@ -73,7 +73,7 @@ Angular Language Service is currently available as an extension for [Visual Stud
 ### Visual Studio Code
 
 In [Visual Studio Code](https://code.visualstudio.com), install the extension from the [Extensions: Marketplace](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template).
-Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open \(⌘+P on Mac, CTRL+P on Windows\) and type "? ext".
+Open the marketplace from the editor using the Extensions icon on the left menu pane, or use VS Quick Open (⌘+P on Mac, CTRL+P on Windows) and type "? ext".
 In the marketplace, search for Angular Language Service extension, and click the **Install** button.
 
 The Visual Studio Code integration with the Angular language service is maintained and distributed by the Angular team.
@@ -96,7 +96,7 @@ Since WebStorm 2019.1, the `@angular/language-service` is not required anymore a
 ### Sublime Text
 
 In [Sublime Text](https://www.sublimetext.com), the Language Service supports only in-line templates when installed as a plug-in.
-You need a custom Sublime plug-in \(or modifications to the current plug-in\) for completions in HTML files.
+You need a custom Sublime plug-in (or modifications to the current plug-in) for completions in HTML files.
 
 To use the Language Service for in-line templates, you must first add an extension to allow TypeScript, then install the Angular Language Service plug-in.
 Starting with TypeScript 2.3, TypeScript has a plug-in model that the language service can use.
@@ -127,7 +127,7 @@ Starting with TypeScript 2.3, TypeScript has a plug-in model that the language s
 
     </code-example>
 
-1. In your editor's user preferences \(`Cmd+,` or `Ctrl+,`\), add the following:
+1. In your editor's user preferences (`Cmd+,` or `Ctrl+,`), add the following:
 
     <code-example header="Sublime Text user preferences" language="json">
 
