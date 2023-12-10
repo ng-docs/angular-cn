@@ -7,8 +7,8 @@ These standards ensure consistency in writing style, Markdown conventions, and c
 
 Before contributing to the Angular documentation, it is helpful if you are familiar with the following:
 
-| Subjects             | Details |
-|:---                  |:---     |
+| Subjects             | Details                                                                                                                                                                   |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `git`                | For an introduction, see GitHub's [Git Handbook](https://guides.github.com/introduction/git-handbook)                                                                     |
 | GitHub               | For an introduction, see GitHub's [Hello World](https://guides.github.com/activities/hello-world)                                                                         |
 | Markdown             | See GitHub's [Mastering Markdown](https://guides.github.com/features/mastering-markdown)                                                                                  |
@@ -19,11 +19,11 @@ Before contributing to the Angular documentation, it is helpful if you are famil
 
 The categories of Angular documentation include:
 
-| Angular documentation categories | Details |
-|:---                              |:---     |
+| Angular documentation categories | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| :------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Guides](docs)                   | Much of what's in the [documentation section of angular.io](docs). Guides walk the reader step-by-step through tasks to demonstrate concepts and are often accompanied by a working example. These include [Getting Started](start), [Tour of Heroes](tutorial/tour-of-heroes), and pages about [Forms](guide/forms-overview), [Dependency Injection](guide/dependency-injection), and [HttpClient](guide/understanding-communicating-with-http). Contributing members of the community and Angular team members maintain this documentation in [Markdown](https://daringfireball.net/projects/markdown/syntax "Markdown"). |
-| [API documentation](api)         | Reference documents for the [Angular Application Programming Interface, or API](api). These are more succinct than guides and serve as a reference for Angular features. They are especially helpful for people already acquainted with Angular concepts. The [angular.io](https://angular.io) infrastructure generates these documents from source code and comments that contributors edit.                                                                                                                                                                               |
-| [CLI documentation](cli)         | The [angular.io](https://angular.io) infrastructure generates these documents from CLI source code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [API documentation](api)         | Reference documents for the [Angular Application Programming Interface, or API](api). These are more succinct than guides and serve as a reference for Angular features. They are especially helpful for people already acquainted with Angular concepts. The [angular.io](https://angular.io) infrastructure generates these documents from source code and comments that contributors edit.                                                                                                                                                                                                                               |
+| [CLI documentation](cli)         | The [angular.io](https://angular.io) infrastructure generates these documents from CLI source code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 ## Markdown and HTML
 
@@ -61,8 +61,8 @@ Begin the title with the Markdown hash (`#`) character, which renders as an `<h1
 
 </code-example>
 
-| Title guidance                                       | Details |
-|:---                                                  |:---     |
+| Title guidance                                       | Details                                                                                                                                                                                                                                                                                                 |
+| :--------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | A document can have only one `<h1>`                  | Title text should be in *Sentence case*, which means the first word is capitalized and all other words are lower case. Technical terms that are always capitalized, like "Angular", are the exception. <code-example format="html" language="html"> &num; Deprecation policy in Angular </code-example> |
 | Always follow the title with at least one blank line | The corresponding text in the left nav is in *Title Case*, which means that you use capital letters to start the first words and all principal words. Use lower case letters for secondary words such as "in", "of", and "the". You can also shorten the nav title to fit in the column.                |
 
@@ -194,8 +194,8 @@ Add an item node for your guide page as a child of the appropriate header node a
 
 A navigation node has the following properties:
 
-| Properties | Details |
-|:---        |:---     |
+| Properties | Details                                                                                              |
+| :--------- | :--------------------------------------------------------------------------------------------------- |
 | `url`      | The URL of the guide page, which is an item node only.                                               |
 | `title`    | The text displayed in the side nav.                                                                  |
 | `tooltip`  | Text that appears when the reader hovers over the navigation link.                                   |
@@ -224,9 +224,9 @@ You can display a minimal, inline code snippet with the Markdown backtick syntax
 Use a single backtick on either side of a term when referring to code or the name of a file in a sentence.
 The following are some examples:
 
-*   In the `app.component.ts`, add a `logger()` method.
-*   The `name` property is `Sally`.
-*   Add the component class name to the `declarations` array.
+* In the `app.component.ts`, add a `logger()` method.
+* The `name` property is `Sally`.
+* Add the component class name to the `declarations` array.
 
 The Markdown is as follows:
 
@@ -385,8 +385,8 @@ For more information on how to prepare example application files for use in guid
 
 Specify the `<code-example>` output with the following attributes:
 
-| Attributes | Details |
-|:---        |:---     |
+| Attributes | Details                                                                                                                                                                                                                                                 |
+| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `path`     | The path to the file in the `content/examples` folder.                                                                                                                                                                                                  |
 | `header`   | The header of the code listing. This is the title of the code snippet and can include the path and extra information such as whether the snippet is an excerpt.                                                                                         |
 | `region`   | Displays the source file fragment with that region name; regions are identified by `#docregion` markup in the source file. See [Displaying a code snippet](#region "Displaying a code snippet").                                                        |
@@ -445,13 +445,13 @@ Each tab displays code using a `code-pane`.
 
 #### `code-tabs` attributes
 
-*   `linenums`: The value can be `true`, `false`, or a number indicating the starting line number.
-The default is `false`.
+* `linenums`: The value can be `true`, `false`, or a number indicating the starting line number.
+  The default is `false`.
 
 #### `code-pane` attributes
 
-| Attributes | Details |
-|:---        |:---     |
+| Attributes | Details                                                                                                                                                                                         |
+| :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `path`     | A file in the `content/examples` folder                                                                                                                                                         |
 | `header`   | What displays in the header of a tab                                                                                                                                                            |
 | `linenums` | Overrides the `linenums` property at the `code-tabs` level for this particular pane. The value can be `true`, `false`, or a number indicating the starting line number. The default is `false`. |
@@ -866,7 +866,7 @@ The browser renders the following:
 
 <div class="alert is-helpful">
 
-See the ["Anchors"](guide/docs-style-guide#anchors "Style Guide &mdash;Anchors") section for details.
+See the ["Anchors"](guide/docs-style-guide#anchors "Style Guide —Anchors") section for details.
 
 </div>
 
@@ -887,9 +887,7 @@ When navigating within a page, you can omit the page URL when specifying the lin
 
 While the documentation generator automatically creates anchors for headers based on the header wording, titles can change, which can potentially break any links to that section.
 
-To mitigate link breakage, add a custom anchor explicitly, just above the heading or text to which it applies, using the special `
-<a id="name"></a>
-` syntax as follows:
+To mitigate link breakage, add a custom anchor explicitly, just above the heading or text to which it applies, using the special `<a id="name"></a>` syntax as follows:
 
 <code-example  language="html">
 
@@ -1085,11 +1083,11 @@ They can also contain code snippets.
 
 When using callouts, consider the following points:
 
-*   The callout header text style is uppercase
-*   The header does not render in the table of contents
-*   You can write the callout body in Markdown
-*   A blank line separates the `<header>` tag from the Markdown content
-*   Avoid using an `<h2>`, `<h3>`, `<h4>`, `<h5>`, or `<h6>`, as the CSS for callouts styles the `<header>` element
+* The callout header text style is uppercase
+* The header does not render in the table of contents
+* You can write the callout body in Markdown
+* A blank line separates the `<header>` tag from the Markdown content
+* Avoid using an `<h2>`, `<h3>`, `<h4>`, `<h5>`, or `<h6>`, as the CSS for callouts styles the `<header>` element
 
 Use callouts sparingly to grab the user's attention.
 
@@ -1192,7 +1190,7 @@ src="generated/images/guide/docs-style-guide/flying-hero.png"
 
 <div class="callout is-important">
 
-<header>Use the HTML <code>&lt;img&gt;</code> tag</header>
+<header>Use the HTML <code>&lt;img></code> tag</header>
 
 Specify images using the `<img>` tag.
 **Do not use the Markdown image syntax, `![... ](... )`.**
@@ -1219,6 +1217,7 @@ The HTML `<img>` element does not have a closing tag.
 </div>
 
 The browser renders the following:
+
 <div class="lightbox">
 
 <img alt="flying hero" src="generated/images/guide/docs-style-guide/flying-hero.png">

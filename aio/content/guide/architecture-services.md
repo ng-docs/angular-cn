@@ -43,12 +43,11 @@ Add the `@Injectable()` decorator to a service class so that Angular can inject 
    <code-example path="architecture/src/app/hero.service.ts" region="provide">
    </code-example>
 
-* Something *injectable* must be registered with an *injector* before it can be created and used. 
+* Something *injectable* must be registered with an *injector* before it can be created and used.
 
 * Register an injectable with a *provider*, an object that tells an injector how to obtain or create a dependency. For a service class, the provider is typically the class itself.
 
 * You don't have to create injectors. Under the hood Angular creates an application-wide *root injector* for you during the bootstrap process. It creates additional child injectors as needed.
-
 
 <div class="alert is-helpful">
 
@@ -80,21 +79,21 @@ You must register at least one *provider* of any service you are going to use.
 The provider can be part of the service's own metadata, making that service available everywhere, or you can register providers with specific components.
 You register providers in the metadata of the service (in the `@Injectable()` decorator) or `@Component()` metadata
 
-*   By default, the Angular CLI command [`ng generate service`](cli/generate) registers a provider with the root injector for your service by including provider metadata in the `@Injectable()` decorator.
-    The tutorial uses this method to register the provider of `HeroService` class definition.
+* By default, the Angular CLI command [`ng generate service`](cli/generate) registers a provider with the root injector for your service by including provider metadata in the `@Injectable()` decorator.
+   The tutorial uses this method to register the provider of `HeroService` class definition.
 
-   <code-example header="hero.service.ts (provide in root)" path="architecture/src/app/hero.service.ts" region="provide">
-   </code-example>
+  <code-example header="hero.service.ts (provide in root)" path="architecture/src/app/hero.service.ts" region="provide">
+  </code-example>
 
-   When you provide the service at the root level, Angular creates a single, shared instance of `HeroService`
-   and injects it into any class that asks for it.
-   Registering the provider in the `@Injectable()` metadata also allows Angular to optimize an app
-   by removing the service from the compiled application if it isn't used, a process known as *tree-shaking*.
+  When you provide the service at the root level, Angular creates a single, shared instance of `HeroService`
+  and injects it into any class that asks for it.
+  Registering the provider in the `@Injectable()` metadata also allows Angular to optimize an app
+  by removing the service from the compiled application if it isn't used, a process known as *tree-shaking*.
 
-*   When you register a provider at the component level, you get a new instance of the service with each new instance of that component.
-    At the component level, register a service provider in the `providers` property of the `@Component()` metadata.
+* When you register a provider at the component level, you get a new instance of the service with each new instance of that component.
+   At the component level, register a service provider in the `providers` property of the `@Component()` metadata.
 
-   <code-example header="src/app/hero-list.component.ts (component providers)" path="architecture/src/app/hero-list.component.ts" region="providers"></code-example>
+  <code-example header="src/app/hero-list.component.ts (component providers)" path="architecture/src/app/hero-list.component.ts" region="providers"></code-example>
 
 For more detailed information, see the [Dependency Injection](guide/dependency-injection) section.
 

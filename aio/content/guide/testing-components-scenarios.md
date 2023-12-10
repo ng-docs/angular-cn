@@ -403,11 +403,11 @@ You can also use RxJS scheduler in `fakeAsync()` just like using `setTimeout()` 
 
 By default, `fakeAsync()` supports the following macro tasks.
 
-*   `setTimeout`
-*   `setInterval`
-*   `requestAnimationFrame`
-*   `webkitRequestAnimationFrame`
-*   `mozRequestAnimationFrame`
+* `setTimeout`
+* `setInterval`
+* `requestAnimationFrame`
+* `webkitRequestAnimationFrame`
+* `mozRequestAnimationFrame`
 
 If you run other macro tasks such as `HTMLCanvasElement.toBlob()`, an *"Unknown macroTask scheduled in fake async test"* error is thrown.
 
@@ -642,9 +642,9 @@ Here's the component's full definition:
 While testing a component this simple has little intrinsic value, it's worth knowing how.
 Use one of these approaches:
 
-*   Test it as used by `DashboardComponent`
-*   Test it as a stand-alone component
-*   Test it as used by a substitute for `DashboardComponent`
+* Test it as used by `DashboardComponent`
+* Test it as a stand-alone component
+* Test it as used by a substitute for `DashboardComponent`
 
 A quick look at the `DashboardComponent` constructor discourages the first approach:
 
@@ -784,9 +784,9 @@ The setup for the `test-host` tests is similar to the setup for the stand-alone 
 
 This testing module configuration shows three important differences:
 
-*   It *declares* both the `DashboardHeroComponent` and the `TestHostComponent`
-*   It *creates* the `TestHostComponent` instead of the `DashboardHeroComponent`
-*   The `TestHostComponent` sets the `DashboardHeroComponent.hero` with a binding
+* It *declares* both the `DashboardHeroComponent` and the `TestHostComponent`
+* It *creates* the `TestHostComponent` instead of the `DashboardHeroComponent`
+* The `TestHostComponent` sets the `DashboardHeroComponent.hero` with a binding
 
 The `createComponent` returns a `fixture` that holds an instance of `TestHostComponent` instead of an instance of `DashboardHeroComponent`.
 
@@ -967,9 +967,9 @@ A little more setup triggers the initial data binding and gets references to the
 
 Three points of special interest:
 
-*   Locate the anchor elements with an attached directive using `By.directive`
-*   The query returns `DebugElement` wrappers around the matching elements
-*   Each `DebugElement` exposes a dependency injector with the specific instance of the directive attached to that element
+* Locate the anchor elements with an attached directive using `By.directive`
+* The query returns `DebugElement` wrappers around the matching elements
+* Each `DebugElement` exposes a dependency injector with the specific instance of the directive attached to that element
 
 The `AppComponent` links to validate are as follows:
 
@@ -998,13 +998,13 @@ But there's plenty of template complexity even in this simple form.
 <code-example
   path="testing/src/app/hero/hero-detail.component.html" header="app/hero/hero-detail.component.html"></code-example>
 
-Tests that exercise the component need &hellip;
+Tests that exercise the component need …
 
-*   To wait until a hero arrives before elements appear in the DOM
-*   A reference to the title text
-*   A reference to the name input box to inspect and set it
-*   References to the two buttons so they can click them
-*   Spies for some of the component and router methods
+* To wait until a hero arrives before elements appear in the DOM
+* A reference to the title text
+* A reference to the name input box to inspect and set it
+* References to the two buttons so they can click them
+* Spies for some of the component and router methods
 
 Even a small form such as this one can produce a mess of tortured conditional setup and CSS element selection.
 
@@ -1080,8 +1080,8 @@ Error: ViewDestroyedError: Attempt to use a destroyed view
 
 A typical approach is to divide the setup logic into two separate `beforeEach()` functions:
 
-| Functions                   | Details |
-|:---                         |:---     |
+| Functions                   | Details                      |
+| :-------------------------- | :--------------------------- |
 | Asynchronous `beforeEach()` | Compiles the components      |
 | Synchronous `beforeEach()`  | Performs the remaining setup |
 
@@ -1152,10 +1152,10 @@ Fortunately, the `TestBed.configureTestingModule` parameter parallels the metada
 The `HeroDetailComponent` requires a lot of help despite its small size and simple construction.
 In addition to the support it receives from the default testing module `CommonModule`, it needs:
 
-*   `NgModel` and friends in the `FormsModule` to enable two-way data binding
-*   The `TitleCasePipe` from the `shared` folder
-*   The Router services
-*   The Hero data access services
+* `NgModel` and friends in the `FormsModule` to enable two-way data binding
+* The `TitleCasePipe` from the `shared` folder
+* The Router services
+* The Hero data access services
 
 One approach is to configure the testing module from the individual pieces as in this example:
 

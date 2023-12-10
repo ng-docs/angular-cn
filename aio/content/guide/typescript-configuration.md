@@ -9,8 +9,8 @@ Typescript must be "transpiled" into JavaScript using the *tsc* compiler, which 
 This page covers some aspects of TypeScript configuration and the TypeScript environment
 that are important to Angular developers, including details about the following files:
 
-| Files                                                    | Details |
-|:---                                                      |:---     |
+| Files                                                    | Details                            |
+| :------------------------------------------------------- | :--------------------------------- |
 | [tsconfig.json](guide/typescript-configuration#tsconfig) | TypeScript compiler configuration. |
 | [typings](guide/typescript-configuration#typings)        | TypesScript declaration files.     |
 

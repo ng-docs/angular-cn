@@ -123,7 +123,7 @@ Here's *Alex* and family in action.
 
 ### Find a parent in a tree with `@SkipSelf()`
 
-Imagine one branch of a component hierarchy: *Alice* -&gt; *Barry* -&gt; *Carol*.
+Imagine one branch of a component hierarchy: *Alice* -> *Barry* -> *Carol*.
 Both *Alice* and *Barry* implement the `Parent` class interface.
 
 *Barry* is the problem.
@@ -148,14 +148,14 @@ It's identical to *Carol*'s constructor except for the additional `@SkipSelf` de
 
 `@SkipSelf` is essential for two reasons:
 
-1.  It tells the injector to start its search for a `Parent` dependency in a component *above* itself, which *is* what parent means.
-1.  Angular throws a cyclic dependency error if you omit the `@SkipSelf` decorator.
+1. It tells the injector to start its search for a `Parent` dependency in a component *above* itself, which *is* what parent means.
+1. Angular throws a cyclic dependency error if you omit the `@SkipSelf` decorator.
 
-    <code-example format="output" hideCopy language="shell">
+   <code-example format="output" hideCopy language="shell">
 
-    NG0200: Circular dependency in DI detected for BethComponent. Dependency path: BethComponent -&gt; Parent -&gt; BethComponent
+   NG0200: Circular dependency in DI detected for BethComponent. Dependency path: BethComponent -&gt; Parent -&gt; BethComponent
 
-    </code-example>
+   </code-example>
 
 Here's *Alice*, *Barry*, and family in action.
 
@@ -167,7 +167,7 @@ Here's *Alice*, *Barry*, and family in action.
 
 <a id="parent-token"></a>
 
-###  Parent class interface
+### Parent class interface
 
 You [learned earlier](guide/dependency-injection-in-action#class-interface) that a class interface is an abstract class used as an interface rather than as a base class.
 

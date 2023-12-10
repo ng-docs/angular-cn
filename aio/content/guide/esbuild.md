@@ -28,10 +28,10 @@ For existing projects, you can opt-in to use the new builder on a per-applicatio
 Both options are considered stable and fully supported by the Angular team.
 The choice of which option to use is a factor of how many changes you will need to make to migrate and what new features you would like to use in the project.
 
-Builder | Configuration Changes | Code Changes | Integrated SSR |
-| :----- | :-------- | :------ | :------- |
-| `application` | Multiple option changes required. If using SSR, additional targets will need to be updated. | Yes, if using SSR | Yes
-| `browser-esbuild` | builder name only | No* | No
+| Builder           | Configuration Changes                                                                       | Code Changes      | Integrated SSR |
+| :---------------- | :------------------------------------------------------------------------------------------ | :---------------- | :------------- |
+| `application`     | Multiple option changes required. If using SSR, additional targets will need to be updated. | Yes, if using SSR | Yes            |
+| `browser-esbuild` | builder name only                                                                           | No\*              | No             |
 
 The `application` builder is generally preferred as it improves server-side rendered (SSR) builds, and makes it easier for client-side rendered projects to adopt SSR in the future.
 However it requires a little more migration effort, particularly for existing SSR applications.
@@ -93,17 +93,16 @@ Changing the `builder` field is the first change you will need to make.
 Once the builder name has been changed, options within the `build` target will need to be updated.
 The following table lists all the `browser` builder options that will need to be adjusted or removed.
 
-| `browser` Option | Action | Notes |
-| :-------------- | :----- | :----- |
-| `main` | rename option to `browser` | |
-| `polyfills` | convert value to an array | may already have been migrated | 
-| `buildOptimizer` | remove option | |
-| `resourcesOutputPath` | remove option | always `media` |
-| `vendorChunk` | remove option | |
-| `commonChunk` | remove option | |
-| `deployUrl`   | remove option | |
-| `ngswConfigPath` | move value to `serviceWorker` and remove option | `serviceWorker` is now either `false` or a configuration path |
-
+| `browser` Option      | Action                                          | Notes                                                         |
+| :-------------------- | :---------------------------------------------- | :------------------------------------------------------------ |
+| `main`                | rename option to `browser`                      |                                                               |
+| `polyfills`           | convert value to an array                       | may already have been migrated                                |
+| `buildOptimizer`      | remove option                                   |                                                               |
+| `resourcesOutputPath` | remove option                                   | always `media`                                                |
+| `vendorChunk`         | remove option                                   |                                                               |
+| `commonChunk`         | remove option                                   |                                                               |
+| `deployUrl`           | remove option                                   |                                                               |
+| `ngswConfigPath`      | move value to `serviceWorker` and remove option | `serviceWorker` is now either `false` or a configuration path |
 
 If the application is not using SSR currently, this should be the final step to allow `ng build` to function.
 After executing `ng build` for the first time, there may be new warnings or errors based on behavioral differences or application usage of Webpack-specific features.
@@ -128,19 +127,19 @@ To convert from the separate SSR builders to the integrated capabilities of the 
 However, as each application is different, there may be more application specific changes needed beyond these to complete the process.
 
 1. Combine the options for the above mentioned SSR builders into the `application` builder options within the `angular.json` file.
-The previously used builders and their target configurations can then be fully removed from the file.
+   The previously used builders and their target configurations can then be fully removed from the file.
 2. Combine server TypeScript configuration from `tsconfig.server.json` into `tsconfig.app.json`.
-The `types` and `files` options are typically the only setting that needs to be combined but others may be needed based on application specific customizations.
-You should also add the TypeScript option `"esModuleInterop": true` to ensure `express` imports are [ESM compliant](#esm-default-imports-vs-namespace-imports).
-The `tsconfig.server.json` can then be removed as it will no longer be used during builds.
+   The `types` and `files` options are typically the only setting that needs to be combined but others may be needed based on application specific customizations.
+   You should also add the TypeScript option `"esModuleInterop": true` to ensure `express` imports are [ESM compliant](#esm-default-imports-vs-namespace-imports).
+   The `tsconfig.server.json` can then be removed as it will no longer be used during builds.
 3. Remove and/or update any `npm` scripts referencing the now removed builder targets.
-The `ng build` and `ng serve` commands provide equivalent functionality when using the `application` builder.
+   The `ng build` and `ng serve` commands provide equivalent functionality when using the `application` builder.
 4. Update application server code to remove Webpack specific elements.
 5. Update application server code to use new bootstrapping and output directory structure.
-An example of the changes for a v16 project that has been converted can be found [here](https://github.com/alan-agius4/angular-cli-use-application-builder/commit/1defdb93a7f508662bc427439e51505668bf84cd#diff-1ba718c1eb8aa39cd20c2562d92523068c734d75f54655e97d652b992d9b4259).
+   An example of the changes for a v16 project that has been converted can be found [here](https://github.com/alan-agius4/angular-cli-use-application-builder/commit/1defdb93a7f508662bc427439e51505668bf84cd#diff-1ba718c1eb8aa39cd20c2562d92523068c734d75f54655e97d652b992d9b4259).
 6. Remove any CommonJS assumptions in the application server code such as `require`, `__filename`, `__dirname`, or other constructs from the [CommonJS module scope](https://nodejs.org/api/modules.html#the-module-scope).
-All application code should be ESM compatible.
-This does not apply to third-party dependencies.
+   All application code should be ESM compatible.
+   This does not apply to third-party dependencies.
 
 In the future, a schematic will make this migration process easier for existing applications.
 

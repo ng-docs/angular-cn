@@ -18,16 +18,17 @@ Designing an application to be more accessible generally improves the user exper
 
 Angular's syntax supports localizing your app and its internationalization tools make your app easier to localize by:
 
-*  Extracting the tagged text for translation into different languages
-*  Supporting International Components for Unicode (ICU) expressions for complex translation cases such as genders and plurals
-*  Supporting multiple translations
-*  Supporting locale-specific display formats for data
+* Extracting the tagged text for translation into different languages
+* Supporting International Components for Unicode (ICU) expressions for complex translation cases such as genders and plurals
+* Supporting multiple translations
+* Supporting locale-specific display formats for data
 
 Learn more about Angular's internationalization tools in our [documentation][internationalization-doc], which contains a short video.
 
 <!-- links -->
 
 [internationalization-doc]: guide/i18n-overview "Angular internationalization"
+
 [angular-accy]: guide/accessibility "Accessibility in Angular"
 
 <!-- external links -->

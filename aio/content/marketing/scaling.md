@@ -40,16 +40,23 @@ Your app can also use these features with confidence.
 <!-- links -->
 
 [ng-command-list]: cli#command-overview "Command overview"
+
 [schematic-overview]: guide/schematics "Using schematics"
+
 [ng-generate]: cli/generate "ng generate"
+
 [forms-overview]: guide/forms-overview "Introduction to forms in Angular"
+
 [routes-overview]: guide/routing-overview "Angular routing"
 
 <!-- external links -->
 
 [typescript-home]: https://www.typescriptlang.org/ "TypeScript: JavaScript with syntax for types"
+
 [type-checking-doc]: https://dl.acm.org/doi/10.1109/ICSE.2017.75 "To type or not to type: quantifying detectable bugs in JavaScript"
+
 [material-home]: https://material.angular.io/ "Angular Material"
+
 [material-cdk]: https://material.angular.io/cdk "Angular Material CDK"
 
 <!-- end links -->

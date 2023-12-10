@@ -81,11 +81,11 @@ This is known as "upgrading" and "downgrading".
 
 <header>Definitions:</header>
 
-*   *Upgrading*:
-    The act of making an AngularJS asset, such as a component or service, available to the Angular part of the application.
+* *Upgrading*:
+  The act of making an AngularJS asset, such as a component or service, available to the Angular part of the application.
 
-*   *Downgrading*:
-    The act of making an Angular asset, such as a component or service, available to the AngularJS part of the application.
+* *Downgrading*:
+  The act of making an Angular asset, such as a component or service, available to the AngularJS part of the application.
 
 </div>
 
@@ -96,10 +96,10 @@ In a sense, it "downgrades" an Angular module to an AngularJS module.
 
 There are a few things to remember, though:
 
-*   You don't pass the Angular module directly to `downgradeModule()`.
-    All `downgradeModule()` needs is a "recipe", for example, a factory function, to create an instance for your module.
+* You don't pass the Angular module directly to `downgradeModule()`.
+  All `downgradeModule()` needs is a "recipe", for example, a factory function, to create an instance for your module.
 
-*   The Angular module is not instantiated until the application actually needs it.
+* The Angular module is not instantiated until the application actually needs it.
 
 The following is an example of how you can use `downgradeModule()` to link the two modules.
 
@@ -125,8 +125,8 @@ It needs a recipe.
 You define that recipe by providing a factory function that can create an instance of the Angular module.
 `downgradeModule()` accepts two types of factory functions:
 
-*   `NgModuleFactory`
-*   `(extraProviders: StaticProvider[]) => Promise<NgModuleRef>`
+* `NgModuleFactory`
+* `(extraProviders: StaticProvider[]) => Promise<NgModuleRef>`
 
 When you pass an `NgModuleFactory`, `downgradeModule()` uses it to instantiate the module using [platformBrowser](api/platform-browser/platformBrowser)'s [bootstrapModuleFactory()](api/core/PlatformRef#bootstrapModuleFactory), which is compatible with ahead-of-time (AOT) compilation.
 AOT compilation helps make your applications load faster
@@ -165,11 +165,12 @@ This is especially useful when you use Angular on parts of the hybrid applicatio
 
 A few examples are:
 
-*   You use Angular on specific routes only and you don't need it until/if a user visits such a route.
-*   You use Angular for features that are only visible to specific types of users; for example, logged-in users, administrators, or VIP members.
-    You don't need to load Angular until a user is authenticated.
+* You use Angular on specific routes only and you don't need it until/if a user visits such a route.
 
-*   You use Angular for a feature that is not critical for the initial rendering of the application and you can afford a small delay in favor of better initial load performance.
+* You use Angular for features that are only visible to specific types of users; for example, logged-in users, administrators, or VIP members.
+  You don't need to load Angular until a user is authenticated.
+
+* You use Angular for a feature that is not critical for the initial rendering of the application and you can afford a small delay in favor of better initial load performance.
 
 ### Bootstrapping with `downgradeModule()`
 
@@ -239,27 +240,31 @@ The differences between `downgradeModule()` and `UpgradeModule` end here.
 The rest of the `upgrade/static` APIs and concepts work in the exact same way for both types of hybrid applications.
 See [Upgrading from AngularJS](guide/upgrade) to learn about:
 
-*   [Using Angular Components from AngularJS Code](guide/upgrade#using-angular-components-from-angularjs-code).
+* [Using Angular Components from AngularJS Code](guide/upgrade#using-angular-components-from-angularjs-code).
 
-    <div class="callout is-important">
+  <div class="callout is-important">
 
-    **NOTE**: <br />
-    If you are downgrading multiple modules, you need to specify the name of the downgraded module each component belongs to, when calling `downgradeComponent()`.
+  **NOTE**: <br />
+  If you are downgrading multiple modules, you need to specify the name of the downgraded module each component belongs to, when calling `downgradeComponent()`.
 
-    </div>
+  </div>
 
-*   [Using AngularJS Component Directives from Angular Code](guide/upgrade#using-angularjs-component-directives-from-angular-code).
-*   [Projecting AngularJS Content into Angular Components](guide/upgrade#projecting-angularjs-content-into-angular-components).
-*   [Transcluding Angular Content into AngularJS Component Directives](guide/upgrade#transcluding-angular-content-into-angularjs-component-directives).
-*   [Making AngularJS Dependencies Injectable to Angular](guide/upgrade#making-angularjs-dependencies-injectable-to-angular).
-*   [Making Angular Dependencies Injectable to AngularJS](guide/upgrade#making-angular-dependencies-injectable-to-angularjs).
-    
-    <div class="callout is-important">
+* [Using AngularJS Component Directives from Angular Code](guide/upgrade#using-angularjs-component-directives-from-angular-code).
 
-    **NOTE**: <br />
-    If you are downgrading multiple modules, you need to specify the name of the downgraded module each injectable belongs to, when calling `downgradeInjectable()`.
+* [Projecting AngularJS Content into Angular Components](guide/upgrade#projecting-angularjs-content-into-angular-components).
 
-    </div>
+* [Transcluding Angular Content into AngularJS Component Directives](guide/upgrade#transcluding-angular-content-into-angularjs-component-directives).
+
+* [Making AngularJS Dependencies Injectable to Angular](guide/upgrade#making-angularjs-dependencies-injectable-to-angular).
+
+* [Making Angular Dependencies Injectable to AngularJS](guide/upgrade#making-angular-dependencies-injectable-to-angularjs).
+
+  <div class="callout is-important">
+
+  **NOTE**: <br />
+  If you are downgrading multiple modules, you need to specify the name of the downgraded module each injectable belongs to, when calling `downgradeInjectable()`.
+
+  </div>
 
 <div class="alert is-important">
 
@@ -303,11 +308,12 @@ Specifically, this guide showed how you can achieve better performance and great
 
 To summarize, the key differentiating factors of `downgradeModule()` are:
 
-1.  It allows instantiating or even loading the Angular part lazily, which improves the initial loading time.
-    In some cases this may waive the cost of running a second framework altogether.
+1. It allows instantiating or even loading the Angular part lazily, which improves the initial loading time.
+   In some cases this may waive the cost of running a second framework altogether.
 
-1.  It improves performance by avoiding unnecessary change detection runs while giving the developer greater ability to customize.
-1.  It does not require you to change how you bootstrap your AngularJS application.
+1. It improves performance by avoiding unnecessary change detection runs while giving the developer greater ability to customize.
+
+1. It does not require you to change how you bootstrap your AngularJS application.
 
 Using `downgradeModule()` is a good option for hybrid applications when you want to keep the AngularJS and Angular parts less coupled.
 You can still mix and match components and services from both frameworks, but you might need to manually propagate change detection.

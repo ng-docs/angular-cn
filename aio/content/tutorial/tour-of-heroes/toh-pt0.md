@@ -5,10 +5,10 @@ Use the `ng new` command to start creating your **Tour of Heroes** application. 
 
 This tutorial:
 
-1.  Sets up your environment.
-2.  Creates a new workspace and initial application project.
-3.  Serves the application.
-4.  Makes changes to the new application.
+1. Sets up your environment.
+2. Creates a new workspace and initial application project.
+3. Serves the application.
+4. Makes changes to the new application.
 
 <div class="alert is-helpful">
 
@@ -28,28 +28,28 @@ A *project* is the set of files that make up an application or a library.
 
 To create a new workspace and an initial project:
 
-1.  Ensure that you aren't already in an Angular workspace directory.
-    For example, if you're in the Getting Started workspace from an earlier exercise, navigate to its parent.
+1. Ensure that you aren't already in an Angular workspace directory.
+   For example, if you're in the Getting Started workspace from an earlier exercise, navigate to its parent.
 
-2.  Run `ng new` followed by the application name as shown here:
+2. Run `ng new` followed by the application name as shown here:
 
-    <code-example format="shell" language="shell">
+   <code-example format="shell" language="shell">
 
-    ng new angular-tour-of-heroes
+   ng new angular-tour-of-heroes
 
-    </code-example>
+   </code-example>
 
-3.  `ng new` prompts you for information about features to include in the initial project.
-    Accept the defaults by pressing the Enter or Return key.
+3. `ng new` prompts you for information about features to include in the initial project.
+   Accept the defaults by pressing the Enter or Return key.
 
 `ng new` installs the necessary `npm` packages and other dependencies that Angular requires.
 This can take a few minutes.
 
 `ng new` also creates the following workspace and starter project files:
 
-*   A new workspace, with a root directory named `angular-tour-of-heroes`
-*   An initial skeleton application project in the `src/app` subdirectory
-*   Related configuration files
+* A new workspace, with a root directory named `angular-tour-of-heroes`
+* An initial skeleton application project in the `src/app` subdirectory
+* Related configuration files
 
 The initial application project contains a simple application that's ready to run.
 
@@ -92,8 +92,8 @@ They display data on the screen, listen for user input, and take action based on
 Open the project in your favorite editor or IDE. Navigate to the `src/app` directory to edit the starter application.
 In the IDE, locate these files, which make up the `AppComponent` that you just created:
 
-| Files                | Details |
-|:---                  |:---     |
+| Files                | Details                                          |
+| :------------------- | :----------------------------------------------- |
 | `app.component.ts`   | The component class code, written in TypeScript. |
 | `app.component.html` | The component template, written in HTML.         |
 | `app.component.css`  | The component's private CSS styles.              |
@@ -149,12 +149,12 @@ Here are the code files discussed on this page.
 
 ## Summary
 
-*   You created the initial application structure using `ng new`.
-*   You learned that Angular components display data
-*   You used the double curly braces of interpolation to display the application title
+* You created the initial application structure using `ng new`.
+* You learned that Angular components display data
+* You used the double curly braces of interpolation to display the application title
 
 ## Next steps
 
-*  [1. The hero editor](tutorial/tour-of-heroes/toh-pt1)
+* [1. The hero editor](tutorial/tour-of-heroes/toh-pt1)
 
 @reviewed 2023-08-30

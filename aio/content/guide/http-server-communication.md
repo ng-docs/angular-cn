@@ -61,8 +61,8 @@ options: {
 
 Important options include the *observe* and *responseType* properties.
 
-*   The *observe* option specifies how much of the response to return
-*   The *responseType* option specifies the format in which to return data
+* The *observe* option specifies how much of the response to return
+* The *responseType* option specifies the format in which to return data
 
 <div class="alert is-helpful">
 

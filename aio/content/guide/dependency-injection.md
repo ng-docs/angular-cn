@@ -35,7 +35,6 @@ class HeroListComponent {}
 
 When you register a provider at the component level, you get a new instance of the service with each new instance of that component.
 
-
 * Use the `providers` field of the `ApplicationConfig` object passed to the `bootstrapApplication` function to provide a service or other `Injectable` at the application level. In this scenario, the `HeroService` is available to all components, directives, and pipes declared in this NgModule or other NgModule which is within the same ModuleInjector applicable for this NgModule. When you register a provider in the `ApplicationConfig`, the same instance of a service is available to all applicable components, directives and pipes.
 
 * For `NgModule` based applications, use the `providers` field of the `@NgModule` decorator to provide a service or other `Injectable` available at the application level.
@@ -54,8 +53,6 @@ Then, in `main.ts`:
 <code-example language="typescript">
 bootstrapApplication(AppComponent, appConfig)
 </code-example>
-
-
 
 * At the application root level, which allows injecting it into other classes in the application. This can be done by adding the `providedIn: 'root'` field to the `@Injectable` decorator:
 
@@ -94,6 +91,7 @@ When all requested services have been resolved and returned, Angular can call th
 
 <div class="lightbox">
   <img src="generated/images/guide/architecture/injector-injects.png" alt="Service" class="left">
+
 </div>
 
 ## What's next

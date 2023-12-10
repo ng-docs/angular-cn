@@ -16,7 +16,7 @@ To learn more about the browser APIs involved see [Push API](https://developer.m
 
 We recommend you have a basic understanding of the following:
 
-*   [Getting Started with Service Workers](guide/service-worker-getting-started)
+* [Getting Started with Service Workers](guide/service-worker-getting-started)
 
 ## Notification payload
 
@@ -26,7 +26,7 @@ See `SwPush` for guidance.
 <div class="alert is-helpful">
 
 In Chrome, you can test push notifications without a backend.
-Open Devtools -&gt; Application -&gt; Service Workers and use the `Push` input to send a JSON notification payload.
+Open Devtools -> Application -> Service Workers and use the `Push` input to send a JSON notification payload.
 
 </div>
 
@@ -56,12 +56,12 @@ This is especially useful for when there are no open clients when a notification
 
 The Angular service worker supports the following operations:
 
-| Operations                  | Details |
-|:---                         |:---     |
+| Operations                  | Details                                                                                                                                          |
+| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `openWindow`                | Opens a new tab at the specified URL.                                                                                                            |
 | `focusLastFocusedOrOpen`    | Focuses the last focused client. If there is no client open, then it opens a new tab at the specified URL.                                       |
 | `navigateLastFocusedOrOpen` | Focuses the last focused client and navigates it to the specified URL. If there is no client open, then it opens a new tab at the specified URL. |
-| `sendRequest`               | Send a simple GET request to the specified URL.                                                                                                                                                          |
+| `sendRequest`               | Send a simple GET request to the specified URL.                                                                                                  |
 
 <div class="alert is-important">
 
@@ -115,7 +115,7 @@ If an action does not have a corresponding `onActionClick` entry, then the notif
 
 You might also be interested in the following:
 
-*   [Service Worker in Production](guide/service-worker-devops)
+* [Service Worker in Production](guide/service-worker-devops)
 
 <!-- links -->
 

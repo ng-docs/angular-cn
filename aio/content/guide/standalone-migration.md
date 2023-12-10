@@ -18,10 +18,10 @@ Before using the schematic, please ensure that the project:
 
 ## Schematic options
 
-| Option              | Details                                                    |
-|:---                 |:---                                                        |
-| `mode`              | The transformation to perform. See [Migration modes](#migration-modes) below for details on the available options. |
-| `path`              | The path to migrate, relative to the project root. You can use this option to migrate sections of your project incrementally. |
+| Option | Details                                                                                                                       |
+| :----- | :---------------------------------------------------------------------------------------------------------------------------- |
+| `mode` | The transformation to perform. See [Migration modes](#migration-modes) below for details on the available options.            |
+| `path` | The path to migrate, relative to the project root. You can use this option to migrate sections of your project incrementally. |
 
 ## Migrations steps
 
@@ -46,6 +46,7 @@ Run the migration in the order listed below, verifying that your code builds and
 ## After the migration
 
 Congratulations, your application has been converted to standalone 🎉. These are some optional follow-up steps you may want to take now:
+
 * Find and remove any remaining `NgModule` declarations: since the ["Remove unnecessary NgModules" step](#remove-unnecessary-ngmodules) cannot remove all modules automatically, you may have to remove the remaining declarations manually.
 * Run the project's unit tests and fix any failures.
 * Run any code formatters, if the project uses automatic formatting.
@@ -58,7 +59,7 @@ The migration has the following modes:
 1. Convert declarations to standalone.
 2. Remove unnecessary NgModules.
 3. Switch to standalone bootstrapping API.
-You should run these migrations in the order given.
+   You should run these migrations in the order given.
 
 ### Convert declarations to standalone
 
@@ -71,6 +72,7 @@ The schematic ignores NgModules which bootstrap a component during this step bec
 </div>
 
 **Before:**
+
 ```typescript
 // shared.module.ts
 @NgModule({
@@ -93,6 +95,7 @@ export class GreeterComponent {
 ```
 
 **After:**
+
 ```typescript
 // shared.module.ts
 @NgModule({
@@ -116,12 +119,15 @@ export class GreeterComponent {
 ```
 
 ### Remove unnecessary NgModules
+
 After converting all declarations to standalone, many NgModules can be safely removed. This step deletes such module declarations and as many corresponding references as possible. If the migration cannot delete a reference automatically, it leaves the following TODO comment so that you can delete the NgModule manually:
+
 ```typescript
 /* TODO(standalone-migration): clean up removed NgModule reference manually */
 ```
 
 The migration considers a module safe to remove if that module:
+
 * Has no `declarations`.
 * Has no `providers`.
 * Has no `bootstrap` components.
@@ -129,6 +135,7 @@ The migration considers a module safe to remove if that module:
 * Has no class members. Empty constructors are ignored.
 
 **Before:**
+
 ```typescript
 // importer.module.ts
 @NgModule({
@@ -139,15 +146,18 @@ export class ImporterModule {}
 ```
 
 **After:**
+
 ```typescript
 // importer.module.ts
 // Does not exist!
 ```
 
 ### Switch to standalone bootstrapping API
+
 This step converts any usages of  `bootstrapModule` to the new, standalone-based `bootstrapApplication`. It also switches the root component to `standalone: true` and deletes the root NgModule. If the root module has any `providers` or `imports`, the migration attempts to copy as much of this configuration as possible into the new bootstrap call.
 
 **Before:**
+
 ```typescript
 // ./app/app.module.ts
 import { NgModule } from '@angular/core';
@@ -175,6 +185,7 @@ platformBrowser().bootstrapModule(AppModule).catch(e => console.error(e));
 ```
 
 **After:**
+
 ```typescript
 // ./app/app.module.ts
 // Does not exist!
@@ -195,13 +206,17 @@ bootstrapApplication(AppComponent).catch(e => console.error(e));
 ```
 
 ## Common problems
+
 Some common problems that may prevent the schematic from working correctly include:
+
 * Compilation errors - if the project has compilation errors, Angular cannot analyze and migrate it correctly.
 * Files not included in a tsconfig - the schematic determines which files to migrate by analyzing your project's `tsconfig.json` files. The schematic excludes any files not captured by a tsconfig.
 * Code that cannot be statically analyzed - the schematic uses static analysis to understand your code and determine where to make changes. The migration may skip any classes with metadata that cannot be statically analyzed at build time.
 
 ## Limitations
+
 Due to the size and complexity of the migration, there are some cases that the schematic cannot handle:
+
 * Because unit tests are not ahead-of-time (AoT) compiled, `imports` added to components in unit tests might not be entirely correct.
 * The schematic relies on direct calls to Angular APIs. The schematic cannot recognize custom wrappers around Angular APIs. For example, if there you define a custom `customConfigureTestModule` function that wraps `TestBed.configureTestingModule`, components it declares may not be recognized.
 

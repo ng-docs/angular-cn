@@ -4,7 +4,7 @@
 
 A basic understanding of the following:
 
-*   [JavaScript Modules vs. NgModules](guide/ngmodule-vs-jsmodule)
+* [JavaScript Modules vs. NgModules](guide/ngmodule-vs-jsmodule)
 
 An NgModule describes how the application parts fit together.
 Every application has at least one Angular module, the *root* module, which must be present for bootstrapping the application on launch.
@@ -40,8 +40,8 @@ After the import statements is a class with the **`@NgModule`** [decorator](guid
 The `@NgModule` decorator identifies `AppModule` as an `NgModule` class.
 `@NgModule` takes a metadata object that tells Angular how to compile and launch the application.
 
-| metadata object | Details |
-|:---             |:---     |
+| metadata object | Details                                                                                                     |
+| :-------------- | :---------------------------------------------------------------------------------------------------------- |
 | declarations    | This application's lone component.                                                                          |
 | imports         | Import `BrowserModule` to have browser-specific services such as DOM rendering, sanitization, and location. |
 | providers       | The service providers.                                                                                      |
@@ -85,9 +85,9 @@ When you need it elsewhere, import the module that contains the declarable you n
 Use the `declarations` array for directives.
 To use a directive, component, or pipe in a module, you must do a few things:
 
-1.  Export it from the file where you wrote it.
-1.  Import it into the appropriate module.
-1.  Declare it in the `@NgModule` `declarations` array.
+1. Export it from the file where you wrote it.
+1. Import it into the appropriate module.
+1. Declare it in the `@NgModule` `declarations` array.
 
 Those three steps look like the following. In the file where you create your directive, export it.
 The following example, named `ItemDirective` is the default directive structure that the CLI generates in its own file, `item.directive.ts`:

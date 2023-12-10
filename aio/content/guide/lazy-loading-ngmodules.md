@@ -52,8 +52,8 @@ For step-by-step instructions on lazy loading modules, continue with the followi
 
 Setting up a lazy-loaded feature module requires two main steps:
 
-1.  Create the feature module with the Angular CLI, using the `--route` flag.
-1.  Configure the routes.
+1. Create the feature module with the Angular CLI, using the `--route` flag.
+1. Configure the routes.
 
 ### Set up an application
 
@@ -410,11 +410,11 @@ For more information on Angular Modules, see [NgModules](guide/ngmodules).
 
 You might also be interested in the following:
 
-*   [Routing and Navigation](guide/router)
-*   [Providers](guide/providers)
-*   [Types of Feature Modules](guide/module-types)
-*   [Route-level code-splitting in Angular](https://web.dev/route-level-code-splitting-in-angular)
-*   [Route preloading strategies in Angular](https://web.dev/route-preloading-in-angular)
+* [Routing and Navigation](guide/router)
+* [Providers](guide/providers)
+* [Types of Feature Modules](guide/module-types)
+* [Route-level code-splitting in Angular](https://web.dev/route-level-code-splitting-in-angular)
+* [Route preloading strategies in Angular](https://web.dev/route-preloading-in-angular)
 
 <!-- links -->
 

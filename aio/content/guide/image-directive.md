@@ -4,18 +4,18 @@ The `NgOptimizedImage` directive makes it easy to adopt performance best practic
 
 The directive ensures that the loading of the [Largest Contentful Paint (LCP)](http://web.dev/lcp) image is prioritized by:
 
-*   Automatically setting the `fetchpriority` attribute on the `<img>` tag
-*   Lazy loading other images by default
-*   Automatically generating a preconnect link tag in the document head
-*   Automatically generating a `srcset` attribute
-*   Generating a [preload hint](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload) if app is using SSR
+* Automatically setting the `fetchpriority` attribute on the `<img>` tag
+* Lazy loading other images by default
+* Automatically generating a preconnect link tag in the document head
+* Automatically generating a `srcset` attribute
+* Generating a [preload hint](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload) if app is using SSR
 
 In addition to optimizing the loading of the LCP image, `NgOptimizedImage` enforces a number of image best practices, such as:
 
-*   Using [image CDN URLs to apply image optimizations](https://web.dev/image-cdns/#how-image-cdns-use-urls-to-indicate-optimization-options)
-*   Preventing layout shift by requiring `width` and `height`
-*   Warning if `width` or `height` have been set incorrectly
-*   Warning if the image will be visually distorted when rendered
+* Using [image CDN URLs to apply image optimizations](https://web.dev/image-cdns/#how-image-cdns-use-urls-to-indicate-optimization-options)
+* Preventing layout shift by requiring `width` and `height`
+* Warning if `width` or `height` have been set incorrectly
+* Warning if the image will be visually distorted when rendered
 
 **Note: Although the `NgOptimizedImage` directive was made a stable feature in Angular version 15, it has been backported and is available as a stable feature in versions 13.4.0 and 14.3.0 as well. **
 
@@ -61,9 +61,9 @@ Always mark the [LCP image](https://web.dev/lcp/#what-elements-are-considered) o
 
 Marking an image as `priority` applies the following optimizations:
 
-*   Sets `fetchpriority=high` (read more about priority hints [here](https://web.dev/priority-hints))
-*   Sets `loading=eager` (read more about native lazy loading [here](https://web.dev/browser-level-image-lazy-loading))
-*   Automatically generates a [preload link element](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload) if [rendering on the server](/guide/ssr).
+* Sets `fetchpriority=high` (read more about priority hints [here](https://web.dev/priority-hints))
+* Sets `loading=eager` (read more about native lazy loading [here](https://web.dev/browser-level-image-lazy-loading))
+* Automatically generates a [preload link element](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload) if [rendering on the server](/guide/ssr).
 
 Angular logs an error during development if the LCP element is an image that does not have the `priority` attribute, as this can hurt loading performance significantly. A page’s LCP element can vary based on a number of factors - such as the dimensions of a user's screen, so a page may have multiple images that should be marked `priority`. See [CSS for Web Vitals](https://web.dev/css-web-vitals/#images-and-largest-contentful-paint-lcp) for more details.
 
@@ -230,20 +230,20 @@ A "loader" is a function that generates an [image transformation URL](https://we
 
 `NgOptimizedImage` provides both a generic loader that applies no transformations, as well as loaders for various third-party image services. It also supports writing your own custom loader.
 
-| Loader type| Behavior |
-|:--- |:--- |
-| Generic loader | The URL returned by the generic loader will always match the value of `src`. In other words, this loader applies no transformations. Sites that use Angular to serve images are the primary intended use case for this loader.|
-| Loaders for third-party image services | The URL returned by the loaders for third-party image services will follow API conventions used by that particular image service. |
-| Custom loaders | A custom loader's behavior is defined by its developer. You should use a custom loader if your image service isn't supported by the loaders that come preconfigured with `NgOptimizedImage`.|
+| Loader type                            | Behavior                                                                                                                                                                                                                       |
+| :------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Generic loader                         | The URL returned by the generic loader will always match the value of `src`. In other words, this loader applies no transformations. Sites that use Angular to serve images are the primary intended use case for this loader. |
+| Loaders for third-party image services | The URL returned by the loaders for third-party image services will follow API conventions used by that particular image service.                                                                                              |
+| Custom loaders                         | A custom loader's behavior is defined by its developer. You should use a custom loader if your image service isn't supported by the loaders that come preconfigured with `NgOptimizedImage`.                                   |
 
 Based on the image services commonly used with Angular applications, `NgOptimizedImage` provides loaders preconfigured to work with the following image services:
 
-| Image Service | Angular API | Documentation |
-|:--- |:--- |:--- |
-| Cloudflare Image Resizing | `provideCloudflareLoader` | [Documentation](https://developers.cloudflare.com/images/image-resizing/) |
-| Cloudinary | `provideCloudinaryLoader` | [Documentation](https://cloudinary.com/documentation/resizing_and_cropping) |
-| ImageKit | `provideImageKitLoader` | [Documentation](https://docs.imagekit.io/) |
-| Imgix | `provideImgixLoader` | [Documentation](https://docs.imgix.com/) |
+| Image Service             | Angular API               | Documentation                                                               |
+| :------------------------ | :------------------------ | :-------------------------------------------------------------------------- |
+| Cloudflare Image Resizing | `provideCloudflareLoader` | [Documentation](https://developers.cloudflare.com/images/image-resizing/)   |
+| Cloudinary                | `provideCloudinaryLoader` | [Documentation](https://cloudinary.com/documentation/resizing_and_cropping) |
+| ImageKit                  | `provideImageKitLoader`   | [Documentation](https://docs.imagekit.io/)                                  |
+| Imgix                     | `provideImgixLoader`      | [Documentation](https://docs.imgix.com/)                                    |
 
 To use the **generic loader** no additional code changes are necessary. This is the default behavior.
 
@@ -259,9 +259,9 @@ providers: [
 
 The base URL for your image assets should be passed to the provider factory as an argument. For most sites, this base URL should match one of the following patterns:
 
-*   https://yoursite.yourcdn.com
-*   https://subdomain.yoursite.com
-*   https://subdomain.yourcdn.com/yoursite
+* https://yoursite.yourcdn.com
+* https://subdomain.yoursite.com
+* https://subdomain.yourcdn.com/yoursite
 
 You can learn more about the base URL structure in the docs of a corresponding CDN provider.
 
@@ -319,6 +319,7 @@ Note that in the above example, we've invented the 'roundedCorners' property nam
 ## Frequently Asked Questions
 
 ### Does NgOptimizedImage support the `background-image` css property?
+
 The NgOptimizedImage does not directly support the `background-image` css property, but it is designed to easily accommodate the use case of having an image as the background of another element.
 
 Here's a simple step-by-step process for migrating from `background-image` to `NgOptimizedImage`. For these steps, we'll refer to the element that has an image background as the "containing element":
@@ -332,14 +333,17 @@ Here's a simple step-by-step process for migrating from `background-image` to `N
 You can adjust how the background image fills the container as described in the [Using fill mode](#using-fill-mode) section.
 
 ### Why can't I use `src` with `NgOptimizedImage`?
+
 The `ngSrc` attribute was chosen as the trigger for NgOptimizedImage due to technical considerations around how images are loaded by the browser. NgOptimizedImage makes programmatic changes to the `loading` attribute--if the browser sees the `src` attribute before those changes are made, it will begin eagerly downloading the image file, and the loading changes will be ignored.
 
 ### Can I use two different image domains in the same page?
+
 The [image loaders](#configuring-an-image-loader-for-ngoptimizedimage) provider pattern is designed to be as simple as possible for the common use case of having only a single image CDN used within a component. However, it's still very possible to manage multiple image CDNs using a single provider.
 
 To do this, we recommend writing a [custom image loader](#custom-loaders) which uses the [`loaderParams` property](#the-loaderparams-property) to pass a flag that specifies which image CDN should be used, and then invokes the appropriate loader based on that flag.
 
 ### Why is a preconnect element not being generated for my image domain?
+
 Preconnect generation is performed based on static analysis of your application. That means that the image domain must be directly included in the loader parameter, as in the following example:
 
 <code-example format="typescript" language="typescript">

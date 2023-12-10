@@ -15,9 +15,9 @@ In the following example, the `HeroesService` makes an HTTP POST request when ad
 The `HttpClient.post()` method is similar to `get()` in that it has a type parameter, which you can use to specify that you expect the server to return data of a given type.
 The method takes a resource URL and two additional parameters:
 
-| Parameter | Details |
-|:---       |:---     |
-| body      | The data to POST in the body of the request.                                                          |
+| Parameter | Details                                                                            |
+| :-------- | :--------------------------------------------------------------------------------- |
+| body      | The data to POST in the body of the request.                                       |
 | options   | An object containing method options which, in this case, specify required headers. |
 
 The example catches errors as [described above](guide/http-handle-request-errors#error-details).
@@ -48,8 +48,8 @@ You must call `subscribe()` or nothing happens.
 Just calling `HeroesService.deleteHero()` does not initiate the DELETE request.
 
 <code-example path="http/src/app/heroes/heroes.component.ts" region="delete-hero-no-subscribe"></code-example>
-</div>
 
+</div>
 
 ## Make a PUT request
 

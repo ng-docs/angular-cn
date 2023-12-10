@@ -4,7 +4,7 @@ On every change detection cycle, Angular synchronously:
 
 * Evaluates all template expressions in all components, unless specified otherwise, based on that each component's detection strategy
 * Executes the `ngDoCheck`, `ngAfterContentChecked`, `ngAfterViewChecked`, and `ngOnChanges` lifecycle hooks.
-A single slow computation within a template or a lifecycle hook can slow down the entire change detection process because Angular runs the computations sequentially.
+  A single slow computation within a template or a lifecycle hook can slow down the entire change detection process because Angular runs the computations sequentially.
 
 ## Identifying slow computations
 
@@ -12,10 +12,10 @@ You can identify heavy computations with Angular DevTools’ profiler. In the pe
 
 <div class="lightbox">
   <img alt="Angular DevTools profiler preview showing slow computation" src="generated/images/guide/change-detection/slow-computations.png">
+
 </div>
 
 For example, in the preceding screenshot, the second recorded change detection cycle is selected. Angular spent over 573 ms on this cycle, with the most time spent in the `EmployeeListComponent`. In the details panel, you can see that Angular spent over 297 ms evaluating the template of the `EmployeeListComponent`.
-
 
 ## Optimizing slow computations
 

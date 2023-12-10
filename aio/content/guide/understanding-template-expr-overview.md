@@ -1,8 +1,8 @@
 <!-- Archived and no longer in the left nav. Still accessible to 3rd parties who linked to it. -->
+
 # Understanding template expressions
 
 This topic explores some aspects of Angular text interpolation.
-
 
 ## Syntax
 
@@ -93,12 +93,13 @@ When using template expressions, follow these best practices:
   The view should be stable throughout a single rendering pass.
 
   <div class="callout is-important">
-    <header>Idempotent expressions reduce side effects</header>
 
-    An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.
+  <header>Idempotent expressions reduce side effects</header>
+
+  An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.
     In Angular terms, an idempotent expression always returns *exactly the same thing* until one of its dependent values changes.
 
-    Dependent values should not change during a single turn of the event loop.
+  Dependent values should not change during a single turn of the event loop.
     If an idempotent expression returns a string or a number, it returns the same string or number if you call it twice consecutively.
     If the expression returns an object, including an `array`, it returns the same object *reference* if you call it twice consecutively.
 

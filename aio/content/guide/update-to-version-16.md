@@ -1,10 +1,15 @@
 # Update Angular to v16
 
 <!-- NOTE to writers: When creating the topic for the next version,                               -->
+
 <!--   remember to update the redirect link in angular/aio/firebase.json                          -->
+
 <!-- To update the redirect link in angular/aio/firebase.json:                                    -->
+
 <!--   1. Search for the entry in firebase.json with "source": "guide/update-to-latest-version"   -->
+
 <!--   2,  Update the destination value to refer to the new guide's URL                           -->
+
 <!--                                                                                              -->
 
 This topic provides information about updating your Angular applications to Angular version 16.
@@ -15,9 +20,9 @@ to v16, see the [Angular Update Guide](https://update.angular.io).
 The information in the [Angular Update Guide](https://update.angular.io) and this topic is
 summarized from these changelogs:
 
-*  [angular/angular changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
-*  [angular/angular-cli changelog](https://github.com/angular/angular-cli/blob/main/CHANGELOG.md)
-*  [angular/components changelog](https://github.com/angular/components/blob/main/CHANGELOG.md)
+* [angular/angular changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+* [angular/angular-cli changelog](https://github.com/angular/angular-cli/blob/main/CHANGELOG.md)
+* [angular/components changelog](https://github.com/angular/components/blob/main/CHANGELOG.md)
 
 Information about updating Angular applications to v15 is archived at
 [Update to version 15](/guide/update-to-version-15).
@@ -164,7 +169,7 @@ To maintain the reliability of your Angular application, always update your appl
 practicable.
 
 | Removed                                                                              | Replacement | Details                                                                                                                                                                                                                                       |
-|:-------------------------------------------------------------------------------------|:------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :----------------------------------------------------------------------------------- | :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="v16-dp-01"></a>Class and `InjectionToken` router guards and resolvers         | See details | Class and `InjectionToken` guards and resolvers are deprecated. Instead, write guards as plain JavaScript functions and inject dependencies with `inject` from `@angular/core`.<br>[PR #47924](https://github.com/angular/angular/pull/47924) |
 | <a id="v16-dp-02"></a>The `ripple` properties of several Angular Material components | None        | The `ripple` property of `MatButton`, `MatCheckbox`, `MatChip` is deprecated. This change moves ripples to being a private implementation detail of the components.                                                                           |
 

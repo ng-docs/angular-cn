@@ -60,7 +60,7 @@ Open the `HeroDetailComponent` class file and import the `Hero` symbol.
 region="import-hero" header="src/app/hero-detail/hero-detail.component.ts (import Hero)"></code-example>
 
 The `hero` property
-[must be an `Input` property](guide/inputs-outputs 'Input and Output properties'),
+[must be an `Input` property](guide/inputs-outputs "Input and Output properties"),
 annotated with the `@Input()` decorator,
 because the _external_ `HeroesComponent` [binds to it](#heroes-component-template) like this.
 
@@ -157,6 +157,6 @@ Here are the code files discussed on this page.
 
 ## Next steps
 
-*  [4. Add services](tutorial/tour-of-heroes/toh-pt4)
+* [4. Add services](tutorial/tour-of-heroes/toh-pt4)
 
 @reviewed 2023-08-30

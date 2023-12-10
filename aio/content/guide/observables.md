@@ -1,4 +1,5 @@
 <a id="using-observables-to-pass-values"></a>
+
 # Using observables for streams of values
 
 Observables are a technique for event handling, asynchronous programming, and handling multiple values emitted over time.
@@ -7,6 +8,7 @@ The observer pattern is a software design pattern in which an object, called the
 This pattern is similar (but not identical) to the [publish/subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) design pattern.
 
 Angular apps tend to use the [RxJS library for Observables](https://rxjs.dev/). This overview covers just the basics of observables as implemented by that library.
+
 ## Basic usage and terms
 
 Observables are declarative.  You define a function for publishing values &mdash; the *source* &mdash; but that function is not executed until a consumer subscribes to the observable by calling the observable's `subscribe` method.
@@ -77,10 +79,10 @@ An observable has three types of notifications: "next", "error", and "complete".
 
 An `Observer` is an object whose properties contain handlers for these notifications.
 
-| Notification type | Details |
-|:---               |:---     |
-| `next`            | A handler for each delivered value. Called zero or more times after execution starts.                                                           |
-| `error`           | A handler for an error notification. An error halts execution of the observable instance and unsubscribes.                                                       |
+| Notification type | Details                                                                                                                            |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| `next`            | A handler for each delivered value. Called zero or more times after execution starts.                                              |
+| `error`           | A handler for an error notification. An error halts execution of the observable instance and unsubscribes.                         |
 | `complete`        | A handler for the execution-complete notification. Do not expect `next` or `error` to be called again. Automatically unsubscribes. |
 
 Here is an example of passing an observer object to `subscribe`:

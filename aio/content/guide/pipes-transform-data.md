@@ -2,7 +2,7 @@
 
 Some pipes have _optional_ parameters to fine-tune the pipe's output.
 
-For example, the [`CurrencyPipe`](api/common/CurrencyPipe 'API reference') accepts a country code as a parameter.
+For example, the [`CurrencyPipe`](api/common/CurrencyPipe "API reference") accepts a country code as a parameter.
 To specify the parameter, follow the pipe name (`currency`) with a colon (`:`) and the parameter value (a country code).
 
 The template expression `{{ amount | currency:'EUR' }}` displays the amount, prefixed with the Euros symbol (€).
@@ -11,13 +11,13 @@ Some pipes accept multiple _optional_ parameters. Pass each parameter to the pip
 
 For example, `{{ amount | currency:'EUR':'Euros '}}` displays the amount with the label "Euros" (the second parameter) instead of the Euros symbol.
 
-Some pipes, such as [`SlicePipe`](/api/common/SlicePipe 'API reference for SlicePipe'), _require_ at least one parameter and may allow more _optional_ parameters.
+Some pipes, such as [`SlicePipe`](/api/common/SlicePipe "API reference for SlicePipe"), _require_ at least one parameter and may allow more _optional_ parameters.
 
 The expression `{{ anArray | slice:1:5 }}` displays a new string containing a subset of the elements starting with element `1` and ending with element `5`.
 
 ## Example: Formatting a date
 
-The following example demonstrates two ways to format a hero's birthdate with the [`DatePipe`](api/common/DatePipe 'API reference').
+The following example demonstrates two ways to format a hero's birthdate with the [`DatePipe`](api/common/DatePipe "API reference").
 
 <code-tabs>
     <code-pane header="birthday-formatting.component.html (template)" path="pipes/src/app/birthday-formatting.component.html"></code-pane>
@@ -36,7 +36,7 @@ The page displays the birthdate in the specified format.
 
 Connect multiple pipes, using "pipe chaining syntax", so that the output of one pipe becomes the input to the next.
 
-The following example passes the birthdate to the `DatePipe` and then forwards the result to the [`UpperCasePipe`](api/common/UpperCasePipe 'API reference') pipe, using "pipe chaining syntax".
+The following example passes the birthdate to the `DatePipe` and then forwards the result to the [`UpperCasePipe`](api/common/UpperCasePipe "API reference") pipe, using "pipe chaining syntax".
 
 Once again, it demonstrates the `DatePipe` both _with_ and _without_ a format parameter. Note that both results (**APR 15, 1988** and **FRIDAY, APRIL 15, 1988**) are in uppercase.
 

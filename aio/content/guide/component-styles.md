@@ -159,9 +159,9 @@ Until then `::ng-deep` should be preferred for a broader compatibility with the 
 
 There are several ways to add styles to a component:
 
-*   By setting `styles` or `styleUrls` metadata
-*   Inline in the template HTML
-*   With CSS imports
+* By setting `styles` or `styleUrls` metadata
+* Inline in the template HTML
+* With CSS imports
 
 The scoping rules outlined earlier apply to each of these loading patterns.
 

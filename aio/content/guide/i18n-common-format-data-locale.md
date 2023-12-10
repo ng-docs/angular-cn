@@ -3,8 +3,8 @@
 Angular provides the following built-in data transformation [pipes][AioGuideGlossaryPipe].
 The data transformation pipes use the [`LOCALE_ID`][AioApiCoreLocaleId] token to format data based on rules of each locale.
 
-| Data transformation pipe                   | Details |
-|:---                                        |:---     |
+| Data transformation pipe                   | Details                                           |
+| :----------------------------------------- | :------------------------------------------------ |
 | [`DatePipe`][AioApiCommonDatepipe]         | Formats a date value.                             |
 | [`CurrencyPipe`][AioApiCommonCurrencypipe] | Transforms a number into a currency string.       |
 | [`DecimalPipe`][AioApiCommonDecimalpipe]   | Transforms a number into a decimal number string. |
@@ -45,14 +45,18 @@ The locale specified for the `CurrencyPipe` overrides the global `LOCALE_ID` tok
 
 ## What's next
 
-*   [Prepare component for translation][AioGuideI18nCommonPrepare]
+* [Prepare component for translation][AioGuideI18nCommonPrepare]
 
 <!-- links -->
 
 [AioApiCommonCurrencypipe]: api/common/CurrencyPipe "CurrencyPipe | Common - API | Angular"
+
 [AioApiCommonDatepipe]: api/common/DatePipe "DatePipe | Common - API | Angular"
+
 [AioApiCommonDecimalpipe]: api/common/DecimalPipe "DecimalPipe | Common - API | Angular"
+
 [AioApiCommonPercentpipe]: api/common/PercentPipe "PercentPipe | Common - API | Angular"
+
 [AioApiCoreLocaleId]: api/core/LOCALE_ID "LOCALE_ID | Core - API | Angular"
 
 [AioGuideGlossaryPipe]: guide/glossary#pipe "pipe - Glossary | Angular"

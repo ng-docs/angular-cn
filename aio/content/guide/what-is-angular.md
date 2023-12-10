@@ -385,7 +385,7 @@ Some of the popular libraries available in the ecosystem include:
 | [Angular Forms](guide/forms-overview)                             | Uniform system for form participation and validation.                                                                                          |
 | [Angular HttpClient](guide/understanding-communicating-with-http) | Robust HTTP client that can power more advanced client-server communication.                                                                   |
 | [Angular Animations](guide/animations)                            | Rich system for driving animations based on application state.                                                                                 |
-| [Angular PWA](guide/service-worker-intro)                         | Tools for building Progressive Web Applications (PWA) including a service worker and Web application manifest.                               |
+| [Angular PWA](guide/service-worker-intro)                         | Tools for building Progressive Web Applications (PWA) including a service worker and Web application manifest.                                 |
 | [Angular Schematics](guide/schematics)                            | Automated scaffolding, refactoring, and update tools that simplify development at large scale.                                                 |
 
 <!-- vale Angular.Google_Acronyms = YES -->

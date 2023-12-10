@@ -17,7 +17,6 @@ See the <live-example></live-example> for a working example containing the code 
 
 ## Binding to events
 
-
 <div class="alert is-helpful">
 
 For information on binding to properties, see [Event binding](guide/property-binding).
@@ -37,6 +36,7 @@ The event binding listens for the button's click events and calls the component'
 
 <div class="lightbox">
   <img src='generated/images/guide/template-syntax/syntax-diagram.svg' alt="Syntax diagram">
+
 </div>
 
 ### Determining an event target
@@ -55,20 +55,19 @@ You can bind to keyboard events using Angular's binding syntax. You can specify 
 
 Combinations of keys can be separated by a `.` (period). For example, `keydown.enter` will allow you to bind events to the `enter` key. You can also use modifier keys, such as `shift`, `alt`, `control`, and the `command` keys from Mac. The following example shows how to bind a keyboard event to `keydown.shift.t`.
 
-   ```typescript
-   <input (keydown.shift.t)="onKeydown($event)" />
-   ```
+```typescript
+<input (keydown.shift.t)="onKeydown($event)" />
+```
 
 Depending on the operating system, some key combinations might create special characters instead of the key combination that you expect. MacOS, for example, creates special characters when you use the option and shift keys together. If you bind to `keydown.shift.alt.t`, on macOS, that combination produces a `ˇ` character instead of a `t`, which doesn't match the binding and won't trigger your event handler. To bind to `keydown.shift.alt.t` on macOS, use the `code` keyboard event field to get the correct behavior, such as `keydown.code.shiftleft.altleft.keyt` shown in this example.
-   
-   ```typescript
-   <input (keydown.code.shiftleft.altleft.keyt)="onKeydown($event)" />
-   ```
+
+```typescript
+<input (keydown.code.shiftleft.altleft.keyt)="onKeydown($event)" />
+```
 
 The `code` field is more specific than the `key` field. The `key` field always reports `shift`, whereas the `code` field will specify `leftshift` or `rightshift`. When using the `code` field, you might need to add separate bindings to catch all the behaviors you want. Using the `code` field avoids the need to handle OS specific behaviors such as the `shift + option` behavior on macOS.
 
 For more information, visit the full reference for [key](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values) and [code](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values) to help build out your event strings.
-
 
 ## Binding to passive events
 

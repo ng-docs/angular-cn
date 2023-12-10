@@ -47,7 +47,6 @@ The command updates the application code and adds extra files to the project str
 
 </code-example>
 
-
 ## Step 3: Verify the application is built with the shell content
 
 <code-example format="shell" language="shell">

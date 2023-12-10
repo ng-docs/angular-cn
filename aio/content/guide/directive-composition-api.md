@@ -1,6 +1,6 @@
 # Directive composition API
 
-Angular directives offer a great way to encapsulate reusable behaviors— directives can apply
+Angular directives offer a great way to encapsulate reusable behaviors&mdash; directives can apply
 attributes, CSS classes, and event listeners to an element.
 
 The *directive composition API* lets you apply directives to a component's host element from
@@ -219,7 +219,7 @@ export class CustomCheckbox { }
 ```
 
 This example declares a custom checkbox component that includes five host directives. This
-means that Angular will create six objects each time a `CustomCheckbox` renders— one for the
+means that Angular will create six objects each time a `CustomCheckbox` renders&mdash; one for the
 component and one for each host directive. For a few checkboxes on a page, this won't pose any
 significant issues. However, if your page renders _hundreds_ of checkboxes, such as in a table, then
 you could start to see an impact of the additional object allocations. Always be sure to profile

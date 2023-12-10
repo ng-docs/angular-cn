@@ -11,7 +11,6 @@ Examples of binding include:
 
 Bindings always have two parts: a _target_ which will receive the bound value, and a _template expression_ which produces a value from the model.
 
-
 ## Syntax
 
 Template expressions are similar to JavaScript expressions.
@@ -93,6 +92,7 @@ An expression should finish quickly to keep the user experience as efficient as 
 According to Angular's [unidirectional data flow model](guide/glossary#unidirectional-data-flow), a template expression should not change any application state other than the value of the target property.  Reading a component value should not change some other displayed value.  The view should be stable throughout a single rendering pass.
 
   <div class="callout is-important">
+
     <header>Idempotent expressions reduce side effects</header>
 
 An [idempotent](https://en.wikipedia.org/wiki/Idempotence) expression is free of side effects and improves Angular's change detection performance.  In Angular terms, an idempotent expression always returns *exactly the same thing* until one of its dependent values changes.
@@ -101,7 +101,7 @@ Dependent values should not change during a single turn of the event loop.  If a
 
   </div>
 
- ## What's next
+## What's next
 
 * [Property binding](guide/property-binding)
 * [Event binding](guide/event-binding)

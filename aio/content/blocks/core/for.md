@@ -26,14 +26,14 @@ Loops over immutable data without `trackBy` as one of the most common causes for
 
 Inside `@for`  contents, several implicit variables are always available:
 
-| Variable | Meaning |
-| -------- | ------- |
+| Variable | Meaning                                       |
+| -------- | --------------------------------------------- |
 | `$count` | Number of items in a collection iterated over |
-| `$index` | Index of the current row |
-| `$first` | Whether the current row is the first row |
-| `$last` | Whether the current row is the last row |
-| `$even` | Whether the current row index is even |
-| `$odd` | Whether the current row index is odd |
+| `$index` | Index of the current row                      |
+| `$first` | Whether the current row is the first row      |
+| `$last`  | Whether the current row is the last row       |
+| `$even`  | Whether the current row index is even         |
+| `$odd`   | Whether the current row index is odd          |
 
 These variables are always available with these names, but can be aliased via a `let` segment:
 

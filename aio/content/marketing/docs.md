@@ -7,25 +7,38 @@ Tutorials and guides include downloadable examples to help you start your projec
 
 <div class="card-container">
   <a href="tutorial/first-app" class="docs-card" title="Work through a full tutorial">
+
     <section>Build your first Angular app</section>
+
     <p>Work through a full tutorial to create your first application.</p>
+
     <p class="card-footer">Homes App Tutorial</p>
   </a>
   <a href="guide/what-is-angular" class="docs-card" title="Angular Platform Overview">
+
     <section>What is Angular</section>
+
     <p>Get a high-level overview of the Angular platform.</p>
+
     <p class="card-footer">Platform overview</p>
   </a>
   <a href="guide/architecture" class="docs-card" title="Angular Concepts">
+
     <section>Learn and Explore</section>
+
     <p>Learn about the fundamental design concepts and architecture of Angular applications.</p>
+
     <p class="card-footer">Introduction to Angular concepts</p>
   </a>
   <a href="guide/setup-local" class="docs-card" title="Angular Local Environment Setup">
+
     <section>Set up your environment</section>
+
     <p>Set up your local environment for development with the Angular CLI.</p>
+
     <p class="card-footer">Local setup</p>
   </a>
+
 </div>
 
 ## Assumptions

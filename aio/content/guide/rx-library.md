@@ -8,11 +8,11 @@ RxJS provides an implementation of the `Observable` type, which is needed until 
 The library also provides utility functions for creating and working with observables.
 These utility functions can be used for:
 
-*   Converting existing code for async operations into observables
-*   Iterating through the values in a stream
-*   Mapping values to different types
-*   Filtering streams
-*   Composing multiple streams
+* Converting existing code for async operations into observables
+* Iterating through the values in a stream
+* Mapping values to different types
+* Filtering streams
+* Composing multiple streams
 
 ## Observable creation functions
 
@@ -29,7 +29,7 @@ For example:
 
 <code-example header="Create an observable that creates an AJAX request" path="rx-library/src/simple-creation.ts" region="ajax"></code-example>
 
-### Subject 
+### Subject
 
 An RxJS [`Subject`](https://rxjs.dev/guide/subject) is a popular way to create and control an observable of your own design.
 
@@ -46,6 +46,7 @@ Here is a `MessageService` example:
 <code-example header="MessageService" path="rx-library/src/app/message.service.ts"></code-example>
 
 Key features:
+
 * The `Subject` is *private*. Consumers of the service access the `Subject` through a controlled public API.
 * The `messages$` property exposes the `Subject`'s *observable* aspect-only; a consumer cannot push values into the `Subject` through this observable.
 * Dedicated methods (`addError` and `addWarning`) tightly manage how service consumers add values to the hidden `Subject`.
@@ -85,6 +86,7 @@ Remember that, by itself, the recipe doesn't do anything;
 you need to call `subscribe()` to produce a result through the recipe.
 
 <a id="loosely-coupled-apps"></a>
+
 ### Loosely coupled transformations
 
 RxJS operators facilitate development of [loosely coupled](https://en.wikipedia.org/wiki/Loose_coupling) applications.
@@ -117,8 +119,8 @@ To see this messaging example in action, try <live-example name="rx-library"></l
 RxJS provides many operators, but only a handful are used frequently.
 
 | Area           | Operators                                                                 |
-|:---            |:---                                                                       |
-| Creation       |  `from`, `fromEvent`, `of`                                                |
+| :------------- | :------------------------------------------------------------------------ |
+| Creation       | `from`, `fromEvent`, `of`                                                 |
 | Combination    | `combineLatest`, `concat`, `merge`, `startWith` , `withLatestFrom`, `zip` |
 | Filtering      | `debounceTime`, `distinctUntilChanged`, `filter`, `take`, `takeUntil`     |
 | Transformation | `bufferTime`, `concatMap`, `map`, `mergeMap`, `scan`, `switchMap`         |
@@ -149,10 +151,10 @@ The  RxJS `interval()` function in the following example produces a *unicast* ob
 
 Each new subscriber receives a fresh round of integers starting from zero.
 
->**Unicast Subscriber(s)**:<br>
->Unicast Subscriber #1 received 9<br>
->Unicast Subscriber #2 received 5<br>
->Unicast Subscriber #3 received 0
+> **Unicast Subscriber(s)**:<br>
+> Unicast Subscriber #1 received 9<br>
+> Unicast Subscriber #2 received 5<br>
+> Unicast Subscriber #3 received 0
 
 Most observables are *unicast* like `interval`. 
 For example, the observable returned from Angular's [`HttpClient.get()`](guide/understanding-communicating-with-http) is *unicast*. It makes a fresh call to the server every time you subscribe to it. 
@@ -177,15 +179,15 @@ Here is `interval` again, this time with `shareReplay`:
   The `refCount=false` option means that if *everyone unsubscribes* and then someone new subscribes, that new subscriber gets the last emitted value.
 
   If `refCount` is `true` (the default), when everyone unsubscribes and then someone new subscribes, that new subscriber initiates a fresh execution of the source observable. The `interval` example will restart from zero.
-  
+
 </div>
 
 Each new subscriber receives the same integer last emitted by the observable.
 
->**Multicast ShareReplay Subscriber(s)**:<br>
->ShareReplay Subscriber #1 received 9<br>
->ShareReplay Subscriber #2 received 9<br>
->ShareReplay Subscriber #3 received 9
+> **Multicast ShareReplay Subscriber(s)**:<br>
+> ShareReplay Subscriber #1 received 9<br>
+> ShareReplay Subscriber #2 received 9<br>
+> ShareReplay Subscriber #3 received 9
 
 <div class="alert is-helpful">
 

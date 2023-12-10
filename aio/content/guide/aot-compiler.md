@@ -18,8 +18,8 @@ This guide explains how to specify metadata and apply available compiler options
 
 Here are some reasons you might want to use AOT.
 
-| Reasons                                 | Details |
-|:---                                     |:---     |
+| Reasons                                 | Details                                                                                                                                                                                                                                            |
+| :-------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Faster rendering                        | With AOT, the browser downloads a pre-compiled version of the application. The browser loads executable code so it can render the application immediately, without waiting to compile the application first.                                       |
 | Fewer asynchronous requests             | The compiler *inlines* external HTML templates and CSS style sheets within the application JavaScript, eliminating separate ajax requests for those source files.                                                                                  |
 | Smaller Angular framework download size | There's no need to download the Angular compiler if the application is already compiled. The compiler is roughly half of Angular itself, so omitting it dramatically reduces the application payload.                                              |
@@ -32,8 +32,8 @@ Here are some reasons you might want to use AOT.
 
 Angular offers two ways to compile your application:
 
-| Angular compile       | Details |
-|:---                   |:---     |
+| Angular compile     | Details                                                                                           |
+| :------------------ | :------------------------------------------------------------------------------------------------ |
 | Just-in-Time (JIT)  | Compiles your application in the browser at runtime. This was the default until Angular 8.        |
 | Ahead-of-Time (AOT) | Compiles your application and libraries at build time. This is the default starting in Angular 9. |
 
@@ -70,21 +70,20 @@ When it needs to create a `TypicalComponent` instance, Angular calls the factory
 
 There are three phases of AOT compilation.
 
-|     | Phase                  | Details |
-|:--- |:---                    |:---     |
-| 1   | code analysis          | In this phase, the TypeScript compiler and *AOT collector* create a representation of the source. The collector does not attempt to interpret the metadata it collects. It represents the metadata as best it can and records errors when it detects a metadata syntax violation.                        |
-| 2   | code generation        | In this phase, the compiler's `StaticReflector` interprets the metadata collected in phase 1, performs additional validation of the metadata, and throws an error if it detects a metadata restriction violation.                                                                                        |
+|     | Phase                  | Details                                                                                                                                                                                                                                                                                            |
+| :-- | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | code analysis          | In this phase, the TypeScript compiler and *AOT collector* create a representation of the source. The collector does not attempt to interpret the metadata it collects. It represents the metadata as best it can and records errors when it detects a metadata syntax violation.                  |
+| 2   | code generation        | In this phase, the compiler's `StaticReflector` interprets the metadata collected in phase 1, performs additional validation of the metadata, and throws an error if it detects a metadata restriction violation.                                                                                  |
 | 3   | template type checking | In this optional phase, the Angular *template compiler* uses the TypeScript compiler to validate the binding expressions in templates. You can enable this phase explicitly by setting the `strictTemplates` configuration option; see [Angular compiler options](guide/angular-compiler-options). |
 
 ### Metadata restrictions
 
 You write metadata in a *subset* of TypeScript that must conform to the following general constraints:
 
-*   Limit [expression syntax](#expression-syntax) to the supported subset of JavaScript
-*   Only reference exported symbols after [code folding](#code-folding)
-*   Only call [functions supported](#supported-functions) by the compiler
-*   Input/Outputs and data-bound class members must be public or protected.
-
+* Limit [expression syntax](#expression-syntax) to the supported subset of JavaScript
+* Only reference exported symbols after [code folding](#code-folding)
+* Only call [functions supported](#supported-functions) by the compiler
+* Input/Outputs and data-bound class members must be public or protected.
 
 For additional guidelines and instructions on preparing an application for AOT compilation, see [Angular: Writing AOT-friendly applications](https://medium.com/sparkles-blog/angular-writing-aot-friendly-applications-7b64c8afbe3f).
 
@@ -121,25 +120,25 @@ Angular's [schema.ts](https://github.com/angular/angular/blob/main/packages/comp
 The AOT collector only understands a subset of JavaScript.
 Define metadata objects with the following limited syntax:
 
-| Syntax                    | Example |
-|:---                       |:---     |
-| Literal object            | `{cherry: true, apple: true, mincemeat: false}`                        |
-| Literal array             | `['cherries', 'flour', 'sugar']`                                       |
-| Spread in literal array   | `['apples', 'flour', ...]`                                             |
-| Calls                     | `bake(ingredients)`                                                    |
-| New                       | `new Oven()`                                                           |
-| Property access           | `pie.slice`                                                            |
-| Array index               | `ingredients[0]`                                                       |
-| Identity reference        | `Component`                                                            |
+| Syntax                    | Example                                                            |
+| :------------------------ | :----------------------------------------------------------------- |
+| Literal object            | `{cherry: true, apple: true, mincemeat: false}`                    |
+| Literal array             | `['cherries', 'flour', 'sugar']`                                   |
+| Spread in literal array   | `['apples', 'flour', ...]`                                         |
+| Calls                     | `bake(ingredients)`                                                |
+| New                       | `new Oven()`                                                       |
+| Property access           | `pie.slice`                                                        |
+| Array index               | `ingredients[0]`                                                   |
+| Identity reference        | `Component`                                                        |
 | A template string         | `&grave;pie is &dollar;{multiplier} times better than cake&grave;` |
-| Literal string            | `'pi'`                                                                 |
-| Literal number            | `3.14153265`                                                           |
-| Literal boolean           | `true`                                                                 |
-| Literal null              | `null`                                                                 |
-| Supported prefix operator | `!cake`                                                                |
-| Supported binary operator | `a+b`                                                                  |
-| Conditional operator      | `a ? b : c`                                                            |
-| Parentheses               | `(a+b)`                                                                |
+| Literal string            | `'pi'`                                                             |
+| Literal number            | `3.14153265`                                                       |
+| Literal boolean           | `true`                                                             |
+| Literal null              | `null`                                                             |
+| Supported prefix operator | `!cake`                                                            |
+| Supported binary operator | `a+b`                                                              |
+| Conditional operator      | `a ? b : c`                                                        |
+| Parentheses               | `(a+b)`                                                            |
 
 If an expression uses unsupported syntax, the collector writes an error node to the `.metadata.json` file.
 The compiler later reports the error if it needs that piece of metadata to generate the application code.
@@ -280,8 +279,8 @@ The collector reduces this expression to its equivalent *folded* string:
 
 The following table describes which expressions the collector can and cannot fold:
 
-| Syntax                           | Foldable |
-|:---                              |:---      |
+| Syntax                           | Foldable                                 |
+| :------------------------------- | :--------------------------------------- |
 | Literal object                   | yes                                      |
 | Literal array                    | yes                                      |
 | Spread in literal array          | no                                       |
@@ -315,10 +314,10 @@ The compiler understands all syntax forms that the collector supports, but it ma
 
 The compiler can only reference *exported symbols*.
 
-*   Decorated component class members must be public or protected.
-    You cannot make an `@Input()` property private.
+* Decorated component class members must be public or protected.
+  You cannot make an `@Input()` property private.
 
-*   Data bound properties must also be public or protected
+* Data bound properties must also be public or protected
 
 <a id="supported-functions"></a>
 
@@ -329,10 +328,10 @@ The compiler, however, can later refuse to generate a call to a *particular* fun
 
 The compiler can only create instances of certain classes, supports only core decorators, and only supports calls to macros (functions or static methods) that return expressions.
 
-| Compiler action      | Details |
-|:---                  |:---     |
-| New instances        | The compiler only allows metadata that create instances of the class `InjectionToken` from `@angular/core`.                                            |
-| Supported decorators | The compiler only supports metadata for the [Angular decorators in the `@angular/core` module](api/core#decorators).                                   |
+| Compiler action      | Details                                                                                                                                              |
+| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| New instances        | The compiler only allows metadata that create instances of the class `InjectionToken` from `@angular/core`.                                          |
+| Supported decorators | The compiler only supports metadata for the [Angular decorators in the `@angular/core` module](api/core#decorators).                                 |
 | Function calls       | Factory functions must be exported, named functions. The AOT compiler does not support lambda expressions ("arrow functions") for factory functions. |
 
 <a id="function-calls"></a>

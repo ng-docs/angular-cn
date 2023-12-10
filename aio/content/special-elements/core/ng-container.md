@@ -98,4 +98,3 @@ Like so:
 </code-example>
 
 For more information regarding `NgTemplateOutlet`, see the [`NgTemplateOutlet`s api documentation page](api/common/NgTemplateOutlet).
-

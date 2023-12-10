@@ -89,27 +89,29 @@ The following example shows a simplified version of the `@angular/core` package'
 
 This table describes the file layout under `node_modules/@angular/core` annotated to describe the purpose of files and directories:
 
-| Files                                                                                                                                                     | Purpose |
-|:---                                                                                                                                                       |:---     |
-| `README.md`                                                                                                                                               | Package README, used by npmjs web UI.                                                                                                                                                                          |
-| `package.json`                                                                                                                                            | Primary `package.json`, describing the package itself as well as all available entrypoints and code formats. This file contains the "exports" mapping used by runtimes and tools to perform module resolution. |
-| `index.d.ts`                                                                                                                                               | Bundled `.d.ts` for the primary entrypoint `@angular/core`.                                                                                                                                                    |
-| `esm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs`                                         | Tree of `@angular/core` sources in unflattened ES2022 format.                                                                                                                                                  |
-| `esm2022/testing/`                                                                                                                                        | Tree of the `@angular/core/testing` entrypoint in unflattened ES2022 format.                                                                                                                                   |
-| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened (FESM) ES2022 format, along with source maps.                                                                                                                           |
-| `testing/`                                                                                                                                                | Directory representing the "testing" entrypoint.                                                                                                                                                               |
-| `testing/index.d.ts`                                                                                                                                    | Bundled `.d.ts` for the `@angular/core/testing` entrypoint.                                                                                                                                                     |
+| Files                                                                                                             | Purpose                                                                                                                                                                                                        |
+| :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `README.md`                                                                                                       | Package README, used by npmjs web UI.                                                                                                                                                                          |
+| `package.json`                                                                                                    | Primary `package.json`, describing the package itself as well as all available entrypoints and code formats. This file contains the "exports" mapping used by runtimes and tools to perform module resolution. |
+| `index.d.ts`                                                                                                      | Bundled `.d.ts` for the primary entrypoint `@angular/core`.                                                                                                                                                    |
+| `esm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `index.mjs` <br /> &nbsp;&nbsp;─ `public_api.mjs`                               | Tree of `@angular/core` sources in unflattened ES2022 format.                                                                                                                                                  |
+| `esm2022/testing/`                                                                                                | Tree of the `@angular/core/testing` entrypoint in unflattened ES2022 format.                                                                                                                                   |
+| `fesm2022/` <br /> &nbsp;&nbsp;─ `core.mjs` <br /> &nbsp;&nbsp;─ `core.mjs.map` <br /> &nbsp;&nbsp;─ `testing.mjs` <br /> &nbsp;&nbsp;─ `testing.mjs.map` | Code for all entrypoints in flattened (FESM) ES2022 format, along with source maps.                                                                                                                            |
+| `testing/`                                                                                                        | Directory representing the "testing" entrypoint.                                                                                                                                                               |
+| `testing/index.d.ts`                                                                                              | Bundled `.d.ts` for the `@angular/core/testing` entrypoint.                                                                                                                                                    |
 
 ## `package.json`
 
 The primary `package.json` contains important package metadata, including the following:
 
-*   It [declares](#esm-declaration) the package to be in EcmaScript Module (ESM) format
-*   It contains an [`"exports"` field](#exports) which defines the available source code formats of all entrypoints
-*   It contains [keys](#legacy-resolution-keys) which define the available source code formats of the primary `@angular/core` entrypoint, for tools which do not understand `"exports"`.
-    These keys are considered deprecated, and could be removed as the support for `"exports"` rolls out across the ecosystem.
+* It [declares](#esm-declaration) the package to be in EcmaScript Module (ESM) format
 
-*   It declares whether the package contains [side effects](#side-effects)
+* It contains an [`"exports"` field](#exports) which defines the available source code formats of all entrypoints
+
+* It contains [keys](#legacy-resolution-keys) which define the available source code formats of the primary `@angular/core` entrypoint, for tools which do not understand `"exports"`.
+  These keys are considered deprecated, and could be removed as the support for `"exports"` rolls out across the ecosystem.
+
+* It declares whether the package contains [side effects](#side-effects)
 
 ### ESM declaration
 
@@ -157,12 +159,12 @@ The `"exports"` field has the following structure:
 Of primary interest are the `"."` and the `"./testing"` keys, which define the available code formats for the `@angular/core` primary entrypoint and the `@angular/core/testing` secondary entrypoint, respectively.
 For each entrypoint, the available formats are:
 
-| Formats                   | Details |
-|:---                       |:---     |
-| Typings (`.d.ts` files) | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                           |
-| `es2022`                  | ES2022 code flattened into a single source file.                                                                                                                                  |
-| `esm2022`                 | ES2022 code in unflattened source files (this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details). |
-| `default`               | ES2022 code flattened into a single source. |
+| Formats                 | Details                                                                                                                                                                         |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Typings (`.d.ts` files) | `.d.ts` files are used by TypeScript when depending on a given package.                                                                                                         |
+| `es2022`                | ES2022 code flattened into a single source file.                                                                                                                                |
+| `esm2022`               | ES2022 code in unflattened source files (this format is included for experimentation - see [this discussion of defaults](#note-about-the-defaults-in-packagejson) for details). |
+| `default`               | ES2022 code flattened into a single source.                                                                                                                                     |
 
 Tooling that is aware of these keys may preferentially select a desirable code format from `"exports"`.
 
@@ -205,17 +207,17 @@ Most Angular packages should not depend on top-level side effects, and thus shou
 Packages in the Angular Package Format contain one primary entrypoint and zero or more secondary entrypoints (for example, `@angular/common/http`).
 Entrypoints serve several functions.
 
-1.  They define the module specifiers from which users import code (for example, `@angular/core` and `@angular/core/testing`).
+1. They define the module specifiers from which users import code (for example, `@angular/core` and `@angular/core/testing`).
 
-    Users typically perceive these entrypoints as distinct groups of symbols, with different purposes or capability.
+   Users typically perceive these entrypoints as distinct groups of symbols, with different purposes or capability.
 
-    Specific entrypoints might only be used for special purposes, such as testing.
-    Such APIs can be separated out from the primary entrypoint to reduce the chance of them being used accidentally or incorrectly.
+   Specific entrypoints might only be used for special purposes, such as testing.
+   Such APIs can be separated out from the primary entrypoint to reduce the chance of them being used accidentally or incorrectly.
 
-1.  They define the granularity at which code can be lazily loaded.
+1. They define the granularity at which code can be lazily loaded.
 
-    Many modern build tools are only capable of "code splitting" (aka lazy loading) at the ES Module level.
-    The Angular Package Format uses primarily a single "flat" ES Module per entry point. This means that most build tooling is not able to split code with a single entry point into multiple output chunks.
+   Many modern build tools are only capable of "code splitting" (aka lazy loading) at the ES Module level.
+   The Angular Package Format uses primarily a single "flat" ES Module per entry point. This means that most build tooling is not able to split code with a single entry point into multiple output chunks.
 
 The general rule for APF packages is to use entrypoints for the smallest sets of logically connected code possible.
 For example, the Angular Material package publishes each logical component or set of components as a separate entrypoint - one for Button, one for Tabs, etc.
@@ -347,8 +349,8 @@ This is because the tslib version is tied to the TypeScript version used to comp
 
 ## Examples
 
-*   [`@angular/core` package](https://unpkg.com/browse/@angular/core@13.0.0-rc.0)
-*   [`@angular/material` package](https://unpkg.com/browse/@angular/material@13.0.0-rc.0)
+* [`@angular/core` package](https://unpkg.com/browse/@angular/core@13.0.0-rc.0)
+* [`@angular/material` package](https://unpkg.com/browse/@angular/material@13.0.0-rc.0)
 
 ## Definition of terms
 

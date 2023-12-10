@@ -6,7 +6,7 @@ Enabling service worker support does more than just register the service worker;
 
 A basic understanding of the following:
 
-*   [Getting Started with Service Workers](guide/service-worker-getting-started)
+* [Getting Started with Service Workers](guide/service-worker-getting-started)
 
 ## `SwUpdate` service
 
@@ -14,24 +14,22 @@ The `SwUpdate` service gives you access to events that indicate when the service
 
 The `SwUpdate` service supports three separate operations:
 
-*   Get notified when an updated version is *detected* on the server, *installed and ready* to be used locally or when an *installation fails*
-*   Ask the service worker to check the server for new updates
-*   Ask the service worker to activate the latest version of the application for the current tab
+* Get notified when an updated version is *detected* on the server, *installed and ready* to be used locally or when an *installation fails*
+* Ask the service worker to check the server for new updates
+* Ask the service worker to activate the latest version of the application for the current tab
 
 ### Version updates
 
 The `versionUpdates` is an `Observable` property of `SwUpdate` and emits four event types:
 
-| Event types                      | Details |
-|:---                              |:---     |
+| Event types                      | Details                                                                                                                                                                     |
+| :------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `VersionDetectedEvent`           | Emitted when the service worker has detected a new version of the app on the server and is about to start downloading it.                                                   |
 | `NoNewVersionDetectedEvent`      | Emitted when the service worker has checked the version of the app on the server and did not find a new version.                                                            |
 | `VersionReadyEvent`              | Emitted when a new version of the app is available to be activated by clients. It may be used to notify the user of an available update or prompt them to refresh the page. |
 | `VersionInstallationFailedEvent` | Emitted when the installation of a new version failed. It may be used for logging/monitoring purposes.                                                                      |
 
-
 <code-example header="log-update.service.ts" path="service-worker-getting-started/src/app/log-update.service.ts" region="sw-update"></code-example>
-
 
 ### Checking for updates
 
@@ -73,7 +71,7 @@ To avoid disrupting the user's progress, it is generally a good idea to prompt t
 
 <div class="alert is-important">
 
-Calling {@link SwUpdate#activateUpdate SwUpdate#activateUpdate()} updates a tab to the latest version without reloading the page, but this could break the application.
+Calling{@link SwUpdate#activateUpdate SwUpdate#activateUpdate()} updates a tab to the latest version without reloading the page, but this could break the application.
 
 Updating without reloading can create a version mismatch between the [application shell](guide/glossary#app-shell) and other page resources, such as [lazy-loaded chunks](guide/glossary#lazy-loading), whose filenames may change between versions.
 
@@ -87,31 +85,33 @@ In some cases, the version of the application used by the service worker to serv
 
 For example, imagine the following scenario:
 
-*   A user opens the application for the first time and the service worker caches the latest version of the application.
-    Assume the application's cached assets include `index.html`, `main.<main-hash-1>.js` and `lazy-chunk.<lazy-hash-1>.js`.
+* A user opens the application for the first time and the service worker caches the latest version of the application.
+  Assume the application's cached assets include `index.html`, `main.<main-hash-1>.js` and `lazy-chunk.<lazy-hash-1>.js`.
 
-*   The user closes the application and does not open it for a while.
-*   After some time, a new version of the application is deployed to the server.
-    This newer version includes the files `index.html`, `main.<main-hash-2>.js` and `lazy-chunk.<lazy-hash-2>.js`.
+* The user closes the application and does not open it for a while.
 
-    <div class="alert is-helpful">
+* After some time, a new version of the application is deployed to the server.
+  This newer version includes the files `index.html`, `main.<main-hash-2>.js` and `lazy-chunk.<lazy-hash-2>.js`.
 
-    **NOTE**: <br />
-    The hashes are different now, because the content of the files changed.
+  <div class="alert is-helpful">
 
-    </div>
+  **NOTE**: <br />
+  The hashes are different now, because the content of the files changed.
 
-    The old version is no longer available on the server.
+  </div>
 
-*   In the meantime, the user's browser decides to evict `lazy-chunk.<lazy-hash-1>.js` from its cache.
-    Browsers might decide to evict specific (or all) resources from a cache in order to reclaim disk space.
+  The old version is no longer available on the server.
 
-*   The user opens the application again.
-    The service worker serves the latest version known to it at this point, namely the old version (`index.html` and `main.<main-hash-1>.js`).
+* In the meantime, the user's browser decides to evict `lazy-chunk.<lazy-hash-1>.js` from its cache.
+  Browsers might decide to evict specific (or all) resources from a cache in order to reclaim disk space.
 
-*   At some later point, the application requests the lazy bundle, `lazy-chunk.<lazy-hash-1>.js`.
-*   The service worker is unable to find the asset in the cache (remember that the browser evicted it).
-    Nor is it able to retrieve it from the server (because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version).
+* The user opens the application again.
+  The service worker serves the latest version known to it at this point, namely the old version (`index.html` and `main.<main-hash-1>.js`).
+
+* At some later point, the application requests the lazy bundle, `lazy-chunk.<lazy-hash-1>.js`.
+
+* The service worker is unable to find the asset in the cache (remember that the browser evicted it).
+  Nor is it able to retrieve it from the server (because the server now only has `lazy-chunk.<lazy-hash-2>.js` from the newer version).
 
 In the preceding scenario, the service worker is not able to serve an asset that would normally be cached.
 That particular application version is broken and there is no way to fix the state of the client without reloading the page.
@@ -124,7 +124,7 @@ Subscribe to `SwUpdate#unrecoverable` to be notified and handle these errors.
 
 You might also be interested in the following:
 
-*   [Service Worker Notifications](guide/service-worker-notifications)
+* [Service Worker Notifications](guide/service-worker-notifications)
 
 <!-- links -->
 

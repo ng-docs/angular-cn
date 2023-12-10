@@ -58,6 +58,7 @@ They aren't loaded right away like with eagerly loaded modules.
 This means that any services listed in their provider arrays aren't available because the root injector doesn't know about these modules.
 
 <!--todo: KW--Make diagram here -->
+
 <!--todo: KW--per Misko: not clear if the lazy modules are siblings or grand-children. They are both depending on router structure. -->
 
 When the Angular router lazy-loads a module, it creates a new injector.
@@ -103,6 +104,7 @@ Generally, provide services the whole application needs in the root module and s
 The router works at the root level so if you put providers in a component, even `AppComponent`, lazy loaded modules, which rely on the router, can't see them.
 
 <!-- KW--Make a diagram here -->
+
 Register a provider with a component when you must limit a service instance to a component and its component tree, that is, its child components.
 For example, a user editing component, `UserEditorComponent`, that needs a private copy of a caching `UserService` should register the `UserService` with the `UserEditorComponent`.
 Then each new instance of the `UserEditorComponent` gets its own cached service instance.
@@ -127,10 +129,10 @@ For more information, see [Hierarchical injectors](guide/hierarchical-dependency
 
 You may also be interested in:
 
-*   [Singleton Services](guide/singleton-services), which elaborates on the concepts covered on this page
-*   [Lazy Loading Modules](guide/lazy-loading-ngmodules)
-*   [Dependency providers](guide/dependency-injection-providers)
-*   [NgModule FAQ](guide/ngmodule-faq)
+* [Singleton Services](guide/singleton-services), which elaborates on the concepts covered on this page
+* [Lazy Loading Modules](guide/lazy-loading-ngmodules)
+* [Dependency providers](guide/dependency-injection-providers)
+* [NgModule FAQ](guide/ngmodule-faq)
 
 <!-- links -->
 

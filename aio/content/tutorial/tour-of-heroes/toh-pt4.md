@@ -221,10 +221,10 @@ This asynchronous approach *works* when the `HeroService` requests heroes from t
 
 This section guides you through the following:
 
-*   Adding a `MessagesComponent` that displays application messages at the bottom of the screen
-*   Creating an injectable, application-wide `MessageService` for sending messages to be displayed
-*   Injecting `MessageService` into the `HeroService`
-*   Displaying a message when `HeroService` fetches heroes successfully
+* Adding a `MessagesComponent` that displays application messages at the bottom of the screen
+* Creating an injectable, application-wide `MessageService` for sending messages to be displayed
+* Injecting `MessageService` into the `HeroService`
+* Displaying a message when `HeroService` fetches heroes successfully
 
 ### Create `MessagesComponent`
 
@@ -318,8 +318,8 @@ Replace the `MessagesComponent` template created by `ng generate` with the follo
 
 This template binds directly to the component's `messageService`.
 
-|                                              | Details |
-|:---                                          |:---     |
+|                                              | Details                                                        |
+| :------------------------------------------- | :------------------------------------------------------------- |
 | `*ngIf`                                      | Only displays the messages area if there are messages to show. |
 | `*ngFor`                                     | Presents the list of messages in repeated `<div>` elements.    |
 | Angular [event binding](guide/event-binding) | Binds the button's click event to `MessageService.clear()`.    |
@@ -356,18 +356,18 @@ Here are the code files discussed on this page.
 
 ## Summary
 
-*   You refactored data access to the `HeroService` class.
-*   You registered the `HeroService` as the *provider* of its service at the root level so that it can be injected anywhere in the application.
-*   You used [Angular Dependency Injection](guide/dependency-injection) to inject it into a component.
-*   You gave the `HeroService` `get data` method an asynchronous signature.
-*   You discovered `Observable` and the RxJS `Observable` library.
-*   You used RxJS `of()` to return `Observable<Hero[]>`, an observable of mock heroes.
-*   The component's `ngOnInit` lifecycle hook calls the `HeroService` method, not the constructor.
-*   You created a `MessageService` for loosely coupled communication between classes.
-*   The `HeroService` injected into a component is created with another injected service, `MessageService`.
+* You refactored data access to the `HeroService` class.
+* You registered the `HeroService` as the *provider* of its service at the root level so that it can be injected anywhere in the application.
+* You used [Angular Dependency Injection](guide/dependency-injection) to inject it into a component.
+* You gave the `HeroService` `get data` method an asynchronous signature.
+* You discovered `Observable` and the RxJS `Observable` library.
+* You used RxJS `of()` to return `Observable<Hero[]>`, an observable of mock heroes.
+* The component's `ngOnInit` lifecycle hook calls the `HeroService` method, not the constructor.
+* You created a `MessageService` for loosely coupled communication between classes.
+* The `HeroService` injected into a component is created with another injected service, `MessageService`.
 
 ## Next steps
 
-*  [5. Add navigation](tutorial/tour-of-heroes/toh-pt5)
+* [5. Add navigation](tutorial/tour-of-heroes/toh-pt5)
 
 @reviewed 2022-02-28

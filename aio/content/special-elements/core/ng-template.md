@@ -6,16 +6,15 @@ With `<ng-template>`, you can define template content that is only being rendere
 
   Note that if you wrap content inside an `<ng-template>` without instructing Angular to render it, such content will not appear on a page. For example, see the following HTML code, when handling it Angular won't render the middle "Hip!" in the phrase "Hip! Hip! Hooray!" because of the surrounding `<ng-template>`.
 
-  ```html
+```html
+  <p>Hip!</p>
+  <ng-template>
     <p>Hip!</p>
-    <ng-template>
-      <p>Hip!</p>
-    </ng-template>
-    <p>Hooray!</p>
-  ```
+  </ng-template>
+  <p>Hooray!</p>
+```
 
 </div>
-
 
 @usageNotes
 

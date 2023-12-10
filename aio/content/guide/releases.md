@@ -31,8 +31,8 @@ For example, version 7.2.11 indicates major version 7, minor version 2, and patc
 
 The version number is incremented based on the level of change included in the release.
 
-| Level of change | Details |
-|:---             |:---     |
+| Level of change | Details                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Major release   | Contains significant new features, some but minimal developer assistance is expected during the update. When updating to a new major release, you might need to run update scripts, refactor code, run additional tests, and learn new APIs.                                                                                                                                                                                      |
 | Minor release   | Contains new smaller features. Minor releases are fully backward-compatible; no developer assistance is expected during update, but you can optionally modify your applications and libraries to begin using new APIs, features, and capabilities that were added in the release. We update peer dependencies in minor versions by expanding the supported versions, but we do not require projects to update these dependencies. |
 | Patch release   | Low risk, bug fix release. No developer assistance is expected during update.                                                                                                                                                                                                                                                                                                                                                     |
@@ -51,16 +51,16 @@ This means that in order to use the CLI as you develop an Angular app, the versi
 
 You can `ng update` to any version of Angular, provided that the following criteria are met:
 
-*   The version you want to update *to* is supported.
-*   The version you want to update *from* is within one major version of the version you want to
-    upgrade to.
+* The version you want to update *to* is supported.
+* The version you want to update *from* is within one major version of the version you want to
+  upgrade to.
 
 For example, you can update from version 11 to version 12, provided that version 12 is still supported.
 If you want to update across multiple major versions, perform each update one major version at a time.
 For example, to update from version 10 to version 12:
 
-1.  Update from version 10 to version 11.
-1.  Update from version 11 to version 12.
+1. Update from version 10 to version 11.
+1. Update from version 11 to version 12.
 
 See [Keeping Up-to-Date](guide/updating "Updating your projects") for more information about updating your Angular projects to the most recent version.
 
@@ -70,8 +70,8 @@ See [Keeping Up-to-Date](guide/updating "Updating your projects") for more infor
 
 We let you preview what's coming by providing "Next" and Release Candidates (`rc`) pre-releases for each major and minor release:
 
-| Pre-release type  | Details |
-|:---               |:---     |
+| Pre-release type  | Details                                                                                                                                                                      |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Next              | The release that is under active development and testing. The next release is indicated by a release tag appended with the `-next` identifier, such as  `8.1.0-next.0`.      |
 | Release candidate | A release that is feature complete and in final testing. A release candidate is indicated by a release tag appended with the `-rc` identifier, such as version `8.1.0-rc.0`. |
 
@@ -91,9 +91,9 @@ Dates are offered as general guidance and are subject to change.
 
 In general, expect the following release cycle:
 
-*   A major release every 6 months
-*   1-3 minor releases for each major release
-*   A patch release and pre-release (`next` or `rc`) build almost every week
+* A major release every 6 months
+* 1-3 minor releases for each major release
+* A patch release and pre-release (`next` or `rc`) build almost every week
 
 This cadence of releases gives eager developers access to new features as soon as they are fully developed and pass through our code review and integration testing processes, while maintaining the stability and reliability of the platform for production users that prefer to receive features after they have been validated by Google and other developers that use the pre-release builds.
 
@@ -111,7 +111,7 @@ Approximate dates are offered as general guidance and are subject to change.
 ### Release schedule
 
 | Version | Date               |
-|:--------|:-------------------|
+| :------ | :----------------- |
 | v16.1   | Week of 2023-06-12 |
 | v16.2   | Week of 2023-08-07 |
 | v17.0   | Week of 2023-11-06 |
@@ -120,9 +120,9 @@ Approximate dates are offered as general guidance and are subject to change.
 
 All major releases are typically supported for 18 months.
 
-| Support stage     | Support Timing | Details |
-|:---               |:---            |:---     |
-| Active            | 6 months       | Regularly-scheduled updates and patches are released                |
+| Support stage   | Support Timing | Details                                                             |
+| :-------------- | :------------- | :------------------------------------------------------------------ |
+| Active          | 6 months       | Regularly-scheduled updates and patches are released                |
 | Long-term (LTS) | 12 months      | Only [critical fixes and security patches](#lts-fixes) are released |
 
 ### Actively supported versions
@@ -130,7 +130,7 @@ All major releases are typically supported for 18 months.
 The following table provides the status for Angular versions under support.
 
 | Version | Status | Released   | Active ends | LTS ends   |
-|:--------|:-------|:-----------|:------------|:-----------|
+| :------ | :----- | :--------- | :---------- | :--------- |
 | ^17.0.0 | Active | 2023-11-08 | 2024-05-08  | 2025-05-15 |
 | ^16.0.0 | LTS    | 2023-05-03 | 2023-11-08  | 2024-11-08 |
 | ^15.0.0 | LTS    | 2022-11-18 | 2023-05-03  | 2024-05-18 |
@@ -141,8 +141,8 @@ Angular versions v2 to v14 are no longer supported.
 
 As a general rule, a fix is considered for an LTS version if it resolves one of:
 
-*   A newly identified security vulnerability,
-*   A regression, since the start of LTS, caused by a 3rd party change, such as a new browser version.
+* A newly identified security vulnerability,
+* A regression, since the start of LTS, caused by a 3rd party change, such as a new browser version.
 
 <a id="deprecation"></a>
 
@@ -152,14 +152,14 @@ Sometimes "breaking changes", such as the removal of support for select APIs and
 
 To make these transitions as straightforward as possible, we make these commitments to you:
 
-*   We work hard to minimize the number of breaking changes and to provide migration tools when possible
-*   We follow the deprecation policy described here, so you have time to update your applications to the latest APIs and best practices
+* We work hard to minimize the number of breaking changes and to provide migration tools when possible
+* We follow the deprecation policy described here, so you have time to update your applications to the latest APIs and best practices
 
 To help ensure that you have sufficient time and a clear path to update, this is our deprecation policy:
 
-| Deprecation stages | Details |
-|:---                |:---     |
-| Announcement       | We announce deprecated APIs and features in the [change log](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log"). Deprecated APIs appear in the [documentation](api?status=deprecated) with ~~strikethrough~~. When we announce a deprecation, we also announce a recommended update path. For convenience, [Deprecations](guide/deprecations) contains a summary of deprecated APIs and features.                            |
+| Deprecation stages | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Announcement       | We announce deprecated APIs and features in the [change log](https://github.com/angular/angular/blob/main/CHANGELOG.md "Angular change log"). Deprecated APIs appear in the [documentation](api?status=deprecated) with ~~strikethrough~~. When we announce a deprecation, we also announce a recommended update path. For convenience, [Deprecations](guide/deprecations) contains a summary of deprecated APIs and features.                              |
 | Deprecation period | When an API or a feature is deprecated, it is still present in the next two major releases. After that, deprecated APIs and features are candidates for removal. A deprecation can be announced in any release, but the removal of a deprecated API or feature happens only in major release. Until a deprecated API or feature is removed, it is maintained according to the LTS support policy, meaning that only critical and security issues are fixed. |
 | npm dependencies   | We only make npm dependency updates that require changes to your applications in a major release. In minor releases, we update peer dependencies by expanding the supported versions, but we do not require projects to update these dependencies until a future major version. This means that during minor Angular releases, npm dependency updates within Angular applications and libraries are optional.                                               |
 

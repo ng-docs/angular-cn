@@ -5,8 +5,8 @@ The topics in this section describe routine maintenance tasks that you can perfo
 
 Documentation maintenance tasks fall into these two categories:
 
-*   Minor changes
-*   Major changes
+* Minor changes
+* Major changes
 
 Minor changes can be made in the GitHub site without the need to load any software or tools on your system.
 For information about making a minor change to the documentation, see [Make a minor change](guide/contributors-guide-overview#make-a-minor-change).
@@ -16,12 +16,12 @@ For information about preparing your system to make major changes to the documen
 
 ## Routine documentation maintenance tasks
 
-| Task                                                     | Scope |
-|:---                                                      |:---   |
+| Task                                                     | Scope            |
+| :------------------------------------------------------- | :--------------- |
 | [Review current documentation](guide/reviewing-content)  | Minor (See note) |
-| [Update search keywords](guide/updating-search-keywords) | Minor       |
-| [Resolve linter errors](guide/docs-lint-errors)          | Major       |
-| [Resolve documentation issues](guide/doc-select-issue)   | Major       |
+| [Update search keywords](guide/updating-search-keywords) | Minor            |
+| [Resolve linter errors](guide/docs-lint-errors)          | Major            |
+| [Resolve documentation issues](guide/doc-select-issue)   | Major            |
 
 <div class="alert is-helpful">
 

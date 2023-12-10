@@ -21,8 +21,8 @@ After installing Angular DevTools, find the extension under the Angular tab in y
 
 When you open the extension, you'll see two additional tabs:
 
-| Tabs                      | Details |
-|:---                       |:---     |
+| Tabs                      | Details                                                                                                                |
+| :------------------------ | :--------------------------------------------------------------------------------------------------------------------- |
 | [Components](#components) | Lets you explore the components and directives in your application and preview or edit their state.                    |
 | [Profiler](#profiler)     | Lets you profile your application and understand what the performance bottleneck is during change detection execution. |
 
@@ -74,8 +74,8 @@ Angular DevTools displays their properties and metadata on the right-hand side o
 
 Navigate in the component tree using the mouse or the following keyboard shortcuts:
 
-| Keyboard shortcut     | Details |
-|:---                   |:---     |
+| Keyboard shortcut     | Details                            |
+| :-------------------- | :--------------------------------- |
 | Up and down arrows    | Select the previous and next nodes |
 | Left and right arrows | Collapse and expand a node         |
 
@@ -106,6 +106,7 @@ After you select a particular component, click the icon at the top-right of the 
 </div>
 
 ### View injected services of components
+
 Starting in Angular 17, services that are injected in a component or directive context are viewable in the property viewer. After you select a particular component, if that component has dependencies, you'll be able to see them listed under the *"Injected Services"* bar.
 
 By clicking on a service, an expansion panel will appear that visualizes the resolution path that Angular used to resolve that service.
@@ -286,6 +287,7 @@ Clicking an injector that has configured providers will display those providers 
 <img alt="A screenshot showing how providers are made visible when an injector is selected." src="generated/images/guide/devtools/di-injector-tree-providers.png">
 
 </div>
+
 <!-- links -->
 
 <!-- external links -->

@@ -69,9 +69,9 @@ See [Animating entering and leaving a view](#enter-leave-view).
 
 Combine wildcard and void states in a transition to trigger animations that enter and leave the page:
 
-*   A transition of `* => void` applies when the element leaves a view, regardless of what state it was in before it left
-*   A transition of `void => *` applies when the element enters a view, regardless of what state it assumes when entering
-*   The wildcard state `*` matches to *any* state, including `void`
+* A transition of `* => void` applies when the element leaves a view, regardless of what state it was in before it left
+* A transition of `void => *` applies when the element enters a view, regardless of what state it assumes when entering
+* The wildcard state `*` matches to *any* state, including `void`
 
 ## Animate entering and leaving a view
 
@@ -79,8 +79,8 @@ This section shows how to animate elements entering or leaving a page.
 
 Add a new behavior:
 
-*   When you add a hero to the list of heroes, it appears to fly onto the page from the left
-*   When you remove a hero from the list, it appears to fly out to the right
+* When you add a hero to the list of heroes, it appears to fly onto the page from the left
+* When you remove a hero from the list, it appears to fly out to the right
 
 <code-example header="src/app/hero-list-enter-leave.component.ts" path="animations/src/app/hero-list-enter-leave.component.ts" region="animationdef"></code-example>
 
@@ -88,7 +88,7 @@ In the preceding code, you applied the `void` state when the HTML element isn't 
 
 <a id="enter-leave-view"></a>
 
-## Aliases :enter and :leave 
+## Aliases :enter and :leave
 
 `:enter` and `:leave` are aliases for the `void => *` and `* => void` transitions.
 These aliases are used by several animation functions.
@@ -185,11 +185,11 @@ You can't selectively turn off multiple animations on a single element.<!-- vale
 
 A selective child animations can still be run on a disabled parent in one of the following ways:
 
-*   A parent animation can use the [`query()`](api/animations/query) function to collect inner elements located in disabled areas of the HTML template.
-    Those elements can still animate.
-<!-- vale on --> 
+* A parent animation can use the [`query()`](api/animations/query) function to collect inner elements located in disabled areas of the HTML template.
+      Those elements can still animate.
+  <!-- vale on -->
 
-*   A child animation can be queried by a parent and then later animated with the `animateChild()` function
+* A child animation can be queried by a parent and then later animated with the `animateChild()` function
 
 #### Disable all animations
 
@@ -276,8 +276,8 @@ Use keyframes to create a pulse effect in your animations by defining styles at 
 
 Here's an example of using keyframes to create a pulse effect:
 
-*   The original `open` and `closed` states, with the original changes in height, color, and opacity, occurring over a timeframe of 1 second
-*   A keyframes sequence inserted in the middle that causes the button to appear to pulsate irregularly over the course of that same 1 second timeframe
+* The original `open` and `closed` states, with the original changes in height, color, and opacity, occurring over a timeframe of 1 second
+* A keyframes sequence inserted in the middle that causes the button to appear to pulsate irregularly over the course of that same 1 second timeframe
 
 <div class="lightbox">
 
@@ -297,14 +297,14 @@ The W3C maintains a list of animatable properties on its [CSS Transitions](https
 
 For properties with a numeric value, define a unit by providing the value as a string, in quotes, with the appropriate suffix:
 
-*   50 pixels:
-    `'50px'`
+* 50 pixels:
+  `'50px'`
 
-*   Relative font size:
-    `'3em'`
+* Relative font size:
+  `'3em'`
 
-*   Percentage:
-    `'100%'`
+* Percentage:
+  `'100%'`
 
 You can also provide the value as a number. In such cases Angular assumes a default unit of pixels, or `px`.
 Expressing 50 pixels as `50` is the same as saying `'50px'`.
@@ -337,9 +337,9 @@ The `keyframes()` function in Angular allows you to specify multiple interim sty
 
 You might also be interested in the following:
 
-*   [Introduction to Angular animations](guide/animations)
-*   [Complex animation sequences](guide/complex-animation-sequences)
-*   [Reusable animations](guide/reusable-animations)
-*   [Route transition animations](guide/route-animations)
+* [Introduction to Angular animations](guide/animations)
+* [Complex animation sequences](guide/complex-animation-sequences)
+* [Reusable animations](guide/reusable-animations)
+* [Route transition animations](guide/route-animations)
 
 @reviewed 2022-10-11

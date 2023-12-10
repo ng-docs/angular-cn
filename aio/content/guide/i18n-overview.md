@@ -6,15 +6,15 @@
 *Localization* is the process of building versions of your project for different locales.
 The localization process includes the following actions.
 
-*   Extract text for translation into different languages
-*   Format data for a specific locale
+* Extract text for translation into different languages
+* Format data for a specific locale
 
 A *locale* identifies a region in which people speak a particular language or language variant.
 Possible regions includes countries and geographical regions.
 A locale determines the formatting and parsing of the following details.
 
-*   Measurement units including date and time, numbers, and currencies
-*   Translated names including time zones, languages, and countries
+* Measurement units including date and time, numbers, and currencies
+* Translated names including time zones, languages, and countries
 
 For a quick introduction to localization and internationalization watch this video:
 
@@ -28,20 +28,30 @@ For a quick introduction to localization and internationalization watch this vid
 
 <div class="card-container">
     <a href="guide/i18n-common-overview" class="docs-card" title="Common internationalization tasks">
+
         <section>Common tasks</section>
+
         <p>Learn how to implement many of the common tasks associated with Angular internationalization.</p>
+
         <p class="card-footer">Common internationalization tasks</p>
     </a>
     <a href="guide/i18n-optional-overview" class="docs-card" title="Optional internationalization tasks">
+
         <section>Optional practices</section>
+
         <p>Learn how to implement optional practices associated with Angular internationalization.</p>
+
         <p class="card-footer">Optional internationalization practices</p>
     </a>
     <a href="guide/i18n-example" class="docs-card" title="Internationalization example">
+
         <section>Internationalization example</section>
+
         <p>Review an example of Angular internationalization.</p>
+
         <p class="card-footer">Example Angular Internationalization application</p>
     </a>
+
 </div>
 
 <!-- links -->

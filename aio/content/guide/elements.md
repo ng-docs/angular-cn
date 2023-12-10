@@ -91,9 +91,9 @@ Component properties and logic maps directly into HTML attributes and the browse
   The resulting attribute names use dash-separated lowercase.
   For example, for a component with `@Input('myInputProp') inputProp`, the corresponding custom element defines an attribute `my-input-prop`.
 
-*   Component outputs are dispatched as HTML [Custom Events](https://developer.mozilla.org/docs/Web/API/CustomEvent), with the name of the custom event matching the output name.
-    For example, for a component with `@Output() valueChanged = new EventEmitter()`, the corresponding custom element dispatches events with the name `valueChanged`, and the emitted data is stored on the event's `detail` property.
-    If you provide an alias, that value will be used instead; for example, `@Output('myClick') clicks = new EventEmitter<string>();` results in dispatch events with the name `myClick`.
+* Component outputs are dispatched as HTML [Custom Events](https://developer.mozilla.org/docs/Web/API/CustomEvent), with the name of the custom event matching the output name.
+  For example, for a component with `@Output() valueChanged = new EventEmitter()`, the corresponding custom element dispatches events with the name `valueChanged`, and the emitted data is stored on the event's `detail` property.
+  If you provide an alias, that value will be used instead; for example, `@Output('myClick') clicks = new EventEmitter<string>();` results in dispatch events with the name `myClick`.
 
 For more information, see Web Component documentation for [Creating custom events](https://developer.mozilla.org/docs/Web/Guide/Events/Creating_and_triggering_events#Creating_custom_events).
 
@@ -103,13 +103,13 @@ For more information, see Web Component documentation for [Creating custom event
 
 The recently-developed [custom elements](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements) Web Platform feature is currently supported natively in a number of browsers.
 
-| Browser                 | Custom Element Support |
-| :---------------------- | :--------------------- |
-| Chrome                  | Supported natively.    |
+| Browser               | Custom Element Support |
+| :-------------------- | :--------------------- |
+| Chrome                | Supported natively.    |
 | Edge (Chromium-based) | Supported natively.    |
-| Firefox                 | Supported natively.    |
-| Opera                   | Supported natively.    |
-| Safari                  | Supported natively.    |
+| Firefox               | Supported natively.    |
+| Opera                 | Supported natively.    |
+| Safari                | Supported natively.    |
 
 To add the `@angular/elements` package to your workspace, run the following command:
 
@@ -127,6 +127,7 @@ Using an Angular custom element makes the process much simpler and more transpar
 
 <div class="alert is-helpful">
   You do still have to exclude the component from compilation, if you are not going to use it in your application.
+
 </div>
 
 The following Popup Service example application defines a component that you can either load dynamically or convert to a custom element.

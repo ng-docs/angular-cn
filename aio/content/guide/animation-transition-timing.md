@@ -43,48 +43,48 @@ The first part, `duration`, is required.
 The duration can be expressed in milliseconds as a number without quotes, or in seconds with quotes and a time specifier.
 For example, a duration of a tenth of a second can be expressed as follows:
 
-*   As a plain number, in milliseconds:
-    `100`
+* As a plain number, in milliseconds:
+  `100`
 
-*   In a string, as milliseconds:
-    `'100ms'`
+* In a string, as milliseconds:
+  `'100ms'`
 
-*   In a string, as seconds:
-    `'0.1s'`
+* In a string, as seconds:
+  `'0.1s'`
 
 The second argument, `delay`, has the same syntax as `duration`.
 For example:
 
-*   Wait for 100 ms and then run for 200 ms: `'0.2s 100ms'`
+* Wait for 100 ms and then run for 200 ms: `'0.2s 100ms'`
 
 The third argument, `easing`, controls how the animation [accelerates and decelerates](https://easings.net) during its runtime.
 For example, `ease-in` causes the animation to begin slowly, and to pick up speed as it progresses.
 
-*   Wait for 100 ms, run for 200 ms.
-    Use a deceleration curve to start out fast and slowly decelerate to a resting point:
+* Wait for 100 ms, run for 200 ms.
+  Use a deceleration curve to start out fast and slowly decelerate to a resting point:
 
-    <code-example format="output" language="shell">
+  <code-example format="output" language="shell">
 
-    0.2s 100ms ease-out
+  0.2s 100ms ease-out
 
-    </code-example>
+  </code-example>
 
-*   Run for 200 ms, with no delay.
-    Use a standard curve to start slow, speed up in the middle, and then decelerate slowly at the end:
+* Run for 200 ms, with no delay.
+  Use a standard curve to start slow, speed up in the middle, and then decelerate slowly at the end:
 
-    <code-example format="output" language="shell">
+  <code-example format="output" language="shell">
 
-    0.2s ease-in-out
+  0.2s ease-in-out
 
-    </code-example>
+  </code-example>
 
-*   Start immediately, run for 200 ms.
-    Use an acceleration curve to start slow and end at full velocity:
-    <code-example format="output" language="shell">
+* Start immediately, run for 200 ms.
+  Use an acceleration curve to start slow and end at full velocity:
+  <code-example format="output" language="shell">
 
-    0.2s ease-in
+  0.2s ease-in
 
-    </code-example>
+  </code-example>
 
 <div class="alert is-helpful">
 
@@ -110,16 +110,16 @@ This example adds a state transition from the `closed` state to the `open` state
 **NOTE**: <br />
 Using styles within [`state`](api/animations/state) and `transition` functions:
 
-*   Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
-*   Use `transition()` to define intermediate styles, which create the illusion of motion during the animation
-*   When animations are turned off, `transition()` styles can be skipped, but [`state()`](api/animations/state) styles can't
-*   Include multiple state pairs within the same `transition()` argument:
+* Use [`state()`](api/animations/state) to define styles that are applied at the end of each transition, they persist after the animation completes
+* Use `transition()` to define intermediate styles, which create the illusion of motion during the animation
+* When animations are turned off, `transition()` styles can be skipped, but [`state()`](api/animations/state) styles can't
+* Include multiple state pairs within the same `transition()` argument:
 
-    <code-example format="typescript" language="typescript">
+  <code-example format="typescript" language="typescript">
 
-    transition( 'on =&gt; off, off =&gt; void' )
+  transition( 'on =&gt; off, off =&gt; void' )
 
-    </code-example>
+  </code-example>
 
 </div>
 

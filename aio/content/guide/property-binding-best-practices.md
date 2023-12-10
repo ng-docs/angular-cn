@@ -28,9 +28,9 @@ As a best practice, use only properties and methods that return values.
 A template expression should result in the type of value that the target property expects.
 For example, return:
 
-*   a `string`, if the target property expects a string
-*   a `number`, if it expects a number
-*   an `object`, if it expects an object.
+* a `string`, if the target property expects a string
+* a `number`, if it expects a number
+* an `object`, if it expects an object.
 
 ### Passing in a string
 

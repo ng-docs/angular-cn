@@ -7,16 +7,16 @@ By understanding these rules, you can determine whether to declare a provider at
 
 This topic uses the following pictographs.
 
-| html entities | pictographs |
-|:---         |:--- |
-| `&#x1F33A;` | red hibiscus (`🌺`)  |
-| `&#x1F33B;` | sunflower (`🌻`)     |
-| `&#x1F337;` | tulip (`🌷`)         |
-| `&#x1F33F;` | fern (`🌿`)          |
-| `&#x1F341;` | maple leaf (`🍁`)    |
-| `&#x1F433;` | whale (`🐳`)         |
-| `&#x1F436;` | dog (`🐶`)           |
-| `&#x1F994;` | hedgehog (`🦔`)       |
+| html entities | pictographs         |
+| :------------ | :------------------ |
+| `&#x1F33A;`   | red hibiscus (`🌺`) |
+| `&#x1F33B;`   | sunflower (`🌻`)    |
+| `&#x1F337;`   | tulip (`🌷`)        |
+| `&#x1F33F;`   | fern (`🌿`)         |
+| `&#x1F341;`   | maple leaf (`🍁`)   |
+| `&#x1F433;`   | whale (`🐳`)        |
+| `&#x1F436;`   | dog (`🐶`)          |
+| `&#x1F994;`   | hedgehog (`🦔`)     |
 
 </div>
 
@@ -34,10 +34,10 @@ By understanding these rules, you can determine whether to declare a provider at
 
 Angular has two injector hierarchies:
 
-| Injector hierarchies        | Details |
-|:---                         |:---     |
-| `EnvironmentInjector` hierarchy | Configure an `ElementInjector` in this hierarchy using `@Injectable()` or `providers` array in `ApplicationConfig`. |
-| `ElementInjector` hierarchy | Created implicitly at each DOM element. An `ElementInjector` is empty by default unless you configure it in the `providers` property on `@Directive()` or `@Component()`. |
+| Injector hierarchies            | Details                                                                                                                                                                   |
+| :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `EnvironmentInjector` hierarchy | Configure an `ElementInjector` in this hierarchy using `@Injectable()` or `providers` array in `ApplicationConfig`.                                                       |
+| `ElementInjector` hierarchy     | Created implicitly at each DOM element. An `ElementInjector` is empty by default unless you configure it in the `providers` property on `@Directive()` or `@Component()`. |
 
 <div class="callout is-helpful">
 
@@ -53,8 +53,8 @@ For `NgModule` based applications, you can provide dependencies with the `Module
 
 The `EnvironmentInjector` can be configured in one of two ways by using:
 
-*   The `@Injectable()` `providedIn` property to refer to `root` or `platform`
-*   The `ApplicationConfig` `providers` array
+* The `@Injectable()` `providedIn` property to refer to `root` or `platform`
+* The `ApplicationConfig` `providers` array
 
 <div class="callout is-helpful">
 
@@ -88,6 +88,7 @@ The `@Injectable()` decorator identifies a service class.
 The `providedIn` property configures a specific `EnvironmentInjector`, here `root`, which makes the service available in the `root` `EnvironmentInjector`.
 
 ### ModuleInjector
+
 In the case of `NgModule` based applications, the ModuleInjector can be configured in one of two ways by using:
 
 * The `@Injectable()` `providedIn` property to refer to `root` or `platform`
@@ -194,8 +195,8 @@ Components and directives on the same element share an injector.
 
 When resolving a token for a component/directive, Angular resolves it in two phases:
 
-1.  Against its parents in the `ElementInjector` hierarchy.
-2.  Against its parents in the `EnvironmentInjector` hierarchy.
+1. Against its parents in the `ElementInjector` hierarchy.
+2. Against its parents in the `EnvironmentInjector` hierarchy.
 
 When a component declares a dependency, Angular tries to satisfy that dependency with its own `ElementInjector`.
 If the component's injector lacks the provider, it passes the request up to its parent component's `ElementInjector`.
@@ -226,14 +227,15 @@ For a working application showcasing the resolution modifiers that this section 
 
 Resolution modifiers fall into three categories:
 
-*   What to do if Angular doesn't find what you're looking for, that is `@Optional()`
-*   Where to start looking, that is `@SkipSelf()`
-*   Where to stop looking, `@Host()` and `@Self()`
+* What to do if Angular doesn't find what you're looking for, that is `@Optional()`
+* Where to start looking, that is `@SkipSelf()`
+* Where to stop looking, `@Host()` and `@Self()`
 
 By default, Angular always starts at the current `Injector` and keeps searching all the way up.
 Modifiers allow you to change the starting, or _self_, location and the ending location.
 
 Additionally, you can combine all of the modifiers except:
+
 * `@Host()` and `@Self()`
 * `@SkipSelf()` and `@Self()`.
 
@@ -356,8 +358,8 @@ The following sections demonstrate `providers` and `viewProviders` along with wa
 
 A component class can provide services in two ways:
 
-| Arrays                       | Details |
-|:---                          |:---     |
+| Arrays                       | Details                                                                                                                                                                                                                                                                  |
+| :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | With a `providers` array     | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp; providers: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: FlowerService, useValue: {emoji: '&#x1F33A;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example>    |
 | With a `viewProviders` array | <code-example format="typescript" language="typescript"> &commat;Component({ &NewLine;&nbsp; &hellip; &NewLine;&nbsp;viewProviders: [ &NewLine;&nbsp;&nbsp;&nbsp; {provide: AnimalService, useValue: {emoji: '&#x1F436;'}} &NewLine;&nbsp; ] &NewLine;}) </code-example> |
 
@@ -367,11 +369,11 @@ To understand how the `providers` and `viewProviders` influence service visibili
 
 In the logical tree, you'll find `@Provide`, `@Inject`, and `ApplicationConfig`, which are not real HTML attributes but are here to demonstrate what is going on under the hood.
 
-| Angular service attribute                                                                                          | Details |
-|:---                                                                                                                |:---     |
+| Angular service attribute                                                                                         | Details                                                                                                               |
+| :---------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Inject(Token)=&gt;Value </code-example> | Demonstrates that if `Token` is injected at this location in the logical tree its value would be `Value`.             |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Provide(Token=Value) </code-example>    | Demonstrates that there is a declaration of `Token` provider with value `Value` at this location in the logical tree. |
-| <code-example format="typescript" hideCopy language="typescript"> ApplicationConfig(Token) </code-example>         | Demonstrates that a fallback `EnvironmentInjector` should be used at this location.                                     |
+| <code-example format="typescript" hideCopy language="typescript"> ApplicationConfig(Token) </code-example>        | Demonstrates that a fallback `EnvironmentInjector` should be used at this location.                                   |
 
 </div>
 
@@ -449,23 +451,23 @@ In the logical tree, this would be represented as follows:
 When `<app-root>` requests the `FlowerService`, it is the injector's job to resolve the `FlowerService` token.
 The resolution of the token happens in two phases:
 
-1.  The injector determines the starting location in the logical tree and an ending location of the search.
-    The injector begins with the starting location and looks for the token at each level in the logical tree.
-    If the token is found it is returned.
+1. The injector determines the starting location in the logical tree and an ending location of the search.
+   The injector begins with the starting location and looks for the token at each level in the logical tree.
+   If the token is found it is returned.
 
-1.  If the token is not found, the injector looks for the closest parent `EnvironmentInjector` to delegate the request to.
+1. If the token is not found, the injector looks for the closest parent `EnvironmentInjector` to delegate the request to.
 
 In the example case, the constraints are:
 
-1.  Start with `<#VIEW>` belonging to `<app-root>` and end with `<app-root>`.
+1. Start with `<#VIEW>` belonging to `<app-root>` and end with `<app-root>`.
 
-    *   Normally the starting point for search is at the point of injection.
-        However, in this case `<app-root>` `@Component`s are special in that they also include their own `viewProviders`, which is why the search starts at `<#VIEW>` belonging to `<app-root>`.
-        This would not be the case for a directive matched at the same location.
+   * Normally the starting point for search is at the point of injection.
+     However, in this case `<app-root>` `@Component`s are special in that they also include their own `viewProviders`, which is why the search starts at `<#VIEW>` belonging to `<app-root>`.
+     This would not be the case for a directive matched at the same location.
 
-    *   The ending location happens to be the same as the component itself, because it is the topmost component in this application.
+   * The ending location happens to be the same as the component itself, because it is the topmost component in this application.
 
-1.  The `ElementInjector` provided by the `ApplicationConfig` acts as the fallback injector when the injection token can't be found in the `ElementInjector` hierarchies.
+1. The `ElementInjector` provided by the `ApplicationConfig` acts as the fallback injector when the injection token can't be found in the `ElementInjector` hierarchies.
 
 ### Using the `providers` array
 
@@ -952,9 +954,9 @@ Each selected hero tax return opens in its own component and multiple returns ca
 
 Each tax return component has the following characteristics:
 
-*   Is its own tax return editing session
-*   Can change a tax return without affecting a return in another component
-*   Has the ability to save the changes to its tax return or cancel them
+* Is its own tax return editing session
+* Can change a tax return without affecting a return in another component
+* Has the ability to save the changes to its tax return or cancel them
 
 <div class="lightbox">
 

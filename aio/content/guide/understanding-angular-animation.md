@@ -6,14 +6,14 @@ Animation provides the illusion of motion: HTML elements change styling over tim
 
 Before learning Angular animations, you should be familiar with building basic Angular apps:
 
-*   [Tutorial](tutorial)
-*   [Architecture Overview](guide/architecture)
+* [Tutorial](tutorial)
+* [Architecture Overview](guide/architecture)
 
 Animations can improve your application and user experience in many ways:
 
-*   Without animations, web page transitions can seem abrupt and jarring
-*   Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
-*   Good animations intuitively call the user's attention to where it is needed
+* Without animations, web page transitions can seem abrupt and jarring
+* Motion greatly enhances the user experience, so animations give users a chance to detect the application's response to their actions
+* Good animations intuitively call the user's attention to where it is needed
 
 Typically, animations involve multiple style *transformations* over time.
 An HTML element can move, change color, grow, shrink, fade, or slide off the page. These changes can occur simultaneously or sequentially. You can control the timing of each transformation.

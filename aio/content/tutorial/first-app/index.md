@@ -14,10 +14,10 @@ For the best experience with this tutorial, review these requirements to make su
 
 The lessons in this tutorial assume that you have experience with the following:
 
-1.  Created an HTML web page by editing the HTML directly.
-1.  Programmed web site content in JavaScript.
-1.  Read Cascading Style Sheet (CSS) content and understand how selectors are used.
-1.  Used command-line instructions to perform tasks on your computer.
+1. Created an HTML web page by editing the HTML directly.
+1. Programmed web site content in JavaScript.
+1. Read Cascading Style Sheet (CSS) content and understand how selectors are used.
+1. Used command-line instructions to perform tasks on your computer.
 
 ### Your equipment
 
@@ -27,8 +27,10 @@ These lessons can be completed by using a local installation of the Angular tool
 
 The lessons in this tutorial create an Angular app that lists houses for rent and shows the details of individual houses.
 This app uses features that are common to many Angular apps.
+
 <section class="lightbox">
   <img alt="Output of heroes dashboard" src="generated/images/guide/faa/homes-app-landing-page.png">
+
 </section>
 
 ## Local development environment
@@ -47,7 +49,6 @@ From a **Terminal** window:
 ## Step 2 - Install the correct version of `node.js` for Angular
 
 If you do not have a version of `node.js` installed, please follow the [directions for installation on nodejs.org](https://nodejs.org/en/download/)
-
 
 ## Step 3 - Install the latest version of Angular
 
@@ -68,7 +69,7 @@ In this lesson, you learned about the app that you build in this tutorial and pr
 
 ## Next steps
 
-*  [First Angular app lesson 1 - Hello world](tutorial/first-app/first-app-lesson-01)
+* [First Angular app lesson 1 - Hello world](tutorial/first-app/first-app-lesson-01)
 
 ## More information
 

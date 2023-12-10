@@ -104,9 +104,9 @@ Without the `static` flag, the compiler decided when each query would be resolve
 All `@ViewChild`/`@ContentChild` queries were categorized into one of two buckets at compile time: "static" or "dynamic".
 This classification determined when query results would become available to users.
 
-| Queries         | Details |
-|:---             |:---     |
-| Static queries  | The result could be determined statically because the result didn't depend on runtime values like bindings. Results from queries classified as static were available before change detection ran for that view (accessible in `ngOnInit`).                                                                             |
+| Queries         | Details                                                                                                                                                                                                                                                                                                              |
+| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Static queries  | The result could be determined statically because the result didn't depend on runtime values like bindings. Results from queries classified as static were available before change detection ran for that view (accessible in `ngOnInit`).                                                                           |
 | Dynamic queries | the result could not be determined statically because the result depended on runtime values (bindings). Results from queries classified as dynamic were not available until after change detection ran for that view (accessible in `ngAfterContentInit` for content queries or `ngAfterViewInit` for view queries). |
 
 For example, let's say we have a component, `Comp`.
@@ -150,13 +150,15 @@ Keep in mind that these categories only applied to `@ViewChild` and `@ContentChi
 This strategy of resolving queries at different times based on the location of potential query matches has caused a lot of confusion.
 Namely:
 
-*   Sometimes query results are available in `ngOnInit`, but sometimes they aren't and it's not clear why (see [21800](https://github.com/angular/angular/issues/21800) or [19872](https://github.com/angular/angular/issues/19872))
-*   `@ViewChild` queries are resolved at a different time from `@ViewChildren` queries, and `@ContentChild` queries are resolved at a different time from `@ContentChildren` queries.
-    If a user turns a `@ViewChild` query into a `@ViewChildren` query, their code can break suddenly because the timing has shifted.
+* Sometimes query results are available in `ngOnInit`, but sometimes they aren't and it's not clear why (see [21800](https://github.com/angular/angular/issues/21800) or [19872](https://github.com/angular/angular/issues/19872))
 
-*   Code depending on a query result can suddenly stop working as soon as an `*ngIf` or an `*ngFor` is added to a template
-*   A `@ContentChild` query for the same component will resolve at different times in the lifecycle for each usage of the component.
-    This leads to buggy behavior where using a component with `*ngIf` is broken in subtle ways that aren't obvious to the component author.
+* `@ViewChild` queries are resolved at a different time from `@ViewChildren` queries, and `@ContentChild` queries are resolved at a different time from `@ContentChildren` queries.
+  If a user turns a `@ViewChild` query into a `@ViewChildren` query, their code can break suddenly because the timing has shifted.
+
+* Code depending on a query result can suddenly stop working as soon as an `*ngIf` or an `*ngFor` is added to a template
+
+* A `@ContentChild` query for the same component will resolve at different times in the lifecycle for each usage of the component.
+  This leads to buggy behavior where using a component with `*ngIf` is broken in subtle ways that aren't obvious to the component author.
 
 In version 9, we plan to simplify the behavior so all queries resolve after change detection runs by default.
 The location of query matches in the template cannot affect when the query result will become available and suddenly break your code, and the default behavior is always the same.

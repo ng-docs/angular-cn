@@ -71,7 +71,7 @@ For simple cases, you can use `track $index` as a reasonable default.
 Inside `@for` contents, several implicit variables are always available:
 
 | Variable | Meaning                                       |
-|----------|-----------------------------------------------|
+| -------- | --------------------------------------------- |
 | `$count` | Number of items in a collection iterated over |
 | `$index` | Index of the current row                      |
 | `$first` | Whether the current row is the first row      |

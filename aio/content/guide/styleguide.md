@@ -334,16 +334,16 @@ Consistent conventions make it easy to quickly identify and reference assets of 
 
 </div>
 
-| Symbol name                                                                                                                                                                          | File name |
-|:---                                                                                                                                                                                  |:---       |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class AppComponent { } </code-example>                             | app.component.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroesComponent { } </code-example>                          | heroes.component.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroListComponent { } </code-example>                        | hero-list.component.ts |
+| Symbol name                                                                                                                                                                          | File name                |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------- |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class AppComponent { } </code-example>                             | app.component.ts         |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroesComponent { } </code-example>                          | heroes.component.ts      |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroListComponent { } </code-example>                        | hero-list.component.ts   |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Component({ &hellip; }) &NewLine;export class HeroDetailComponent { } </code-example>                      | hero-detail.component.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({ &hellip; }) &NewLine;export class ValidationDirective { } </code-example>                      | validation.directive.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppModule </code-example>                                     | app.module.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({ name: 'initCaps' }) &NewLine;export class InitCapsPipe implements PipeTransform { } </code-example> | init-caps.pipe.ts |
-| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class UserProfileService { } </code-example>                                  | user-profile.service.ts |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Directive({ &hellip; }) &NewLine;export class ValidationDirective { } </code-example>                      | validation.directive.ts  |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppModule </code-example>                                     | app.module.ts            |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({ name: 'initCaps' }) &NewLine;export class InitCapsPipe implements PipeTransform { } </code-example> | init-caps.pipe.ts        |
+| <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class UserProfileService { } </code-example>                                  | user-profile.service.ts  |
 
 [Back to top](#toc)
 
@@ -393,8 +393,8 @@ Service names such as `Credit` are nouns and require a suffix and should be name
 
 </div>
 
-| Symbol name                                                                                                                                      | File name |
-|:---                                                                                                                                              |:---       |
+| Symbol name                                                                                                                                      | File name            |
+| :----------------------------------------------------------------------------------------------------------------------------------------------- | :------------------- |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class HeroDataService { } </code-example> | hero-data.service.ts |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class CreditService { } </code-example>   | credit.service.ts    |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Injectable() &NewLine;export class Logger { } </code-example>          | logger.service.ts    |
@@ -621,8 +621,8 @@ Provides a consistent way to quickly identify and reference pipes.
 
 </div>
 
-| Symbol name                                                                                                                                                                          | File name |
-|:---                                                                                                                                                                                  |:---       |
+| Symbol name                                                                                                                                                                          | File name         |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({ name: 'ellipsis' }) &NewLine;export class EllipsisPipe implements PipeTransform { } </code-example> | ellipsis.pipe.ts  |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;Pipe({ name: 'initCaps' }) &NewLine;export class InitCapsPipe implements PipeTransform { } </code-example> | init-caps.pipe.ts |
 
@@ -660,8 +660,8 @@ Provides pattern matching for [karma](https://karma-runner.github.io) or other t
 
 </div>
 
-| Test type  | File names |
-|:---        |:---        |
+| Test type  | File names                                                                                       |
+| :--------- | :----------------------------------------------------------------------------------------------- |
 | Components | heroes.component.spec.ts <br /> hero-list.component.spec.ts <br /> hero-detail.component.spec.ts |
 | Services   | logger.service.spec.ts <br /> hero.service.spec.ts <br /> filter-text.service.spec.ts            |
 | Pipes      | ellipsis.pipe.spec.ts <br /> init-caps.pipe.spec.ts                                              |
@@ -694,8 +694,8 @@ Provides pattern matching for test runners and build automation.
 
 </div>
 
-| Test type        | File names |
-|:---              |:---        |
+| Test type        | File names                                |
+| :--------------- | :---------------------------------------- |
 | End-to-End Tests | app.e2e-spec.ts <br /> heroes.e2e-spec.ts |
 
 [Back to top](#toc)
@@ -765,8 +765,8 @@ A consistent class and file name convention make these modules easy to spot and 
 
 </div>
 
-| Symbol name                                                                                                                                                    | File name |
-|:---                                                                                                                                                            |:---       |
+| Symbol name                                                                                                                                                    | File name                |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------- |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class AppModule { } </code-example>           | app.module.ts            |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class HeroesModule { } </code-example>        | heroes.module.ts         |
 | <code-example format="typescript" hideCopy language="typescript"> &commat;NgModule({ &hellip; }) &NewLine;export class VillainsModule { } </code-example>      | villains.module.ts       |

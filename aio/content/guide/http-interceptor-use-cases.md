@@ -17,9 +17,9 @@ The practice of cloning a request to set new headers is so common that there's a
 
 An interceptor that alters headers can be used for a number of different operations, including:
 
-*   Authentication/authorization
-*   Caching behavior; for example, `If-Modified-Since`
-*   XSRF protection
+* Authentication/authorization
+* Caching behavior; for example, `If-Modified-Since`
+* XSRF protection
 
 ## Log request and response pairs
 
@@ -70,13 +70,15 @@ The `CachingInterceptor` in the following example demonstrates this approach.
 
 <code-example header="app/http-interceptors/caching-interceptor.ts)" path="http/src/app/http-interceptors/caching-interceptor.ts" region="v1"></code-example>
 
-*   The `isCacheable()` function determines if the request is cacheable.
-    In this sample, only GET requests to the package search API are cacheable.
+* The `isCacheable()` function determines if the request is cacheable.
+  In this sample, only GET requests to the package search API are cacheable.
 
-*   If the request is not cacheable, the interceptor forwards the request to the next handler in the chain
-*   If a cacheable request is found in the cache, the interceptor returns an `of()` *observable* with the cached response, by-passing the `next` handler and all other interceptors downstream
-*   If a cacheable request is not in cache, the code calls `sendRequest()`.
-    This function forwards the request to `next.handle()` which ultimately calls the server and returns the server's response.
+* If the request is not cacheable, the interceptor forwards the request to the next handler in the chain
+
+* If a cacheable request is found in the cache, the interceptor returns an `of()` *observable* with the cached response, by-passing the `next` handler and all other interceptors downstream
+
+* If a cacheable request is not in cache, the code calls `sendRequest()`.
+  This function forwards the request to `next.handle()` which ultimately calls the server and returns the server's response.
 
 <a id="send-request"></a>
 
@@ -92,7 +94,6 @@ The original response continues untouched back up through the chain of intercept
 Data services, such as `PackageSearchService`, are unaware that some of their `HttpClient` requests actually return cached responses.
 
 </div>
-
 
 <a id="cache-refresh"></a>
 
@@ -118,7 +119,7 @@ The revised `CachingInterceptor` sets up a server request whether there's a cach
 The `results$` observable makes the request when subscribed.
 
 * If there's no cached value, the interceptor returns `results$`.
-* If there is a cached value, the code *pipes* the cached response onto `results$`. This produces a recomposed observable that emits two responses, so subscribers will see a sequence of these two responses:  
+* If there is a cached value, the code *pipes* the cached response onto `results$`. This produces a recomposed observable that emits two responses, so subscribers will see a sequence of these two responses:
   * The cached response that's emitted immediately
   * The response from the server, that's emitted later
 

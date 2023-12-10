@@ -2,10 +2,10 @@
 
 The Tour of Heroes application has new requirements:
 
-*   Add a *Dashboard* view
-*   Add the ability to navigate between the *Heroes* and *Dashboard* views
-*   When users click a hero name in either view, navigate to a detail view of the selected hero
-*   When users click a *deep link* in an email, open the detail view for a particular hero
+* Add a *Dashboard* view
+* Add the ability to navigate between the *Heroes* and *Dashboard* views
+* When users click a hero name in either view, navigate to a detail view of the selected hero
+* When users click a *deep link* in an email, open the detail view for a particular hero
 
 <div class="alert is-helpful">
 
@@ -38,9 +38,9 @@ ng generate module app-routing --flat --module=app
 
 <div class="alert is-helpful">
 
-| Parameter      | Details |
-|:---            |:---     |
-| `--flat`       | Puts the file in `src/app` instead of its own directory.                   |
+| Parameter      | Details                                                                       |
+| :------------- | :---------------------------------------------------------------------------- |
+| `--flat`       | Puts the file in `src/app` instead of its own directory.                      |
 | `--module=app` | Tells `ng generate` to register it in the `imports` array of the `AppModule`. |
 
 </div>
@@ -70,8 +70,8 @@ Since `app-routing.module.ts` already imports `HeroesComponent`, you can use it 
 
 A typical Angular `Route` has two properties:
 
-| Properties  | Details |
-|:---         |:---     |
+| Properties  | Details                                                                    |
+| :---------- | :------------------------------------------------------------------------- |
 | `path`      | A string that matches the URL in the browser address bar.                  |
 | `component` | The component that the router should create when navigating to this route. |
 
@@ -135,6 +135,7 @@ Remove `/heroes` from the URL in the browser address bar.
 The browser should refresh and display the application title but not the list of heroes.
 
 <!-- markdownlint-enable MD001 -->
+
 <!-- markdownlint-enable MD024 -->
 
 <a id="routerlink"></a>
@@ -188,15 +189,15 @@ Replace the default content in these files as shown here:
 
 The  *template* presents a grid of hero name links.
 
-*   The `*ngFor` repeater creates as many links as are in the component's `heroes` array.
-*   The links are styled as colored blocks by the `dashboard.component.css`.
-*   The links don't go anywhere yet.
+* The `*ngFor` repeater creates as many links as are in the component's `heroes` array.
+* The links are styled as colored blocks by the `dashboard.component.css`.
+* The links don't go anywhere yet.
 
 The *class* is like the `HeroesComponent` class.
 
-*   It defines a `heroes` array property
-*   The constructor expects Angular to inject the `HeroService` into a private `heroService` property
-*   The `ngOnInit()` lifecycle hook calls `getHeroes()`
+* It defines a `heroes` array property
+* The constructor expects Angular to inject the `HeroService` into a private `heroService` property
+* The `ngOnInit()` lifecycle hook calls `getHeroes()`
 
 This `getHeroes()` returns the sliced list of heroes at positions 1 and 5, returning only Heroes two, three, four, and five.
 
@@ -247,9 +248,9 @@ At the moment the `HeroDetailComponent` is only visible at the bottom of the `He
 
 The user should be able to get to these details in three ways.
 
-1.  By clicking a hero in the dashboard.
-1.  By clicking a hero in the heroes list.
-1.  By pasting a "deep link" URL into the browser address bar that identifies the hero to display.
+1. By clicking a hero in the dashboard.
+1. By clicking a hero in the heroes list.
+1. By pasting a "deep link" URL into the browser address bar that identifies the hero to display.
 
 This section enables navigation to the `HeroDetailComponent` and liberates it from the `HeroesComponent`.
 
@@ -327,9 +328,9 @@ Now the router creates the `HeroDetailComponent` in response to a URL such as `~
 The `HeroDetailComponent` needs a new way to get the hero to display.
 This section explains the following:
 
-*   Get the route that created it
-*   Extract the `id` from the route
-*   Get the hero with that `id` from the server using the `HeroService`
+* Get the route that created it
+* Extract the `id` from the route
+* Get the hero with that `id` from the server using the `HeroService`
 
 Add the following imports:
 
@@ -481,17 +482,17 @@ Here are the code files discussed on this page.
 
 ## Summary
 
-*   You added the Angular router to navigate among different components
-*   You turned the `AppComponent` into a navigation shell with `<a>` links and a `<router-outlet>`
-*   You configured the router in an `AppRoutingModule`
-*   You defined routes, a redirect route, and a parameterized route
-*   You used the `routerLink` directive in anchor elements
-*   You refactored a tightly coupled main/detail view into a routed detail view
-*   You used router link parameters to navigate to the detail view of a user-selected hero
-*   You shared the `HeroService` with other components
+* You added the Angular router to navigate among different components
+* You turned the `AppComponent` into a navigation shell with `<a>` links and a `<router-outlet>`
+* You configured the router in an `AppRoutingModule`
+* You defined routes, a redirect route, and a parameterized route
+* You used the `routerLink` directive in anchor elements
+* You refactored a tightly coupled main/detail view into a routed detail view
+* You used router link parameters to navigate to the detail view of a user-selected hero
+* You shared the `HeroService` with other components
 
 ## Next steps
 
-*  [6. Get data from a server](tutorial/tour-of-heroes/toh-pt6)
+* [6. Get data from a server](tutorial/tour-of-heroes/toh-pt6)
 
 @reviewed 2022-02-28

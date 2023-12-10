@@ -217,8 +217,8 @@ Below is the "Little Tour of Heroes" component.
 
 ### Observations
 
-| Observations                                | Details |
-|:---                                         |:---     |
+| Observations                                | Details                                                                                                                                                                                              |
+| :------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Use template variables to refer to elements | The `newHero` template variable refers to the `<input>` element. You can reference `newHero` from any sibling or child of the `<input>` element.                                                     |
 | Pass values, not elements                   | Instead of passing the `newHero` into the component's `addHero` method, get the input box value and pass *that* to `addHero`.                                                                        |
 | Keep template statements simple             | The `(blur)` event is bound to two JavaScript statements. The first statement calls `addHero`. The second statement, `newHero.value=''`, clears the input box after a new hero is added to the list. |
@@ -237,23 +237,24 @@ Following is all the code discussed in this page.
 Angular also supports passive event listeners.
 For example, you can use the following steps to make the scroll event passive.
 
-1.  Create a file `zone-flags.ts` under `src` directory.
-1.  Add the following line into this file.
+1. Create a file `zone-flags.ts` under `src` directory.
 
-    <code-example format="typescript" language="typescript">
+1. Add the following line into this file.
 
-    (window as any)['__zone_symbol__PASSIVE_EVENTS'] = ['scroll'];
+   <code-example format="typescript" language="typescript">
 
-    </code-example>
+   (window as any)['__zone_symbol__PASSIVE_EVENTS'] = ['scroll'];
 
-1.  In the `src/polyfills.ts` file, before importing zone.js, import the newly created `zone-flags`.
+   </code-example>
 
-    <code-example format="typescript" language="typescript">
+1. In the `src/polyfills.ts` file, before importing zone.js, import the newly created `zone-flags`.
 
-    import './zone-flags';
-    import 'zone.js';  // Included with Angular CLI.
+   <code-example format="typescript" language="typescript">
 
-    </code-example>
+   import './zone-flags';
+   import 'zone.js';  // Included with Angular CLI.
+
+   </code-example>
 
 After those steps, if you add event listeners for the `scroll` event, the listeners are going to be `passive`.
 

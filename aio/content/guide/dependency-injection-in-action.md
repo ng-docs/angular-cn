@@ -57,8 +57,8 @@ When a class requires a dependency, that dependency is added to the constructor 
 When Angular needs to instantiate the class, it calls upon the DI framework to supply the dependency.
 By default, the DI framework searches for a provider in the injector hierarchy, starting at the component's local injector, and if necessary bubbling up through the injector tree until it reaches the root injector.
 
-*   The first injector configured with a provider supplies the dependency (a service instance or value) to the constructor
-*   If no provider is found in the root injector, the DI framework throws an error
+* The first injector configured with a provider supplies the dependency (a service instance or value) to the constructor
+* If no provider is found in the root injector, the DI framework throws an error
 
 There are a number of options for modifying the default search behavior, using *parameter decorators* on the service-valued parameters of a class constructor.
 
@@ -73,11 +73,11 @@ Angular throws an error if it can't find the dependency during that walk.
 In some cases, you need to limit the search or accommodate a missing dependency.
 You can modify Angular's search behavior with the `@Host` and `@Optional` qualifying decorators on a service-valued parameter of the component's constructor.
 
-*   The `@Optional` property decorator tells Angular to return null when it can't find the dependency
-*   The `@Host` property decorator stops the upward search at the *host component*.
-    The host component is typically the component requesting the dependency.
-    However, when this component is projected into a *parent* component, that parent component becomes the host.
-    The following example covers this second case.
+* The `@Optional` property decorator tells Angular to return null when it can't find the dependency
+* The `@Host` property decorator stops the upward search at the *host component*.
+  The host component is typically the component requesting the dependency.
+  However, when this component is projected into a *parent* component, that parent component becomes the host.
+  The following example covers this second case.
 
 These decorators can be used individually or together, as shown in the example.
 This `HeroBiosAndContactsComponent` is a revision of `HeroBiosComponent` which you looked at [above](guide/dependency-injection-in-action#hero-bios-component).
@@ -232,11 +232,11 @@ The `HeroOfTheMonthComponent` example has two value providers.
 
 <code-example header="src/app/hero-of-the-month.component.ts" path="dependency-injection-in-action/src/app/hero-of-the-month.component.ts" region="use-value"></code-example>
 
-*   The first provides an existing instance of the `Hero` class to use for the `Hero` token, rather than requiring the injector to create a new instance with `new` or use its own cached instance.
-    Here, the token is the class itself.
+* The first provides an existing instance of the `Hero` class to use for the `Hero` token, rather than requiring the injector to create a new instance with `new` or use its own cached instance.
+  Here, the token is the class itself.
 
-*   The second specifies a literal string resource to use for the `TITLE` token.
-    The `TITLE` provider token is *not* a class, but is instead a special kind of provider lookup key called an [injection token](guide/dependency-injection-in-action#injection-token), represented by an `InjectionToken` instance.
+* The second specifies a literal string resource to use for the `TITLE` token.
+  The `TITLE` provider token is *not* a class, but is instead a special kind of provider lookup key called an [injection token](guide/dependency-injection-in-action#injection-token), represented by an `InjectionToken` instance.
 
 You can use an injection token for any kind of provider but it's particularly helpful when the dependency is a simple value like a string, a number, or a function.
 
@@ -348,10 +348,10 @@ The `runnersUpFactory()` returns the *provider factory function*, which can use 
 
 The provider factory function (returned by `runnersUpFactory()`) returns the actual dependency object, the string of names.
 
-*   The function takes a winning `Hero` and a `HeroService` as arguments.
-    Angular supplies these arguments from injected values identified by the two *tokens* in the `deps` array.
+* The function takes a winning `Hero` and a `HeroService` as arguments.
+  Angular supplies these arguments from injected values identified by the two *tokens* in the `deps` array.
 
-*   The function returns the string of names, which Angular then injects into the `runnersUp` parameter of `HeroOfTheMonthComponent`
+* The function returns the string of names, which Angular then injects into the `runnersUp` parameter of `HeroOfTheMonthComponent`
 
 <div class="alert is-helpful">
 

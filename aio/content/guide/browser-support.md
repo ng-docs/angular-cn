@@ -3,14 +3,14 @@
 Angular supports most recent browsers.
 This includes the following specific versions:
 
-| Browser | Supported versions |
-|:---     |:---                |
-| Chrome  | 2 most recent versions                      |
+| Browser | Supported versions                        |
+| :------ | :---------------------------------------- |
+| Chrome  | 2 most recent versions                    |
 | Firefox | latest and extended support release (ESR) |
-| Edge    | 2 most recent major versions                |
-| Safari  | 2 most recent major versions                |
-| iOS     | 2 most recent major versions                |
-| Android | 2 most recent major versions                |
+| Edge    | 2 most recent major versions              |
+| Safari  | 2 most recent major versions              |
+| iOS     | 2 most recent major versions              |
+| Android | 2 most recent major versions              |
 
 <div class="alert is-helpful">
 
@@ -43,7 +43,6 @@ If you create a TypeScript file for a custom polyfill, make sure to include it i
 }
 
 </code-example>
-
 
 <a id="non-cli"></a>
 

@@ -9,6 +9,7 @@ The steps are summarized below and described in the topics of this section.
 <div class="lightbox">
 
 <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
+
 <img alt="A block diagram that shows the steps in the writing workflow" src="generated/images/guide/doc-update-overview/writing-workflow.png">
 
 </div>

@@ -20,28 +20,43 @@ You should be familiar with the Angular apps in general, and have the fundamenta
 
 <div class="card-container">
   <a href="guide/dependency-injection" class="docs-card" title="Understanding dependency injection">
+
     <section>Understanding dependency injection</section>
+
     <p>Learn basic principles of dependency injection in Angular.</p>
+
     <p class="card-footer">Understanding dependency injection</p>
   </a>
   <a href="guide/creating-injectable-service" class="docs-card" title="Creating and injecting service">
+
     <section>Creating and injecting service</section>
+
     <p>Describes how to create a service and inject it in other services and components.</p>
+
     <p class="card-footer">Creating an injectable service</p>
   </a>
   <a href="guide/dependency-injection-providers" class="docs-card" title="Configuring dependency providers">
+
     <section>Configuring dependency providers</section>
+
     <p>Describes how to configure dependencies using the providers field on the &commat;Component and &commat;NgModule decorators. Also describes how to use InjectionToken to provide and inject values in DI, which can be helpful when you want to use a value other than classes as dependencies.</p>
+
     <p class="card-footer">Configuring dependency providers</p>
   </a>
     <a href="guide/dependency-injection-context" class="docs-card" title="Injection context">
+
     <section>Injection context</section>
+
     <p>Describes what an injection context is and how to use the DI system where you need it.</p>
+
     <p class="card-footer">Injection context</p>
   </a>
   <a href="guide/hierarchical-dependency-injection" class="docs-card" title="Hierarchical injectors">
+
     <section>Hierarchical injectors</section>
+
     <p>Hierarchical DI enables you to share dependencies between different parts of the application only when and if you need to. This is an advanced topic.</p>
+
     <p class="card-footer">Hierarchical injectors</p>
   </a>
 

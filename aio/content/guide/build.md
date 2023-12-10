@@ -258,11 +258,11 @@ You can specify size budgets for the entire app, and for particular parts.
 Each budget entry configures a budget of a given type.
 Specify size values in the following formats:
 
-| Size value      | Details                                                                     |
-| :-------------- | :-------------------------------------------------------------------------- |
-| `123` or `123b` | Size in bytes.                                                              |
-| `123kb`         | Size in kilobytes.                                                          |
-| `123mb`         | Size in megabytes.                                                          |
+| Size value      | Details                                                                   |
+| :-------------- | :------------------------------------------------------------------------ |
+| `123` or `123b` | Size in bytes.                                                            |
+| `123kb`         | Size in kilobytes.                                                        |
+| `123mb`         | Size in megabytes.                                                        |
 | `12%`           | Percentage of size relative to baseline. (Not valid for baseline values.) |
 
 When you configure a budget, the build system warns or reports an error when a given part of the application reaches or exceeds a boundary size that you set.
@@ -272,14 +272,14 @@ Each budget entry is a JSON object with the following properties:
 | Property       | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | type           | The type of budget. One of: <table> <thead> <tr> <th> Value </th> <th> Details </th> </tr> </thead> <tbody> <tr> <td> <code>bundle</code> </td> <td> The size of a specific bundle. </td> </tr> <tr> <td> <code>initial</code> </td> <td> The size of JavaScript needed for bootstrapping the application. Defaults to warning at 500kb and erroring at 1mb. </td> </tr> <tr> <td> <code>allScript</code> </td> <td> The size of all scripts. </td> </tr> <tr> <td> <code>all</code> </td> <td> The size of the entire application. </td> </tr> <tr> <td> <code>anyComponentStyle</code> </td> <td> This size of any one component stylesheet. Defaults to warning at 2kb and erroring at 4kb. </td> </tr> <tr> <td> <code>anyScript</code> </td> <td> The size of any one script. </td> </tr> <tr> <td> <code>any</code> </td> <td> The size of any file. </td> </tr> </tbody> </table> |
-| name           | The name of the bundle (for `type=bundle`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| name           | The name of the bundle (for `type=bundle`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | baseline       | The baseline size for comparison.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | maximumWarning | The maximum threshold for warning relative to the baseline.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | maximumError   | The maximum threshold for error relative to the baseline.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | minimumWarning | The minimum threshold for warning relative to the baseline.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | minimumError   | The minimum threshold for error relative to the baseline.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| warning        | The threshold for warning relative to the baseline (min &amp max).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| error          | The threshold for error relative to the baseline (min &amp max).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| warning        | The threshold for warning relative to the baseline (min & max).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| error          | The threshold for error relative to the baseline (min & max).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 <a id="commonjs "></a>
 
@@ -346,37 +346,38 @@ Use [browsersl.ist](https://browsersl.ist) to display compatible browsers for a 
 Use the [proxying support](https://webpack.js.org/configuration/dev-server/#devserverproxy) in the `webpack` development server to divert certain URLs to a backend server, by passing a file to the `--proxy-config` build option.
 For example, to divert all calls for `http://localhost:4200/api` to a server running on `http://localhost:3000/api`, take the following steps.
 
-1.  Create a file `proxy.conf.json` in your project's `src/` folder.
-1.  Add the following content to the new proxy file:
+1. Create a file `proxy.conf.json` in your project's `src/` folder.
 
-    <code-example format="json" language="json">
+1. Add the following content to the new proxy file:
 
-    {
-      "/api": {
-        "target": "http://localhost:3000",
-        "secure": false
-      }
-    }
+   <code-example format="json" language="json">
 
-    </code-example>
+   {
+     "/api": {
+       "target": "http://localhost:3000",
+       "secure": false
+     }
+   }
 
-1.  In the CLI configuration file, `angular.json`, add the `proxyConfig` option to the `serve` target:
+   </code-example>
 
-    <code-example format="json" language="json">
+1. In the CLI configuration file, `angular.json`, add the `proxyConfig` option to the `serve` target:
 
-      &hellip;
-      "architect": {
-        "serve": {
-          "builder": "&commat;angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "your-application-name:build",
-            "proxyConfig": "src/proxy.conf.json"
-          },
-    &hellip;
+   <code-example format="json" language="json">
 
-    </code-example>
+     &hellip;
+     "architect": {
+       "serve": {
+         "builder": "&commat;angular-devkit/build-angular:dev-server",
+         "options": {
+           "browserTarget": "your-application-name:build",
+           "proxyConfig": "src/proxy.conf.json"
+         },
+   &hellip;
 
-1.  To run the development server with this proxy configuration, call `ng serve`.
+   </code-example>
+
+1. To run the development server with this proxy configuration, call `ng serve`.
 
 Edit the proxy configuration file to add configuration options; following are some examples.
 For a description of all options, see [webpack DevServer documentation](https://webpack.js.org/configuration/dev-server/#devserverproxy).

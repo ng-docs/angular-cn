@@ -2,9 +2,9 @@
 
 This tutorial adds the following data persistence features with help from Angular's `HttpClient`.
 
-*   The `HeroService` gets hero data with HTTP requests
-*   Users can add, edit, and delete heroes and save these changes over HTTP
-*   Users can search for heroes by name
+* The `HeroService` gets hero data with HTTP requests
+* Users can add, edit, and delete heroes and save these changes over HTTP
+* Users can search for heroes by name
 
 <div class="alert is-helpful">
 
@@ -201,9 +201,9 @@ Update the `HeroService` `getHero()` method with the following to make that requ
 
 `getHero()` has three significant differences from  `getHeroes()`:
 
-*   `getHero()` constructs a request URL with the desired hero's id
-*   The server should respond with a single hero rather than an array of heroes
-*   `getHero()` returns an `Observable<Hero>`, which is an observable of `Hero` *objects* rather than an observable of `Hero` *arrays*.
+* `getHero()` constructs a request URL with the desired hero's id
+* The server should respond with a single hero rather than an array of heroes
+* `getHero()` returns an `Observable<Hero>`, which is an observable of `Hero` *objects* rather than an observable of `Hero` *arrays*.
 
 ## Update heroes
 
@@ -232,9 +232,9 @@ Add the following to the `HeroService`.
 
 The `HttpClient.put()` method takes three parameters:
 
-*   The URL
-*   The data to update, which is the modified hero in this case
-*   Options
+* The URL
+* The data to update, which is the modified hero in this case
+* Options
 
 The URL is unchanged.
 The heroes web API knows which hero to update by looking at the hero's `id`.
@@ -274,8 +274,8 @@ Add the following `addHero()` method to the `HeroService` class.
 
 `addHero()` differs from `updateHero()` in two ways:
 
-*   It calls `HttpClient.post()` instead of `put()`
-*   It expects the server to create an id for the new hero, which it returns in the `Observable<Hero>` to the caller
+* It calls `HttpClient.post()` instead of `put()`
+* It expects the server to create an id for the new hero, which it returns in the `Observable<Hero>` to the caller
 
 Refresh the browser and add some heroes.
 
@@ -308,10 +308,10 @@ Next, add a `deleteHero()` method to `HeroService` like this.
 
 Notice the following key points:
 
-*   `deleteHero()` calls `HttpClient.delete()`
-*   The URL is the heroes resource URL plus the `id` of the hero to delete
-*   You don't send data as you did with `put()` and `post()`
-*   You still send the `httpOptions`
+* `deleteHero()` calls `HttpClient.delete()`
+* The URL is the heroes resource URL plus the `id` of the hero to delete
+* You don't send data as you did with `put()` and `post()`
+* You still send the `httpOptions`
 
 Refresh the browser and try the new delete capability.
 
@@ -432,13 +432,13 @@ Here's a closer look at the code.
 
 Each operator works as follows:
 
-*   `debounceTime(300)` waits until the flow of new string events pauses for 300 milliseconds before passing along the latest string.
-   Requests aren't likely to happen more frequently than 300&nbsp;ms.
+* `debounceTime(300)` waits until the flow of new string events pauses for 300 milliseconds before passing along the latest string.
+  Requests aren't likely to happen more frequently than 300&nbsp;ms.
 
-*   `distinctUntilChanged()` ensures that a request is sent only if the filter text changed.
+* `distinctUntilChanged()` ensures that a request is sent only if the filter text changed.
 
-*   `switchMap()` calls the search service for each search term that makes it through `debounce()` and `distinctUntilChanged()`.
-    It cancels and discards previous search observables, returning only the latest search service observable.
+* `switchMap()` calls the search service for each search term that makes it through `debounce()` and `distinctUntilChanged()`.
+  It cancels and discards previous search observables, returning only the latest search service observable.
 
 <div class="alert is-helpful">
 
@@ -533,12 +533,12 @@ Here are the code files discussed on this page. They're found in the `src/app/` 
 
 You're at the end of your journey, and you've accomplished a lot.
 
-*   You added the necessary dependencies to use HTTP in the application
-*   You refactored `HeroService` to load heroes from a web API
-*   You extended `HeroService` to support `post()`, `put()`, and `delete()` methods
-*   You updated the components to allow adding, editing, and deleting of heroes
-*   You configured an in-memory web API
-*   You learned how to use observables
+* You added the necessary dependencies to use HTTP in the application
+* You refactored `HeroService` to load heroes from a web API
+* You extended `HeroService` to support `post()`, `put()`, and `delete()` methods
+* You updated the components to allow adding, editing, and deleting of heroes
+* You configured an in-memory web API
+* You learned how to use observables
 
 This concludes the "Tour of Heroes" tutorial.
 You're ready to learn more about Angular development in the fundamentals section, starting with the [Architecture](guide/architecture "Architecture") guide.

@@ -50,14 +50,12 @@ This requires to have access to a given injector like the `EnvironmentInjector` 
 
 Note that `inject` will return an instance only if the injector can resolve the required token. 
 
-## Asserts the context 
+## Asserts the context
 
 Angular provides `assertInInjectionContext` helper function to assert that the current context is an injection context.
 
 ## Using DI outside of a context
 
 Calling [`inject`](api/core/inject) or calling `assertInInjectionContext` outside of an injection context will throw [error NG0203](/errors/NG0203).
-
-
 
 @reviewed 2023-04-11

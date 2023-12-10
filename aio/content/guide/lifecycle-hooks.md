@@ -11,8 +11,8 @@ Your application can use [lifecycle hook methods](guide/glossary#lifecycle-hook 
 
 Before working with lifecycle hooks, you should have a basic understanding of the following:
 
-*   [TypeScript programming](https://www.typescriptlang.org)
-*   Angular app-design fundamentals, as described in [Angular Concepts](guide/architecture "Introduction to fundamental app-design concepts")
+* [TypeScript programming](https://www.typescriptlang.org)
+* Angular app-design fundamentals, as described in [Angular Concepts](guide/architecture "Introduction to fundamental app-design concepts")
 
 <a id="hooks-overview"></a>
 
@@ -38,16 +38,16 @@ After your application instantiates a component or directive by calling its cons
 Angular executes hook methods in the following sequence.
 Use them to perform the following kinds of operations.
 
-| Hook method               | Purpose                                                                                                                                                                                                                                                                                                                                                | Timing |
-|:---                       |:---                                                                                                                                                                                                                                                                                                                                                    |:---    |
+| Hook method               | Purpose                                                                                                                                                                                                                                                                                                                                                                                        | Timing                                                                                                                                                                                                                                                                                                             |
+| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ngOnChanges()`           | Respond when Angular sets or resets data-bound input properties. The method receives a `SimpleChanges` object of current and previous property values. <br /> <div class="alert is-helpful"> **NOTE**: <br /> This happens frequently, so any operation you perform here impacts performance significantly. </div> See details in [Using change detection hooks](#onchanges) in this document. | Called before `ngOnInit()` (if the component has bound inputs) and whenever one or more data-bound input properties change. <br /> <div class="alert is-helpful"> **NOTE**: <br /> If your component has no inputs or you use it without providing any inputs, the framework will not call `ngOnChanges()`. </div> |
-| `ngOnInit()`              | Initialize the directive or component after Angular first displays the data-bound properties and sets the directive or component's input properties. See details in [Initializing a component or directive](#oninit) in this document.                                                                                                                 | Called once, after the first `ngOnChanges()`. `ngOnInit()` is still called even when `ngOnChanges()` is not (which is the case when there are no template-bound inputs).                                                                                              |
-| `ngDoCheck()`             | Detect and act upon changes that Angular can't or won't detect on its own. See details and example in [Defining custom change detection](#docheck) in this document.                                                                                                                                                                                   | Called immediately after `ngOnChanges()` on every change detection run, and immediately after `ngOnInit()` on the first run.                                                                                                                                            |
-| `ngAfterContentInit()`    | Respond after Angular projects external content into the component's view, or into the view that a directive is in. <br /> See details and example in [Responding to changes in content](#aftercontent) in this document.                                                                                                                              | Called *once* after the first `ngDoCheck()`.                                                                                                                                                                                                                            |
-| `ngAfterContentChecked()` | Respond after Angular checks the content projected into the directive or component. <br /> See details and example in [Responding to projected content changes](#aftercontent) in this document.                                                                                                                                                       | Called after `ngAfterContentInit()` and every subsequent `ngDoCheck()`.                                                                                                                                                                                                 |
-| `ngAfterViewInit()`       | Respond after Angular initializes the component's views and child views, or the view that contains the directive. <br /> See details and example in [Responding to view changes](#afterview) in this document.                                                                                                                                         | Called *once* after the first `ngAfterContentChecked()`.                                                                                                                                                                                                                |
-| `ngAfterViewChecked()`    | Respond after Angular checks the component's views and child views, or the view that contains the directive.                                                                                                                                                                                                                                           | Called after the `ngAfterViewInit()` and every subsequent `ngAfterContentChecked()`.                                                                                                                                                                                    |
-| `ngOnDestroy()`           | Cleanup just before Angular destroys the directive or component. Unsubscribe Observables and detach event handlers to avoid memory leaks. See details in [Cleaning up on instance destruction](#ondestroy) in this document.                                                                                                                           | Called immediately before Angular destroys the directive or component.                                                                                                                                                                                                  |
+| `ngOnInit()`              | Initialize the directive or component after Angular first displays the data-bound properties and sets the directive or component's input properties. See details in [Initializing a component or directive](#oninit) in this document.                                                                                                                                                         | Called once, after the first `ngOnChanges()`. `ngOnInit()` is still called even when `ngOnChanges()` is not (which is the case when there are no template-bound inputs).                                                                                                                                           |
+| `ngDoCheck()`             | Detect and act upon changes that Angular can't or won't detect on its own. See details and example in [Defining custom change detection](#docheck) in this document.                                                                                                                                                                                                                           | Called immediately after `ngOnChanges()` on every change detection run, and immediately after `ngOnInit()` on the first run.                                                                                                                                                                                       |
+| `ngAfterContentInit()`    | Respond after Angular projects external content into the component's view, or into the view that a directive is in. <br /> See details and example in [Responding to changes in content](#aftercontent) in this document.                                                                                                                                                                      | Called *once* after the first `ngDoCheck()`.                                                                                                                                                                                                                                                                       |
+| `ngAfterContentChecked()` | Respond after Angular checks the content projected into the directive or component. <br /> See details and example in [Responding to projected content changes](#aftercontent) in this document.                                                                                                                                                                                               | Called after `ngAfterContentInit()` and every subsequent `ngDoCheck()`.                                                                                                                                                                                                                                            |
+| `ngAfterViewInit()`       | Respond after Angular initializes the component's views and child views, or the view that contains the directive. <br /> See details and example in [Responding to view changes](#afterview) in this document.                                                                                                                                                                                 | Called *once* after the first `ngAfterContentChecked()`.                                                                                                                                                                                                                                                           |
+| `ngAfterViewChecked()`    | Respond after Angular checks the component's views and child views, or the view that contains the directive.                                                                                                                                                                                                                                                                                   | Called after the `ngAfterViewInit()` and every subsequent `ngAfterContentChecked()`.                                                                                                                                                                                                                               |
+| `ngOnDestroy()`           | Cleanup just before Angular destroys the directive or component. Unsubscribe Observables and detach event handlers to avoid memory leaks. See details in [Cleaning up on instance destruction](#ondestroy) in this document.                                                                                                                                                                   | Called immediately before Angular destroys the directive or component.                                                                                                                                                                                                                                             |
 
 <a id="the-sample"></a>
 
@@ -59,8 +59,8 @@ In each case a *parent* component serves as a test rig for a *child* component t
 The following table lists the exercises with brief descriptions.
 The sample code is also used to illustrate specific tasks in the following sections.
 
-| Component                     | Details |
-|:---                           |:---     |
+| Component                     | Details                                                                                                                                                                                                                   |
+| :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [Peek-a-boo](#peek-a-boo)     | Demonstrates every lifecycle hook. Each hook method writes to the on-screen log.                                                                                                                                          |
 | [Spy](#spy)                   | Shows how to use lifecycle hooks with a custom directive. The `SpyDirective` implements the `ngOnInit()` and `ngOnDestroy()` hooks, and uses them to watch and report when an element goes in or out of the current view. |
 | [OnChanges](#onchanges)       | Demonstrates how Angular calls the `ngOnChanges()` hook every time one of the component input properties changes, and shows how to interpret the `changes` object passed to the hook method.                              |
@@ -75,9 +75,9 @@ The sample code is also used to illustrate specific tasks in the following secti
 
 Use the `ngOnInit()` method to perform the following initialization tasks.
 
-| Initialization tasks                                         | Details |
-|:---                                                          |:---     |
-| Perform complex initializations outside of the constructor   | Components should be cheap and safe to construct. You should not, for example, fetch data in a component constructor. You shouldn't worry that a new component will try to contact a remote server when created under test or before you decide to display it. <br /> An `ngOnInit()` is a good place for a component to fetch its initial data. For an example, see the [Tour of Heroes tutorial](tutorial/tour-of-heroes/toh-pt4#oninit).                                                                                                                    |
+| Initialization tasks                                         | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| :----------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Perform complex initializations outside of the constructor   | Components should be cheap and safe to construct. You should not, for example, fetch data in a component constructor. You shouldn't worry that a new component will try to contact a remote server when created under test or before you decide to display it. <br /> An `ngOnInit()` is a good place for a component to fetch its initial data. For an example, see the [Tour of Heroes tutorial](tutorial/tour-of-heroes/toh-pt4#oninit).                                                                                                     |
 | Set up the component after Angular sets the input properties | Constructors should do no more than set the initial local variables to simple values. <br /> Keep in mind that a directive's data-bound input properties are not set until *after construction*. If you need to initialize the directive based on those properties, set them when `ngOnInit()` runs. <div class="alert is-helpful"> The `ngOnChanges()` method is your first opportunity to access those properties. Angular calls `ngOnChanges()` before `ngOnInit()`, but also many times after that. It only calls `ngOnInit()` once. </div> |
 
 <a id="ondestroy"></a>
@@ -93,9 +93,9 @@ You can put cleanup logic in `ngOnDestroy()`, the logic that must run before Ang
 This is the place to free resources that won't be garbage-collected automatically.
 You risk memory leaks if you neglect to do so.
 
-*   Unsubscribe from Observables and DOM events
-*   Stop interval timers
-*   Unregister all callbacks that the directive registered with global or application services
+* Unsubscribe from Observables and DOM events
+* Stop interval timers
+* Unregister all callbacks that the directive registered with global or application services
 
 The `ngOnDestroy()` method is also the time to notify another part of the application that the component is going away.
 
@@ -148,10 +148,10 @@ Sometimes it's necessary to use browser-only APIs to manually read or write the 
 
 </div>
 
-| Function | Purpose | Timing |
-| ------ | ------- | ------ |
-| `afterNextRender` | Perform one-time initialization, or observe a single, specific change to the DOM. <br /> <div class="alert is-helpful">As a rule of thumb, you should use `afterRender` instead if you need to manually read or write any layout data such as size or location.</div> See details in [One-time initialization](#one-time-initialization) in this document. | _Once_ after the next change detection cycle. |
-| `afterRender` | Synchronize state with the DOM.  See details in [Handling synchronization](#handling-synchronization) in this document. | After _every_ change detection cycle that follows. |
+| Function          | Purpose                                                                                                                                                                                                                                                                                                                                                    | Timing                                             |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `afterNextRender` | Perform one-time initialization, or observe a single, specific change to the DOM. <br /> <div class="alert is-helpful">As a rule of thumb, you should use `afterRender` instead if you need to manually read or write any layout data such as size or location.</div> See details in [One-time initialization](#one-time-initialization) in this document. | _Once_ after the next change detection cycle.      |
+| `afterRender`     | Synchronize state with the DOM.  See details in [Handling synchronization](#handling-synchronization) in this document.                                                                                                                                                                                                                                    | After _every_ change detection cycle that follows. |
 
 ### One-time initialization
 
@@ -241,7 +241,7 @@ To show how Angular calls the hooks in the expected order, the `PeekABooComponen
 
 In practice you would rarely, if ever, implement all of the interfaces the way this demo does.
 
-The following snapshot reflects the state of the log after the user clicked the **Create&hellip;** button and then the **Destroy&hellip;** button.
+The following snapshot reflects the state of the log after the user clicked the **Create…** button and then the **Destroy…** button.
 
 <div class="lightbox">
 
@@ -252,7 +252,7 @@ The following snapshot reflects the state of the log after the user clicked the 
 The sequence of log messages follows the prescribed hook calling order:
 
 | Hook order | Log message           |
-|:---        |:---                   |
+| :--------- | :-------------------- |
 | 1          | `OnChanges`           |
 | 2          | `OnInit`              |
 | 3          | `DoCheck`             |
@@ -264,7 +264,6 @@ The sequence of log messages follows the prescribed hook calling order:
 | 9          | `AfterContentChecked` |
 | 10         | `AfterViewChecked`    |
 | 11         | `OnDestroy`           |
-
 
 <div class="alert is-helpful">
 
@@ -410,8 +409,8 @@ Be careful about how much logic or computation you put into one of these methods
 *Content projection* is a way to import HTML content from outside the component and insert that content  into the component's template in a designated spot.
 Identify content projection in a template by looking for the following constructs.
 
-*   HTML between component element tags
-*   The presence of `<ng-content>` tags in the component's template
+* HTML between component element tags
+* The presence of `<ng-content>` tags in the component's template
 
 <div class="alert is-helpful">
 
@@ -449,8 +448,8 @@ In this case, the projected content is the `<app-child>` from the parent.
 *AfterContent* hooks are similar to the *AfterView* hooks.
 The key difference is in the child component.
 
-*   The *AfterView* hooks concern `ViewChildren`, the child components whose element tags appear *within* the component's template
-*   The *AfterContent* hooks concern `ContentChildren`, the child components that Angular projected into the component
+* The *AfterView* hooks concern `ViewChildren`, the child components whose element tags appear *within* the component's template
+* The *AfterContent* hooks concern `ContentChildren`, the child components that Angular projected into the component
 
 The following *AfterContent* hooks take action based on changing values in a *content child*, which can only be reached by querying for them using the property decorated with [`@ContentChild`](api/core/ContentChild).
 

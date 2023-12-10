@@ -105,9 +105,9 @@ Now, in addition to the title that renders by default, the `CustomerDashboardCom
 
 You may also be interested in the following:
 
-*   [Lazy Loading Modules with the Angular Router](guide/lazy-loading-ngmodules)
-*   [Providers](guide/providers)
-*   [Types of Feature Modules](guide/module-types)
+* [Lazy Loading Modules with the Angular Router](guide/lazy-loading-ngmodules)
+* [Providers](guide/providers)
+* [Types of Feature Modules](guide/module-types)
 
 <!-- links -->
 

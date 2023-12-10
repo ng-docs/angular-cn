@@ -24,13 +24,13 @@ An NgModule is defined by a class decorated with `@NgModule()`.
 The `@NgModule()` decorator is a function that takes a single metadata object, whose properties describe the module.
 The most important properties are as follows.
 
-| Properties     | Details |
-|:---            |:---     |
-| `declarations` | The [components](guide/architecture-components), *directives*, and *pipes* that belong to this NgModule.                                                                                                                                    |
-| `exports`      | The subset of declarations that should be visible and usable in the *component templates* of other NgModules.                                                                                                                               |
-| `imports`      | Other modules whose exported classes are needed by component templates declared in *this* NgModule.                                                                                                                                         |
+| Properties     | Details                                                                                                                                                                                                                                   |
+| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `declarations` | The [components](guide/architecture-components), *directives*, and *pipes* that belong to this NgModule.                                                                                                                                  |
+| `exports`      | The subset of declarations that should be visible and usable in the *component templates* of other NgModules.                                                                                                                             |
+| `imports`      | Other modules whose exported classes are needed by component templates declared in *this* NgModule.                                                                                                                                       |
 | `providers`    | Creators of [services](guide/architecture-services) that this NgModule contributes to the global collection of services; they become accessible in all parts of the application. (You can also specify providers at the component level.) |
-| `bootstrap`    | The main application view, called the *root component*, which hosts all other application views. Only the *root NgModule* should set the `bootstrap` property.                                                                              |
+| `bootstrap`    | The main application view, called the *root component*, which hosts all other application views. Only the *root NgModule* should set the `bootstrap` property.                                                                            |
 
 Here's a simple root NgModule definition.
 

@@ -21,8 +21,8 @@ options: {
 
 Important options include the *observe* and *responseType* properties.
 
-*   The *observe* option specifies how much of the response to return
-*   The *responseType* option specifies the desired format of the returned data
+* The *observe* option specifies how much of the response to return
+* The *responseType* option specifies the desired format of the returned data
 
 To better understand the `observe` and `responseType` option types, [see below](#string-union-types).
 
@@ -55,6 +55,7 @@ The `ConfigService` fetches the JSON file using the `HttpClient.get()` method.
 <code-example header="app/config/config.service.ts (getConfig v.1)" path="http/src/app/config/config.service.ts" region="getConfig_1"></code-example>
 
 Notice that `get` was called 
+
 * without an *options* value because the server endpoint returns JSON and JSON is the default data format.
 * with a generic, `Config`, that indicates the data return type; you'll [learn why shortly](#typed-response).
 
@@ -160,7 +161,6 @@ You can go a step further and clone the result directly into the component's `co
 
 <code-example header="Config Component - with destructured assignment" path="http/src/app/config/config.component.ts" region="v2"></code-example>
 
-
 ## Reading the full response
 
 In the previous example, the call to `HttpClient.get()` did not specify any options.
@@ -182,6 +182,7 @@ The component's `showConfigResponse()` method displays the response headers as w
 As you can see, the response object has a `body` property of the correct type.
 
 <a id="string-union-types"></a>
+
 ## The `observe` and `responseType` options
 
 The types of the `observe` and `responseType` options are *string unions*, rather than plain strings.

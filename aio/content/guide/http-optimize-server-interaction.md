@@ -28,11 +28,11 @@ It's defined as an RxJS `Subject`, which means it is a multicasting `Observable`
 
 Rather than forward every `searchText` value directly to the injected `PackageSearchService`, the code in `ngOnInit()` pipes search values through three operators, so that a search value reaches the service only if it's a new value and the user stopped typing.
 
-| RxJS operators           | Details |
-|:---                      |:---     |
-| `debounceTime(500)`⁠      | Wait for the user to stop typing, which is 1/2 second in this case. |
-| `distinctUntilChanged()` | Wait until the search text changes.                           |
-| `switchMap()`⁠            | Send the search request to the service.                       |
+| RxJS operators           | Details                                                             |
+| :----------------------- | :------------------------------------------------------------------ |
+| `debounceTime(500)`⁠     | Wait for the user to stop typing, which is 1/2 second in this case. |
+| `distinctUntilChanged()` | Wait until the search text changes.                                 |
+| `switchMap()`⁠           | Send the search request to the service.                             |
 
 The code sets `packages$` to this re-composed `Observable` of search results.
 The template subscribes to `packages$` with the [AsyncPipe](api/common/AsyncPipe) and displays search results as they arrive.

@@ -39,11 +39,11 @@ In the `HeroesComponent` component file, import the `NgFor` directive and add it
 
 Open the `HeroesComponent` template file and make the following changes:
 
-1.  Add an `<h2>` at the top.
-2.  Below the `<h2>`, add a `<ul>` element.
-3.  In the `<ul>` element, insert an `<li>`.
-4.  Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
-5.  Add CSS classes to style the component.
+1. Add an `<h2>` at the top.
+2. Below the `<h2>`, add a `<ul>` element.
+3. In the `<ul>` element, insert an `<li>`.
+4. Place a `<button>` inside the `<li>` that displays properties of a `hero` inside `<span>` elements.
+5. Add CSS classes to style the component.
 
 It should look similar to the following:
 
@@ -208,6 +208,6 @@ Here are the code files discussed on this page, including the `HeroesComponent` 
 
 ## Next steps
 
-*  [3. Create a feature component](tutorial/tour-of-heroes/toh-pt3)
+* [3. Create a feature component](tutorial/tour-of-heroes/toh-pt3)
 
 @reviewed 2023-08-30

@@ -24,13 +24,16 @@ Add only [declarable](guide/bootstrapping#the-declarations-array) classes to an 
 
 Do *not* declare the following:
 
-*   A class that's already declared in another module, whether an application module, &commat;NgModule, or third-party module.
-*   An array of directives imported from another module.
-    For example, don't declare `FORMS_DIRECTIVES` from `@angular/forms` because the `FormsModule` already declares it.
+* A class that's already declared in another module, whether an application module, &commat;NgModule, or third-party module.
 
-*   Module classes.
-*   Service classes.
-*   Non-Angular classes and objects, such as strings, numbers, functions, entity models, configurations, business logic, and helper classes.
+* An array of directives imported from another module.
+  For example, don't declare `FORMS_DIRECTIVES` from `@angular/forms` because the `FormsModule` already declares it.
+
+* Module classes.
+
+* Service classes.
+
+* Non-Angular classes and objects, such as strings, numbers, functions, entity models, configurations, business logic, and helper classes.
 
 ## Why list the same component in multiple `NgModule` properties?
 
@@ -40,10 +43,10 @@ You might see the same component listed in `declarations` and `exports`.
 While that seems redundant, these properties have different functions.
 Membership in one list doesn't imply membership in another list.
 
-*   `AppComponent` could be declared in this module but not bootstrapped.
-*   `AppComponent` could be bootstrapped in this module but declared in a different feature module.
-*   A component could be imported from another application module (so you can't declare it) and re-exported by this module.
-*   A component could be exported for inclusion in an external component's template as well as dynamically loaded in a pop-up dialog.
+* `AppComponent` could be declared in this module but not bootstrapped.
+* `AppComponent` could be bootstrapped in this module but declared in a different feature module.
+* A component could be imported from another application module (so you can't declare it) and re-exported by this module.
+* A component could be exported for inclusion in an external component's template as well as dynamically loaded in a pop-up dialog.
 
 ## What does "Can't bind to 'x' since it isn't a known property of 'y'" mean?
 
@@ -123,17 +126,18 @@ An NgModule can even export a module that it doesn't import.
 
 Don't export the following:
 
-*   Private components, directives, and pipes that you need only within components declared in this NgModule.
-    If you don't want another NgModule to see it, don't export it.
+* Private components, directives, and pipes that you need only within components declared in this NgModule.
+  If you don't want another NgModule to see it, don't export it.
 
-*   Non-declarable objects such as services, functions, configurations, and entity models.
-*   Components that are only loaded dynamically by the router or by bootstrapping.
-    Such components can never be selected in another component's template.
-    While there's no harm in exporting them, there's also no benefit.
+* Non-declarable objects such as services, functions, configurations, and entity models.
 
-*   Pure service modules that don't have public (exported) declarations.
-    For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
-    Its only purpose is to add http service providers to the application as a whole.
+* Components that are only loaded dynamically by the router or by bootstrapping.
+  Such components can never be selected in another component's template.
+  While there's no harm in exporting them, there's also no benefit.
+
+* Pure service modules that don't have public (exported) declarations.
+  For example, there's no point in re-exporting `HttpClientModule` because it doesn't export anything.
+  Its only purpose is to add http service providers to the application as a whole.
 
 ## Can I re-export classes and modules?
 

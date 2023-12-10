@@ -7,8 +7,8 @@ This topic describes the steps that prepare your local computer to edit and subm
 **IMPORTANT**: <br />
 To submit changes to the Angular documentation, you must have:
 
-*   A [GitHub][GithubMain] account
-*   A signed [Contributor License Agreement][GithubAngularAngularBlobMainContributingSigningTheCla]
+* A [GitHub][GithubMain] account
+* A signed [Contributor License Agreement][GithubAngularAngularBlobMainContributingSigningTheCla]
 
 </div>
 
@@ -17,17 +17,18 @@ To submit changes to the Angular documentation, you must have:
 Review [Contributing to Angular](https://github.com/angular/angular/blob/main/CONTRIBUTING.md).
 These sections are particularly important for documentation contributions:
 
-1.  Read the Angular [Code of conduct](https://github.com/angular/code-of-conduct/blob/main/CODE_OF_CONDUCT.md)
-1.  Read the [Submission guidelines](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-submission-guidelines).
+1. Read the Angular [Code of conduct](https://github.com/angular/code-of-conduct/blob/main/CODE_OF_CONDUCT.md)
 
-    <div class="alert is-helpful">
+1. Read the [Submission guidelines](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-submission-guidelines).
 
-    **NOTE**: <br />
-    The topics in this section explain these guidelines specifically for documentation contributions.
+   <div class="alert is-helpful">
 
-    </div>
+   **NOTE**: <br />
+   The topics in this section explain these guidelines specifically for documentation contributions.
 
-1.  Read and complete the [Contributor license agreement](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-signing-the-cla) that applies to you.
+   </div>
+
+1. Read and complete the [Contributor license agreement](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-signing-the-cla) that applies to you.
 
 ## Install the required software
 
@@ -39,20 +40,24 @@ If you use a substitute IDE, you might need to adapt the instructions in this se
 
 For more information about the required software, see [Setting up the local environment and workspace](guide/setup-local).
 
-*   **Version control software**
-    *   [Git command line](https://github.com/git-guides/install-git)
-    *   [GitHub desktop](https://desktop.github.com) (optional)
-*   **Integrated development environment**
-    *   [Visual Studio Code](https://code.visualstudio.com)
-*   **Utility software**
-    *   [node.js](https://nodejs.org/en/download)
+* **Version control software**
+  * [Git command line](https://github.com/git-guides/install-git)
+  * [GitHub desktop](https://desktop.github.com) (optional)
+* **Integrated development environment**
+  * [Visual Studio Code](https://code.visualstudio.com)
+* **Utility software**
 
-        Angular requires an [active long-term-support (LTS) or maintenance LTS version](https://nodejs.org/about/releases) of Node.js.
+  * [node.js](https://nodejs.org/en/download)
 
-    *   [nvm](https://github.com/nvm-sh/nvm#about)
-    *   [Yarn](https://yarnpkg.com/getting-started/install)
-    *   [Homebrew](https://brew.sh) for macOS or [Chocolatey](https://chocolatey.org/install) for Windows
-    *   [Vale][GithubAngularAngularTreeMainAioToolsDocLinterInstallValeOnYourDevelopmentSystemReadmeMd] (see note)
+    Angular requires an [active long-term-support (LTS) or maintenance LTS version](https://nodejs.org/about/releases) of Node.js.
+
+  * [nvm](https://github.com/nvm-sh/nvm#about)
+
+  * [Yarn](https://yarnpkg.com/getting-started/install)
+
+  * [Homebrew](https://brew.sh) for macOS or [Chocolatey](https://chocolatey.org/install) for Windows
+
+  * [Vale][GithubAngularAngularTreeMainAioToolsDocLinterInstallValeOnYourDevelopmentSystemReadmeMd] (see note)
 
 <div class="alert is-important">
 
@@ -66,30 +71,31 @@ You can also install other tools and IDE extensions that you find helpful.
 ## Set up your workspaces
 
 The Angular documentation is stored with the Angular framework code in a GitHub source code repository, also called a *repo*, at:
-[https://github.com/angular/angular](https://github.com/angular/angular).
+https://github.com/angular/angular.
 To contribute documentation to Angular, you need:
 
-*   A GitHub account
+* A GitHub account
 
-*   A *fork* of the Angular repo in your personal GitHub account.
+* A *fork* of the Angular repo in your personal GitHub account.
 
-    This guide refers to your personal GitHub account as `personal`.
-    You must replace `personal` in a GitHub reference with your GitHub username.
-    The URL:
-    `https://github.com/personal` is not a valid GitHub account.
-    For convenience, this documentation uses these shorthand references:
-    *   `angular/angular`
+  This guide refers to your personal GitHub account as `personal`.
+  You must replace `personal` in a GitHub reference with your GitHub username.
+  The URL:
+  `https://github.com/personal` is not a valid GitHub account.
+  For convenience, this documentation uses these shorthand references:
 
-        Refers to the Angular repo.
-        This is also known as the *upstream* repo.
+  * `angular/angular`
 
-    *   `personal/angular`
+    Refers to the Angular repo.
+    This is also known as the *upstream* repo.
 
-        Refers to your personal fork of the Angular repo.
-        Replace `personal` with your GitHub username to identify your specific repo.
-        This is also known as the *origin* repo.
+  * `personal/angular`
 
-*   A *clone* of your `personal/angular` repo on your local computer
+    Refers to your personal fork of the Angular repo.
+    Replace `personal` with your GitHub username to identify your specific repo.
+    This is also known as the *origin* repo.
+
+* A *clone* of your `personal/angular` repo on your local computer
 
 GitHub repos are cloned into a `git` workspace on your local computer.
 With this workspace and required tools, you can build, edit, and review the documentation from your local computer.
@@ -118,7 +124,7 @@ If you use a different configuration, the procedures in these topics might not w
 </div>
 
 The code and documentation for the Angular framework are stored in a public repository, or repo, on [github.com](https://github.com) in the `angular` account.
-The path to the Angular repo is [https://github.com/angular/angular](https://github.com/angular/angular), hence the abbreviated name, `angular/angular`.
+The path to the Angular repo is https://github.com/angular/angular, hence the abbreviated name, `angular/angular`.
 
 [GitHub](https://github.com) is a cloud service that hosts many accounts and repositories.
 You can imagine the `angular/angular` repo in GitHub as shown in this image.
@@ -126,6 +132,7 @@ You can imagine the `angular/angular` repo in GitHub as shown in this image.
 <div class="lightbox">
 
 <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
+
 <img alt="An image of the angular/angular repo in the github.com cloud service" src="generated/images/guide/doc-prepare-to-edit/github-angular-cloud.png">
 
 </div>
@@ -145,6 +152,7 @@ From the perspective of `personal/angular`, `angular/angular` is the upstream re
 <div class="lightbox">
 
 <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
+
 <img alt="An image of the angular/angular repo in the github.com cloud service that was forked to a personal account" src="generated/images/guide/doc-prepare-to-edit/github-personal-cloud.png">
 
 </div>
@@ -153,27 +161,27 @@ From the perspective of `personal/angular`, `angular/angular` is the upstream re
 
 Perform this procedure in a browser.
 
-1.  Sign into your [GitHub](https://github.com) account.
-    If you don't have a GitHub account, [create a new account][GithubJoin] before you continue.
+1. Sign into your [GitHub](https://github.com) account.
+   If you don't have a GitHub account, [create a new account][GithubJoin] before you continue.
 
-1.  Navigate to [`https://github.com/angular/angular`][GithubAngularAngular].
+1. Navigate to [`https://github.com/angular/angular`][GithubAngularAngular].
 
-1.  In [`https://github.com/angular/angular`][GithubAngularAngular], click the **Fork** button near the top-right corner of the page.
-    This image is from the top of the [`https://github.com/angular/angular`][GithubAngularAngular] page and shows the **Fork** button.
+1. In [`https://github.com/angular/angular`][GithubAngularAngular], click the **Fork** button near the top-right corner of the page.
+   This image is from the top of the [`https://github.com/angular/angular`][GithubAngularAngular] page and shows the **Fork** button.
 
-    <div class="lightbox">
+   <div class="lightbox">
 
-    <img alt="An image of the angular/angular website in github.com that identifies the fork button" src="generated/images/guide/doc-prepare-to-edit/angular-angular-github.png">
+   <img alt="An image of the angular/angular website in github.com that identifies the fork button" src="generated/images/guide/doc-prepare-to-edit/angular-angular-github.png">
 
-    </div>
+   </div>
 
-1.  In **Create a new fork**:
-    1.  Accept the default values in **Owner** and **Repository name**.
-    1.  Confirm that **Copy the `main` branch only** is checked.
-    1.  Click **Create repository**.
-        The forking process can take a few minutes.
+1. In **Create a new fork**:
+   1. Accept the default values in **Owner** and **Repository name**.
+   1. Confirm that **Copy the `main` branch only** is checked.
+   1. Click **Create repository**.
+      The forking process can take a few minutes.
 
-1.  You now have a copy of the `angular/angular` repo in your GitHub account.
+1. You now have a copy of the `angular/angular` repo in your GitHub account.
 
 After your fork of `angular/angular` is ready, your browser opens the web page of the forked repo in your GitHub account.
 In this image, notice that the account now shows the username of your personal GitHub account instead of the `angular` account.
@@ -181,6 +189,7 @@ In this image, notice that the account now shows the username of your personal G
 <div class="lightbox">
 
 <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
+
 <img alt="An image of the personal/angular website in github.com that identifies the fork forked repo" src="generated/images/guide/doc-prepare-to-edit/personal-angular-github.png">
 
 </div>
@@ -204,6 +213,7 @@ You do your editing in the working directory of your `personal/angular` repo.
 <div class="lightbox">
 
 <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
+
 <img alt="An image of the angular repo from the angular and personal accounts in the github.com cloud service as they are cloned into local computer workspaces" src="generated/images/guide/doc-prepare-to-edit/github-clone-img.png">
 
 </div>
@@ -215,39 +225,40 @@ There are procedures to keep the clone on your local computer in sync with the r
 
 Perform these steps in a command-line tool on your local computer.
 
-1.  Navigate to the `workspace` directory.
-    In this example, this is the directory named, `github-projects`.
+1. Navigate to the `workspace` directory.
+   In this example, this is the directory named, `github-projects`.
 
-    <div class="lightbox">
+   <div class="lightbox">
 
-    <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
-    <img alt="An image of the project directory on a local computer" src="generated/images/guide/doc-prepare-to-edit/pc-directory-start-img.png">
+   <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
 
-    </div>
+   <img alt="An image of the project directory on a local computer" src="generated/images/guide/doc-prepare-to-edit/pc-directory-start-img.png">
 
-    If this directory isn't on your local computer, create it, and then navigate to it before you continue.
+   </div>
 
-1.  From the workspace directory, run this command to create a directory for the repo from your `personal` account
-    Remember to replace `personal` with your GitHub username.
+   If this directory isn't on your local computer, create it, and then navigate to it before you continue.
 
-    <code-example format="shell" language="shell">
+1. From the workspace directory, run this command to create a directory for the repo from your `personal` account
+   Remember to replace `personal` with your GitHub username.
 
-    mkdir personal
+   <code-example format="shell" language="shell">
 
-    </code-example>
+   mkdir personal
 
-1.  From the workspace directory, run this command to clone the origin `personal/angular` repo into the `personal` account directory.
-    Remember to replace `personal` with your GitHub username.
+   </code-example>
 
-    <!-- markdownLint-disable MD034 -->
+1. From the workspace directory, run this command to clone the origin `personal/angular` repo into the `personal` account directory.
+   Remember to replace `personal` with your GitHub username.
 
-    <code-example format="shell" language="shell">
+   <!-- markdownLint-disable MD034 -->
 
-    git clone https://github.com/personal/angular personal/angular
+   <code-example format="shell" language="shell">
 
-    </code-example>
+   git clone https://github.com/personal/angular personal/angular
 
-    <!-- markdownLint-enable MD034 -->
+   </code-example>
+
+   <!-- markdownLint-enable MD034 -->
 
 Your local computer is now configured as shown in the following illustration.
 
@@ -259,6 +270,7 @@ This directory and its subdirectories have the files that you edit to fix docume
 <div class="lightbox">
 
 <!-- Image source is found in angular/aio/src/assets/images/doc-contribute-images.sketch, in the sketch page that matches this topic's filename -->
+
 <img alt="An image of the working directories on a local computer" src="generated/images/guide/doc-prepare-to-edit/pc-directory-config-img.png">
 
 </div>
@@ -267,48 +279,48 @@ This directory and its subdirectories have the files that you edit to fix docume
 
 After you clone the origin repo on your local computer, run these commands from a command-line tool:
 
-1.  Install the npm modules used by the Angular project.
-    In a command line tool on your local computer:
+1. Install the npm modules used by the Angular project.
+   In a command line tool on your local computer:
 
-    1.  Navigate to your `git` workspace.
-        In this example, this is the `github-projects` directory.
+   1. Navigate to your `git` workspace.
+      In this example, this is the `github-projects` directory.
 
-    1.  In your `git` workspace, run this command to navigate to the documentation root directory in your clone of the `personal/angular` repo.
-        Remember to replace `personal` with your GitHub username.
+   1. In your `git` workspace, run this command to navigate to the documentation root directory in your clone of the `personal/angular` repo.
+      Remember to replace `personal` with your GitHub username.
 
-        <code-example format="shell" language="shell">
+      <code-example format="shell" language="shell">
 
-        cd personal/angular
+      cd personal/angular
 
-        </code-example>
+      </code-example>
 
-    1.  Run this command to install the Angular dependencies.
+   1. Run this command to install the Angular dependencies.
 
-        <code-example format="shell" language="shell">
+      <code-example format="shell" language="shell">
 
-        yarn
+      yarn
 
-        </code-example>
+      </code-example>
 
-    1.  Run this command to navigate to the documentation project.
+   1. Run this command to navigate to the documentation project.
 
-        <code-example format="shell" language="shell">
+      <code-example format="shell" language="shell">
 
-        cd aio
+      cd aio
 
-        </code-example>
+      </code-example>
 
-    1.  Run this command to install the npm modules for the documentation.
+   1. Run this command to install the npm modules for the documentation.
 
-        <code-example format="shell" language="shell">
+      <code-example format="shell" language="shell">
 
-        yarn
+      yarn
 
-        </code-example>
+      </code-example>
 
-1.  Locate `angular/aio/tools/doc-linter/vale.ini` in your working directory to use in the next step as the path to the configuration file in the  **Vale:Config** setting.
+1. Locate `angular/aio/tools/doc-linter/vale.ini` in your working directory to use in the next step as the path to the configuration file in the  **Vale:Config** setting.
 
-1.  [Install Vale][GithubAngularAngularTreeMainAioToolsDocLinterInstallValeOnYourDevelopmentSystemReadmeMd] to complete the software installation.
+1. [Install Vale][GithubAngularAngularTreeMainAioToolsDocLinterInstallValeOnYourDevelopmentSystemReadmeMd] to complete the software installation.
 
 ## Build and test the Angular documentation
 
@@ -317,7 +329,7 @@ To review your work and before you submit your updates in a pull request, be sur
 
 <div class="alert is-important">
 
-Note that the instructions found in [https://github.com/angular/angular/blob/main/docs/DEVELOPER.md](https://github.com/angular/angular/blob/main/docs/DEVELOPER.md) are to build and test the Angular framework and not the Angular documentation.
+Note that the instructions found in https://github.com/angular/angular/blob/main/docs/DEVELOPER.md are to build and test the Angular framework and not the Angular documentation.
 
 The procedures on this page build only the Angular documentation.
 You don't need to build the Angular framework to build the Angular documentation.
@@ -330,35 +342,35 @@ You don't need to build the Angular framework to build the Angular documentation
 
 Perform these steps from a command-line tool on your local computer.
 
-1.  Navigate to the Angular documentation in the working directory of your account in your `git` workspace on your local computer.
-1.  Navigate to your `git` workspace directory.
-    In this example, this is the `github-projects` directory.
+1. Navigate to the Angular documentation in the working directory of your account in your `git` workspace on your local computer.
+1. Navigate to your `git` workspace directory.
+   In this example, this is the `github-projects` directory.
 
-    1.  Run this command to navigate to the working directory with the `angular` repo you forked to your personal account.
-        Remember to replace `personal` with your GitHub username.
+   1. Run this command to navigate to the working directory with the `angular` repo you forked to your personal account.
+      Remember to replace `personal` with your GitHub username.
 
-        <code-example format="shell" language="shell">
+      <code-example format="shell" language="shell">
 
-        cd personal/angular
+      cd personal/angular
 
-        </code-example>
+      </code-example>
 
-    1.  Run this command to navigate to the Angular documentation directory.
+   1. Run this command to navigate to the Angular documentation directory.
 
-        <code-example format="shell" language="shell">
+      <code-example format="shell" language="shell">
 
-        cd aio
+      cd aio
 
-        </code-example>
+      </code-example>
 
 The Angular documentation directory is the root of the Angular documentation files.
 These directories in the `angular/aio` directory are where you find the files that are edited the most.
 
-| Directory                     | Files                                                     |
-|:---                           |:---                                                       |
-|`angular/aio/content`          | Files and other assets used in the Angular documentation  |
-|`angular/aio/content/guide`    | The markdown files for most Angular documentation         |
-|`angular/aio/content/tutorial` | The markdown files used by the Tour of Heroes tutorial    |
+| Directory                      | Files                                                    |
+| :----------------------------- | :------------------------------------------------------- |
+| `angular/aio/content`          | Files and other assets used in the Angular documentation |
+| `angular/aio/content/guide`    | The markdown files for most Angular documentation        |
+| `angular/aio/content/tutorial` | The markdown files used by the Tour of Heroes tutorial   |
 
 The Angular documentation source has many other directories in `angular/aio` but they don't change often.
 
@@ -366,53 +378,58 @@ The Angular documentation source has many other directories in `angular/aio` but
 
 Perform these steps from a command-line tool on your local computer.
 
-1.  Build the Angular documentation.
-    1.  From the Angular documentation directory, run this command:
+1. Build the Angular documentation.
 
-        <code-example format="shell" language="shell">
+   1. From the Angular documentation directory, run this command:
 
-        yarn build
+      <code-example format="shell" language="shell">
 
-        </code-example>
+      yarn build
 
-    1.  If building the documentation reports one or more errors, fix the errors and repeat the previous step before you continue.
+      </code-example>
 
-1.  Start the local documentation server.
-    1.  From the documentation directory, run this command:
+   1. If building the documentation reports one or more errors, fix the errors and repeat the previous step before you continue.
 
-        <code-example format="shell" language="shell">
+1. Start the local documentation server.
 
-        yarn start
+   1. From the documentation directory, run this command:
 
-        </code-example>
+      <code-example format="shell" language="shell">
 
-    1.  Open a browser on your local computer and view your documentation at `https://localhost:4200`.
+      yarn start
+
+      </code-example>
+
+   1. Open a browser on your local computer and view your documentation at `https://localhost:4200`.
+
 1. Review the documentation in the browser.
 
 ### To run the automated tests on the Angular documentation
 
 Perform these steps from a command-line tool on your local computer.
 
-1.  [Navigate to the documentation directory](#to-navigate-to-the-angular-documentation-directory), if you're not already there.
-1.  From the documentation directory, run this command to build the documentation before you test it:
+1. [Navigate to the documentation directory](#to-navigate-to-the-angular-documentation-directory), if you're not already there.
 
-    <code-example format="shell" language="shell">
+1. From the documentation directory, run this command to build the documentation before you test it:
 
-    yarn build
+   <code-example format="shell" language="shell">
 
-    </code-example>
+   yarn build
 
-1.  If building the documentation returns one or more errors, fix those and build the documentation again before you continue.
-1.  From the documentation directory, run these commands to start the automated tests that verify the docs are consistent.
-    These are most, but not all, of the tests that are performed after you open your pull request.
-    Some tests can only be run in the automated testing environment.
+   </code-example>
 
-    <code-example format="shell" language="shell">
+1. If building the documentation returns one or more errors, fix those and build the documentation again before you continue.
 
-    yarn e2e
-    yarn docs-test
+1. From the documentation directory, run these commands to start the automated tests that verify the docs are consistent.
+   These are most, but not all, of the tests that are performed after you open your pull request.
+   Some tests can only be run in the automated testing environment.
 
-    </code-example>
+   <code-example format="shell" language="shell">
+
+   yarn e2e
+   yarn docs-test
+
+   </code-example>
 
 When you run these tests on your documentation updates, be sure to correct any errors before you open a pull request.
 

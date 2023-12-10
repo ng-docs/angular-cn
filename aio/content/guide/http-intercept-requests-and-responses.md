@@ -167,9 +167,9 @@ req.body.name = req.body.name.trim(); // bad idea!
 
 If you must modify the request body, follow these steps.
 
-1.  Copy the body and make your change in the copy.
-1.  Clone the request object, using its `clone()` method.
-1.  Replace the clone's body with the modified copy.
+1. Copy the body and make your change in the copy.
+1. Clone the request object, using its `clone()` method.
+1. Replace the clone's body with the modified copy.
 
 <code-example header="app/http-interceptors/trim-name-interceptor.ts (excerpt)" path="http/src/app/http-interceptors/trim-name-interceptor.ts" region="excerpt"></code-example>
 

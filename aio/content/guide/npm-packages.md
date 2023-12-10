@@ -2,7 +2,7 @@
 
 The Angular Framework, Angular CLI, and components used by Angular applications are packaged as [npm packages](https://docs.npmjs.com/getting-started/what-is-npm "What is npm?") and distributed using the [npm registry](https://docs.npmjs.com).
 
-You can download and install these npm packages by using the [npm CLI client](https://docs.npmjs.com/cli/install), which is installed with and runs as a [Node.js®](https://nodejs.org "Nodejs.org") application.
+You can download and install these npm packages by using the [npm CLI client](https://docs.npmjs.com/cli/install), which is installed with and runs as a [Node.js&reg;](https://nodejs.org "Nodejs.org") application.
 By default, the Angular CLI uses the npm client.
 
 Alternatively, you can use the [yarn client](https://yarnpkg.com) for downloading and installing npm packages.
@@ -28,9 +28,9 @@ You may even remove some.
 
 The `package.json` is organized into two groups of packages:
 
-| Packages                                               | Details |
-|:---                                                    |:---     |
-| [Dependencies](guide/npm-packages#dependencies)        | Essential to *running* applications.      |
+| Packages                                               | Details                                               |
+| :----------------------------------------------------- | :---------------------------------------------------- |
+| [Dependencies](guide/npm-packages#dependencies)        | Essential to *running* applications.                  |
 | [DevDependencies](guide/npm-packages#dev-dependencies) | Only necessary to *develop* and *build* applications. |
 
 <div class="alert is-helpful">
@@ -50,8 +50,8 @@ The packages listed in the `dependencies` section of `package.json` are essentia
 
 The `dependencies` section of `package.json` contains:
 
-| Packages                              | Details |
-|:---                                   |:---     |
+| Packages                              | Details                                                                  |
+| :------------------------------------ | :----------------------------------------------------------------------- |
 | [Angular packages](#angular-packages) | Angular core and optional modules; their package names begin `@angular`  |
 | [Support packages](#support-packages) | 3rd party libraries that must be present for Angular applications to run |
 | [Polyfill packages](#polyfills)       | Polyfills plug gaps in a browser's JavaScript implementation             |
@@ -65,10 +65,10 @@ To add a new dependency, use the [`ng add`](cli/add) command.
 The following Angular packages are included as dependencies in the default `package.json` file for a new Angular workspace.
 For a complete list of Angular packages, see the [API reference](api?type=package).
 
-| Package name                                                        | Details |
-|:---                                                                 |:---     |
+| Package name                                                        | Details                                                                                                                                                                                                                                                                                                                                                                       |
+| :------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`@angular/animations`](api/animations)                             | Angular's animations library makes it easy to define and apply animation effects such as page and list transitions. For more information, see the [Animations guide](guide/animations).                                                                                                                                                                                       |
-| [`@angular/common`](api/common)                                     | The commonly-needed services, pipes, and directives provided by the Angular team. The [`HttpClientModule`](api/common/http/HttpClientModule) is also here, in the [`@angular/common/http`](api/common/http) subfolder. For more information, see the [HttpClient guide](guide/understanding-communicating-with-http).                                                                                          |
+| [`@angular/common`](api/common)                                     | The commonly-needed services, pipes, and directives provided by the Angular team. The [`HttpClientModule`](api/common/http/HttpClientModule) is also here, in the [`@angular/common/http`](api/common/http) subfolder. For more information, see the [HttpClient guide](guide/understanding-communicating-with-http).                                                         |
 | `@angular/compiler`                                                 | Angular's template compiler. It understands templates and can convert them to code that makes the application run and render. Typically you don't interact with the compiler directly; rather, you use it indirectly using `platform-browser-dynamic` when JIT compiling in the browser. For more information, see the [Ahead-of-time Compilation guide](guide/aot-compiler). |
 | [`@angular/core`](api/core)                                         | Critical runtime parts of the framework that are needed by every application. Includes all metadata decorators, `Component`, `Directive`,  dependency injection, and the component lifecycle hooks.                                                                                                                                                                           |
 | [`@angular/forms`](api/forms)                                       | Support for both [template-driven](guide/forms) and [reactive forms](guide/reactive-forms). For information about choosing the best forms approach for your app, see [Introduction to forms](guide/forms-overview).                                                                                                                                                           |
@@ -82,8 +82,8 @@ For a complete list of Angular packages, see the [API reference](api?type=packag
 
 The following support packages are included as dependencies in the default `package.json` file for a new Angular workspace.
 
-| Package name                                    | Details |
-|:---                                             |:---     |
+| Package name                                    | Details                                                                                                                                                                                                                                                                                                                                                                         |
+| :---------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [`rxjs`](https://github.com/ReactiveX/rxjs)     | Many Angular APIs return [*observables*](guide/glossary#observable). RxJS is an implementation of the proposed [Observables specification](https://github.com/tc39/proposal-observable) currently before the [TC39](https://www.ecma-international.org/memento/tc39.htm) committee, which determines standards for the JavaScript language.                                     |
 | [`zone.js`](https://github.com/angular/zone.js) | Angular relies on zone.js to run Angular's change detection processes when native JavaScript operations raise events. Zone.js is an implementation of a [specification](https://gist.github.com/mhevery/63fdcdf7c65886051d55) currently before the [TC39](https://www.ecma-international.org/memento/tc39.htm) committee that determines standards for the JavaScript language. |
 
@@ -118,22 +118,22 @@ yarn add --dev &lt;package-name&gt;
 
 The following `devDependencies` are provided in the default `package.json` file for a new Angular workspace.
 
-| Package name                                                              | Details |
-|:---                                                                       |:---     |
+| Package name                                                              | Details                                                                                         |
+| :------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------- |
 | [`@angular-devkit/build-angular`](https://github.com/angular/angular-cli) | The Angular build tools.                                                                        |
 | [`@angular/cli`](https://github.com/angular/angular-cli)                  | The Angular CLI tools.                                                                          |
 | `@angular/compiler-cli`                                                   | The Angular compiler, which is invoked by the Angular CLI's `ng build` and `ng serve` commands. |
-| `@types/... `                                                             | TypeScript definition files for 3rd party libraries such as Jasmine and Node.js.                |
-| `jasmine/... `                                                            | Packages to support the [Jasmine](https://jasmine.github.io) test library.                      |
-| `karma/... `                                                              | Packages to support the [karma](https://www.npmjs.com/package/karma) test runner.               |
+| `@types/...`                                                              | TypeScript definition files for 3rd party libraries such as Jasmine and Node.js.                |
+| `jasmine/...`                                                             | Packages to support the [Jasmine](https://jasmine.github.io) test library.                      |
+| `karma/...`                                                               | Packages to support the [karma](https://www.npmjs.com/package/karma) test runner.               |
 | [`typescript`](https://www.npmjs.com/package/typescript)                  | The TypeScript language server, including the *tsc* TypeScript compiler.                        |
 
 ## Related information
 
 For information about how the Angular CLI handles packages see the following guides:
 
-| Topics                              | Details |
-|:---                                 |:---     |
+| Topics                              | Details                                                  |
+| :---------------------------------- | :------------------------------------------------------- |
 | [Building and serving](guide/build) | How packages come together to create a development build |
 | [Deployment](guide/deployment)      | How packages come together to create a production build  |
 

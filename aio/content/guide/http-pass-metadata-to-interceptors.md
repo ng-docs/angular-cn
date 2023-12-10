@@ -17,13 +17,13 @@ You can create a context token using the `new` operator, as in the following exa
 
 The lambda function `() => 3` passed during the creation of the `HttpContextToken` serves two purposes:
 
-1.  It lets TypeScript infer the type of this token:
-    `HttpContextToken<number>`
-    The request context is type-safe &mdash;reading a token from a request's context returns a value of the appropriate type.
+1. It lets TypeScript infer the type of this token:
+   `HttpContextToken<number>`
+   The request context is type-safe &mdash;reading a token from a request's context returns a value of the appropriate type.
 
-1.  It sets the default value for the token.
-    This is the value that the request context returns if no other value was set for this token.
-    Using a default value avoids the need to check if a particular value is set.
+1. It sets the default value for the token.
+   This is the value that the request context returns if no other value was set for this token.
+   Using a default value avoids the need to check if a particular value is set.
 
 ## Set context values when making a request
 

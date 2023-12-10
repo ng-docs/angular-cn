@@ -1,10 +1,10 @@
 # Understanding Pipes
 
-Use [pipes](guide/glossary#pipe 'Definition of a pipe') to transform strings, currency amounts, dates, and other data for display.
+Use [pipes](guide/glossary#pipe "Definition of a pipe") to transform strings, currency amounts, dates, and other data for display.
 
 ## What is a pipe
 
-Pipes are simple functions to use in [template expressions](/guide/glossary#template-expression 'Definition of template expression') to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application, while only declaring each pipe once.
+Pipes are simple functions to use in [template expressions](/guide/glossary#template-expression "Definition of template expression") to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application, while only declaring each pipe once.
 For example, you would use a pipe to show a date as **April 15, 1988** rather than the raw string format.
 
 <div class="alert is-helpful">
@@ -29,7 +29,7 @@ The following are commonly used built-in pipes for data formatting:
 
 <div class="alert is-helpful">
 
-- For a complete list of built-in pipes, see the [pipes API documentation](/api/common#pipes 'Pipes API reference summary').
+- For a complete list of built-in pipes, see the [pipes API documentation](/api/common#pipes "Pipes API reference summary").
 - To learn more about using pipes for internationalization (i18n) efforts, see [formatting data based on locale][AioGuideI18nCommonFormatDataLocale].
 
 </div>
@@ -38,7 +38,7 @@ Create your own pipes to encapsulate custom transformations and use them in temp
 
 <!-- links -->
 
-[AioGuideI18nCommonFormatDataLocale]: guide/i18n-common-format-data-locale 'Format data based on locale | Angular'
+[AioGuideI18nCommonFormatDataLocale]: guide/i18n-common-format-data-locale "Format data based on locale | Angular"
 
 <!-- end links -->
 

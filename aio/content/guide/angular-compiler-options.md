@@ -32,17 +32,17 @@ Modifies how Angular-specific annotations are emitted to improve tree-shaking.
 Non-Angular annotations are not affected.
 One of `static fields` or `decorators`. The default value is `static fields`.
 
-*   By default, the compiler replaces decorators with a static field in the class, which allows advanced tree-shakers like [Closure compiler](https://github.com/google/closure-compiler) to remove unused classes
-*   The `decorators` value leaves the decorators in place, which makes compilation faster.
-    TypeScript emits calls to the `__decorate` helper.
-    Use `--emitDecoratorMetadata` for runtime reflection.
+* By default, the compiler replaces decorators with a static field in the class, which allows advanced tree-shakers like [Closure compiler](https://github.com/google/closure-compiler) to remove unused classes
+* The `decorators` value leaves the decorators in place, which makes compilation faster.
+  TypeScript emits calls to the `__decorate` helper.
+  Use `--emitDecoratorMetadata` for runtime reflection.
 
-    <div class="alert is-helpful">
+  <div class="alert is-helpful">
 
-    **NOTE**: <br />
-    That the resulting code cannot tree-shake properly.
+  **NOTE**: <br />
+  That the resulting code cannot tree-shake properly.
 
-    </div>
+  </div>
 
 ### `annotateForClosureCompiler`
 
@@ -58,8 +58,8 @@ Default is `false`.
 Specifies the compilation mode to use.
 The following modes are available:
 
-| Modes       | Details |
-|:---         |:---     |
+| Modes       | Details                                                                                             |
+| :---------- | :-------------------------------------------------------------------------------------------------- |
 | `'full'`    | Generates fully AOT-compiled code according to the version of Angular that is currently being used. |
 | `'partial'` | Generates code in a stable, but intermediate form suitable for a published library.                 |
 

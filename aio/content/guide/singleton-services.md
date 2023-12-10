@@ -8,8 +8,8 @@ For a sample application using the app-wide singleton service that this page des
 
 There are two ways to make a service a singleton in Angular:
 
-*   Set the `providedIn` property of the `@Injectable()` to `"root"`
-*   Include the service in the `AppModule` or in a module that is only imported by the `AppModule`
+* Set the `providedIn` property of the `@Injectable()` to `"root"`
+* Include the service in the `AppModule` or in a module that is only imported by the `AppModule`
 
 <a id="providedIn"></a>
 
@@ -51,9 +51,9 @@ This could result in multiple service instances and the service would no longer 
 
 There are multiple ways to prevent this:
 
-*   Use the [`providedIn` syntax](guide/singleton-services#providedIn) instead of registering the service in the module.
-*   Separate your services into their own module.
-*   Define `forRoot()` and `forChild()` methods in the module.
+* Use the [`providedIn` syntax](guide/singleton-services#providedIn) instead of registering the service in the module.
+* Separate your services into their own module.
+* Define `forRoot()` and `forChild()` methods in the module.
 
 <div class="alert is-helpful">
 
@@ -65,8 +65,8 @@ For an introductory explanation see the [Lazy Loading Feature Modules](guide/laz
 
 Use `forRoot()` to separate providers from a module so you can import that module into the root module with `providers` and child modules without `providers`.
 
-1.  Create a static method `forRoot()` on the module.
-1.  Place the providers into the `forRoot()` method.
+1. Create a static method `forRoot()` on the module.
+1. Place the providers into the `forRoot()` method.
 
 <code-example header="src/app/greeting/greeting.module.ts" path="ngmodules/src/app/greeting/greeting.module.ts" region="for-root"></code-example>
 
@@ -93,8 +93,8 @@ However, since Angular 6.0, the best practice for providing services is with the
 
 `forRoot()` takes a service configuration object and returns a [ModuleWithProviders](api/core/ModuleWithProviders), which is a simple object with the following properties:
 
-| Properties  | Details |
-|:---         |:---     |
+| Properties  | Details                                     |
+| :---------- | :------------------------------------------ |
 | `ngModule`  | In this example, the `GreetingModule` class |
 | `providers` | The configured providers                    |
 
@@ -160,9 +160,9 @@ Here are the two files in their entirety for reference:
 
 You may also be interested in:
 
-*   [Sharing Modules](guide/sharing-ngmodules), which elaborates on the concepts covered on this page
-*   [Lazy Loading Modules](guide/lazy-loading-ngmodules)
-*   [NgModule FAQ](guide/ngmodule-faq)
+* [Sharing Modules](guide/sharing-ngmodules), which elaborates on the concepts covered on this page
+* [Lazy Loading Modules](guide/lazy-loading-ngmodules)
+* [NgModule FAQ](guide/ngmodule-faq)
 
 <!-- links -->
 

@@ -60,15 +60,15 @@ This is because `LibCardComponent` actually contains two references to the `LibH
 
 </code-example>
 
-*   One of these reference is in the *type position*-- that is, it specifies `LibHeaderComponent` as a type: `header: LibHeaderComponent;`.
+* One of these reference is in the *type position*-- that is, it specifies `LibHeaderComponent` as a type: `header: LibHeaderComponent;`.
 
-*   The other reference is in the *value position*-- that is, LibHeaderComponent is the value of the `@ContentChild()` parameter decorator: `@ContentChild(LibHeaderComponent)`.
+* The other reference is in the *value position*-- that is, LibHeaderComponent is the value of the `@ContentChild()` parameter decorator: `@ContentChild(LibHeaderComponent)`.
 
 The compiler handles token references in these positions differently.
 
-*   The compiler erases *type position* references after conversion from TypeScript, so they have no impact on tree-shaking.
+* The compiler erases *type position* references after conversion from TypeScript, so they have no impact on tree-shaking.
 
-*   The compiler must keep *value position* references at runtime, which prevents the component from being tree-shaken.
+* The compiler must keep *value position* references at runtime, which prevents the component from being tree-shaken.
 
 In the example, the compiler retains the `LibHeaderComponent` token that occurs in the value position. This prevents the referenced component from being tree-shaken, even if the application developer does not actually use `<lib-header>` anywhere.
 If `LibHeaderComponent` 's code, template, and styles combined becomes too large, including it unnecessarily can significantly increase the size of the client application.
@@ -78,8 +78,8 @@ If `LibHeaderComponent` 's code, template, and styles combined becomes too large
 The tree-shaking problem arises when a component is used as an injection token.
 There are two cases when that can happen.
 
-*   The token is used in the value position of a [content query](guide/lifecycle-hooks#using-aftercontent-hooks "See more about using content queries.").
-*   The token is used as a type specifier for constructor injection.
+* The token is used in the value position of a [content query](guide/lifecycle-hooks#using-aftercontent-hooks "See more about using content queries.").
+* The token is used as a type specifier for constructor injection.
 
 In the following example, both uses of the `OtherComponent` token cause retention of `OtherComponent`, preventing it from being tree-shaken when it is not used.
 
@@ -144,10 +144,10 @@ You can safely use that token as the provider in the component definition, allow
 
 To summarize, the lightweight injection token pattern consists of the following.
 
-1.  A lightweight injection token that is represented as an abstract class.
-1.  A component definition that implements the abstract class.
-1.  Injection of the lightweight pattern, using ` @ContentChild()` or `@ContentChildren()`.
-1.  A provider in the implementation of the lightweight injection token which associates the lightweight injection token with the implementation.
+1. A lightweight injection token that is represented as an abstract class.
+1. A component definition that implements the abstract class.
+1. Injection of the lightweight pattern, using `@ContentChild()` or `@ContentChildren()`.
+1. A provider in the implementation of the lightweight injection token which associates the lightweight injection token with the implementation.
 
 ### Use the lightweight injection token for API definition
 

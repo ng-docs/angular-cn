@@ -7,9 +7,9 @@ of the HTML template and the rendered DOM structure, while the style sheet descr
 An Angular application uses individual components to define and control different aspects of the application.
 For example, an application could include components to describe:
 
-*   The application root with the navigation links
-*   The list of heroes
-*   The hero editor
+* The application root with the navigation links
+* The list of heroes
+* The hero editor
 
 In the following example, the `HeroListComponent` class includes:
 
@@ -48,12 +48,12 @@ Here's an example of basic metadata for `HeroListComponent`.
 
 This example shows some of the most useful `@Component` configuration options:
 
-| Configuration options | Details |
-|:---                   |:---     |
-| `standalone`          | `true` when this is a self-describing, ["Standalone"](guide/standalone-components) component.  If `false` or unspecified, the component must be declared in an [ngModule](guide/ngmodules) which is an older style. Prefer `true` if you can. |
+| Configuration options | Details                                                                                                                                                                                                                                                                                                               |
+| :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `standalone`          | `true` when this is a self-describing, ["Standalone"](guide/standalone-components) component.  If `false` or unspecified, the component must be declared in an [ngModule](guide/ngmodules) which is an older style. Prefer `true` if you can.                                                                         |
 | `selector`            | A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an application's HTML contains `<app-hero-list></app-hero-list>`, then Angular inserts an instance of the `HeroListComponent` view between those tags. |
-| `templateUrl`         | The relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the `template` property. This template defines the component's *host view*.                                                                                                  |
-| `imports`             | An array of the components, directives, and packages that your template references. Essential for "Standalone" components.                                                                  |
+| `templateUrl`         | The relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the `template` property. This template defines the component's *host view*.                                                                                                          |
+| `imports`             | An array of the components, directives, and packages that your template references. Essential for "Standalone" components.                                                                                                                                                                                            |
 | `providers`           | An array of [providers](guide/glossary#provider) for services that the component requires. In the example, this tells Angular how to provide the `HeroService` instance that the component's constructor uses to get the list of heroes to display.                                                                   |
 
 ## Templates and views
@@ -89,14 +89,15 @@ For example, here is a template for the Tutorial's `HeroListComponent`.
 This template uses typical HTML elements like `<h2>` and  `<p>`. It also includes Angular template-syntax elements, `*ngFor`, `{{hero.name}}`, `(click)`, `[hero]`, and `<app-hero-detail>`.
 The template-syntax elements tell Angular how to render the HTML to the screen, using program logic and data.
 
-*   The `*ngFor` directive tells Angular to iterate over a list
-*   `{{hero.name}}`, `(click)`, and `[hero]` bind program data to and from the DOM, responding to user input.
-    See more about [data binding](#data-binding) below.
+* The `*ngFor` directive tells Angular to iterate over a list
 
-*   The `<app-hero-detail>` element tag in the example represents a new component, `HeroDetailComponent`.
-    The `HeroDetailComponent`  defines the `hero-detail` portion of the rendered DOM structure specified by the `HeroListComponent` component.
+* `{{hero.name}}`, `(click)`, and `[hero]` bind program data to and from the DOM, responding to user input.
+  See more about [data binding](#data-binding) below.
 
-    Notice how these custom components mix with native HTML.
+* The `<app-hero-detail>` element tag in the example represents a new component, `HeroDetailComponent`.
+  The `HeroDetailComponent`  defines the `hero-detail` portion of the rendered DOM structure specified by the `HeroListComponent` component.
+
+  Notice how these custom components mix with native HTML.
 
 ### Data binding
 
@@ -119,8 +120,8 @@ This example from the `HeroListComponent` template uses three of these forms.
 
 <code-example header="src/app/hero-list.component.html (binding)" path="architecture/src/app/hero-list.component.1.html" region="binding"></code-example>
 
-| Data bindings                                                            | Details |
-|:---                                                                      |:---     |
+| Data bindings                                                            | Details                                                                                                                           |
+| :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
 | `[hero]` [property binding](guide/property-binding)                      | Passes the value of `selectedHero` from the parent `HeroListComponent` to the `hero` property of the child `HeroDetailComponent`. |
 | `(click)` [event binding](guide/user-input#binding-to-user-input-events) | Calls the component's `selectHero` method when the user clicks a hero's name.                                                     |
 | `{{hero.name}}` [interpolation](guide/interpolation)                     | Displays the component's `hero.name` property value within the `<button>` element.                                                |
@@ -210,9 +211,9 @@ The example template uses two built-in structural directives to add application 
 
 <code-example header="src/app/hero-list.component.html (structural)" path="architecture/src/app/hero-list.component.1.html" region="structural"></code-example>
 
-| Directives                                  | Details |
-|:---                                         |:---     |
-| [`*ngFor`](guide/built-in-directives#ngFor) | An *iterative*, which tells Angular to create one `<li>` per hero in the `heroes` list. |
+| Directives                                  | Details                                                                                    |
+| :------------------------------------------ | :----------------------------------------------------------------------------------------- |
+| [`*ngFor`](guide/built-in-directives#ngFor) | An *iterative*, which tells Angular to create one `<li>` per hero in the `heroes` list.    |
 | [`*ngIf`](guide/built-in-directives#ngIf)   | A *conditional*, which includes the `HeroDetail` component only if a selected hero exists. |
 
 #### Attribute directives

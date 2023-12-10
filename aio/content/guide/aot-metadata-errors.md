@@ -427,10 +427,10 @@ Do not refer to ambient types in metadata expressions.
 If you must inject an instance of an ambient type,
 you can finesse the problem in four steps:
 
-1.  Create an injection token for an instance of the ambient type.
-1.  Create a factory function that returns that instance.
-1.  Add a `useFactory` provider with that factory function.
-1.  Use `@Inject` to inject the instance.
+1. Create an injection token for an instance of the ambient type.
+1. Create a factory function that returns that instance.
+1. Add a `useFactory` provider with that factory function.
+1. Use `@Inject` to inject the instance.
 
 Here's an illustrative example.
 

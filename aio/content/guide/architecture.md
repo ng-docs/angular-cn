@@ -15,10 +15,10 @@ Such services can be *injected* into components as *dependencies*, making your c
 Components and services are classes marked with *decorators*.
 These decorators provide metadata that tells Angular how to use them.
 
-*   The metadata for a component class associates it with a *template* that defines a view.
-    A template combines ordinary HTML with Angular *directives* and *binding markup* that allow Angular to modify the HTML before rendering it for display.
+* The metadata for a component class associates it with a *template* that defines a view.
+  A template combines ordinary HTML with Angular *directives* and *binding markup* that allow Angular to modify the HTML before rendering it for display.
 
-*   The metadata for a service class provides the information Angular needs to make it available to components through *dependency injection (DI)*
+* The metadata for a service class provides the information Angular needs to make it available to components through *dependency injection (DI)*
 
 An application's components typically define many views, arranged hierarchically.
 Angular provides the `Router` service to help you define navigation paths among views.
@@ -58,8 +58,8 @@ A template combines HTML with Angular markup that can modify HTML elements befor
 Template *directives* provide program logic, and *binding markup* connects your application data and the DOM.
 There are two types of data binding:
 
-| Data bindings    | Details |
-|:---              |:---     |
+| Data bindings    | Details                                                                                                  |
+| :--------------- | :------------------------------------------------------------------------------------------------------- |
 | Event binding    | Lets your application respond to user input in the target environment by updating your application data. |
 | Property binding | Lets you interpolate values that are computed from your application data into the HTML.                  |
 
@@ -98,9 +98,9 @@ For a more detailed discussion, see [Introduction to services and DI](guide/arch
 The Angular `Router` package provides a service that lets you define a navigation path among the different application states and view hierarchies in your application.
 It is modeled on the familiar browser navigation conventions:
 
-*   Enter a URL in the address bar and the browser navigates to a corresponding page
-*   Click links on the page and the browser navigates to a new page
-*   Click the browser's back and forward buttons and the browser navigates backward and forward through the history of pages you've seen
+* Enter a URL in the address bar and the browser navigates to a corresponding page
+* Click links on the page and the browser navigates to a new page
+* Click the browser's back and forward buttons and the browser navigates backward and forward through the history of pages you've seen
 
 The router maps URL-like paths to components instead of pages.
 When a user performs an action, such as clicking a link, that would load a new component in the browser, the router intercepts the browser's behavior, and shows or hides that component (and its child components).
@@ -126,13 +126,13 @@ For a more detailed discussion, see [Routing and navigation](guide/router).
 You've discovered the main building blocks of an Angular application.
 Learn a bit more about them in the following architecture pages.
 
-*   [Introduction to Components](guide/architecture-components)
-    *   [Templates and views](guide/architecture-components#templates-and-views)
-    *   [Component metadata](guide/architecture-components#component-metadata)
-    *   [Data binding](guide/architecture-components#data-binding)
-    *   [Directives](guide/architecture-components#directives)
-    *   [Pipes](guide/architecture-components#pipes)
-*   [Introduction to services and dependency injection](guide/architecture-services)
+* [Introduction to Components](guide/architecture-components)
+  * [Templates and views](guide/architecture-components#templates-and-views)
+  * [Component metadata](guide/architecture-components#component-metadata)
+  * [Data binding](guide/architecture-components#data-binding)
+  * [Directives](guide/architecture-components#directives)
+  * [Pipes](guide/architecture-components#pipes)
+* [Introduction to services and dependency injection](guide/architecture-services)
 
 When you're familiar with these fundamental building blocks, you can explore them in greater detail in the documentation.
 

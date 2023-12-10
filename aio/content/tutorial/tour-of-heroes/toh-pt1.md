@@ -31,8 +31,8 @@ You always import the `Component` symbol from the Angular core library and annot
 
 `ng generate` created three metadata properties:
 
-| Properties    | Details |
-|:---           |:---     |
+| Properties    | Details                                             |
+| :------------ | :-------------------------------------------------- |
 | `selector`    | The component's CSS element selector.               |
 | `templateUrl` | The location of the component's template file.      |
 | `styleUrls`   | The location of the component's private CSS styles. |
@@ -41,7 +41,7 @@ You always import the `Component` symbol from the Angular core library and annot
 
 The [CSS element selector](https://developer.mozilla.org/docs/Web/CSS/Type_selectors), `'app-heroes'`, matches the name of the HTML element that identifies this component within a parent component's template.
 
-Always `export` the component class so you can `import` it elsewhere &hellip; like in the `AppModule`.
+Always `export` the component class so you can `import` it elsewhere … like in the `AppModule`.
 
 ### Add a `hero` property
 
@@ -213,16 +213,16 @@ Here are the code files discussed on this page.
 
 ## Summary
 
-*   You used `ng generate` to create a second `HeroesComponent`.
-*   You displayed the `HeroesComponent` by adding it to the `AppComponent` shell.
-*   You applied the `UppercasePipe` to format the name.
-*   You used two-way data binding with the `ngModel` directive.
-*   You learned about the `AppModule`.
-*   You imported the `FormsModule` in the `AppModule` so that Angular would recognize and apply the `ngModel` directive.
-*   You learned the importance of declaring components in the `AppModule`.
+* You used `ng generate` to create a second `HeroesComponent`.
+* You displayed the `HeroesComponent` by adding it to the `AppComponent` shell.
+* You applied the `UppercasePipe` to format the name.
+* You used two-way data binding with the `ngModel` directive.
+* You learned about the `AppModule`.
+* You imported the `FormsModule` in the `AppModule` so that Angular would recognize and apply the `ngModel` directive.
+* You learned the importance of declaring components in the `AppModule`.
 
 ## Next steps
 
-*  [2. Display a list](tutorial/tour-of-heroes/toh-pt2)
+* [2. Display a list](tutorial/tour-of-heroes/toh-pt2)
 
 @reviewed 2022-02-28

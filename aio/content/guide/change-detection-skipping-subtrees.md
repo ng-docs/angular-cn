@@ -6,10 +6,10 @@ Change detection is sufficiently fast for most applications. However, when an ap
 
 If you are confident that a part of the application is not affected by a state change, you can use [OnPush](/api/core/ChangeDetectionStrategy) to skip change detection in an entire component subtree.
 
-
 ## Using `OnPush`
 
 OnPush change detection instructs Angular to run change detection for a component subtree **only** when:
+
 * The root component of the subtree receives new inputs as the result of a template binding. Angular compares the current and past value of the input with `==`
 * Angular handles an event _(for example using event binding, output binding, or `@HostListener` )_ in the subtree's root component or any of its children whether they are using OnPush change detection or not.
 
@@ -35,6 +35,7 @@ As an example, if we set the change detection strategy of `MainComponent` to `On
 
 <div class="lightbox">
   <img alt="Change detection propagation from non-OnPush component" src="generated/images/guide/change-detection/event-trigger.svg">
+
 </div>
 
 ## An event is handled by a component with OnPush
@@ -45,6 +46,7 @@ As an example, if Angular handles an event within `MainComponent`, the framework
 
 <div class="lightbox">
   <img alt="Change detection propagation from OnPush component" src="generated/images/guide/change-detection/on-push-trigger.svg">
+
 </div>
 
 ## An event is handled by a descendant of a component with OnPush
@@ -55,6 +57,7 @@ As an example, in the diagram below, Angular handles an event in `LoginComponent
 
 <div class="lightbox">
   <img alt="Change detection propagation from nested OnPush component" src="generated/images/guide/change-detection/leaf-trigger.svg">
+
 </div>
 
 ## New inputs to component with OnPush
@@ -65,6 +68,7 @@ For example, in the diagram below, `AppComponent` passes a new input to `MainCom
 
 <div class="lightbox">
   <img alt="Change detection propagation with OnPush component that receives new inputs" src="generated/images/guide/change-detection/on-push-input.svg">
+
 </div>
 
 ## Edge cases

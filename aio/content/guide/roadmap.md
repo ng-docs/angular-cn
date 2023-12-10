@@ -99,14 +99,18 @@ For this purpose, we will explore and document the scope of the changes in v7 an
 As part of this project, we'd like to implement mixed orientation support for the Angular CDK drag and drop. This is one of the repository's most highly [requested features](https://github.com/angular/components/issues/13372).
 
 <details class="completed-details" open="true">
+
  <summary>
+
    <h2>Completed</h2>
    <span class="actions">
      <span class="action-expand">Show all</span>
      <span class="action-collapse">Hide all</span>
      <i class="material-icons expand">expand_more</i>
    </span>
+
  </summary>
+
  <div class="details-content">
 
 ### Update getting started tutorial
@@ -387,6 +391,7 @@ We are actively investing up to 50% of our engineering capacity on triaging issu
 After that, we will commit up to 20% of our engineering capacity to keep up with new submissions promptly.
 
  </div>
+
 </details>
 
 <!-- links -->
