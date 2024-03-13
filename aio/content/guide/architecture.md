@@ -1,4 +1,5 @@
 # Introduction to Angular concepts
+# Angular 概念简介
 
 Angular is a platform and framework for building single-page client applications using HTML and TypeScript.
 Angular is written in TypeScript.
@@ -221,7 +222,7 @@ For a more detailed discussion, see [Routing and navigation](guide/router).
 You've discovered the main building blocks of an Angular application.
 Learn a bit more about them in the following architecture pages.
 
-您已经了解了 Angular 应用程序的主要构造块的基础知识。
+你已经了解了 Angular 应用程序的主要构造块的基础知识。
 在以下页面中了解更多相关信息。
 
 * [Introduction to Components](guide/architecture-components)
@@ -258,8 +259,7 @@ When you're familiar with these fundamental building blocks, you can explore the
 当你熟悉了这些基础构造块之后，就可以在本文档中进一步查看它们的详情了。
 
 You may also be interested in [tools and techniques](guide/architecture-next-steps) to help you build and deploy Angular applications.
-
-您可能还对帮助您构建和部署Angular应用的[工具和技巧](guide/architecture-next-steps)感兴趣。
+你可能还对帮助您构建和部署Angular应用的[工具和技巧](guide/architecture-next-steps)感兴趣。
 
 </div>
 
