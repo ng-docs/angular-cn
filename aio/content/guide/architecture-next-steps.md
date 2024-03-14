@@ -94,7 +94,7 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
   [Service Worker 和 PWA](guide/service-worker-intro)：使用 Service Worker 来减少对网络的依赖，并显著改善用户体验。
 
-* [Web workers](guide/web-worker): Learn how to run CPU-intensive computations in a background thread.
+*  [Web workers](guide/web-worker): Learn how to run CPU-intensive computations in a background thread.
 
   [Web worker](guide/web-worker)：学习如何在后台线程中运行 CPU 密集型的计算。
 
@@ -178,4 +178,4 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-09-25
