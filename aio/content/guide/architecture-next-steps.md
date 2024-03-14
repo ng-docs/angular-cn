@@ -9,7 +9,7 @@ about the features and tools that can help you develop and deliver Angular appli
 
 * Work through the [Tour of Heroes](tutorial) tutorial to get a feel for how to fit the basic building blocks together to create a well-designed application.
 
-  参考“[英雄之旅”](tutorial)教程，了解如何将这些基本构建块放在一起，来创建设计精良的应用。
+  参考[英雄之旅](tutorial)教程，了解如何将这些基本构建块放在一起，来创建设计精良的应用。
 
 * Check out the [Glossary](guide/glossary) to understand Angular-specific terms and usage.
 
@@ -82,19 +82,19 @@ For some platforms and applications, you might also want to use the PWA \(Progre
 
 Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数据都留在客户端。大多数应用仍然需要使用 `HttpClient` 来访问服务器，以访问和保存数据。对于某些平台和应用，你可能还希望使用 PWA（渐进式 Web 应用）模型来改善用户体验。
 
-* [HTTP](guide/http): Communicate with a server to get data, save data, and invoke server-side actions with an HTTP client.
+* [HTTP](guide/understanding-communicating-with-http): Communicate with a server to get data, save data, and invoke server-side actions with an HTTP client.
 
-  [HTTP](guide/http)：与服务器通信，通过 HTTP 客户端来获取数据、保存数据，并调用服务端的动作。
+  [HTTP](guide/understanding-communicating-with-http)：与服务器通信，通过 HTTP 客户端来获取数据、保存数据，并调用服务端的动作。
 
-* [Server-side rendering](guide/universal): Angular Universal generates static application pages on the server through server-side rendering \(SSR\). This allows you to run your Angular application on the server in order to improve performance and show the first page quickly on mobile and low-powered devices, and also facilitate web crawlers.
+* [Server-side rendering](guide/ssr): Angular Universal generates static application pages on the server through server-side rendering \(SSR\). This allows you to run your Angular application on the server in order to improve performance and show the first page quickly on mobile and low-powered devices, and also facilitate web crawlers.
 
-  [服务端渲染](guide/universal)：Angular Universal 通过服务端渲染（SSR）在服务器上生成静态应用页面。这允许你在服务器上运行 Angular 应用，以提高性能，并在移动设备和低功耗设备上快速显示首屏，同时也方便了网页抓取工具。
+  [服务端渲染](guide/ssr)：Angular Universal 通过服务端渲染（SSR）在服务器上生成静态应用页面。这允许你在服务器上运行 Angular 应用，以提高性能，并在移动设备和低功耗设备上快速显示首屏，同时也方便了网页抓取工具。
 
 * [Service workers and PWA](guide/service-worker-intro): Use a service worker to reduce dependency on the network and significantly improve the user experience.
 
   [Service Worker 和 PWA](guide/service-worker-intro)：使用 Service Worker 来减少对网络的依赖，并显著改善用户体验。
 
-* [Web workers](guide/web-worker): Learn how to run CPU-intensive computations in a background thread.
+*  [Web workers](guide/web-worker): Learn how to run CPU-intensive computations in a background thread.
 
   [Web worker](guide/web-worker)：学习如何在后台线程中运行 CPU 密集型的计算。
 
@@ -178,4 +178,4 @@ Angular 为单页面应用提供了一个框架，其中的大多数逻辑和数
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-09-25

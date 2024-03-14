@@ -3,16 +3,26 @@
 # NgModule 简介
 
 Angular applications are modular and Angular has its own modularity system called *NgModules*.
+Angular 应用是模块化的，它拥有自己的模块化系统，称作 *NgModule*。
+
+<div class="alert is-critical">
+
+Older Angular applications are built with `NgModules`.
+While this is no longer the preferred approach, many existing applications are still built with `NgModules`.
+
+旧版的Angular应用程序是用 NgModules 构建的。
+尽管这不再是首选方法，但仍有许多现有应用程序是使用 NgModules 构建的。
+
+This page offers an overview of that concept; [learn more here](guide/ngmodules).
+本页面提供了该概念的概述；[在此处了解更多信息](guide/ngmodules)。
+
+</div>
+
 NgModules are containers for a cohesive block of code dedicated to an application domain, a workflow, or a closely related set of capabilities.
 They can contain components, service providers, and other code files whose scope is defined by the containing NgModule.
 They can import functionality that is exported from other NgModules, and export selected functionality for use by other NgModules.
 
-Angular 应用是模块化的，它拥有自己的模块化系统，称作 *NgModule*。一个 NgModule 就是一个容器，用于存放一些内聚的代码块，这些代码块专注于某个应用领域、某个工作流或一组紧密相关的功能。它可以包含一些组件、服务提供者或其它代码文件，其作用域由包含它们的 NgModule 定义。它还可以导入一些由其它模块中导出的功能，并导出一些指定的功能供其它 NgModule 使用。
-
-Every Angular application has at least one NgModule class, [the *root module*](guide/bootstrapping), which is conventionally named `AppModule` and resides in a file named `app.module.ts`.
-You launch your application by *bootstrapping* the root NgModule.
-
-每个 Angular 应用都至少有一个 NgModule 类，也就是[根模块](guide/bootstrapping)，它习惯上命名为 `AppModule`，并位于一个名叫 `app.module.ts` 的文件中。*引导*这个根模块就可以启动你的应用。
+一个 NgModule 就是一个容器，用于存放一些内聚的代码块，这些代码块专注于某个应用领域、某个工作流或一组紧密相关的功能。它可以包含一些组件、服务提供者或其它代码文件，其作用域由包含它们的 NgModule 定义。它还可以导入一些由其它模块中导出的功能，并导出一些指定的功能供其它 NgModule 使用。
 
 While a small application might have only one NgModule, most applications have many more *feature modules*.
 The *root* NgModule for an application is so named because it can include child NgModules in a hierarchy of any depth.
@@ -29,9 +39,8 @@ The most important properties are as follows.
 
 NgModule 是一个带有 `@NgModule()` 装饰器的类。`@NgModule()` 装饰器是一个函数，它接受一个元数据对象，该对象的属性用来描述这个模块。其中最重要的属性如下。
 
-| Properties     | Details                                                                                                                                                                                                                                     |
-| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 属性           | 详情                                                                                                                                                                                                                                        |
+| Properties     | Details |
+|:---            |:---     |
 | `declarations` | The [components](guide/architecture-components), *directives*, and *pipes* that belong to this NgModule.                                                                                                                                    |
 | `declarations` | 那些属于本 NgModule 的[组件](guide/architecture-components)、*指令*、*管道*。|
 | `exports`      | The subset of declarations that should be visible and usable in the *component templates* of other NgModules.                                                                                                                               |
@@ -123,9 +132,9 @@ Other JavaScript modules use *import statements* to access public objects from o
 
 JavaScript 中，每个*文件*是一个模块，文件中定义的所有对象都从属于那个模块。通过 `export` 关键字，模块可以把它的某些对象声明为公共的。其它 JavaScript 模块可以使用*import 语句*来访问这些公共对象。
 
-<code-example path="architecture/src/app/app.module.ts" region="imports"></code-example>
+<code-example path="architecture/src/app/mini-app.ts" region="imports"></code-example>
 
-<code-example path="architecture/src/app/app.module.ts" region="export"></code-example>
+<code-example path="architecture/src/app/mini-app.ts" region="export"></code-example>
 
 <div class="alert is-helpful">
 

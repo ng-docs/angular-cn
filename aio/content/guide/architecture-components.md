@@ -13,15 +13,15 @@ For example, an application could include components to describe:
 
 Angular 应用使用一些单个组件来定义并控制应用的不同方面。比如，应用可能包含一些描述下列内容的组件：
 
-* The application root with the navigation links
+*   The application root with the navigation links
 
   带有导航链接的应用根组件
 
-* The list of heroes
+*   The list of heroes
 
   英雄列表
 
-* The hero editor
+*   The hero editor
 
   英雄编辑器
 
@@ -88,15 +88,20 @@ Here's an example of basic metadata for `HeroListComponent`.
 
 This example shows some of the most useful `@Component` configuration options:
 
+
 这个例子展示了一些最常用的 `@Component` 配置选项：
 
-| Configuration options | Details                                                                                                                                                                                                                                                                                                               |
-| :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 配置选项              | 详情                                                                                                                                                                                                                                                                                                                  |
+| Configuration options | Details |
+|:---                   |:---     |
+| 配置选项              | 详情                  |
+| `standalone`          | `true` when this is a self-describing, ["Standalone"](guide/standalone-components) component.  If `false` or unspecified, the component must be declared in an [ngModule](guide/ngmodules) which is an older style. Prefer `true` if you can. |
+| `standalone`          | 当这是一个自描述的、[“独立的”](guide/standalone-components "Standalone")组件时，其值为`true`。如果未指定或为`false`，则该组件必须在一个 ngModule 中声明，这是一种较旧的风格。如果可以的话，请使用 `true`。 |
 | `selector`            | A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML. For example, if an application's HTML contains `<app-hero-list></app-hero-list>`, then Angular inserts an instance of the `HeroListComponent` view between those tags. |
-| `selector`            | 一个 CSS 选择器，它会告诉 Angular，一旦在模板 HTML 中找到了这个选择器对应的标签，就创建并插入该组件的一个实例。比如，如果应用的 HTML 中包含 `<app-hero-list></app-hero-list>`，Angular 就会在这些标签中插入一个 `HeroListComponent` 实例的视图。|
-| `templateUrl`         | The module-relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the `template` property. This template defines the component's *host view*.                                                                                                   |
+| `selector`            | 一个 CSS 选择器，告诉 Angular：一旦在模板 HTML 中找到了这个选择器对应的标签，就创建并插入该组件的一个实例。比如，如果应用的 HTML 中包含 `<app-hero-list></app-hero-list>`，Angular 就会在这些标签中插入一个 `HeroListComponent` 实例的视图。|
+| `templateUrl`         | The relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the `template` property. This template defines the component's *host view*.                                                                                                  |
 | `templateUrl`         | 该组件的 HTML 模板文件相对于这个组件文件的地址。另外，你还可以用 `template` 属性的值来提供内联的 HTML 模板。这个模板定义了该组件的*宿主视图*。|
+| `imports`             | An array of the components, directives, and packages that your template references. Essential for "Standalone" components.                                                                  |
+| `imports`             | 此模板引用的组件、指令和包的列表。对于“独立的”组件至关重要。|
 | `providers`           | An array of [providers](guide/glossary#provider) for services that the component requires. In the example, this tells Angular how to provide the `HeroService` instance that the component's constructor uses to get the list of heroes to display.                                                                   |
 | `providers`           | 当前组件所需的服务[提供者](guide/glossary#provider)的一个数组。在这个例子中，它告诉 Angular 该如何提供一个 `HeroService` 实例，以获取要显示的英雄列表。|
 
@@ -138,7 +143,7 @@ A view hierarchy can include views from components in the same NgModule and from
 A template looks like regular HTML, except that it also contains Angular [template syntax](guide/template-syntax), which alters the HTML based on your application's logic and the state of application and DOM data.
 Your template can use *data binding* to coordinate the application and DOM data, *pipes* to transform data before it is displayed, and *directives* to apply application logic to what gets displayed.
 
-模板很像标准的 HTML，但是它还包含 Angular 的[模板语法](guide/template-syntax)，这些模板语法可以根据你的应用逻辑、应用状态和 DOM 数据来修改这些 HTML。你的模板可以使用*数据绑定*来协调应用和 DOM 中的数据，使用*管道*在显示出来之前对其进行转换，使用*指令*来把程序逻辑应用到要显示的内容上。
+模板看起来像标准的 HTML，但是它还包含 Angular 的[模板语法](guide/template-syntax)，这些模板语法可以根据你的应用逻辑、应用状态和 DOM 数据来改变这些 HTML。你的模板可以使用*数据绑定*来协调应用和 DOM 中的数据，使用*管道*在显示出来之前对其进行转换，使用*指令*来把程序逻辑应用到要显示的内容上。
 
 For example, here is a template for the Tutorial's `HeroListComponent`.
 
@@ -151,23 +156,23 @@ The template-syntax elements tell Angular how to render the HTML to the screen, 
 
 这个模板使用了典型的 HTML 元素，比如 `<h2>` 和 `<p>`。还包括一些 Angular 的模板语法元素，如 `*ngFor`，`{{hero.name}}`，`click`、`[hero]` 和 `<app-hero-detail>`。这些模板语法元素告诉 Angular 该如何根据程序逻辑和数据在屏幕上渲染 HTML。
 
-* The `*ngFor` directive tells Angular to iterate over a list
+*   The `*ngFor` directive tells Angular to iterate over a list
 
   `*ngFor` 指令告诉 Angular 在一个列表上进行迭代
 
-* `{{hero.name}}`, `(click)`, and `[hero]` bind program data to and from the DOM, responding to user input.
-  See more about [data binding](#data-binding) below.
+*   `{{hero.name}}`, `(click)`, and `[hero]` bind program data to and from the DOM, responding to user input.
+    See more about [data binding](#data-binding) below.
 
   `{{hero.name}}`、`(click)` 和 `[hero]` 把程序数据绑定到及绑定回 DOM，以响应用户的输入。更多内容参阅稍后的[数据绑定](#data-binding)部分。
 
-* The `<app-hero-detail>` element tag in the example represents a new component, `HeroDetailComponent`.
-  The `HeroDetailComponent`  defines the `hero-detail` portion of the rendered DOM structure specified by the `HeroListComponent` component.
+*   The `<app-hero-detail>` element tag in the example represents a new component, `HeroDetailComponent`.
+    The `HeroDetailComponent`  defines the `hero-detail` portion of the rendered DOM structure specified by the `HeroListComponent` component.
 
   此例子中的 `<app-hero-detail>` 元素标签代表一个新组件 `HeroDetailComponent`。`HeroDetailComponent` 定义了由 `HeroListComponent` 所渲染的 DOM 结构中的 `hero-detail` 部分。
 
-  Notice how these custom components mix with native HTML.
+    Notice how these custom components mix with native HTML.
 
-  注意这些自定义组件是如何与原生 HTML 元素混用的。
+    注意这些自定义组件是如何与原生 HTML 元素混用的。
 
 ### Data binding
 
@@ -200,8 +205,8 @@ This example from the `HeroListComponent` template uses three of these forms.
 
 <code-example header="src/app/hero-list.component.html (binding)" path="architecture/src/app/hero-list.component.1.html" region="binding"></code-example>
 
-| Data bindings                                                            | Details                                                                                                                           |
-| :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| Data bindings                                                            | Details |
+|:---                                                                      |:---     |
 | 数据绑定                                                                 | 详情                                                                                                                              |
 | `[hero]` [property binding](guide/property-binding)                      | Passes the value of `selectedHero` from the parent `HeroListComponent` to the `hero` property of the child `HeroDetailComponent`. |
 | `[hero]`[属性绑定](guide/property-binding)                               | 把父组件 `HeroListComponent` 的 `selectedHero` 的值传到子组件 `HeroDetailComponent` 的 `hero` 属性中。|
@@ -256,9 +261,9 @@ You can also define new pipes.
 
 Angular 自带了很多管道，比如 [date](api/common/DatePipe) 管道和 [currency](api/common/CurrencyPipe) 管道。完整的列表参阅 [Pipes API 列表](api?type=pipe)。你也可以自己定义一些新管道。
 
-To specify a value transformation in an HTML template, use the [pipe operator \(`|`\)](guide/pipes).
+To specify a value transformation in an HTML template, use the [pipe operator (`|`)](guide/pipes-overview).
 
-要在 HTML 模板中指定值的转换方式，请使用[管道操作符（`|`）](guide/pipes)。
+要在 HTML 模板中指定值的转换方式，请使用[管道操作符（`|`）](guide/pipes-overview)。
 
 <code-example format="html" language="html">
 
@@ -328,10 +333,10 @@ The example template uses two built-in structural directives to add application 
 
 <code-example header="src/app/hero-list.component.html (structural)" path="architecture/src/app/hero-list.component.1.html" region="structural"></code-example>
 
-| Directives                                  | Details                                                                                    |
-| :------------------------------------------ | :----------------------------------------------------------------------------------------- |
-| 指令                                        | 详情                                                                                       |
-| [`*ngFor`](guide/built-in-directives#ngFor) | An *iterative*, which tells Angular to create one `<li>` per hero in the `heroes` list.    |
+| Directives                                  | Details |
+|:---                                         |:---     |
+| 指令                                        | 详情   |
+| [`*ngFor`](guide/built-in-directives#ngFor) | An *iterative*, which tells Angular to create one `<li>` per hero in the `heroes` list. |
 | [`*ngFor`](guide/built-in-directives#ngFor) | 一个迭代器，它要求 Angular 为 `heroes` 列表中的每个英雄创建出一个 `<li>`。|
 | [`*ngIf`](guide/built-in-directives#ngIf)   | A *conditional*, which includes the `HeroDetail` component only if a selected hero exists. |
 | [`*ngIf`](guide/built-in-directives#ngIf)   | 是个条件语句，只有当选中的英雄存在时，它才会包含 `HeroDetail` 组件。|
@@ -378,4 +383,4 @@ Learn more in the [Attribute Directives](guide/attribute-directives) and [Struct
 
 <!-- end links -->
 
-@reviewed 2022-02-28
+@reviewed 2023-09-25
