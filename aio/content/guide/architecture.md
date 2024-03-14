@@ -259,6 +259,7 @@ When you're familiar with these fundamental building blocks, you can explore the
 当你熟悉了这些基础构造块之后，就可以在本文档中进一步查看它们的详情了。
 
 You may also be interested in [tools and techniques](guide/architecture-next-steps) to help you build and deploy Angular applications.
+
 你可能还对帮助您构建和部署Angular应用的[工具和技巧](guide/architecture-next-steps)感兴趣。
 
 </div>
